@@ -1,10 +1,10 @@
 ---
 title: "Home"
 description: "Page d’accueil de l’API Marketo"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+source-git-commit: 89511b5f9c538866ae42bb1966c6895ed4bbd3d7
 workflow-type: tm+mt
 source-wordcount: '121'
-ht-degree: 9%
+ht-degree: 0%
 
 ---
 
@@ -13,45 +13,12 @@ ht-degree: 9%
 
 Documentation détaillée qui vous aide à maîtriser l’API Marketo
 
-<table>
-  <tr>
-    <td width="150"><img alt="Prise en main" src="assets/Smock_Book_18_N.svg" width="120px"/></td>
-    <td><a href="getting-started.md"><strong>Prise en main</strong></a>
-      <div>Familiarisez-vous avec les API Marketo.</div></td>
-  </tr>
-  <tr>
-    <td><img alt="Bibliothèques clientes" src="assets/Smock_Code_18_N.svg" width="120px"></td>
-    <td><a href="https://github.com/Marketo/Community-Supported-Client-Libraries"><strong>Bibliothèques clientes</strong></a>
-      <div>Utilisez du code open source pour étendre les fonctionnalités de Marketo.</div></td>
-  </tr>
-  <tr>
-    <td width="150px"><img alt="Script de l'e-mail" src="assets/Smock_EmailGear_18_N.svg" width="120px"/></td>
-    <td><a href="rest-api/emails.md"><strong>Script d’e-mail</strong></a>
-      <div>Utilisez les API Marketo pour créer et modifier des emails et des modèles de courrier électronique.</div></td>
-  </tr>
-  <tr>
-    <td width="150px"><img alt="Suivi du lead" src="assets/Smock_PeopleGroup_18_N.svg" width="120px"></td>
-    <td><a href="javascript-api/lead-tracking.md"><strong>Suivi des pistes</strong></a><br>
-      <div>Gérer les prospects de vos clients.</div></td>
-  </tr>
-  <tr>
-    <td width="150px"><img alt="Marketo mobile" src="assets/Smock_MobileServices_18_N.svg" width="120px"/></td>
-    <td><a href="mobile/mobile.md"><strong>Marketo mobile</strong></a>
-      <div>Utilisez Marketo Mobile pour écouter et répondre aux clients sur leurs appareils mobiles.</div></td>
-  </tr>
-  <tr>
-    <td width="150"><img alt="API REST" src="assets/Smock_AppleFiles_18_N.svg" width="120px"/></td>
-    <td><a href="https://developer.adobe.com/marketo-apis/"><strong>API REST</strong></a>
-      <div>Lisez, écrivez et mettez à jour vos données Marketo via l’API REST.</div></td>
-  </tr>
-  <tr>
-    <td width="150px"><img alt="Webhooks" src="assets/Smock_SocialNetwork_18_N.svg" width="120px"/></td>
-    <td><a href="webhooks/webhooks.md"><strong>Webhooks</strong></a>
-      <div>Communiquez avec des services web tiers avec Webhooks.</div></td>
-  </tr>
-  <tr>
-    <td width="150px"><img alt="Personnalisation Web" src="assets/Smock_PersonalizationField_18_N.svg" width="120px"></td>
-    <td><a href="javascript-api/web-personalization.md"><strong>Personnalisation web</strong></a>
-      <div>Utilisez l’API JavaScript pour le suivi des événements et la personnalisation dynamique d’une page web.</div></td>
-  </tr>
-</table>
+| ![Prise en main](assets/Smock_Book_18_N.svg){width="120" align="center"} | [**Prise en main**](getting-started.md)  Familiarisez-vous avec les API Marketo. |
+|---|---|
+| ![Bibliothèques clientes](assets/Smock_Code_18_N.svg){width="120" align="center"} | [**Bibliothèques clientes**](https://github.com/Marketo/Community-Supported-Client-Libraries) Utilisez du code open source pour étendre les fonctionnalités de Marketo. |
+| ![Script d’e-mail](assets/Smock_EmailGear_18_N.svg){width="120" align="center"} | [**Script d’e-mail**](rest-api/emails.md) Utilisez les API Marketo pour créer et modifier des emails et des modèles de courrier électronique. |
+| ![Suivi des pistes](assets/Smock_PeopleGroup_18_N.svg){width="120" align="center"} | [**Suivi des pistes**](javascript-api/lead-tracking.md) Gérer les prospects de vos clients. |
+| ![Marketo mobile](assets/Smock_MobileServices_18_N.svg){width="120" align="center"} | [**Marketo mobile**](mobile/mobile.md) Utilisez Marketo Mobile pour écouter et répondre aux clients sur leurs appareils mobiles. |
+| ![API REST](assets/Smock_AppleFiles_18_N.svg){width="120" align="center"} | [**API REST**](https://developer.adobe.com/marketo-apis/) Lisez, écrivez et mettez à jour vos données Marketo via l’API REST. |
+| ![Webhooks](assets/Smock_SocialNetwork_18_N.svg){width="120" align="center"} | [**Webhooks**](webhooks/webhooks.md) Communiquez avec des services web tiers avec Webhooks. |
+| ![Personnalisation web](assets/Smock_PersonalizationField_18_N.svg){width="120" align="center"} | [**Personnalisation web**](javascript-api/web-personalization.md) Utilisez l’API JavaScript pour le suivi des événements et la personnalisation dynamique d’une page web. |
