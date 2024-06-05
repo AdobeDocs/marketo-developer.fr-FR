@@ -5,10 +5,10 @@ breadcrumb-title: "[!DNL Marketo] Guide du développeur"
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 7fffdfd7a74950b00a012400560add330ac5e22b
+source-git-commit: 82bea1ab3d0d83a8867bb7efefb828ce2d92747c
 workflow-type: tm+mt
-source-wordcount: '249'
-ht-degree: 30%
+source-wordcount: '254'
+ht-degree: 29%
 
 ---
 
@@ -47,7 +47,8 @@ ht-degree: 30%
    - [React Native](mobile/react-native.md)
    - [Profils utilisateur](mobile/user-profiles.md)
 - REST{#rest}
-   - [API REST](rest-api/rest-api.md)
+   - [Présentation de l’API REST](rest-api/rest-api.md)
+   - [Référence de l’API REST](https://developer.adobe.com/marketo-apis/)
    - Ressources {#assets}
       - [Ressources](rest-api/assets.md)
       - [Contenu dynamique](rest-api/dynamic-content.md)

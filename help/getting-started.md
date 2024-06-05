@@ -1,17 +1,17 @@
 ---
 title: Prise en main
-description: "Prise en main des API Marketo"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Prise en main des API de Marketo Engage
+exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
+source-git-commit: 82bea1ab3d0d83a8867bb7efefb828ce2d92747c
 workflow-type: tm+mt
-source-wordcount: '1242'
-ht-degree: 0%
+source-wordcount: '1246'
+ht-degree: 1%
 
 ---
 
-
 # Prise en main
 
-Marketo est une plateforme d’automatisation marketing qui permet aux marketeurs de gérer des campagnes et des programmes multicanaux personnalisés pour les prospects et les clients. La plateforme Marketo peut être étendue à l’aide de points d’intégration. Vous trouverez ci-dessous les entités principales et leurs relations.
+Marketo Engage est une plateforme d’automatisation marketing qui permet aux marketeurs de gérer des campagnes et des programmes multicanaux personnalisés pour les prospects et les clients. La plateforme du Marketo Engage peut être étendue à l’aide de points d’intégration. Vous trouverez ci-dessous les entités principales et leurs relations.
 
 Les objets suivants ne sont pas disponibles via l’API REST lorsque la synchronisation native est activée : Société, Opportunité, Rôle d’opportunité, Personne commerciale.
 
