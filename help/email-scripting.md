@@ -1,20 +1,20 @@
 ---
-title: "Script d’e-mail"
+title: Script de l'e-mail
 feature: Email Programs
-description: "Présentation des scripts d’email"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Présentation des scripts de courrier électronique
+exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
 source-wordcount: '963'
 ht-degree: 0%
 
 ---
 
-
 # Script de l&#39;e-mail
 
 REMARQUE : Il est vivement recommandé de lire le [Guide de l’utilisateur Velocity](https://velocity.apache.org/engine/devel/user-guide.html) pour en savoir plus sur le comportement du langage de modèle Velocity.
 
-[Apache Velocity](https://velocity.apache.org/) est un langage basé sur Java qui est conçu pour modéliser et scripter le contenu d’un HTML. Marketo permet de l’utiliser dans le contexte des emails à l’aide de jetons de script. Cela permet d’accéder aux données stockées dans Opportunités et Objets personnalisés et de créer du contenu dynamique dans les emails. Velocity offre un flux de contrôle de haut niveau standard avec si/sinon, pour et pour chacun d’eux afin de permettre une manipulation conditionnelle et itérative du contenu. Voici un exemple simple pour imprimer un message de salutation correct :
+[Apache Velocity](https://velocity.apache.org/) est un langage basé sur Java qui est conçu pour modéliser et scripter le contenu des HTMLS. Marketo permet de l’utiliser dans le contexte des emails à l’aide de jetons de script. Cela permet d’accéder aux données stockées dans Opportunités et Objets personnalisés et de créer du contenu dynamique dans les emails. Velocity offre un flux de contrôle de haut niveau standard avec si/sinon, pour et pour chacun d’eux afin de permettre une manipulation conditionnelle et itérative du contenu. Voici un exemple simple pour imprimer un message de salutation correct :
 
 ```java
 //check if the lead is male
@@ -98,7 +98,7 @@ Le script Velocity est inclus dans les emails à l’aide de jetons de script de
 
 ![Jeton de script](assets/script-token.png)
 
-À partir de là, vous pouvez modifier le nom du jeton et ouvrir l’éditeur à l’aide de l’option Clic pour modifier :
+À partir de là, vous pouvez modifier le nom du jeton et ouvrir l’éditeur via le [!UICONTROL Cliquez sur Modifier .] option :
 
 ![Modifier le script](assets/script-edit.png)
 
@@ -112,11 +112,11 @@ Une fois que votre script est défini dans un programme Mon jeton, vous pouvez l
 
 ![Email Script](assets/email-script-marketo-email.png)
 
-Vous pouvez tester votre script à l’aide de l’action de courrier électronique &quot;Envoyer un exemple de courrier électronique&quot; dans le Concepteur d’email de Marketo. Pour que le script soit traité correctement, vous devez sélectionner une piste existante à emprunter dans le champ Plomb . Si vous effectuez un test avec `$TriggerObject`, vous pouvez sélectionner l&#39;objet de déclenchement à partir du paramètre &#39;Déclencheur&#39;. Cette méthode utilise les données de l’objet mis à jour le plus récemment de ce type comme `$TriggerObject` Variable .
+Vous pouvez tester votre script à l’aide de la fonction [!UICONTROL Envoyer un exemple de courrier électronique] action de courrier électronique dans le concepteur d’email de Marketo. Pour que le script soit traité correctement, vous devez sélectionner une piste existante à emprunter pour emprunter l’identité du [!UICONTROL prospect] champ . Si vous effectuez un test avec `$TriggerObject`, vous pouvez sélectionner l’objet de déclenchement à l’aide de l’option [!UICONTROL Déclencheur] param. Cette méthode utilise les données de l’objet mis à jour le plus récemment de ce type comme `$TriggerObject` Variable .
 
 ![Test du script de courrier électronique](assets/velocity-test.png)
 
-Vous pouvez également utiliser l’ aperçu de l’email pour tester votre script. Pour ce faire, vous devez sélectionner Afficher comme : détails de la piste, puis sélectionner une piste dans une liste statique disponible. Cela a pour avantage de générer des exceptions qui peuvent s’être produites lors de l’exécution du script :
+Vous pouvez également utiliser la variable [!UICONTROL Email Preview] pour tester votre script. Pour ce faire, vous devez sélectionner **[!UICONTROL Afficher sous : détails de la piste]**, puis sélectionnez une piste dans une liste statique disponible. Cela a pour avantage de générer des exceptions qui peuvent s’être produites lors de l’exécution du script :
 
 ![Afficher le message électronique sous](assets/view-as.png)
 

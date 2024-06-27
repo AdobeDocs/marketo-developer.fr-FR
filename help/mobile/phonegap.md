@@ -1,14 +1,14 @@
 ---
 title: PhoneGap
-feature: "Mobile Marketing"
-description: "Utilisation de PhoneGap avec Marketo sur les appareils mobiles"
-source-git-commit: 2e4eb416846de3ad62ff0626f536630278e1c0cd
+feature: Mobile Marketing
+description: Utilisation de PhoneGap avec Marketo sur les appareils mobiles
+exl-id: 99f14c76-9438-4942-9309-643bca434d07
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
 source-wordcount: '818'
 ht-degree: 1%
 
 ---
-
 
 # PhoneGap
 
@@ -48,7 +48,7 @@ Pour rajouter le module externe, exécutez la commande suivante :
 
 **Cordova version 8.0.0 (Cordova@Android7.0.0) et ultérieure**
 
-Une fois la plate-forme Android Cordova créée, ouvrez l’application avec Android Studio et mettez à jour la `dirs` de la variable `Marketo.gradle` du fichier `com.marketo.plugin` dossier.
+Une fois la plateforme Cordova Android créée, ouvrez l’application avec Android Studio et mettez à jour la `dirs` de la variable `Marketo.gradle` du fichier `com.marketo.plugin` dossier.
 
 ```
 repositories{    
@@ -67,13 +67,13 @@ Vérifiez la liste des plateformes ajoutées `$cordova platform ls`
 
 1. Configurez l’application Firebase sur la console Firebase.
    1. Création/ajout d’un projet sur [](https://console.firebase.google.com/)Console Firebase.
-      1. Dans le [Console Firebase](https://console.firebase.google.com/), sélectionnez [!UICONTROL Ajouter un projet].
-      1. Sélectionnez votre projet GCM dans la liste des projets cloud Google existants, puis sélectionnez [!UICONTROL Ajouter Firebase].
+      1. Dans le [Console Firebase](https://console.firebase.google.com/), sélectionnez **[!UICONTROL Ajouter un projet]**.
+      1. Sélectionnez votre projet GCM dans la liste des projets cloud Google existants, puis sélectionnez **[!UICONTROL Ajouter Firebase]**.
       1. Dans l’écran de bienvenue de Firebase, sélectionnez &quot;Ajouter Firebase à votre application Android&quot;.
-      1. Indiquez le nom de votre package et SHA-1, puis sélectionnez [!UICONTROL Ajout d’une application]. Une nouvelle `google-services.json` pour votre application Firebase est téléchargé.
-   1. Accédez à Paramètres du projet dans Aperçu du projet
-      1. Cliquez sur l’onglet &quot;Général&quot;. Téléchargez le fichier &#39;google-services.json&#39;.
-      1. Cliquez sur l’onglet &quot;Cloud Messaging&quot;. Copiez &#39;Server Key&#39; et &#39;Sender ID&#39;. Fournissez ces &quot;Clé serveur&quot; et &quot;Identifiant expéditeur&quot; à Marketo.
+      1. Indiquez le nom de votre package et SHA-1, puis sélectionnez **[!UICONTROL Ajout d’une application]**. Une nouvelle `google-services.json` pour votre application Firebase est téléchargé.
+   1. Accédez à **[!UICONTROL Paramètres du projet]** in [!UICONTROL Présentation du projet]
+      1. Cliquez sur **[!UICONTROL Général]** . Téléchargez le fichier &#39;google-services.json&#39;.
+      1. Cliquez sur **[!UICONTROL Cloud Messaging]** . Copier [!UICONTROL Clé serveur] &amp; [!UICONTROL Sender ID]. Fournissez les [!UICONTROL Clé serveur] &amp; [!UICONTROL Sender ID] à Marketo.
    1. Configuration des modifications FCM dans l’application PhoneGap
       1. Déplacez le fichier &quot;google-services.json&quot; téléchargé dans le répertoire racine du module d’application PhoneGap.
       1. Supprimez le fichier &quot;MyFirebaseInstanceIDService&quot; de l’emplacement `platforms/android/app/src/main/java/com/gae/scaffolder/plugin` (Obsolète)
@@ -296,7 +296,7 @@ marketo.reportaction(
 
 ## Création de rapports de session
 
-Liez les types d’événements &quot;pause&quot; et &quot;resume&quot; comme illustré ci-dessous pour signaler les événements de début et d’arrêt.  Permet d’effectuer le suivi de la durée de la visite dans votre application mobile. Remarque : cela est requis sous Android.
+Liez les types d’événements &quot;pause&quot; et &quot;resume&quot; comme illustré ci-dessous pour signaler les événements de début et d’arrêt.  Permet d’effectuer le suivi de la durée de la visite dans votre application mobile. Remarque : cela est requis dans Android.
 
 ```
 //Add the following code in your www/js/index.js

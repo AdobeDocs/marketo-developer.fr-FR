@@ -1,14 +1,14 @@
 ---
-title: "API REST"
+title: API REST
 feature: REST API
-description: "Présentation de l’API REST"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Présentation de l’API REST
+exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
 source-wordcount: '664'
 ht-degree: 1%
 
 ---
-
 
 # API REST
 
@@ -30,15 +30,15 @@ Pour votre premier appel à Marketo, vous récupérerez un enregistrement de pis
 
 ![Utilisateurs et rôles d’administration](assets/admin-users-and-roles.png)
 
-Cliquez sur le bouton [!UICONTROL Rôles] puis sélectionnez Nouveau rôle et attribuez au moins l’autorisation &quot;Lecture seule&quot; (ou &quot;Lecture seule personne&quot;) au rôle dans le groupe API d’accès. Veillez à lui donner un nom explicite, puis cliquez sur [!UICONTROL Créer].
+Cliquez sur le bouton **[!UICONTROL Rôles]** puis sélectionnez Nouveau rôle et attribuez au moins l’autorisation &quot;Lecture seule&quot; (ou &quot;Lecture seule personne&quot;) au rôle dans le groupe API d’accès. Veillez à lui donner un nom explicite, puis cliquez sur **[!UICONTROL Créer]**.
 
 ![Nouveau rôle](assets/new-role.png)
 
-Revenez à l’onglet Utilisateurs et cliquez sur Inviter un nouvel utilisateur. Attribuez à votre utilisateur un nom explicite indiquant qu’il s’agit d’un utilisateur de l’API, ainsi qu’une adresse électronique, puis cliquez sur **[!UICONTROL Suivant]**.
+Revenez au [!UICONTROL Utilisateurs] et cliquez sur **[!UICONTROL Inviter un nouvel utilisateur]**. Attribuez à votre utilisateur un nom explicite indiquant qu’il s’agit d’un utilisateur de l’API, ainsi qu’une adresse électronique, puis cliquez sur **[!UICONTROL Suivant]**.
 
 ![Informations sur le nouvel utilisateur](assets/new-user-info.png)
 
-Cochez ensuite l’option API uniquement et attribuez à votre utilisateur le rôle API que vous avez créé, puis cliquez sur **[!UICONTROL Suivant]**.
+Ensuite, cochez la case [!UICONTROL API uniquement] et attribuez à votre utilisateur le rôle API que vous avez créé, puis cliquez sur **[!UICONTROL Suivant]**.
 
 ![Nouvelles autorisations d’utilisateurs](assets/new-user-permissions.png)
 
@@ -46,23 +46,23 @@ Pour terminer la création de l’utilisateur, cliquez sur **[!UICONTROL Envoyer
 
 ![Nouveau message d’utilisateur](assets/new-user-message.png)
 
-Ensuite, accédez au menu Admin et cliquez sur **[!UICONTROL LaunchPoint]**.
+Ensuite, accédez au [!UICONTROL Administration] et cliquez sur **[!UICONTROL LaunchPoint]**.
 
 ![Launchpoint](assets/admin-launchpoint.png)
 
-Cliquez sur le menu Nouveau et sélectionnez [!UICONTROL Nouveau service]. Donnez un nom explicite à votre service et sélectionnez &quot;Personnalisé&quot; dans le menu déroulant Service . Donnez-lui une description, puis sélectionnez votre nouvel utilisateur dans le menu déroulant API Only User et cliquez sur [!UICONTROL Créer].
+Cliquez sur le bouton **[!UICONTROL Nouveau]** et sélectionnez **[!UICONTROL Nouveau service]**. Attribuez un nom explicite à votre service et sélectionnez **[!UICONTROL Personnalisé]** de la [!UICONTROL Service] menu déroulant. Donnez-lui une description, puis sélectionnez votre nouvel utilisateur dans le [!UICONTROL Utilisateur API uniquement] menu déroulant, puis cliquez sur **[!UICONTROL Créer]**.
 
 ![Nouveau service Launchpoint](assets/admin-launchpoint-new-service.png)
 
-Cliquez sur Afficher les détails pour votre nouveau service afin d’accéder à l’identifiant du client et au secret du client. Pour l’instant, vous pouvez cliquer sur le bouton [!UICONTROL Obtenir un jeton] pour générer un jeton d’accès valide pendant une heure. Enregistrez le jeton dans une note pour l’instant.
+Cliquez sur **[!UICONTROL Afficher les détails]** pour votre nouveau service afin d’accéder à l’ID client et au secret client. Pour l’instant, vous pouvez cliquer sur le bouton **[!UICONTROL Obtenir un jeton]** pour générer un jeton d’accès valide pendant une heure. Enregistrez le jeton dans une note pour l’instant.
 
 ![Obtenir un jeton](assets/get-token.png)
 
-Accédez ensuite au menu Admin , puis à **[!UICONTROL Services web]**.
+Ensuite, accédez au **[!UICONTROL Administration]** , puis à **[!UICONTROL Services web]**.
 
 ![Services web](assets/admin-web-services.png)
 
-Recherchez le point de terminaison dans la zone API REST et enregistrez-le dans une note pour l’instant.
+Recherchez le [!UICONTROL Point d’entrée] dans la zone API REST et enregistrez dans une note pour l’instant.
 
 ![Point de terminaison REST](assets/admin-web-services-rest-endpoint-1.png)
 

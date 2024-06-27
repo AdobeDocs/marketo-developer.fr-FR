@@ -1,10 +1,10 @@
 ---
 title: "Data Ingestion"
 description: "Présentation de l’API Data Ingestion"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '952'
-ht-degree: 10%
+source-wordcount: '945'
+ht-degree: 11%
 
 ---
 
@@ -132,7 +132,7 @@ Point de terminaison utilisé pour insérer des enregistrements de personne.
 
 | Chemin d’accès |
 |---|
-| /subscriptions/{munchkinId}/person |
+| `/subscriptions/{munchkinId}/persons` |
 
 | HeadersKey | Valeur |
 |---|---|
@@ -201,7 +201,7 @@ Point de terminaison utilisé pour insérer des enregistrements d’objets perso
 
 | Chemin d’accès |
 |---|
-| /subscriptions/{munchkinId}/customObjects/{customObjectAPIName} |
+| `/subscriptions/{munchkinId}/customobjects/{customObjectAPIName}` |
 
 En-têtes
 
@@ -210,7 +210,13 @@ En-têtes
 | Content-Type | application/json |
 | X-Mkto-User-Token | {accessToken} |
 
-Corps de la requête | Clé | Type de données | Obligatoire | Valeur | Valeur par défaut | |—|—|—|—|— | priority | Chaîne | Non | Priorité de la requête : normalhigh | normal | | dedupeBy | Chaîne | Non | Attributs à dédupliquer sur:dedupeFieldsmarketoGUID | dedupeFields | | customObjects | Tableau d’objets | Oui | Liste des paires nom-valeur d’attribut pour l’objet. | - |
+Corps de la requête
+
+| Code  | Type de données | Requis | Valeur | Valeur par défaut |
+|---|---|---|---|---|
+| priorité | Chaîne | Non | Priorité de la requête : normalhigh | normal |
+| dedupeBy | Chaîne | Non | Attributs à dédupliquer sur:dedupeFieldsmarketoGUID | dedupeFields |
+| customObjects | Tableau d’objets | Oui | Liste des paires nom-valeur d’attribut pour l’objet. | - |
 
 | Autorisation |
 |---|

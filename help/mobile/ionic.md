@@ -1,30 +1,30 @@
 ---
-title: "Ionique"
-feature: "Mobile Marketing"
-description: "Utilisation d’Ionic avec Marketo pour les appareils mobiles"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+title: '[!DNL Ionic]'
+feature: Mobile Marketing
+description: Utilisation [!DNL Ionic] avec Marketo pour les appareils mobiles
+exl-id: 204e5fb4-c9d6-43a6-9d77-0b2a67ddbed3
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '613'
+source-wordcount: '606'
 ht-degree: 2%
 
 ---
 
-
 # Ionique
 
-Cette rubrique décrit comment intégrer le module externe Marketo Cordova . Le condensateur Ionique n’est actuellement pas pris en charge.
+Cette rubrique décrit comment intégrer le module externe Marketo Cordova . [!DNL Ionic] Le condensateur n’est actuellement pas pris en charge.
 
 ## Conditions préalables
 
 1. [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (Obtenez votre clé secrète et votre ID Munchkin).
 1. Configuration des notifications push ([iOS](push-notifications.md) | [Android](push-notifications.md) ).
-1. Installer [Ionique](https://ionicframework.com/getting-started/) &amp; [Interface de ligne de commande Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/).
+1. Installer [[!DNL Ionic]](https://ionicframework.com/getting-started/) &amp; [Interface de ligne de commande Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
 ## Instructions d’installation
 
-### Configuration du module externe Marketo Ionic
+### Configuration de Marketo [!DNL Ionic] Module externe
 
-1. En supposant que l’interface de ligne de commande Cordova soit installée, accédez à votre répertoire d’applications Ionic et exécutez la commande suivante pour ajouter le module externe Marketo à votre application :
+1. En supposant que l’interface de ligne de commande Cordova soit installée, accédez à votre [!DNL Ionic] répertoire de l’application et exécutez la commande suivante pour ajouter le module externe Marketo à votre application :
 
    `$ ionic plugin add https://github.com/Marketo/PhoneGapPlugin.git --variable APPLICATION_SECRET_KEY="YOUR_APPLICATION_SECRET"`
 
@@ -74,7 +74,7 @@ sharedInstance.trackPushNotfication(launchOptions)
 
 Pour vous assurer que la structure Marketo est lancée au démarrage de l’application, ajoutez le code suivant sous le `onDeviceReady` dans votre fichier JavaScript principal.
 
-Vous devez réussir. `ionicCordova` comme type de structure pour les applications Ionic Cordova.
+Vous devez réussir. `ionicCordova` comme type de structure pour [!DNL Ionic] Applications Cordova.
 
 #### Syntaxe
 
@@ -218,7 +218,7 @@ marketo.reportaction(
 
 ## Création de rapports de session
 
-Liez les types d’événements &quot;pause&quot; et &quot;resume&quot; comme illustré ci-dessous pour signaler les événements de début et d’arrêt. Permet d’effectuer le suivi de la durée de la visite dans votre application mobile. Remarque : cela est requis sous Android.
+Liez les types d’événements &quot;pause&quot; et &quot;resume&quot; comme illustré ci-dessous pour signaler les événements de début et d’arrêt. Permet d’effectuer le suivi de la durée de la visite dans votre application mobile. Remarque : cela est requis dans Android.
 
 ```javascript
 //Add the following code in your www/js/index.js

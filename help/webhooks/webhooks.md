@@ -1,14 +1,14 @@
 ---
-title: "Webhooks"
+title: Webhooks
 feature: Webhooks
 description: Présentation des webhooks
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+exl-id: fd283c66-05a1-4aa4-8412-0d41b8d1e3c8
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
 source-wordcount: '586'
 ht-degree: 0%
 
 ---
-
 
 # Webhooks
 
@@ -20,12 +20,12 @@ Marketo permet l’utilisation de webhooks pour communiquer avec des services we
 
 Chaque webhook individuel possède les propriétés suivantes :
 
-- URL : saisissez l’URL que vous utilisez pour envoyer votre demande au service Web.
-- Type de requête : méthode HTTP.
-- Modèle de payload : si vous souhaitez transmettre des informations dans le corps du POST, saisissez le modèle. Utilisez n’importe quel format de données prenant en charge le POST HTTP, y compris XML, JSON ou SOAP. Le format de sérialisation doit permettre des guillemets doubles autour des chaînes. Pour insérer un jeton dans votre modèle, cliquez sur Insérer un jeton.  Les jetons de type chaîne sont automatiquement placés entre guillemets doubles.
-- Encodage du jeton de demande : si les valeurs du jeton incluent des caractères spéciaux (comme une esperluette, &quot;&amp;&quot;), indiquez le format de votre requête (JSON ou Formulaire/Url). Le codage correct doit être sélectionné pour le corps afin de garantir que le webhook communique correctement avec le service web.
-- Type de réponse : sélectionnez le format de la réponse que vous recevez du service (JSON ou XML). Le type de réponse correct doit être sélectionné pour mapper les propriétés de la réponse sur les champs de piste dans Marketo.
-- En-têtes personnalisés - Accessibles par le biais des actions Webhooks -> Définir un en-tête personnalisé, ce menu permet d’ajouter un nombre indéfini de paires clé-valeur personnalisées en tant qu’en-têtes HTTP.
+- [!UICONTROL URL] - Entrez l’URL que vous utilisez pour envoyer votre demande au service Web.
+- [!UICONTROL Type de requête] - Méthode HTTP.
+- [!UICONTROL Modèle de payload] - Si vous souhaitez transmettre des informations dans le corps du POST, saisissez le modèle. Utilisez n’importe quel format de données prenant en charge le POST HTTP, y compris XML, JSON ou SOAP. Le format de sérialisation doit permettre des guillemets doubles autour des chaînes. Pour insérer un jeton dans votre modèle, cliquez sur **[!UICONTROL Insérer un jeton]**.  Les jetons de type chaîne sont automatiquement placés entre guillemets doubles.
+- [!UICONTROL Encodage du jeton de demande] - Si les valeurs de jeton incluent des caractères spéciaux (tels qu’une esperluette, &quot;&amp;&quot;), indiquez le format de votre requête (JSON ou Formulaire/Url). Le codage correct doit être sélectionné pour le corps afin de garantir que le webhook communique correctement avec le service web.
+- [!UICONTROL Type de réponse] - Sélectionnez le format de la réponse que vous recevez du service (JSON ou XML). Le type de réponse correct doit être sélectionné pour mapper les propriétés de la réponse sur les champs de piste dans Marketo.
+- [!UICONTROL En-têtes personnalisés] - Accessible via [!UICONTROL Actions Webhooks] -> [!UICONTROL Définition d’un en-tête personnalisé], ce menu permet d’ajouter un nombre indéfini de paires clé-valeur personnalisées en tant qu’en-têtes HTTP.
 
 Les données peuvent être réécrites dans des pistes à partir de réponses de service Web à l’aide de [Mappages des réponses](response-mappings.md)
 
