@@ -69,7 +69,7 @@ API connexes : [REST](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Com
 
 ## Ressources
 
-Les ressources se rapportent aux landing pages, aux emails, aux formulaires et aux images utilisés dans un programme. Les ressources peuvent être locales pour un programme donné ou globales. Les ressources globales sont disponibles dans n’importe quel programme.
+Assets se rapporte aux landing pages, aux emails, aux formulaires et aux images utilisés dans un programme. Assets peut être local pour un programme donné ou global. Les ressources globales sont disponibles dans n’importe quel programme.
 
 API connexes : [REST](https://developer.adobe.com/marketo-apis/api/asset/)
 
@@ -87,7 +87,7 @@ API connexes : [REST](https://developer.adobe.com/marketo-apis/api/asset/#tag/To
 
 ## Objets personnalisés
 
-Un objet personnalisé Marketo permet la création d’une relation un-à-multiple ou plusieurs-à-multiple (Edge-Bridge-Edge) entre vos pistes Marketo et les enregistrements d’objet personnalisé. Une fois que vous avez créé et publié un objet personnalisé Marketo, vous pouvez effectuer des opérations CRUD sur l’objet personnalisé via l’API Marketo. Vous trouverez plus d’informations sur la création d’objets personnalisés [here](https://experienceleague.adobe.com/en/docs/marketo/using/home). Lorsque de nouveaux enregistrements sont ajoutés à l’objet personnalisé, vous pouvez utiliser un déclencheur de liste dynamique pour répondre. Vous pouvez également utiliser des données d’objet personnalisées comme filtre dans les listes dynamiques (segmentation) ou dans les emails à l’aide de [Script d’e-mail](email-scripting.md).
+Un objet personnalisé Marketo permet de créer une relation un-à-multiple ou plusieurs-à-multiple (Edge-Bridge-Edge) entre vos pistes Marketo et les enregistrements d’objet personnalisé. Une fois que vous avez créé et publié un objet personnalisé Marketo, vous pouvez effectuer des opérations CRUD sur l’objet personnalisé via l’API Marketo. Vous trouverez plus d’informations sur la création d’objets personnalisés [here](https://experienceleague.adobe.com/en/docs/marketo/using/home). Lorsque de nouveaux enregistrements sont ajoutés à l’objet personnalisé, vous pouvez utiliser un déclencheur de liste dynamique pour répondre. Vous pouvez également utiliser des données d’objet personnalisées comme filtre dans les listes dynamiques (segmentation) ou dans les emails à l’aide de [Script d’e-mail](email-scripting.md).
 
 API connexes : [REST](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects), [SOAP](soap-api/custom-objects.md)
 

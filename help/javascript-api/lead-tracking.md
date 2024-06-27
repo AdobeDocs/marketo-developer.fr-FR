@@ -1,14 +1,14 @@
 ---
-title: "Suivi des pistes"
-description: "API de suivi des pistes"
+title: Suivi du lead
+description: API de suivi des pistes
 feature: Munchkin Tracking Code, Javascript
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '768'
 ht-degree: 0%
 
 ---
-
 
 # API de suivi des pistes
 
@@ -28,7 +28,7 @@ Il est vivement recommandé d’utiliser le code de suivi asynchrone pour incorp
 
 Certains systèmes de gestion de contenu peuvent avoir des méthodes ou des restrictions spécifiques lors de l’incorporation de scripts arbitraires.
 
-À titre de référence, votre dernière page doit inclure un code similaire à celui-ci dans `<head>` de votre document de HTML :
+À titre de référence, votre dernière page doit inclure un code similaire à celui-ci dans `<head>` de votre document d’HTML :
 
 ```html
 <head>
@@ -74,7 +74,7 @@ Lors de la première visite d’une piste sur une page de votre domaine, un nouv
 
 - Le prospect doit consulter une page suivie par Munchkin avec une `mkt_tok` dans la chaîne de requête à partir d’un lien de courrier électronique Marketo suivi.
 - Le prospect doit remplir un formulaire Marketo.
-- UN SOAP [syncLead](../soap-api/leads.md) ou REST [Associer le prospect](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST) doit être envoyé.
+- SOAP [syncLead](../soap-api/leads.md) ou REST [Associer le prospect](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST) doit être envoyé.
 
 Une fois l’une de ces conditions remplie, le cookie et toutes les activités Web associées sont associés au prospect connu.
 
@@ -96,7 +96,7 @@ Les cookies Munchkin sont spécifiques à chaque domaine de second niveau, c’e
 
 ## Bêta
 
-Pour vous inscrire au canal bêta Munchkin pour vos landing pages, accédez à [Admin -> Poitrine au trésor](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) et activez le paramètre &quot;Munchkin Beta sur les pages d’entrée&quot;. De nouveaux fragments de code sont alors proposés dans la section **[!UICONTROL Administration]** ->  **[!UICONTROL Munchkin]** pour vous permettre d’utiliser la version bêta sur des sites externes.
+Pour vous inscrire au canal bêta Munchkin pour vos landing pages, accédez à [Admin -> Poitrine au trésor](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) et activez le paramètre &quot;Munchkin Beta on Landing Pages&quot;. De nouveaux fragments de code sont alors proposés dans la section **[!UICONTROL Administration]** ->  **[!UICONTROL Munchkin]** pour vous permettre d’utiliser la version bêta sur des sites externes.
 
 ## Exclusion
 
