@@ -1,6 +1,6 @@
 ---
 user-guide-title: "[!DNL Marketo] Guide du développeur"
-user-guide-description: "Ce guide fournit des instructions pour l’utilisation de [!DNL Marketo] API."
+user-guide-description: "Ce guide fournit des instructions pour l’utilisation des  [!DNL Marketo] API."
 breadcrumb-title: "[!DNL Marketo] Guide du développeur"
 role: Admin
 feature-set: "Marketo Engage"
@@ -33,8 +33,8 @@ ht-degree: 32%
    - [Déclencheurs](javascript-api/triggers.md)
    - [Personnalisation Web](javascript-api/web-personalization.md)
 - Mobile {#mobile}
-   - [Installer [!DNL Adobe Launch] Extension](mobile/adobe-launch-extension-installation.md)
-   - [[!DNL Adobe Launch] Extension](mobile/adobe-launch-extension.md)
+   - [Installer l&#39;extension [!DNL Adobe Launch] ](mobile/adobe-launch-extension-installation.md)
+   - [Extension [!DNL Adobe Launch]](mobile/adobe-launch-extension.md)
    - [Mode de sécurité avancé](mobile/advanced-security-access-mode.md)
    - [Actions personnalisées](mobile/custom-actions.md)
    - [Liens profonds](mobile/enabling-deep-links-in-your-app.md)
@@ -72,7 +72,7 @@ ht-degree: 32%
    - [Signature d’authentification](rest-api/authentication-signature.md)
    - [URL de base](rest-api/base-url.md)
    - [Meilleures pratiques](rest-api/marketo-integration-best-practices.md)
-   - Extraction en bloc {#bulk-extract}
+   - Extraire en bloc {#bulk-extract}
       - [Activité en bloc](rest-api/bulk-activity-extract.md)
       - [Objet personnalisé en bloc](rest-api/bulk-custom-object-extract.md)
       - [Extraction en bloc](rest-api/bulk-extract.md)
