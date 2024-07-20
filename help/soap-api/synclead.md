@@ -1,14 +1,14 @@
 ---
-title: "syncLead"
+title: syncLead
 feature: SOAP
-description: "appels SOAP syncLead"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: appels syncLead SOAP
+exl-id: e6cda794-a9d4-4153-a5f3-52e97a506807
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '518'
 ht-degree: 2%
 
 ---
-
 
 # syncLean
 
@@ -21,7 +21,7 @@ Cette fonction insère ou met à jour un seul enregistrement de piste. Lors de l
 
 Si une correspondance existante est trouvée, l’appel effectue une mise à jour. Sinon, il insère et crée une piste. Les pistes anonymes peuvent être mises à jour à l’aide de l’ID de cookie Marketo et seront connues lors de la mise à jour.
 
-A l’exception de Email, tous ces identifiants sont traités comme des clés uniques. L’Marketo ID est prioritaire sur toutes les autres clés. Si les deux `foreignSysPersonId` et que l’Marketo ID est présent dans l’enregistrement de piste, puis que l’Marketo ID est prioritaire et que la variable `foreignSysPersonId` sera mis à jour pour ce prospect. Si la variable `foreignSysPersonId` est donné, puis il est utilisé comme identifiant unique. Si les deux `foreignSysPersonId` et Courrier électronique sont présents, mais l’ID Marketo n’est pas présent, la variable `foreignSysPersonId` est prioritaire et le courrier électronique est mis à jour pour cette piste.
+A l’exception de Email, tous ces identifiants sont traités comme des clés uniques. L’Marketo ID est prioritaire sur toutes les autres clés. Si `foreignSysPersonId` et l’ID Marketo sont présents dans l’enregistrement de piste, l’ID Marketo est prioritaire et `foreignSysPersonId` est mis à jour pour cette piste. Si le seul `foreignSysPersonId` est donné, il est utilisé comme identifiant unique. Si `foreignSysPersonId` et Courrier électronique sont présents mais que l’ID Marketo n’est pas présent, `foreignSysPersonId` a la priorité et le Courrier électronique est mis à jour pour cette piste.
 
 Vous pouvez éventuellement spécifier un en-tête de contexte pour nommer l’espace de travail cible.
 
@@ -42,14 +42,14 @@ Si les espaces de travail Marketo ne sont PAS activés, l’espace de travail ci
 
 | Nom de champ | Obligatoire/Facultatif | Description |
 | --- | --- | --- |
-| leadRecord->Id | Obligatoire - Uniquement en cas de courrier électronique ou `foreignSysPersonId` n’est pas présent | Identifiant Marketo de l’enregistrement de piste |
-| leadRecord->Email | Obligatoire - Uniquement en cas d’identifiant ou `foreignSysPersonId` n’est pas présent | Adresse électronique associée à l’enregistrement de piste |
+| leadRecord->Id | Obligatoire - Uniquement lorsque Email ou `foreignSysPersonId` n’est pas présent | Identifiant Marketo de l’enregistrement de piste |
+| leadRecord->Email | Obligatoire - Uniquement lorsque Id ou `foreignSysPersonId` n’est pas présent | Adresse électronique associée à l’enregistrement de piste |
 | leadRecord->`foreignSysPersonId` | Obligatoire - Uniquement lorsque Id ou Email n’est pas présent | Identifiant du système étranger associé à l’enregistrement de piste. |
 | leadRecord->étrangerSysType | Facultatif - Obligatoire uniquement lorsque `foreignSysPersonId` est présent | Le type de système étranger. Valeurs possibles : PERSONNALISÉE, SFDC, NETSUITE |
 | leadRecord->leadAttributeList->attribute->attributeName | Requis | Nom de l’attribut de piste dont vous souhaitez mettre à jour la valeur. |
 | leadRecord->leadAttributeList->attribute->projValue | Requis | La valeur que vous souhaitez définir sur l’attribut de piste spécifié dans le nom d’hôte. |
 | returnLead | Requis | Si la valeur est true, renvoie l’enregistrement de piste mis à jour lors de la mise à jour. |
-| marketoCookie | En option | La variable [Munchkin javascript](../javascript-api/lead-tracking.md) cookie |
+| marketoCookie | En option | Le cookie [Munchkin javascript](../javascript-api/lead-tracking.md) |
 
 ## Request XML
 

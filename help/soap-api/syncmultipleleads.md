@@ -1,35 +1,35 @@
 ---
-title: "syncMultipleLeads"
+title: syncMultipleLeads
 feature: SOAP
-description: "appels SOAP syncMultipleLeads"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: appels de SOAP syncMultipleLeads
+exl-id: 91980b82-dff9-48a7-b03e-20dce9d0d046
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '221'
 ht-degree: 4%
 
 ---
 
-
 # syncMultipleLeads
 
-Cette fonction demande une opération d’insertion ou de mise à jour (insertion) pour _multiple_ enregistrements de piste. Lors de la mise à jour d’une piste existante, celle-ci peut être identifiée avec l’une des clés suivantes :
+Cette fonction demande une opération d&#39;insertion ou de mise à jour (insertion) pour les enregistrements de piste _multiple_. Lors de la mise à jour d’une piste existante, celle-ci peut être identifiée avec l’une des clés suivantes :
 
 - ID de Marketo
 - Identifiant du système étranger
 - E-mail
 
-Si plusieurs clés sont présentes, l’ID Marketo a la priorité sur `ForeignSysPersonId`, et ce dernier sera mis à jour. Cependant, si Email est également présent en tant que clé, il ne sera pas mis à jour, sauf s&#39;il est spécifié dans la liste des attributs.
+Si plusieurs clés sont présentes, l’ID Marketo a la priorité sur `ForeignSysPersonId` et ce dernier est mis à jour. Cependant, si Email est également présent en tant que clé, il ne sera pas mis à jour, sauf s&#39;il est spécifié dans la liste des attributs.
 
 Nous vous recommandons de ne pas dépasser 300 lots. Les tailles plus élevées ne sont pas prises en charge et peuvent entraîner des délais d’expiration et, dans les cas extrêmes, une limitation.
 
-Vous pouvez désactiver la fonction de déduplication avec cet appel de fonction. Si dedupEnabled est défini sur true et qu’aucun autre identifiant unique n’est attribué (`foreignSysPersonId` ou ID de piste Marketo), l’enregistrement de piste est dédupliqué à l’aide de l’adresse électronique. Gardez à l’esprit que le fait de transmettre false crée des doublons dans Marketo.
+Vous pouvez désactiver la fonction de déduplication avec cet appel de fonction. Si dedupEnabled est défini sur true et qu’aucun autre identifiant unique n’est donné (`foreignSysPersonId` ou ID de piste Marketo), l’enregistrement de piste est dédupliqué à l’aide de l’adresse électronique. Gardez à l’esprit que le fait de transmettre false crée des doublons dans Marketo.
 
 ## Demande
 
 | Nom de champ | Obligatoire/Facultatif | Description |
 | --- | --- | --- |
 | leadRecordList->leadRecord | Requis | Tableau des enregistrements de piste que vous souhaitez synchroniser. LeadRecords doit spécifier l’ID de piste, l’adresse électronique ou l’identifiant ForeignSysPerson |
-| dedupEnabled | optionnel | Valeur facultative avec laquelle vous pouvez désactiver la fonction de déduplication. Transmission d’une valeur `false` crée des doublons dans Marketo |
+| dedupEnabled | optionnel | Valeur facultative avec laquelle vous pouvez désactiver la fonction de déduplication. La transmission d’une valeur de `false` créera des doublons dans Marketo. |
 
 ## Request XML
 

@@ -1,14 +1,14 @@
 ---
-title: "getLead"
+title: getLead
 feature: SOAP
-description: "getLead SOAP calls"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Appels getLead SOAP
+exl-id: 1a3eab26-7994-455d-bc7a-80e43e6ef4a7
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '127'
 ht-degree: 4%
 
 ---
-
 
 # getLead
 
@@ -20,7 +20,7 @@ REMARQUE : Les attributs de piste de type chaîne et vides ne seront pas renvoy�
 
 | Nom de champ | Obligatoire/Facultatif | Description |
 | --- | --- | --- |
-| leadKey->keyType | Requis | keyType vous permet de spécifier le champ par lequel vous souhaitez interroger le prospect. Les valeurs possibles sont les suivantes :`IDNUM`, `COOKIE`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
+| leadKey->keyType | Requis | keyType vous permet de spécifier le champ par lequel vous souhaitez interroger le prospect. Les valeurs possibles sont les suivantes : `IDNUM`, `COOKIE`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
 | leadKey->keyValue | Requis | keyValue est la valeur par laquelle vous souhaitez interroger le prospect. |
 
 ## Request XML

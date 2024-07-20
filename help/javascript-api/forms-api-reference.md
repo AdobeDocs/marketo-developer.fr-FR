@@ -1,18 +1,18 @@
 ---
-title: "Référence de l’API Forms"
-description: "Référence de l’API Forms"
+title: Référence de l’API Forms
+description: Référence de l’API Forms
 feature: Forms, Javascript
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+exl-id: 0f8d242f-0b27-4087-b080-3d41ebaa25b3
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1327'
 ht-degree: 2%
 
 ---
 
-
 # Référence de l’API Forms
 
-Il existe deux objets principaux avec lesquels vous allez interagir à l’aide de l’API Forms 2.0. La variable `MktoForms2` et la variable `Form` . La variable `MktoForms2` est l’espace de noms de niveau supérieur visible publiquement pour la fonctionnalité Forms2 et contient des fonctions pour créer, charger et récupérer des objets de formulaire.
+Il existe deux objets principaux avec lesquels vous allez interagir à l’aide de l’API Forms 2.0. L’objet `MktoForms2` et l’objet `Form`. L’objet `MktoForms2` est l’espace de noms de niveau supérieur visible publiquement pour la fonctionnalité Forms2 et contient des fonctions pour créer, charger et récupérer des objets de formulaire.
 
 ## Méthodes MktoForms2
 
@@ -182,7 +182,7 @@ Il existe deux objets principaux avec lesquels vous allez interagir à l’aide 
       <td>Objet de formulaire : objet de formulaire sur lequel la méthode a été appelée, à des fins de chaîne.</td>
     </tr>
     <tr valign="top">
-      <td>.submittable(canSubmit) <em>également disponible sous :</em> <em>.submitable(canSubmit)</em></td>
+      <td>.submittable(canSubmit) <em> est également disponible sous :</em> <em>.submitable(canSubmit)</em></td>
       <td>Obtient ou définit si le formulaire peut être envoyé. Appelé sans argument, il obtient la valeur, si appelé avec un argument, il définit la valeur. Elle peut être utilisée pour empêcher l’envoi d’un formulaire alors que d’autres critères en dehors du formulaire normal doivent être remplis.</td>
       <td>canSubmit (facultatif)(booléen) : définit le formulaire à soumettre ou à ne pas soumettre.</td>
       <td>Booléen ou objet de formulaire : s’il est appelé sans argument, renvoie une valeur booléenne indiquant si le formulaire est soumis. S’il est appelé avec un argument, renvoie cet objet de formulaire à des fins de chaîne. </td>
@@ -220,7 +220,7 @@ Il existe deux objets principaux avec lesquels vous allez interagir à l’aide 
     <tr valign="top">
       <td>.showErrorMessage(msg, elem)</td>
       <td>Affiche un message d’erreur, pointant vers elem.</td>
-      <td>msg (chaîne de HTML) - Chaîne contenant le texte de l’erreur que vous souhaitez afficher.</td>
+      <td>msg (chaîne d’HTML) - Chaîne contenant le texte de l’erreur que vous souhaitez afficher.</td>
             <td>Objet de formulaire : objet de formulaire, à des fins de chaîne.</td>
     </tr>
     <tr>

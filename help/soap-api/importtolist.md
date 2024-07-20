@@ -1,14 +1,14 @@
 ---
-title: "importToList"
+title: importToList
 feature: SOAP
-description: "importToList SOAP calls"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: appels importToList SOAP
+exl-id: 7e4930a9-a78f-44a3-9e8c-eeca908080c8
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '317'
 ht-degree: 5%
 
 ---
-
 
 # importToList
 
@@ -24,7 +24,7 @@ Cette fonction vous permet d’importer une liste de pistes dans une liste stati
 | mary@company.com | Mary | Rodgers |
 | wanda@megacorp.com | Wanda | Williams |
 
-**Remarque :** `displayName` doivent être utilisées dans la variable `importFileHeader` plutôt que la fonction `name` valeurs.
+**Remarque : Les valeurs** `displayName` doivent être utilisées dans `importFileHeader` plutôt que dans les valeurs `name`.
 
 **Contenu d’email dynamique :** Vous pouvez éventuellement transmettre des valeurs par piste qui remplacent Mes jetons dans un email.
 

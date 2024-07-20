@@ -1,20 +1,20 @@
 ---
-title: "getImportToListStatus"
+title: getImportToListStatus
 feature: SOAP
-description: "Appels SOAP getImportToListStatus"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Appels de SOAP getImportToListStatus
+exl-id: 17a62f65-dfa0-4f40-89b2-154f7734a2dc
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '76'
 ht-degree: 7%
 
 ---
 
-
 # getImportToListStatus
 
-Cette fonction vérifie l’état d’un `importToList` appel de fonction.
+Cette fonction vérifie l’état d’un appel de fonction `importToList` spécifique.
 
-Procédez comme suit : `importToList` Appel API d’abord, puis interrogation `getImportToListStatus` périodiquement. Ne pas interroger `getImportToListStatus` plus d’une fois par minute.
+Effectuez d’abord l’appel d’API `importToList`, puis interrogez régulièrement `getImportToListStatus`. N’interrogez pas `getImportToListStatus` plus d’une fois par minute.
 
 ## Demande
 

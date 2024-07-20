@@ -1,33 +1,33 @@
 ---
-title: "Bonnes pratiques d’intégration Marketo"
+title: Bonnes pratiques d’intégration Marketo
 feature: REST API
-description: '"Bonnes pratiques pour l’utilisation des API Marketo".'
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Bonnes pratiques relatives à l’utilisation des API Marketo.
+exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '952'
 ht-degree: 0%
 
 ---
 
-
 # Bonnes pratiques d’intégration Marketo
 
 ## Limites de l’API
 
-- **Quota quotidien :** La plupart des abonnements se voient attribuer 50 000 appels d’API par jour (qui se réinitialise tous les jours à 00h00 du matin de l’heure du Pacifique). Vous pouvez augmenter votre quota quotidien par l’intermédiaire de votre gestionnaire de compte.
-- **Limite de taux :** Accès à l’API par instance limité à 100 appels par 20 secondes.
+- **Quota quotidien :** La plupart des abonnements reçoivent 50 000 appels d’API par jour (qui se réinitialise tous les jours à 00h00 heure du Pacifique). Vous pouvez augmenter votre quota quotidien par l’intermédiaire de votre gestionnaire de compte.
+- **Limite de débit :** accès API par instance limité à 100 appels par 20 secondes.
 - **Limite de simultanéité :**  Nombre maximum de dix appels API simultanés.
-- **Taille du lot :** Lead DB - 300 enregistrements ; Asset Query - 200 enregistrements
+- **Taille du lot :** Base de données de piste - 300 enregistrements ; requête de ressource - 200 enregistrements
 - **Taille de la payload de l’API REST :** 1 Mo
-- **Taille de fichier d’importation en bloc :** 10 Mo
-- **Taille maximale du lot SOAP :** 300 enregistrements
+- **Taille du fichier d’importation en bloc :** 10 Mo
+- **SOAP Taille max. du lot :** 300 enregistrements
 - **Tâches d’extraction en bloc :** 2 en cours d’exécution ; 10 en file d’attente (inclus)
 
 ## Conseils rapides
 
 - Supposons que votre application soit en concurrence avec d’autres applications pour les ressources de quota, de taux et d’accès simultané, et fixez des limites d’utilisation prudentes.
 - Lorsque cela est possible et approprié, utilisez les méthodes Marketo en bloc et par lots. N’utilisez qu’un seul enregistrement ou des appels de résultat uniques si nécessaire.
-- Utilisation [backoff exponentiel](https://en.wikipedia.org/wiki/Exponential_backoff) pour réessayer les appels API qui échouent en raison de limites de taux ou de simultanéité.
+- Utilisez [backoff exponentiel](https://en.wikipedia.org/wiki/Exponential_backoff) pour réessayer les appels API qui échouent en raison des limites de taux ou de simultanéité.
 - Évitez d’effectuer des appels API simultanés si votre cas d’utilisation n’en bénéficie pas.
 
 ## Traitement par lot
@@ -41,14 +41,14 @@ La détermination de vos tolérances de latence, ou du temps maximal qui peut s�
 | Latence acceptable | Méthodes préférées | Notes |
 |---|---|---|
 | Faible (&lt;10 s) | API synchrones (mises en lot ou non par lot) | Assurez-vous que votre cas d’utilisation le requiert. L’envoi d’appels immédiats et synchrones pour des cas d’utilisation à volume élevé peut rapidement utiliser un quota d’API quotidien et potentiellement dépasser les limites de taux et de simultanéité. |
-| Medium (10 à 60 m) | API synchrones (mise en cache) | Pour les intégrations de données entrantes vers Marketo, il est vivement recommandé d’utiliser une file d’attente avec une limite d’âge et de taille. Lorsque l’une des limites est atteinte, videz la file d’attente et envoyez votre demande d’API avec les enregistrements cumulés. Il s’agit d’un compromis important entre la vitesse et l’efficacité, en veillant à ce que vos demandes se produisent à la cadence requise, tout en battant autant d’enregistrements que l’âge de la file d’attente le permet. |
+| Medium(10 à 60 m) | API synchrones (mise en cache) | Pour les intégrations de données entrantes vers Marketo, il est vivement recommandé d’utiliser une file d’attente avec une limite d’âge et de taille. Lorsque l’une des limites est atteinte, videz la file d’attente et envoyez votre demande d’API avec les enregistrements cumulés. Il s’agit d’un compromis important entre la vitesse et l’efficacité, en veillant à ce que vos demandes se produisent à la cadence requise, tout en battant autant d’enregistrements que l’âge de la file d’attente le permet. |
 | High(>60m) | Importation/exportation en bloc (si prise en charge) | Pour les intégrations de données entrantes, les enregistrements doivent être placés en file d’attente et envoyés par le biais des API Marketo Bulk chaque fois que cela est possible. |
 
 ## Limites quotidiennes
 
 Chaque instance de Marketo compatible avec les API a une allocation quotidienne d’au moins 10 000 appels d’API REST par jour, mais plus généralement 50 000 ou plus, et 500 Mo ou plus de capacité d’extraction en bloc. Bien qu’une capacité quotidienne supplémentaire puisse être achetée dans le cadre d’un abonnement Marketo, votre conception d’application doit tenir compte des limites courantes des abonnements Marketo.
 
-Comme la capacité est partagée entre tous les services d’API et utilisateurs d’une instance, la bonne pratique consiste à éliminer les appels redondants et à créer par lots le moins d’appels possibles. Le moyen le plus efficace d’importer des enregistrements consiste à utiliser les API d’importation en bloc de Marketo, disponibles pour [Prospects/personnes](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) et [Objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Snippets/operation/createSnippetUsingPOST). Marketo fournit également un extraction en bloc pour [Pistes](bulk-lead-extract.md) et [Activités](bulk-activity-extract.md).
+Comme la capacité est partagée entre tous les services d’API et utilisateurs d’une instance, la bonne pratique consiste à éliminer les appels redondants et à créer par lots le moins d’appels possibles. La méthode la plus efficace pour importer des enregistrements consiste à utiliser les API d’import en bloc de Marketo, disponibles pour les [ Prospects/Personnes](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) et les [Objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Snippets/operation/createSnippetUsingPOST). Marketo fournit également un extraction en bloc pour les [Pistes](bulk-lead-extract.md) et les [Activités](bulk-activity-extract.md).
 
 ### Mise en cache
 
@@ -72,4 +72,4 @@ La plupart des cas d’utilisation de l’intégration ne bénéficient pas d’
 
 ## Erreurs
 
-Sauf quelques rares cas, les demandes d’API renvoient un code d’état HTTP de 200. Les erreurs de logique métier renvoient également une valeur 200, mais contiennent des informations détaillées dans le corps de la réponse. Voir [Codes d’erreur](error-codes.md) pour une explication détaillée. L’expression de raison HTTP ne doit pas être évaluée, car elle est facultative et susceptible d’être modifiée.
+Sauf quelques rares cas, les demandes d’API renvoient un code d’état HTTP de 200. Les erreurs de logique métier renvoient également une valeur 200, mais contiennent des informations détaillées dans le corps de la réponse. Voir [Codes d’erreur](error-codes.md) pour obtenir une explication détaillée. L’expression de raison HTTP ne doit pas être évaluée, car elle est facultative et susceptible d’être modifiée.

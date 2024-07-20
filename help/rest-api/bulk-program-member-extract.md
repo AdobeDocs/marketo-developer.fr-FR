@@ -1,18 +1,18 @@
 ---
-title: "Extraction de membres de programme en bloc"
+title: Extraction de membres du programme en bloc
 feature: REST API
-description: "Traitement par lots de l’extraction des données membres."
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Traitement par lots de l’extraction des données de membre.
+exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1142'
 ht-degree: 4%
 
 ---
 
-
 # Extraction de membres du programme en bloc
 
-[Référence du point de terminaison d’extraction de membre du programme en masse](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members)
+[Référence du point de terminaison d’extraction de membre de programme en masse](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members)
 
 L’ensemble des API REST d’extraction de membres de programme en masse fournit une interface programmatique pour récupérer de grands ensembles d’enregistrements de membres de programme en dehors de Marketo. Il s’agit de l’interface recommandée pour les cas d’utilisation qui nécessitent un échange continu de données entre Marketo et un ou plusieurs systèmes externes, à des fins d’ETL, d’entrepôt de données et d’archivage.
 
@@ -22,7 +22,7 @@ Les API Bulk Program Member Extract exigent que l’utilisateur de l’API propr
 
 ## Description
 
-[Description du membre du programme](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/describeProgramMemberUsingGET2) est la principale source de vérité pour savoir si des champs sont disponibles et les métadonnées concernant ces champs. La variable `name` contient le nom de l’API REST.
+[Décrire le membre du programme](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/describeProgramMemberUsingGET2) est la principale source de vérité pour savoir si des champs sont disponibles et si des métadonnées sur ces champs sont disponibles. L’attribut `name` contient le nom de l’API REST.
 
 ```
 GET /rest/v1/programs/members/describe.json
@@ -213,7 +213,7 @@ GET /rest/v1/programs/members/describe.json
 
 ## Filtres
 
-Les membres du programme prennent en charge diverses options de filtre. Plusieurs types de filtre peuvent être spécifiés pour une tâche, auquel cas ils sont associés à l’opérateur AND. Vous devez spécifier le `programId` ou le `programIds` filtre. Tous les autres filtres sont facultatifs. La variable `updatedAt` Le filtre nécessite des composants d’infrastructure supplémentaires qui n’ont pas encore été déployés pour tous les abonnements.
+Les membres du programme prennent en charge diverses options de filtre. Plusieurs types de filtre peuvent être spécifiés pour une tâche, auquel cas ils sont associés à l’opérateur AND. Vous devez spécifier le filtre `programId` ou `programIds`. Tous les autres filtres sont facultatifs. Le filtre `updatedAt` nécessite des composants d’infrastructure supplémentaires qui n’ont pas encore été déployés pour tous les abonnements.
 
 <table>
   <tbody>
@@ -225,17 +225,17 @@ Les membres du programme prennent en charge diverses options de filtre. Plusieur
     <tr>
       <td>programId</td>
       <td>Entier</td>
-      <td>Accepte l’identifiant d’un programme. Les tâches renvoient tous les enregistrements accessibles qui sont membres du programme au moment où le traitement de la tâche commence. Récupérez les identifiants de programme à l’aide de la fonction <a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">Obtention de programmes</a> endpoint.Ne peut pas être utilisé avec le filtre programIds.</td>
+      <td>Accepte l’identifiant d’un programme. Les tâches renvoient tous les enregistrements accessibles qui sont membres du programme au moment où la tâche commence le traitement. Récupérez les identifiants de programme à l’aide du point d’entrée <a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">Obtenir des programmes</a>. Ne peut pas être utilisé avec le filtre programIds.</td>
     </tr>
     <tr>
       <td>programIds</td>
       <td>Array[Integer]</td>
-      <td>Accepte un tableau de 10 identifiants de programme au maximum. Les tâches renvoient tous les enregistrements accessibles qui sont membres des programmes au moment où le traitement de la tâche commence. Un champ supplémentaire "programId" est ajouté au fichier d'export en tant que premier champ. Ce champ identifie le programme à partir duquel un enregistrement d’appartenance à un programme a été extrait. Récupérez les identifiants de programme à l’aide de la variable <a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">Obtention de programmes</a> endpoint.Ne peut pas être utilisé avec le filtre programId.</td>
+      <td>Accepte un tableau de 10 identifiants de programme au maximum. Les tâches renvoient tous les enregistrements accessibles qui sont membres des programmes au moment où le traitement de la tâche commence. Un champ supplémentaire "programId" est ajouté au fichier d'export en tant que premier champ. Ce champ identifie le programme à partir duquel un enregistrement d’appartenance au programme a été extrait. Récupérez les identifiants de programme à l’aide du point d’entrée <a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">Get Programmes</a>. Ne peut pas être utilisé avec le filtre programId.</td>
     </tr>
     <tr>
       <td>isExhausted</td>
       <td>Booléenne</td>
-      <td>Accepte une valeur booléenne utilisée pour filtrer les enregistrements d’adhésion au programme pour <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">les personnes qui ont épuisé le contenu ;</a>.</td>
+      <td>Accepte une valeur booléenne utilisée pour filtrer les enregistrements d’adhésion au programme pour les <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">personnes ayant épuisé le contenu</a>.</td>
     </tr>
     <tr>
       <td>nourtureCadence</td>
@@ -327,7 +327,7 @@ Le point de fin Create Export Program Member Job fournit plusieurs options de fo
 
 ## Création d’une tâche
 
-Les paramètres de la tâche sont définis avant le démarrage de l’exportation à l’aide de la fonction [Création d’une tâche de membre de programme d’exportation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/createExportProgramMembersUsingPOST) point de terminaison . Nous devons définir la variable `filter` contenant l’identifiant de programme, et la variable `fields` qui sont nécessaires à l’exportation. En option, nous pouvons définir la variable `format` du fichier, et l’événement `columnHeaderNames`.
+Les paramètres de la tâche sont définis avant de lancer l’exportation à l’aide du point de terminaison [Create Export Program Member Job](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/createExportProgramMembersUsingPOST) . Nous devons définir le `filter` contenant l’ID de programme et le `fields` nécessaire à l’exportation. Nous pouvons éventuellement définir le `format` du fichier et le `columnHeaderNames`.
 
 ```
 POST /bulk/v1/program/members/export/create.json
@@ -371,7 +371,7 @@ POST /bulk/v1/program/members/export/create.json
 }
 ```
 
-Cela renvoie une réponse d’état indiquant que la tâche a été créée. La tâche a été définie et créée, mais elle n’a pas encore été lancée. Pour ce faire, la variable [Traitement membre du programme d’exportation d’enfiles](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/enqueueExportProgramMembersUsingPOST) endpoint doit être appelé à l’aide de la fonction `exportId` de la réponse d’état de création :
+Cela renvoie une réponse d’état indiquant que la tâche a été créée. La tâche a été définie et créée, mais elle n’a pas encore été lancée. Pour ce faire, le point d’entrée [Enqueue Export Program Member Job](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/enqueueExportProgramMembersUsingPOST) doit être appelé à l’aide de la réponse `exportId` de l’état de création :
 
 ```
 POST /bulk/v1/program/members/export/{exportId}/enqueue.json
@@ -393,13 +393,13 @@ POST /bulk/v1/program/members/export/{exportId}/enqueue.json
 }
 ```
 
-Cela répond avec une `status` de &quot;En file d’attente&quot;, après quoi il sera défini sur &quot;Traitement&quot; lorsqu’un emplacement d’exportation est disponible.
+Cette action répond avec un `status` initial de &quot;En file d’attente&quot; après lequel elle est définie sur &quot;Traitement&quot; lorsqu’un emplacement d’exportation est disponible.
 
 ## État de la tâche d’interrogation
 
 Remarque : l’état ne peut être récupéré que pour les tâches créées par le même utilisateur de l’API.
 
-Puisqu’il s’agit d’un point de terminaison asynchrone, après la création de la tâche, nous devons interroger son état pour déterminer sa progression. Sondage à l’aide du [Obtenir l’état de la tâche des membres du programme d’exportation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET) point de terminaison . Le statut n’est mis à jour qu’une fois toutes les 60 secondes, donc une fréquence d’interrogation inférieure à celle-ci n’est pas recommandée, et dans presque tous les cas est toujours excessive. Le champ d’état peut répondre à l’un des types suivants : Créé, En file d’attente, En cours de traitement, Annulé, Terminé, Échec.
+Puisqu’il s’agit d’un point de terminaison asynchrone, après la création de la tâche, nous devons interroger son état pour déterminer sa progression. Sondage à l’aide du point de terminaison [Get Export Program Member Job Status](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET). Le statut n’est mis à jour qu’une fois toutes les 60 secondes, donc une fréquence d’interrogation inférieure à celle-ci n’est pas recommandée, et dans presque tous les cas est toujours excessive. Le champ d’état peut répondre à l’un des types suivants : Créé, En file d’attente, En cours de traitement, Annulé, Terminé, Échec.
 
 ```
 GET /bulk/v1/program/members/export/{exportId}/status.json
@@ -422,7 +422,7 @@ GET /bulk/v1/program/members/export/{exportId}/status.json
 }
 ```
 
-Le point de terminaison d’état répond indiquant que la tâche est toujours en cours de traitement. Le fichier n’est donc pas encore disponible pour la récupération. Une fois la tâche `status` Les modifications apportées à &quot;Terminé&quot; peuvent être téléchargées.
+Le point de terminaison d’état répond indiquant que la tâche est toujours en cours de traitement. Le fichier n’est donc pas encore disponible pour la récupération. Une fois la tâche `status` remplacée par &quot;Terminée&quot;, elle peut être téléchargée.
 
 ```json
 {
@@ -447,9 +447,9 @@ Le point de terminaison d’état répond indiquant que la tâche est toujours e
 
 ## Récupération de vos données
 
-Pour récupérer le fichier d’une exportation de membre de programme terminée, appelez simplement le [Obtenir le fichier de membre du programme d’exportation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/getExportProgramMembersFileUsingGET) Point de terminaison avec votre `exportId`.
+Pour récupérer le fichier d’une exportation de membre de programme terminée, appelez simplement le point de terminaison [Get Export Program Member File](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/getExportProgramMembersFileUsingGET) avec votre `exportId`.
 
-La réponse contient un fichier formaté selon la configuration de la tâche. Le point de terminaison répond avec le contenu du fichier. Si un champ de membre de programme demandé est vide (ne contient aucune donnée), `null` est placé dans le champ correspondant du fichier d&#39;export.
+La réponse contient un fichier formaté selon la configuration de la tâche. Le point de terminaison répond avec le contenu du fichier. Si un champ de membre de programme demandé est vide (ne contient aucune donnée), `null` est placé dans le champ correspondant dans le fichier d’exportation.
 
 ```
 GET /bulk/v1/program/members/export/{exportId}/file.json
@@ -475,7 +475,7 @@ Pour prendre en charge la récupération partielle et conviviale en cas de repri
 
 ## Annulation d’une tâche
 
-Si une tâche a été mal configurée ou devient inutile, elle peut être facilement annulée à l’aide de la fonction [Annuler l’exportation de la tâche membre du programme](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/cancelExportProgramMembersUsingPOST) endpoint :
+Si une tâche a été mal configurée ou devient inutile, elle peut être facilement annulée à l’aide du point d’entrée [Annuler l’exportation de la tâche membre du programme](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/cancelExportProgramMembersUsingPOST) :
 
 ```
 POST /bulk/v1/program/members/export/{exportId}/cancel.json
@@ -496,4 +496,4 @@ POST /bulk/v1/program/members/export/{exportId}/cancel.json
 }
 ```
 
-Cette fonction répond par une `status` indiquant que la tâche a été annulée.
+Ceci répond avec un `status` indiquant que la tâche a été annulée.

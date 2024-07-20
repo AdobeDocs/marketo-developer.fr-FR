@@ -1,34 +1,34 @@
 ---
-title: "getLeadActivity"
+title: getLeadActivity
 feature: SOAP
-description: "Appels SOAP getLeadActivity"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Appels getLeadActivity SOAP
+exl-id: f38dee95-235f-4dc2-8839-61d6008132a5
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '346'
 ht-degree: 3%
 
 ---
 
-
 # getLeadActivity
 
 Cette fonction récupère l’historique des activités pour un seul prospect identifié par la clé fournie. Vous pouvez spécifier les types d’activité que vous souhaitez voir renvoyer dans le résultat. Si vous souhaitez tous les types d’activité, une valeur vide doit être transmise. Pour plusieurs types d’activité, transmettez une liste de types d’activité. Lorsque vous demandez plusieurs activités, le nombre restant n’est pas un nombre exact, mais doit être traité comme un indicateur indiquant qu’il y a plus d’activités lorsque le nombre restant est supérieur à 0.
 
-A [position du flux](stream-position.md) peut être utilisé pour paginer dans des jeux de résultats volumineux.
+Une [position du flux](stream-position.md) peut être utilisée pour paginer dans de grands ensembles de résultats.
 
 ## Demande
 
 | Nom de champ | Obligatoire/Facultatif | Description |
 | --- | --- | --- |
-| leadKey->keyType | Requis | keyType vous permet de spécifier le champ par lequel vous souhaitez interroger le prospect. Les valeurs possibles sont les suivantes :`IDNUM`, `COOKIE`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
+| leadKey->keyType | Requis | keyType vous permet de spécifier le champ par lequel vous souhaitez interroger le prospect. Les valeurs possibles sont les suivantes : `IDNUM`, `COOKIE`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
 | leadKey->keyValue | Requis | `keyValue` est la valeur par laquelle vous souhaitez interroger le prospect. |
 | activityFilter->includeAttributes->activityType | En option | Limite la réponse afin de n’inclure que les types d’activité spécifiés. Voir WSDL pour tous les types d’activité. |
-| activityFilter->excludeAttributes->activityType | En option | Limite la réponse afin d’exclure les types d’activité spécifiés. Voir WSDL pour tous les types d’activité. REMARQUE : Vous ne pouvez pas spécifier les deux `includeAttributes` et `excludeAttributes` dans le même appel. |
-| batchSize | En option | Nombre maximum d&#39;enregistrements à renvoyer. Le système est limité à 100 ou `batchSize`, le plus petit des deux critères. |
-| startPosition->offset | En option | Utilisé pour paginer un grand nombre de réponses d’activité. La valeur de décalage est renvoyée par le champ de réponse d’appels précédent. `newStartPosition->offset`. |
-| startPosition->activityCreatedAt | En option | Utilisé pour paginer un grand nombre de réponses d’activité. activityCreatedAt est renvoyé par le champ de réponse de l’appel précédent. `newStartPosition->activityCreatedAt`. (Format de date WSDL W3C). |
-| startPosition->lastCreatedAt | En option | Utilisé pour paginer un grand nombre de réponses d’activité. L’attribut latestCreatedAt est renvoyé par le champ de réponse de l’appel précédent. `newStartPosition->latestCreatedAt`. (Format de date WSDL W3C). |
-| startPosition->oldCreatedAt | En option | Utilisé pour paginer un grand nombre de réponses d’activité. L’élément plus ancien de CreatedAt est renvoyé par le champ de réponse de l’appel précédent. `newStartPosition->oldestCreatedAt`. (Format de date WSDL W3C). |
+| activityFilter->excludeAttributes->activityType | En option | Limite la réponse afin d’exclure les types d’activité spécifiés. Voir WSDL pour tous les types d’activité. REMARQUE : Vous ne pouvez pas spécifier `includeAttributes` et `excludeAttributes` dans le même appel. |
+| batchSize | En option | Nombre maximum d&#39;enregistrements à renvoyer. Le système sera limité à 100 ou `batchSize`, selon ce qui est moins élevé. |
+| startPosition->offset | En option | Utilisé pour paginer un grand nombre de réponses d’activité. La valeur de décalage est renvoyée par le champ de réponse d’appels précédent `newStartPosition->offset`. |
+| startPosition->activityCreatedAt | En option | Utilisé pour paginer un grand nombre de réponses d’activité. activityCreatedAt est renvoyé par le champ de réponse de l’appel précédent `newStartPosition->activityCreatedAt`. (Format de date WSDL W3C). |
+| startPosition->lastCreatedAt | En option | Utilisé pour paginer un grand nombre de réponses d’activité. Le dernierCreatedAt est renvoyé par le champ de réponse de l’appel précédent `newStartPosition->latestCreatedAt`. (Format de date WSDL W3C). |
+| startPosition->oldCreatedAt | En option | Utilisé pour paginer un grand nombre de réponses d’activité. L’élément plus ancien de CreatedAt est renvoyé par le champ de réponse de l’appel précédent `newStartPosition->oldestCreatedAt`. (Format de date WSDL W3C). |
 
 ## Request XML
 
@@ -668,7 +668,7 @@ A [position du flux](stream-position.md) peut être utilisé pour paginer dans d
 </SOAP-ENV:Envelope>
 ```
 
-Notez que dans `activityRecord` , la variable `id` est remplacé par l’élément `marketoGUID` comme identifiant unique.  Cette modification sera apportée à la version du printemps 2017.
+Notez que dans les éléments `activityRecord`, l’élément `id` est remplacé par l’élément `marketoGUID` comme identifiant unique.  Cette modification sera apportée à la version du printemps 2017.
 
 ## Exemple de code - PHP
 

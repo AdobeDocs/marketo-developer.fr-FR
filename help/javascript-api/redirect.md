@@ -1,20 +1,20 @@
 ---
-title: "Redirection"
-description: "Redirection"
+title: Rediriger
+description: Rediriger
 feature: Javascript
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+exl-id: bbf91245-42e5-47ae-a561-e522cc65ff49
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '468'
 ht-degree: 8%
 
 ---
 
-
 # Rediriger
 
 L’API de redirection HTTP permet de rediriger les audiences segmentées vers une URL cible.
 
-- Vous devez devenir un client de personnalisation Web et disposer de la variable [Balise RTP déployée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+- Vous devez devenir client Web Personalization et faire déployer la balise [RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 - Le protocole RTP ne prend pas en charge les listes de comptes nommés Marketing basé sur un compte. Les listes ABM et le code ne se rapportent qu’aux listes de comptes téléchargées (fichiers CSV) gérées dans RTP.
 
 ## Utilisation
@@ -35,14 +35,14 @@ Organisation, secteur industriel, listes ABM, emplacement, FAI, segments mappés
 | Condition | Hiérarchie des données | Exemple |
 |-------------------------------------------------|----------------------|------------------------------------------------------------------------------------------------------------------|
 | Segments correspondants (fonctionne uniquement après le premier clic) | matchedSegments.name | rtp(&#39;send&#39;, &#39;redirect&#39;, &#39;matchSegments.name&#39; , [&#39;Fortune 1000&#39; , &#39;Enterprise&#39;] , &#39;http://www.marketo.com&#39;); |
-| Segments correspondants (fonctionne uniquement après le premier clic) | matchedSegments.id | rtp(&#39;send&#39;, &#39;redirect&#39;, &#39;matchSegments.id&#39; , [106 , 107 , 190] , &#39;http://www.marketo.com&#39;); |
-| Listes ABM | abm.name | rtp(&#39;send&#39;, &#39;redirect&#39;, &#39;abm.name&#39; ,&#39; [&#39;top_key_accounts&#39;, &#39;active_clients&#39;] , &#39;http://www.marketo.com&#39;); |
-| Listes ABM | abm.code | rtp(&#39;send&#39;, &#39;redirect&#39;, &#39;abm.code&#39; ,&#39; [13 , 15] , &#39;http://www.marketo.com&#39;); |
-| Entreprises | org | rtp(&quot;send&quot;, &quot;redirect&quot;, &quot;org&quot;, [&#39;ebay&#39;], &#39;http://www.marketo.com&#39;); |
-| Localisation | location.country | rtp(&#39;send&#39;, &#39;redirect&#39;, &#39;location.country&#39; , [&quot;États-Unis&quot;], &#39;http://www.marketo.com&#39;); |
+| Segments correspondants (fonctionne uniquement après le premier clic) | matchedSegments.id | rtp(&#39;send&#39;, &#39;redirect&#39;, &#39;matchSegments.id&#39; , [106, 107, 190] , &#39;http://www.marketo.com&#39;); |
+| Listes ABM | abm.name | rtp(&#39;send&#39;, &#39;redirect&#39;, &#39;abm.name&#39;, [&#39;top_key_accounts&#39;, &#39;active_clients&#39;], &#39;http://www.marketo.com&#39;); |
+| Listes ABM | abm.code | rtp(&#39;send&#39;, &#39;redirect&#39;, &#39;abm.code&#39; , [13, 15] , &#39;http://www.marketo.com&#39;); |
+| Entreprises | org | rtp(&#39;send&#39;, &#39;redirect&#39;, &#39;org&#39;, [&#39;ebay&#39;], &#39;http://www.marketo.com&#39;); |
+| Localisation | location.country | rtp(&#39;send&#39;, &#39;redirect&#39;, &#39;location.country&#39;, [&#39;United States&#39;], &#39;http://www.marketo.com&#39;); |
 | Localisation | location.state | rtp(&#39;send&#39;, &#39;redirect&#39;, &#39;location.state&#39;, [&#39;ca&#39;], &#39;http://www.marketo.com&#39;); |
-| Localisation | location.city | rtp(&quot;send&quot;, &quot;redirect&quot;, &quot;location.city&quot;, [&quot;San Mateo&quot;], &#39;http://www.marketo.com&#39;); |
-| Secteurs | industries | rtp( &#39;send&#39;, &#39;redirect&#39;, &#39;industries&#39; ,&#39; [&#39;Education&#39;], &#39;http://www.marketo.com&#39;); |
+| Localisation | location.city | rtp(&#39;send&#39;, &#39;redirect&#39;, &#39;location.city&#39;, [&#39;San Mateo&#39;], &#39;http://www.marketo.com&#39;); |
+| Secteurs | industries | rtp(&#39;send&#39;, &#39;redirect&#39;, &#39;industries&#39;, [&#39;Education&#39;], &#39;http://www.marketo.com&#39;); |
 | FAI | isp | rtp(&#39;send&#39;, &#39;redirect&#39;, isp , [&#39;False&#39;], &#39;http://www.marketo.com&#39;); |
 
 

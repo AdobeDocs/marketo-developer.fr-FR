@@ -1,24 +1,24 @@
 ---
-title: "Extension mobile Marketo pour [!DNL Adobe Launch]"
+title: Extension Marketo Mobile pour [!DNL Adobe Launch]
 feature: Mobile Marketing
-description: "Extension mobile Marketo pour [!DNL Adobe Launch] overview"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Extension Marketo Mobile pour  [!DNL Adobe Launch]  - Aperçu
+exl-id: 2f8691ff-0442-45a5-aeba-c91c3af5c711
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '269'
 ht-degree: 1%
 
 ---
 
+# Extension Marketo Mobile pour [!DNL Adobe Launch]
 
-# Extension mobile Marketo pour [!DNL Adobe Launch]
-
-Instructions d’installation du SDK Mobile Marketo dans [!DNL Adobe Launch]. Les étapes ci-dessous sont requises pour envoyer des notifications push et/ou des messages In-App.
+Instructions d’installation pour l’extension SDK Mobile Marketo dans [!DNL Adobe Launch]. Les étapes ci-dessous sont requises pour envoyer des notifications push et/ou des messages In-App.
 
 ## Conditions préalables
 
-- [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (Obtenez votre clé secrète et votre ID Munchkin)
-- Suivez les instructions de la section [!DNL Adobe Launch] Portal pour l’installation
-- [Configuration des notifications push](push-notifications.md) (facultatif)
+- [Ajoutez une application dans l’administrateur Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez votre clé secrète et votre identifiant Munchkin)
+- Suivez les instructions fournies dans le portail [!DNL Adobe Launch] pour l’installation
+- [Configuration de notifications push](push-notifications.md) (facultatif)
 
 ## iOS
 
@@ -36,21 +36,21 @@ Pour les utilisateurs Swift : supprimez l’instruction d’importation suivante
 
 ### Appareils de test iOS
 
-Suivez les instructions de la section [Ajout de périphériques de test iOS](installation.md#ios_test_devices)
+Suivez les instructions de la section [Ajout de périphériques de test iOS](installation.md#ios_test_devices)
 
 ### Gestion du type d’URL personnalisé dans AppDelegate
 
-Suivez les instructions [here](installation.md#ios_test_devices)
+Suivez les instructions [ici](installation.md#ios_test_devices)
 
 ### Configuration des notifications push sur iOS
 
-Suivez les instructions [here](push-notifications.md) et utilisez le nom de classe &quot;ALMarketo&quot; au lieu de &quot;Marketo&quot;.
+Suivez les instructions [ici](push-notifications.md) et utilisez le nom de classe &quot;ALMarketo&quot; au lieu de &quot;Marketo&quot;.
 
 ## Android
 
 ### Configuration des autorisations
 
-Ouvrir `AndroidManifest.xml` et ajoutez les autorisations suivantes. Votre application doit demander les autorisations &quot;INTERNET&quot; et &quot;ACCESS_NETWORK_STATE&quot;. Si votre application demande déjà ces autorisations, ignorez cette étape.
+Ouvrez `AndroidManifest.xml` et ajoutez les autorisations suivantes. Votre application doit demander les autorisations &quot;INTERNET&quot; et &quot;ACCESS_NETWORK_STATE&quot;. Si votre application demande déjà ces autorisations, ignorez cette étape.
 
 ```xml
 <uses‐permission android:name="android.permission.INTERNET"></uses‐permission>
@@ -59,7 +59,7 @@ Ouvrir `AndroidManifest.xml` et ajoutez les autorisations suivantes. Votre appli
 
 ### Configuration de ProGuard (facultatif)
 
-Si vous utilisez ProGuard pour votre application, ajoutez les lignes suivantes dans votre `proguard.cfg` fichier . Le fichier se trouve dans le dossier de votre projet. L’ajout de ce code exclut le SDK Marketo du processus d’obscurcissement.
+Si vous utilisez ProGuard pour votre application, ajoutez les lignes suivantes à votre fichier `proguard.cfg`. Le fichier se trouve dans le dossier de votre projet. L’ajout de ce code exclut le SDK Marketo du processus d’obscurcissement.
 
 ```
 -dontwarn com.marketo.*
@@ -69,10 +69,10 @@ Si vous utilisez ProGuard pour votre application, ajoutez les lignes suivantes d
 
 ### Appareils de test Android
 
-Suivez les instructions [here](installation.md#android_test_devices)
+Suivez les instructions [ici](installation.md#android_test_devices)
 
 ## Configuration des notifications push sur Android
 
-Suivez les instructions [here](installation.md#android_firebase_cloud_messaging_support) et utilisez le nom de classe &quot;ALMarketo&quot; au lieu de &quot;Marketo&quot;.
+Suivez les instructions [ici](installation.md#android_firebase_cloud_messaging_support) et utilisez le nom de classe &quot;ALMarketo&quot; au lieu de &quot;Marketo&quot;.
 
-Pour configurer des profils utilisateur, suivez les instructions. [here](user-profiles.md) et pour les actions personnalisées suivez les instructions [here](custom-actions.md#android_custom_action). Dans les instructions suivantes, utilisez le nom de classe &quot;ALMarketo&quot; au lieu de &quot;Marketo&quot;.
+Pour configurer des profils utilisateur, suivez les instructions [ici](user-profiles.md) et pour les actions personnalisées, suivez les instructions [ici](custom-actions.md#android_custom_action). Dans les instructions suivantes, utilisez le nom de classe &quot;ALMarketo&quot; au lieu de &quot;Marketo&quot;.

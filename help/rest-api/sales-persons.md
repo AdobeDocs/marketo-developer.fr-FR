@@ -1,26 +1,26 @@
 ---
-title: "Vendeurs"
+title: Personnes de vente
 feature: REST API
-description: "Lire les données sur les vendeurs."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Lire les données sur les vendeurs.
+exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '303'
 ht-degree: 0%
 
 ---
 
-
 # Personnes de vente
 
 [Référence du point de terminaison de la personne commerciale](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Sales-Persons)
 
-Les API de personne commerciale sont un accès en lecture seule pour les abonnements qui ont [Synchronisation SFDC](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou [Synchronisation Microsoft Dynamics](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) sont activées. Les vendeurs sont un type d’enregistrement de personne qui est le propriétaire des registres de prospect. Elles sont liées aux enregistrements de piste par le champ externalSalesPersonId sur chaque enregistrement de piste. Lorsqu’une piste est associée à une personne commerciale par un champ externalSalesPersonId renseigné, les champs de recherche correspondants du propriétaire de piste sont renseignés pour cet enregistrement de piste dans Marketo, ce qui permet d’utiliser les filtres et jetons correspondants.
+Les API de personne commerciale sont un accès en lecture seule pour les abonnements qui ont la [synchronisation SFDC](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou la [synchronisation Microsoft Dynamics](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) activée. Les vendeurs sont un type d’enregistrement de personne qui est le propriétaire des registres de prospect. Elles sont liées aux enregistrements de piste par le champ externalSalesPersonId sur chaque enregistrement de piste. Lorsqu’une piste est associée à une personne commerciale par un champ externalSalesPersonId renseigné, les champs de recherche correspondants du propriétaire de piste sont renseignés pour cet enregistrement de piste dans Marketo, ce qui permet d’utiliser les filtres et jetons correspondants.
 
-Les vendeurs sont associés aux enregistrements de piste à l’aide de la variable [Pistes de synchronisation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) point d’entrée et transmission de l’attribut externalSalesPersonId .
+Les personnes chargées des ventes sont liées aux enregistrements de piste à l’aide du point d’entrée [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) et en transmettant l’attribut externalSalesPersonId.
 
-Les vendeurs sont associés aux enregistrements d’opportunité à l’aide de la variable [Opportunités de synchronisation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/syncOpportunitiesUsingPOST) point d’entrée et transmission de l’attribut externalSalesPersonId .
+Les vendeurs sont associés aux enregistrements d’opportunité en utilisant le point d’entrée [Synchroniser les opportunités](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/syncOpportunitiesUsingPOST) et en transmettant l’attribut externalSalesPersonId.
 
-Les vendeurs sont associés aux enregistrements de la société à l’aide de la variable [Entreprises de synchronisation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) point d’entrée et transmission de l’attribut externalSalesPersonId .
+Les personnes chargées des ventes sont liées aux enregistrements de société à l’aide du point d’entrée [Synchroniser les entreprises](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) et en transmettant l’attribut externalSalesPersonId .
 
 Les enregistrements de personne commerciale ne sont modifiables que via l’API.
 
@@ -95,7 +95,7 @@ GET /rest/v1/salespersons/describe.json
 }
 ```
 
-Par défaut, la variable `idField` de la personne chargée des ventes est &quot;id&quot; et la variable `dedupeFields` est simplement &quot;externalSalesPersonId&quot;.
+Par défaut, le `idField` des vendeurs est &quot;id&quot; et `dedupeFields` est simplement &quot;externalSalesPersonId&quot;.
 
 ## Requête
 

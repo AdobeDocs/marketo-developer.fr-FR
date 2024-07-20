@@ -1,20 +1,20 @@
 ---
-title: "Importation de pistes en bloc"
+title: Importation de pistes en bloc
 feature: REST API
-description: "Importation par lots de données de prospect."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Importation par lots de données de piste.
+exl-id: 615f158b-35f9-425a-b568-0a7041262504
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '803'
 ht-degree: 0%
 
 ---
 
-
 # Importation de pistes en bloc
 
 [Référence du point de terminaison d’importation de pistes en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads)
 
-Pour un grand nombre d’enregistrements de piste, les pistes peuvent être importées de manière asynchrone avec la variable [API en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). Vous pouvez ainsi importer une liste d’enregistrements dans Marketo à l’aide d’un fichier plat avec les délimiteurs (virgule, tabulation ou point-virgule). Le fichier peut contenir n’importe quel nombre d’enregistrements, à condition que la taille totale du fichier soit inférieure à 10 Mo. L&#39;opération d&#39;enregistrement est &quot;insert or update&quot; uniquement.
+Pour un grand nombre d’enregistrements de piste, les pistes peuvent être importées de manière asynchrone avec l’ [API en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). Vous pouvez ainsi importer une liste d’enregistrements dans Marketo à l’aide d’un fichier plat avec les délimiteurs (virgule, tabulation ou point-virgule). Le fichier peut contenir n’importe quel nombre d’enregistrements, à condition que la taille totale du fichier soit inférieure à 10 Mo. L&#39;opération d&#39;enregistrement est &quot;insert or update&quot; uniquement.
 
 ## Limites de traitement
 
@@ -29,9 +29,9 @@ email,firstName,lastName
 test@example.com,John,Doe
 ```
 
-La variable `externalCompanyId` peut être utilisé pour lier l’enregistrement de piste à un enregistrement de société. La variable `externalSalesPersonId` peut être utilisé pour lier l’enregistrement de piste à un enregistrement de personne effectuant le vente.
+Le champ `externalCompanyId` peut être utilisé pour lier l’enregistrement de piste à un enregistrement de société. Le champ `externalSalesPersonId` peut être utilisé pour lier l’enregistrement de piste à un enregistrement de personne effectuant le vente.
 
-L’appel lui-même est effectué à l’aide de la fonction `multipart/form-data` content-type.
+L’appel lui-même est effectué à l’aide du type de contenu `multipart/form-data`.
 
 Ce type de requête peut être difficile à implémenter. Il est donc vivement recommandé d’utiliser une implémentation de bibliothèque existante.
 
@@ -90,7 +90,7 @@ Charlie,Dog,charliedog@marketo.com,Marketo
 Easy,Fox,easyfox@marketo.com,Marketo
 ```
 
-Vous pouvez également inclure le `lookupField`, `listId`, et `partitionName` dans votre requête. `lookupField` vous permet de sélectionner un champ spécifique sur lequel dédupliquer, tout comme les pistes de synchronisation, et par défaut le courrier électronique. Vous pouvez indiquer `id` as `lookupField` pour indiquer une opération de &quot;mise à jour uniquement&quot;. `listId` vous permet de sélectionner une liste statique à laquelle importer la liste de pistes ; les pistes de la liste deviendront ainsi membres de cette liste statique, en plus des créations ou mises à jour provoquées par l’importation. `partitionName` sélectionne une partition spécifique à importer. Pour plus d’informations, reportez-vous à la section Espaces de travail et partition .
+Vous pouvez également éventuellement inclure les paramètres `lookupField`, `listId` et `partitionName` dans votre requête. `lookupField` vous permet de sélectionner un champ spécifique sur lequel dédupliquer, tout comme les pistes de synchronisation, et les adresses email par défaut. Vous pouvez spécifier `id` comme `lookupField` pour indiquer une opération de &quot;mise à jour uniquement&quot;. `listId` vous permet de sélectionner une liste statique à laquelle importer la liste de pistes ; les pistes de la liste deviendront ainsi membres de cette liste statique, en plus des créations ou mises à jour provoquées par l’importation. `partitionName` sélectionne une partition spécifique à importer. Pour plus d’informations, reportez-vous à la section Espaces de travail et partition .
 
 Notez dans la réponse à notre appel qu’il n’existe pas de liste de succès ou d’échecs comme avec les pistes de synchronisation, mais un identifiant de lot et un champ d’état pour l’enregistrement dans le tableau de résultats. En effet, cette API est asynchrone et peut renvoyer l’état En file d’attente, Importation ou Échec. Vous devez conserver le paramètre batchId pour obtenir l’état de la tâche d’importation et récupérer les échecs et/ou les avertissements une fois la tâche terminée. L’identifiant de lot reste valide pendant sept jours.
 

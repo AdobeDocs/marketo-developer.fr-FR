@@ -1,14 +1,14 @@
 ---
-title: "getTags"
+title: getTags
 feature: SOAP, Tags
-description: "getTags SOAP calls"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: getTags SOAP appels
+exl-id: 4fd9de1a-9362-479a-afe1-09ef0aaf5e6e
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '94'
 ht-degree: 7%
 
 ---
-
 
 # getTags
 
@@ -23,7 +23,7 @@ Vous pouvez obtenir des informations sur toutes les balises non-canal ou spécif
 
 | Nom de champ | Obligatoire/Facultatif | Description |
 | --- | --- | --- |
-| tagList->tag | En option | Liste des balises que vous souhaitez interroger. Chaque balise peut avoir un type et un tableau de valeurs sous forme de chaînes. If `<tagList>` est omis, vous recevrez des informations sur tous les canaux. |
+| tagList->tag | En option | Liste des balises que vous souhaitez interroger. Chaque balise peut avoir un type et un tableau de valeurs sous forme de chaînes. Si `<tagList>` est omis, vous recevrez des informations sur tous les canaux. |
 
 ## Request XML
 

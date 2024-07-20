@@ -13,15 +13,15 @@ ht-degree: 11%
 
 L’API Data Ingestion est un service à volume élevé, à faible latence et hautement disponible, conçu pour gérer efficacement l’ingestion de grandes quantités de données liées aux personnes et aux personnes, avec un minimum de délais. 
 
-Les données sont ingérées en envoyant des requêtes qui s’exécutent de manière asynchrone. L’état de la requête peut être récupéré en s’abonnant aux événements à partir du [Flux de données d’observabilité Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup/)&#x200B;
+Les données sont ingérées en envoyant des requêtes qui s’exécutent de manière asynchrone. L’état de la requête peut être récupéré en s’abonnant aux événements à partir du [flux de données d’observabilité Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup/). &#x200B;
 
 Les interfaces sont proposées pour deux types d&#39;objets : Personnes, Objets personnalisés. L&#39;opération d&#39;enregistrement est &quot;insert or update&quot; uniquement.
 
-L’API Data Ingestion est en version bêta privée. Les invités doivent disposer d’un droit pour [Package de niveau de performance Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+L’API Data Ingestion est en version bêta privée. Les invités doivent disposer d’un droit pour le [ package de niveau de performance Marketo Engage ](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Authentification
 
-L’API Data Ingestion utilise la même méthode d’authentification OAuth 2.0 que l’API REST Marketo pour générer un jeton d’accès, mais le jeton d’accès doit être transmis via l’en-tête HTTP. `X-Mkto-User-Token`. Vous ne pouvez pas transmettre le jeton d’accès via un paramètre de requête.
+L’API Data Ingestion utilise la même méthode d’authentification OAuth 2.0 que l’API REST Marketo pour générer un jeton d’accès, mais le jeton d’accès doit être transmis via l’en-tête HTTP `X-Mkto-User-Token`. Vous ne pouvez pas transmettre le jeton d’accès via un paramètre de requête.
 
 Exemple de jeton d’accès via l’en-tête :
 
@@ -42,14 +42,14 @@ Data Ingestion utilise les en-têtes HTTP personnalisés suivants.
 
 ### Demande
 
-| Code  | Valeur | Requis | Description |
+| Clé | Valeur | Requis | Description |
 |---|---|---|---|
 | X-Correlation-Id | Chaîne arbitraire (longueur maximale : 255 caractères). | Non | Peut être utilisé pour suivre les requêtes par le biais du système. Voir Flux de données d’observabilité Marketo |
 | X-Request-Source | Chaîne arbitraire (longueur maximale de 50 caractères). | Non | Peut être utilisé pour tracer la source des requêtes par le biais du système. Voir Flux de données d’observabilité Marketo |
 
 ### Réponse
 
-| Code  | Valeur | Requis | Description |
+| Clé | Valeur | Requis | Description |
 |---|---|---|---|
 | X-Request-Id | ID de requête unique. | Oui | |
 
@@ -61,7 +61,7 @@ La représentation des données est incluse dans le corps de la requête sous la
 
 Le nom de domaine est : `mkto-ingestion-api.adobe.io`
 
-Le chemin commence par `/subscriptions/_MunchkinId_` where `_MunchkinId_` est spécifique à votre instance Marketo. Votre Munchkin ID se trouve dans l’interface utilisateur du Marketo Engage sous **Administration** >**Mon compte** > **Informations sur l’assistance**. Le reste du chemin est utilisé pour spécifier la ressource intéressante.
+Le chemin commence par `/subscriptions/_MunchkinId_` où `_MunchkinId_` est spécifique à votre instance Marketo. Vous pouvez trouver votre Munchkin ID dans l’interface utilisateur du Marketo Engage sous **Admin** >**Mon compte** > **Informations sur l’assistance**. Le reste du chemin est utilisé pour spécifier la ressource intéressante.
 
 Exemple d’URL pour les personnes :
 
@@ -73,7 +73,7 @@ Exemple d’URL pour les objets personnalisés :
 
 ## Réponses
 
-Toutes les réponses renvoient un identifiant de requête unique via la variable `X-Request-Id` en-tête .
+Toutes les réponses renvoient un identifiant de requête unique via l’en-tête `X-Request-Id`.
 
 Exemple d’identifiant de requête via l’en-tête :
 
@@ -89,7 +89,7 @@ Exemple de réponse de succès :
 
 ### Erreur
 
-Lorsqu’un appel génère une erreur, un état non-202 est renvoyé avec un corps de réponse avec des détails d’erreur supplémentaires. Le corps de la réponse est application/json et contient un seul objet avec des membres. `error_code` et `message`.
+Lorsqu’un appel génère une erreur, un état non-202 est renvoyé avec un corps de réponse avec des détails d’erreur supplémentaires. Le corps de la réponse est application/json et contient un seul objet avec les membres `error_code` et `message`.
 
 Vous trouverez ci-dessous les codes d’erreur réutilisés de la passerelle Adobe Developer.
 
@@ -141,11 +141,11 @@ Point de terminaison utilisé pour insérer des enregistrements de personne.
 
 Corps de requête
 
-| Code  | Type de données | Requis | Valeur | Valeur par défaut |
+| Clé | Type de données | Requis | Valeur | Valeur par défaut |
 |---|---|---|---|---|
 | priorité | Chaîne | Non | Priorité de la requête : normalhigh | normal |
 | partitionName | Chaîne | Non | Nom de la partition de la personne | Par défaut |
-| dedupeFields | Objet | Non | Attributs à dédupliquer. Un ou deux noms d’attribut sont autorisés. Deux attributs sont utilisés dans une opération ET. Par exemple, si les deux `email` et `firstName` sont spécifiées. Elles peuvent toutes deux être utilisées pour rechercher une personne à l’aide de l’opération ET. Les attributs pris en charge sont les suivants :`idemail`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId`, `sfdcLeadOwnerIdCustom` Attributs (type &quot;string&quot; et &quot;integer&quot; uniquement) | E-mail |
+| dedupeFields | Objet | Non | Attributs à dédupliquer. Un ou deux noms d’attribut sont autorisés. Deux attributs sont utilisés dans une opération ET. Par exemple, si `email` et `firstName` sont spécifiés, ils peuvent tous deux être utilisés pour rechercher une personne à l’aide de l’opération ET. Les attributs pris en charge sont :`idemail`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId`, `sfdcLeadOwnerIdCustom` attributs (&quot;string&quot; et &quot;integer&quot; uniquement) | E-mail |
 | personnes | Tableau d’objets | Oui | Liste des paires nom-valeur d’attribut pour la personne | - |
 
 | Autorisation |
@@ -205,14 +205,14 @@ Point de terminaison utilisé pour insérer des enregistrements d’objets perso
 
 En-têtes
 
-| Code  | Valeur |
+| Clé | Valeur |
 |---|---|
 | Content-Type | application/json |
 | X-Mkto-User-Token | {accessToken} |
 
 Corps de la requête
 
-| Code  | Type de données | Requis | Valeur | Valeur par défaut |
+| Clé | Type de données | Requis | Valeur | Valeur par défaut |
 |---|---|---|---|---|
 | priorité | Chaîne | Non | Priorité de la requête : normalhigh | normal |
 | dedupeBy | Chaîne | Non | Attributs à dédupliquer sur:dedupeFieldsmarketoGUID | dedupeFields |
@@ -224,7 +224,7 @@ Corps de la requête
 
 #### Personne non présente
 
-Si un champ de lien vers une Personne est spécifié dans la requête et que cette Personne n’existe pas, plusieurs reprises se produisent. Si cette Personne est ajoutée pendant la fenêtre de reprise (65 minutes), la mise à jour est réussie. Par exemple, si le champ de lien est `email` sur Personne et Personne n’existe pas, des reprises se produisent.
+Si un champ de lien vers une Personne est spécifié dans la requête et que cette Personne n’existe pas, plusieurs reprises se produisent. Si cette Personne est ajoutée pendant la fenêtre de reprise (65 minutes), la mise à jour est réussie. Par exemple, si le champ de lien est `email` sur Personne et que Personne n’existe pas, des reprises se produisent.
 
 #### Exemple d’objets personnalisés
 
@@ -279,10 +279,10 @@ Voici une liste de l’utilisation des barrières de sécurité :
 Voici une liste des différences entre l’API Data Ingestion et d’autres API REST Marketo :
 
 - Il ne s’agit pas d’une interface CRUD complète, elle prend uniquement en charge &quot;upsert&quot;.
-- Pour vous authentifier, vous devez transmettre le jeton d’accès à l’aide de la variable `X-Mkto-User-Token` header
+- Pour vous authentifier, vous devez transmettre le jeton d’accès à l’aide de l’en-tête `X-Mkto-User-Token`.
 - Le nom de domaine de l’URL est `mkto-ingestion-api.adobe.io`
 - Le chemin de l’URL commence par `/subscriptions/_MunchkinId_`
 - Il n’existe aucun paramètre de requête
 - Si l’appel aboutit, un état 202 est renvoyé et le corps de la réponse est vide.
 - Si l’appel échoue, un état non-202 est renvoyé et le corps de la réponse contient `{ "error_code" : "_Error Code_", "message" : "_Message_" }`
-- L’ID de demande est renvoyé par `X-Request-Id` header
+- L’ID de requête est renvoyé via l’en-tête `X-Request-Id`

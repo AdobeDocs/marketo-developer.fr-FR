@@ -1,30 +1,30 @@
 ---
-title: "Campagnes intelligentes"
+title: Campagnes intelligentes
 feature: REST API, Smart Campaigns
-description: '"Smart campaign overview" (Aperçu des campagnes dynamiques)'
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Présentation de la campagne dynamique
+exl-id: 540bdf59-b102-4081-a3d7-225494a19fdd
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '989'
 ht-degree: 1%
 
 ---
 
-
 # Campagnes intelligentes
 
 [Référence du point de terminaison des campagnes dynamiques (ressource)](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns)
 
-[Référence des points de fin de campagne (Leads)](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns)
+[Référence du point de terminaison des campagnes (Leads)](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns)
 
 Marketo propose un ensemble d’API REST pour effectuer des opérations sur des campagnes intelligentes. Ces API suivent le modèle d’interface standard pour les API de ressources fournissant des options de requête, de création, de clonage et de suppression. Vous pouvez également gérer l’exécution de campagnes intelligentes en planifiant des campagnes par lots ou en demandant des campagnes de déclenchement.
 
 ## Requête
 
-La requête de campagnes intelligentes suit les types de requête standard pour les ressources de [par id](#by_id), [par nom](#by_name), et [navigation](#browse).
+La requête de campagnes intelligentes suit les types de requête standard pour les ressources [by id](#by_id), [by name](#by_name) et [browsing](#browse).
 
 ### Par identifiant
 
-La variable [Obtention d’une campagne dynamique par identifiant](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/getSmartCampaignByIdUsingGET) Le point de terminaison prend une seule campagne dynamique `id` comme paramètre de chemin d’accès et renvoie un seul enregistrement de campagne dynamique.
+Le point d’entrée [Get Smart Campaign by ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/getSmartCampaignByIdUsingGET) utilise une seule campagne dynamique `id` comme paramètre de chemin d’accès et renvoie un seul enregistrement de campagne dynamique.
 
 ```
 GET /rest/asset/v1/smartCampaign/{id}.json
@@ -62,11 +62,11 @@ GET /rest/asset/v1/smartCampaign/{id}.json
 }
 ```
 
-Avec ce point de terminaison, il y aura toujours un seul enregistrement à la première position de la variable `result` tableau.
+Avec ce point de terminaison, il y aura toujours un seul enregistrement à la première position du tableau `result`.
 
 ### Par nom
 
-La variable [Obtention d’une campagne dynamique par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/getSmartCampaignByNameUsingGET) Le point de terminaison prend une seule campagne dynamique `name` comme paramètre et renvoie un seul enregistrement de campagne dynamique.
+Le point d’entrée [Obtenir une campagne dynamique par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/getSmartCampaignByNameUsingGET) utilise une seule campagne dynamique `name` comme paramètre et renvoie un seul enregistrement de campagne dynamique.
 
 ```
 GET /rest/asset/v1/smartCampaign/byName.json?name=Test Trigger Campaign
@@ -108,21 +108,21 @@ GET /rest/asset/v1/smartCampaign/byName.json?name=Test Trigger Campaign
 }
 ```
 
-Avec ce point de terminaison, il y aura toujours un seul enregistrement à la première position de la variable `result` tableau.
+Avec ce point de terminaison, il y aura toujours un seul enregistrement à la première position du tableau `result`.
 
 ### Parcourir
 
-La variable [Obtenir des campagnes dynamiques](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/getAllSmartCampaignsGET) Le point de terminaison fonctionne comme d’autres points de terminaison de navigation de l’API Asset et permet à plusieurs paramètres de requête facultatifs de spécifier des critères de filtrage.
+Le point d’entrée [Get Smart Campaigns](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/getAllSmartCampaignsGET) fonctionne comme d’autres points d’entrée de navigation de l’API Asset et permet à plusieurs paramètres de requête facultatifs de spécifier des critères de filtrage.
 
-La variable `earliestUpdatedAt` et `latestUpdatedAt` parameters accept `datetimes` au format ISO-8601 (sans millisecondes). Si les deux sont définis, le paramètre firstUpdatedAt doit précéder le paramètre latestUpdatedAt.
+Les paramètres `earliestUpdatedAt` et `latestUpdatedAt` acceptent `datetimes` au format ISO-8601 (sans millisecondes). Si les deux sont définis, le paramètre firstUpdatedAt doit précéder le paramètre latestUpdatedAt.
 
-La variable `folder` spécifie le dossier parent sous lequel naviguer. Le format est un bloc JSON contenant `id` et `type` attributs.
+Le paramètre `folder` spécifie le dossier parent sous lequel naviguer. Le format est un bloc JSON contenant des attributs `id` et `type`.
 
-La variable `maxReturn` est un entier qui spécifie le nombre maximal d’entrées à renvoyer. La valeur par défaut est 20. 200 au maximum.
+Le paramètre `maxReturn` est un entier qui spécifie le nombre maximal d’entrées à renvoyer. La valeur par défaut est 20. 200 au maximum.
 
-La variable `offset` est un entier qui spécifie où commencer la récupération des entrées. Peut être utilisé conjointement avec `maxReturn`. La valeur par défaut est 0.
+Le paramètre `offset` est un entier qui spécifie où commencer la récupération des entrées. Peut être utilisé conjointement avec `maxReturn`. La valeur par défaut est 0.
 
-La variable `isActive` est une valeur booléenne qui spécifie de renvoyer uniquement les campagnes Trigger actives.
+Le paramètre `isActive` est une valeur booléenne qui spécifie de renvoyer uniquement les campagnes Trigger actives.
 
 ```
 GET /rest/asset/v1/smartCampaigns.json?earliestUpdatedAt=2016-09-10T23:15:00-00:00&latestUpdatedAt=2016-09-10T23:17:00-00:00
@@ -181,13 +181,13 @@ GET /rest/asset/v1/smartCampaigns.json?earliestUpdatedAt=2016-09-10T23:15:00-00:
 }
 ```
 
-Avec ce point de terminaison, un ou plusieurs enregistrements seront présents dans la variable `result` tableau.
+Avec ce point de terminaison, il y aura un ou plusieurs enregistrements dans le tableau `result`.
 
 ## Créer
 
-La variable [Créer une campagne dynamique](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/createSmartCampaignUsingPOST) endpoint est exécuté avec un POST application/x-www-form-urlencoded avec deux paramètres requis. La variable `name` spécifie le nom de la campagne dynamique à créer. La variable `folder` spécifie le dossier parent dans lequel la campagne dynamique est créée. Le format est un bloc JSON contenant `id` et `type` attributs.
+Le point d’entrée [ Create Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/createSmartCampaignUsingPOST) est exécuté avec un POST application/x-www-form-urlencoded avec deux paramètres requis. Le paramètre `name` spécifie le nom de la campagne dynamique à créer. Le paramètre `folder` spécifie le dossier parent dans lequel la campagne dynamique est créée. Le format est un bloc JSON contenant des attributs `id` et `type`.
 
-Vous pouvez éventuellement décrire la campagne dynamique à l’aide de la variable `description` (2 000 caractères maximum).
+Vous pouvez éventuellement décrire la campagne dynamique à l’aide du paramètre `description` (2 000 caractères maximum).
 
 ```
 POST /rest/asset/v1/smartCampaigns.json
@@ -239,7 +239,7 @@ name=Smart Campaign 02&folder={"type": "folder","id": 640}&description=This is a
 
 ## Mise à jour
 
-La variable [Mettre à jour la campagne dynamique](https://developer.adobe.com/marketo-apis/api/asset/) endpoint est exécuté avec un POST encodé application/x-www-form-urlencoded. Une seule campagne dynamique est nécessaire `id` comme paramètre de chemin d’accès. Vous pouvez utiliser la variable `name` pour mettre à jour le nom de la campagne dynamique, ou la variable `description` pour mettre à jour la description de la campagne dynamique.
+Le point d’entrée [ Update Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset/) est exécuté avec un POST application/x-www-form-urlencoded. Une seule campagne dynamique `id` est utilisée comme paramètre de chemin d’accès. Vous pouvez utiliser le paramètre `name` pour mettre à jour le nom de la campagne dynamique ou le paramètre `description` pour mettre à jour la description de la campagne dynamique.
 
 ```
 POST /rest/asset/v1/smartCampaign/{id}.json
@@ -291,9 +291,9 @@ name=Smart Campaign 02 Update&description=This is a smart campaign update test.
 
 ## Cloner
 
-La variable [Clonage d’une campagne dynamique](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) endpoint est exécuté avec un POST application/x-www-form-urlencoded avec trois paramètres requis. Cela demande une `id` qui spécifie la campagne dynamique à cloner, une `name` qui spécifie le nom de la nouvelle campagne dynamique et un `folder` pour spécifier le dossier parent dans lequel la nouvelle campagne dynamique est créée. Le format est un bloc JSON contenant `id` et `type` attributs.
+Le point d’entrée [Clone Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) est exécuté avec un POST application/x-www-form-urlencoded avec trois paramètres requis. Il faut un paramètre `id` qui spécifie la campagne dynamique à cloner, un paramètre `name` qui spécifie le nom de la nouvelle campagne dynamique et un paramètre `folder` pour spécifier le dossier parent dans lequel la nouvelle campagne dynamique est créée. Le format est un bloc JSON contenant des attributs `id` et `type`.
 
-Vous pouvez éventuellement décrire la campagne dynamique à l’aide de la variable `description` (2 000 caractères maximum).
+Vous pouvez éventuellement décrire la campagne dynamique à l’aide du paramètre `description` (2 000 caractères maximum).
 
 ```
 POST /rest/asset/v1/smartCampaign/{id}/clone.json
@@ -345,7 +345,7 @@ name=Test Trigger Campaign Clone&folder={"type": "folder","id": 640}&description
 
 ## Supprimer
 
-La variable [Supprimer la campagne dynamique](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/deleteSmartCampaignUsingPOST) Le point de terminaison prend une seule campagne dynamique `id` comme paramètre de chemin d’accès.
+Le point d’entrée [Supprimer la campagne dynamique](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/deleteSmartCampaignUsingPOST) utilise une seule campagne dynamique `id` comme paramètre de chemin d’accès.
 
 ```
 POST /rest/asset/v1/smartCampaign/{id}/delete.json
@@ -371,15 +371,15 @@ Les campagnes dynamiques par lots démarrent à un moment spécifique et affecte
 
 ## Planning
 
-Utilisez la variable [Planification d’une campagne](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/scheduleCampaignUsingPOST) point de fin pour planifier l’exécution immédiate ou ultérieure d’une campagne par lots. La campagne `id` est un paramètre de chemin obligatoire. Les paramètres facultatifs sont `tokens`, `runAt`, et `cloneToProgram` qui sont transmis dans le corps de la requête sous la forme application/json.
+Utilisez le point d’entrée [Planification de la campagne](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/scheduleCampaignUsingPOST) pour planifier l’exécution d’une campagne par lots immédiatement ou à une date ultérieure. La campagne `id` est un paramètre de chemin d’accès obligatoire. Les paramètres facultatifs sont `tokens`, `runAt` et `cloneToProgram` qui sont transmis dans le corps de la requête sous la forme application/json.
 
-Le paramètre de tableau de jetons est un tableau de Mes jetons qui remplace les jetons de programme existants. Une fois la campagne exécutée, les jetons sont ignorés.  Chaque élément de tableau de jeton contient des paires nom/valeur. Le nom du jeton doit être formaté comme &quot;&quot;{{my.name}}&quot;.
+Le paramètre de tableau de jetons est un tableau de Mes jetons qui remplace les jetons de programme existants. Une fois la campagne exécutée, les jetons sont ignorés.  Chaque élément de tableau de jeton contient des paires nom/valeur. Le nom du jeton doit être formaté en tant que &quot;{{my.name}}&quot;.
 
 Le paramètre runAt datetime spécifie le moment auquel exécuter la campagne. Si elle n’est pas spécifiée, la campagne sera exécutée 5 minutes après l’appel du point de fin. La valeur datetime ne peut pas être supérieure à deux ans.
 
 Les campagnes planifiées via cette API attendent toujours au moins cinq minutes avant de s’exécuter.
 
-La variable `cloneToProgram` Le paramètre string contient le nom d’un programme obtenu.  Lorsque cette option est définie, la campagne, le programme parent et toutes ses ressources sont créés avec le nouveau nom qui en résulte. Le programme parent est cloné et la campagne nouvellement créée sera planifiée. Le programme obtenu est créé sous le parent. Il est possible de ne pas cloner de cette manière les programmes contenant des fragments de code, des notifications push, des messages in-app, des listes statiques, des rapports et des ressources sociales. Lorsqu’il est utilisé, ce point de terminaison est limité à 20 appels par jour. La variable [programme de clonage](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) endpoint est l’alternative recommandée.
+Le paramètre de chaîne `cloneToProgram` contient le nom d’un programme obtenu.  Lorsque cette option est définie, la campagne, le programme parent et toutes ses ressources sont créés avec le nouveau nom qui en résulte. Le programme parent est cloné et la campagne nouvellement créée sera planifiée. Le programme obtenu est créé sous le parent. Il est possible de ne pas cloner de cette manière les programmes contenant des fragments de code, des notifications push, des messages in-app, des listes statiques, des rapports et des ressources sociales. Lorsqu’il est utilisé, ce point de terminaison est limité à 20 appels par jour. Le point d’entrée [clone program](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) est l’alternative recommandée.
 
 ```
 POST /rest/v1/campaigns/{id}/schedule.json
@@ -422,13 +422,13 @@ Le déclenchement de campagnes intelligentes affecte une personne à la fois en 
 
 ### Demande
 
-Utilisez la variable [Demande de campagne](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/triggerCampaignUsingPOST) point d’entrée pour transmettre un ensemble de pistes à une campagne de déclenchement à exécuter dans le flux de la campagne. La campagne doit avoir un déclencheur &quot;Campaign is Requested&quot; (Campaign est demandé) avec comme source &quot;Web Service API&quot; (API de service Web).
+Utilisez le point d’entrée [Demander la campagne](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/triggerCampaignUsingPOST) pour transmettre un ensemble de pistes à une campagne de déclenchement afin de l’exécuter dans le flux de la campagne. La campagne doit avoir un déclencheur &quot;Campaign is Requested&quot; (Campaign est demandé) avec comme source &quot;Web Service API&quot; (API de service Web).
 
-Ce point de terminaison nécessite une campagne `id` comme paramètre de chemin d’accès, et une `leads` paramètre de tableau entier contenant les identifiants de piste . Un maximum de 100 pistes est autorisé par appel.
+Ce point de terminaison nécessite une campagne `id` comme paramètre de chemin d’accès et un paramètre de tableau entier `leads` contenant des ID de piste . Un maximum de 100 pistes est autorisé par appel.
 
-Si vous le souhaitez, la variable `tokens` Le paramètre de tableau peut être utilisé pour remplacer Mon jeton local par le programme parent de la campagne. `tokens` accepte un maximum de 100 jetons. Chaque `tokens` L’élément de tableau contient une paire nom/valeur. Le nom du jeton doit être formaté comme &quot;&quot;{{my.name}}&quot;. Si vous utilisez [Ajout d’un jeton système comme lien dans un courrier électronique](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email) Pour ajouter le jeton système &quot;viewAsWebpageLink&quot;, vous ne pouvez pas le remplacer à l’aide de la méthode `tokens`. Utilisez plutôt [Ajout d’une vue comme lien de page web à un courrier électronique](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email) qui vous permet de remplacer &quot;viewAsWebPageLink&quot; à l’aide de `tokens`.
+Le paramètre de tableau `tokens` peut éventuellement être utilisé pour remplacer Mon jeton local par le programme parent de la campagne. `tokens` accepte un maximum de 100 jetons. Chaque élément de tableau `tokens` contient une paire nom/valeur. Le nom du jeton doit être formaté en tant que &quot;{{my.name}}&quot;. Si vous utilisez l’approche [Ajouter un jeton système en tant que lien dans un email](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email) pour ajouter le jeton système &quot;viewAsWebpageLink&quot;, vous ne pouvez pas le remplacer à l’aide de `tokens`. Au lieu de cela, utilisez l&#39;approche [Ajouter une vue comme lien de page web à un email](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email) qui vous permet de remplacer &quot;viewAsWebPageLink&quot; à l&#39;aide de `tokens`.
 
-La variable `leads` et `tokens` Les paramètres sont transmis dans le corps de la requête sous la forme application/json.
+Les paramètres `leads` et `tokens` sont transmis dans le corps de la requête sous la forme application/json.
 
 ```
 POST /rest/v1/campaigns/{id}/trigger.json
@@ -474,7 +474,7 @@ POST /rest/v1/campaigns/{id}/trigger.json
 
 ### Activer
 
-La variable [Activer la campagne dynamique](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/activateSmartCampaignUsingPOST) est simple. Un `id` le paramètre path est obligatoire. Pour que l’activation réussisse, les conditions suivantes doivent être vraies pour la campagne :
+Le point d’entrée [Activer la campagne dynamique](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/activateSmartCampaignUsingPOST) est simple. Un paramètre de chemin `id` est requis. Pour que l’activation réussisse, les conditions suivantes doivent être vraies pour la campagne :
 
 - Doit être désactivé
 - Posséder au moins un déclencheur et une étape de flux
@@ -499,7 +499,7 @@ POST /rest/asset/v1/smartCampaign/{id}/activate.json
 
 ### Désactiver
 
-La variable [Désactiver la campagne dynamique](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/deactivateSmartCampaignUsingPOST) est simple. Un `id` le paramètre path est obligatoire. Pour que la désactivation réussisse, la campagne doit être activée.
+L’opération [Désactiver la campagne dynamique](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/deactivateSmartCampaignUsingPOST) est simple. Un paramètre de chemin `id` est requis. Pour que la désactivation réussisse, la campagne doit être activée.
 
 ```
 POST /rest/asset/v1/smartCampaign/{id}/deactivate.json

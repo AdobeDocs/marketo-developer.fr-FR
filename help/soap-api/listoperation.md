@@ -1,14 +1,14 @@
 ---
-title: "listOperation"
+title: listOperation
 feature: SOAP
-description: "listOperation appels SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: listOperation SOAP appels
+exl-id: 8332cc22-c5a9-43d6-9e92-8d62265cfab2
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '187'
 ht-degree: 8%
 
 ---
-
 
 # listOperation
 
@@ -27,7 +27,7 @@ Les types d’opération incluent :
 | listOperation | Requis | Type d’opération que vous souhaitez exécuter sur la liste spécifiée. Opérations possibles : `ADDTOLIST`, `ISMEMBEROFLIST`, `REMOVEFROMLIST` |
 | listKey->keyType | Requis | Le type de liste sur lequel vous souhaitez travailler. Valeurs possibles : `MKTOLISTNAME`, `MKTOSALESUSERID`, `SFDCLEADOWNERID` |
 | listKey->keyValue | Requis | Nom de la liste sur laquelle vous souhaitez travailler. |
-| listMemberList->leadKey->keyType | Requis | `keyType` vous permet de spécifier l’identifiant que vous souhaitez référencer à l’avance. Valeurs possibles : `IDNUM` |
+| listMemberList->leadKey->keyType | Requis | `keyType` vous permet de spécifier l’ID par lequel vous souhaitez référencer l’prospect. Valeurs possibles : `IDNUM` |
 | listMemberList->leadKey->keyValue | Requis | `keyValue` est la valeur sur laquelle vous souhaitez gérer la liste. |
 | strict | En option | Le mode strict échoue pour l’ensemble de l’opération si un sous-ensemble de l’appel échoue. Le mode non strict complète tout ce qu’il peut et renvoie des erreurs pour tout ce qui a échoué. |
 

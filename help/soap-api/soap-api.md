@@ -12,17 +12,17 @@ ht-degree: 1%
 
 # API SOAP
 
-L’API SOAP n’est plus en cours de développement. Les appels fonctionnent toujours, mais notre développement est axé sur [REST](https://developer.adobe.com/marketo-apis/) à venir.
+L’API SOAP n’est plus en cours de développement. Les appels fonctionnent toujours, mais notre développement est axé sur la poursuite de [REST](https://developer.adobe.com/marketo-apis/).
 
-L’API Marketo SOAP permet la création, la récupération et la suppression d’entités et de données stockées dans Marketo. Vous pouvez trouver la variable [Marketo-SOAP-SDK](https://github.com/Marketo/SOAP-API-Java-Client) sur GitHub. Il y a également [bibliothèques clientes](https://github.com/Marketo/Community-Supported-Client-Libraries) pour vous faire gagner du temps.
+L’API Marketo SOAP permet la création, la récupération et la suppression d’entités et de données stockées dans Marketo. Vous pouvez trouver le [Marketo-SOAP-SDK](https://github.com/Marketo/SOAP-API-Java-Client) sur GitHub. Il existe également des [bibliothèques clientes](https://github.com/Marketo/Community-Supported-Client-Libraries) pour gagner du temps.
 
 Dernière version de l’API : 3_1
 
 ## SOAP WSDL
 
-Pour récupérer le document WSDL SOAP, procurez-vous votre point de terminaison d’API SOAP auprès de votre **[!UICONTROL Administration]** > **[!UICONTROL Intégration]** > **[!UICONTROL Services web]** .
+Pour récupérer le document WSDL SOAP, obtenez votre point de terminaison de l’API SOAP dans le menu **[!UICONTROL Admin]** > **[!UICONTROL Intégration]** > **[!UICONTROL Services Web]** .
 
-![Point de terminaison SOAP](assets/endpoint-soap.png)
+![SOAP Point d’entrée](assets/endpoint-soap.png)
 
 Votre URL WSDL est :
 
@@ -32,18 +32,18 @@ N’utilisez pas le point de fin défini dans le fichier WSDL. Chaque instance M
 
 ## Limites
 
-- **Quota quotidien :** La plupart des abonnements se voient attribuer 10 000 appels d’API par jour (qui se réinitialise tous les jours à 00h00 du matin de l’après-midi). Vous pouvez augmenter votre quota quotidien par l’intermédiaire de votre gestionnaire de compte.
-- **Limite de taux :** Accès à l’API par instance limité à 100 appels par 20 secondes.
+- **Quota quotidien :** La plupart des abonnements reçoivent 10 000 appels d’API par jour (qui se réinitialise tous les jours à 00h00 heure du Pacifique). Vous pouvez augmenter votre quota quotidien par l’intermédiaire de votre gestionnaire de compte.
+- **Limite de débit :** accès API par instance limité à 100 appels par 20 secondes.
 - **Limite de simultanéité :**  Nombre maximum de dix appels API simultanés.
 
 Nous vous recommandons de ne pas dépasser 300 lots. Les tailles plus volumineuses ne sont pas prises en charge et peuvent entraîner des délais d’expiration et, dans les cas extrêmes, un ralentissement.
 
 ## Paramètres de l’API SOAP dans Marketo
 
-1. Accédez au **[!UICONTROL Administration]** et cliquez sur **[!UICONTROL Services web]**.
+1. Accédez à la section **[!UICONTROL Admin]** et cliquez sur **[!UICONTROL Services web]**.
 
 ![admin-web-services2](assets/admin-web-services2.png)
 
-1. Définissez les [!UICONTROL Clé de chiffrement], cliquez sur **[!UICONTROL Enregistrer les modifications]** et utiliser l’API SOAP [!UICONTROL Point d’entrée], [!UICONTROL Identifiant utilisateur], et [!UICONTROL Clé de chiffrement] pour générer les valeurs correctes [signature d’authentification](authentication-signature.md) pour chaque appel de l’API SOAP.
+1. Définissez une [!UICONTROL clé de chiffrement] appropriée, cliquez sur **[!UICONTROL Enregistrer les modifications]** et utilisez l’API SOAP [!UICONTROL Endpoint], [!UICONTROL ID utilisateur] et les valeurs [!UICONTROL clé de chiffrement] pour générer la [signature d’authentification](authentication-signature.md) correcte pour chaque appel d’API SOAP.
 
 ![admin-web-services3](assets/admin-web-services3.png)

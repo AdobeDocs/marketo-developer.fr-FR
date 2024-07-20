@@ -1,18 +1,18 @@
 ---
 title: Social
-description: "Social"
+description: Social
 feature: Social, Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: 82d2b86f-5efe-4434-b617-d27f76515a79
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '776'
 ht-degree: 4%
 
 ---
 
-
 # Social
 
-[Marketo Social Marketing](https://business.adobe.com/products/marketo/social-marketing.html) permet aux marketeurs d’incorporer des widgets sociaux dans les sites web et les landing pages. Les widgets sociaux comprennent des sondages, des boutons de partage sur les réseaux sociaux, des vidéos, des tirages et des promotions comme des offres de parrainage.
+[Marketo Social Marketing](https://business.adobe.com/products/marketo/social-marketing.html) permet aux marketeurs d’incorporer des widgets sociaux dans des sites web et des landing pages. Les widgets sociaux comprennent des sondages, des boutons de partage sur les réseaux sociaux, des vidéos, des tirages et des promotions comme des offres de parrainage.
 
 ## Exemple de widget de partage intégré
 
@@ -37,7 +37,7 @@ Il existe deux méthodes de base pour personnaliser un widget social :
 
 ## Association d’événements à l’interface utilisateur normale
 
-Il existe deux façons de s’abonner aux événements dans la bibliothèque JavaScript des FC, à l’échelle mondiale, ou pour un seul widget. Les événements sont présentés ci-dessous dans le tableau des événements.
+Il existe deux façons de s’abonner aux événements dans la bibliothèque JavaScript des Forces canadiennes, à l’échelle mondiale ou pour un seul widget. Les événements sont présentés ci-dessous dans le tableau des événements.
 
 ### Inscription à un événement global
 
@@ -92,16 +92,16 @@ Cet exemple montre un élément précédemment masqué avec l’identifiant &quo
 | --- | --- | --- | --- | 
 | share_sent | Se déclenche chaque fois qu’une demande de partage est envoyée au serveur pour traitement. | Tous les widgets pouvant partager | 1.&quot;share_sent&quot; (chaîne)<br>2. Paramètres envoyés (objet) |
 | share_success | Se déclenche lorsque la demande de partage est traitée avec succès. | Tous les widgets pouvant être partagés. | 1.&quot;share_success&quot; (chaîne)<br>2. Partager l’objet de réponse, contenant le message envoyé et l’URL raccourcie (objet) |
-| voter_success | Se déclenche lorsqu’un utilisateur a voté avec succès dans un sondage. | Widgets Sondage, VS, Vote | 1. &quot;vote_success&quot; (chaîne)<br>2. Élément voté pour, dont le titre, la description, l’identifiant d’entité (objet) |
+| voter_success | Se déclenche lorsqu’un utilisateur a voté avec succès dans un sondage. | Widgets Sondage, VS, Vote | 1. &quot;vote_success&quot; (Chaîne)<br>2. Élément voté pour, dont le titre, la description, l’identifiant d’entité (objet) |
 | offer_registered | Se déclenche lorsqu’un utilisateur a réussi à s’inscrire à une offre | Tous les widgets d’offre | 1.&quot;offer_registered&quot; (chaîne)<br>2. Modification des propriétés de l’utilisateur (objet),<br>3. Attributs utilisateur modifiés (objet) |
-| profile_saved | Se déclenche lorsqu’un utilisateur a mis à jour son profil à partir de la capture de profil. | Tous les widgets sans offre pour lesquels la capture de profil est activée | 1.&quot;profile_saved&quot; (chaîne)<br>2. Modification des propriétés utilisateur (objet)<br>3. Attributs utilisateur modifiés (objet) |
+| profile_saved | Se déclenche lorsqu’un utilisateur a mis à jour son profil à partir de la capture de profil. | Tous les widgets sans offre pour lesquels la capture de profil est activée | 1.&quot;profile_saved&quot; (Chaîne)<br>2. Modification des propriétés de l’utilisateur (objet)<br>3. Attributs utilisateur modifiés (objet) |
 | video_loaded | Se déclenche lorsqu’une vidéo incorporée est entièrement chargée et initialisée. | Widget VideoShare | 1. &quot;video_loaded&quot; (chaîne) 2. &quot;.cf_videoshare_wrap&quot; Élément contenant la vidéo (objet jQuery) |
 
 ## Remplacement de l’IU par une IU personnalisée
 
-Pour remplacer l’IU par une IU personnalisée, vous devez d’abord désactiver l’IU normale, en définissant l’option _popupUIOnly_ to _true_. Avec ce jeu d’options, l’interface utilisateur standard ne s’affiche pas au chargement de la page, mais le widget récupère ses données et attend que vous commenciez l’une de ses étapes contextuelles en appelant la fonction _CF.widget.activate_ et fournir des options pour ce qu’elle doit faire.
+Pour remplacer l’IU par une IU personnalisée, vous devez d’abord désactiver l’IU normale, en définissant l’option _popupUIOnly_ sur _true_. Avec cette option définie, l’interface utilisateur standard ne sera pas affichée au chargement de la page. Au lieu de cela, le widget récupère ses données et attend que vous commenciez l’une de ses étapes contextuelles en appelant la fonction _CF.widget.activate_ et en fournissant des options pour ce qu’il doit faire.
 
-Voici un exemple de création d’un bouton personnalisé qui lance le flux d’inscription de l’offre de référence pour un widget d’offre de référence nommé _reference_SignUp_.
+Voici un exemple de création d’un bouton personnalisé qui lance le flux d’inscription de l’offre de référence pour un widget d’offre de référence appelé _refermentez_SignUp_.
 
 ```html
 <button id="myNewSignUpButton">My newSign Up button</button>
@@ -139,9 +139,9 @@ cf_scripts.afterload(function($, CF){
 
 ## Obtention de données de l’interface utilisateur des widgets pour une insertion dans votre interface utilisateur de remplacement
 
-Si vous avez besoin de données sur le widget pour dessiner votre interface utilisateur de remplacement, vous pouvez obtenir les données de l’événement spécial. _ui_data_. Vous pouvez écouter cet événement avec la méthode `CF.widget.listen` , mais cela peut entraîner une condition de concurrence potentielle dans laquelle votre écouteur d’événement est ajouté après que le widget a déjà déclenché l’événement_ui_data_ , de sorte que vous ne recevez jamais de données. Pour éviter cette course, utilisez la variable `CF.widget.uiData_ method instead, which will give you the most recent available _ui_data_, and listen for all future updates as well. The _ui_data` est déclenché chaque fois qu’une action a été entreprise, ce qui aurait entraîné le redessinement de l’interface utilisateur standard du widget, même si vous avez désactivé cette interface utilisateur avec `popupUIOnly` .
+Si vous avez besoin de données sur le widget pour dessiner votre interface utilisateur de remplacement, vous pouvez obtenir les données de l’événement spécial _ui_data_. Vous pouvez écouter cet événement avec la fonction `CF.widget.listen` normale, mais cela peut entraîner une condition de concurrence potentielle dans laquelle votre écouteur d’événement est ajouté après que le widget a déjà déclenché l’événement_ui_data_, de sorte que vous ne recevez jamais de données. Pour éviter cette concurrence, utilisez l’événement `CF.widget.uiData_ method instead, which will give you the most recent available _ui_data_, and listen for all future updates as well. The _ui_data` qui est déclenché chaque fois qu’une action a été entreprise, ce qui aurait entraîné la redéfinition de l’interface utilisateur standard du widget, même si vous avez désactivé cette interface utilisateur avec l’option `popupUIOnly`.
 
-Exemple utilisant `uiData` pour afficher le nombre d’entrées d’un utilisateur pour un tirage avec le nom du widget. _sweeps_Sweepstakes_.
+Exemple qui utilise la fonction `uiData` pour afficher le nombre d’entrées d’un utilisateur pour un tirage avec le nom de widget _sweeps_Sweepstakes_.
 
 ```html
 <span>You have <span id="entryCount">?</span> entries.</span>
@@ -170,7 +170,7 @@ cf_scripts.afterload(function($, CF){
 |---------------|----------------------------------------------------|
 | Date | Valeur de date du formulaire &quot;aaaa-MM-jj&quot;. |
 | Nombre | Nombre entier ou flottant |
-| Texte complet | Chaîne de HTML |
+| Texte complet | Chaîne d’HTML |
 | Évaluation | Entier signé 32 bits |
 | campagne sfdc | Utilisé dans l’intégration de la gestion de campagne Salesforce |
 | Texte | Chaîne de texte |
@@ -181,7 +181,7 @@ cf_scripts.afterload(function($, CF){
 |---------------|----------------------------------------------------|
 | Date | Valeur de date du formulaire &quot;aaaa-MM-jj&quot;. |
 | Nombre | Nombre entier ou flottant |
-| Texte complet | Chaîne de HTML |
+| Texte complet | Chaîne d’HTML |
 | Évaluation | Entier signé 32 bits |
 | campagne sfdc | Utilisé dans l’intégration de la gestion de campagne Salesforce |
 | Texte | Chaîne de texte |
@@ -192,7 +192,7 @@ cf_scripts.afterload(function($, CF){
 |---------------|----------------------------------------------------|
 | Date | Valeur de date du formulaire &quot;aaaa-MM-jj&quot;. |
 | Nombre | Nombre entier ou flottant |
-| Texte complet | Chaîne de HTML |
+| Texte complet | Chaîne d’HTML |
 | Évaluation | Entier signé 32 bits |
 | campagne sfdc | Utilisé dans l’intégration de la gestion de campagne Salesforce |
 | Texte | Chaîne de texte |
@@ -203,7 +203,7 @@ cf_scripts.afterload(function($, CF){
 |---------------|----------------------------------------------------|
 | Date | Valeur de date du formulaire &quot;aaaa-MM-jj&quot;. |
 | Nombre | Nombre entier ou flottant |
-| Texte complet | Chaîne de HTML |
+| Texte complet | Chaîne d’HTML |
 | Évaluation | Entier signé 32 bits |
 | campagne sfdc | Utilisé dans l’intégration de la gestion de campagne Salesforce |
 | Texte | Chaîne de texte |

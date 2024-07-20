@@ -1,14 +1,14 @@
 ---
-title: "mergeLeads"
+title: mergeLeads
 feature: SOAP
-description: "appels SOAP mergeLeads"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: appels de SOAP mergeLeads
+exl-id: a667cb76-525d-4583-b26a-1181d320a68c
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '83'
 ht-degree: 8%
 
 ---
-
 
 # mergeLeads
 
@@ -18,7 +18,7 @@ Accepte la clé d’une piste gagnante et les clés de plusieurs pistes perdante
 
 | Nom de champ | Obligatoire/Facultatif | Description |
 | --- | --- | --- |
-| wonLeadKeyList | Requis | Clé utilisée pour identifier la piste gagnante. Les valeurs possibles sont les suivantes : `IDNUM`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
+| wonLeadKeyList | Requis | Clé utilisée pour identifier la piste gagnante. Les valeurs possibles sont : `IDNUM`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
 | droppedLeadKeyLists | Requis | Liste des clés utilisées pour identifier les pistes perdantes. |
 | mergeInSales | En option | Transmis en tant que valeur booléenne, soit &quot;True&quot;, soit &quot;False&quot; |
 

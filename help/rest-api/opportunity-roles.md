@@ -1,20 +1,20 @@
 ---
-title: "Rôles d’opportunité"
+title: Rôles des opportunités
 feature: REST API
-description: "Gestion des rôles d’opportunité dans Marketo."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Gestion des rôles d’opportunité dans Marketo.
+exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '253'
 ht-degree: 0%
 
 ---
 
-
 # Rôles des opportunités
 
-[Référence du point de terminaison des rôles d’opportunité](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/getOpportunityRolesUsingGET)
+[Référence du point d’entrée des rôles d’opportunité](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/getOpportunityRolesUsingGET)
 
-Les pistes sont liées aux opportunités via l&#39;intermédiaire `opportunityRole` .
+Les pistes sont liées aux opportunités via l’objet intermédiaire `opportunityRole`.
 
 Les API de rôle d’opportunité ne sont exposées que pour les abonnements pour lesquels la synchronisation CRM native n’est pas activée.
 
@@ -106,7 +106,7 @@ GET /rest/v1/opportunities/roles/describe.json
 
 ## Requête
 
-Notez que les deux `dedupeFields` et `searchableFields` sont un peu différents des opportunités. `dedupeFields` fournit une clé composite, où les trois `externalOpportunityId`, `leadId`, et `role` sont obligatoires. Pour que la création d’enregistrement réussisse, le lien d’opportunité et de piste des champs d’identifiant doit exister dans l’instance de destination. Pour `searchableFields`, `marketoGUID`, `leadId`, et `externalOpportunityId` sont tous valides pour les requêtes seules et utilisent un modèle identique à Opportunités, mais il existe une option supplémentaire d’utilisation de la clé composite pour effectuer des requêtes, ce qui nécessite l’envoi d’un objet JSON via POST, avec le paramètre de requête supplémentaire. `_method=GET`.
+Notez que `dedupeFields` et `searchableFields` sont légèrement différents des opportunités. `dedupeFields` fournit en fait une clé composite, où les trois `externalOpportunityId`, `leadId` et `role` sont requis. Pour que la création d’enregistrement réussisse, le lien d’opportunité et de piste des champs d’identifiant doit exister dans l’instance de destination. Pour `searchableFields`, `marketoGUID`, `leadId` et `externalOpportunityId`, toutes sont valides pour les requêtes seules et utilisent un modèle identique à Opportunités, mais il existe une option supplémentaire pour utiliser la clé composite pour effectuer des requêtes, ce qui nécessite l’envoi d’un objet JSON via POST, avec le paramètre de requête supplémentaire `_method=GET`.
 
 ```
 POST /rest/v1/opportunities/roles.json?_method=GET

@@ -1,18 +1,18 @@
 ---
-title: "Comptes nommés"
+title: Comptes nommés
 feature: REST API
-description: "Manipuler les comptes nommés via l’API."
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Manipuler des comptes nommés via l’API.
+exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '679'
-ht-degree: 0%
+ht-degree: 1%
 
 ---
 
-
 # Comptes nommés
 
-[Référence du point de terminaison des comptes nommés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts)
+[Référence du point de terminaison de comptes nommés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts)
 
 Marketo propose un ensemble d’API pour effectuer des opérations CRUD sur des comptes nommés à utiliser avec Marketo ABM. Ces API suivent le modèle d’interface standard des API de base de données de piste, ce qui leur permet de définir, de créer/mettre à jour, de supprimer et d’interroger des options.
 
@@ -20,7 +20,7 @@ Actuellement, les seules fonctions liées à ABM disponibles via les API Marketo
 
 ## Description
 
-La description des comptes nommés renvoie des métadonnées relatives à l’utilisation des comptes nommés par le biais des API Marketo, y compris une liste des champs pouvant faire l’objet de recherches valides lors de l’interrogation et une liste de tous les champs disponibles pour l’utilisation de l’API. La variable `idField` d’un compte nommé est toujours `marketoGUID`, et le seul disponible `dedupeField`, et la clé de création est la suivante : `name` de l’objet.
+La description des comptes nommés renvoie des métadonnées relatives à l’utilisation des comptes nommés par le biais des API Marketo, y compris une liste des champs pouvant faire l’objet de recherches valides lors de l’interrogation et une liste de tous les champs disponibles pour l’utilisation de l’API. La `idField` d&#39;un compte nommé est toujours `marketoGUID` et la seule `dedupeField` disponible et la clé de création est le champ `name` de l&#39;objet.
 
 ```
 GET /rest/v1/namedaccounts/describe.json
@@ -135,7 +135,7 @@ GET /rest/v1/namedaccounts/describe.json
 
 ### Requête
 
-La recherche de comptes nommés est basée sur l’utilisation d’un filterType et d’un ensemble de 300 filterValues séparées par des virgules. `filterType` peut être n’importe quel champ renvoyé dans la variable `searchableFields` membre du résultat de description pour les comptes nommés, tandis que filterValues peut être toute entrée valide pour le type de données du champ. Pour renvoyer un ensemble spécifique de champs de , un paramètre de champ doit être transmis, où la valeur est une liste de champs séparés par des virgules à renvoyer dans la réponse. Comme pour les autres options de requête, le nombre maximal d’enregistrements pour une seule page de requête est de 300, et les enregistrements supplémentaires dans l’ensemble doivent être demandés avec l’utilisation du nextPageToken renvoyé par l’appel .
+La recherche de comptes nommés est basée sur l’utilisation d’un filterType et d’un ensemble de 300 filterValues séparées par des virgules. `filterType` peut être n’importe quel champ renvoyé dans le membre `searchableFields` du résultat de la description pour les comptes nommés, tandis que filterValues peut être n’importe quelle entrée valide pour le type de données du champ. Pour renvoyer un ensemble spécifique de champs de , un paramètre de champ doit être transmis, où la valeur est une liste de champs séparés par des virgules à renvoyer dans la réponse. Comme pour les autres options de requête, le nombre maximal d’enregistrements pour une seule page de requête est de 300, et les enregistrements supplémentaires dans l’ensemble doivent être demandés avec l’utilisation du nextPageToken renvoyé par l’appel .
 
 ```
 GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
@@ -166,7 +166,7 @@ GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
 
 ### Créer et mettre à jour
 
-La création et la mise à jour des comptes nommés suivent le modèle standard de la base de données de piste. Les enregistrements doivent être transmis dans le membre d’entrée d’un corps JSON dans une requête de POST. `input` est le seul membre requis, avec `action` et `dedupeBy` en tant que membres facultatifs. Jusqu’à 300 enregistrements peuvent être inclus dans l’entrée. L’action peut être de createOnly, updateOnly ou createOrUpdate. Si elle n’est pas spécifiée, l’action est définie par défaut sur createOrUpdate. dedupeBy ne peut être spécifié que lorsque l’action est updateOnly et accepte uniquement l’un des dedupeFields ou idField, qui correspondent respectivement aux champs name et marketoGUID .
+La création et la mise à jour des comptes nommés suivent le modèle standard de la base de données de piste. Les enregistrements doivent être transmis dans le membre d’entrée d’un corps JSON dans une requête de POST. `input` est le seul membre requis, `action` et `dedupeBy` étant des membres facultatifs. Jusqu’à 300 enregistrements peuvent être inclus dans l’entrée. L’action peut être de createOnly, updateOnly ou createOrUpdate. Si elle n’est pas spécifiée, l’action est définie par défaut sur createOrUpdate. dedupeBy ne peut être spécifié que lorsque l’action est updateOnly et accepte uniquement l’un des dedupeFields ou idField, qui correspondent respectivement aux champs name et marketoGUID .
 
 ```
 POST /rest/v1/namedaccounts.json
@@ -224,7 +224,7 @@ La requête sur les champs de compte nommés est simple. Vous pouvez interroger 
 
 #### Par nom
 
-La variable [Obtenir le champ du compte nommé par nom](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) endpoint récupère les métadonnées d’un champ unique sur l’objet de compte nommé. Le paramètre de chemin d’accès fieldApiName obligatoire spécifie le nom d’API du champ. La réponse est similaire au point de terminaison Description du compte nommé , mais elle contient des métadonnées supplémentaires telles que l’attribut isCustom qui indique si le champ est un champ personnalisé.
+Le point de terminaison [ Get Named Account Field by Name](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) récupère les métadonnées d’un champ unique sur l’objet de compte nommé. Le paramètre de chemin d’accès fieldApiName obligatoire spécifie le nom d’API du champ. La réponse est similaire au point de terminaison Description du compte nommé , mais elle contient des métadonnées supplémentaires telles que l’attribut isCustom qui indique si le champ est un champ personnalisé.
 
 ```
 GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
@@ -252,7 +252,7 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 #### Parcourir
 
-La variable [Obtention des champs de compte nommés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) endpoint récupère les métadonnées de tous les champs de l’objet de compte nommé. Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête batchSize pour réduire ce nombre. Si l’attribut moreResult est true, cela signifie que d’autres résultats sont disponibles. Continuez à appeler ce point de terminaison jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’il n’y a aucun résultat disponible. Le prochainPageToken renvoyé par cette API doit toujours être réutilisé pour la prochaine itération de cet appel.
+Le point de terminaison [Get Named Account Fields](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) récupère les métadonnées de tous les champs de l’objet de compte nommé. Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête batchSize pour réduire ce nombre. Si l’attribut moreResult est true, cela signifie que d’autres résultats sont disponibles. Continuez à appeler ce point de terminaison jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’il n’y a aucun résultat disponible. Le prochainPageToken renvoyé par cette API doit toujours être réutilisé pour la prochaine itération de cet appel.
 
 ```
 GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5

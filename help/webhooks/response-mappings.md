@@ -1,20 +1,20 @@
 ---
-title: "Mappages des réponses"
+title: Response Mappings
 feature: Webhooks
-description: "Mappages des réponses pour Marketo"
-source-git-commit: bcc0c0c8e8209cf9fb962a85c8e7da354d95a8fe
+description: Mappages des réponses pour Marketo
+exl-id: 95c6e33e-487c-464b-b920-3c67e248d84e
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '461'
-ht-degree: 0%
+ht-degree: 1%
 
 ---
 
-
 # Response Mappings
 
-Marketo peut traduire les données reçues par un webhook à partir de deux types de contenu et renvoyer ces valeurs dans un champ de piste : JSON et XML. Le paramètre de champ Marketo utilisera toujours la variable [Nom de l’API SOAP](../rest-api/fields.md) du champ . Chaque webhook peut comporter un nombre illimité de mappages de réponse, qui sont ajoutés et modifiés en cliquant sur le [!UICONTROL Modifier] dans le volet Correspondances de réponses de votre webhook :
+Marketo peut traduire les données reçues par un webhook à partir de deux types de contenu et renvoyer ces valeurs dans un champ de piste : JSON et XML. Le paramètre de champ Marketo utilisera toujours le [SOAP nom d’API](../rest-api/fields.md) du champ. Chaque webhook peut comporter un nombre illimité de mappages de réponse, qui sont ajoutés et modifiés en cliquant sur le bouton [!UICONTROL Modifier] dans le volet Mappages de réponse de votre webhook :
 
-![Correspondance des réponses](assets/response-mapping.png)
+![Response-Mapping](assets/response-mapping.png)
 
 Les mappages de réponse sont créés via une association d’un &quot;attribut de réponse&quot;, le chemin d’accès à la propriété souhaitée dans le document XML ou JSON et le &quot;champ Marketo&quot;, qui spécifie le champ de piste dont la valeur est écrite à partir de l’attribut de réponse.
 
@@ -28,9 +28,9 @@ Les propriétés JSON sont accessibles avec notation par points et notation par 
 { "foo":"bar"}
 ```
 
-Pour accéder au `foo` dans un mappage de réponse, utilisez la propriété `name` de la propriété, car elle se trouve au premier niveau de l’objet JSON, `foo`. Voici à quoi cela ressemble dans Marketo :
+Pour accéder à la propriété `foo` dans un mappage de réponse, utilisez la propriété `name` puisqu’elle se trouve au premier niveau de l’objet JSON, `foo`. Voici à quoi cela ressemble dans Marketo :
 
-![Mappage des réponses](assets/json-resp.png)
+![Mappage de réponse](assets/json-resp.png)
 
 Voici un exemple plus complexe avec un tableau :
 
@@ -54,7 +54,7 @@ Voici un exemple plus complexe avec un tableau :
 }
 ```
 
-Nous voulons accéder à orderDate à partir du premier élément du tableau des commandes. Pour accéder à cette propriété, utilisez les méthodes suivantes : `orders[0].orderDate`
+Nous voulons accéder à orderDate à partir du premier élément du tableau des commandes. Pour accéder à cette propriété, utilisez les éléments suivants : `orders[0].orderDate`
 
 ## Mappages XML
 
@@ -69,7 +69,7 @@ Les valeurs sont accessibles à partir d’éléments individuels dans des docum
 
 Pour accéder à la propriété foo ici, utilisez ce qui suit : `example.foo`
 
-L’élément d’exemple doit d’abord être référencé avant d’accéder `foo`. Pour accéder à une propriété, tous les éléments de la hiérarchie doivent être référencés dans le mappage. Les documents XML avec des tableaux sont un peu plus complexes. Utilisez l’exemple suivant :
+L’élément d’exemple doit d’abord être référencé avant d’accéder à `foo`. Pour accéder à une propriété, tous les éléments de la hiérarchie doivent être référencés dans le mappage. Les documents XML avec des tableaux sont un peu plus complexes. Utilisez l’exemple suivant :
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -86,8 +86,8 @@ L’élément d’exemple doit d’abord être référencé avant d’accéder `
 </elementList>
 ```
 
-Le document se compose du tableau parent. `elementList`, avec enfants, élément contenant une propriété : `foo`. Pour les mappages de réponse Marketo, le tableau est référencé comme `elementList.element`, de sorte que les enfants de elementList sont accessibles via `elementList.element[i]`. Pour obtenir la valeur de foo à partir du premier enfant d’elementList, nous utilisons cet attribut de réponse : `elementList.element[0].foo` Cela renvoie la valeur &quot;baz&quot; à notre champ désigné. Toute tentative d’accès aux propriétés à l’intérieur d’éléments qui contiennent des noms d’éléments uniques et non uniques entraîne un comportement indéfini. Chaque élément doit être une propriété unique ou un tableau, les types ne peuvent pas être mixtes.
+Le document est constitué du tableau parent `elementList`, avec enfants, élément contenant une propriété : `foo`. Pour les mappages de réponse Marketo, le tableau est référencé comme `elementList.element`, de sorte que les enfants de l’élément elementList sont accessibles via `elementList.element[i]`. Pour obtenir la valeur de foo à partir du premier enfant d’elementList, nous utilisons cet attribut de réponse : `elementList.element[0].foo` Cela renvoie la valeur &quot;baz&quot; à notre champ désigné. Toute tentative d’accès aux propriétés à l’intérieur d’éléments qui contiennent des noms d’éléments uniques et non uniques entraîne un comportement indéfini. Chaque élément doit être une propriété unique ou un tableau, les types ne peuvent pas être mixtes.
 
 ## Types
 
-Lors du mappage des attributs aux champs, vous devez vous assurer que le type de votre réponse webhook est compatible avec le champ cible. Par exemple, si la valeur de la réponse est une chaîne et que le champ sélectionné est de type entier, la valeur n’est pas écrite. En savoir plus [Types de champ](../rest-api/field-types.md).
+Lors du mappage des attributs aux champs, vous devez vous assurer que le type de votre réponse webhook est compatible avec le champ cible. Par exemple, si la valeur de la réponse est une chaîne et que le champ sélectionné est de type entier, la valeur n’est pas écrite. Découvrez [Types de champ](../rest-api/field-types.md).

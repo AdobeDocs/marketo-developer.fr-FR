@@ -1,14 +1,14 @@
 ---
-title: "Erreurs"
+title: Erreurs
 feature: Webhooks
-description: "Codes d’erreur pour les webhooks"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Codes d’erreur pour les webhooks
+exl-id: adce40c3-87b1-4f31-8995-eb64e8a72b55
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '235'
 ht-degree: 2%
 
 ---
-
 
 # Erreurs
 
@@ -25,7 +25,7 @@ Pour que Marketo puisse remapper les valeurs dans un champ, le code de réponse 
 
 ## Correction d’une erreur Webhook
 
-Les erreurs des webhooks peuvent être capturées et traitées par la variable [!UICONTROL Webhook est appelé] trigger :
+Les erreurs des webhooks peuvent être capturées et gérées par le déclencheur [!UICONTROL Webhook est appelé] :
 
 ![Webhook est appelé](assets/webhook-called.png)
 

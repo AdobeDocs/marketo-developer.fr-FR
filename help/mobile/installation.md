@@ -1,14 +1,14 @@
 ---
-title: "Installation"
-feature: "Mobile Marketing"
-description: "Comment installer les SDK pour Mobile Marketo"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+title: Installation
+feature: Mobile Marketing
+description: Comment installer les SDK pour Mobile Marketo
+exl-id: e0b79d85-3509-46d2-a77d-cee211c5ec7f
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '763'
 ht-degree: 0%
 
 ---
-
 
 # Installation
 
@@ -18,8 +18,8 @@ Instructions d’installation du SDK Mobile Marketo. Les étapes ci-dessous sont
 
 ### Conditions préalables
 
-1. [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (Obtenez votre clé secrète et votre ID Munchkin)
-1. [Configuration des notifications push](push-notifications.md) (facultatif)
+1. [Ajoutez une application dans l’administrateur Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez votre clé secrète et votre identifiant Munchkin)
+1. [Configuration de notifications push](push-notifications.md) (facultatif)
 
 ### Installation de la structure via CocoaPods
 
@@ -39,15 +39,15 @@ Instructions d’installation du SDK Mobile Marketo. Les étapes ci-dessous sont
 
 1. Ajoutez le package Marketo à partir de ce référentiel. Ajoutez cette URL pour ce référentiel : https://github.com/Marketo/ios-sdk.
 
-   ![URL du référentiel](assets/dependency-manager-url.png)
+   ![Repo URL](assets/dependency-manager-url.png)
 
-1. Ajoutez maintenant le lot de ressources comme indiqué : Localisez la `MarketoFramework.XCframework` dans le navigateur de projet et ouvrez-le dans le Finder. Glisser-déposer `MKTResources.bundle` pour copier les ressources du lot.
+1. Ajoutez maintenant le lot Ressource comme indiqué : Localisez `MarketoFramework.XCframework` dans le navigateur de projet et ouvrez-le dans le Finder. Effectuez un glisser-déposer de `MKTResources.bundle` pour copier les ressources du lot.
 
 ### Configuration de l’en-tête de liaison Swift
 
 1. Accédez à Fichier > Nouveau > Fichier et sélectionnez &quot;Fichier d’en-tête&quot;.
 
-   ![Sélectionnez &quot;Fichier d’en-tête&quot;.](assets/choose-header-file.png)
+   ![Sélectionner &quot;Fichier d’en-tête&quot;](assets/choose-header-file.png)
 
 1. Nommez le fichier &quot;&lt;_ProjectName_>-Bridging-Header&quot;.
 
@@ -55,7 +55,7 @@ Instructions d’installation du SDK Mobile Marketo. Les étapes ci-dessous sont
 
    `$(PODS_ROOT)/<_ProjectName_>-Bridging-Header.h`
 
-   ![Phases de création](assets/build-phases.png)
+   ![Créer les phases](assets/build-phases.png)
 
 ## Initialisation du SDK
 
@@ -67,13 +67,13 @@ Avant de pouvoir utiliser le SDK Marketo iOS, vous devez l’initialiser avec vo
    #import <MarketoFramework/MarketoFramework.h>
    ```
 
-1. Collez le code suivant dans le `application:didFinishLaunchingWithOptions`: fonction .
+1. Collez le code suivant dans la fonction `application:didFinishLaunchingWithOptions` : .
 
    Notez que nous devons transmettre &quot;native&quot; comme type de structure pour les applications natives.
 
 >[!BEGINTABS]
 
->[!TAB Objectif C]
+>[!TAB Objective C]
 
 ```
 Marketo *sharedInstance = [Marketo sharedInstance];
@@ -91,20 +91,20 @@ sharedInstance.initialize(withMunchkinID: "munchkinAccountId", appSecret: "secre
 
 >[!ENDTABS]
 
-1. Remplacer `munkinAccountId` et `secretKey` ci-dessus à l’aide de votre &quot;ID de compte Munchkin&quot; et de votre &quot;clé secrète&quot; qui se trouvent dans Marketo **[!UICONTROL Administration]** > **[!UICONTROL Applications et périphériques mobiles]** .
+1. Remplacez `munkinAccountId` et `secretKey` ci-dessus à l’aide de votre &quot;ID de compte Munchkin&quot; et de votre &quot;clé secrète&quot;, qui se trouvent dans la section Marketo **[!UICONTROL Admin]** > **[!UICONTROL Applications mobiles et appareils]** .
 
 ## Appareils de test iOS
 
 1. Sélectionnez Projet > Cible > Informations > Types d’URL.
 1. Ajouter un identifiant : ${PRODUCT_NAME}
 1. Définition des schémas d’URL : `mkto-<Secret Key_>`
-1. Inclure l’application:openURL:sourceApplication:annotation: au fichier AppDelegate.m (Objective-C)
+1. Inclure l’application :openURL:sourceApplication:annotation: au fichier AppDelegate.m (Objective-C)
 
 ## Gestion du type d’URL personnalisé dans AppDelegate
 
 >[!BEGINTABS]
 
->[!TAB Objectif C]
+>[!TAB Objective C]
 
 ```
 - (BOOL)application:(UIApplication *)app
@@ -128,13 +128,13 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
 
 >[!ENDTABS]
 
-## Comment installer le SDK Marketo sur Android
+## Installation du SDK Marketo sur Android
 
 ### Conditions préalables
 
-1. [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (Obtenez votre clé secrète et votre ID Munchkin)
-1. [Configuration des notifications push](push-notifications.md#android_setup_push) (facultatif)
-1. [Téléchargement du SDK Marketo pour Android](https://codeload.github.com/Marketo/android-sdk/zip/refs/heads/master)
+1. [Ajoutez une application dans l’administrateur Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez votre clé secrète et votre identifiant Munchkin)
+1. [Configuration de notifications push](push-notifications.md#android_setup_push) (facultatif)
+1. [Télécharger le SDK Marketo pour Android](https://codeload.github.com/Marketo/android-sdk/zip/refs/heads/master)
 
 ### Configuration du SDK Android avec Gradle
 
@@ -142,7 +142,7 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
 
 `implementation 'com.marketo:MarketoSDK:0.8.9'`
 
-1. La racine `build.gradle` Le fichier doit contenir
+1. Le fichier racine `build.gradle` doit avoir la valeur
 
    ```
    buildscript {
@@ -156,7 +156,7 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
 
 ### Configuration des autorisations
 
-Ouvrir `AndroidManifest.xml` et ajoutez les autorisations suivantes. Votre application doit demander les autorisations &quot;INTERNET&quot; et &quot;ACCESS_NETWORK_STATE&quot;. Si votre application demande déjà ces autorisations, ignorez cette étape.
+Ouvrez `AndroidManifest.xml` et ajoutez les autorisations suivantes. Votre application doit demander les autorisations &quot;INTERNET&quot; et &quot;ACCESS_NETWORK_STATE&quot;. Si votre application demande déjà ces autorisations, ignorez cette étape.
 
 ```xml
 <uses‐permission android:name="android.permission.INTERNET"></uses‐permission>
@@ -175,7 +175,7 @@ Ouvrir `AndroidManifest.xml` et ajoutez les autorisations suivantes. Votre appli
 
 1. Configuration de ProGuard (facultatif)
 
-   Si vous utilisez ProGuard pour votre application, ajoutez les lignes suivantes dans votre `proguard.cfg` fichier . Le fichier se trouve dans le dossier de votre projet. L’ajout de ce code exclut le SDK Marketo du processus d’obscurcissement.
+   Si vous utilisez ProGuard pour votre application, ajoutez les lignes suivantes à votre fichier `proguard.cfg`. Le fichier se trouve dans le dossier de votre projet. L’ajout de ce code exclut le SDK Marketo du processus d’obscurcissement.
 
    ```
    -dontwarn com.marketo.*
@@ -185,7 +185,7 @@ Ouvrir `AndroidManifest.xml` et ajoutez les autorisations suivantes. Votre appli
 
 ## Appareils de test Android
 
-Ajoutez &quot;MarketoActivity&quot; à `AndroidManifest.xml` dans la balise de l’application.
+Ajoutez &quot;MarketoActivity&quot; au fichier `AndroidManifest.xml` dans la balise de l’application.
 
 ```xml
 <activity android:name="com.marketo.MarketoActivity"  android:configChanges="orientation|screenSize" >
@@ -202,24 +202,24 @@ Ajoutez &quot;MarketoActivity&quot; à `AndroidManifest.xml` dans la balise de l
 
 Le SDK (Software Development Kit) MME pour Android a été mis à jour vers un framework plus moderne, stable et évolutif qui offre davantage de flexibilité et de nouvelles fonctionnalités d’ingénierie pour votre développeur d’applications Android.
 
-Les développeurs d’applications Android peuvent désormais utiliser directement Google [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) (FCM) avec ce SDK.
+Les développeurs d’applications Android peuvent désormais utiliser directement le service Google [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) (FCM) avec ce SDK.
 
 ### Ajout de FCM à votre application
 
-1. Intégrez le dernier SDK Marketo Android dans l’application Android.  Les étapes sont disponibles dans [GitHub](https://github.com/Marketo/android-sdk).
+1. Intégrer le dernier SDK Marketo Android dans l’application Android.  Les étapes sont disponibles à l’adresse [GitHub](https://github.com/Marketo/android-sdk).
 1. Configurez l’application Firebase sur la console Firebase.
-   1. Création/ajout d’un projet sur [](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/)Console Firebase.
-      1. Dans le [Console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/), sélectionnez `Add Project`.
-      1. Sélectionnez votre projet GCM dans la liste des projets cloud Google existants, puis sélectionnez `Add Firebase`.
-      1. Dans l’écran de bienvenue de Firebase, sélectionnez `Add Firebase to your Android App`.
-      1. Indiquez le nom de votre package et SHA-1, puis sélectionnez `Add App`. Une nouvelle `google-services.json` pour votre application Firebase est téléchargé.
-      1. Sélectionner `Continue` et suivez les instructions détaillées pour ajouter le module externe Google Services dans Android Studio.
+   1. Créez/ajoutez un projet sur [](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/)la console Firebase.
+      1. Dans la [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/), sélectionnez `Add Project`.
+      1. Sélectionnez votre projet GCM dans la liste des projets cloud Google existants, puis sélectionnez `Add Firebase`.
+      1. Dans l&#39;écran de bienvenue de Firebase, sélectionnez `Add Firebase to your Android App`.
+      1. Indiquez le nom de votre package et SHA-1, puis sélectionnez `Add App`. Un nouveau fichier `google-services.json` pour votre application Firebase est téléchargé.
+      1. Sélectionnez `Continue` et suivez les instructions détaillées pour ajouter le module externe Google Services dans Android Studio.
 
    1. Accédez à Paramètres du projet dans Aperçu du projet
       1. Cliquez sur l’onglet &quot;Général&quot;. Téléchargez le fichier &#39;google-services.json&#39;.
       1. Cliquez sur l’onglet &quot;Cloud Messaging&quot;. Copiez &quot;Server Key&quot; et &quot;Sender ID&quot;. Fournissez ces &quot;Clé serveur&quot; et &quot;Identifiant expéditeur&quot; à Marketo.
    1. Configuration des modifications FCM dans l’application Android
-      1. Passez en vue Projet dans Android Studio pour afficher le répertoire racine de votre projet.
+      1. Passez en vue Projet dans Android Studio pour afficher le répertoire racine du projet.
          1. Déplacez le fichier &quot;google-services.json&quot; téléchargé dans le répertoire racine du module d’application Android.
          1. Dans le fichier build.gradle au niveau du projet, ajoutez les éléments suivants :
 

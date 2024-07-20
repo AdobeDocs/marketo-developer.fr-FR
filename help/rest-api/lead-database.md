@@ -1,14 +1,14 @@
 ---
-title: "Base de données de piste"
+title: Base de données des leads
 feature: REST API, Database
-description: "Manipuler la base de données principale de piste."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Manipuler la base de données principale de piste.
+exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1345'
-ht-degree: 0%
+ht-degree: 1%
 
 ---
-
 
 # Base de données des leads
 
@@ -32,7 +32,7 @@ La plupart de ces objets incluent au moins les méthodes Create, Read, Update et
 
 ## API
 
-Pour obtenir la liste complète des points de terminaison de l’API de base de données de piste, y compris les paramètres et les informations de modélisation, voir la section [Référence du point de terminaison de l’API Lead Database](https://developer.adobe.com/marketo-apis/api/mapi/).
+Pour obtenir la liste complète des points de terminaison de l’API de base de données de piste, y compris les paramètres, et les informations de modélisation, consultez la [Référence du point de terminaison de l’API de base de données de piste](https://developer.adobe.com/marketo-apis/api/mapi/).
 
 Pour les instances avec une intégration CRM native activée (Microsoft Dynamics ou Salesforce.com), les API Société, Opportunité, Rôle d’opportunité et Personne commerciale sont désactivées. Les enregistrements sont gérés par le CRM lorsqu&#39;ils sont activés et ne peuvent pas être consultés ni mis à jour via les API Marketo.
 
@@ -44,7 +44,7 @@ Pour les instances avec une intégration CRM native activée (Microsoft Dynamics
 
 ## Description
 
-Pour les pistes, les entreprises, les opportunités, les rôles, les personnes de vente et les objets personnalisés, une API de description est fournie. L’appel de cette méthode récupère les métadonnées de l’objet, ainsi qu’une liste des champs disponibles pour la mise à jour et l’interrogation. La description est un élément essentiel de la conception d’une intégration correcte avec Marketo. Il fournit des métadonnées enrichies sur la manière dont les objets peuvent et ne peuvent pas être interactifs, ainsi que sur la manière dont ils peuvent être créés, mis à jour et interrogés. Outre l’option Description des pistes, chacune de ces méthodes renvoie une liste des clés disponibles pour `deduplication` dans le `dedupeFields` paramètre de réponse. Une liste de champs est disponible en tant que clés pour l’interrogation dans la variable `searchableFields` paramètre de réponse.
+Pour les pistes, les entreprises, les opportunités, les rôles, les personnes de vente et les objets personnalisés, une API de description est fournie. L’appel de cette méthode récupère les métadonnées de l’objet, ainsi qu’une liste des champs disponibles pour la mise à jour et l’interrogation. La description est un élément essentiel de la conception d’une intégration correcte avec Marketo. Il fournit des métadonnées enrichies sur la manière dont les objets peuvent et ne peuvent pas être interactifs, ainsi que sur la manière dont ils peuvent être créés, mis à jour et interrogés. Outre les pistes descriptives, chacune de ces méthodes renvoie une liste de clés disponibles pour `deduplication` dans le paramètre de réponse `dedupeFields`. Une liste de champs est disponible en tant que clés pour l’interrogation du paramètre de réponse `searchableFields`.
 
 ```
 GET /rest/v1/opportunities/roles/describe.json
@@ -128,9 +128,9 @@ GET /rest/v1/opportunities/roles/describe.json
 }
 ```
 
-Dans cet exemple, `dedupeFields` est en fait une clé composite. Cela signifie que lors des futures mises à jour et des futures créations, lors de l’utilisation de la variable `dedupeFields` , vous devez inclure les trois `externalOpportunityId`, `leadId`, et `role` pour chaque rôle. La variable `searchableFields` fournit également la liste des champs disponibles pour interroger les enregistrements de rôle. Cela inclut également la clé composite de `externalOpportunityId`, `leadId`, et `role`.
+Dans cet exemple, `dedupeFields` est en fait une clé composite. Cela signifie que lors des futures mises à jour et création, lorsque vous utiliserez le mode `dedupeFields`, vous devrez inclure les trois de `externalOpportunityId`, `leadId` et `role` pour chaque rôle. Le tableau `searchableFields` fournit également la liste des champs disponibles pour interroger les enregistrements de rôle. Cela inclut également la clé composite `externalOpportunityId`, `leadId` et `role`.
 
-Il existe également un paramètre de réponse de champ qui fournira le nom de chaque champ, la variable `displayName` comme il apparaît dans l’interface utilisateur de Marketo, le type de données du champ, s’il peut être mis à jour après sa création, ainsi que la longueur du champ, le cas échéant.
+Il existe également un paramètre de réponse de champ qui fournira le nom de chaque champ, le `displayName` tel qu’il apparaît dans l’interface utilisateur de Marketo, le type de données du champ, s’il peut être mis à jour après sa création et la longueur du champ, le cas échéant.
 
 ## Requête
 
@@ -142,8 +142,8 @@ GET /rest/v1/{type}.json?filterType={field to query}&filterValues={comma-separat
 
 Pour tous les objets, à l’exception des pistes, vous pouvez sélectionner votre {champ à interroger} dans la propriété searchableFields de l’appel de description correspondant, puis composer une liste de valeurs séparées par des virgules allant jusqu’à 300. Il existe également ces paramètres de requête facultatifs :
 
-- `batchSize` : nombre entier du nombre de résultats à renvoyer. La valeur par défaut et la valeur maximale sont 300.
-- `nextPageToken` - Jeton renvoyé par un précédent appel de pagination. Voir [Jetons de pagination](paging-tokens.md) pour plus de détails.
+- `batchSize` - Nombre entier du nombre de résultats à renvoyer. La valeur par défaut et la valeur maximale sont 300.
+- `nextPageToken` - Jeton renvoyé par un précédent appel de pagination. Pour plus d’informations, voir [Jetons de pagination](paging-tokens.md) .
 - `fields` - Liste de noms de champ séparés par des virgules à renvoyer pour chaque enregistrement. Voir la description correspondante pour une liste de champs valides. Si un champ particulier est demandé, mais n’est pas renvoyé, la valeur est implicitement nulle.
 - `_method` - Utilisé pour envoyer des requêtes à l’aide de la méthode HTTP du POST. Voir la section _method=GET ci-dessous pour en savoir plus sur l’utilisation.
 
@@ -180,13 +180,13 @@ GET /rest/v1/opportunities.json?filterType=idField&filterValues=dff23271-f996-47
 }
 ```
 
-La variable `filterType` spécifié dans cet appel est &quot;idField&quot; et non &quot;marketoGUID&quot;. Ce et &quot;dedupeFields&quot; sont deux cas spéciaux, où le champ correspondant à idField ou dedupeFields peut être alias de cette manière. &quot;marketoGUID&quot; est toujours le champ de recherche qui en résulte dans l’appel, mais il n’est pas défini explicitement dans l’appel . Les champs et/ou les ensembles de champs indiqués par la variable `idField` et `dedupeFields` d’une description d’objet sera toujours valide. `filterTypes` pour une requête. Cet appel recherche des enregistrements correspondant aux GUID inclus dans filterValues et renvoie les enregistrements correspondants. Si aucun enregistrement n’est trouvé utilisant cette méthode, la réponse indique toujours la réussite. Toutefois, le tableau de résultat sera vide, car la recherche a été exécutée avec succès, mais aucun enregistrement n’a été renvoyé.
+`filterType` spécifié dans cet appel est &quot;idField&quot; et non &quot;marketoGUID&quot;. Ce et &quot;dedupeFields&quot; sont deux cas spéciaux, où le champ correspondant à idField ou dedupeFields peut être alias de cette manière. &quot;marketoGUID&quot; est toujours le champ de recherche qui en résulte dans l’appel, mais il n’est pas défini explicitement dans l’appel . Les champs et/ou les ensembles de champs indiqués par les `idField` et `dedupeFields` d’une description d’objet seront toujours valides `filterTypes` pour une requête. Cet appel recherche des enregistrements correspondant aux GUID inclus dans filterValues et renvoie les enregistrements correspondants. Si aucun enregistrement n’est trouvé utilisant cette méthode, la réponse indique toujours la réussite. Toutefois, le tableau de résultat sera vide, car la recherche a été exécutée avec succès, mais aucun enregistrement n’a été renvoyé.
 
-Si l’ensemble d’enregistrements de la requête dépasse 300 ou la valeur `batchSize` qui a été spécifié, selon le plus petit, alors la réponse comporte un membre `moreResult` avec la valeur true et une valeur `nextPageToken`, qui peut être inclus dans un appel ultérieur pour récupérer plus de la visionneuse. Voir [Jetons de pagination](paging-tokens.md) pour plus d’informations.
+Si l’ensemble d’enregistrements de la requête dépasse 300 ou le `batchSize` spécifié, selon le plus petit, alors la réponse comporte un membre `moreResult` avec la valeur true et un `nextPageToken`, qui peut être inclus dans un appel ultérieur pour récupérer davantage de l’ensemble. Pour plus d’informations, voir [Jetons de pagination](paging-tokens.md) .
 
 ### URI longs
 
-Parfois, par exemple, lors de l’interrogation par des GUID, votre URI peut être long et dépasser les 8 Ko autorisés par le service REST. Dans ce cas, vous devez utiliser la méthode de POST HTTP au lieu de GET et ajouter un paramètre de requête . `_method=GET`. En outre, le reste des paramètres de requête doit être transmis dans le corps du POST sous la forme d’une chaîne &quot;application/x-www-form-urlencoded&quot; et transmettre l’en-tête de type Contenu associé.
+Parfois, par exemple, lors de l’interrogation par des GUID, votre URI peut être long et dépasser les 8 Ko autorisés par le service REST. Dans ce cas, vous devez utiliser la méthode de POST HTTP au lieu de GET, et ajouter un paramètre de requête `_method=GET`. En outre, le reste des paramètres de requête doit être transmis dans le corps du POST sous la forme d’une chaîne &quot;application/x-www-form-urlencoded&quot; et transmettre l’en-tête de type Contenu associé.
 
 ```
 POST /rest/v1/opportunities.json?_method=GET
@@ -204,7 +204,7 @@ Outre les URI longs, ce paramètre est également requis lors de l’interrogati
 
 ### Clés composées
 
-Le modèle d’interrogation des clés composites diffère des clés simples, car il nécessite l’envoi d’un POST avec un corps JSON. Cela n’est pas nécessaire dans tous les cas, uniquement dans les cas où une `dedupeFields` l’option avec plusieurs champs est utilisée comme `filterType`. Actuellement, les clés composites ne sont utilisées que par les rôles d’opportunité et certains objets personnalisés. Examinons un exemple de requête pour les rôles d’opportunité avec la clé composite de `dedupeFields`:
+Le modèle d’interrogation des clés composites diffère des clés simples, car il nécessite l’envoi d’un POST avec un corps JSON. Cela n’est pas nécessaire dans tous les cas, uniquement dans les cas où une option `dedupeFields` avec plusieurs champs est utilisée comme `filterType`. Actuellement, les clés composites ne sont utilisées que par les rôles d’opportunité et certains objets personnalisés. Examinons un exemple de requête pour les rôles d’opportunité avec la clé composite de `dedupeFields` :
 
 ```
 POST /rest/v1/opportunities/roles.json?_method=GET
@@ -239,15 +239,15 @@ POST /rest/v1/opportunities/roles.json?_method=GET
 }
 ```
 
-La structure de l’objet JSON est principalement plate, et tous les paramètres de requête des requêtes avec des clés simples sont des membres valides, à l’exception de `filterValues`. Au lieu d’une valeur de filtre, il existe un tableau &quot;input&quot; d’objets JSON, dont chacun doit avoir un membre pour chacun des champs de votre clé composite ; dans ce cas, il s’agit de `externalOpportunityId`, `leadId`, et `role`. Cette opération exécute une requête pour `roles`, par rapport aux entrées fournies et renvoient les résultats correspondants. Si la réponse renvoie un paramètre avec `moreResult=true`, et a `nextPageToken`, vous devez inclure toutes les entrées d’origine et la variable `nextPageToken` pour que la requête s’exécute correctement.
+La structure de l’objet JSON est principalement plate, et tous les paramètres de requête des requêtes avec des clés simples sont des membres valides, à l’exception de `filterValues`. À la place d’une valeur de filtre, il existe un tableau &quot;input&quot; d’objets JSON, dont chacun doit avoir un membre pour chacun des champs de votre clé composite ; dans ce cas, ils sont `externalOpportunityId`, `leadId` et `role`. Cette opération exécute une requête pour `roles`, en fonction des entrées fournies et renvoie les résultats correspondants. Si la réponse renvoie un paramètre avec `moreResult=true` et un `nextPageToken`, vous devez inclure toutes les entrées d’origine et le `nextPageToken` pour que la requête s’exécute correctement.
 
 ## Créer et mettre à jour
 
 Les créations et mises à jour des enregistrements de base de données de piste sont toutes effectuées par le biais de POST avec des corps JSON. L’interface pour les opportunités, les rôles, les objets personnalisés, les entreprises et les personnes chargées de la vente sont identiques. L&#39;interface du prospect est un peu différente, et vous pouvez en lire plus à ce sujet en particulier.
 
-Le seul paramètre requis est un tableau appelé `input` contenant jusqu’à 300 objets, chacun avec les champs que vous souhaitez insérer/mettre à jour en tant que membres. Vous pouvez également inclure une `action` qui peut être l’un des paramètres suivants : `createOnly`, `updateOnly`, ou `createOrUpdate`. Si l’action est omise, le mode par défaut est `createOrUpdate`. `dedupeBy` est un autre paramètre facultatif qui peut être utilisé lorsque l’action est définie sur createOnly ou `createOrUpdate`. ` dedupeBy` peut être `idField`, ou `dedupeFields`. If `idField` est sélectionné, puis la fonction `idField` répertorié dans la description est utilisé pour le dédoublonnage et doit être inclus dans chaque enregistrement. `idField` Le mode n’est pas compatible avec `createOnly` mode . If `dedupeFields` sont sélectionnés , puis la fonction `dedupeFields` répertoriés dans la description de l’objet utilisée et chacun d’eux doit être inclus dans chaque enregistrement. Si la variable `dedupeBy` est omis, le mode est défini par défaut sur `dedupeFields`.
+Le seul paramètre requis est un tableau appelé `input` contenant jusqu’à 300 objets, chacun avec les champs que vous souhaitez insérer/mettre à jour en tant que membres. Vous pouvez également éventuellement inclure un paramètre `action` qui peut être l’un des paramètres suivants : `createOnly`, `updateOnly` ou `createOrUpdate`. Si l’action est omise, le mode par défaut est `createOrUpdate`. `dedupeBy` est un autre paramètre facultatif qui peut être utilisé lorsque l’action est définie sur createOnly ou `createOrUpdate`. ` dedupeBy` peut être `idField` ou `dedupeFields`. Si `idField` est sélectionné, le `idField` répertorié dans la description est utilisé pour le dédoublonnage et doit être inclus dans chaque enregistrement. Le mode `idField` n’est pas compatible avec le mode `createOnly`. Si `dedupeFields` est sélectionné, alors le `dedupeFields` répertorié dans la description de l’objet utilisé et chacun d’eux doit être inclus dans chaque enregistrement. Si le paramètre `dedupeBy` est omis, le mode est `dedupeFields` par défaut.
 
-Lorsque vous transmettez une liste de valeurs de champ, une valeur de `null`, ou une chaîne vide, est écrite dans la base en tant que `null`.
+Lors de la transmission d’une liste de valeurs de champ, une valeur `null`, ou une chaîne vide, est écrite dans la base de données sous la forme `null`.
 
 ```
 POST /rest/v1/opportunities.json
@@ -295,11 +295,11 @@ POST /rest/v1/opportunities.json
 }
 ```
 
-Outre l’API Leads, les appels pour créer ou mettre à jour des objets de base de données de piste renvoient un `seq` dans chaque objet de la variable `result` tableau. Le numéro répertorié correspond à l’ordre de l’enregistrement mis à jour dans la requête effectuée. Chaque élément renvoie la valeur de la variable `idField` pour le type d’objet et une `status`. Le champ d’état indique l’un des éléments &quot;créé&quot;, &quot;mis à jour&quot; ou &quot;ignoré&quot;.  Si l’état est ignoré, un tableau &quot;raisons&quot; correspondant s’affiche avec un ou plusieurs objets de raison comprenant un code et un message, indiquant pourquoi un enregistrement a été ignoré. Voir [codes d’erreur](error-codes.md) pour plus d’informations.
+Outre l’API de pistes, les appels pour créer ou mettre à jour des objets de base de données de pistes renvoient un champ `seq` dans chaque objet du tableau `result`. Le numéro répertorié correspond à l’ordre de l’enregistrement mis à jour dans la requête effectuée. Chaque élément renvoie la valeur de `idField` pour le type d’objet et un `status`. Le champ d’état indique l’un des éléments &quot;créé&quot;, &quot;mis à jour&quot; ou &quot;ignoré&quot;.  Si l’état est ignoré, un tableau &quot;raisons&quot; correspondant s’affiche avec un ou plusieurs objets de raison comprenant un code et un message, indiquant pourquoi un enregistrement a été ignoré. Voir [codes d’erreur](error-codes.md) pour plus de détails.
 
 ### Supprimer
 
-L’interface de suppression est standard pour les objets de la base de données de piste autres que les pistes. Outre l’entrée, il n’existe qu’un seul paramètre requis. `deleteBy,` qui peut avoir une valeur idField ou dedupeFields. Examinons la suppression de certains objets personnalisés.
+L’interface de suppression est standard pour les objets de la base de données de piste autres que les pistes. Outre l’entrée, il n’existe qu’un seul paramètre requis `deleteBy,` qui peut avoir une valeur idField ou dedupeFields. Examinons la suppression de certains objets personnalisés.
 
 ```
 POST /rest/v1/customobjects/{name}/delete.json
@@ -351,6 +351,6 @@ POST /rest/v1/customobjects/{name}/delete.json
 }
 ```
 
-La variable `seq`, `status`, `marketoGUID`, et `reasons` devrait tous vous être familiers, à l&#39;heure qu&#39;il est.
+Les `seq`, `status`, `marketoGUID` et `reasons` doivent vous être familiers à l&#39;heure actuelle.
 
 Pour plus d’informations sur l’utilisation des opérations CRUD pour chaque type d’objet, consultez leurs pages respectives.

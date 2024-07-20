@@ -1,14 +1,14 @@
 ---
-title: "Position de la diffusion"
+title: Position de la diffusion
 feature: SOAP
-description: "Vue d’ensemble de la position de la vapeur"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Présentation de la position de vapeur
+exl-id: c3a3fc1e-086b-4822-b2c7-2a7959db557c
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '138'
 ht-degree: 0%
 
 ---
-
 
 # Position de la diffusion
 

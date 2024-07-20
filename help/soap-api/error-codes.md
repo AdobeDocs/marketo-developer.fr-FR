@@ -1,20 +1,20 @@
 ---
-title: "Codes d’erreur"
+title: Codes d’erreur
 feature: SOAP
-description: "Codes d’erreur pour les appels SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Codes d’erreur pour les appels SOAP
+exl-id: 71796520-7bd6-4a37-94e7-b073d17df06f
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '390'
 ht-degree: 11%
 
 ---
 
-
 # Codes d’erreur
 
 Lors du développement pour Marketo, il est très important que les requêtes et les réponses soient consignées lorsqu’une exception inattendue est rencontrée.  Bien que certains types d’exceptions, telles que l’authentification expirée, puissent être gérés en toute sécurité par la réauthentification, d’autres peuvent nécessiter des interactions de prise en charge, et les demandes et réponses seront toujours demandées dans ce scénario.
 
-Vous trouverez ci-dessous une liste des codes d’erreur de l’API SOAP.
+Vous trouverez ci-dessous une liste des codes d’erreur de SOAP API.
 
 | Code | Message | Notes |
 |--- |--- |--- |

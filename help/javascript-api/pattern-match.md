@@ -1,20 +1,20 @@
 ---
-title: "Correspondance de motif"
-description: "Correspondance de motif"
+title: Correspondance de motif
+description: Correspondance de motif
 feature: Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: 4ebd13e3-375b-449b-850f-3b18f570ca75
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '134'
 ht-degree: 6%
 
 ---
 
-
 # Correspondance de motif
 
 RTP expose une fonction d’utilitaire pour vérifier si le modèle correspond à certaines chaînes. L’utilitaire ne peut pas être utilisé en mode asynchrone, car il renvoie une indication s’il existe une correspondance ou non.
 
-Vous devez devenir un client de personnalisation Web et disposer de la variable [Balise RTP déployée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+Vous devez devenir client Web Personalization et faire déployer la balise [RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 
 ## Utilisation
 

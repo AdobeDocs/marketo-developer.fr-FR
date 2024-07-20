@@ -1,42 +1,42 @@
 ---
-title: "getMultipleLeads"
+title: getMultipleLeads
 feature: SOAP
-description: "appels SOAP getMultipleLeads"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: appels de SOAP getMultipleLeads
+exl-id: db9aabec-8705-40c6-b264-740fdcef8a52
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '384'
 ht-degree: 3%
 
 ---
 
-
 # getMultipleLeads
 
-Comme `getLead`, `getMultipleLeads` récupère les enregistrements de piste à partir de Marketo. Au lieu des données d’une seule piste, cet appel renvoie les données d’un lot de pistes qui correspondent aux critères transmis dans le paramètre leadSelector . Les critères peuvent être une période, telle que la date de la dernière mise à jour ; un tableau de clés de piste ; ou une liste statique.
+Comme `getLead`, `getMultipleLeads` récupère les enregistrements de piste de Marketo. Au lieu des données d’une seule piste, cet appel renvoie les données d’un lot de pistes qui correspondent aux critères transmis dans le paramètre leadSelector . Les critères peuvent être une période, telle que la date de la dernière mise à jour ; un tableau de clés de piste ; ou une liste statique.
 
 Remarque : Si vous utilisez un tableau de clés de piste, vous êtes limité à 100 par lot ; les clés supplémentaires seront ignorées.
 
-Si seul un sous-ensemble des champs de piste est requis, la variable `includeAttributes` doit être utilisé pour spécifier les champs souhaités.
+Si seul un sous-ensemble des champs de piste est requis, le paramètre `includeAttributes` doit être utilisé pour spécifier les champs souhaités.
 
-Chaque `getMultipleLeads` l’appel de fonction renvoie jusqu’à 1 000 pistes. Si vous devez récupérer plus de 1 000 pistes, le résultat retournera une [position du flux](stream-position.md), qui peut être utilisé dans les appels suivants pour récupérer le lot suivant de 1 000 pistes. Le nombre restant dans le résultat indique exactement combien de pistes il reste. Lors de la récupération à partir d’une liste statique, la condition d’arrêt est restesCount == 0.
+Chaque appel de fonction `getMultipleLeads` renvoie jusqu’à 1 000 pistes. Si vous devez récupérer plus de 1 000 pistes, le résultat renvoie une [position de flux](stream-position.md), qui peut être utilisée dans les appels suivants pour récupérer le lot suivant de 1 000 pistes. Le nombre restant dans le résultat indique exactement combien de pistes il reste. Lors de la récupération à partir d’une liste statique, la condition d’arrêt est restesCount == 0.
 
-Un cas d’utilisation courant de ce point de terminaison est de trouver des pistes qui ont été mises à jour à des dates spécifiques. La variable `LastUpdateAtSelector` vous permet de le faire.
+Un cas d’utilisation courant de ce point de terminaison est de trouver des pistes qui ont été mises à jour à des dates spécifiques. Le `LastUpdateAtSelector` vous permet de le faire.
 
 ## Demande
 
 | Nom de champ | Obligatoire/Facultatif | Description |
 | --- | --- | --- |
-| leadSelector | Requis | Il peut s’agir de l’un des trois types suivants :`LeadKeySelector`, `StaticListSelector`,`LastUpdateAtSelector` |
+| leadSelector | Requis | Peut être l’un des trois types suivants :`LeadKeySelector`, `StaticListSelector`,`LastUpdateAtSelector` |
 | keyType | Requis | Type d’identifiant que vous souhaitez interroger. Les valeurs comprennent IDNUM, COOKIE, EMAIL, LEADOWNEREMAIL, SFDCACCOUNTID, SFDCCONTACTID, SFDCLEADID, SFDCLEADOWNERID, SFDCOPPTYID. |
 | keyValues->stringItem | Requis | Liste des valeurs clés. C’est-à-dire &quot;lead@email.com&quot; |
 | LastUpdateAtSelector : leadSelector->oldUpdatedAt | Requis | Horodatage permettant de spécifier le critère &quot;depuis&quot;. En d’autres termes, renvoyer toutes les pistes mises à jour depuis l’heure spécifiée. (Format de date et d’heure WSDL W3C) |
 | LastUpdateAtSelector : leadSelector->latestUpdatedAt | En option | Horodatage permettant de spécifier le critère &quot;jusqu’à&quot;. En d’autres termes, renvoyer toutes les pistes mises à jour jusqu’à l’heure spécifiée. (Format de date et d’heure WSDL W3C) |
 | StaticListSelector: leadSelector->staticListName | Facultatif lorsque `leadSelector->staticListId` est présent | Nom de la liste statique |
 | StaticListSelector: leadSelector->staticListId | Facultatif lorsque `leadSelector->staticListName` est présent | L’identifiant de la liste statique |
-| lastUpdatedAt | **Obsolète** | Utilisation `LastUpdateAtSelector` au lieu |
+| lastUpdatedAt | **Obsolète** | Utilisez `LastUpdateAtSelector` à la place. |
 | includeAttributes | En option | Liste des attributs que vous souhaitez récupérer. La limitation des champs de piste renvoyés peut améliorer le temps de réponse de l’API. |
-| batchSize | En option | Nombre maximum d&#39;enregistrements à renvoyer. Limites du système à 100 ou `batchSize`, selon le moins élevé |
-| streamPosition | En option | Utilisé pour paginer les réponses de piste en grand nombre. La variable `streamPosition` est renvoyée par le champ de réponse d’appels précédent. `newStreamPosition` |
+| batchSize | En option | Nombre maximum d&#39;enregistrements à renvoyer. Limites système à 100 ou `batchSize`, selon ce qui est moins |
+| streamPosition | En option | Utilisé pour paginer les réponses de piste en grand nombre. La valeur `streamPosition` est renvoyée par le champ de réponse d’appels précédent `newStreamPosition` |
 
 ## Request XML
 

@@ -1,20 +1,20 @@
 ---
-title: "Champs standard"
+title: Champs standard
 feature: REST API, Field Management
-description: "Un tableau de champs Marketo standard."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Un tableau de champs Marketo standard.
+exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1140'
 ht-degree: 28%
 
 ---
 
-
 # Champs standard
 
 Voici une liste des champs standard disponibles dans Marketo et accessibles via l’API.
 
-Vous pouvez récupérer la liste de tous les noms de champ pris en charge disponibles dans vos enregistrements de piste à l’aide du REST. [Description de la piste](https://developer.adobe.com/marketo-apis/api/mapi/) point de terminaison .
+Vous pouvez récupérer la liste de tous les noms de champ pris en charge disponibles dans vos enregistrements de piste à l’aide du point de terminaison REST [Description de la piste](https://developer.adobe.com/marketo-apis/api/mapi/) .
 
 | REST API Nom | SOAP API Nom | Intitulé convivial | Description |
 | --- | --- | --- | --- |

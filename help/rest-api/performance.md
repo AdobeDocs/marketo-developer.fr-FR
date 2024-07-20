@@ -1,14 +1,14 @@
 ---
-title: "Performances"
+title: Performance
 feature: REST API
-description: "Conseils de performance pour l’utilisation de l’API Marketo."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Conseils de performance pour l’utilisation de l’API Marketo.
+exl-id: 173a398a-9d36-4e8d-9dd3-7d0d375b085a
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '117'
-ht-degree: 0%
+ht-degree: 1%
 
 ---
-
 
 # Performance
 
@@ -32,7 +32,7 @@ L’API REST Marketo compresse le corps de la réponse et inclut cet en-tête :
 Content-Encoding: gzip
 ```
 
-Voici un exemple utilisant Curl pour appeler la fonction [Obtenir des pistes par type de filtre](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET) point d’entrée pour récupérer 5 pistes :
+Voici un exemple utilisant Curl pour appeler le point de terminaison [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET) pour récupérer 5 pistes :
 
 ```bash
 $ curl -H 'Accept-Encoding: gzip' 'https://123-ABC-456.mktorest.com/rest/v1/leads.json?filterType=id&filterValues=4,5,7,12,13'

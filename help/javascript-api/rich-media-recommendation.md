@@ -1,14 +1,14 @@
 ---
-title: "Recommandation sur les médias riches"
-description: "Recommandation sur les médias riches"
+title: Recommandation de média intéractif
+description: Recommandation de média intéractif
 feature: Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '812'
-ht-degree: 4%
+ht-degree: 5%
 
 ---
-
 
 # Recommandation de média intéractif
 
@@ -22,14 +22,14 @@ Les balises et appels d’API suivants doivent être configurés sur la page que
 1. Dans le corps de page
    1. Placez la balise de modèle (classe div) à l’emplacement où vous souhaitez que le modèle s’affiche.
 
-Plus d’informations disponibles [here](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Plus d&#39;informations sont disponibles [ici](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Balise de modèle
 
 | Attribut | Facultatif/Obligatoire | Description |
 |---|---|---|
-| Classe | Requis | Indiquez que cet élément de HTML div est la balise div de recommandation RTP. |
-| data-rtp-template-id | Requis | Identifiant du modèle. Cela détermine l’alignement de votre recommandation. Utilisez &quot;template1&quot; pour l’alignement horizontal, &quot;template2&quot; pour l’alignement vertical ou &quot;template3&quot; pour l’alignement vertical qui ne comprend que le titre et la description. Le script injecte le modèle correspondant dans celui-ci. `div.Permissible` valeurs : template1, template2, template3. |
+| une classe | Requis | Indiquez que cet élément d’HTML div est div de recommandation RTP. |
+| data-rtp-template-id | Requis | Identifiant du modèle. Cela détermine l’alignement de votre recommandation. Utilisez &quot;template1&quot; pour l’alignement horizontal, &quot;template2&quot; pour l’alignement vertical ou &quot;template3&quot; pour l’alignement vertical qui ne comprend que le titre et la description. Le script injecte le modèle correspondant dans ces valeurs `div.Permissible` : template1, template2, template3. |
 
 ### Exemples
 
@@ -51,11 +51,11 @@ Pour afficher vos recommandations en alignement vertical avec le titre et la des
 <div class="RTP_RCMD2" data-rtp-template-id="template3"></div>
 ```
 
-Voir les captures d’écran des alignements de modèles [here](#example_of_rich_media_recommendation_template_1).
+Voir les captures d&#39;écran des alignements de modèles [ici](#example_of_rich_media_recommendation_template_1).
 
 ## Renseigner la recommandation
 
-Cette méthode renseigne tous les médias riches. `<divs>` sur la page contenant des recommandations.
+Cette méthode renseigne tous les `<divs>` médias riches sur la page avec des recommandations.
 
 ### Utilisation
 
@@ -150,14 +150,14 @@ rtp("set", "rcmd", "richmedia",
 | rcmd.cta.background.color | &quot;rcmd.cta.background.color&quot; : &quot;vert&quot; | Modifie la couleur d’arrière-plan du bouton. Cette propriété prend en charge toutes les valeurs de couleur CSS (nom de couleur, rgb, etc.). |
 | rcmd.cta.font.color | &quot;rcmd.cta.font.color&quot; : &quot;rgb(90, 84, 164)&quot; | Modifie la couleur de la police du bouton. Cette propriété prend en charge toutes les valeurs de couleur de police (rgb, hex, etc.). |
 | rcmd.cta.text | &quot;rcmd.cta.text&quot; : &quot;Push&quot; | Modifie le texte du bouton. Le texte est le même pour tous les boutons. |
-| Catégorie | &quot;category&quot; : [&quot;une catégorie&quot;] | Modifie la catégorie de recommandations prise en charge par ce modèle. Le modèle affiche uniquement les recommandations avec l’une des catégories définies par cette configuration. |
+| Catégorie | &quot;category&quot; : [&quot;one category&quot;] | Modifie la catégorie de recommandations prise en charge par ce modèle. Le modèle affiche uniquement les recommandations avec l’une des catégories définies par cette configuration. |
 
 
 Remarque : La prise en charge de la configuration peut changer par modèle.
 
 #### Exemple de base
 
-Cet exemple comporte un modèle avec trois recommandations. Copiez cet exemple dans une page de HTML, puis remplacez la balise RTP par votre balise .
+Cet exemple comporte un modèle avec trois recommandations. Copiez cet exemple dans une page d’HTML, puis remplacez la balise RTP par votre balise .
 
 ```html
 <!DOCTYPE>
@@ -189,7 +189,7 @@ rtp('get','rcmd', 'richmedia');
 
 #### Exemple avancé
 
-Cet exemple comporte un modèle avec trois recommandations. Le titre du modèle est &quot;CONTENU RECOMMANDÉ&quot; et le texte du bouton est &quot;En savoir plus&quot;. Copiez cet exemple dans une page de HTML, puis remplacez la balise RTP par votre balise .
+Cet exemple comporte un modèle avec trois recommandations. Le titre du modèle est &quot;CONTENU RECOMMANDÉ&quot; et le texte du bouton est &quot;En savoir plus&quot;. Copiez cet exemple dans une page d’HTML, puis remplacez la balise RTP par votre balise .
 
 ```html
 <!DOCTYPE>
@@ -233,16 +233,16 @@ rtp('get','rcmd', 'richmedia');
 
 #### Exemple de #1 de modèle de recommandation pour les médias riches
 
-**Nom**: template1 **Description**: contenu horizontal comprenant l’image, le titre et la description et bouton d’appel à l’action.
+**Nom** : template1 **Description** : contenu horizontal comprenant l’image, le titre et la description et bouton d’appel à l’action.
 
-![Modèle de média enrichi](assets/rich-media-template1.png)
+![ Modèle de contenu multimédia enrichi](assets/rich-media-template1.png)
 
 #### Exemple de #2 de modèle de recommandation pour les médias riches
 
-**Nom**: template2 **Description**: contenu vertical comprenant l’image, le titre et la description et bouton d’appel à l’action.
+**Nom** : template2 **Description** : contenu vertical comprenant image, titre et description et bouton d’appel à l’action.
 
-![Modèle de média enrichi](assets/rich-media-template2.png)
+![ Modèle de contenu multimédia enrichi](assets/rich-media-template2.png)
 
 #### Exemple de #3 de modèle de recommandation pour les médias riches
 
-**Nom**: template3 **Description**: contenu vertical comprenant uniquement le titre et la description. Lorsque vous pointez avec la souris, l’en-tête change de couleur et est lié à l’URL du contenu. La description est également liée au contenu sans changement de couleur. ![Modèle de média enrichi](assets/rich-media-template3.png)
+**Nom** : template3 **Description** : contenu vertical comprenant uniquement le titre et la description. Lorsque vous pointez avec la souris, l’en-tête change de couleur et est lié à l’URL du contenu. La description est également liée au contenu sans changement de couleur. ![ Modèle de contenu multimédia enrichi](assets/rich-media-template3.png)

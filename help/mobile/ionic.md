@@ -1,7 +1,7 @@
 ---
 title: '[!DNL Ionic]'
 feature: Mobile Marketing
-description: Utilisation [!DNL Ionic] avec Marketo pour les appareils mobiles
+description: Utilisation de  [!DNL Ionic]  avec Marketo pour les appareils mobiles
 exl-id: 204e5fb4-c9d6-43a6-9d77-0b2a67ddbed3
 source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
@@ -12,19 +12,19 @@ ht-degree: 2%
 
 # Ionique
 
-Cette rubrique décrit comment intégrer le module externe Marketo Cordova . [!DNL Ionic] Le condensateur n’est actuellement pas pris en charge.
+Cette rubrique décrit comment intégrer le module externe Marketo Cordova . Le condensateur [!DNL Ionic] n’est actuellement pas pris en charge.
 
 ## Conditions préalables
 
-1. [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (Obtenez votre clé secrète et votre ID Munchkin).
-1. Configuration des notifications push ([iOS](push-notifications.md) | [Android](push-notifications.md) ).
-1. Installer [[!DNL Ionic]](https://ionicframework.com/getting-started/) &amp; [Interface de ligne de commande Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/).
+1. [Ajoutez une application dans l’administrateur Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez votre clé secrète et votre identifiant Munchkin).
+1. Configurer des notifications push ([iOS](push-notifications.md)) | [Android](push-notifications.md) ).
+1. Installez [[!DNL Ionic]](https://ionicframework.com/getting-started/) et [l’interface de ligne de commande Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
 ## Instructions d’installation
 
-### Configuration de Marketo [!DNL Ionic] Module externe
+### Configuration du module externe Marketo [!DNL Ionic]
 
-1. En supposant que l’interface de ligne de commande Cordova soit installée, accédez à votre [!DNL Ionic] répertoire de l’application et exécutez la commande suivante pour ajouter le module externe Marketo à votre application :
+1. En supposant que l’interface de ligne de commande Cordova soit installée, accédez au répertoire de votre application [!DNL Ionic] et exécutez la commande suivante pour ajouter le module externe Marketo à votre application :
 
    `$ ionic plugin add https://github.com/Marketo/PhoneGapPlugin.git --variable APPLICATION_SECRET_KEY="YOUR_APPLICATION_SECRET"`
 
@@ -48,11 +48,11 @@ Cette rubrique décrit comment intégrer le module externe Marketo Cordova . [!D
 
 ### Suivi des notifications push
 
-Collez le code suivant dans le `application:didFinishLaunchingWithOptions:` de la fonction
+Collez le code suivant dans la fonction `application:didFinishLaunchingWithOptions:`.
 
 >[!BEGINTABS]
 
->[!TAB Objectif C]
+>[!TAB Objective C]
 
 ```
 Marketo *sharedInstance = [Marketo sharedInstance];
@@ -72,9 +72,9 @@ sharedInstance.trackPushNotfication(launchOptions)
 
 ### Initialisation de la structure Marketo
 
-Pour vous assurer que la structure Marketo est lancée au démarrage de l’application, ajoutez le code suivant sous le `onDeviceReady` dans votre fichier JavaScript principal.
+Pour vous assurer que la structure Marketo est lancée au démarrage de l’application, ajoutez le code suivant sous la fonction `onDeviceReady` dans votre fichier JavaScript principal.
 
-Vous devez réussir. `ionicCordova` comme type de structure pour [!DNL Ionic] Applications Cordova.
+Vous devez transmettre `ionicCordova` comme type de structure pour les applications Cordova [!DNL Ionic].
 
 #### Syntaxe
 
@@ -121,7 +121,7 @@ marketo.initializeMarketoPush(
 
 - Rappel de succès : fonction à exécuter si la notification push Marketo s’initialise avec succès.
 - Rappel d’échec : fonction à exécuter si la notification push Marketo ne s’initialise pas.
-- GCM_PROJECT_ID : ID de projet GCM trouvé dans [Console développeur de Google](https://accounts.google.com/ServiceLogin?service=cloudconsole&amp;passive=1209600&amp;osid=1&amp;continue=https://console.cloud.google.com/apis/dashboard&amp;followup=https://console.cloud.google.com/apis/dashboard) après la création de l’application.
+- GCM_PROJECT_ID : ID de projet GCM trouvé dans la [console de développeurs Google](https://accounts.google.com/ServiceLogin?service=cloudconsole&amp;passive=1209600&amp;osid=1&amp;continue=https://console.cloud.google.com/apis/dashboard&amp;followup=https://console.cloud.google.com/apis/dashboard) après la création de l’application.
 
 Le jeton peut également être désinscrit lors de la déconnexion.
 
@@ -177,7 +177,7 @@ marketo.associateLead(
 
 ## Action du rapport
 
-Vous pouvez signaler toute action effectuée par l’utilisateur en appelant la variable `reportaction` de la fonction
+Vous pouvez signaler toute action effectuée par l’utilisateur en appelant la fonction `reportaction` .
 
 ### Syntaxe
 

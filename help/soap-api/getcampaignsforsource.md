@@ -1,14 +1,14 @@
 ---
-title: "getCampaignsForSource"
+title: getCampaignsForSource
 feature: SOAP
-description: "getCampaignsForSource appels SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: appels de SOAP getCampaignsForSource
+exl-id: bd8803ef-f462-4346-a381-73f40dc5d9ee
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '131'
 ht-degree: 6%
 
 ---
-
 
 # getCampaignsForSource
 
@@ -16,13 +16,13 @@ Cette fonction renvoie une liste des campagnes Marketo éligibles qui peuvent ê
 
 Important : La campagne dynamique doit comporter un déclencheur &quot;Campaign is Requested&quot; (La campagne est requise) pour être admissible. Sa source doit inclure l’API Web Service.
 
-![campaign_is_request_trigger](assets/campaign-is-requested-trigger.png)
+![campaign_is_requests_trigger](assets/campaign-is-requested-trigger.png)
 
 ## Demande
 
 | Nom de champ | Obligatoire/Facultatif | Description |
 | --- | --- | --- |
-| source | Requis | source peut être `MKTOWS` ou `SALES`. Ce dernier fournit une liste des campagnes disponibles pour Sales Insight. |
+| source | Requis | La source peut être `MKTOWS` ou `SALES`. Ce dernier fournit une liste des campagnes disponibles pour Sales Insight. |
 | name | En option | utilisez cette option pour filtrer par nom. Il s’agit d’une chaîne unique, et non d’un tableau de chaînes. |
 | exactName | En option | Valeur booléenne indiquant si vous souhaitez une correspondance exacte pour le paramètre name |
 

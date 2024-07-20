@@ -1,14 +1,14 @@
 ---
-title: "Codes d’erreur"
+title: Codes d’erreur
 feature: REST API
-description: "Descriptions des codes d’erreur Marketo."
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Descriptions du code d’erreur Marketo.
+exl-id: a923c4d6-2bbc-4cb7-be87-452f39b464b6
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '2272'
 ht-degree: 3%
 
 ---
-
 
 # Codes d’erreur
 
@@ -22,7 +22,7 @@ Lors du développement pour Marketo, il est important que les requêtes et les r
 
 L’API REST Marketo peut renvoyer trois types d’erreurs différents en cas de fonctionnement normal :
 
-* Au niveau HTTP : ces erreurs sont indiquées par une `4xx` code.
+* Au niveau HTTP : ces erreurs sont indiquées par un code `4xx`.
 * Niveau de réponse : ces erreurs sont incluses dans le tableau &quot;errors&quot; de la réponse JSON.
 * Record-Level : ces erreurs sont incluses dans le tableau &quot;result&quot; de la réponse JSON et sont indiquées sur une base d’enregistrement individuelle avec le champ &quot;status&quot; et le tableau &quot;raisons&quot;.
 
@@ -30,12 +30,12 @@ Pour les types d’erreur Response-Level et Record-Level, un code d’état HTTP
 
 ### Erreurs au niveau HTTP
 
-Dans des circonstances normales d’exploitation, Marketo ne doit renvoyer que deux erreurs de code d’état HTTP, `413 Request Entity Too Large`, et `414 Request URI Too Long`. Ils peuvent tous deux être récupérés en capturant l’erreur, en modifiant la requête et en réessayant, mais avec des pratiques de codage intelligent, vous ne devriez jamais les rencontrer dans la nature.
+Dans des conditions d’exploitation normales, Marketo ne doit renvoyer que deux erreurs de code d’état HTTP, `413 Request Entity Too Large` et `414 Request URI Too Long`. Ils peuvent tous deux être récupérés en capturant l’erreur, en modifiant la requête et en réessayant, mais avec des pratiques de codage intelligent, vous ne devriez jamais les rencontrer dans la nature.
 
 Marketo renvoie 413 si la charge utile de la requête dépasse 1 Mo ou 10 Mo dans le cas d’une piste d’importation. Dans la plupart des scénarios, il est peu probable que ces limites soient atteintes, mais l’ajout d’une vérification de la taille de la requête et le déplacement d’enregistrements, ce qui entraîne le dépassement de la limite par une nouvelle requête, devrait empêcher tout contexte, ce qui entraîne le renvoi de cette erreur par les points de terminaison.
 
-414 est renvoyé lorsque l’URI d’une demande de GET dépasse 8 Ko. Pour l’éviter, vérifiez la longueur de votre chaîne de requête pour voir si elle dépasse cette limite. S’il transforme votre requête en méthode de POST, entrez votre chaîne de requête en tant que corps de requête avec le paramètre supplémentaire. `_method=GET`. Cela annule la limitation des URI. Il est rare d’atteindre cette limite dans la plupart des cas, mais cela est quelque peu courant lors de la récupération de lots volumineux d’enregistrements avec de longues valeurs de filtre individuelles, telles qu’un GUID.
-La variable [Identité](https://developer.adobe.com/marketo-apis/api/identity/) Le point de terminaison peut renvoyer une erreur 401 Non autorisé. Cela est généralement dû à un ID de client non valide ou à un secret de client non valide. Codes d’erreur au niveau HTTP
+414 est renvoyé lorsque l’URI d’une demande de GET dépasse 8 Ko. Pour l’éviter, vérifiez la longueur de votre chaîne de requête pour voir si elle dépasse cette limite. S’il transforme votre requête en méthode de POST, entrez votre chaîne de requête en tant que corps de requête avec le paramètre supplémentaire `_method=GET`. Cela annule la limitation des URI. Il est rare d’atteindre cette limite dans la plupart des cas, mais cela est quelque peu courant lors de la récupération de lots volumineux d’enregistrements avec de longues valeurs de filtre individuelles, telles qu’un GUID.
+Le point d’entrée [Identity](https://developer.adobe.com/marketo-apis/api/identity/) peut renvoyer une erreur 401 Unauthorized . Cela est généralement dû à un ID de client non valide ou à un secret de client non valide. Codes d’erreur au niveau HTTP
 
 <table>
   <thead>
@@ -62,7 +62,7 @@ La variable [Identité](https://developer.adobe.com/marketo-apis/api/identity/) 
 
 #### Erreurs au niveau de la réponse
 
-Des erreurs de niveau de réponse sont présentes lorsque la variable `success` Le paramètre de la réponse est défini sur false et est structuré comme suit :
+Des erreurs de niveau de réponse sont présentes lorsque le paramètre `success` de la réponse est défini sur false et est structuré comme suit :
 
 ```json
 {
@@ -77,7 +77,7 @@ Des erreurs de niveau de réponse sont présentes lorsque la variable `success` 
 }
 ```
 
-Chaque objet du tableau &quot;errors&quot; comporte deux membres, `code`, qui est un entier entre 601 et 799 et un `message` indiquant la raison en texte brut de l’erreur. Les codes 6xx indiquent toujours qu’une requête a complètement échoué et n’a pas été exécutée. Par exemple, 601, &quot;Jeton d’accès non valide&quot;, qui peut être récupéré en réauthentifiant et en transmettant le nouveau jeton d’accès avec la requête. Les erreurs 7xx indiquent que la requête a échoué, soit parce qu’aucune donnée n’a été renvoyée, soit parce que la requête a été mal paramétrée, par exemple en incluant une date non valide, ou parce qu’un paramètre requis a été absent.
+Chaque objet du tableau &quot;errors&quot; comporte deux membres, `code`, qui est un entier entre 601 et 799 cité et un `message` qui indique la raison en texte brut de l’erreur. Les codes 6xx indiquent toujours qu’une requête a complètement échoué et n’a pas été exécutée. Par exemple, 601, &quot;Jeton d’accès non valide&quot;, qui peut être récupéré en réauthentifiant et en transmettant le nouveau jeton d’accès avec la requête. Les erreurs 7xx indiquent que la requête a échoué, soit parce qu’aucune donnée n’a été renvoyée, soit parce que la requête a été mal paramétrée, par exemple en incluant une date non valide, ou parce qu’un paramètre requis a été absent.
 
 #### Codes d’erreur de niveau réponse
 
@@ -110,7 +110,7 @@ Un appel API qui renvoie ce code de réponse n’est pas comptabilisé dans votr
     <tr>
       <td><a name="603"></a>603</td>
       <td>Accès refusé</td>
-      <td>L’authentification a réussi, mais l’utilisateur ne dispose pas des autorisations suffisantes pour appeler cette API. [Autorisations supplémentaires] (custom-services.md) peut devoir être affecté au rôle d’utilisateur, ou <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Liste autorisée de l’accès aux API basées sur l’adresse IP</a> peut être activé.</td>
+      <td>L’authentification a réussi, mais l’utilisateur ne dispose pas des autorisations suffisantes pour appeler cette API. [Autorisations supplémentaires](custom-services.md) peut avoir besoin d’être affecté au rôle d’utilisateur, ou la <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Liste autorisée pour l’accès API basé sur IP</a> peut être activée.</td>
     </tr>
     <tr>
       <td><a name="604"></a>604*</td>
@@ -155,7 +155,7 @@ Un appel API qui renvoie ce code de réponse n’est pas comptabilisé dans votr
     <tr>
       <td><a name="612"></a>612</td>
       <td>Type de contenu non valide</td>
-      <td>Si cette erreur s’affiche, ajoutez un en-tête de type de contenu spécifiant le format JSON à votre requête. Par exemple, essayez d’utiliser `content type: application/json`. <a href="https://stackoverflow.com/questions/28181325/why-invalid-content-type">Voir cette question de StackOverflow</a> pour plus d’informations.</td>
+      <td>Si cette erreur s’affiche, ajoutez un en-tête de type de contenu spécifiant le format JSON à votre requête. Par exemple, essayez d’utiliser `content type: application/json`. <a href="https://stackoverflow.com/questions/28181325/why-invalid-content-type">Pour plus d’informations, consultez cette question StackOverflow</a> .</td>
     </tr>
     <tr>
       <td><a name="613"></a>613</td>
@@ -207,7 +207,7 @@ Un appel API qui renvoie ce code de réponse n’est pas comptabilisé dans votr
       <td>L’appel ne peut pas être rempli, car il enfreint une obligation de création ou de mise à jour d’une ressource, par exemple en essayant de créer un email sans modèle. Il est également possible d’obtenir cette erreur lorsque vous essayez d’effectuer les opérations suivantes :
         <ul>
           <li>Récupérez le contenu des landing pages qui contiennent du contenu social.</li>
-          <li>Cloner un programme qui contient certains types de ressources (voir <a href="programs.md#clone">Clonage de programme</a> pour plus d’informations).</li>
+          <li>Cloner un programme qui contient certains types de ressources (voir <a href="programs.md#clone">Clone de programme</a> pour plus d’informations).</li>
           <li>Approuvez une ressource sans version préliminaire (c’est-à-dire qu’elle a déjà été approuvée).</li>
         </ul></td>
     </tr>
@@ -352,8 +352,8 @@ Chaque enregistrement d’une requête réussie peut réussir ou échouer indivi
     <tr>
       <td><a name="1012"></a>1012</td>
       <td>Valeur de cookie non valide ‘%s’</td>
-      <td>peut survenir lors de l’appel de la fonction <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associer le prospect</a> avec une valeur non valide pour le paramètre de cookie.
-        Cela se produit également lors de l’appel de <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Obtenir des pistes par type de filtre</a> avec filterType=cookies et valeur valide non valide pour le paramètre filterValues .</td>
+      <td>Peut se produire lors de l’appel de <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associer le prospect</a> avec une valeur non valide pour le paramètre de cookie.
+        Cela se produit également lors de l’appel de <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Get Leads by Filter Type</a> avec filterType=cookies et une valeur valide non valide pour le paramètre filterValues.</td>
     </tr>
     <tr>
       <td><a name="1013"></a>1013</td>
@@ -469,19 +469,20 @@ Chaque enregistrement d’une requête réussie peut réussir ou échouer indivi
     </tr>
     <tr>
       <td><a name="1076"></a>1076</td>
-      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les pistes</a> L’appel avec l’indicateur mergeInCRM est 4.</td>
+      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les pistes</a> avec l’indicateur mergeInCRM est 4.</td>
       <td>Vous créez un enregistrement en double. Il est recommandé d’utiliser un enregistrement existant à la place.
         Il s’agit du message d’erreur que Marketo reçoit lors de la fusion dans Salesforce.</td>
     </tr>
     <tr>
       <td><a name="1077"></a>1077</td>
-      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les pistes</a> échec de l’appel en raison de la longueur du champ SFDC</td>
+      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les pistes</a> a échoué en raison de la longueur du champ SFDC.</td>
       <td>Un appel Fusionner les pistes avec mergeInCRM défini sur true a échoué en raison d’un "champ SFDC" dépassant la limite des caractères autorisés. Pour corriger ce problème, réduisez la longueur du "champ SFDC" ou définissez mergeInCRM sur false.</td>
     </tr>
     <tr>
       <td><a name="1078"></a>1078</td>
-      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les pistes</a> échec de l’appel en raison de la suppression de l’entité, pas un prospect/contact, ou que les critères de filtre de champ ne correspondent pas.</td>
-      <td>Échec de fusion, impossible d’effectuer une opération de fusion dans un CRM synchronisé nativement Il s’agit du message d’erreur que Marketo reçoit lors de la fusion dans Salesforce.</td>
+      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les pistes</a> a échoué en raison d’une entité supprimée, pas un critère de piste/contact, ou de filtre de champ ne correspond pas.</td>
+      <td>Échec de la fusion, impossible d’effectuer une opération de fusion dans un CRM synchronisé nativement
+        Il s’agit du message d’erreur que Marketo reçoit lors de la fusion dans Salesforce.</td>
     </tr>
   </tbody>
 </table>

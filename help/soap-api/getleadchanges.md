@@ -1,45 +1,45 @@
 ---
-title: "getLeadChanges"
+title: getLeadChanges
 feature: SOAP
-description: "Appels SOAP getLeadChanges"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: appels getLeadChanges SOAP
+exl-id: 23445684-d8d9-407b-8f19-cb69e806795c
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '402'
 ht-degree: 3%
 
 ---
 
-
 # getLeadChanges
 
-Cette API est semblable à `getLeadActivity` mais fonctionne sur plusieurs pistes à la fois. L’opération recherche les nouvelles pistes créées, les mises à jour des champs de piste et d’autres activités.
+Cette API est similaire à `getLeadActivity`, mais elle fonctionne sur plusieurs pistes à la fois. L’opération recherche les nouvelles pistes créées, les mises à jour des champs de piste et d’autres activités.
 
-Le résultat contient des activités qui ont provoqué la modification avec un [position du flux](stream-position.md) pour paginer dans des jeux de résultats volumineux.
+Le résultat contient des activités qui ont provoqué la modification avec une [position du flux](stream-position.md) pour paginer dans de grands ensembles de résultats.
 
 Vous devez inclure un paramètre d’entrée identifiant les filtres d’activité que vous souhaitez voir renvoyer dans le résultat. Si vous souhaitez que toutes les activités soient exécutées, une valeur vide peut être transmise. Pour plusieurs filtres d’activité, transmettez une liste de filtres d’activité.
 
 Voici quelques exemples de types d’activité : &quot;Visite de page web&quot;, &quot;Remplissage du formulaire&quot; et &quot;Clic sur le lien&quot;.
 
-Après la version 2_2 de l’API SOAP, vous pouvez inclure une `leadSelector`.
+Après SOAP API version 2_2, vous pouvez inclure un `leadSelector`.
 
-Pour `LastUpdateAtSelector`, la variable `oldestUpdatedAt` correspondrait à la variable `oldestCreatedAt` dans la variable `startPosition`. Et le `latestUpdatedAt` correspond à la valeur `latestCreatedAt` dans la variable `startPosition`.
+Pour `LastUpdateAtSelector`, la valeur `oldestUpdatedAt` correspondrait à la valeur `oldestCreatedAt` dans le `startPosition`. Et la valeur `latestUpdatedAt` correspond à la valeur `latestCreatedAt` dans la `startPosition`.
 
-Remarque : Le nombre limite de pistes prises en charge dans une `LeadKeySelector` est 100. Si le nombre de pistes dépasse 100, l’API renvoie une exception de paramètre erronée et renvoie une erreur SOAP.
+Remarque : Le nombre maximal de pistes prises en charge dans un `LeadKeySelector` est 100. Si le nombre de pistes dépasse 100, l’API renvoie une exception de paramètre erronée et renvoie un problème SOAP.
 
 ## Demande
 
 | Nom de champ | Obligatoire/Facultatif | Description |
 | --- | --- | --- |
-| activityFilter->includeAttributes->activityType | Utilisation facultative (obsolète) `activityNameFilter` au lieu | Limite la réponse afin de n’inclure que les types d’activité spécifiés. Voir WSDL pour tous les types d’activité. |
-| activityFilter->excludeAttributes->activityType | En option | Limite la réponse pour exclure les types d’activité spécifiés. Voir WSDL pour tous les types d’activité. REMARQUE : Vous ne pouvez pas spécifier les deux `includeAttributes` et `excludeAttributes` dans le même appel. |
+| activityFilter->includeAttributes->activityType | Facultatif (obsolète) Utilisez `activityNameFilter` à la place | Limite la réponse afin de n’inclure que les types d’activité spécifiés. Voir WSDL pour tous les types d’activité. |
+| activityFilter->excludeAttributes->activityType | En option | Limite la réponse pour exclure les types d’activité spécifiés. Voir WSDL pour tous les types d’activité. REMARQUE : Vous ne pouvez pas spécifier `includeAttributes` et `excludeAttributes` dans le même appel. |
 | activityNameFilter | En option | Limite la réponse afin de n’inclure que les filtres d’activité spécifiés. |
-| batchSize | En option | Nombre maximum d&#39;enregistrements à renvoyer. Système limité à 1 000 ou `batchSize`, le plus petit des deux critères. |
+| batchSize | En option | Nombre maximum d&#39;enregistrements à renvoyer. Système limité à 1 000 ou `batchSize`, selon ce qui est moins élevé. |
 | startPosition | Requis | Utilisé pour paginer un grand nombre de réponses d’activité. |
 | startPosition->offset | En option | La valeur de décalage est renvoyée par le champ de réponse newStartPosition ->offset de l’appel précédent. |
-| startPosition->oldCreatedAt | En option | L’horodatage utilisé pour filtrer les résultats afin d’inclure uniquement les pistes créées depuis le plus ancienCreatedAt. REMARQUE : Vous pouvez utiliser `LastUpdateAtSelector->oldestUpdatedAt` horodatage à spécifier `oldestCreatedAt`. |
-| startPosition->activityCreatedAt | En option | La date et l’heure utilisées pour filtrer les résultats incluent uniquement les pistes avec activité depuis activityCreatedAt. REMARQUE : Vous pouvez utiliser `LastUpdateAtSelector->latestUpdatedAt` horodatage à spécifier `activityCreatedAt`. |
-| leadSelector | En option | Il peut s’agir de l’un des trois types suivants : `LeadKeySelector`, `StaticListSelector`, `LastUpdateAtSelector` |
-| LeadKeySelector : leadSelector->keyType | Requis | Type d’identifiant que vous souhaitez interroger. Les valeurs incluent `IDNUM`, `COOKIE`, `EMAIL`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID`. |
+| startPosition->oldCreatedAt | En option | L’horodatage utilisé pour filtrer les résultats afin d’inclure uniquement les pistes créées depuis le plus ancienCreatedAt. REMARQUE : Vous pouvez utiliser l’horodatage `LastUpdateAtSelector->oldestUpdatedAt` pour spécifier `oldestCreatedAt`. |
+| startPosition->activityCreatedAt | En option | La date et l’heure utilisées pour filtrer les résultats incluent uniquement les pistes avec activité depuis activityCreatedAt. REMARQUE : Vous pouvez utiliser l’horodatage `LastUpdateAtSelector->latestUpdatedAt` pour spécifier `activityCreatedAt`. |
+| leadSelector | En option | Peut être l’un des trois types suivants : `LeadKeySelector`, `StaticListSelector`, `LastUpdateAtSelector` |
+| LeadKeySelector : leadSelector->keyType | Requis | Type d’identifiant que vous souhaitez interroger. Les valeurs comprennent `IDNUM`, `COOKIE`, `EMAIL`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID`. |
 | LeadKeySelector : leadSelector->keyValues->stringItem | Requis | Liste des valeurs clés. C’est-à-dire &quot;lead@email.com&quot; |
 | StaticListSelector: leadSelector->staticListName | Facultatif lorsque `leadSelector->staticListId` est présent | Nom de la liste statique |
 | StaticListSelector: leadSelector->staticListId | Facultatif lorsque `leadSelector->staticListName` est présent | L’identifiant de la liste statique |

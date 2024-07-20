@@ -1,18 +1,18 @@
 ---
-title: "Balises"
+title: Balises
 feature: REST API, Tags
-description: "Gestion des balises pour les programmes dans Marketo."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Gestion des balises pour les programmes dans Marketo.
+exl-id: 64731d1a-a749-4d6f-b336-16c733d002f0
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '205'
-ht-degree: 1%
+ht-degree: 2%
 
 ---
 
-
 # Balises
 
-[Référence du point de terminaison des balises](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags)
+[Référence du point d’entrée des balises](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags)
 
 Les balises sont des champs définis par l’utilisateur pour les programmes. Chaque balise peut s’appliquer à un ou plusieurs types de programme et peut être obligatoire ou facultatif, selon la manière dont la balise a été définie. Les balises peuvent également fournir une liste des valeurs autorisées à partir desquelles sélectionner pour les utiliser.
 
@@ -77,7 +77,7 @@ GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 
 ## Mise à jour
 
-La variable [Mettre à jour la balise de programme](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) endpoint vous permet de mettre à jour la valeur d’un type de balise donné. Le point de terminaison prend une valeur `id` et `tagType` les paramètres de chemin d’accès qui spécifient l’identifiant de programme et le type de balise à mettre à jour. A `tagValue` Le paramètre de requête permet de spécifier la nouvelle valeur pour le type de balise. Tous les paramètres sont obligatoires.
+Le point d’entrée [Update Program Tag](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) permet de mettre à jour la valeur d’un type de balise donné. Le point de terminaison utilise des paramètres de chemin `id` et `tagType` qui spécifient l’ID de programme et le type de balise à mettre à jour. Un paramètre de requête `tagValue` est utilisé pour spécifier la nouvelle valeur pour le type de balise. Tous les paramètres sont obligatoires.
 
 ```
 POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
@@ -97,11 +97,11 @@ POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 }
 ```
 
-Les balises peuvent être mises à jour en masse à l’aide de la variable [Mise à jour des métadonnées de programme](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) point de terminaison . Un exemple est disponible. [here](programs.md#update).
+Les balises peuvent être mises à jour en masse à l’aide du point d’entrée [Mettre à jour les métadonnées du programme](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) . Vous trouverez un exemple de cela [ici](programs.md#update).
 
 ## Supprimer
 
-La variable [Supprimer la balise de programme](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/deleteProgramUsingPOST) endpoint vous permet de supprimer un type de balise non requis. Le point de terminaison prend `id` et `tagType` les paramètres de chemin d’accès qui spécifient l’identifiant de programme et le type de balise à supprimer.
+Le point d’entrée [Supprimer la balise de programme](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/deleteProgramUsingPOST) vous permet de supprimer un type de balise non requis. Le point de terminaison utilise les paramètres de chemin `id` et `tagType` qui spécifient l’ID de programme et le type de balise à supprimer.
 
 ```
 POST /rest/asset/v1/program/{id}/tag/{tagType}/delete.json

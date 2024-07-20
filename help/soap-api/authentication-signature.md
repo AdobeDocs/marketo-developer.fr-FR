@@ -1,14 +1,14 @@
 ---
-title: "Authentication Signature"
+title: Signature d’authentification
 feature: SOAP
-description: "Sécurité des API avec signatures d’authentification"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Sécurité des API avec des signatures d’authentification
+exl-id: d6bed8ee-77fa-440c-8f35-a71cf77f45d3
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '226'
 ht-degree: 3%
 
 ---
-
 
 # Signature d’authentification
 
@@ -42,7 +42,7 @@ authHeader = "<ns1:AuthenticationHeader>" +
 
 | Nom de champ | Obligatoire/Facultatif | Description |
 |--- |--- |--- |
-| mktowsUserId | Requis | L’ID d’accès client Marketo se trouve dans le panneau API SOAP d’administration Marketo sous Intégration. |
+| mktowsUserId | Requis | L’ID d’accès du client Marketo se trouve dans le panneau de l’API d’administration Marketo SOAP sous Intégration. |
 | requestSignature | Requis | Signature HMAC-SHA1 basée sur la clé secrète partagée, requestTimestamp et l’identifiant utilisateur Marketo |
 | requestTimestamp | Requis | Demander l’horodatage (format de date WSDL W3C Ex. &quot;2013-06-09T14:04:54-08:00&quot;) |
 | partnerId | En option | Clé API du partenaire technologique LaunchPoint. |

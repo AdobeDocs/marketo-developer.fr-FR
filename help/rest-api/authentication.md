@@ -1,14 +1,14 @@
 ---
-title: "Authentication"
+title: Authentification
 feature: REST API
-description: "Authentification des utilisateurs Marketo pour l’utilisation de l’API."
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Authentification des utilisateurs Marketo pour l’utilisation de l’API.
+exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '540'
 ht-degree: 0%
 
 ---
-
 
 # Authentification
 
@@ -16,13 +16,13 @@ Les API REST Marketo sont authentifiées avec OAuth 2.0 à 2 jambes. Les ID de c
 
 ## Création d’un jeton d’accès
 
-La variable `Client ID` et `Client Secret` se trouvent dans la variable **[!UICONTROL Administration]** > **[!UICONTROL Intégration]** > **[!UICONTROL LaunchPoint]** en sélectionnant le service personnalisé, puis en cliquant sur **[!UICONTROL Afficher les détails]**.
+Les `Client ID` et `Client Secret` se trouvent dans le menu **[!UICONTROL Admin]** > **[!UICONTROL Intégration]** > **[!UICONTROL LaunchPoint]** en sélectionnant le service personnalisé, puis en cliquant sur **[!UICONTROL Afficher les détails]**.
 
 ![Obtenir les détails du service REST](assets/authentication-service-view-details.png)
 
 ![Informations d’identification Launchpoint](assets/admin-launchpoint-credentials.png)
 
-La variable `Identity URL` se trouve dans la variable **[!UICONTROL Administration]** > **[!UICONTROL Intégration]** > **[!UICONTROL Services web]** dans la section API REST .
+Le `Identity URL` se trouve dans le menu **[!UICONTROL Admin]** > **[!UICONTROL Intégration]** > **[!UICONTROL Services web]** de la section API REST.
 
 Créez un jeton d’accès à l’aide d’une demande de GET HTTP (ou de POST) de la manière suivante :
 
@@ -45,7 +45,7 @@ Définition de la réponse
 
 - `access_token` - Jeton que vous transmettez avec les appels suivants pour vous authentifier auprès de l’instance cible.
 - `token_type` - Méthode d’authentification OAuth.
-- `expires_in` - Durée de vie restante du jeton actif en secondes (après laquelle il est invalide). Lorsqu’un jeton d’accès est créé à l’origine, sa durée de vie est de 3 600 secondes ou une heure.
+- `expires_in` - Durée de vie restante du jeton actif en secondes (après laquelle il n’est pas valide). Lorsqu’un jeton d’accès est créé à l’origine, sa durée de vie est de 3 600 secondes ou une heure.
 - `scope` - Utilisateur propriétaire du service personnalisé utilisé pour l’authentification.
 
 ## Utilisation d’un jeton d’accès
@@ -66,7 +66,7 @@ Vous pouvez utiliser deux méthodes pour inclure un jeton dans vos appels, sous 
 
 La gestion de l’expiration des jetons d’accès est importante pour vous assurer que votre intégration fonctionne correctement et empêche les erreurs d’authentification inattendues de se produire pendant le fonctionnement normal. Lors de la conception de l’authentification pour votre intégration, veillez à stocker le jeton et la période d’expiration contenus dans la réponse Identity.
 
-Avant tout appel REST, vous devez vérifier la validité du jeton en fonction de sa durée de vie restante. Si le jeton a expiré, renouvelez-le en appelant [Identité](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET)point de terminaison . Cela permet de s’assurer que votre appel REST n’échoue jamais en raison d’un jeton expiré. Vous pouvez ainsi gérer la latence de vos appels REST de manière prévisible, ce qui est essentiel pour les applications destinées aux utilisateurs finaux.
+Avant tout appel REST, vous devez vérifier la validité du jeton en fonction de sa durée de vie restante. Si le jeton a expiré, renouvelez-le en appelant le point de terminaison [Identity](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). Cela permet de s’assurer que votre appel REST n’échoue jamais en raison d’un jeton expiré. Vous pouvez ainsi gérer la latence de vos appels REST de manière prévisible, ce qui est essentiel pour les applications destinées aux utilisateurs finaux.
 
 Si un jeton expiré est utilisé pour authentifier un appel REST, l’appel REST échoue et renvoie un code d’erreur 602. Si un jeton non valide est utilisé pour authentifier un appel REST, un code d’erreur 601 est renvoyé. Si l’un de ces codes est reçu, le client doit renouveler le jeton en appelant le point de terminaison Identity.
 

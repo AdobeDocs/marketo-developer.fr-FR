@@ -1,24 +1,24 @@
 ---
-title: "Fragments de code"
+title: Extraits
 feature: REST API, Snippets
-description: "Gestion des fragments de code via l’API Marketo."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Gestion des fragments de code via l’API Marketo.
+exl-id: 87901c29-ee59-4224-848d-3bd6a6c52718
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '438'
 ht-degree: 2%
 
 ---
 
-
 # Extraits
 
-[Référence de point de fin de fragment de code](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets)
+[Référence du point d’entrée du fragment de code](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets)
 
-Les fragments de code sont des composants de HTML réutilisables qui peuvent être incorporés dans les emails et les landing pages et qui peuvent être segmentés pour le contenu dynamique. Les fragments n’ont pas de modèle associé et peuvent être créés et déployés dans d’autres ressources dans Marketo.
+Les fragments de code sont des composants d’HTML réutilisables qui peuvent être incorporés dans les emails et les landing pages et qui peuvent être segmentés pour le contenu dynamique. Les fragments n’ont pas de modèle associé et peuvent être créés et déployés dans d’autres ressources dans Marketo.
 
 ## Requête
 
-Les fragments de requête suivent le modèle standard pour les ressources, sauf qu’il ne comporte pas de méthode Par nom . Les deux [Par identifiant](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetByIdUsingGET) et [Parcourir](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetUsingGET) Les méthodes permettent d’utiliser le champ d’état pour récupérer les versions approuvées ou préliminaires du fragment de code.
+Les fragments de requête suivent le modèle standard pour les ressources, sauf qu’il ne comporte pas de méthode Par nom . Les méthodes [By Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetByIdUsingGET) et [Browse](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetUsingGET) permettent l’utilisation du champ status pour récupérer les versions approuvées ou préliminaires de l’extrait de code.
 
 ### Par identifiant
 
@@ -139,11 +139,11 @@ GET /rest/asset/v1/snippet/{id}/content.json
 }
 ```
 
-L’appel renvoie une liste de sections de contenu, composées de sections de type HTML ou Contenu dynamique , et éventuellement une section avec un type Texte.
+L’appel renvoie une liste des sections de contenu,  qui se composent de sections de type HTML ou Contenu dynamique, et éventuellement d’une section de type Texte.
 
 ## Créer et mettre à jour
 
-Les fragments de code suivent le modèle complexe de création de ressources, où l’appel à [créer un fragment de code](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/createSnippetUsingPOST)et que son contenu est effectué séparément. Par conséquent, le premier appel doit être effectué au point de terminaison de création, avec une description facultative.   Les données sont transmises sous la forme x-www-form-urlencoded, et non sous la forme JSON.
+Les fragments de code suivent le modèle complexe de création de la ressource, où l’appel à [créer un extrait de code](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/createSnippetUsingPOST) et son contenu sont effectués séparément. Par conséquent, le premier appel doit être au point de terminaison de création, avec une description facultative.   Les données sont transmises sous la forme x-www-form-urlencoded, et non sous la forme JSON.
 
 ```
 POST /rest/asset/v1/snippets.json
@@ -211,7 +211,7 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 }
 ```
 
-[Mise à jour des métadonnées](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/updateSnippetUsingPOST) est également effectué par id. Seul le nom et la description peuvent être mis à jour :
+[La mise à jour des métadonnées](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/updateSnippetUsingPOST) est également effectuée par identifiant. Seul le nom et la description peuvent être mis à jour :
 
 ```
 POST /rest/asset/v1/snippet/{id}.json
@@ -344,7 +344,7 @@ POST /rest/asset/v1/snippet/{id}/approveDraft.json
 
 ### Désapprouver
 
-La variable `unapprove` Le point de terminaison ne peut être utilisé que sur les fragments de code approuvés.
+Le point d’entrée `unapprove` ne peut être utilisé que sur les fragments de code approuvés.
 
 ```
 POST /rest/asset/v1/snippet/{id}/unapprove.json
@@ -400,7 +400,7 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 ## Cloner
 
-[Clonage d’un fragment de code](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/cloneSnippetUsingPOST) avec l’API est simple et suit le modèle standard, avec un nom obligatoire, l’identifiant du fragment de code et du dossier d’origine, ainsi qu’une description facultative.  Si aucune version approuvée n’existe, la version préliminaire est clonée.
+[Le clonage d’un fragment de code](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/cloneSnippetUsingPOST) avec l’API est simple et suit le modèle standard, avec un nom obligatoire, l’identifiant du fragment de code et du dossier d’origine, ainsi qu’une description facultative.  Si aucune version approuvée n’existe, la version préliminaire est clonée.
 
 ```
 POST /rest/asset/v1/snippet/{id}/clone.json

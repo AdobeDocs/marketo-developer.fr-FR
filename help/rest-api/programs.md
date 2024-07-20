@@ -1,18 +1,18 @@
 ---
-title: "Programmes"
+title: Programmes
 feature: REST API, Programs
-description: "Créer et modifier les informations du programme."
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Créez et modifiez les informations du programme.
+exl-id: 30700de2-8f4a-4580-92f2-7036905deb80
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '843'
 ht-degree: 2%
 
 ---
 
-
 # Programmes
 
-[Référence des points de terminaison de programmes](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs)
+[Référence du point de terminaison de programmes](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs)
 
 Les programmes sont une composante essentielle de l’organisation des activités marketing de Marketo. Ils peuvent être parents de la plupart des types de ressources et permettre le suivi de l’adhésion et du succès des pistes dans le cadre d’initiatives marketing individuelles. Les programmes peuvent être des parents de tous les types d’enregistrements, à l’exception de LP, des modèles de courrier électronique et des fichiers.
 
@@ -32,13 +32,13 @@ Les programmes ont toujours un canal. Ils obtiennent la configuration possible d
 
 ## Requête
 
-Les programmes suivent le modèle standard pour les requêtes de ressources avec une option supplémentaire permettant d’effectuer des requêtes par type de balise et par valeurs. Les balises et valeurs disponibles peuvent être récupérées avec [Obtention des types de balise](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags/operation/getTagTypesUsingGET).
+Les programmes suivent le modèle standard pour les requêtes de ressources avec une option supplémentaire permettant d’effectuer des requêtes par type de balise et par valeurs. Les balises et valeurs disponibles peuvent être récupérées avec [Get Tag Types](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags/operation/getTagTypesUsingGET).
 
 ### Par identifiant
 
-La variable [Obtention du programme par identifiant](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) un point d’entrée requiert une `id` paramètre path .
+Le point d’entrée [Get Program by Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) nécessite un paramètre de chemin d’accès `id`.
 
-L’ID de programme peut être obtenu à partir de l’URL du programme dans l’interface utilisateur, où l’URL ressemblera à `https://app-\*\*\*.marketo.com/#PG1001A1`. Dans cette URL, la variable `id` est 1001. Il sera toujours compris entre le premier ensemble de lettres de l’URL et le second ensemble de lettres.
+L’ID de programme peut être obtenu à partir de l’URL du programme dans l’interface utilisateur, où l’URL ressemblera à `https://app-\*\*\*.marketo.com/#PG1001A1`. Dans cette URL, le `id` est 1001. Il sera toujours compris entre le premier ensemble de lettres de l’URL et le second ensemble de lettres.
 
 ```
 GET /rest/asset/v1/program/{id}.json
@@ -82,7 +82,7 @@ GET /rest/asset/v1/program/{id}.json
 
 ### Par nom
 
-La variable [Obtenir le programme par nom](https://developer.adobe.com/marketo-apis/api/asset/) un point d’entrée requiert une `name` paramètre de requête. Les paramètres de requête booléens facultatifs sont `includeTags` et `includeCosts` qui sont utilisés pour renvoyer les balises de programme et les coûts de programme, respectivement.
+Le point d’entrée [Get Program by Name](https://developer.adobe.com/marketo-apis/api/asset/) nécessite un paramètre de requête `name`. Les paramètres de requête booléens facultatifs sont `includeTags` et `includeCosts`, utilisés pour renvoyer respectivement les balises de programme et les coûts de programme.
 
 ```
 GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
@@ -126,13 +126,13 @@ GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
 
 ### Parcourir
 
-La variable [Obtention de programmes](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) endpoint vous permet de rechercher des programmes.
+Le point d’entrée [Obtenir des programmes](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) vous permet de rechercher des programmes.
 
 Le paramètre facultatif `status` vous permet de filtrer selon l’état du programme. Ce paramètre s’applique uniquement aux programmes Engagement et Courrier électronique. Les valeurs possibles sont &quot;activé&quot; et &quot;désactivé&quot; pour les programmes d’engagement et &quot;déverrouillé&quot; pour les programmes de messagerie.
 
-Le paramètre facultatif `maxReturn` contrôle le nombre de programmes à renvoyer (200 au maximum, 20 par défaut). Le paramètre facultatif `offset` paramètre utilisé pour les résultats de la pagination (la valeur par défaut est 0).
+Le paramètre facultatif `maxReturn` contrôle le nombre de programmes à renvoyer (200 au maximum, 20 par défaut). Le paramètre facultatif `offset` utilisé pour les résultats de la pagination (la valeur par défaut est 0).
 
-Notez que les balises associées à un programme ne sont pas renvoyées par ce point de terminaison. Les balises de programme peuvent être récupérées à l’aide de l’une des méthodes suivantes : [Obtention de programmes par identifiant](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET) ou [Obtention de programmes par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET).
+Notez que les balises associées à un programme ne sont pas renvoyées par ce point de terminaison. Les balises de programme peuvent être récupérées en utilisant [Obtenir des programmes par identifiant](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET) ou [Obtenir des programmes par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET).
 
 ```
 GET /rest/asset/v1/programs.json
@@ -187,7 +187,7 @@ GET /rest/asset/v1/programs.json
 
 ### Par période
 
-La variable `earliestUpdatedAt` et `latestUpdatedAt` à nos paramètres [Obtention de programmes](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) Le point de terminaison vous permet de définir des filigranes de date et d’heure bas pour renvoyer les programmes qui ont été mis à jour ou créés initialement dans la plage donnée.
+Les paramètres `earliestUpdatedAt` et `latestUpdatedAt` de notre point d’entrée [Obtenir des programmes](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) vous permettent de définir des filigranes de date et d’heure faibles pour renvoyer les programmes qui ont été mis à jour ou initialement créés dans la plage donnée.
 
 ```
 GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&latestUpdatedAt=2017-01-30T00:00:00-05:00
@@ -278,9 +278,9 @@ GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&lat
 
 ### Par type de balise
 
-La variable [Obtention de programmes par balise](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramListByTagUsingGET) endpoint récupère une liste de programmes correspondant au type de balise et aux valeurs de balise fournies.
+Le point d’entrée [Obtenir des programmes par balise](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramListByTagUsingGET) récupère une liste de programmes correspondant au type de balise et aux valeurs de balise fournies.
 
-Il existe deux paramètres requis : `tagType` qui est le type de balise sur lequel filtrer les données, et `tagValue` qui est la valeur de balise sur laquelle filtrer les données.  Il existe un entier facultatif. `maxReturn` qui contrôle le nombre de programmes à renvoyer (200 au maximum, 20 par défaut) et un entier facultatif. `offset` paramètre utilisé pour les résultats de la pagination (la valeur par défaut est 0).  Les résultats sont renvoyés dans un ordre aléatoire.
+Il existe deux paramètres requis, `tagType` qui est le type de balise sur lequel filtrer les données, et `tagValue` qui est la valeur de balise sur laquelle filtrer les données.  Il existe un paramètre facultatif integer `maxReturn` qui contrôle le nombre de programmes à renvoyer (le maximum est 200, la valeur par défaut est 20) et un paramètre facultatif integer `offset` utilisé pour les résultats de pagination (la valeur par défaut est 0).  Les résultats sont renvoyés dans un ordre aléatoire.
 
 ```
 GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
@@ -320,9 +320,9 @@ GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 
 ## Créer et mettre à jour
 
-[Création]https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/createProgramUsingPOST) et [mise à jour](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) Les programmes suivent le modèle de ressource standard et ont `folder`, `name`, `type` et `channel` comme paramètres requis, avec `description`, `costs` et `tags` étant facultatif. Le canal et le type ne peuvent être définis qu’à la création du programme. Description, nom uniquement, `tags` et `costs` peut être mis à jour après la création, avec une `costsDestructiveUpdate` paramètre autorisé. Transmission `costsDestructiveUpdate` comme vrai, tous les coûts existants seront effacés et remplacés par les coûts inclus dans l&#39;appel. Notez que des balises peuvent être requises pour certains types de programmes dans certains abonnements, mais cela dépend de la configuration et doit d’abord être vérifié avec Obtenir des balises pour voir s’il existe des exigences spécifiques à une instance.
+Les programmes [Creating]https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/createProgramUsingPOST) et [update](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) suivent le modèle de ressource standard et ont `folder`, `name`, `type` et `channel` comme paramètres requis, avec `description`, `costs` et `tags` comme paramètres facultatifs. Le canal et le type ne peuvent être définis qu’à la création du programme. Seules la description, le nom, `tags` et `costs` peuvent être mis à jour après la création, avec un paramètre `costsDestructiveUpdate` supplémentaire autorisé. Si vous définissez `costsDestructiveUpdate` sur true, tous les coûts existants seront effacés et remplacés par les coûts inclus dans l’appel. Notez que des balises peuvent être requises pour certains types de programmes dans certains abonnements, mais cela dépend de la configuration et doit d’abord être vérifié avec Obtenir des balises pour voir s’il existe des exigences spécifiques à une instance.
 
-Lors de la création ou de la mise à jour d’un programme de messagerie, une `startDate` et `endDate` peut également être transmis.
+Lors de la création ou de la mise à jour d&#39;un programme de messagerie, un `startDate` et un `endDate` peuvent également être transmis.
 
 ### Créer
 
@@ -376,7 +376,7 @@ name=API Test Program&folder={"id":1035,"type":"Folder"}&description=Sample API 
 
 ### Mise à jour
 
-Lors de la mise à jour des coûts du programme, pour ajouter de nouveaux coûts, ajoutez-les simplement à votre `costs` tableau. Pour effectuer une mise à jour destructrice, transmettez vos nouveaux coûts, ainsi que le paramètre . `costsDestructiveUpdate` défini sur `true`. Pour effacer tous les coûts d’un programme, ne transmettez pas un événement `costs` et transmettez simplement `costsDestructiveUpdate` défini sur `true`.
+Lors de la mise à jour des coûts du programme, pour ajouter de nouveaux coûts, ajoutez-les simplement à votre tableau `costs`. Pour effectuer une mise à jour destructrice, transmettez vos nouveaux coûts, ainsi que le paramètre `costsDestructiveUpdate` défini sur `true`. Pour effacer tous les coûts d&#39;un programme, ne transmettez pas de paramètre `costs` et transmettez simplement `costsDestructiveUpdate` défini sur `true`.
 
 ```
 POST /rest/asset/v1/program/{id}.json
@@ -482,9 +482,9 @@ POST /rest/asset/v1/program/{id}/unapprove.json
 
 ## Cloner
 
-[Clonage des programmes](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/cloneProgramUsingPOST) suit le modèle de ressource standard, le nouveau nom et le nouveau dossier comme les paramètres requis et une description facultative.  La variable `name` doit être unique au niveau global et ne pas dépasser 255 caractères.  La variable `folder` est le dossier parent.  La variable `folder` L’attribut de type de paramètre doit être défini sur &quot;Dossier&quot; et le dossier cible doit se trouver dans le même espace de travail que le programme en cours de clonage.
+[Les programmes de clonage](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/cloneProgramUsingPOST) suivent le modèle de ressource standard du nouveau nom et du nouveau dossier comme paramètres requis et une description facultative.  Le paramètre `name` doit être unique au niveau global et ne peut pas dépasser 255 caractères.  Le paramètre `folder` est le dossier parent.  L’attribut de type de paramètre `folder` doit être défini sur &quot;Dossier&quot; et le dossier cible doit se trouver dans le même espace de travail que le programme en cours de clonage.
 
-Les programmes contenant certains types de ressources ne peuvent pas être clonés via cette API, y compris les notifications push, les messages In-App, les rapports et les ressources sociales. Il est possible que les programmes In-App ne soient pas clonés via cette API.
+Les programmes contenant certains types de ressources ne peuvent pas être clonés via cette API, y compris les notifications push, les messages In-App, les rapports et Social Assets. Il est possible que les programmes In-App ne soient pas clonés via cette API.
 
 ```
 POST /rest/asset/v1/program/{id}/clone.json

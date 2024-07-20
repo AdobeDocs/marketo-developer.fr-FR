@@ -1,14 +1,14 @@
 ---
-title: "Exemples"
-description: "Exemples de code Marketo"
+title: Exemples
+description: Exemples de code Marketo
 feature: Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: dc5f0cc5-ff5a-48b0-be36-52c10e56f798
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '207'
 ht-degree: 0%
 
 ---
-
 
 # Exemples
 
@@ -137,7 +137,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (for
 
 ## Afficher le formulaire dans LightBox
 
-Cet exemple affiche le formulaire dans une boîte de dialogue de style Lightbox si l’URL contient un paramètre . `lightboxForm=true`.
+Cet exemple montre le formulaire dans une boîte de dialogue de style Lightbox si l’URL contient un paramètre `lightboxForm=true`.
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) { 

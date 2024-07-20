@@ -1,14 +1,14 @@
 ---
-title: "syncCustomObjects"
+title: syncCustomObjects
 feature: SOAP
-description: "syncCustomObjects appels SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: appels de SOAP syncCustomObjects
+exl-id: dbdd7ee6-f83f-4e20-b847-25a61f0f6046
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '226'
 ht-degree: 3%
 
 ---
-
 
 # syncCustomObjects
 
@@ -20,7 +20,7 @@ Accepte un tableau d’objets personnalisés à créer ou à mettre à jour, jus
 
 Dans un seul appel API, certaines mises à jour peuvent réussir et d’autres échouer. Un message d’erreur est renvoyé pour chaque échec.
 
-Pour les objets personnalisés configurés avec la nouvelle interface utilisateur Objet personnalisé, seuls les champs désignés comme `dedupe` les champs de l’interface utilisateur peuvent être transmis en tant qu’attributs dans `CustomObjKeyList`. Champs de lien qui ne sont pas `dedupe` Les champs doivent être transmis en tant qu’attribut dans `customObjAttributeList`.
+Pour les objets personnalisés configurés avec la nouvelle interface utilisateur d’objet personnalisé, seuls les champs désignés comme champs `dedupe` dans l’interface utilisateur peuvent être transmis en tant qu’attributs dans `CustomObjKeyList`. Les champs de lien qui ne sont pas `dedupe` doivent être transmis en tant qu’attribut dans `customObjAttributeList`.
 
 ## Demande
 

@@ -1,14 +1,14 @@
 ---
-title: "Assets"
+title: Ressources
 feature: REST API
-description: "Une API pour travailler avec des ressources Marketo."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Une API pour travailler avec des ressources Marketo.
+exl-id: 4273a5b1-1904-46e8-b583-fc6f46b388d2
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '876'
 ht-degree: 2%
 
 ---
-
 
 # Ressources
 
@@ -31,11 +31,11 @@ Les ressources Marketo incluent :
 
 ## API
 
-Pour obtenir la liste complète des points d’entrée de l’API Asset, y compris les paramètres et les informations de modélisation, reportez-vous à la section [Référence du point de terminaison de l’API Asset](endpoint-reference.md).
+Pour obtenir la liste complète des points d’entrée de l’API Asset, y compris les paramètres et les informations de modélisation, voir la [référence du point d’entrée de l’API Asset](endpoint-reference.md).
 
 ## Requête
 
-Les ressources ont généralement trois modèles par lesquels elles peuvent être récupérées : par identifiant, par nom et par navigation.  Par identifiant et par nom, récupère une seule ressource pour un paramètre donné, tandis que la navigation renvoie et permet la pagination à travers toute la liste des ressources de ce type.  Les types de ressources individuels comportent des paramètres variables qui leur permettent de filtrer. Veillez donc à consulter leurs documents individuels pour plus de détails.
+Assets comporte généralement trois modèles par lesquels ils peuvent être récupérés : par identifiant, par nom et en naviguant.  Par identifiant et par nom, récupère une seule ressource pour un paramètre donné, tandis que la navigation renvoie et permet la pagination à travers toute la liste des ressources de ce type.  Les types de ressources individuels comportent des paramètres variables qui leur permettent de filtrer. Veillez donc à consulter leurs documents individuels pour plus de détails.
 
 Dans certains cas, le point de terminaison de navigation de certains types de ressources ne renvoie pas de ressources enfants, telles que les valeurs autorisées pour une balise, et elles doivent être récupérées individuellement à l’aide du point de terminaison Par nom ou Par identifiant pour renvoyer l’ensemble complet des métadonnées.  D’autres peuvent avoir des points de fin distincts pour la récupération des objets dépendants tels que les champs de formulaire.
 
@@ -174,7 +174,7 @@ GET /rest/asset/v1/emailTemplates.json?offset=10&maxReturn=50
 
 ## Créer et mettre à jour
 
-Pour les types de ressources simples tels que les dossiers, les jetons et les fichiers, il n’existe généralement qu’un seul point de terminaison pour la création, puis un point de terminaison supplémentaire pour la mise à jour des enregistrements par identifiant.  Les ressources sont créées avec un nom qui est toujours requis, puis les métadonnées et les identifiants sont renvoyés par la réponse de création ou de mise à jour.
+Pour les types de ressources simples tels que les dossiers, les jetons et les fichiers, il n’existe généralement qu’un seul point de terminaison pour la création, puis un point de terminaison supplémentaire pour la mise à jour des enregistrements par identifiant.  Assets est créé avec un nom qui est toujours requis, puis les métadonnées et les identifiants sont renvoyés par la réponse de création ou de mise à jour.
 
 Par exemple, voici comment créer un jeton :
 
@@ -433,7 +433,7 @@ POST /rest/asset/v1/emailTemplate/{id}/discardDraft.json
 }
 ```
 
-Les ressources peuvent également être non approuvées si elles sont dans un état approuvé uniquement.  Cela supprime toutes les versions actives de la ressource et la renvoie à un état de brouillon uniquement, tout en ignorant le brouillon associé.  Cette action ne peut être effectuée que sur la plupart des ressources si elles ne sont utilisées nulle part dans Marketo, par exemple si un email est référencé à l’étape de flux Envoyer un courrier électronique ou si un fragment de code est incorporé dans un courrier électronique.
+Assets peut également être non approuvé s’il est dans un état approuvé uniquement.  Cela supprime toutes les versions actives de la ressource et la renvoie à un état de brouillon uniquement, tout en ignorant le brouillon associé.  Cette action ne peut être effectuée que sur la plupart des ressources si elles ne sont utilisées nulle part dans Marketo, par exemple si un email est référencé à l’étape de flux Envoyer un courrier électronique ou si un fragment de code est incorporé dans un courrier électronique.
 
 ```
 POST /rest/asset/v1/email/{id}/unapprove.json
@@ -455,7 +455,7 @@ POST /rest/asset/v1/email/{id}/unapprove.json
 
 ## Supprimer
 
-Les ressources avec approbation et état de brouillon, à l’exception des formulaires, ne peuvent pas être supprimées lorsqu’elles sont approuvées et doivent être non approuvées avant suppression.  En règle générale, les suppressions ne peuvent être effectuées que lorsqu’une ressource n’est pas validée et n’est pas utilisée et, dans le cas de dossiers, qu’elle est vide.  Une exception notable est les programmes, qui peuvent être supprimés avec l’ensemble de leurs contenus enfants, tant que le programme et son contenu ne sont pas utilisés en dehors des limites du programme.
+Assets avec approbation et état de brouillon, à l’exception des formulaires, ne peut pas être supprimé lorsqu’il est approuvé et doit être non approuvé avant suppression.  En règle générale, les suppressions ne peuvent être effectuées que lorsqu’une ressource n’est pas validée et n’est pas utilisée et, dans le cas de dossiers, qu’elle est vide.  Une exception notable est les programmes, qui peuvent être supprimés avec l’ensemble de leurs contenus enfants, tant que le programme et son contenu ne sont pas utilisés en dehors des limites du programme.
 
 ```
 POST /rest/asset/v1/program/{id}/delete.json

@@ -1,22 +1,22 @@
 ---
-title: "Services personnalisés"
+title: Services personnalisés
 feature: REST API
-description: "Informations d’identification d’authentification avec Marketo."
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Identifiants d’authentification avec Marketo.
+exl-id: 38b05c4c-4404-4c30-a7cb-d31b28a3a72e
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '985'
 ht-degree: 6%
 
 ---
 
-
 # Services personnalisés
 
-Un service personnalisé fournit des informations d’identification pour l’authentification avec Marketo. Les informations d’identification sont nécessaires pour obtenir un jeton d’accès à partir de Marketo [Service Identity](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). Chaque service personnalisé est associé à un seul utilisateur API uniquement à partir duquel il obtient ses autorisations.
+Un service personnalisé fournit des informations d’identification pour l’authentification avec Marketo. Les informations d’identification sont nécessaires pour obtenir un jeton d’accès à partir du service Marketo [ Identity ](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). Chaque service personnalisé est associé à un seul utilisateur API uniquement à partir duquel il obtient ses autorisations.
 
 ## Rôles
 
-La première étape de la création d’un service personnalisé consiste à créer un rôle que vous pouvez appliquer à l’utilisateur API uniquement approprié. Cette opération s’effectue à partir de la fonction **[!UICONTROL Administration]** > **[!UICONTROL Utilisateurs et rôles]** > **[!UICONTROL Rôles]** .
+La première étape de la création d’un service personnalisé consiste à créer un rôle que vous pouvez appliquer à l’utilisateur API uniquement approprié. Pour ce faire, utilisez le menu **[!UICONTROL Admin]** > **[!UICONTROL Utilisateurs et rôles]** > **[!UICONTROL Rôles]** .
 
 Les rôles sont des conteneurs pour les autorisations individuelles qui permettent ou limitent l’accès à certaines fonctions. Dans les abonnements pour lesquels les espaces de travail et les partitions sont activés, les autorisations sont attribuées par espace de travail. Si un utilisateur dispose d’une autorisation dans un espace de travail, mais pas dans un autre, il pourra uniquement effectuer les actions autorisées dans cet espace de travail. Pour créer un rôle, cliquez sur le bouton Nouveau rôle .
 
@@ -30,7 +30,7 @@ Veillez à donner un nom explicite à votre rôle. Les utilisateurs d’API uniq
 
 Seules les autorisations du groupe &quot;API d’accès&quot; sont appliquées aux utilisateurs de l’API, c’est-à-dire qu’accorder toutes les autorisations d’administrateur n’accorde aucune autorisation d’API à un utilisateur.
 
-Lors de la création d’un rôle, réfléchissez attentivement aux actions que vous devriez permettre à l’application de l’utiliser. Attribuez uniquement le jeu minimal d’autorisations nécessaires pour effectuer ces actions. L’autorisation d’un ensemble d’autorisations inutilement permissif peut permettre aux intégrations d’effectuer des actions indésirables dans votre abonnement. Vous pouvez utiliser la variable [outil d&#39;autorisations](endpoint-reference.md) pour déterminer votre jeu minimal d’autorisations. Consultez la liste complète des [permissions](#permission_list).
+Lors de la création d’un rôle, réfléchissez attentivement aux actions que vous devriez permettre à l’application de l’utiliser. Attribuez uniquement le jeu minimal d’autorisations nécessaires pour effectuer ces actions. L’autorisation d’un ensemble d’autorisations inutilement permissif peut permettre aux intégrations d’effectuer des actions indésirables dans votre abonnement. Vous pouvez utiliser l’ [outil d’autorisations](endpoint-reference.md) pour déterminer votre jeu minimal d’autorisations. Consultez la liste complète des [autorisations](#permission_list).
 
 ## Utilisateurs et utilisatrices
 
@@ -42,10 +42,10 @@ Après avoir créé un rôle, vous devez créer un utilisateur &quot;API uniquem
 
 >[!MORELIKETHIS]
 >
->Pour créer un utilisateur API uniquement, accédez au **[!UICONTROL Administration]** > **[!UICONTROL Utilisateurs et rôles]** > **[!UICONTROL Utilisateurs]** et cliquez sur [!UICONTROL Inviter un nouvel utilisateur].
+>Pour créer un utilisateur API uniquement, accédez au menu **[!UICONTROL Admin]** > **[!UICONTROL Utilisateurs et rôles]** > **[!UICONTROL Utilisateurs]** et cliquez sur [!UICONTROL Inviter un nouvel utilisateur].
 
 
-![Informations sur les nouveaux utilisateurs](assets/new-user-info.png)
+![Informations sur le nouvel utilisateur](assets/new-user-info.png)
 
 Donnez à votre utilisateur un nom et une adresse email descriptifs (il ne doit pas être valide), en fonction du service et de l’application pour lesquels il sera utilisé. Renseignez les champs requis dans le menu de la boîte de dialogue, cliquez sur la case &quot;API seulement&quot; et attribuez l’un de vos rôles d’API à l’utilisateur. Cela affecte les autorisations définies à ce rôle à l’utilisateur.
 
@@ -57,13 +57,13 @@ Lors de la mise en service d’une nouvelle application avec des informations d�
 
 ## Services personnalisés
 
-Les services personnalisés fournissent les informations d’identification réelles, l’identifiant du client et le secret du client, requises pour effectuer l’authentification avec une instance Marketo. Pour en configurer un, accédez à **[!UICONTROL Administration]** > **[!UICONTROL Intégrations]** > **[!UICONTROL LaunchPoint]** et sélectionnez **[!UICONTROL Nouveau service]**.
+Les services personnalisés fournissent les informations d’identification réelles, l’identifiant du client et le secret du client, requises pour effectuer l’authentification avec une instance Marketo. Pour en configurer un, accédez à votre menu **[!UICONTROL Admin]** > **[!UICONTROL Intégrations]** > **[!UICONTROL LaunchPoint]**, puis sélectionnez **[!UICONTROL Nouveau service]**.
 
-Donnez un nom explicite à votre service et, dans la liste &quot;Service&quot;, sélectionnez &quot;Personnalisé&quot;. Donnez une description détaillée à votre service et sélectionnez un utilisateur approprié dans la liste Utilisateurs API uniquement , puis cliquez sur [!UICONTROL Créer].
+Donnez un nom explicite à votre service et, dans la liste &quot;Service&quot;, sélectionnez &quot;Personnalisé&quot;. Donnez une description détaillée à votre service et sélectionnez un utilisateur approprié dans la liste des utilisateurs API uniquement, puis cliquez sur [!UICONTROL Créer].
 
 ![Nouveau service personnalisé](assets/admin-launchpoint-new-service.png)
 
-Cela ajoute un nouveau service à votre liste de services LaunchPoint et l’option Afficher les détails. Cliquez sur &quot;Afficher les détails&quot; et vous recevez l’identifiant du client et le secret du client requis pour l’authentification, l’utilisateur propriétaire et une option permettant d’obtenir le jeton à des fins de test à court terme. Le jeton obtenu à partir de cette boîte de dialogue a la même durée de vie que les jetons obtenus normalement à partir du [Service Identity](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET) et est valide pendant 3 600 secondes à compter de la création.
+Cela ajoute un nouveau service à votre liste de services LaunchPoint et l’option Afficher les détails. Cliquez sur &quot;Afficher les détails&quot; et vous recevez l’identifiant du client et le secret du client requis pour l’authentification, l’utilisateur propriétaire et une option permettant d’obtenir le jeton à des fins de test à court terme. Le jeton obtenu à partir de cette boîte de dialogue a la même durée de vie que les jetons obtenus normalement à partir du [service d’identité](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET) et est valide pendant 3 600 secondes à compter de sa création.
 
 ![Obtenir un jeton](assets/get-token.png)
 
@@ -71,7 +71,7 @@ Cela ajoute un nouveau service à votre liste de services LaunchPoint et l’opt
 
 Dans les abonnements avec des espaces de travail et des partitions, la possibilité d’accéder à un enregistrement ou à une ressource donnée est accordée en fonction des autorisations dont dispose le rôle d’un utilisateur dans un espace de travail donné. Chaque espace de travail a accès à une ou plusieurs partitions dans le menu Espaces de travail et Partitions , et une piste appartient à une seule partition. Si l&#39;utilisateur API uniquement a accès à des enregistrements de piste en lecture ou écriture dans un espace de travail, il peut alors accéder à tous les enregistrements des partitions auxquelles l&#39;espace de travail a accès.
 
-Les ressources appartiennent à des espaces de travail. Par conséquent, la possibilité de lire ou d’écrire une ressource est déterminée par le rôle de l’utilisateur dans l’espace de travail approprié, qui est autorisé à lire ou à écrire ce type d’enregistrement de ressource dans l’espace de travail.
+Assets appartenant à des espaces de travail, la possibilité de lire ou d’écrire une ressource est donc déterminée par le rôle de l’utilisateur dans l’espace de travail approprié, qui est autorisé à lire ou à écrire ce type d’enregistrement de ressource dans l’espace de travail.
 
 ## Liste des autorisations
 

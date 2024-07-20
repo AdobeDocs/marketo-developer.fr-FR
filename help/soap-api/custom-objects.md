@@ -1,14 +1,14 @@
 ---
-title: "Objets personnalisés"
+title: Objets personnalisés
 feature: SOAP
-description: '"Création d’objets personnalisés".'
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Création d’objets personnalisés.
+exl-id: 29d65841-4b44-4d94-b14e-c583d433d015
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '231'
-ht-degree: 1%
+ht-degree: 2%
 
 ---
-
 
 # Objets personnalisés
 
@@ -16,7 +16,7 @@ Un objet personnalisé Marketo permet la création d’une relation unique entre
 
 Les objets personnalisés sont pris en charge sur toutes les éditions Marketo, à l’exception de Spark. Lorsque l’objet personnalisé Marketo est correctement configuré dans votre compte, vous pouvez
 
-- Créer/lire/mettre à jour/supprimer des enregistrements dans l’objet personnalisé via l’API Marketo SOAP
+- Création/lecture/mise à jour/suppression d’enregistrements dans l’objet personnalisé via l’API Marketo SOAP
 - Utiliser le déclencheur de liste dynamique lorsque de nouveaux enregistrements sont ajoutés à l’objet personnalisé
 - Utiliser les données d’objet personnalisées comme filtre dans les listes dynamiques
 - Utiliser les données d’objet personnalisées dans les emails à l’aide de Marketo Email Scripting

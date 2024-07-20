@@ -1,20 +1,20 @@
 ---
-title: "Obtention des données du visiteur"
-description: "Obtention des données du visiteur"
+title: Obtention des données du visiteur
+description: Obtention des données du visiteur
 feature: Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: 39a2446d-8a31-461e-bbe6-a7edf24b4d52
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '184'
 ht-degree: 5%
 
 ---
 
-
 # Obtention des données du visiteur
 
 Cette méthode est utilisée pour obtenir des données d’identification des visiteurs en temps réel.
 
-- Vous devez devenir un client de personnalisation Web et disposer de la variable [Balise RTP déployée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+- Vous devez devenir client Web Personalization et faire déployer la balise [RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 - Le protocole RTP ne prend pas en charge les listes de comptes nommés Marketing basé sur un compte. Les listes ABM et le code ne se rapportent qu’aux listes de comptes téléchargées (fichiers CSV) gérées dans RTP.
 
 Si une erreur se produit, un message d’erreur s’affiche dans le cadre de la réponse JSON. Si un code 500 est renvoyé, contactez l’assistance avec la demande que vous avez effectuée.

@@ -1,14 +1,14 @@
 ---
-title: "Profils utilisateur"
+title: Profils utilisateur
 feature: Mobile Marketing, Users and Roles
-description: "Utilisation de profils utilisateur dans Marketo Mobile"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Utilisation des profils utilisateur dans Marketo Mobile
+exl-id: 1b2cfb7f-d678-4022-8cd9-a56004a1ac46
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '83'
 ht-degree: 0%
 
 ---
-
 
 # Profils utilisateur
 
@@ -65,11 +65,11 @@ profile.setLinkedInId("linkedinid")
 profile.setTwitterId("twitterid")
 ```
 
-Ajouter d’autres [champs standard](../rest-api/list-of-standard-fields.md).
+Ajoutez d’autres [champs standard](../rest-api/list-of-standard-fields.md).
 
 >[!BEGINTABS]
 
->[!TAB Objectif C]
+>[!TAB Objective C]
 
 ```
 // Add other custom fields
@@ -93,7 +93,7 @@ Profil utilisateur du rapport.
 
 >[!BEGINTABS]
 
->[!TAB Objectif C]
+>[!TAB Objective C]
 
 ```
 Marketo *sharedInstance = [Marketo sharedInstance];
@@ -135,7 +135,7 @@ marketo.associateLead(profile)
    }
    ```
 
-1. Ajouter d’autres [champs standard](../rest-api/list-of-standard-fields.md).
+1. Ajoutez d’autres [champs standard](../rest-api/list-of-standard-fields.md).
 
    ```java
    // Add other custom fields

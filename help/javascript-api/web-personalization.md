@@ -1,20 +1,20 @@
 ---
-title: "Personnalisation web"
-description: "Personnalisation web"
+title: Personnalisation Web
+description: Personnalisation Web
 feature: Web Personalization, Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: b2c26b28-e9bf-4faf-8b6e-c102f41aeaa1
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '401'
-ht-degree: 5%
+ht-degree: 6%
 
 ---
 
-
 # Personnalisation Web
 
-L’API JavaScript de personnalisation web étend la fonctionnalité de personnalisation automatisée de la plateforme. Il permet le suivi des événements et la personnalisation dynamique d’une page web. Fonctionnalités supplémentaires : [Événements de données personnalisés](custom-data-events.md), [Contenu dynamique](web-personalization.md), [Obtention des données du visiteur](get-visitor-data.md), [Exclusion de balise pour des robots spécifiques](#exclude_tag_for_specific_bots).
+L’API JavaScript de Web Personalization étend la fonctionnalité de personnalisation automatisée de la plateforme. Il permet le suivi des événements et la personnalisation dynamique d’une page web. Fonctionnalités supplémentaires : [Événements de données personnalisés](custom-data-events.md), [Contenu dynamique](web-personalization.md), [Obtenir les données du visiteur](get-visitor-data.md), [Exclure la balise pour les robots spécifiques](#exclude_tag_for_specific_bots).
 
-- Vous devez devenir un client de personnalisation Web et disposer de la variable [Balise RTP déployée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+- Vous devez devenir client Web Personalization et faire déployer la balise [RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 - Le protocole RTP ne prend pas en charge les listes de comptes nommés Marketing basé sur un compte. Les listes ABM et le code ne se rapportent qu’aux listes de comptes téléchargées (fichiers CSV) gérées dans RTP.
 
 ## Configuration des balises
@@ -71,9 +71,9 @@ rtp('send', 'view', page);
 
 ## Exclure la balise pour des robots spécifiques (agents utilisateur)
 
-Pour exclure des navigateurs spécifiques de l’envoi de données à la plateforme de personnalisation web (dans le cas de robots identifiés), ajoutez l’instruction IF suivante au script de balise.
+Pour exclure des navigateurs spécifiques de l’envoi de données à la plateforme Web Personalization (dans le cas de robots identifiés), ajoutez l’instruction IF suivante au script de balise.
 
-Dans l’exemple de code ci-dessous, &quot;Googlebot|msnbot&quot; est utilisé comme deux exemples à exclure des activités de personnalisation web.
+Dans l’exemple de code ci-dessous, &quot;Googlebot|msnbot&quot; est utilisé comme exemples de robots à exclure des activités Web Personalization.
 
 ```javascript
 <!-- RTP tag --> 
@@ -93,9 +93,9 @@ if(navigator.userAgent.match(/.(Googlebot|msnbot)./gi) == null){
 
 ## Explication des appels JavaScript
 
-Description du code JavaScript ajouté à un site web lors de l’utilisation de la personnalisation web et du contenu prédictif.
+Description de JavaScript qui est ajouté à un site web lors de l’utilisation de Web Personalization et de contenu prédictif.
 
-### Code JavaScript principal/dépendant
+### JavaScript principal/dépendant
 
 | Nom | Description | Contrôle |
 |---------------------------|-------------|--------------------------------------------------------|
@@ -107,7 +107,7 @@ Description du code JavaScript ajouté à un site web lors de l’utilisation de
 
 *Utilisé uniquement si la boîte de dialogue de l’interface utilisateur jQuery est manquante
 
-### JavaScript On Demand
+### JavaScript à la demande
 
 | Nom | Description | Contrôle |
 |-------------------------|-----------------------------------------------------------------------|-----------------------|
@@ -115,4 +115,3 @@ Description du code JavaScript ajouté à un site web lors de l’utilisation de
 | insightera-bar-2.1.js | Utilisé si la barre de recommandation de contenu prédictif est activée | Contrôlé par Marketo |
 | froogaloop2.min.js | Utilisé si le suivi du contenu est activé et que le lecteur Vimeo existe sur la page | - |
 | iframe-api-v1.js | Utilisé si le suivi du contenu est activé et que le lecteur YouTube existe sur la page | - |
-

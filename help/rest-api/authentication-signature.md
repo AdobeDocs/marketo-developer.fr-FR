@@ -1,14 +1,14 @@
 ---
-title: "Authentication Signature"
+title: Signature d’authentification
 feature: REST API
-description: "Utilisation d’une authentification sécurisée pour l’envoi de messages."
-source-git-commit: 9bc1e0867f9a21e2dc72bfab444a09f188d1bac9
+description: Utiliser une authentification sécurisée pour l'envoi de messages.
+exl-id: dda9d81b-0a77-4a99-916b-bf21319fd26d
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '210'
 ht-degree: 3%
 
 ---
-
 
 # Signature d’authentification
 
@@ -43,10 +43,10 @@ authHeader = "<ns1:AuthenticationHeader>" +
 
 | Nom de champ | Obligatoire/Facultatif | Description |
 | --- | --- | --- |
-| `mktowsUserId` | Requis | L’ID d’accès client Marketo se trouve dans le panneau API SOAP d’administration Marketo sous Intégration. |
-| `requestSignature` | Requis | Signature HMAC-SHA1 basée sur la clé secrète partagée, `requestTimestamp`, et ID utilisateur Marketo |
+| `mktowsUserId` | Requis | L’ID d’accès du client Marketo se trouve dans le panneau de l’API d’administration Marketo SOAP sous Intégration. |
+| `requestSignature` | Requis | Signature HMAC-SHA1 basée sur la clé secrète partagée `requestTimestamp` et l’identifiant utilisateur Marketo |
 | `requestTimestamp` | Requis | Demander l’horodatage (format de date WSDL W3C Ex. &quot;2013-06-09T14:04:54-08:00&quot;) |
-| `partnerId` | En option | Partenaire technologique LaunchPoint [Clé API](../launchpoint-api.pdf). |
+| `partnerId` | En option | [Clé API](../launchpoint-api.pdf) du partenaire technologique LaunchPoint. |
 
 ## Request XML - getLeadActivity
 

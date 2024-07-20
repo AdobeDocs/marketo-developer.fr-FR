@@ -1,14 +1,14 @@
 ---
-title: "Extraction en bloc"
+title: Extraction en bloc
 feature: REST API
-description: "Opérations par lots pour extraire des données Marketo."
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Opérations par lots pour extraire des données Marketo.
+exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1643'
 ht-degree: 1%
 
 ---
-
 
 # Extraction en bloc
 
@@ -21,11 +21,11 @@ Marketo fournit des interfaces pour la récupération de grands ensembles de don
 
 L’extraction en bloc est réalisée en créant une tâche, en définissant l’ensemble de données à récupérer, en mettant la tâche en file d’attente, en attendant que la tâche termine l’écriture d’un fichier, puis en récupérant le fichier sur HTTP. Ces traitements sont exécutés de manière asynchrone et peuvent être interrogés pour récupérer l’état de l’exportation.
 
-`Note:` Les points d’entrée d’API en bloc ne sont pas précédés de &quot;/rest&quot; comme les autres points d’entrée.
+`Note:` Les points d’entrée d’API en bloc ne comportent pas le préfixe &quot;/rest&quot; comme les autres points d’entrée.
 
 ## Authentification
 
-Les API d’extraction en masse utilisent la même méthode d’authentification OAuth 2.0 que les autres API REST Marketo. Pour ce faire, un jeton d’accès valide doit être incorporé en tant que paramètre de chaîne de requête. `access_token={_AccessToken_}`ou en tant qu’en-tête HTTP `Authorization: Bearer {_AccessToken_}`.
+Les API d’extraction en masse utilisent la même méthode d’authentification OAuth 2.0 que les autres API REST Marketo. Pour ce faire, un jeton d’accès valide doit être incorporé en tant que paramètre de chaîne de requête `access_token={_AccessToken_}` ou en tant qu’en-tête HTTP `Authorization: Bearer {_AccessToken_}`.
 
 ## Limites
 
@@ -45,13 +45,13 @@ Le nombre maximal de tâches dans la file d’attente est de 10. Si vous essayez
 
 ### Taille du fichier
 
-Les API d’extraction en masse sont mesurées en fonction de la taille sur le disque des données récupérées par une tâche d’extraction en masse. La taille explicite en octets d’une tâche peut être déterminée en lisant la variable `fileSize` à partir de la réponse d’état terminée d’une tâche d’exportation.
+Les API d’extraction en masse sont mesurées en fonction de la taille sur le disque des données récupérées par une tâche d’extraction en masse. La taille explicite en octets d’une tâche peut être déterminée en lisant l’attribut `fileSize` à partir de la réponse d’état terminée d’une tâche d’exportation.
 
-Le quota quotidien est de 500 Mo au maximum par jour, qui est partagé entre les pistes, les activités, les membres de programme et les objets personnalisés. Lorsque le quota est dépassé, vous ne pouvez pas créer ou mettre en file d’attente une autre tâche tant que le quota quotidien n’est pas réinitialisé à minuit. [Heure centrale](https://en.wikipedia.org/wiki/Central_Time_Zone). Dans l&#39;intervalle, l&#39;erreur &quot;1029, Exporter le quota quotidien dépassé&quot; est renvoyée. Outre le quota quotidien, il n’existe pas de taille de fichier maximale.
+Le quota quotidien est de 500 Mo au maximum par jour, qui est partagé entre les pistes, les activités, les membres de programme et les objets personnalisés. Lorsque le quota est dépassé, vous ne pouvez pas créer ou mettre en file d’attente une autre tâche tant que le quota quotidien n’est pas réinitialisé à minuit [heure normale du Centre](https://en.wikipedia.org/wiki/Central_Time_Zone). Dans l&#39;intervalle, l&#39;erreur &quot;1029, Exporter le quota quotidien dépassé&quot; est renvoyée. Outre le quota quotidien, il n’existe pas de taille de fichier maximale.
 
 Une fois qu’une tâche est en file d’attente ou en cours de traitement, elle s’exécute jusqu’à la fin (sauf erreur ou annulation d’une tâche). Si une tâche échoue, vous devez la recréer. Les fichiers sont entièrement écrits uniquement lorsqu’une tâche atteint l’état terminé (les fichiers partiels ne sont jamais écrits). Vous pouvez vérifier qu’un fichier a été entièrement écrit en calculant son hachage SHA-256 et en le comparant à la somme de contrôle renvoyée par les points de terminaison de l’état de la tâche.
 
-Vous pouvez déterminer la quantité totale de disque utilisée pour la journée en cours en appelant Get Export Lead/Activity/Program Member Jobs. Ces points de terminaison renvoient une liste de toutes les tâches des sept derniers jours. Vous pouvez filtrer cette liste jusqu’aux tâches terminées le jour en cours (à l’aide de la fonction `status` et `finishedAt` Attributs). Ensuite, additionnez les tailles de fichiers pour ces tâches afin de produire le montant total utilisé. Il n’existe aucun moyen de supprimer un fichier pour récupérer de l’espace disque.
+Vous pouvez déterminer la quantité totale de disque utilisée pour la journée en cours en appelant Get Export Lead/Activity/Program Member Jobs. Ces points de terminaison renvoient une liste de toutes les tâches des sept derniers jours. Vous pouvez filtrer cette liste jusqu’aux tâches qui se sont terminées au cours du jour en cours (à l’aide des attributs `status` et `finishedAt` ). Ensuite, additionnez les tailles de fichiers pour ces tâches afin de produire le montant total utilisé. Il n’existe aucun moyen de supprimer un fichier pour récupérer de l’espace disque.
 
 ## Permissions
 
@@ -107,7 +107,7 @@ Cette requête simple crée une tâche qui renverra les valeurs contenues dans l
 }
 ```
 
-Lorsque nous créons la tâche, elle renvoie un ID de tâche dans la variable `exportId` attribut. Nous pouvons ensuite utiliser cet identifiant de tâche pour mettre la tâche en file d’attente, l’annuler, vérifier son état ou récupérer le fichier terminé.
+Lorsque nous créons la tâche, elle renvoie un identifiant de tâche dans l’attribut `exportId`. Nous pouvons ensuite utiliser cet identifiant de tâche pour mettre la tâche en file d’attente, l’annuler, vérifier son état ou récupérer le fichier terminé.
 
 ### Paramètres communs
 
@@ -122,7 +122,7 @@ Chaque point de fin de création de tâche partage certains paramètres communs 
 
 ## Récupération des tâches
 
-Parfois, vous devrez peut-être récupérer vos tâches récentes. Cela est facilement effectué avec Obtenir les tâches d’exportation pour le type d’objet correspondant. Chaque point de fin Get Export Jobs prend en charge une `status` champ de filtre, un  `batchSize` pour limiter le nombre de tâches renvoyées, et `nextPageToken` pour paginer dans des jeux de résultats volumineux. Le filtre d’état prend en charge chaque état valide d’une tâche d’exportation : création, mise en file d’attente, traitement, annulée, terminée et en échec. Le paramètre batchSize a une valeur maximale et une valeur par défaut de 300. Obtenons la liste des tâches d’exportation de pistes :
+Parfois, vous devrez peut-être récupérer vos tâches récentes. Cela est facilement effectué avec Obtenir les tâches d’exportation pour le type d’objet correspondant. Chaque point de fin Get Export Jobs prend en charge un champ de filtre `status`, ainsi qu’une  `batchSize` pour limiter le nombre de tâches renvoyées et `nextPageToken` pour la pagination par des jeux de résultats volumineux. Le filtre d’état prend en charge chaque état valide d’une tâche d’exportation : création, mise en file d’attente, traitement, annulée, terminée et en échec. Le paramètre batchSize a une valeur maximale et une valeur par défaut de 300. Obtenons la liste des tâches d’exportation de pistes :
 
 ```
 GET /bulk/v1/leads/export.json?status=Completed,Failed
@@ -150,7 +150,7 @@ GET /bulk/v1/leads/export.json?status=Completed,Failed
 }
 ```
 
-Le point de terminaison répond par `status` réponse de chaque tâche créée au cours des sept derniers jours pour ce type d’objet dans le tableau de résultats. La réponse inclura uniquement les résultats des tâches appartenant à l’utilisateur de l’API qui effectue l’appel.
+Le point de terminaison répond avec la réponse `status` de chaque tâche créée au cours des sept derniers jours pour ce type d’objet dans le tableau de résultats. La réponse inclura uniquement les résultats des tâches appartenant à l’utilisateur de l’API qui effectue l’appel.
 
 ## Démarrage d’une tâche
 
@@ -193,7 +193,7 @@ GET /bulk/v1/leads/export/{exportId}/status.json
 }
 ```
 
-L&#39;intérieur `status` member indique la progression de la tâche et peut être l’une des valeurs suivantes : Created, Queued, Processing, Canceled, Completed, Failed. Dans ce cas, notre tâche est terminée, nous pouvons donc arrêter l’interrogation et continuer à récupérer le fichier. Une fois l’opération terminée, la variable `fileSize` member indique la longueur totale du fichier en octets et la variable `fileChecksum` Le membre contient le hachage SHA-256 du fichier. L’état de la tâche est disponible pendant 30 jours après que l’état Terminé ou Échec a été atteint.
+Le membre `status` interne indique la progression de la tâche et peut être l’une des valeurs suivantes : Créé, En file d’attente, Traitement, Annulé, Terminé, Échec. Dans ce cas, notre tâche est terminée, nous pouvons donc arrêter l’interrogation et continuer à récupérer le fichier. Une fois terminé, le membre `fileSize` indique la longueur totale du fichier en octets, et le membre `fileChecksum` contient le hachage SHA-256 du fichier. L’état de la tâche est disponible pendant 30 jours après que l’état Terminé ou Échec a été atteint.
 
 ## Récupération de vos données
 
@@ -205,7 +205,7 @@ GET /bulk/v1/leads/export/{exportId}/file.json
 
 La réponse contient un fichier formaté selon la configuration de la tâche. Le point de terminaison répond avec le contenu du fichier. Si une tâche n’est pas terminée ou qu’un ID de tâche incorrect est transmis, les points de fin de fichier répondent avec l’état 404 Not Found et un message d’erreur en texte brut comme charge utile, contrairement à la plupart des autres points de fin REST Marketo.
 
-Pour prendre en charge la récupération partielle et conviviale des données extraites, le point de terminaison de fichier prend éventuellement en charge l’en-tête HTTP. `Range` du type `bytes` (par [RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233)). Si l’en-tête n’est pas défini, l’ensemble du contenu est renvoyé. Pour récupérer les 10 000 premiers octets d’un fichier, vous transmettez l’en-tête suivant dans le cadre de votre requête de GET au point de terminaison, en commençant par l’octet 0 :
+Pour prendre en charge la récupération partielle et conviviale des données extraites, le point de terminaison du fichier prend éventuellement en charge l’en-tête HTTP `Range` de type `bytes` (par [RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233)). Si l’en-tête n’est pas défini, l’ensemble du contenu est renvoyé. Pour récupérer les 10 000 premiers octets d’un fichier, vous transmettez l’en-tête suivant dans le cadre de votre requête de GET au point de terminaison, en commençant par l’octet 0 :
 
 ```
 Range: bytes=0-9999
@@ -221,7 +221,7 @@ Content-Range: bytes 0-9999/123424
 
 ### Récupération partielle et reprise
 
-Les fichiers peuvent être récupérés en partie ou repris ultérieurement à l’aide de la fonction `Range` en-tête . La plage d’un fichier commence à 0 octet et se termine à la valeur de `fileSize` moins 1. La longueur du fichier est également indiquée comme dénominateur dans la valeur de la variable `Content-Range` en-tête de réponse lors de l’appel d’un point de fin Get Export File . Si une récupération échoue partiellement, elle peut être reprise ultérieurement. Par exemple, si vous essayez de récupérer un fichier de 1 000 octets, mais que seuls les 725 premiers octets ont été reçus, la récupération peut être retentée à partir du point d’échec en appelant de nouveau le point de terminaison et en transmettant une nouvelle plage :
+Les fichiers peuvent être récupérés en partie ou repris ultérieurement à l’aide de l’en-tête `Range`. La plage d’un fichier commence à l’octet 0 et se termine à la valeur de `fileSize` moins 1. La longueur du fichier est également signalée comme dénominateur dans la valeur de l’en-tête de réponse `Content-Range` lors de l’appel d’un point de terminaison Get Export File . Si une récupération échoue partiellement, elle peut être reprise ultérieurement. Par exemple, si vous essayez de récupérer un fichier de 1 000 octets, mais que seuls les 725 premiers octets ont été reçus, la récupération peut être retentée à partir du point d’échec en appelant de nouveau le point de terminaison et en transmettant une nouvelle plage :
 
 ```
 Range: bytes 724-999
@@ -231,7 +231,7 @@ Cette opération renvoie les 275 octets restants du fichier.
 
 #### Vérification de l’intégrité des fichiers
 
-Les points de fin d’état de la tâche renvoient une somme de contrôle dans la variable `fileChecksum` Attribut lorsque `status` est &quot;Terminé&quot;. La somme de contrôle est un hachage SHA-256 du fichier exporté. Vous pouvez comparer la somme de contrôle au hachage SHA-256 du fichier récupéré pour vérifier qu’il est terminé.
+Les points de terminaison de l’état de la tâche renvoient une somme de contrôle dans l’attribut `fileChecksum` lorsque `status` est &quot;terminé&quot;. La somme de contrôle est un hachage SHA-256 du fichier exporté. Vous pouvez comparer la somme de contrôle au hachage SHA-256 du fichier récupéré pour vérifier qu’il est terminé.
 
 Voici un exemple de réponse contenant la somme de contrôle :
 

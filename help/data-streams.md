@@ -1,13 +1,13 @@
 ---
-title: "Flux de données"
-description: "Présentation des Data Steams"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+title: Flux de données
+description: Présentation des flux de données
+exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1594'
 ht-degree: 2%
 
 ---
-
 
 # Flux de données
 
@@ -19,7 +19,7 @@ Outre les avantages des données en temps quasi réel, il existe des avantages l
 - Réduit le scénario des limites de l’API, générant moins de messages d’alerte.
 - Aucun ne doit effectuer d’exportations en bloc pour extraire des données en raison de la fonctionnalité de diffusion en continu des données.
 
-Les flux de données sont disponibles pour ceux qui ont acheté une [Package de niveau de performance Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+Les flux de données sont disponibles pour ceux qui ont acheté un [ package de niveau de performance Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Présentation du flux de données des activités de piste
 
@@ -185,14 +185,14 @@ Pour mettre en oeuvre le flux de données d’activité de piste, les clients do
    1. URL du point de terminaison de l’étape 1
    1. Types d’activité qu’ils souhaitent recevoir (liste complète ci-dessus)
    1. Un moyen d’authentification, de sorte que le client puisse vérifier que les demandes sont légitimes. Soit :
-      1. Une URL de fournisseur d’identité, un identifiant client et un secret client pour OAuth [Authentification des informations d’identification du client](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/)
+      1. Une URL de fournisseur d’identité, un identifiant client et un secret client pour l’ [authentification des informations d’identification client](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/) OAuth
       1. Jeton API pouvant être inclus dans les requêtes envoyées par la banque de données des activités de piste dans les paramètres de requête ou dans un en-tête d’autorisation (choix du client)
 
 Adobe active ensuite le flux de données, à ce stade, les clients commencent à recevoir des données.
 
 Schéma UML d’un appel de flux de données d’activité de piste standard :
 
-![Diagramme de flux de données d’activité de piste](assets/lead-activity-data-stream.png)
+![ Diagramme de flux de données d’activité de piste ](assets/lead-activity-data-stream.png)
 
 Exemple de création de point de terminaison d’URL :
 
@@ -239,7 +239,7 @@ app.listen(port,()=>{
 })
 ```
 
-Vous trouverez un exemple de code pour une application qui utilise le flux de données d’activité de piste Marketo. [here](https://github.com/ihgrant/activity-stream-consumer-example).
+Vous trouverez un exemple de code pour une application qui utilise le flux de données d’activité de piste Marketo [ici](https://github.com/ihgrant/activity-stream-consumer-example).
 
 ### Flux de données d’audit utilisateur et flux de données de notification
 
@@ -254,17 +254,17 @@ Les événements d’audit utilisateur sont envoyés aux E/S d’Adobe et peuven
    1. Cette étape nécessite une organisation d’Adobe
    1. Nécessite que l’utilisateur de l’organisation Adobe ait un rôle de développeur ou d’administrateur système
 
-Pour configurer les E/S d’Adobe, voir [Configuration des flux de données d’audit utilisateur de Marketo avec des E/S d’Adobe](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup/) dans la section Documentation publique .
+Pour configurer les E/S d’Adobe, voir [Configuration des flux de données d’audit utilisateur Marketo avec Adobe IO](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup/) dans la section Documentation publique.
 
 ### Configuration du flux de données d’audit utilisateur dans Marketo
 
-Le flux de données d’audit utilisateur est actuellement disponible dans le cadre des packages de performances avec les 3 autres flux de données. Pour plus d’informations sur les packages, reportez-vous au [Page Description du produit](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) pour les limites de produit et les fonctionnalités.
+Le flux de données d’audit utilisateur est actuellement disponible dans le cadre des packages de performances avec les 3 autres flux de données. Pour plus d’informations sur les packages, reportez-vous à la [page de description du produit](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) pour connaître les limites et les fonctionnalités des produits.
 
 ### Configuration de l’Adobe I/O
 
 [Voir Prise en main des événements d’Adobe I/O](https://developer.adobe.com/runtime/docs/guides/getting-started/)
 
-Pour obtenir des instructions de base sur ce cas pratique, commencez par [console.adobe.io](https://developer.adobe.com/console):
+Pour obtenir des instructions de base sur ce cas pratique, à partir de [console.adobe.io](https://developer.adobe.com/console) :
 
 Lorsque vous y êtes invité, sélectionnez **[!UICONTROL Créer un projet]** ou **[!UICONTROL Ajouter un événement]**.
 
@@ -275,5 +275,5 @@ Pour commencer à utiliser les services Adobe, ajoutez une API, des événements
 ## Documentation publique
 
 - [Flux de données Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/)
-- [Présentation des événements et des webhooks d’Adobe IO](https://developer.adobe.com/events/docs/guides/)
+- [Introduction à l’Adobe des événements d’E/S et des webhooks](https://developer.adobe.com/events/docs/guides/)
 - [Blog de flux de données](https://blog.developer.adobe.com/introducing-the-adobe-marketo-engage-data-streams-61198b567fbb)

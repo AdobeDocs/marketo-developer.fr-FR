@@ -1,22 +1,22 @@
 ---
-title: "Entreprises"
+title: Entreprises
 feature: REST API
-description: "Configurez les données de l’entreprise avec les API Marketo."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Configurez les données de l’entreprise avec les API Marketo.
+exl-id: 80e514a2-1c86-46a7-82bc-e4db702189b0
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '564'
 ht-degree: 1%
 
 ---
 
-
 # Entreprises
 
-[Référence des points de terminaison des entreprises](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies)
+[Référence du point de terminaison des entreprises](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies)
 
-Les entreprises représentent l’organisation à laquelle appartiennent les enregistrements de piste. Les pistes sont ajoutées à une entreprise en renseignant les `externalCompanyId` champ utilisant [Pistes de synchronisation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) ou [Importation de pistes en bloc](bulk-lead-import.md) points de fin. Une fois qu’une piste a été ajoutée à une société, vous ne pouvez pas la supprimer (à moins que vous n’ajoutiez la piste à une autre société). Les pistes liées à un enregistrement de société héritent directement des valeurs d’un enregistrement de société comme si les valeurs existaient sur leur propre enregistrement.
+Les entreprises représentent l’organisation à laquelle appartiennent les enregistrements de piste. Les pistes sont ajoutées à une société en renseignant leur champ `externalCompanyId` correspondant à l’aide des points de terminaison [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) ou [Bulk Lead Import](bulk-lead-import.md) . Une fois qu’une piste a été ajoutée à une société, vous ne pouvez pas la supprimer (à moins que vous n’ajoutiez la piste à une autre société). Les pistes liées à un enregistrement de société héritent directement des valeurs d’un enregistrement de société comme si les valeurs existaient sur leur propre enregistrement.
 
-Les API d’entreprise sont un accès en lecture seule pour les abonnements qui ont [Synchronisation SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou [Synchronisation Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) sont activées.
+Les API d’entreprise sont un accès en lecture seule pour les abonnements pour lesquels la [synchronisation SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou la [synchronisation Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) sont activées.
 
 ## Description
 
@@ -98,9 +98,9 @@ GET /rest/v1/companies/describe.json
 
 ## Requête
 
-Le modèle de [requêter des sociétés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompaniesUsingGET) suit de près celle de l’API de pistes avec la restriction ajoutée que la variable `filterType` accepte les champs répertoriés dans le tableau searchableFields de l’appel Description des sociétés ou dedupeFields.
+Le modèle de [ sociétés interrogées](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompaniesUsingGET) suit de près celui de l’API de pistes avec la restriction ajoutée que le paramètre `filterType` accepte les champs répertoriés dans le tableau searchableFields de l’appel Describe Entreprises ou dedupeFields.
 
-`filterType` et `filterValues` sont des paramètres de requête requis.  `fields`, `nextPageToken`, et `batchSize` sont des paramètres facultatifs.  Les paramètres fonctionnent de la même manière que les paramètres correspondants dans les API Leads and Opportunities. Lorsque vous demandez une liste de `fields`, si un champ particulier est demandé, mais n’est pas renvoyé, la valeur est implicite comme étant nulle.
+`filterType` et `filterValues` sont des paramètres de requête requis.  `fields`, `nextPageToken` et `batchSize` sont des paramètres facultatifs.  Les paramètres fonctionnent de la même manière que les paramètres correspondants dans les API Leads and Opportunities. Lorsque vous demandez une liste de `fields`, si un champ particulier est demandé, mais n’est pas renvoyé, la valeur est implicitement nulle.
 
 Si le paramètre fields est omis, le jeu de champs renvoyé par défaut est :
 
@@ -136,7 +136,7 @@ GET /rest/v1/companies.json?filterType=id&filterValues=3433,5345
 
 ## Créer et mettre à jour
 
-La variable [Entreprises de synchronisation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) endpoint accepte les `input` qui contient un tableau d’objets de société. Comme les opportunités, il existe trois modes de création et de mise à jour des entreprises : createOnly, updateOnly et createOrUpdate.  Les modes sont spécifiés dans la variable `action` du paramètre de la requête. Les deux `dedupeBy` et `action` Les paramètres sont facultatifs et par défaut, les modes dedupeFields et createOrUpdate sont respectivement définis.
+Le point de terminaison [Sync Entreprises](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) accepte le paramètre `input` requis qui contient un tableau d’objets de société. Comme les opportunités, il existe trois modes de création et de mise à jour des entreprises : createOnly, updateOnly et createOrUpdate.  Les modes sont spécifiés dans le paramètre `action` de la requête. Les paramètres `dedupeBy` et `action` sont facultatifs et sont définis par défaut respectivement en modes dedupeFields et createOrUpdate.
 
 ```
 POST /rest/v1/companies.json
@@ -186,7 +186,7 @@ Content-Type: application/json
 
 L’objet company contient un ensemble de champs. Chaque définition de champ est composée d’un ensemble d’attributs qui décrivent le champ. Les attributs sont par exemple le nom d’affichage, le nom de l’API et dataType. Ces attributs sont connus collectivement sous le nom de métadonnées.
 
-Les points de terminaison suivants vous permettent d’interroger des champs sur l’objet company. Ces API requièrent que l’utilisateur de l’API propriétaire ait un rôle avec l’une des API ou les deux. `Read-Write Schema Standard Field` ou `Read-Write Schema Custom Field` autorisations.
+Les points de terminaison suivants vous permettent d’interroger des champs sur l’objet company. Ces API requièrent que l’utilisateur de l’API propriétaire ait un rôle avec l’une ou les deux autorisations `Read-Write Schema Standard Field` ou `Read-Write Schema Custom Field`.
 
 ### Champs de requête
 
@@ -194,7 +194,7 @@ La requête sur les champs de l’entreprise est simple. Vous pouvez interroger 
 
 #### Par nom
 
-La variable [Obtention du champ de la société par nom](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompanyFieldByNameUsingGET) Le point de terminaison récupère les métadonnées d’un champ unique sur l’objet de la société. La variable `fieldApiName` Le paramètre path spécifie le nom de l’API du champ. La réponse est semblable au point de terminaison Décrire la société , mais contient des métadonnées supplémentaires telles que la variable `isCustom` qui indique si le champ est un champ personnalisé.
+Le point de terminaison [Get Company Field by Name](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompanyFieldByNameUsingGET) récupère les métadonnées d’un champ unique sur l’objet de la société. Le paramètre de chemin d’accès `fieldApiName` requis spécifie le nom d’API du champ. La réponse est similaire au point de terminaison Décrire la société , mais contient des métadonnées supplémentaires telles que l’attribut `isCustom` qui indique si le champ est un champ personnalisé.
 
 ```
 GET /rest/v1/companies/schema/fields/industry.json
@@ -223,7 +223,7 @@ GET /rest/v1/companies/schema/fields/industry.json
 
 #### Parcourir
 
-La variable [Obtention des champs de l’entreprise](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompanyFieldsUsingGET) endpoint récupère les métadonnées de tous les champs de l’objet de société. Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser la variable `batchSize` paramètre de requête pour réduire ce nombre. Si la variable `moreResult` est true, cela signifie que plus de résultats sont disponibles. Continuez à appeler ce point de terminaison jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’il n’y a aucun résultat disponible. La variable `nextPageToken` La valeur renvoyée par cette API doit toujours être réutilisée pour la prochaine itération de cet appel.
+Le point de terminaison [Get Company Fields](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompanyFieldsUsingGET) récupère les métadonnées de tous les champs de l’objet de la société. Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête `batchSize` pour réduire ce nombre. Si l’attribut `moreResult` est défini sur true, cela signifie que d’autres résultats sont disponibles. Continuez à appeler ce point de terminaison jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’il n’y a aucun résultat disponible. Les `nextPageToken` renvoyés par cette API doivent toujours être réutilisés pour la prochaine itération de cet appel.
 
 ```
 GET /rest/v1/companies/schema/fields.json?batchSize=5
@@ -301,7 +301,7 @@ GET /rest/v1/companies/schema/fields.json?batchSize=5
 
 ### Supprimer
 
-Les critères de suppression sont spécifiés dans la variable `input` qui contient une liste de valeurs de recherche.  La méthode de suppression est spécifiée dans la variable `deleteBy` .  Les valeurs possibles sont : dedupeFields, idField.  La valeur par défaut est dedupeFields.
+Les critères de suppression sont spécifiés dans le tableau `input`, qui contient une liste de valeurs de recherche.  La méthode de suppression est spécifiée dans le paramètre `deleteBy` .  Les valeurs possibles sont : dedupeFields, idField.  La valeur par défaut est dedupeFields.
 
 ```
 Content-Type: application/json

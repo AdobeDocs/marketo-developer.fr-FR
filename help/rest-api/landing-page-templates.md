@@ -1,14 +1,14 @@
 ---
-title: "Modèles de page d’entrée"
+title: Modèles de pages de destination
 feature: REST API, Landing Pages
-description: "Créez et modifiez des modèles de landing page."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Créez et modifiez des modèles de landing page.
+exl-id: f9d1255e-ec13-4b75-96d5-b4cc9457a51b
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '533'
 ht-degree: 1%
 
 ---
-
 
 # Modèles de pages de destination
 
@@ -18,11 +18,11 @@ Les modèles de page d’entrée sont une ressource parent et une dépendance po
 
 ## Types de modèle
 
-Marketo dispose de deux types de modèles de page d’entrée : libre et guidé. Les modèles de page d’entrée de formulaire libre offrent une expérience de modification structurée pour les pages qui en sont dérivées. Les modèles guidés offrent une expérience fortement structurée, où les types et emplacements d’éléments peuvent être restreints au niveau du modèle. Pour plus d’informations sur les différences, voir [ce document](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
+Marketo dispose de deux types de modèles de page d’entrée : libre et guidé. Les modèles de page d’entrée de formulaire libre offrent une expérience de modification structurée pour les pages qui en sont dérivées. Les modèles guidés offrent une expérience fortement structurée, où les types et emplacements d’éléments peuvent être restreints au niveau du modèle. Pour plus d&#39;informations sur les différences, consultez [ce document](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
 
 ## Requête
 
-Les modèles de page d’entrée prennent en charge les types de requête standard pour les ressources de [par id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET), et [navigation](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Ces points de fin renvoient des métadonnées pour les modèles. La récupération du contenu HTML des modèles doit être effectuée par modèle à partir de son identifiant.
+Les modèles de page d’entrée prennent en charge les types de requête standard pour les ressources [ by id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [ by name](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET) et [browsing](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Ces points de fin renvoient des métadonnées pour les modèles. La récupération du contenu HTML des modèles doit être effectuée par modèle à partir de son identifiant.
 
 ## Créer et mettre à jour
 
@@ -66,15 +66,15 @@ name=New LPT - PHP&folder={"id":12,"type":"Folder"}
 }
 ```
 
-Le contenu du modèle doit être renseigné séparément via la variable [Mettre à jour le contenu du modèle de page d’entrée](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST) point de terminaison .
+Le contenu du modèle doit être renseigné séparément via le point de terminaison [Mettre à jour le contenu du modèle de page d’entrée](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST) .
 
 ### Mettre à jour les métadonnées
 
-Les métadonnées des modèles de landing page peuvent être mises à jour via le [Mettre à jour les métadonnées de modèle de page d’entrée](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST) point de terminaison . Le nom, la description et le paramètre enableMunchkin peuvent être mis à jour de cette manière.
+Les métadonnées des modèles de landing page peuvent être mises à jour via le point de terminaison [ Mettre à jour les métadonnées des modèles de landing page](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST) . Le nom, la description et le paramètre enableMunchkin peuvent être mis à jour de cette manière.
 
 ### Mettre à jour le contenu
 
-Contenu dans les modèles de page d’entrée est effectué comme une mise à jour destructrice de l’ensemble du contenu du HTML. Le contenu doit être transmis en multipart/form-data, le seul paramètre étant contenu nommé.
+Le contenu des modèles de page d’entrée est une mise à jour destructrice de l’ensemble du contenu de l’HTML. Le contenu doit être transmis en multipart/form-data, le seul paramètre étant contenu nommé.
 
 ```
 POST /rest/asset/v1/landingPageTemplate/286/content.json
@@ -114,13 +114,13 @@ Content-Type: text/plain
 
 Marketo fournit une méthode simple pour le clonage de modèles de page d’entrée. Il s’agit d’une demande de POST codée au format application/x-www-url.
 
-La variable `id` Le paramètre path spécifie l’identifiant du modèle de page d’entrée source à cloner.
+Le paramètre de chemin `id` spécifie l’identifiant du modèle de page d’entrée source à cloner.
 
-La variable `name` sert à spécifier le nom du nouveau modèle de page d’entrée.
+Le paramètre `name` est utilisé pour spécifier le nom du nouveau modèle de page d’entrée.
 
-La variable `folder` sert à spécifier le dossier parent où réside le nouveau modèle de page d’entrée. Il s’agit d’un objet JSON incorporé contenant  `id` et `type`.
+Le paramètre `folder` est utilisé pour spécifier le dossier parent où réside le nouveau modèle de page d’entrée. Il s’agit d’un objet JSON incorporé contenant  `id` et `type`.
 
-Le paramètre facultatif `description` sert à décrire le nouveau modèle de page d’entrée.
+Le paramètre facultatif `description` est utilisé pour décrire le nouveau modèle de page d’entrée.
 
 ```
 POST /rest/asset/v1/landingPageTemplate/{id}/clone.json
@@ -167,8 +167,8 @@ Les modèles de page d’entrée suivent le modèle approuvé par le brouillon s
 
 Pour qu’un modèle soit validé, il doit être conforme aux règles de son type, soit guidé en forme libre. Pour plus d’informations sur les exigences relatives à la création et à la validation de modèles de leurs types respectifs, voir leurs documents de création respectifs :
 
-- [Modèles de page d’entrée de formulaire libre](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
-- [Modèles de page d’entrée guidés](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
+- [Modèles de page d’entrée de formulaire gratuit](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
+- [Modèles de page d’entrée guidée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
 - [Exemples de modèles guidés](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
 
 ## Supprimer

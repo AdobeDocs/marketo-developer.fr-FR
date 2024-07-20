@@ -1,19 +1,19 @@
 ---
-title: "Partner Sandbox"
-description: "Présentation des environnements de test de partenaire"
-source-git-commit: e141ed1178019339640986fb7e6fa95ca7b35fe7
+title: Sandbox Partner
+description: Présentation de Partner Sandbox
+exl-id: a8f36cb5-d288-4b8b-b4bf-037faa3fe73f
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '184'
 ht-degree: 0%
 
 ---
 
-
 # Sandbox Partner
 
-Un environnement de test partenaire est une instance de Marketo Engage utilisée par les partenaires pendant le cycle de vie du développement logiciel. Les partenaires utilisent leur environnement de test pour découvrir les fonctionnalités de l’interface utilisateur du Marketo Engage et accéder aux services d’API du Marketo Engage.
+Un environnement de test partenaire est une instance de Marketo Engage utilisée par les partenaires pendant le cycle de vie du développement logiciel. Les partenaires utilisent leur environnement de test pour découvrir les éléments  et les sorties de l’interface utilisateur du Marketo Engage, ainsi que pour accéder aux services d’API du Marketo Engage.
 
-Un environnement de test est configuré lorsqu’un partenaire a été accepté dans la variable [Programme Partenaires Adobe Exchange, expérience numérique](http://partners.adobe.com/technologyprogram/experiencecloud.html). Dans la plupart des cas, les environnements de test partenaires sont fonctionnellement équivalents à une instance de production. Les environnements de test partenaires n’ont pas de modules complémentaires installés et disposent de limites de capacité fixes. Vous trouverez ci-dessous une FAQ suivie d’un résumé des fonctionnalités de sandbox des partenaires.
+Un environnement de test est configuré une fois qu’un partenaire a été accepté dans  le [Programme Partenaires Adobes Exchange, expérience numérique](http://partners.adobe.com/technologyprogram/experiencecloud.html). Dans la plupart des cas, les environnements de test partenaires sont fonctionnellement équivalents à une instance de production. Les environnements de test partenaires n’ont pas de modules complémentaires installés et disposent de limites de capacité fixes. Vous trouverez ci-dessous une FAQ suivie d’un résumé des fonctionnalités de sandbox des partenaires.
 
 ## Résumé des fonctionnalités
 

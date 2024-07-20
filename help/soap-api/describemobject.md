@@ -1,14 +1,14 @@
 ---
-title: "descriptionMObject"
+title: descriptionMObject
 feature: SOAP
-description: "Description des appels SOAP MObjects"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: descriptionMObjects SOAP appels
+exl-id: a5ee60c4-b0ec-49a2-9a9d-22806ddde8f7
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '71'
 ht-degree: 7%
 
 ---
-
 
 # descriptionMObject
 

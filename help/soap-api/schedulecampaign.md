@@ -1,14 +1,14 @@
 ---
-title: "scheduleCampaign"
+title: scheduleCampaign
 feature: SOAP, Smart Campaigns
-description: "scheduleCampaign appels SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: planningCampaign SOAP appels
+exl-id: a9ef2c16-34ef-4e0f-b765-e332335b0b81
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '252'
 ht-degree: 4%
 
 ---
-
 
 # scheduleCampaign
 
@@ -18,7 +18,7 @@ Cette fonction définit le planning d’exécution d’une campagne dynamique pa
 
 Tout comme la fonction requestCampaign, vous pouvez transmettre un tableau de Mes jetons dans cet appel API qui remplacera les jetons existants. Une fois la campagne exécutée, les jetons sont ignorés.
 
-Si vous utilisez ce paramètre facultatif avec [importToList](importtolist.md), les jetons sont classés par priorité dans cet ordre :
+Si vous utilisez ce paramètre facultatif avec [importToList](importtolist.md), les jetons sont hiérarchisés dans cet ordre :
 
 1. importToList par jetons de piste
 1. scheduleCampaign par jetons de campagne
@@ -32,7 +32,7 @@ Si vous utilisez ce paramètre facultatif avec [importToList](importtolist.md), 
 | Nom de campagne | Requis | Nom de la campagne dynamique |
 | campaignRunAt | En option | Heure d’exécution de la campagne planifiée (format de date WSDL W3C). |
 | cloneToProgramName | En option | Lorsque cet attribut est présent, le programme parent de la campagne est cloné et la campagne nouvellement créée est planifiée. L’attribut spécifie le nom souhaité pour le programme obtenu. Remarque : Seuls 10 appels par jour sont autorisés lorsque ce champ est utilisé. |
-| programTokenList->attrib->name | En option | Nom du jeton pour lequel vous souhaitez envoyer une nouvelle valeur. Utilisez le format de jeton complet comme vous le feriez dans l’interface utilisateur de Marketo. C’est-à-dire :{{my.message}}&quot; |
+| programTokenList->attrib->name | En option | Nom du jeton pour lequel vous souhaitez envoyer une nouvelle valeur. Utilisez le format de jeton complet comme vous le feriez dans l’interface utilisateur de Marketo. C’est-à-dire, &quot;{{my.message}}&quot; |
 | programTokenList->attrib->value | En option | La valeur du nom du jeton associé. |
 
 ## Request XML

@@ -1,14 +1,14 @@
 ---
-title: "getChannels"
+title: getChannels
 feature: SOAP
-description: "getChannels SOAP calls"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: getChannels SOAP appels
+exl-id: bcaef85b-154b-4571-ad24-07a36707a6ef
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '92'
 ht-degree: 5%
 
 ---
-
 
 # getChannels
 
@@ -24,7 +24,7 @@ Vous pouvez obtenir des informations sur tous les canaux ou spécifier une liste
 
 | Nom de champ | Obligatoire/Facultatif | Description |
 | --- | --- | --- |
-| tag->values->stringItem | En option | Liste des canaux que vous souhaitez interroger. If `<tag>` est omis, vous recevrez des informations sur tous les canaux. |
+| tag->values->stringItem | En option | Liste des canaux que vous souhaitez interroger. Si `<tag>` est omis, vous recevrez des informations sur tous les canaux. |
 
 ## Request XML
 

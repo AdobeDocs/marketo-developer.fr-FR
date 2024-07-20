@@ -1,14 +1,14 @@
 ---
-title: "Importation en bloc"
+title: Importation en bloc
 feature: REST API
-description: "Importation de données de personne par lots."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Importation par lots de données de personne.
+exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '554'
 ht-degree: 2%
 
 ---
-
 
 # Importation en bloc
 
@@ -24,7 +24,7 @@ Les points d’entrée d’API en bloc ne sont pas précédés de &quot;/rest&qu
 
 ## Authentification
 
-Les API d’importation en bloc utilisent la même méthode d’authentification OAuth 2.0 que les autres API REST Marketo.  Pour ce faire, un jeton d’accès valide doit être incorporé en tant que paramètre de chaîne de requête. `access_token={_AccessToken_}`ou en tant qu’en-tête HTTP `Authorization: Bearer {_AccessToken_}`.
+Les API d’importation en bloc utilisent la même méthode d’authentification OAuth 2.0 que les autres API REST Marketo.  Pour ce faire, un jeton d’accès valide doit être incorporé en tant que paramètre de chaîne de requête `access_token={_AccessToken_}` ou en tant qu’en-tête HTTP `Authorization: Bearer {_AccessToken_}`.
 
 ## Limites
 
@@ -42,7 +42,7 @@ L’import en masse est une opération d’enregistrement &quot;insert or update
 
 ## Création d’une tâche
 
-Les API d’import en bloc Marketo utilisent le concept d’un traitement pour exécuter l’import de données. Examinons la création d’une tâche d’importation de pistes simple à l’aide de la fonction [Importer des pistes](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) point de terminaison .  Notez que ce point de terminaison utilise [multipart/form-data comme type de contenu](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Cela peut s’avérer difficile à obtenir. Il est donc recommandé d’utiliser une bibliothèque de support HTTP pour votre langue de choix.  Si vous vous mouillez les pieds, nous vous suggérons d&#39;utiliser [curl](https://curl.se/).
+Les API d’import en bloc Marketo utilisent le concept d’un traitement pour exécuter l’import de données. Examinons la création d’une tâche d’importation de pistes simple à l’aide du point de terminaison [Import Leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST).  Notez que ce point de terminaison utilise [multipart/form-data comme type de contenu](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Cela peut s’avérer difficile à obtenir. Il est donc recommandé d’utiliser une bibliothèque de support HTTP pour votre langue de choix.  Si vous vous mouillez juste les pieds, nous vous suggérons d&#39;utiliser [curl](https://curl.se/).
 
 ```
 POST /bulk/v1/leads.json?format=csv
@@ -96,7 +96,7 @@ Chaque point de fin de création de tâche partage certains paramètres communs 
 
 ## État de la tâche d’interrogation
 
-Il est simple de déterminer l’état de la tâche à l’aide de la fonction [Obtenir le statut de piste d’importation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET) point de terminaison .
+Il est simple de déterminer l’état de la tâche à l’aide du point de terminaison [Get Import Lead Status](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET).
 
 ```
 GET /bulk/v1/leads/batch/{batchId}.json
@@ -120,13 +120,13 @@ GET /bulk/v1/leads/batch/{batchId}.json
 }
 ```
 
-L&#39;intérieur `status` Le membre indique la progression de la tâche et peut être l’une des valeurs suivantes : En file d’attente, Importation, Terminé, Échec. Dans ce cas, notre travail est terminé, nous pouvons donc arrêter les sondages.
+Le membre `status` interne indique la progression de la tâche et peut être l’une des valeurs suivantes : En file d’attente, Importation, Terminé, Échec. Dans ce cas, notre travail est terminé, nous pouvons donc arrêter les sondages.
 
 ## Échecs
 
-Les échecs sont indiqués par la variable `numOfRowsFailed` dans la réponse Get Import Lead Status. If `numOfRowsFailed` est supérieur à zéro, alors cette valeur indique le nombre d’échecs qui se sont produits.
+Les échecs sont indiqués par l’attribut `numOfRowsFailed` dans la réponse Get Import Lead Status. Si `numOfRowsFailed` est supérieur à zéro, cette valeur indique le nombre d’échecs qui se sont produits.
 
-Pour récupérer les enregistrements et les causes des lignes qui ont échoué, vous devez récupérer le fichier d’échec à l’aide de la variable [Obtention des échecs de piste d’importation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET) point de terminaison .
+Pour récupérer les enregistrements et les causes des lignes qui ont échoué, vous devez récupérer le fichier d’échec à l’aide du point de terminaison [Obtenir les échecs de piste d’importation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET).
 
 ```
 GET /bulk/v1/leads/batch/{batchId}/failures.json

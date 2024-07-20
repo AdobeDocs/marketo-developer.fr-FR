@@ -1,30 +1,30 @@
 ---
-title: "getCustomObjects"
+title: getCustomObjects
 feature: SOAP, Custom Objects
-description: "Appels SOAP getCustomObjects"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Appels getCustomObjects SOAP
+exl-id: 32ff208a-f824-4420-a26f-1fd969a2bc4c
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '156'
 ht-degree: 5%
 
 ---
 
-
 # getCustomObjects
 
 Récupère un ou plusieurs objets personnalisés à l’aide d’une combinaison de critères composés de zéro ou d’une clé d’objet personnalisé.
 
-Renvoie une liste d’objets personnalisés correspondants, tous de type unique, jusqu’à 100 dans un lot, et une [position du flux](stream-position.md) pour récupérer les lots successifs.
+Renvoie une liste d’objets personnalisés correspondants, tous de type unique, jusqu’à 100 dans un lot, et un jeton [position du flux](stream-position.md) pour récupérer les lots successifs.
 
 ## Demande
 
 | Nom de champ | Obligatoire/Facultatif | Description |
 | --- | --- | --- |
 | objTypeName | Requis | Nom de l’objet personnalisé |
-| customObjKeyLists->keyList->attribute | Requis | L’attribut est une paire clé/valeur utilisée pour identifier les objets personnalisés que vous souhaitez récupérer. Vous pouvez spécifier plusieurs attributs dans la variable `customObjKeyLists` |
+| customObjKeyLists->keyList->attribute | Requis | L’attribut est une paire clé/valeur utilisée pour identifier les objets personnalisés que vous souhaitez récupérer. Vous pouvez spécifier plusieurs attributs dans le `customObjKeyLists` |
 | includeAttributes | Requis | Liste des champs d’objet personnalisé que vous souhaitez récupérer. La transmission de aucune valeur renvoie toutes les valeurs. |
 | batchSize | En option | Nombre d’objets à renvoyer (maximum 100) |
-| streamPosition | En option | Utilisé pour paginer dans plusieurs jeux de résultats. La valeur transmise est la valeur renvoyée par le précédent `getCustomObjects` appelez . |
+| streamPosition | En option | Utilisé pour paginer dans plusieurs jeux de résultats. La valeur transmise est la valeur renvoyée par l’appel `getCustomObjects` précédent. |
 
 ## Request XML
 

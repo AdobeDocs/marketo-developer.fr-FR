@@ -1,34 +1,34 @@
 ---
-title: "requestCampaign"
+title: requestCampaign
 feature: SOAP, Smart Campaigns
-description: "requestCampaign appels SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: appels requestCampaign SOAP
+exl-id: b5367eb9-4f4c-4e1d-8b6d-36de8f134f0e
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '277'
 ht-degree: 3%
 
 ---
 
-
 # requestCampaign
 
 Cette fonction exécute un prospect Marketo existant dans une campagne dynamique Marketo. La campagne dynamique doit comporter un déclencheur &quot;Campaign is Requested&quot; (Campaign demandé) avec la source de l’API du service Web (voir ci-dessous).
 
-![API Web Service](assets/webserviceapi.png)
+![API de service Web](assets/webserviceapi.png)
 
-Deux jeux de paramètres peuvent être utilisés. Le premier cas d’utilisation `campaignName` + `programName` + `programTokenList`. La variable `programTokenList` peut être vide, dans ce cas. Le deuxième cas d’utilisation `campaignId` seul. Toute autre combinaison renvoie une exception de paramètre erronée.
+Deux jeux de paramètres peuvent être utilisés. Le premier cas utilise `campaignName` + `programName` + `programTokenList`. Dans ce cas, le `programTokenList` peut être vide. Le deuxième cas utilise `campaignId` seul. Toute autre combinaison renvoie une exception de paramètre erronée.
 
 Remarque : Limite de 100 valeurs leadKey par appel. Les clés supplémentaires sont ignorées.
 
 | Nom de champ | Obligatoire/Facultatif | Description |
 | --- | --- | --- |
-| leadList->leadKey->keyType | Requis | `keyType` vous permet de spécifier le champ par lequel vous souhaitez interroger le prospect. Les valeurs possibles sont les suivantes :`IDNUM`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
-| leadList->leadKey->keyValue | Requis | `keyValue` est la valeur par laquelle vous souhaitez interroger le prospect. |
+| leadList->leadKey->keyType | Requis | `keyType` vous permet de spécifier le champ par lequel vous souhaitez interroger le prospect. Les valeurs possibles sont les suivantes : `IDNUM`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
+| leadList->leadKey->keyValue | Requis | `keyValue` est la valeur par laquelle vous souhaitez interroger la piste. |
 | source | Requis | Source de la campagne. Valeurs possibles : `MKTOWS` ou `SALES`. L’énumération est définie dans WSDL. |
-| campaignId | Facultatif lorsque `campaignName`, `programName`, et `programTokenList` sont ensemble dans un site de paramètres ; sinon `campaignId` est requis | Identifiant de la campagne. REMARQUE : Une erreur de paramètre erronée se produit si `campaignID` et `campaignName` sont toutes deux transmises. |
-| Nom de campagne | Facultatif lorsque campaignId est présent ; sinon requis dans un jeu comme `campaignName`, programName et programTokenList | Nom de la campagne |
-| programName | Facultatif lorsque campaignId est présent ; sinon requis dans un jeu comme `campaignName`, programName et programTokenList | Nom du programme |
-| programTokenList | Facultatif lorsque campaignId est présent ; sinon requis dans un jeu comme `campaignName`, `programName`, et `programTokenList` | Tableau des jetons à utiliser dans la campagne. Lors de la spécification de jetons, programName et `campaignName` sont obligatoires. |
+| campaignId | Facultatif lorsque `campaignName`, `programName` et `programTokenList` sont ensemble dans un site de paramètres ; sinon `campaignId` est requis | Identifiant de la campagne. REMARQUE : une erreur de paramètre erronée se produit si `campaignID` et `campaignName` sont tous deux transmis. |
+| Nom de campagne | Facultatif en cas de présence de campaignId ; sinon requis dans un jeu défini comme `campaignName`, programName et programTokenList | Nom de la campagne |
+| programName | Facultatif en cas de présence de campaignId ; sinon requis dans un jeu défini comme `campaignName`, programName et programTokenList | Nom du programme |
+| programTokenList | Facultatif en cas de présence de campaignId ; sinon requis dans un ensemble comme `campaignName`, `programName` et `programTokenList` | Tableau des jetons à utiliser dans la campagne. Lors de la spécification de jetons, programName et `campaignName` sont requis. |
 | programTokenList->attrib->name | En option | Nom du jeton de programme dont vous souhaitez transmettre la valeur. Ex :{{my.message}} |
 | programTokenList->attrib->value | En option | La valeur du nom de jeton spécifié. |
 
