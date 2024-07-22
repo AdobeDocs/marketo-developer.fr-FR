@@ -60,7 +60,8 @@ Pour le MObject OpportunityPersonRole, vous pouvez fournir tous les champs à pa
 1. IsPrimary (facultatif)
 1. Rôle (facultatif)
 
-|
+| Nom de champ | Obligatoire/Facultatif | Description |
+| --- | --- | --- |
 | mObjAssociationList->mObjAssociation->mObjType | Facultatif | Utilisé pour mettre à jour les MObjects Opportunity/OpportunityPersonRole à l’aide de l’identifiant ou de la clé externe d’un objet associé. Les objets associés peuvent être : Société (pour mettre à jour le MObject Opportunity), Piste (pour mettre à jour le MObject OpportunityPersonRole), Opportunity (pour mettre à jour le MObject OpportunityPersonRole)|
 | mObjAssociationList->mObjAssociation->id | Facultatif | ID de l’objet associé (prospect/entreprise/opportunité) |
 | mObjAssociationList->mObjAssociation->externalKey | Facultatif | Attribut personnalisé de l’objet associé |
