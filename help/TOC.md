@@ -8,7 +8,7 @@ index: true
 source-git-commit: 85062243d57a3fc6d15251163e926495858edf2a
 workflow-type: tm+mt
 source-wordcount: '234'
-ht-degree: 32%
+ht-degree: 36%
 
 ---
 
@@ -38,7 +38,7 @@ ht-degree: 32%
    - [Mode de sécurité avancé](mobile/advanced-security-access-mode.md)
    - [Actions personnalisées](mobile/custom-actions.md)
    - [Liens profonds](mobile/enabling-deep-links-in-your-app.md)
-   - [Messages in-app](mobile/in-app-messages.md)
+   - [Messagerie in-app](mobile/in-app-messages.md)
    - [Installation](mobile/installation.md)
    - [[!DNL Ionic]](mobile/ionic.md)
    - [Mobile](mobile/mobile.md)
@@ -49,7 +49,7 @@ ht-degree: 32%
 - REST{#rest}
    - [Présentation de l’API REST](rest-api/rest-api.md)
    - [Référence de l’API REST](https://developer.adobe.com/marketo-apis/)
-   - Assets {#assets}
+   - Ressources {#assets}
       - [Ressources](rest-api/assets.md)
       - [Contenu dynamique](rest-api/dynamic-content.md)
       - [E-mails](rest-api/emails.md)
@@ -89,12 +89,12 @@ ht-degree: 32%
    - [Référence du point d’entrée](rest-api/endpoint-reference.md)
    - [Codes d’erreur](rest-api/error-codes.md)
    - Base de données de piste {#lead-database}
-      - [Entreprises](rest-api/companies.md)
+      - [Sociétés](rest-api/companies.md)
       - [Liste de champs](rest-api/fields.md)
       - [Types de champ](rest-api/field-types.md)
       - [Base de données des leads](rest-api/lead-database.md)
       - [Prospects](rest-api/leads.md)
-      - [Comptes nommés](rest-api/named-accounts.md)
+      - [Comptes désignés](rest-api/named-accounts.md)
       - [Listes de comptes nommés](rest-api/named-account-lists.md)
       - [Opportunités](rest-api/opportunities.md)
       - [Rôles des opportunités](rest-api/opportunity-roles.md)
