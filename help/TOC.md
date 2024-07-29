@@ -5,10 +5,10 @@ breadcrumb-title: "[!DNL Marketo] Guide du développeur"
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 85062243d57a3fc6d15251163e926495858edf2a
+source-git-commit: 5d18a24f25e5bda39e10bce3b2a77370dd28c937
 workflow-type: tm+mt
-source-wordcount: '234'
-ht-degree: 36%
+source-wordcount: '237'
+ht-degree: 35%
 
 ---
 
@@ -85,6 +85,7 @@ ht-degree: 36%
       - [Membre du programme en bloc](rest-api/bulk-program-member-import.md)
    - [Canaux](rest-api/channels.md)
    - [Services personnalisés](rest-api/custom-services.md)
+   - [API Data Ingestion](rest-api/data-ingestion.md)
    - [Téléchargement de définitions Swagger](rest-api/swagger.md)
    - [Référence du point d’entrée](rest-api/endpoint-reference.md)
    - [Codes d’erreur](rest-api/error-codes.md)
