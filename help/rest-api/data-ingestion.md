@@ -2,7 +2,7 @@
 title: Ingestion des données
 feature: REST API, Dynamic Content
 description: Utilisation des données avec les API Marketo.
-source-git-commit: 5d18a24f25e5bda39e10bce3b2a77370dd28c937
+source-git-commit: 1595aa6df0b0404c7cda2c246c9249018fe87e77
 workflow-type: tm+mt
 source-wordcount: '968'
 ht-degree: 12%
@@ -50,7 +50,7 @@ Data Ingestion utilise les en-têtes HTTP personnalisés suivants.
 ### Réponse
 
 | Clé | Valeur | Obligatoire |
-| - | - |
+| - | - | - |
 | X-Request-Id | ID de requête unique. | Oui |
 
 ## Demandes
