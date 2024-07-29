@@ -3,10 +3,10 @@ title: syncMObjects
 feature: SOAP
 description: syncMObjects SOAP appels
 exl-id: 68bb69ce-aa8c-40b7-8938-247f4fe97b5d
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 04e6b38a7ee602c38a851f9b99101186e72a8518
 workflow-type: tm+mt
-source-wordcount: '421'
-ht-degree: 6%
+source-wordcount: '426'
+ht-degree: 8%
 
 ---
 
@@ -21,14 +21,14 @@ Accepte un tableau de [MObjects](marketo-objects.md) à créer ou à mettre à j
 
 Les opérations UPDATE et UPSERT utilisent l’ID comme clé. Dans un seul appel API, certaines mises à jour peuvent réussir et d’autres échouer. Un message d’erreur sera renvoyé pour chaque échec.
 
-## Demande
+## Requête
 
-| Nom de champ | Obligatoire/Facultatif | Description |
+| Nom du champ | Obligatoire / Facultatif | Description |
 | --- | --- | --- |
-| mObjectList->mObject->type | Requis | Peut être l’un des suivants :`Program`, `Opportunity`, `OpportunityPersonRole` |
-| mObjectList->mObject->id | Requis | Identifiant du MObject. Vous pouvez spécifier jusqu’à 100 MObjects par appel. |
-| mObjectList->mObject->typeAttribList->typeAttrib->projType | Requis | Le coût (utilisé uniquement lors de la mise à jour du MObject du programme) peut être l’un des suivants : `Cost`, `Tag` |
-| mObjectList->mObject->typeAttribList->typeAttrib->AttributeList->attrib->name | Requis | Pour l’objet MObject de programme, les attributs suivants peuvent être transmis en tant que paires nom-valeur. Pour le coût : `Month (Required)`, `Amount (Required)`, `Id (Cost Id - Optional)`, `Note (Optional)`. Pour Tag/Channel : `Type (Required)`, `Value (Required)`. Pour le MObject d’opportunité, tous les champs de la sortie de [descriptionMObject](describemobject.md) peuvent être transmis en tant que paires nom-valeur. La liste ci-dessous contient tous les champs facultatifs et l’ensemble standard d’attributs. Vous pouvez avoir des champs supplémentaires sur l’objet MObject d’opportunité qui ont été créés par le biais d’une demande d’assistance. |
+| mObjectList->mObject->type | Obligatoire | Peut être l’un des suivants :`Program`, `Opportunity`, `OpportunityPersonRole` |
+| mObjectList->mObject->id | Obligatoire | Identifiant du MObject. Vous pouvez spécifier jusqu’à 100 MObjects par appel. |
+| mObjectList->mObject->typeAttribList->typeAttrib->projType | Obligatoire | Le coût (utilisé uniquement lors de la mise à jour du MObject du programme) peut être l’un des suivants : `Cost`, `Tag` |
+| mObjectList->mObject->typeAttribList->typeAttrib->AttributeList->attrib->name | Obligatoire | Pour l’objet MObject de programme, les attributs suivants peuvent être transmis en tant que paires nom-valeur. Pour le coût : `Month (Required)`, `Amount (Required)`, `Id (Cost Id - Optional)`, `Note (Optional)`. Pour Tag/Channel : `Type (Required)`, `Value (Required)`. Pour le MObject d’opportunité, tous les champs de la sortie de [descriptionMObject](describemobject.md) peuvent être transmis en tant que paires nom-valeur. La liste ci-dessous contient tous les champs facultatifs et l’ensemble standard d’attributs. Vous pouvez avoir des champs supplémentaires sur l’objet MObject d’opportunité qui ont été créés par le biais d’une demande d’assistance. |
 
 1. Montant
 1. CloseDate
@@ -60,9 +60,9 @@ Pour le MObject OpportunityPersonRole, vous pouvez fournir tous les champs à pa
 1. IsPrimary (facultatif)
 1. Rôle (facultatif)
 
-| Nom de champ | Obligatoire/Facultatif | Description |
+| Nom du champ | Obligatoire / Facultatif | Description |
 | --- | --- | --- |
-| mObjAssociationList->mObjAssociation->mObjType | Facultatif | Utilisé pour mettre à jour les MObjects Opportunity/OpportunityPersonRole à l’aide de l’identifiant ou de la clé externe d’un objet associé. Les objets associés peuvent être : Société (pour mettre à jour le MObject Opportunity), Piste (pour mettre à jour le MObject OpportunityPersonRole), Opportunity (pour mettre à jour le MObject OpportunityPersonRole)|
+| mObjAssociationList->mObjAssociation->mObjType | Facultatif | Utilisé pour mettre à jour les MObjects Opportunity/OpportunityPersonRole à l’aide de l’identifiant ou de la clé externe d’un objet associé. Les objets associés peuvent être l’un des suivants : Société (pour mettre à jour le MObject Opportunity), Lead (pour mettre à jour le MObject OpportunityPersonRole), Opportunity (pour mettre à jour le MObject OpportunityPersonRole) |
 | mObjAssociationList->mObjAssociation->id | Facultatif | ID de l’objet associé (prospect/entreprise/opportunité) |
 | mObjAssociationList->mObjAssociation->externalKey | Facultatif | Attribut personnalisé de l’objet associé |
 
