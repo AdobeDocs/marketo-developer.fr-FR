@@ -3,7 +3,7 @@ title: React Native
 feature: Mobile Marketing
 description: Installation de React Native pour Marketo
 exl-id: 462fd32e-91f1-4582-93f2-9efe4d4761ff
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 8c1c620614408dd2df0b0848e6efc027adb71834
 workflow-type: tm+mt
 source-wordcount: '822'
 ht-degree: 0%
@@ -380,7 +380,6 @@ RNMarketoModule.uninitializeMarketoPush()
 
 #### Configuration des notifications push
 
-
 Initialisation de la notification push avec l’ID de projet et le nom du canal
 
 ```
@@ -388,7 +387,6 @@ RNMarketoModule.initializeMarketoPush("ProjectId", "Channel_name")
 ```
 
 Ajoutez le service suivant à `AndroidManifest.xml`
-
 
 ```xml
 <service android:exported="true" android:name=".MyFirebaseMessagingService" android:stopWithTask="true">

@@ -3,10 +3,10 @@ title: Prospects
 feature: REST API
 description: Détails sur les appels de l’API Leads
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 2c125161cf06be8ebb44ae8212f15fbbe5c1f6b7
+source-git-commit: 8c1c620614408dd2df0b0848e6efc027adb71834
 workflow-type: tm+mt
-source-wordcount: '3308'
-ht-degree: 2%
+source-wordcount: '3343'
+ht-degree: 3%
 
 ---
 
@@ -20,7 +20,7 @@ L’API de piste Marketo offre un large éventail de fonctionnalités pour les a
 
 L’une des fonctionnalités clés de l’API Leads est la méthode Description . Utilisez Description des pistes pour récupérer une liste complète des champs disponibles pour l’interaction via l’API REST et l’API SOAP, ainsi que des métadonnées pour chacun d’eux :
 
-* Type de données 
+* Type de données
 * Noms d’API REST et SOAP
 * Longueur (le cas échéant)
 * Lecture seule
@@ -28,7 +28,7 @@ L’une des fonctionnalités clés de l’API Leads est la méthode Description 
 
 La description est la principale source de vérité pour savoir si des champs sont disponibles et si des métadonnées les concernant sont disponibles.
 
-### Demande
+### Requête
 
 ```
 GET /rest/v1/leads/describe.json
@@ -66,7 +66,7 @@ Il existe deux méthodes principales pour la récupération des pistes : les mé
 
 Vous pouvez éventuellement transmettre un paramètre de champ contenant une liste de noms de champ séparés par des virgules à renvoyer. Si le paramètre fields n&#39;est pas inclus dans cette requête, les champs par défaut suivants sont renvoyés : `email`, `updatedAt`, `createdAt`, `lastName`, `firstName` et `id`. Lorsque vous demandez une liste de champs, si un champ particulier est demandé, mais n’est pas renvoyé, la valeur est implicitement nulle.
 
-### Demande
+### Requête
 
 ```
 GET /rest/v1/lead/{id}.json
@@ -101,7 +101,7 @@ Obtenir des pistes par type de filtre renvoie le même type d’enregistrements,
 
 Si la longueur totale de votre demande de GET dépasse 8 Ko, une erreur HTTP est renvoyée : &quot;414, URI trop long&quot; (selon la norme RFC 7231). Pour pallier ce problème, vous pouvez remplacer votre GET par POST, ajouter le paramètre _method=GET et placer une chaîne de requête dans le corps de la requête.
 
-### Demande
+### Requête
 
 ```
 GET /rest/v1/leads.json?filterType=id&filterValues=318581,318592
@@ -152,13 +152,21 @@ Les options Get Lead by Id et Get Leads by Filter Type acceptent également un p
 
 ## Adobe ECID
 
-Lorsque la fonction de partage d’audience Adobe Experience Cloud est activée, un processus de synchronisation des cookies se produit qui associe Adobe Experience Cloud ID (ECID) aux pistes Marketo.  Les méthodes de récupération de pistes mentionnées ci-dessus peuvent être utilisées pour récupérer les valeurs ECID associées.  Pour ce faire, indiquez &quot;ecids&quot; dans le paramètre fields . Par exemple, &quot;&amp;fields=email,firstName,lastName,ecids&quot;.
+Lorsque la fonction de partage d’audience Adobe Experience Cloud est activée, un processus de synchronisation des cookies se produit qui associe Adobe Experience Cloud ID (ECID) aux pistes Marketo.  Les méthodes de récupération de pistes mentionnées ci-dessus peuvent être utilisées pour récupérer les valeurs ECID associées.  Pour ce faire, spécifiez `ecids` dans le paramètre des champs. Par exemple : `&fields=email,firstName,lastName,ecids`.
 
 ## Créer et mettre à jour
 
 Outre la récupération des données de piste, vous pouvez créer, mettre à jour et supprimer des enregistrements de piste via l’API. La création et la mise à jour des pistes partagent le même point de terminaison avec le type d’opération défini dans la requête et jusqu’à 300 enregistrements peuvent être créés ou mis à jour en même temps.
 
-### Demande
+>[!NOTE]
+>
+> La mise à jour des champs d’entreprise à l’aide du point de terminaison [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) n’est pas prise en charge. Utilisez plutôt le point de terminaison [Sync Entreprises](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) .
+
+>[!NOTE]
+>
+> Lors de la création ou de la mise à jour de la valeur d’un email sur un enregistrement Personne, seuls les caractères ASCII sont pris en charge dans le champ Adresse email .
+
+### Requête
 
 ```
 POST /rest/v1/leads.json
@@ -237,7 +245,7 @@ La requête sur les champs de piste est simple. Vous pouvez interroger un champ 
 
 Le point de fin Get Lead Field by Name récupère les métadonnées d’un champ unique sur l’objet lead. Le paramètre de chemin d’accès fieldApiName obligatoire spécifie le nom d’API du champ. La réponse est semblable au point de terminaison Décrire le prospect , mais contient des métadonnées supplémentaires telles que l’attribut isCustom , qui indique si le champ est un champ personnalisé.
 
-### Demande
+### Requête
 
 ```
 GET /rest/v1/leads/schema/fields/{fieldApiName}.json
@@ -269,7 +277,7 @@ GET /rest/v1/leads/schema/fields/{fieldApiName}.json
 
 Le point de fin Get Lead Fields récupère les métadonnées de tous les champs de l’objet de piste, y compris. Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête `batchSize` pour réduire ce nombre. Si l’attribut `moreResult` est défini sur true, cela signifie que d’autres résultats sont disponibles. Continuez à appeler ce point de terminaison jusqu’à ce que l’attribut `moreResult` renvoie false, ce qui signifie qu’il n’y a aucun résultat disponible. Les `nextPageToken` renvoyés par cette API doivent toujours être réutilisés pour la prochaine itération de cet appel.
 
-### Demande
+### Requête
 
 ```
 GET /rest/v1/leads/schema/fields.json
@@ -416,7 +424,7 @@ Le paramètre d’entrée requis est un tableau d’objets de champ de piste. Ch
 
 Il existe quelques règles associées au nom et à l’attribution de noms `displayName`. L’attribut name doit être unique, commencer par une lettre et contenir uniquement des lettres, des chiffres ou un trait de soulignement. `displayName` doit être unique et ne peut pas contenir de caractères spéciaux.  Une convention d’affectation de nom courante consiste à appliquer une casse de chameau à `displayName` pour produire un nom. Par exemple, un `displayName` de &quot;Mon champ personnalisé&quot; produirait un nom de &quot;myCustomField&quot;.
 
-### Demande
+### Requête
 
 ```
 POST /rest/v1/leads/schema/fields.json
@@ -549,7 +557,7 @@ Le point de terminaison Mettre à jour le champ de piste met à jour un seul cha
 
 Le paramètre de chemin `fieldApiName` requis spécifie le nom de l’API du champ à mettre à jour. Le paramètre d’entrée requis est un tableau contenant un seul objet de champ de piste.  L’objet de champ contient un ou plusieurs attributs.
 
-### Demande
+### Requête
 
 ```
 POST /rest/v1/leads/schema/fields/{fieldApiName}.json
@@ -592,7 +600,7 @@ L’interface Push Lead est très similaire aux pistes de synchronisation. Toute
 
 Remarque concernant les activités anonymes. Si vous souhaitez associer des activités anonymes antérieures à la piste nouvellement créée, ne spécifiez pas d’attribut de cookies dans l’objet de piste, puis appelez Associer la piste après la piste push. Si vous souhaitez créer une piste sans historique d’activité, indiquez simplement l’attribut cookies dans l’objet de piste.
 
-### Demande
+### Requête
 
 ```
 POST /rest/v1/leads/push.json
@@ -704,13 +712,13 @@ La chaîne de membre du cookie est facultative et vous permet d’associer un co
 
 De nouveaux pistes sont créés dans la partition principale de l’espace de travail dans lequel se trouve le formulaire.
 
-### Demande
+### Requête
 
 ```
 POST /rest/v1/leads/submitForm.json
 ```
 
-### En-tête
+### Header
 
 ```
 Content-Type: application/json
@@ -764,7 +772,7 @@ Ici, nous pouvons voir les détails correspondants de l’activité &quot;Rempli
 
 Il est parfois nécessaire de fusionner des enregistrements en double et Marketo facilite cette opération via l’API Merge Leads. La fusion des pistes combinera leurs logs d’activité, programmes, campagnes et listes, ainsi que les informations CRM, et fusionnera toutes leurs valeurs de champ en un seul enregistrement. Fusionner les pistes prend un ID de piste comme paramètre de chemin d’accès, et soit un seul `leadId` comme paramètre de requête, soit une liste d’identifiants séparés par des virgules dans le paramètre `leadIds`.
 
-### Demande
+### Requête
 
 ```
 POST /rest/v1/leads/{id}/merge.json?leadId=1324
@@ -787,7 +795,7 @@ Si vous disposez d’un abonnement activé pour la synchronisation SFDC, vous po
 
 Grâce au suivi des pistes (Munchkin), Marketo enregistre l’activité web des visiteurs de votre site web et de vos pages d’entrée Marketo. Ces activités, Visites et Clics, sont enregistrées avec une clé qui correspond à un cookie &quot;_mkto_trk&quot; défini dans le navigateur de l’prospect, et Marketo l’utilise pour effectuer le suivi des activités de la même personne. En règle générale, l’association à des enregistrements de piste survient lorsqu’un prospect clique à partir d’un courrier électronique Marketo ou remplit un formulaire Marketo, mais il arrive qu’une association puisse être déclenchée par un autre type d’événement et vous pouvez utiliser le point de terminaison Associer le prospect pour ce faire. Le point de terminaison utilise l’identifiant de l’enregistrement de piste connu comme paramètre de chemin d’accès et la valeur du cookie &quot;_mkto_trk&quot; dans le paramètre de requête du cookie.
 
-### Demande
+### Requête
 
 ```
 POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marketo.com-1396310362214-46169
@@ -810,7 +818,7 @@ Les enregistrements de piste peuvent également être récupérés en fonction d
 La structure de la réponse et les paramètres facultatifs sont identiques à ceux de Get Leads by Filter Type, bien que filterType et filterValues ne puissent pas être utilisés avec cette API.
 Pour accéder à l’ID de liste via l’interface utilisateur de Marketo, accédez à la liste. La liste `id` se trouve dans l’URL de la liste statique, `https://app-****.marketo.com/#ST1001A1`. Dans cet exemple, 1001 est le `id` de la liste.
 
-### Demande
+### Requête
 
 ```
 GET /rest/v1/list/{listId}/leads.json?batchSize=3
@@ -849,7 +857,7 @@ GET /rest/v1/list/{listId}/leads.json?batchSize=3
 
 Le point de terminaison Get Lists by Lead Id utilise un paramètre de chemin d’accès `id` d’enregistrement de piste et renvoie tous les enregistrements de liste statique dont le prospect est membre.
 
-### Demande
+### Requête
 
 ```
 GET /rest/v1/leads/{id}/listMembership.json?batchSize=3
@@ -891,7 +899,7 @@ Vous pouvez éventuellement transmettre un paramètre de champ contenant une lis
 
 La structure de la réponse est très similaire, car chaque élément du tableau de résultats est une piste, sauf que chaque enregistrement comporte également un objet enfant appelé &quot;membership&quot;. Cet objet d’appartenance comprend des données sur la relation du prospect avec le programme indiqué dans l’appel, affichant toujours ses `progressionStatus`, `acquiredBy`, `reachedSuccess` et `membershipDate`. Si le programme parent est également un programme d’engagement, l’appartenance aura des membres `stream`, `nurtureCadence` et `isExhausted` pour indiquer sa position et son activité dans le programme d’engagement.
 
-### Demande
+### Requête
 
 ```
 GET /rest/v1/leads/programs/{programId}.json?batchSize=3
@@ -965,7 +973,7 @@ GET /rest/v1/leads/programs/{programId}.json?batchSize=3
 
 Le point de terminaison Get Programmes by Lead Id utilise un paramètre de chemin d’accès d’identifiant d’enregistrement de piste et renvoie tous les enregistrements de programme dont le prospect est membre. Les paramètres facultatifs `filterType` et `filterValues` vous permettent de filtrer selon l’ID de programme.
 
-### Demande
+### Requête
 
 ```
 GET /rest/v1/leads/{id}/programMembership.json
@@ -996,7 +1004,7 @@ GET /rest/v1/leads/{id}/programMembership.json
 
 Le point de terminaison Get Smart Campaigns by Lead Id applique un paramètre de chemin d’accès à l’ID d’enregistrement de piste et renvoie tous les enregistrements de campagne dynamique dont il fait partie.
 
-### Demande
+### Requête
 
 ```
 GET /rest/v1/leads/{id}/smartCampaignMembership.json?batchSize=3
@@ -1034,7 +1042,7 @@ GET /rest/v1/leads/{id}/smartCampaignMembership.json?batchSize=3
 
 La suppression de pistes est simple à l’aide du point de terminaison Supprimer les pistes .  Spécifiez les ID de piste à supprimer à l’aide des attributs id dans le corps.  Le maximum est de 300 pistes par requête.  Utilisez l’en-tête Content-Type: application/json .
 
-### Demande
+### Requête
 
 ```
 POST /rest/v1/leads/delete.json
