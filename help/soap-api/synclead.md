@@ -3,14 +3,14 @@ title: syncLead
 feature: SOAP
 description: appels syncLead SOAP
 exl-id: e6cda794-a9d4-4153-a5f3-52e97a506807
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: ebe8faf41dff0e0ba5f4323f5909cc3c9813fd10
 workflow-type: tm+mt
 source-wordcount: '518'
 ht-degree: 2%
 
 ---
 
-# syncLean
+# syncLead
 
 Cette fonction insère ou met à jour un seul enregistrement de piste. Lors de la mise à jour d’une piste existante, celle-ci est identifiée avec l’une des clés suivantes :
 
@@ -38,18 +38,18 @@ Lorsque les espaces de travail Marketo sont activés et que l’en-tête n’est
 
 Si les espaces de travail Marketo ne sont PAS activés, l’espace de travail cible DOIT être l’espace de travail &quot;Par défaut&quot;. Il n’est pas nécessaire de transmettre l’en-tête .
 
-## Demande
+## Requête
 
-| Nom de champ | Obligatoire/Facultatif | Description |
+| Nom du champ | Obligatoire / Facultatif | Description |
 | --- | --- | --- |
 | leadRecord->Id | Obligatoire - Uniquement lorsque Email ou `foreignSysPersonId` n’est pas présent | Identifiant Marketo de l’enregistrement de piste |
 | leadRecord->Email | Obligatoire - Uniquement lorsque Id ou `foreignSysPersonId` n’est pas présent | Adresse électronique associée à l’enregistrement de piste |
 | leadRecord->`foreignSysPersonId` | Obligatoire - Uniquement lorsque Id ou Email n’est pas présent | Identifiant du système étranger associé à l’enregistrement de piste. |
 | leadRecord->étrangerSysType | Facultatif - Obligatoire uniquement lorsque `foreignSysPersonId` est présent | Le type de système étranger. Valeurs possibles : PERSONNALISÉE, SFDC, NETSUITE |
-| leadRecord->leadAttributeList->attribute->attributeName | Requis | Nom de l’attribut de piste dont vous souhaitez mettre à jour la valeur. |
-| leadRecord->leadAttributeList->attribute->projValue | Requis | La valeur que vous souhaitez définir sur l’attribut de piste spécifié dans le nom d’hôte. |
-| returnLead | Requis | Si la valeur est true, renvoie l’enregistrement de piste mis à jour lors de la mise à jour. |
-| marketoCookie | En option | Le cookie [Munchkin javascript](../javascript-api/lead-tracking.md) |
+| leadRecord->leadAttributeList->attribute->attributeName | Obligatoire | Nom de l’attribut de piste dont vous souhaitez mettre à jour la valeur. |
+| leadRecord->leadAttributeList->attribute->projValue | Obligatoire | La valeur que vous souhaitez définir sur l’attribut de piste spécifié dans le nom d’hôte. |
+| returnLead | Obligatoire | Si la valeur est true, renvoie l’enregistrement de piste mis à jour lors de la mise à jour. |
+| marketoCookie | Facultatif | Le cookie [Munchkin javascript](../javascript-api/lead-tracking.md) |
 
 ## Request XML
 
