@@ -3,10 +3,10 @@ title: Gestion des utilisateurs
 feature: REST API
 description: Exécutez des opérations CRUD sur les enregistrements d’utilisateur.
 exl-id: 2a58f496-0fe6-4f7e-98ef-e9e5a017c2de
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 13a567be067a8a1272e981fad4e03b0a8519f132
 workflow-type: tm+mt
-source-wordcount: '1155'
-ht-degree: 0%
+source-wordcount: '1185'
+ht-degree: 1%
 
 ---
 
@@ -130,31 +130,35 @@ GET /userservice/management/v1/users/allusers.json
 ```json
 [
   {
-    "userid": "jamie@lannister.com",
-    "firstName": "Jamie",
-    "lastName": "Lannister",
-    "emailAddress": "jamie@houselannister.com",
-    "id": 6785,
+    "userid": "02226aae-9f54-45d1-bc26-8305c8f55ec7@adobe.com",
+    "firstName": "Aparna",
+    "lastName": "Ghosh",
+    "emailAddress": "aparna.ghosh@ericsson.com",
+    "id": 5222,
     "apiOnly": false
-  },
-  {
-    "userid": "jeoffery@housebaratheon.com",
-    "firstName": "Jeoffery",
-    "lastName": "Baratheon",
-    "emailAddress": "jeoffery@housebaratheon.com",
-    "id": 7718,
+    },
+    {
+    "userid": "038e1cac-3f3e-4c05-b0b3-6265fd2abcd3@adobe.com",
+    "firstName": "Timm",
+    "lastName": "Rehse",
+    "emailAddress": "timm.rehse@ericsson.com",
+    "id": 7075,
     "apiOnly": false
-  },
-  {
-    "userid": "rickon@housestark.com",
-    "firstName": "Rickon",
-    "lastName": "Stark",
-    "emailAddress": "rickon@housestark.com",
-    "id": 8612,
+    },
+    {
+    "userid": "0a855522-06c9-4a9e-93de-91a0d2cc2987@adobe.com",
+    "firstName": "Dhinagaran",
+    "lastName": "Swaminathan",
+    "emailAddress": "dhinagaran.swaminathan@ericsson.com",
+    "id": 6439,
     "apiOnly": false
-  }
+    }
 ]
 ```
+
+>[!NOTE]
+>
+>Dans l’exemple de code ci-dessus, le `userid` affiché est destiné à un client qui a été migré vers Adobe IMS. Ces clients qui doivent encore migrer verront une adresse électronique normale dans le champ `userid`.
 
 ### Parcourir les rôles
 
@@ -298,7 +302,7 @@ Sur les [abonnements intégrés à Adobe IMS](https://experienceleague.adobe.com
 
 Le point de terminaison [Invite User](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/inviteUserUsingPOST) pour envoyer une invitation par courrier électronique &quot;Bienvenue dans Marketo&quot; à un nouvel utilisateur. Le corps du courrier électronique contient un lien &quot;Connexion à Marketo&quot; qui permet à l’utilisateur d’accéder à Marketo pour la première fois. Pour accepter l’invitation, le destinataire du courrier électronique clique sur le lien &quot;Se connecter à Marketo&quot;, crée son mot de passe et accède à Marketo. Tant que le processus d’acceptation n’est pas terminé, l’invitation est &quot;en attente&quot; et l’enregistrement de l’utilisateur ne peut pas être modifié. Une invitation en attente expire sept jours après son envoi. Vous trouverez plus d&#39;informations sur la gestion des utilisateurs [ici](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users).
 
-Les paramètres sont transmis dans le corps de la requête au format application/json .
+Les paramètres sont transmis dans le corps de la requête au format `application/json` .
 
 Les paramètres suivants sont requis :  `emailAddress`, `firstName`, `lastName, userRoleWorkspaces`. Le paramètre `userRoleWorkspaces` est un tableau d’objets qui contient des attributs `accessRoleId` et `workspaceId`.
 
