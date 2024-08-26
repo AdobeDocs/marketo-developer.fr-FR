@@ -5,8 +5,7 @@ product: marketo
 type: Documentation
 mini-toc-levels: 2
 git-repo: https://github.com/AdobeDocs/marketo-developer.fr-FR
-hide: true
-source-git-commit: 4c6df71f0d7f569582597eac48c8f44ea12036f8
+source-git-commit: e609f9d5d58f656298412acef5e2106a19765396
 workflow-type: tm+mt
 source-wordcount: '53'
 ht-degree: 98%
@@ -14,8 +13,8 @@ ht-degree: 98%
 ---
 
 
-# Métadonnées à usage interne
+# Métadonnées pour une utilisation interne
 
-Le fichier metadata.md comprend des métadonnées au niveau du référentiel qui sont transmises aux fichiers du guide de l’utilisateur TOC.md dans le référentiel. Si vous souhaitez modifier le contenu du fichier metadata.md pour n’importe quel guide d’utilisateur, faites-le dans n’importe quel fichier TOC.md.
+Le fichier metadata.md comprend des métadonnées de niveau référentiel qui sont transmises aux fichiers TOC.md du guide de l’utilisateur dans le référentiel. Si vous souhaitez modifier le contenu du fichier metadata.md pour un guide de l’utilisateur, faites-le dans le fichier TOC.md.
 
-Voir [Métadonnées](https://experienceleague.adobe.com/docs/authoring-guide-exl/using/editing/user-guide-setup/metadata.html?lang=fr) pour une liste des valeurs que peuvent prendre **solution**, **produit**, et **type**.
+Pour obtenir la liste des valeurs valides pour **solution**, **product** et **type**, voir [Métadonnées](https://experienceleague.adobe.com/docs/authoring-guide-exl/using/editing/user-guide-setup/metadata.html?lang=fr).

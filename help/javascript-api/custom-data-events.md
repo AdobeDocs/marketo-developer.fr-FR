@@ -1,12 +1,12 @@
 ---
 title: Événements de données personnalisés
-description: API des événements de données personnalisés
+description: Utilisez l’API JavaScript des événements de données personnalisés pour effectuer le suivi de vos événements uniques.
 feature: Javascript
 exl-id: ef7cab9c-3bd0-450e-9247-9324b1e6f9ab
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e609f9d5d58f656298412acef5e2106a19765396
 workflow-type: tm+mt
-source-wordcount: '223'
-ht-degree: 4%
+source-wordcount: '231'
+ht-degree: 3%
 
 ---
 
@@ -18,9 +18,9 @@ Vous devez devenir client Web Personalization et faire déployer la balise [RTP]
 
 | Paramètre | Facultatif/Obligatoire | Type | Description |
 |---|---|---|---|
-| `send` | Requis | Chaîne | Action de méthode. |
-| `event` | Requis | Chaîne | Nom de la méthode. |
-| `customData` | Requis | Chaîne ou tableau | Données personnalisées. |
+| `send` | Obligatoire | Chaîne | Action de méthode. |
+| `event` | Obligatoire | Chaîne | Nom de la méthode. |
+| `customData` | Obligatoire | Chaîne ou tableau | Données personnalisées. |
 
 ## Exemples
 
