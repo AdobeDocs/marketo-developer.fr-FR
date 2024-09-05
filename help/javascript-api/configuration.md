@@ -3,9 +3,9 @@ title: Configuration
 description: Utilisez l’API JavaScript de configuration pour définir les valeurs de configuration lors de l’utilisation de Munchkin.
 feature: Javascript
 exl-id: 4700ce7b-f624-4f27-871e-9a050f203973
-source-git-commit: e609f9d5d58f656298412acef5e2106a19765396
+source-git-commit: 257478ecb76b5908c2f623192f37be25bff1a02a
 workflow-type: tm+mt
-source-wordcount: '618'
+source-wordcount: '554'
 ht-degree: 3%
 
 ---
@@ -29,7 +29,7 @@ L’objet settings de configuration peut contenir un nombre indéfini de propri�
 | Nom | Type de données | Description |
 |---|---|---|
 | altIds | Tableau | Accepte un tableau de chaînes Munchkin ID. Lorsqu’elle est activée, cette option duplique toutes les activités web aux abonnements ciblés, en fonction de leur Munchkin ID. |
-| anonymizeIP | Booléen | Anonyme de l’adresse IP enregistrée dans Marketo pour les nouveaux visiteurs. Vous pouvez déterminer si votre abonnement est configuré avec Munchkin V2 en vérifiant si votre domaine `{Munchkin-Id}.mktoresp.com` possède l’une des adresses suivantes : `192.28.144.124` `134.213.193.62` `192.28.147.68` `103.237.104.82`. Vous pouvez également exécuter le script ci-dessous à partir d’un shell unix : nslookup {munchkin-id}.mktoresp.com | grep -E -c -e &quot;(192.28.144.124,134.213.193.62,192.28.147.68,103.237.104.82)&quot; Si la commande génère &quot;0&quot;, votre abonnement n’est pas fourni avec Munchkin V2 ; si elle génère 1 ou plus, elle est configurée. |
+| anonymizeIP | Booléen | Anonyme de l’adresse IP enregistrée dans Marketo pour les nouveaux visiteurs. |
 | apiOnly | Booléen | Si la valeur est définie sur true, la fonction `Munchkin.Init()` n’appellera pas `visitsWebPage`. Ceci est utile pour les applications web d’une seule page qui ont besoin d’un contrôle total sur chaque événement `visitsWebPage`. |
 | asyncOnly | Booléen | S’il est défini sur true, envoie le fichier XMLHttpRequest de manière asynchrone. La valeur par défaut est false. |
 | clickTime | Nombre entier | Définit le délai à bloquer après un clic pour autoriser la demande de suivi des clics (en millisecondes). Cette réduction réduit la précision du suivi des clics. La valeur par défaut est de 350 ms. |
