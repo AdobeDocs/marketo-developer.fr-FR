@@ -3,9 +3,9 @@ title: Codes d’erreur
 feature: REST API
 description: Descriptions du code d’erreur Marketo.
 exl-id: a923c4d6-2bbc-4cb7-be87-452f39b464b6
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: d0750eab0a37df0b7f80c6252f46c95068975000
 workflow-type: tm+mt
-source-wordcount: '2272'
+source-wordcount: '2273'
 ht-degree: 3%
 
 ---
@@ -352,8 +352,8 @@ Chaque enregistrement d’une requête réussie peut réussir ou échouer indivi
     <tr>
       <td><a name="1012"></a>1012</td>
       <td>Valeur de cookie non valide ‘%s’</td>
-      <td>Peut se produire lors de l’appel de <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associer le prospect</a> avec une valeur non valide pour le paramètre de cookie.
-        Cela se produit également lors de l’appel de <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Get Leads by Filter Type</a> avec filterType=cookies et une valeur valide non valide pour le paramètre filterValues.</td>
+      <td>Cela peut se produire lors de l’appel de <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associer le prospect</a> avec une valeur non valide pour le paramètre `cookie`.
+        Cela se produit également lors de l’appel de <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Get Leads by Filter Type</a> avec `filterType=cookies` et une valeur non valide pour le paramètre `filterValues`.</td>
     </tr>
     <tr>
       <td><a name="1013"></a>1013</td>
@@ -475,8 +475,8 @@ Chaque enregistrement d’une requête réussie peut réussir ou échouer indivi
     </tr>
     <tr>
       <td><a name="1077"></a>1077</td>
-      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les pistes</a> a échoué en raison de la longueur du champ SFDC.</td>
-      <td>Un appel Fusionner les pistes avec mergeInCRM défini sur true a échoué en raison d’un "champ SFDC" dépassant la limite des caractères autorisés. Pour corriger ce problème, réduisez la longueur du "champ SFDC" ou définissez mergeInCRM sur false.</td>
+      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les pistes</a> a échoué en raison de la longueur du "champ SFDC"</td>
+      <td>Un appel Fusionner les pistes avec mergeInCRM défini sur true a échoué en raison d’un "champ SFDC" dépassant la limite des caractères autorisés. Pour corriger ce problème, réduisez la longueur de `SFDC Field` ou définissez mergeInCRM sur false.</td>
     </tr>
     <tr>
       <td><a name="1078"></a>1078</td>
