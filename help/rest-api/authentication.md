@@ -3,9 +3,9 @@ title: Authentification
 feature: REST API
 description: Authentification des utilisateurs Marketo pour l’utilisation de l’API.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: 2bea5277a80ca99d98eb9b774f8cbea24cb6705f
+source-git-commit: d57167d60f1cc6a32c600b72829afcba81e6ec92
 workflow-type: tm+mt
-source-wordcount: '588'
+source-wordcount: '569'
 ht-degree: 0%
 
 ---
@@ -52,19 +52,13 @@ Définition de la réponse
 
 Lors d’appels aux méthodes de l’API REST, un jeton d’accès doit être inclus dans chaque appel pour que l’appel réussisse.
 
-Vous pouvez utiliser deux méthodes pour inclure un jeton dans vos appels, sous la forme d’un en-tête HTTP ou d’un paramètre de chaîne de requête :
+Le jeton d’accès doit être envoyé en tant qu’en-tête HTTP.
 
-1. En-tête HTTP
+`Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int`
 
-   `Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int`
-
-1. Paramètre de requête
-
-   `access_token=cdf01657-110d-4155-99a7-f986b2ff13a0:int`
-
-   >[!IMPORTANT]
-   >
-   >La prise en charge de l’authentification à l’aide du paramètre de requête **access_token** a été supprimée le 30 juin 2025. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête **Authorization** dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête **Authorization**.
+>[!IMPORTANT]
+>
+>La prise en charge de l’authentification à l’aide du paramètre de requête **access_token** a été supprimée le 30 juin 2025. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête **Authorization** dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête **Authorization**.
 
 ## Conseils et bonnes pratiques
 
