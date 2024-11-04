@@ -2,13 +2,13 @@
 title: Activités
 feature: REST API
 description: Une API pour la gestion des activités de Marketo Engage.
-source-git-commit: 13a567be067a8a1272e981fad4e03b0a8519f132
+exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
+source-git-commit: 6baf62bc8881470eca597899e3228c377fb597d0
 workflow-type: tm+mt
 source-wordcount: '2029'
 ht-degree: 0%
 
 ---
-
 
 # Activités
 
@@ -133,7 +133,7 @@ Dans certains cas, cette API peut répondre avec moins de 300 éléments d’act
 
 Notez que dans chaque élément du tableau de résultats, l’attribut `id` entier est remplacé par l’attribut de chaîne `marketoGUID` en tant qu’identifiant unique. 
 
-## Modifications valeur des données
+### Modifications valeur des données
 
 Pour les activités Data Value Change, une version spécialisée de l’API d’activités est fournie. Le point de terminaison [Get Lead Changes](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadChangesUsingGET) renvoie uniquement les activités des enregistrements Data Value Change vers les champs de piste. L’interface est identique à l’API Get Lead Activities avec deux différences :
 
@@ -188,7 +188,7 @@ Chaque activité de la réponse comporte un tableau de champs, y compris une lis
 
 Notez que dans chaque élément du tableau de résultats, l’attribut `id` entier est remplacé par l’attribut de chaîne `marketoGUID` en tant qu’identifiant unique.
 
-## Leçons supprimées
+### Leçons supprimées
 
 Il existe également un point de terminaison spécial [Get Deleted Leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getDeletedLeadsUsingGET) pour récupérer les activités supprimées de Marketo.
 
@@ -229,7 +229,7 @@ GET /rest/v1/activities/deletedleads.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQ
 
 Notez que dans chaque élément du tableau de résultats, l’attribut `id` entier est remplacé par l’attribut de chaîne `marketoGUID` en tant qu’identifiant unique.
 
-## Résultats de la page
+### Résultats de la page
 
 Par défaut, les points de terminaison mentionnés dans cette section renvoient 300 éléments d’activité à la fois.  Si l’attribut `moreResult` est défini sur true, d’autres résultats sont disponibles. Appelez le point de terminaison jusqu’à ce que l’attribut `moreResult` renvoie false, ce qui signifie qu’il n’y a plus de résultats disponibles. L’ `nextPageToken` renvoyé par ce point de terminaison doit toujours être réutilisé pour la prochaine itération de cet appel.
 
@@ -322,7 +322,7 @@ GET /rest/v1/activities/external/type/{apiName}/describe.json
 }
 ```
 
-### Créer un type
+## Créer un type
 
 Chaque type d’activité personnalisé nécessite un nom d’affichage, un nom d’API, un nom de déclencheur, un nom de filtre et un attribut principal.
 
@@ -386,7 +386,7 @@ POST /rest/v1/activities/external/type.json
 }
 ```
 
-### Type de mise à jour
+## Type de mise à jour
 
 La mise à jour d’un type est très similaire, sauf que apiName est le seul paramètre requis comme paramètre de chemin d’accès.
 
@@ -448,7 +448,7 @@ Les types de données valides pour les attributs sont les suivants : chaîne, bo
 
 Lors de la modification de l’attribut principal d’un type d’activité, tout attribut principal existant doit être rétrogradé en définissant `isPrimary` sur false en premier.
 
-## Création d’attributs
+### Création d’attributs
 
 La création d’un attribut nécessite un paramètre de chemin `apiName`. Les paramètres `name` et `dataType` sont également requis.Les paramètres ` The description and` `isPrimary` sont facultatifs.
 
@@ -515,7 +515,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/create.json
 }
 ```
 
-## Mise à jour des attributs
+### Mise à jour des attributs
 
 Lors de l’exécution de mises à jour des attributs, l’ `apiName` de l’attribut est la clé primaire. Le paramètre `apiName` doit exister pour que la mise à jour réussisse (c’est-à-dire que vous ne pouvez pas modifier le paramètre `apiName` en utilisant update).
 
@@ -582,7 +582,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/update.json
 }
 ```
 
-## Suppression d’attributs
+### Suppression d’attributs
 
 La suppression d’un attribut prend un paramètre de chemin `apiName` obligatoire qui est le nom de l’API d’activité personnalisée.  Un paramètre d’attribut qui est un tableau d’objets d’attribut est également requis.  Chaque objet doit contenir un paramètre `apiName` qui est le nom de l’API de type d’activité personnalisé.
 
@@ -710,4 +710,4 @@ POST /rest/v1/activities/external.json
 Les points de terminaison des activités ont un délai d’expiration de 30 s, sauf indication contraire ci-dessous.
 
 * Obtenir le jeton de pagination : 300 s 
-* Ajouter une activité personnalisée : 90 s 
+* Ajouter une activité personnalisée : 90 s
