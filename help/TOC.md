@@ -5,9 +5,9 @@ breadcrumb-title: "[!DNL Marketo] Guide du développeur"
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 959d841bc6ee38c9ebee8fd5e0c261ed27c666f7
+source-git-commit: 28b040f6473677abaaa0c73f1bb6e887e9e35a81
 workflow-type: tm+mt
-source-wordcount: '243'
+source-wordcount: '241'
 ht-degree: 36%
 
 ---
@@ -70,7 +70,6 @@ ht-degree: 36%
       - [Jetons](rest-api/tokens.md)
       - [Courrier électronique transactionnel](rest-api/transactional-email.md)
    - [Authentification](rest-api/authentication.md)
-   - [Signature d’authentification](rest-api/authentication-signature.md)
    - [URL de base](rest-api/base-url.md)
    - [Meilleures pratiques](rest-api/marketo-integration-best-practices.md)
    - Extraire en bloc {#bulk-extract}
