@@ -3,9 +3,9 @@ title: Authentification
 feature: REST API
 description: Authentification des utilisateurs Marketo pour l’utilisation de l’API.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: d57167d60f1cc6a32c600b72829afcba81e6ec92
+source-git-commit: 6f8dc76703aba204b6d0d4f1a3b5275aea819f08
 workflow-type: tm+mt
-source-wordcount: '569'
+source-wordcount: '567'
 ht-degree: 0%
 
 ---
