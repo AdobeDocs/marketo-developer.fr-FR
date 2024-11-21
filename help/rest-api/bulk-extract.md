@@ -3,9 +3,9 @@ title: Extraction en bloc
 feature: REST API
 description: Opérations par lots pour extraire des données Marketo.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
 workflow-type: tm+mt
-source-wordcount: '1643'
+source-wordcount: '1683'
 ht-degree: 1%
 
 ---
@@ -25,7 +25,11 @@ L’extraction en bloc est réalisée en créant une tâche, en définissant l�
 
 ## Authentification
 
-Les API d’extraction en masse utilisent la même méthode d’authentification OAuth 2.0 que les autres API REST Marketo. Pour ce faire, un jeton d’accès valide doit être incorporé en tant que paramètre de chaîne de requête `access_token={_AccessToken_}` ou en tant qu’en-tête HTTP `Authorization: Bearer {_AccessToken_}`.
+Les API d’extraction en masse utilisent la même méthode d’authentification OAuth 2.0 que les autres API REST Marketo. Pour ce faire, un jeton d’accès valide doit être envoyé en tant qu’en-tête HTTP `Authorization: Bearer {_AccessToken_}`.
+
+>[!IMPORTANT]
+>
+>La prise en charge de l’authentification à l’aide du paramètre de requête **access_token** a été supprimée le 30 juin 2025. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête **Authorization** dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête **Authorization**.
 
 ## Limites
 
@@ -53,7 +57,7 @@ Une fois qu’une tâche est en file d’attente ou en cours de traitement, elle
 
 Vous pouvez déterminer la quantité totale de disque utilisée pour la journée en cours en appelant Get Export Lead/Activity/Program Member Jobs. Ces points de terminaison renvoient une liste de toutes les tâches des sept derniers jours. Vous pouvez filtrer cette liste jusqu’aux tâches qui se sont terminées au cours du jour en cours (à l’aide des attributs `status` et `finishedAt` ). Ensuite, additionnez les tailles de fichiers pour ces tâches afin de produire le montant total utilisé. Il n’existe aucun moyen de supprimer un fichier pour récupérer de l’espace disque.
 
-## Permissions
+## Autorisations
 
 L’extraction en bloc utilise le même modèle d’autorisations que l’API REST Marketo et ne nécessite aucune autorisation spéciale supplémentaire à utiliser, bien que des autorisations spécifiques soient requises pour chaque ensemble de points de terminaison.
 
@@ -117,7 +121,7 @@ Chaque point de fin de création de tâche partage certains paramètres communs 
 |---|---|---|
 | format | Chaîne | Détermine le format de fichier des données extraites avec des options pour les valeurs séparées par des virgules, les valeurs séparées par des tabulations et les valeurs séparées par des points-virgules. Accepte l’un des paramètres suivants : CSV, SSV, TSV. Le format par défaut est CSV. |
 | columnHeaderNames | Objet | Permet de définir les noms des en-têtes de colonne dans le fichier renvoyé. Chaque clé de membre est le nom de l’en-tête de colonne à renommer et la valeur est le nouveau nom de l’en-tête de colonne. Par exemple, &quot;columnHeaderNames&quot;: { &quot;firstName&quot;: &quot;First Name&quot;, &quot;lastName&quot;: &quot;Last Name&quot; }, |
-| Filtre | Objet | Filtre appliqué à la tâche d’extraction. Les types et options varient selon les types de tâche. |
+| filter | Objet | Filtre appliqué à la tâche d’extraction. Les types et options varient selon les types de tâche. |
 
 
 ## Récupération des tâches

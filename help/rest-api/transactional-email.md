@@ -3,7 +3,7 @@ title: Courrier électronique transactionnel
 feature: REST API
 description: Gérez les emails transactionnels pour les campagnes de requête.
 exl-id: 057bc342-53f3-4624-a3c0-ae619e0c81a5
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
 workflow-type: tm+mt
 source-wordcount: '971'
 ht-degree: 0%
@@ -18,7 +18,7 @@ Un cas d’utilisation courant de l’API Marketo consiste à déclencher l’en
 - Un email transactionnel doit être créé et approuvé dans votre instance Marketo.
 - Il doit y avoir une campagne de déclenchement active avec &quot;La campagne est demandée, 1. Source : API de service Web&quot;, configurée pour envoyer le courrier électronique
 
-Commencez par [créer et approuver votre email](https://experienceleague.adobe.com/docs/marketo/using/home.html). Si l&#39;email est réellement transactionnel, vous devrez probablement le définir comme opérationnel, mais vous devrez vous assurer qu&#39;il est légalement admissible comme opérationnel. Il est configuré à partir de l’écran Modifier sous Actions du courrier électronique > Paramètres de courrier électronique :
+Commencez par [créer et approuver votre email](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr). Si l&#39;email est réellement transactionnel, vous devrez probablement le définir comme opérationnel, mais vous devrez vous assurer qu&#39;il est légalement admissible comme opérationnel. Il est configuré à partir de l’écran Modifier sous Actions du courrier électronique > Paramètres de courrier électronique :
 
 ![Request-Campaign-Email-Settings](assets/request-campaign-email-settings.png)
 
@@ -135,9 +135,8 @@ public class RequestCampaign {
         JsonObject result = null;
         try {
             JsonObject requestBody = buildRequest(); //builds the Json Request Body
-            String s = endpoint + "?access_token=" + auth.getToken(); //takes the endpoint URL and appends the access_token parameter to authenticate
-            System.out.println("Executing RequestCampaign call\n" + "Endpoint: " + s + "\nRequest Body:\n"  + requestBody);
-            URL url = new URL(s); 
+            System.out.println("Executing RequestCampaign call\n" + "Endpoint: " + endpoint + "\nRequest Body:\n"  + requestBody);
+            URL url = new URL(endpoint);
             HttpsURLConnection urlConn = (HttpsURLConnection) url.openConnection(); //Return a URL connection and cast to HttpsURLConnection
             urlConn.setRequestMethod("POST");
             urlConn.setRequestProperty("Content-type", "application/json");
@@ -183,7 +182,7 @@ Cette classe comporte un constructeur prenant une authentification et l’identi
 
 ### Création de votre email
 
-Pour personnaliser notre contenu, nous devons d&#39;abord configurer un [programme](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html) et un [email](https://experienceleague.adobe.com/docs/marketo/using/home.html) dans Marketo. Pour générer notre contenu personnalisé, nous devons créer des jetons dans le programme, puis les placer dans l&#39;email que nous allons envoyer. Pour plus de simplicité, nous n’utilisons qu’un seul jeton dans cet exemple, mais vous pouvez remplacer n’importe quel nombre de jetons dans un email, dans le champ De l’email, Du nom, Réponse ou tout élément de contenu dans l’email. Créons donc un texte enrichi de jeton pour le remplacer et appelons-le &quot;bodyReplacement&quot;. Le texte enrichi nous permet de remplacer tout contenu du jeton par un HTML arbitraire que nous voulons saisir.
+Pour personnaliser notre contenu, nous devons d&#39;abord configurer un [programme](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html) et un [email](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr) dans Marketo. Pour générer notre contenu personnalisé, nous devons créer des jetons dans le programme, puis les placer dans l&#39;email que nous allons envoyer. Pour plus de simplicité, nous n’utilisons qu’un seul jeton dans cet exemple, mais vous pouvez remplacer n’importe quel nombre de jetons dans un email, dans le champ De l’email, Du nom, Réponse ou tout élément de contenu dans l’email. Créons donc un texte enrichi de jeton pour le remplacer et appelons-le &quot;bodyReplacement&quot;. Le texte enrichi nous permet de remplacer tout contenu du jeton par un HTML arbitraire que nous voulons saisir.
 
 ![New-Token](assets/New-Token.png)
 
@@ -256,7 +255,7 @@ Token is empty or expired. Trying new authentication
 Trying to authenticate with ...
 Got Authentication Response: {"access_token":"19d51b9a-ff60-4222-bbd5-be8b206f1d40:st","token_type":"bearer","expires_in":3565,"scope":"apiuser@mktosupport.com"}
 Executing RequestCampaign call
-Endpoint: .../rest/v1/campaigns/1578/trigger.json?access_token=19d51b9a-ff60-4222-bbd5-be8b206f1d40:st
+Endpoint: .../rest/v1/campaigns/1578/trigger.json
 Request Body:
 {"input":{"leads":[{"id":1}],"tokens":[{"name":"{{my.bodyReplacement}}","value":"<div class=\"replacedContent\"><p>This content has been replaced</p></div>"}]}}
 Result:

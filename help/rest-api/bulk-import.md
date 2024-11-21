@@ -3,9 +3,9 @@ title: Importation en bloc
 feature: REST API
 description: Importation par lots de données de personne.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
 workflow-type: tm+mt
-source-wordcount: '554'
+source-wordcount: '592'
 ht-degree: 2%
 
 ---
@@ -24,7 +24,11 @@ Les points d’entrée d’API en bloc ne sont pas précédés de &quot;/rest&qu
 
 ## Authentification
 
-Les API d’importation en bloc utilisent la même méthode d’authentification OAuth 2.0 que les autres API REST Marketo.  Pour ce faire, un jeton d’accès valide doit être incorporé en tant que paramètre de chaîne de requête `access_token={_AccessToken_}` ou en tant qu’en-tête HTTP `Authorization: Bearer {_AccessToken_}`.
+Les API d’importation en bloc utilisent la même méthode d’authentification OAuth 2.0 que les autres API REST Marketo.  Cela nécessite un jeton d’accès valide envoyé en tant qu’en-tête HTTP `Authorization: Bearer {_AccessToken_}`.
+
+>[!IMPORTANT]
+>
+>La prise en charge de l’authentification à l’aide du paramètre de requête **access_token** a été supprimée le 30 juin 2025. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête **Authorization** dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête **Authorization**.
 
 ## Limites
 
@@ -32,7 +36,7 @@ Les API d’importation en bloc utilisent la même méthode d’authentification
 - Tâches d’importation en file d’attente max. (y compris les tâches d’importation en cours) : 10
 - Taille max. du fichier d’importation : 10 Mo
 
-## Permissions
+## Autorisations
 
 L’importation en bloc utilise le même modèle d’autorisations que l’API REST Marketo. Elle ne nécessite aucune autorisation spéciale supplémentaire pour être utilisée, bien que des autorisations spécifiques soient requises pour chaque ensemble de points de terminaison.
 
