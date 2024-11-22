@@ -1,9 +1,9 @@
 ---
 title: API JAVASCRIPT
 description: API JavaScript
-feature: Munchkin Tracking Code, Javascript
+feature: Munchkin Tracking Code, Forms, Web Personalization, Predictive Content, Social, Javascript
 exl-id: 6129a467-be44-44bd-9e02-62009070c318
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e63db409981d10cfea6206cf91340428e5d0b17f
 workflow-type: tm+mt
 source-wordcount: '337'
 ht-degree: 1%
@@ -18,7 +18,7 @@ Le code incorporé est unique à votre instance Marketo, car contient un identif
 
 ## Suivi des pistes (Munchkin)
 
-Le Marketo [code de suivi Munchkin JavaScript](lead-tracking.md) est la clé des fonctionnalités de Marketo. Il vous permet de générer des pistes à partir des visites sur votre site web. Il effectue même le suivi des visiteurs qui ne vous ont pas encore fourni leurs informations personnelles, créant ainsi des pistes anonymes comprenant l’adresse IP de l’utilisateur et d’autres informations. Vous configurez Munchkin sur la page Munchkin dans la zone Admin de Marketo.
+Marketo [Code de suivi Munchkin JavaScript](lead-tracking.md) est la clé des fonctionnalités de Marketo. Il vous permet de générer des pistes à partir des visites sur votre site web. Il effectue même le suivi des visiteurs qui ne vous ont pas encore fourni leurs informations personnelles, créant ainsi des pistes anonymes comprenant l’adresse IP de l’utilisateur et d’autres informations. Vous configurez Munchkin dans la page Munchkin de la zone Admin de Marketo.
 
 ## Formulaires 2.0
 

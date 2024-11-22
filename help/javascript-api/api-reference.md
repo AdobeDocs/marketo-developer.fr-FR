@@ -1,14 +1,14 @@
 ---
 title: Référence de l’API Munchkin
 description: Utilisez l’API JavaScript Munchkin pour personnaliser vos données Munchkin.
-feature: Javascript
-source-git-commit: c6c0a492ede415471e10efb6213eb3f590e63ebe
+feature: Munchkin Tracking Code, Javascript
+exl-id: e9727691-5501-4223-bc98-2b4bacc33513
+source-git-commit: 1ad2d793832d882bb32ebf7ef1ecd4148a6ef8d5
 workflow-type: tm+mt
 source-wordcount: '414'
 ht-degree: 9%
 
 ---
-
 
 # Référence de l’API Munchkin
 
@@ -18,14 +18,16 @@ Munchkin fournit plusieurs fonctions qui peuvent être appelées manuellement vi
 
 L’API Munchkin comprend les fonctions suivantes : `init`, `createTrackingCookie`, `munchkinFunction`.
 
+<a name="munchkin_init"></a>
+
 ### Munchkin.init()
 
-`Munchkin.init()` doit être appelé avant toute autre fonction. Il configure Munchkin sur la page active pour envoyer des activités vers une instance spécifique et génère une activité &quot;Page Web des visites&quot; pour la page active.
+`Munchkin.init()` doit être appelé avant toute autre fonction. Il configure Munchkin sur la page en cours pour envoyer les activités vers une instance spécifique et génère une activité &quot;Page Web des visites&quot; pour la page en cours.
 
 | Nom du paramètre | Facultatif/Obligatoire | Type | Description |
 | --- | --- | --- | --- |
 | ID Munchkin | Obligatoire | Chaîne | Identifiant de compte Munchkin situé sous Admin > Intégration > Menu Munchkin. Définit l’instance cible à laquelle envoyer les activités. |
-| [Paramètres de configuration](configuration.md) | Facultatif | Objet | Active les autres paramètres de comportement pour Munchkin. |
+| [Paramètres de configuration](configuration.md) | Facultatif | Objet | Permet d’activer d’autres paramètres de comportement pour Munchkin. |
 
 ```javascript
 Munchkin.init('299-BYM-827');

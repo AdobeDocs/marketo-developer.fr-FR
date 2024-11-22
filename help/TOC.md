@@ -5,9 +5,9 @@ breadcrumb-title: "[!DNL Marketo] Guide du développeur"
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 28b040f6473677abaaa0c73f1bb6e887e9e35a81
+source-git-commit: 8160ddaea848d0aefe4eef89a67f55b210c91f70
 workflow-type: tm+mt
-source-wordcount: '241'
+source-wordcount: '243'
 ht-degree: 36%
 
 ---
@@ -18,14 +18,15 @@ ht-degree: 36%
 - [Accueil](home.md)
 - [Prise en main](getting-started.md)
 - API JavaScript {#javascriptapi}
-   - [Configuration](javascript-api/configuration.md)
    - [Événements de données personnalisés](javascript-api/custom-data-events.md)
    - [Exemples](javascript-api/examples.md)
    - [Référence de l’API Forms](javascript-api/forms-api-reference.md)
    - [Obtention des données du visiteur](javascript-api/get-visitor-data.md)
    - [API JavaScript](javascript-api/javascript-api.md)
-   - [Suivi du lead](javascript-api/lead-tracking.md)
-   - [Référence de l’API Munchkin](javascript-api/api-reference.md)
+   - [Suivi des pistes]{#leadtracking}
+      - [Suivi du lead](javascript-api/lead-tracking.md)
+      - [Configuration](javascript-api/configuration.md)
+      - [Référence de l’API Munchkin](javascript-api/api-reference.md)
    - [Correspondance de motif](javascript-api/pattern-match.md)
    - [Predictive Content](javascript-api/predictive-content.md)
    - [Redirections](javascript-api/redirect.md)
