@@ -3,9 +3,9 @@ title: Gestion des utilisateurs
 feature: REST API
 description: Exécutez des opérations CRUD sur les enregistrements d’utilisateur.
 exl-id: 2a58f496-0fe6-4f7e-98ef-e9e5a017c2de
-source-git-commit: 13a567be067a8a1272e981fad4e03b0a8519f132
+source-git-commit: 159c3fe29c26ea0fff718bf582a7e4c9a1740831
 workflow-type: tm+mt
-source-wordcount: '1185'
+source-wordcount: '1180'
 ht-degree: 1%
 
 ---
@@ -23,12 +23,12 @@ Contrairement aux autres API REST Marketo, lors de l’utilisation des API User 
    1. Autorisation &quot;Accéder aux utilisateurs&quot; du groupe [Accès à l’administrateur](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)
    1. &quot;Accès à l’API User Management&quot; à partir du groupe [Access API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)
 - Les corps de réponse ne contiennent pas l’attribut booléen &quot;success&quot; indiquant le succès ou l’échec d’un appel. Vous devez plutôt évaluer le code d’état de réponse HTTP. Si un appel réussit, un code d’état 200 est renvoyé. Si un appel échoue, un code d’état de niveau non 200 est renvoyé et le corps de la réponse contient le tableau standard &quot;errors&quot; avec le code d’erreur et un message d’erreur descriptif.
-- Le format des chaînes datetime est &quot;aaaajj&#39;T&#39;HH:mm:ss.SSS&#39;t&#39;+|-hmm&quot;. Cela s’applique aux attributs suivants : createdAt, updatedAt, expiresAt.
+- Le format des chaînes datetime est `yyyyMMdd'T'HH:mm:ss.SSS't'+|-hhmm`. Cela s’applique aux attributs suivants : `createdAt`, `updatedAt`, `expiresAt`.
 - Les points de terminaison de l’API User Management ne comportent pas le préfixe &quot;/rest&quot; comme les autres points de terminaison.
 
 ## Requête
 
-La prise en charge des requêtes pour la gestion des utilisateurs inclut la possibilité de récupérer tous les utilisateurs, rôles et espaces de travail. Vous pouvez également récupérer un seul enregistrement utilisateur par identifiant utilisateur ou un enregistrement rôle/espace de mots par identifiant utilisateur.
+La prise en charge des requêtes pour la gestion des utilisateurs inclut la possibilité de récupérer tous les utilisateurs, rôles et espaces de travail. En outre, vous pouvez récupérer un seul enregistrement utilisateur par identifiant utilisateur ou un enregistrement rôle/espace de travail par identifiant utilisateur.
 
 ### Utilisateur par identifiant
 
