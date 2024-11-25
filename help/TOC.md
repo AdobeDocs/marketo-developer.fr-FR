@@ -5,7 +5,7 @@ breadcrumb-title: "[!DNL Marketo] Guide du développeur"
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 8160ddaea848d0aefe4eef89a67f55b210c91f70
+source-git-commit: afe7e713fe15d63822625cd0299dc7125761cd33
 workflow-type: tm+mt
 source-wordcount: '243'
 ht-degree: 36%
@@ -23,7 +23,7 @@ ht-degree: 36%
    - [Référence de l’API Forms](javascript-api/forms-api-reference.md)
    - [Obtention des données du visiteur](javascript-api/get-visitor-data.md)
    - [API JavaScript](javascript-api/javascript-api.md)
-   - [Suivi des pistes]{#leadtracking}
+   - Suivi des pistes {#leadtracking}
       - [Suivi du lead](javascript-api/lead-tracking.md)
       - [Configuration](javascript-api/configuration.md)
       - [Référence de l’API Munchkin](javascript-api/api-reference.md)
@@ -60,8 +60,8 @@ ht-degree: 36%
       - [Dossiers](rest-api/folders.md)
       - [Formulaires](rest-api/forms.md)
       - [Pages de destination](rest-api/landing-pages.md)
-      - [Modèles de pages de destination](rest-api/landing-page-templates.md)
       - [Règles de redirection de page de destination](rest-api/landing-page-redirect-rules.md)
+      - [Modèles de pages de destination](rest-api/landing-page-templates.md)
       - [Liste des champs standard](rest-api/list-of-standard-fields.md)
       - [Programmes](rest-api/programs.md)
       - [Campagnes intelligentes](rest-api/smart-campaigns.md)
