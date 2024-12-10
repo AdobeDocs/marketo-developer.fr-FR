@@ -3,9 +3,9 @@ title: Prospects
 feature: REST API
 description: Détails sur les appels de l’API Leads
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 8c1c620614408dd2df0b0848e6efc027adb71834
+source-git-commit: 7a3df193e47e7ee363c156bf24f0941879c6bd13
 workflow-type: tm+mt
-source-wordcount: '3343'
+source-wordcount: '3338'
 ht-degree: 3%
 
 ---
@@ -18,10 +18,10 @@ L’API de piste Marketo offre un large éventail de fonctionnalités pour les a
 
 ## Description
 
-L’une des fonctionnalités clés de l’API Leads est la méthode Description . Utilisez Description des pistes pour récupérer une liste complète des champs disponibles pour l’interaction via l’API REST et l’API SOAP, ainsi que des métadonnées pour chacun d’eux :
+L’une des fonctionnalités clés de l’API Leads est la méthode Description . Utilisez Description des pistes pour récupérer une liste complète des champs disponibles pour l’interaction via l’API REST, ainsi que des métadonnées pour chacune d’elles :
 
 * Type de données
-* Noms d’API REST et SOAP
+* Noms d’API REST
 * Longueur (le cas échéant)
 * Lecture seule
 * Libellé convivial
@@ -95,7 +95,7 @@ Pour cette méthode, il y aura toujours un seul enregistrement à la première p
 
 Obtenir des pistes par type de filtre renvoie le même type d’enregistrements, mais peut renvoyer jusqu’à 300 valeurs par page. Elle nécessite les paramètres de requête `filterType` et `filterValues`.
 
-`filterType` accepte n’importe quel champ personnalisé ou la plupart des champs couramment utilisés. Appelez le point d’entrée `Describe2` pour obtenir une liste complète des champs pouvant faire l’objet d’une recherche et pouvant être utilisés dans `filterType`. Lors de la recherche par champ personnalisé, seuls les types de données suivants sont pris en charge : `string`, `email`, `integer`. Vous pouvez obtenir les détails du champ (description, type, etc.) en utilisant la méthode décrite ci-dessus.
+`filterType` accepte n’importe quel champ personnalisé ou la plupart des champs couramment utilisés. Appelez le point d’entrée `Describe2` pour obtenir une liste complète des champs pouvant faire l’objet d’une recherche et pouvant être utilisés dans `filterType`. Lors de la recherche par champ personnalisé, seuls les types de données suivants sont pris en charge : `string`, `email`, `integer`. Vous pouvez obtenir les détails du champ (description, type, etc.) à l&#39;aide de la méthode décrite ci-dessus.
 
 `filterValues` accepte jusqu’à 300 valeurs dans un format séparé par des virgules. L’appel recherche des enregistrements dont le champ de piste correspond à l’un des `filterValues` inclus. Si le nombre de pistes correspondant au filtre de piste est supérieur à 1 000, une erreur est renvoyée : &quot;1003, trop de résultats correspondent au filtre&quot;.
 
@@ -708,7 +708,7 @@ Dans l’enregistrement d’entrée, l’objet `leadFormFields` est requis. Cet 
 
 L’objet membre `visitorData` est facultatif et contient des paires nom/valeur qui correspondent aux données de visite de page `pageURL`, `queryString`, `leadClientIpAddress` et `userAgentString`. Peut être utilisé pour renseigner des champs d’activité supplémentaires à des fins de filtrage et de déclenchement.
 
-La chaîne de membre du cookie est facultative et vous permet d’associer un cookie Munchkin à un enregistrement de personne dans Marketo. Lorsqu’une nouvelle piste est créée, toute activité anonyme antérieure est associée à cette piste, sauf si la valeur du cookie avait été précédemment associée à un autre enregistrement connu. Si la valeur du cookie a été précédemment associée, les nouvelles activités sont suivies par rapport à l’enregistrement, mais les anciennes activités ne seront pas migrées hors de l’enregistrement connu existant. Pour créer une piste sans historique d’activité, il vous suffit d’omettre le membre du cookie.
+La chaîne du membre du cookie est facultative et vous permet d’associer un cookie Munchkin à un enregistrement de personne dans Marketo. Lorsqu’une nouvelle piste est créée, toute activité anonyme antérieure est associée à cette piste, sauf si la valeur du cookie avait été précédemment associée à un autre enregistrement connu. Si la valeur du cookie a été précédemment associée, les nouvelles activités sont suivies par rapport à l’enregistrement, mais les anciennes activités ne seront pas migrées hors de l’enregistrement connu existant. Pour créer une piste sans historique d’activité, il vous suffit d’omettre le membre du cookie.
 
 De nouveaux pistes sont créés dans la partition principale de l’espace de travail dans lequel se trouve le formulaire.
 
@@ -789,11 +789,11 @@ POST /rest/v1/leads/{id}/merge.json?leadId=1324
 
 La piste spécifiée dans le paramètre de chemin est la piste gagnante. Par conséquent, si des champs sont en conflit entre les enregistrements fusionnés, la valeur du gagnant est prise, sauf si le champ de l’enregistrement gagnant est vide et que le champ correspondant de l’enregistrement perdant ne l’est pas. Les pistes spécifiées dans les paramètres `leadId` ou `leadIds` sont les pistes perdantes.
 
-Si vous disposez d’un abonnement activé pour la synchronisation SFDC, vous pouvez également utiliser le paramètre `mergeInCRM` dans votre requête. Si la valeur est définie sur true, la fusion correspondante dans votre CRM est également effectuée. Si les deux pistes se trouvent dans la SFDC et que l’une est une piste CRM et l’autre est un contact CRM, alors le gagnant est le contact CRM (quel que soit le prospect spécifié comme gagnant). Si l’une des pistes se trouve dans la collecte de données régionale et que l’autre est Marketo uniquement, le gagnant est la piste de la collecte de données régionale (quelle que soit la piste choisie).
+Si vous avez un abonnement activé pour la synchronisation SFDC, vous pouvez également utiliser le paramètre `mergeInCRM` dans votre requête. Si la valeur est définie sur true, la fusion correspondante dans votre CRM est également effectuée. Si les deux pistes se trouvent dans SFDC et que l’une est une piste CRM et l’autre est un contact CRM, alors le gagnant est le contact CRM (quel que soit le prospect spécifié comme gagnant). Si l’une des pistes se trouve dans SFDC et que l’autre est Marketo uniquement, le gagnant est le prospect SFDC (quelle que soit la piste spécifiée comme gagnante).
 
 ## Associer l’activité web
 
-Grâce au suivi des pistes (Munchkin), Marketo enregistre l’activité web des visiteurs de votre site web et de vos pages d’entrée Marketo. Ces activités, Visites et Clics, sont enregistrées avec une clé qui correspond à un cookie &quot;_mkto_trk&quot; défini dans le navigateur de l’prospect, et Marketo l’utilise pour effectuer le suivi des activités de la même personne. En règle générale, l’association à des enregistrements de piste survient lorsqu’un prospect clique à partir d’un courrier électronique Marketo ou remplit un formulaire Marketo, mais il arrive qu’une association puisse être déclenchée par un autre type d’événement et vous pouvez utiliser le point de terminaison Associer le prospect pour ce faire. Le point de terminaison utilise l’identifiant de l’enregistrement de piste connu comme paramètre de chemin d’accès et la valeur du cookie &quot;_mkto_trk&quot; dans le paramètre de requête du cookie.
+Grâce au suivi des pistes (Munchkin), Marketo enregistre l’activité web des visiteurs sur votre site web et vos pages d’entrée Marketo. Ces activités, Visites et Clics, sont enregistrées avec une clé qui correspond à un cookie &quot;_mkto_trk&quot; défini dans le navigateur de l’prospect, et Marketo l’utilise pour effectuer le suivi des activités de la même personne. En règle générale, l’association à des enregistrements de piste survient lorsqu’un prospect clique à partir d’un courrier électronique Marketo ou remplit un formulaire Marketo, mais il arrive qu’une association puisse être déclenchée par un autre type d’événement et vous pouvez utiliser le point de terminaison Associer le prospect pour ce faire. Le point de terminaison utilise l’identifiant de l’enregistrement de piste connu comme paramètre de chemin d’accès et la valeur du cookie &quot;_mkto_trk&quot; dans le paramètre de requête du cookie.
 
 ### Requête
 
