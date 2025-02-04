@@ -1,56 +1,58 @@
 ---
 title: importToList
 feature: SOAP
-description: appels importToList SOAP
+description: importToList appels SOAP
 exl-id: 7e4930a9-a78f-44a3-9e8c-eeca908080c8
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 8a019985fc9ce7e1aa690ca26bfa263cd3c48cfc
 workflow-type: tm+mt
-source-wordcount: '317'
+source-wordcount: '393'
 ht-degree: 5%
 
 ---
 
 # importToList
 
-Cette fonction vous permet d’importer une liste de pistes dans une liste statique existante dans Marketo, comme la fonction d’importation de liste dans l’interface utilisateur de Marketo.
+Cette fonction vous permet d’importer une liste de prospects dans une liste statique existante dans Marketo, comme la fonction d’importation de liste dans l’interface utilisateur de Marketo.
 
-**Format d’importation :** Ces valeurs sont identiques à la structure d’un fichier CSV utilisé dans un import de liste.
+**Format d’importation :** ces valeurs sont identiques à la structure d’un fichier CSV utilisé dans un import de liste.
 
-**Exemple :**
+**Exemple :**
 
 | E-mail | Premier | Dernier |
 | --- | --- | --- |
 | joe@company.com | Joe | Smith |
-| mary@company.com | Mary | Rodgers |
+| mary@company.com | Marie | Rodgers |
 | wanda@megacorp.com | Wanda | Williams |
 
-**Remarque : Les valeurs** `displayName` doivent être utilisées dans `importFileHeader` plutôt que dans les valeurs `name`.
+`displayName` valeurs doivent être utilisées dans le `importFileHeader` plutôt que les valeurs `name`.
 
-**Contenu d’email dynamique :** Vous pouvez éventuellement transmettre des valeurs par piste qui remplacent Mes jetons dans un email.
+**Contenu dynamique d’e-mail :** vous pouvez éventuellement transmettre des valeurs par prospect qui servent de remplacement à Mes jetons dans un e-mail.
 
 | E-mail | Premier | Dernier | {{my.specialToken}} | {{my.otherToken}} |
 | --- | --- | --- | --- | --- |
 | joe@company.com | Joe | Smith | Poisson | Bleu |
-| mary@company.com | Mary | Rodgers | Poulets | Brown |
+| mary@company.com | Marie | Rodgers | Poulet | Marron |
 | wanda@megacorp.com | Wanda | Williams | Veggie | Hazel |
 
-**Important :** Si vous ajoutez des jetons pour les pistes, vous devez spécifier la campagne dynamique qui les utilise. La prochaine fois que la campagne dynamique spécifiée s’exécute, elle utilisera les valeurs de votre liste, au lieu des valeurs normales de Mon jeton. Une fois cette campagne unique exécutée, les jetons sont ignorés.
+**Important :** si vous ajoutez des jetons pour les prospects, vous devez spécifier la campagne intelligente qui les utilise. La prochaine fois que la campagne dynamique spécifiée s’exécutera, elle utilisera les valeurs de votre liste, au lieu des valeurs normales de Mon jeton . Une fois cette campagne unique exécutée, les jetons seront ignorés.
 
-**REMARQUE :** `importToList` peut prendre du temps, en particulier pour les listes volumineuses. Si vous prévoyez d’utiliser la liste nouvellement importée dans d’autres appels API, vous devez utiliser `importToListStatus` pour vérifier que l’opération est terminée.
+`importToList` processus peut prendre du temps, en particulier pour les listes volumineuses. Si vous envisagez d’utiliser la liste nouvellement importée dans d’autres appels API, vous devez utiliser `importToListStatus` pour vérifier que l’opération est terminée.
 
-## Demande
+**Remarque :** l’importation de valeurs NULL pour les champs numériques d’un fichier CSV peut générer une activité « Modifier la valeur des données » pour ces champs, même si le champ est déjà vide. Toutes les campagnes intelligentes qui utilisent un filtre « Modification de la valeur des données » ou un déclencheur « Modifications de la valeur des données » peuvent entraîner la qualification des prospects pour ces campagnes même si les données ne changent pas réellement. Utilisez des contraintes sur ces filtres/déclencheurs pour vous assurer que les prospects ne sont pas qualifiés pour des campagnes incorrectes lors de l’exécution des imports.
 
-| Nom de champ | Obligatoire/Facultatif | Description |
+## Requête
+
+| Nom du champ | Obligatoire / Facultatif | Description |
 | --- | --- | --- |
-| programName | Requis | Nom du programme contenant la liste statique |
-| Nom de campagne | En option | En cas de remplacement de Mon jeton, il s’agit du nom de la campagne dans laquelle ces jetons seront utilisés. La campagne doit se trouver dans le programme spécifié. |
-| listName | Requis | Nom de la liste statique dans Marketo à laquelle les pistes sont ajoutées |
-| importFileHeader | Requis | En-têtes de colonne pour les pistes à importer, y compris l’attribut de piste et les noms de mes jetons. |
-| importFileRows->stringItem | Requis | Valeurs séparées par des virgules, avec une ligne par piste |
-| importListMode | Requis | Options valides : `UPSERTLEADS` et `LISTONLY` |
-| clearList | En option | Si la valeur est définie sur true, la liste statique est effacée avant l’importation ; si de fausses pistes sont ajoutées. |
+| programName | Obligatoire | Nom du programme contenant la liste statique |
+| Nom de campagne | Facultatif | Si vous utilisez Mes remplacements de jeton, il s’agit du nom de la campagne dans laquelle ces jetons seront utilisés. La campagne doit se trouver dans le programme spécifié. |
+| listName | Obligatoire | Nom de la liste statique dans Marketo à laquelle les prospects sont ajoutés |
+| importFileHeader | Obligatoire | En-têtes de colonne pour les prospects à importer, y compris l’attribut de prospect et mes noms de jeton. |
+| importFileRows->stringItem | Obligatoire | Valeurs séparées par des virgules, avec une ligne par prospect |
+| importListMode | Obligatoire | Options valides : `UPSERTLEADS` et `LISTONLY` |
+| clearList | Facultatif | Si la valeur est true, la liste statique est effacée avant l’importation ; si la valeur est false, des prospects sont ajoutés. |
 
-## Request XML
+## XML de la demande
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
