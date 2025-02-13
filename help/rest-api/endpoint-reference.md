@@ -3,9 +3,9 @@ title: Référence du point d’entrée
 feature: REST API
 description: Références du point d’entrée de l’API Marketo
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: f28aa6daf53063381077b357061fe7813c64b5de
+source-git-commit: 3632d2b713d97a2c895c65f144c07e62e1d369cb
 workflow-type: tm+mt
-source-wordcount: '4677'
+source-wordcount: '4676'
 ht-degree: 27%
 
 ---
@@ -19,7 +19,7 @@ Vous trouverez ci-dessous des liens vers les références de l’API REST Market
 - [Base de données de lead](https://developer.adobe.com/marketo-apis/api/mapi/)
 - [Gestion des utilisateurs](https://developer.adobe.com/marketo-apis/api/user/)
 
-## Liste des points d’entrée (#endpoint_list)
+## Liste des points d’entrée {#endpoint_list}
 
 Voici une liste complète des points d’entrée de l’API REST.
 
