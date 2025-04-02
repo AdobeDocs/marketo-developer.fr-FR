@@ -3,9 +3,9 @@ title: Authentification
 feature: REST API
 description: Authentification des utilisateurs de Marketo pour l’utilisation de l’API.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
+source-git-commit: 9582f7ac5998b670dd04cc6529db23f558c0e18e
 workflow-type: tm+mt
-source-wordcount: '573'
+source-wordcount: '619'
 ht-degree: 0%
 
 ---
@@ -51,15 +51,27 @@ Définition de la réponse
 ## Utilisation d’un jeton d’accès
 
 Lors d’appels aux méthodes de l’API REST, un jeton d’accès doit être inclus dans chaque appel pour que l’appel réussisse.
+Le jeton d’accès doit être envoyé en tant qu’en-tête HTTP.
 
 >[!IMPORTANT]
 >
 >La prise en charge de l’authentification à l’aide du paramètre de requête **access_token** sera supprimée le 30 juin 2025. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête **Authorization** dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête **Authorization**.
 
-Le jeton d’accès doit être envoyé en tant qu’en-tête HTTP. Par exemple, dans une requête CURL :
+### Passage à l’en-tête d’autorisation
+
+
+Pour passer de l’utilisation du paramètre de requête `access_token` à un en-tête d’autorisation, un petit changement de code est nécessaire.
+
+En utilisant CURL comme exemple, ce code envoie la valeur `access_token` en tant que paramètre de formulaire (indicateur -F) :
 
 ```bash
-$ curl -H 'Authorization: Bearer cdf01657-110d-4155-99a7-f984b2ff13a0:int`' 'https://123-ABC-456.mktourl.com/rest/v1/apicall.json?filterType=id&filterValues=4,5,7,12,13'
+curl ...  -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/apiCall.json
+```
+
+Ce code envoie la même valeur que l’en-tête HTTP `Authorization: Bearer` (indicateur -H) :
+
+```bash
+curl ... -H 'Authorization: Bearer <Access Token>' <REST API Endpoint Base URL>/bulk/v1/apiCall.json
 ```
 
 ## Conseils et bonnes pratiques
