@@ -2,105 +2,105 @@
 title: Flux de données
 description: Présentation des flux de données
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
 workflow-type: tm+mt
-source-wordcount: '1594'
+source-wordcount: '1588'
 ht-degree: 2%
 
 ---
 
 # Flux de données
 
-Les organisations marketing de nos clients comptent sur des campagnes marketing ciblées et opportunes pour rester au sommet de leur activité et être compétitives. Afin de prendre en charge des décisions rapides et de permettre des changements stratégiques à la vitesse voulue, il est important de disposer de données pour prendre en charge et piloter ces décisions clés qui fournissent des campagnes ciblées et ciblées. Certains clients effectuent des efforts marketing à des niveaux de leurs segments de clients à l’intérieur et à l’extérieur du Marketo Engage. Pour prendre en charge ces différents efforts, Marketo a créé la possibilité d’acquérir de gros volumes de données en temps quasi réel via les flux de données.
+Les organisations marketing de nos clients comptent sur des campagnes marketing opportunes et ciblées pour rester à la pointe de leur activité et être compétitives. Pour prendre des décisions rapides et permettre un changement stratégique rapide, il est important de disposer de données pour prendre en charge et orienter ces décisions clés qui génèrent des campagnes ciblées et ciblées. Certains clients et clientes effectuent également des efforts marketing à des niveaux de leurs segments de clients et clientes à l’intérieur et à l’extérieur de Marketo Engage. Pour prendre en charge ces différents efforts, Marketo a créé la possibilité d’acquérir d’importants volumes de données en temps quasi réel au moyen de flux de données.
 
-Outre les avantages des données en temps quasi réel, il existe des avantages liés aux produits :
+Outre l’avantage des données en temps quasi réel, il existe des avantages liés aux produits :
 
-- Détermine le goulot d’étranglement des limites de l’API, car la diffusion en continu est utilisée à la place.
-- Réduit le scénario des limites de l’API, générant moins de messages d’alerte.
-- Aucun ne doit effectuer d’exportations en bloc pour extraire des données en raison de la fonctionnalité de diffusion en continu des données.
+- Soulage le goulot d’étranglement des limites d’API, car le streaming est utilisé à la place.
+- Réduit le scénario des limites d’API, générant moins de messages d’alerte.
+- Aucun ne doit effectuer d’exportations en bloc pour extraire les données en raison de la fonctionnalité de diffusion de données en continu.
 
-Les flux de données sont disponibles pour ceux qui ont acheté un [ package de niveau de performance Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+Les flux de données sont disponibles pour ceux qui ont acheté un package [Marketo Engage Performance Tier](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
-## Présentation du flux de données des activités de piste
+## Flux de données d’activité du lead - Aperçu
 
-Le flux de données des activités de piste fournit une diffusion en continu en temps quasi réel du suivi des audits des activités de piste où de grands volumes d’activités de piste peuvent être envoyés au système externe d’un client. Les flux permettent aux clients de contrôler de manière efficace les événements liés aux pistes, les schémas d’utilisation, de fournir des vues sur les modifications des pistes et de déclencher des processus et des workflows en fonction des différents types d’événements de piste. Il existe plus de 144 types d’activité qui peuvent être abonnés et envoyés par le biais du flux.
+Le flux de données des activités de lead fournit une diffusion en continu en temps quasi réel du suivi d’audit des activités de lead, où de grands volumes d’activités de lead peuvent être envoyés au système externe d’un client. Les flux permettent aux clients d’auditer efficacement les événements liés aux leads, les modèles d’utilisation, de fournir des vues sur les modifications des leads et de déclencher des processus et des workflows en fonction des différents types d’événements de leads. Il existe plus de 144 types d’activités auxquels vous pouvez vous abonner et qui peuvent être envoyés par le biais du flux.
 
-Types de données de piste diffusées :
+Types de données de leads diffusées en continu :
 
-1. Changements de piste - toutes les modifications sur tous les champs et les nouvelles pistes
-1. Activités de piste : tous les types d’activité de piste décrits dans le document.
-1. Pistes supprimées
-1. Tous les objets personnalisés sur la piste (si nécessaire). C&#39;est tout ou rien pour le moment.
+1. Modifications de leads : toutes les modifications sur tous les champs et nouveaux leads
+1. Activités de lead - tous les types d’activités de lead décrits dans le document
+1. Leads supprimés
+1. Tous les objets personnalisés du prospect (si demandé). C&#39;est tout ou rien pour le moment.
 
-En fournissant des vues sur les changements de piste, cela permet aux clients de prendre des décisions plus rapides sur leurs stratégies marketing globales et de créer des campagnes ciblées plus ciblées. Voici quelques cas d’utilisation courants :
+En offrant des vues sur les modifications apportées aux leads, cela permet aux clients de prendre des décisions plus rapides sur leurs stratégies marketing globales et de créer des campagnes ciblées plus ciblées. Voici quelques cas d’utilisation courants :
 
-- Alertes personnalisées : lorsque certaines pistes présentent des conditions incohérentes, elles peuvent être ajoutées à la liste. Les flux d’activités peuvent les sélectionner et pousser l’activité &quot;Ajouter à la liste&quot; pour que les clients puissent suivre l’action.
-- Alimentation de modèles ML : certains clients prévoient de créer des modèles de notation qui utilisent les informations d’activité et les ramènent à Marketo ou les utilisent dans leurs propres modèles de notation internes selon leurs besoins. En évaluant une piste, les clients peuvent alors informer Marketo d’ajouter des clients aux campagnes de formation, ce qui augmente leur score.
+- Alertes personnalisées : lorsque certains prospects présentent des conditions incohérentes, ils peuvent être ajoutés à la liste. Les flux d’activités peuvent les sélectionner et pousser l’activité « Ajouter à la liste » pour que les clients puissent effectuer une action de suivi.
+- Optimiser les modèles ML : certains clients prévoient de créer des modèles de notation qui utilisent des informations sur les activités et les renvoient à Marketo, ou de les utiliser dans leurs propres modèles de notation internes selon leurs besoins. En notant un prospect, les clients peuvent ensuite informer Marketo d’ajouter des clients aux campagnes d’entretien afin d’augmenter leur note.
 
-Liste des activités en continu :
+Liste des activités diffusées en continu :
 
-| SuccessGoalInReferral | ClickPredictiveContent | ReceivedForwardToFriendEmail |
+| AchieveGoalInReferral | ClickPredictiveContent | ReceivedForwardToFriendEmail |
 |--- |--- |--- |
 | AddToList | ClickRTPCallToAction | ReceiveSalesEmail |
-| AddToNurture | ClickSalesEmail | Reportez-vous à SocialApp |
-| AddToOpportunity | ClickSharedLink | RemoveFromList |
+| AddToNurture | ClickSalesEmail | ReferToSocialApp |
+| Ajouter à l’opportunité | ClickSharedLink | RemoveFromList |
 | AddToSalesCampaign | ConvertLead | RemoveFromOpportunity |
-| CallWebhook | DeleteLead | RequestCampaign |
-| ChangeDataValue | DisqualifSweepstakes | SalesEmailBounce |
+| CallWebhook | Supprimer le lead | Campagne de demande |
+| ChangeDataValue | Disqualifier les tirages au sort | SalesEmailBounce |
 | ChangeLeadPartition | EarnEntryInSocialApp | SendAlert |
-| ChangeNurtureCadence | EmailBounce | SendEmail |
+| ChangeCultureCadence | E-mail non remis | SendEmail |
 | ChangeNurtureTrack | EmailBounceSoft | SendSalesEmail |
-| ChangeOwner | EmailDelivered | SentForwardToFriendEmail |
-| ChangeProgramData | EnrichWithDataDotCom | SFDCAactivity |
-| ChangeProgramMemberData | EnterSweepstakes | ShareContent |
+| Modifier le propriétaire | E-mail diffusé | SentForwardToFriendEmail |
+| ModifierDonnéesProgramme | EnrichWithDataDotCom | Activité SFDCA |
+| ModifierDonnéesMembreProgramme | EnterSweepstakes | ShareContent |
 | ChangeRevenueStage | FillOutFacebookLeadAdsForm | SignUpForReferralOffer |
-| ChangeRevenueStageManually | FillOutForm | SyncLeadToMicrosoft |
-| ChangeScore | IntéressantMoment | SyncLeadToSFDC |
-| ChangeSegment | MergeLeads | UnsubscribeEmail |
+| ChangeRevenueStageManually | FillOutForm | SyncLeadVersMicrosoft |
+| ChangeScore | Moment intéressant | SyncLeadVersSFDC |
+| ModifierSegment | MergeLeads | UnsubscribeEmail |
 | ChangeStatusInProgression | NewLead | UpdateOpportunity |
 | ChangeStatusInSalesCampaign | OpenEmail | VisitWebPage |
 | ClickEmail | OpenSalesEmail | VoteInPoll |
 | ClickLink | PushLeadToMarketo | WinSweepstakes |
 
-Notez que si les objets personnalisés doivent être diffusés en continu, il doit s’agir de tous les objets personnalisés liés au prospect. Actuellement, il n’est pas possible de sélectionner les options souhaitées.
+Notez que si des objets personnalisés doivent être diffusés en continu, il doit s’agir de tous les objets personnalisés liés au lead. Il n&#39;y a actuellement aucun moyen de sélectionner ceux qui sont souhaités.
 
-## Présentation du flux de données d’audit utilisateur
+## Flux de données d’audit de l’utilisateur - Aperçu
 
-Le flux de données d’audit utilisateur fournit un suivi en temps quasi réel des modifications de ressources par les utilisateurs &#x200B;. Cela permet à un client de contrôler efficacement les événements de ressources, de fournir une vue des modifications de l’utilisateur et de déclencher des processus ou des workflows en fonction de différents types d’événements de contrôle. Les modifications de ressources en temps quasi réel sont envoyées via des événements d’Adobe I/O à un point de terminaison configurable. Les événements d’audit sont ventilés par type de ressource et peuvent s’abonner à des événements d’audit importants pour eux.
+Le flux de données d’audit d’utilisateur fournit un suivi d’audit en temps quasi réel des modifications de ressources par les utilisateurs&#x200B;. Le client peut ainsi auditer efficacement les événements de ressources, afficher les modifications apportées aux utilisateurs et déclencher des processus ou des workflows en fonction de différents types d’événements d’audit. Les modifications de ressources en temps quasi réel sont envoyées via des événements Adobe I/O à un point d’entrée configurable. Les événements d’audit sont répartis par type de ressource et peuvent s’abonner aux événements d’audit qui leur sont importants.
 
-Voici un bon cas d’utilisation pour s’abonner à ce flux :
+Un bon cas d’utilisation pour l’abonnement à ce flux serait :
 
-- Suivi des modifications lors de l’utilisation de plusieurs systèmes marketing : certains clients effectuent également un certain niveau d’activités marketing dans un autre système, tel qu’un CRM comme Salesforce, puis transmettent le prospect à Marketo. Il arrive que le prospect soit mis à jour et synchronisé. Il est donc important de savoir quel système a apporté des modifications récentes.
+- Suivi des modifications lors de l’utilisation de plusieurs systèmes marketing : certains clients effectuent également un certain niveau d’activités marketing dans un autre système, tel qu’un CRM comme Salesforce, puis transmettent le prospect à Marketo. Le prospect est parfois mis à jour et synchronisé dans les deux sens. Il est donc important de savoir quel système a récemment apporté des modifications.
 
-Liste des événements d’audit utilisateur diffusés :
+Liste des événements d’audit d’utilisateur diffusés en continu :
 
-| COMPOSANT | LISTE DE TYPE D’ÉVÉNEMENT |
+| COMPOSANT | LISTE DES TYPES D’ÉVÉNEMENTS |
 |--- |--- |
-| Programme par défaut | clone, créer, supprimer, modifier le canal, exporter, modifier la configuration du programme, modifier le jeton du programme, renommer |
+| Programme par défaut | cloner, créer, supprimer, modifier le canal, exporter, modifier la configuration du programme, modifier le jeton de programme, renommer |
 | E-mail | approuver, cloner, créer, supprimer, modifier, déplacer, renommer, annuler l’approbation |
 | Programme d&#39;e-mail en masse | approuver, childUpdate, cloner, créer, supprimer, modifier, modifier le canal, modifier le planning du programme, modifier la configuration du programme, modifier le jeton du programme, renommer, annuler l’approbation |
-| Modèle d&#39;e-mail | approuver, cloner, créer, supprimer, draftCreate, draftDiscard, edit, rename, unapprove |
-| Programme d’engagement | clone, créer, supprimer, modifier le canal, modifier la configuration du programme, modifier le flux du programme, modifier le jeton du programme, renommer |
+| Modèle d&#39;e-mail | approuver, cloner, créer, supprimer, draftCreate, draftDiscard, modifier, renommer, annuler l&#39;approbation |
+| Programme d’engagement | cloner, créer, supprimer, modifier le canal, modifier la configuration du programme, modifier le flux du programme, modifier le jeton du programme, renommer |
 | Programme d’événement | cloner, créer, supprimer, modifier le canal, modifier le planning du programme, modifier la configuration du programme, modifier le jeton du programme, renommer |
 | Dossier | créer, supprimer, modifier, renommer |
-| Formulaire | approuver, cloner, créer, supprimer, draftCreate, modifier, déplacer, renommer |
-| Formulaire -> Formulaire de page d’entrée | créer, cloner, modifier, supprimer, approuver, renommer |
-| Page de destination | approuver, cloner, créer, supprimer, draftDiscard, modifier, renommer, annuler l’approbation |
-| Modèle de page de destination | approuver, cloner, créer, supprimer, draftCreate, draftDiscard, edit, rename, unapprove |
-| Liste intelligente | clone, créer, supprimer, modifier, exporter, modifier la configuration de liste dynamique, renommer |
-| Dossier marketing | créer, modifier et supprimer |
-| Programme de fidélisation | clone, créer, supprimer, modifier le canal, modifier la configuration du programme, modifier le flux du programme, modifier le jeton du programme, renommer |
+| Form | approuver, cloner, créer, supprimer, brouillonCréer, modifier, déplacer, renommer |
+| Formulaire -> Formulaire de la page de destination | créer, cloner, modifier, supprimer, approuver, renommer |
+| Page de destination | approuver, cloner, créer, supprimer, brouillonIgnorer, modifier, renommer, annuler l&#39;approbation |
+| Modèle de page de destination | approuver, cloner, créer, supprimer, draftCreate, draftDiscard, modifier, renommer, annuler l&#39;approbation |
+| Liste intelligente | cloner, créer, supprimer, modifier, exporter, modifier la configuration de la liste dynamique, renommer |
+| Dossier marketing | créer, modifier, supprimer |
+| Programme de fidélisation | cloner, créer, supprimer, modifier le canal, modifier la configuration du programme, modifier le flux du programme, modifier le jeton du programme, renommer |
 | Segment | créer, supprimer, modifier, renommer |
-| Segmentation | approuver, créer, supprimer, draftCreated, draftDiscarded, renommer, annuler l’approbation |
-| Campagne intelligente | abandonner, activer, cloner, créer, désactiver, supprimer, modifier, modifier le planning de campagne, modifier l’action de l’étape de flux, modifier la configuration de la liste dynamique, déplacer, renommer |
+| Segmentation | approuver, créer, supprimer, draftCreated, draftDiscarded, renommer, annuler l&#39;approbation |
+| Campagne intelligente | abandonner, activer, cloner, créer, désactiver, supprimer, modifier, modifier le planning de campagne, modifier l’action d’étape de flux, modifier la configuration de la liste dynamique, déplacer, renommer |
 | Extrait | approuver, approuver sans brouillon, cloner, créer, supprimer, modifier, renommer, annuler l’approbation |
-| Interface utilisateur d’administration -> Point de lancement -> Intégration | créer, supprimer, modifier |
-| Interface utilisateur d’administration -> Utilisateur | créer, modifier et supprimer (Identique pour l’utilisateur API uniquement) |
-| Admin Login -> User | succès de connexion, échec de connexion |
-| Programme -> Programme par lots d’emails | Modifier (pour modifier l’adresse électronique sélectionnée) API de ressource |
+| Admin UI -> Launchpoint -> Intégration | créer, supprimer, modifier |
+| Interface utilisateur d’administration -> Utilisateur | créer, modifier, supprimer (identique pour l’utilisateur de l’API uniquement) |
+| Connexion administrateur -> utilisateur | connexion réussie, échec de connexion |
+| Programme -> Programme par lots d’e-mails | Modifier l’API de ressources (pour modifier l’adresse e-mail sélectionnée) |
 | Programme -> Programme marketing | créer, cloner |
 
-Exemple d’événement d’audit utilisateur :
+Exemple d’événement d’audit d’utilisateur :
 
 ```json
 {
@@ -126,17 +126,17 @@ Exemple d’événement d’audit utilisateur :
 }
 ```
 
-## Présentation du flux de données de notification
+## Présentation Du Flux De Données De Notification
 
-Le flux de données de notification est disponible dans le cadre des offres de niveau de performance de Marketo Engage.
+Le flux de données de notification est disponible dans le cadre des offres de niveau de performances de Marketo Engage.
 
-Actuellement, le centre de notification de Marketo peut être configuré pour envoyer des notifications à une adresse email. Le flux de données de notification permet d’envoyer directement les notifications à un point de terminaison configurable via des événements d’Adobe I/O. Les notifications sont fournies via l’interface utilisateur actuelle et peuvent être référencées par la cloche orange en haut à droite de l’écran. Ce flux prend ces notifications et les envoie par un flux.
+Actuellement, le centre de notifications de Marketo peut être configuré pour envoyer des notifications à une adresse e-mail. Le flux de données de notification permet d’envoyer les notifications directement à un point d’entrée configurable via des événements Adobe I/O. Les notifications sont fournies via l’interface utilisateur dès aujourd’hui et peuvent être référencées par la cloche orange en haut à droite de l’écran. Ce flux prend ces notifications et les envoie via un flux.
 
 Liste des événements de notification :
 
-| COMPOSANT | LISTE DE TYPE D’ÉVÉNEMENT |
+| COMPOSANT | LISTE DES TYPES D’ÉVÉNEMENTS |
 |--- |--- |
-| Notification | abandon de campagne, échec de campagne, pépinière (programme épuisé), échec de synchronisation Salesforce, groupe test (résultat de test A/B), services web (quota quotidien) |
+| Notification | abandon de campagne, échec de campagne, maturation (programme épuisé), échec de synchronisation de Salesforce, groupe de test (résultat du test A/B), services web (quota quotidien) |
 
 Exemple d’événement de notification :
 
@@ -166,35 +166,35 @@ Exemple d’événement de notification :
 
 ## Détails techniques
 
-Cette section fournit des instructions sur ce qui est nécessaire, comment connecter et recevoir des données en continu pour chaque flux. Il y a un certain niveau de codage et de configuration impliqué pour chacun d’eux.
+Cette section fournit des instructions sur ce qui est nécessaire, comment se connecter et recevoir des données en continu pour chacun des flux. Un certain niveau de codage et de configuration est nécessaire pour chacun d’eux.
 
-### Flux de données d’activité de piste
+### Flux de données d’activité du lead
 
-Le flux d’activité de piste fournit une diffusion en continu en temps quasi réel des événements d’activité de piste Marketo et envoie des modifications de type d’activité abonné avec des attributs configurables :
+Le flux d’activité de lead fournit une diffusion en continu en temps quasi réel des événements d’activité de lead de Marketo et envoie les modifications de type d’activité avec abonnement et attributs configurables :
 
-- Par défaut, la fréquence des données est transmise toutes les 2 secondes.
+- Fréquence des envois de données toutes les 2 secondes par défaut.
 - Lots de 100 à 500 par abonnement.
-- Le délai d’attente du service REST client est de 20 secondes avec 3 reprises toutes les 3 minutes et automatiquement activé en cas de succès. Sinon, elles sont mises en pause. Une fois qu’il est en pause, le service tente de réactiver toutes les 3 minutes, à moins qu’il ne soit déconfiguré manuellement.
+- Le délai d’expiration du service REST client est de 20 secondes avec 3 reprises toutes les 3 minutes et l’activation automatique en cas de succès. Sinon, elles sont mises en pause. Une fois suspendu, le service tente, toutes les 3 minutes, de le réactiver, sauf s’il a été désactivé manuellement.
 - Conservation des données dans une file d’attente pendant 7 jours au maximum.
 
-Pour mettre en oeuvre le flux de données d’activité de piste, les clients doivent suivre les étapes suivantes :
+Pour mettre en œuvre le flux de données d’activité du prospect, les clients doivent suivre les étapes suivantes :
 
-1. Exposez un point de terminaison HTTP qui peut recevoir des requêtes de POST avec un corps JSON de l’Internet public. Le flux de données Push d’activité envoie des demandes à :
-1. Fournissez un Adobe avec les éléments suivants :
+1. Exposez un point d’entrée HTTP qui peut recevoir des requêtes POST avec un corps JSON d’Internet public. Le flux de données des notifications push d’activité envoie des requêtes à :
+1. Fournissez les éléments suivants à Adobe :
    1. Marketo Munchkin ID pour son abonnement
-   1. URL du point de terminaison de l’étape 1
-   1. Types d’activité qu’ils souhaitent recevoir (liste complète ci-dessus)
-   1. Un moyen d’authentification, de sorte que le client puisse vérifier que les demandes sont légitimes. Soit :
-      1. Une URL de fournisseur d’identité, un identifiant client et un secret client pour l’ [authentification des informations d’identification client](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/) OAuth
-      1. Jeton API pouvant être inclus dans les requêtes envoyées par la banque de données des activités de piste dans les paramètres de requête ou dans un en-tête d’autorisation (choix du client)
+   1. URL du point d’entrée à l’étape 1
+   1. Les types d&#39;activités qu&#39;ils souhaitent recevoir (liste complète ci-dessus)
+   1. Moyen d’authentification permettant au client de vérifier que les demandes sont légitimes. Soit :
+      1. Une URL de fournisseur d’identité, un ID client et un secret client pour OAuth [authentification par informations d’identification client](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/)
+      1. Jeton API pouvant être inclus dans les requêtes envoyées par le flux de données de l’activité du prospect dans un en-tête HTTP d’autorisation
 
-Adobe active ensuite le flux de données, à ce stade, les clients commencent à recevoir des données.
+Adobe active ensuite le flux de données, à partir duquel les clients commencent à recevoir des données.
 
-Schéma UML d’un appel de flux de données d’activité de piste standard :
+Diagramme UML d’un appel de flux de données d’activité de lead type :
 
-![ Diagramme de flux de données d’activité de piste ](assets/lead-activity-data-stream.png)
+![Diagramme Flux de données d’activité du lead](assets/lead-activity-data-stream.png)
 
-Exemple de création de point de terminaison d’URL :
+Exemple de création de point d’entrée d’URL :
 
 ```javascript
 /*
@@ -239,32 +239,32 @@ app.listen(port,()=>{
 })
 ```
 
-Vous trouverez un exemple de code pour une application qui utilise le flux de données d’activité de piste Marketo [ici](https://github.com/ihgrant/activity-stream-consumer-example).
+Vous trouverez [ici](https://github.com/ihgrant/activity-stream-consumer-example) un exemple de code pour une application qui utilise le flux de données de l’activité du prospect Marketo.
 
-### Flux de données d’audit utilisateur et flux de données de notification
+### Flux de données d’audit d’utilisateur et flux de données de notification
 
-Les événements d’audit utilisateur sont envoyés aux E/S d’Adobe et peuvent être utilisés en se connectant à l’aide d’Adobe ID. Voici les étapes à suivre :
+Les événements d’audit de l’utilisateur sont envoyés à Adobe IO et peuvent être consommés en se connectant avec un Adobe ID. Procédez comme suit :
 
-1. Les clients fournissent un Adobe avec les éléments suivants :
-   1. ID Adobe
+1. Les clients fournissent à Adobe les éléments suivants :
+   1. Adobe ID
    1. Marketo Munchkin ID pour son abonnement
-1. Le client expose un point de terminaison REST pour consommer les événements normalement sous la forme d’un webhook.
-1. Une fois fourni, Adobe active le flux pour l’abonnement du client.
-1. Le client configure ensuite le flux dans Adobe IO (instructions à fournir).
-   1. Cette étape nécessite une organisation d’Adobe
+1. Le client expose un point d’entrée REST pour consommer des événements normalement sous la forme d’un webhook.
+1. Une fois cette information fournie, Adobe active le flux pour l’abonnement du client.
+1. Le client configure ensuite le flux dans Adobe IO (instructions à fournir)
+   1. Cette étape nécessite une organisation Adobe
    1. Nécessite que l’utilisateur de l’organisation Adobe ait un rôle de développeur ou d’administrateur système
 
-Pour configurer les E/S d’Adobe, voir [Configuration des flux de données d’audit utilisateur Marketo avec Adobe IO](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup/) dans la section Documentation publique.
+Pour configurer Adobe IO, reportez-vous à la section [Configuration de flux de données d’audit des utilisateurs Marketo avec Adobe IO](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup/) de la section Documentation publique.
 
-### Configuration du flux de données d’audit utilisateur dans Marketo
+### Configuration du flux de données d’audit des utilisateurs dans Marketo
 
-Le flux de données d’audit utilisateur est actuellement disponible dans le cadre des packages de performances avec les 3 autres flux de données. Pour plus d’informations sur les packages, reportez-vous à la [page de description du produit](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) pour connaître les limites et les fonctionnalités des produits.
+Le flux de données de contrôle de l’utilisateur est actuellement disponible dans le cadre des packages de performances avec les 3 autres flux de données. Pour plus d’informations sur les packages, reportez-vous à la [page de description du produit](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) pour connaître les limites et fonctionnalités du produit.
 
-### Configuration de l’Adobe I/O
+### Configuration d’Adobe I/O
 
-[Voir Prise en main des événements d’Adobe I/O](https://developer.adobe.com/runtime/docs/guides/getting-started/)
+[Voir Prise en main de Adobe I/O Events](https://developer.adobe.com/runtime/docs/guides/getting-started/)
 
-Pour obtenir des instructions de base sur ce cas pratique, à partir de [console.adobe.io](https://developer.adobe.com/console) :
+Pour obtenir des instructions de base sur ce cas d’utilisation, à partir de [console.adobe.io](https://developer.adobe.com/console) :
 
 Lorsque vous y êtes invité, sélectionnez **[!UICONTROL Créer un projet]** ou **[!UICONTROL Ajouter un événement]**.
 
@@ -274,6 +274,6 @@ Pour commencer à utiliser les services Adobe, ajoutez une API, des événements
 
 ## Documentation publique
 
-- [Flux de données Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/)
-- [Introduction à l’Adobe des événements d’E/S et des webhooks](https://developer.adobe.com/events/docs/guides/)
-- [Blog de flux de données](https://blog.developer.adobe.com/introducing-the-adobe-marketo-engage-data-streams-61198b567fbb)
+- [Flux De Données Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/)
+- [Présentation des événements et Webhooks Adobe IO](https://developer.adobe.com/events/docs/guides/)
+- [Blog sur les flux de données](https://blog.developer.adobe.com/introducing-the-adobe-marketo-engage-data-streams-61198b567fbb)
