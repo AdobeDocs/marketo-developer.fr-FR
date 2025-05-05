@@ -208,7 +208,7 @@ Les développeurs d’applications Android peuvent désormais utiliser directeme
 
 1. Intégrer le dernier SDK Marketo Android dans l’application Android.  Les étapes sont disponibles à l’adresse [GitHub](https://github.com/Marketo/android-sdk).
 1. Configurez l’application Firebase sur la console Firebase.
-   1. Créez/ajoutez un projet sur [](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/)la console Firebase.
+   1. Créez/ajoutez un projet sur [&#128279;](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/)la console Firebase.
       1. Dans la [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/), sélectionnez `Add Project`.
       1. Sélectionnez votre projet GCM dans la liste des projets cloud Google existants, puis sélectionnez `Add Firebase`.
       1. Dans l&#39;écran de bienvenue de Firebase, sélectionnez `Add Firebase to your Android App`.

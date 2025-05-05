@@ -17,13 +17,13 @@ ht-degree: 37%
 
 - [Accueil](home.md)
 - [Prise en main](getting-started.md)
-- {#javascriptapi} de l’API JavaScript
+- de l’API JavaScript{#javascriptapi}
    - [Événements de données personnalisés](javascript-api/custom-data-events.md)
    - [Exemples](javascript-api/examples.md)
    - [Référence de l’API Forms](javascript-api/forms-api-reference.md)
    - [Obtenir les données du visiteur](javascript-api/get-visitor-data.md)
    - [API JavaScript](javascript-api/javascript-api.md)
-   - {#leadtracking} de suivi des leads
+   - de suivi des leads{#leadtracking}
       - [Suivi du lead](javascript-api/lead-tracking.md)
       - [Configuration](javascript-api/configuration.md)
       - [Référence de l’API Munchkin](javascript-api/api-reference.md)
@@ -73,13 +73,13 @@ ht-degree: 37%
    - [Authentification](rest-api/authentication.md)
    - [URL de base](rest-api/base-url.md)
    - [Meilleures pratiques](rest-api/marketo-integration-best-practices.md)
-   - {#bulk-extract} d’extraction en bloc
+   - d’extraction en bloc{#bulk-extract}
       - [Activité en bloc](rest-api/bulk-activity-extract.md)
       - [Objet personnalisé en bloc](rest-api/bulk-custom-object-extract.md)
       - [Extraction En Masse](rest-api/bulk-extract.md)
       - [Lead groupé](rest-api/bulk-lead-extract.md)
       - [Membre du programme en bloc](rest-api/bulk-program-member-extract.md)
-   - {#bulk-import} d’importation en bloc
+   - d’importation en bloc{#bulk-import}
       - [Objet personnalisé en bloc](rest-api/bulk-custom-object-import.md)
       - [Importation en bloc](rest-api/bulk-import.md)
       - [Lead groupé](rest-api/bulk-lead-import.md)
@@ -90,7 +90,7 @@ ht-degree: 37%
    - [Télécharger les définitions Swagger](rest-api/swagger.md)
    - [Référence du point d’entrée](rest-api/endpoint-reference.md)
    - [Codes d’erreur](rest-api/error-codes.md)
-   - {#lead-database} de la base de données du lead
+   - de la base de données du lead{#lead-database}
       - [Activités](rest-api/activities.md)
       - [Sociétés](rest-api/companies.md)
       - [Objets personnalisés](rest-api/custom-objects.md)
@@ -111,7 +111,7 @@ ht-degree: 37%
    - [Balises](rest-api/tags.md)
    - [Contexte utilisateur](rest-api/user-context.md)
    - [Gestion des utilisateurs](rest-api/user-management.md)
-- {#soap} SOAP
+- SOAP{#soap}
    - Activités {#activities}
       - [Activités](soap-api/activities.md)
       - [[!DNL getLeadActivity]](soap-api/getleadactivity.md)
@@ -122,20 +122,20 @@ ht-degree: 37%
       - [[!DNL getCampaignsForSource]](soap-api/getcampaignsforsource.md)
       - [[!DNL requestCampaign]](soap-api/requestcampaign.md)
       - [[!DNL scheduleCampaign]](soap-api/schedulecampaign.md)
-   - {#custom-objects} d’objets personnalisés
+   - d’objets personnalisés{#custom-objects}
       - [Objets personnalisés](soap-api/custom-objects.md)
       - [[!DNL deleteCustomObjects]](soap-api/deletecustomobjects.md)
       - [[!DNL getCustomObjects]](soap-api/getcustomobjects.md)
       - [[!DNL syncCustomObjects]](soap-api/synccustomobjects.md)
    - [Codes d’erreur](soap-api/error-codes.md)
-   - {#leads} des leads
+   - des leads{#leads}
       - [[!DNL getLead]](soap-api/getlead.md)
       - [[!DNL getMultipleLeads]](soap-api/getmultipleleads.md)
       - [[!DNL mergeLeads]](soap-api/mergeleads.md)
       - [Prospects](soap-api/leads.md)
       - [[!DNL syncLead]](soap-api/synclead.md)
       - [[!DNL syncMultipleLeads]](soap-api/syncmultipleleads.md)
-   - {#marketo-objects} d’objets Marketo
+   - d’objets Marketo{#marketo-objects}
       - [[!DNL deleteMObjects]](soap-api/deletemobjects.md)
       - [[!DNL describeMObjects]](soap-api/describemobject.md)
       - [[!DNL getMObjects]](soap-api/getmobjects.md)
@@ -143,7 +143,7 @@ ht-degree: 37%
       - [Objets Marketo](soap-api/marketo-objects.md)
       - [[!DNL syncMObjects]](soap-api/syncmobjects.md)
    - [Migration vers l’API REST](soap-api/migration.md)
-   - {#programs} des programmes
+   - des programmes{#programs}
       - [[!DNL getChannels]](soap-api/getchannels.md)
       - [[!DNL getTags]](soap-api/gettags.md)
    - [API SOAP](soap-api/soap-api.md)
@@ -153,7 +153,7 @@ ht-degree: 37%
       - [[!DNL importToList]](soap-api/importtolist.md)
       - [[!DNL listOperation]](soap-api/listoperation.md)
    - [Position du flux](soap-api/stream-position.md)
-- {#webhooks} Webhooks
+- Webhooks{#webhooks}
    - [Erreurs](webhooks/errors.md)
    - [Response Mappings](webhooks/response-mappings.md)
    - [Webhooks](webhooks/webhooks.md)

@@ -12,7 +12,7 @@ ht-degree: 1%
 
 # Migration vers l’API REST
 
-L’API SOAP Marketo Engage sera supprimée après le 31 octobre 2025. Toutes les intégrations existantes utilisant l’API SOAP doivent être retirées ou migrées vers l’API REST du Marketo Engage [](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/rest-api) d’ici cette date afin d’éviter des interruptions de service.
+L’API SOAP Marketo Engage sera supprimée après le 31 octobre 2025. Toutes les intégrations existantes utilisant l’API SOAP doivent être retirées ou migrées vers l’API REST du Marketo Engage [&#128279;](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/rest-api) d’ici cette date afin d’éviter des interruptions de service.
 
 ## Migration
 
