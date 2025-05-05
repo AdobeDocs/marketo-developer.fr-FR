@@ -22,7 +22,7 @@ Les balises et appels d’API suivants doivent être configurés sur la page que
 1. Dans le corps de page
    1. Placez la balise de modèle (classe div) à l’emplacement où vous souhaitez que le modèle s’affiche.
 
-Plus d&#39;informations sont disponibles [ici](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Plus d&#39;informations sont disponibles [ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Balise de modèle
 

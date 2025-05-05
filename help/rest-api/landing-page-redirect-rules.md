@@ -16,7 +16,7 @@ ht-degree: 4%
 
 Marketo propose un ensemble d’API REST pour effectuer des opérations CRUD sur les URL de redirection de page d’entrée. Ces API suivent le modèle d’interface standard pour les API de ressources qui offrent les options Requête, Créer, Mettre à jour et Supprimer.
 
-Les règles de redirection de page d’entrée permettent de rediriger une URL de page d’entrée vers une autre URL de page. Vous pouvez rediriger les landing pages Marketo, les landing pages non Marketo ou leurs combinaisons. Vous trouverez des informations supplémentaires sur les règles de page d’entrée de redirection [ici](https://experienceleague.adobe.com/docs/marketo/using/home.html).
+Les règles de redirection de page d’entrée permettent de rediriger une URL de page d’entrée vers une autre URL de page. Vous pouvez rediriger les landing pages Marketo, les landing pages non Marketo ou leurs combinaisons. Vous trouverez des informations supplémentaires sur les règles de page d’entrée de redirection [ici](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr).
 
 ## Requête
 
@@ -156,7 +156,7 @@ Le paramètre `redirectTo` spécifie la page d’entrée cible. Il s’agit d’
 | Marketo | landingPageId | {&quot;type&quot;:&quot;landingPageId&quot;,&quot;value&quot;:&quot;1774&quot;} |
 | Non Marketo | url | {&quot;type&quot;:&quot;url&quot;,&quot;value&quot;:&quot;www.contactLogs.com&quot;} |
 
-Vous trouverez plus d&#39;informations sur la création de règles de redirection de page d&#39;entrée [ici](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html).
+Vous trouverez plus d&#39;informations sur la création de règles de redirection de page d&#39;entrée [ici](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html?lang=fr).
 
 ```
 POST /rest/asset/v1/redirectRules.json

@@ -16,7 +16,7 @@ ht-degree: 0%
 
 Marketo expose les API pour la lecture, l’écriture, la création et la mise à jour des enregistrements d’opportunité. Dans Marketo, les enregistrements d’opportunité sont liés aux enregistrements de prospect et de contact par le biais de l’objet Rôle d’opportunité intermédiaire, de sorte qu’une opportunité peut être liée à de nombreuses pistes individuelles.  Ces deux types d’objets sont exposés par le biais de l’API. Comme la plupart des types d’objets de la base de données de piste, ils ont tous deux un appel de description correspondant, qui renvoie des métadonnées sur les types d’objets.
 
-Les API d’opportunité sont un accès en lecture seule pour les abonnements pour lesquels la [synchronisation SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou la [synchronisation Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) sont activées.
+Les API d’opportunité sont un accès en lecture seule pour les abonnements pour lesquels la [synchronisation SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=fr) ou la [synchronisation Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=fr) sont activées.
 
 ## Description
 

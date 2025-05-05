@@ -274,7 +274,7 @@ Les variables sont définies comme des balises META dans l’élément `<head>` 
 </head>
 ```
 
-Pour plus d’informations, voir la section &quot;Variable modifiable&quot; de la documentation [Création d’un modèle de page d’entrée guidée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template) .
+Pour plus d’informations, voir la section &quot;Variable modifiable&quot; de la documentation [Création d’un modèle de page d’entrée guidée](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template) .
 
 ### Requête
 

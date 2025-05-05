@@ -12,7 +12,7 @@ ht-degree: 8%
 
 # Types de champ
 
-Voici une description des types de champ dans Marketo. Vous trouverez des informations supplémentaires sur les types de champ [ici](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary). Vous trouverez des informations supplémentaires sur les limites de type de champ [ici](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613).
+Voici une description des types de champ dans Marketo. Vous trouverez des informations supplémentaires sur les types de champ [ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary). Vous trouverez des informations supplémentaires sur les limites de type de champ [ici](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613).
 
 | Type de champ | Description | Exemple |
 | --- | --- | --- |
@@ -20,7 +20,7 @@ Voici une description des types de champ dans Marketo. Vous trouverez des infor
 | E-mail | Champ de chaîne qui accepte les adresses électroniques | exemple@exemple.com |
 | Flottante | Champ numérique contenant des nombres réels et pouvant utiliser une décimale. | 10,4 |
 | Nombre entier | Nombre entier | 10 |
-| Formule | Champs dont les valeurs sont générées par la manipulation de données à partir d’autres champs présents dans un enregistrement de piste. Elles ne sont pas exportées et ne peuvent pas être utilisées dans des campagnes dynamiques. | Voir cet [article](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
+| Formule | Champs dont les valeurs sont générées par la manipulation de données à partir d’autres champs présents dans un enregistrement de piste. Elles ne sont pas exportées et ne peuvent pas être utilisées dans des campagnes dynamiques. | Voir cet [article](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
 | Pourcentage | Pourcentage exprimé sous la forme d’un entier | 30 |
 | URL | Champ de texte qui limite la saisie des URL, y compris le protocole de l’URL. | http://example.com/ |
 | Téléphone | Numéro de téléphone | 111-111-1111 |

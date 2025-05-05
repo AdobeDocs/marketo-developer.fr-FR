@@ -18,7 +18,7 @@ Les modèles de page d’entrée sont une ressource parent et une dépendance po
 
 ## Types de modèle
 
-Marketo dispose de deux types de modèles de page d’entrée : libre et guidé. Les modèles de page d’entrée de formulaire libre offrent une expérience de modification structurée pour les pages qui en sont dérivées. Les modèles guidés offrent une expérience fortement structurée, où les types et emplacements d’éléments peuvent être restreints au niveau du modèle. Pour plus d&#39;informations sur les différences, consultez [ce document](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
+Marketo dispose de deux types de modèles de page d’entrée : libre et guidé. Les modèles de page d’entrée de formulaire libre offrent une expérience de modification structurée pour les pages qui en sont dérivées. Les modèles guidés offrent une expérience fortement structurée, où les types et emplacements d’éléments peuvent être restreints au niveau du modèle. Pour plus d&#39;informations sur les différences, consultez [ce document](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
 
 ## Requête
 
@@ -167,9 +167,9 @@ Les modèles de page d’entrée suivent le modèle approuvé par le brouillon s
 
 Pour qu’un modèle soit validé, il doit être conforme aux règles de son type, soit guidé en forme libre. Pour plus d’informations sur les exigences relatives à la création et à la validation de modèles de leurs types respectifs, voir leurs documents de création respectifs :
 
-- [Modèles de page d’entrée de formulaire gratuit](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
-- [Modèles de page d’entrée guidée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
-- [Exemples de modèles guidés](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
+- [Modèles de page d’entrée de formulaire gratuit](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
+- [Modèles de page d’entrée guidée](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
+- [Exemples de modèles guidés](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
 
 ## Supprimer
 

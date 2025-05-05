@@ -16,7 +16,7 @@ ht-degree: 1%
 
 Les entreprises représentent l’organisation à laquelle appartiennent les enregistrements de piste. Les pistes sont ajoutées à une société en renseignant leur champ `externalCompanyId` correspondant à l’aide des points de terminaison [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) ou [Bulk Lead Import](bulk-lead-import.md) . Une fois qu’une piste a été ajoutée à une société, vous ne pouvez pas la supprimer (à moins que vous n’ajoutiez la piste à une autre société). Les pistes liées à un enregistrement de société héritent directement des valeurs d’un enregistrement de société comme si les valeurs existaient sur leur propre enregistrement.
 
-Les API d’entreprise sont un accès en lecture seule pour les abonnements pour lesquels la [synchronisation SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou la [synchronisation Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) sont activées.
+Les API d’entreprise sont un accès en lecture seule pour les abonnements pour lesquels la [synchronisation SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=fr) ou la [synchronisation Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=fr) sont activées.
 
 ## Description
 

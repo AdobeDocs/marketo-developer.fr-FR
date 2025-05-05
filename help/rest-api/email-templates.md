@@ -14,7 +14,7 @@ ht-degree: 2%
 
 [Référence du point de terminaison du modèle de courrier électronique](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates)
 
-Les modèles d’email constituent la base de chaque nouvel email dans Marketo.  Bien que les emails puissent être dissociés des modèles par le biais du remplacement d’HTML, ils doivent être créés initialement avec un modèle comme base.  Les modèles sont créés en tant que documents d’HTML pur dans Marketo avec des métadonnées telles que des noms et des descriptions.  Il existe peu de restrictions sur le contenu, mais l’HTML du modèle doit être valide et doit contenir au moins une section modifiable, qui suit les exigences [décrites ici](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
+Les modèles d’email constituent la base de chaque nouvel email dans Marketo.  Bien que les emails puissent être dissociés des modèles par le biais du remplacement d’HTML, ils doivent être créés initialement avec un modèle comme base.  Les modèles sont créés en tant que documents d’HTML pur dans Marketo avec des métadonnées telles que des noms et des descriptions.  Il existe peu de restrictions sur le contenu, mais l’HTML du modèle doit être valide et doit contenir au moins une section modifiable, qui suit les exigences [décrites ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
 
 ## Requête
 

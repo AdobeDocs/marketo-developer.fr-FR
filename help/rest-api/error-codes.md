@@ -110,7 +110,7 @@ Un appel API qui renvoie ce code de réponse n’est pas comptabilisé dans votr
     <tr>
       <td><a name="603"></a>603</td>
       <td>Accès refusé</td>
-      <td>L’authentification a réussi, mais l’utilisateur ne dispose pas des autorisations suffisantes pour appeler cette API. [Autorisations supplémentaires](custom-services.md) peut avoir besoin d’être affecté au rôle d’utilisateur, ou la <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Liste autorisée pour l’accès API basé sur IP</a> peut être activée.</td>
+      <td>L’authentification a réussi, mais l’utilisateur ne dispose pas des autorisations suffisantes pour appeler cette API. [Autorisations supplémentaires](custom-services.md) peut avoir besoin d’être affecté au rôle d’utilisateur, ou la <a href="https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Liste autorisée pour l’accès API basé sur IP</a> peut être activée.</td>
     </tr>
     <tr>
       <td><a name="604"></a>604*</td>
