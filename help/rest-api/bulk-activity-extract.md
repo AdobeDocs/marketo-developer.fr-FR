@@ -3,9 +3,9 @@ title: Extraction d’activité en bloc
 feature: REST API
 description: Traitement par lots des données d’activité de Marketo.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
+source-git-commit: a5b855691e7fb9e628e2d68fd14a8a6c689d6750
 workflow-type: tm+mt
-source-wordcount: '1342'
+source-wordcount: '1332'
 ht-degree: 7%
 
 ---
@@ -104,7 +104,7 @@ Lors de l’utilisation de `primaryAttributeValues`, le filtre `activityTypeIds`
 | filter | Array[Object] | Oui | Accepte un tableau de filtres. Un seul filtre `createdAt` doit être inclus dans le tableau . Un filtre `activityTypeIds` facultatif peut être inclus. Les filtres sont appliqués au jeu d’activités accessible et le jeu d’activités résultant est renvoyé par la tâche d’exportation. |
 | format | Chaîne | Non | Accepte l’une des valeurs suivantes : CSV, TSV, SSV Le fichier exporté est rendu sous la forme de valeurs séparées par des virgules, de valeurs séparées par des tabulations ou de valeurs séparées par des espaces, respectivement, s’il est défini. La valeur par défaut est CSV si cette valeur n’est pas définie. |
 | columnHeaderNames | Objet | Non | Un objet JSON contenant des paires clé-valeur de noms d’en-tête de champ et de colonne. La clé doit être le nom d’un champ inclus dans la tâche d’exportation. La valeur est le nom de l’en-tête de colonne exporté pour ce champ. |
-| Champs | Array[String] | Non | Tableau facultatif de chaînes contenant des valeurs de champ. Les champs répertoriés sont inclus dans le fichier exporté. Par défaut, les champs suivants sont renvoyés : `marketoGUIDleadId` `activityDate` `activityTypeId` `campaignId` `primaryAttributeValueId` `primaryAttributeValueattributes`. Ce paramètre peut être utilisé pour réduire le nombre de champs renvoyés en spécifiant un sous-ensemble de la liste ci-dessus. Exemple :« fields »: [« leadId », « activityDate », « activityTypeId »]Un champ supplémentaire « actionResult » peut être spécifié pour inclure l’action d’activité (« succès », « ignoré » ou « échec »). |
+| Champs | Array[String] | Non | Tableau facultatif de chaînes contenant des valeurs de champ. Les champs répertoriés sont inclus dans le fichier exporté. Par défaut, les champs suivants sont renvoyés : <ul><li>`marketoGUIDleadId`</li><li> `activityDate` </li><li>`activityTypeId` </li><li>`campaignId`</li><li> `primaryAttributeValueId` </li><li>`primaryAttributeValue`</li><li> `attributes`</li></ul>. Ce paramètre peut être utilisé pour réduire le nombre de champs renvoyés en spécifiant un sous-ensemble de la liste ci-dessus :`"fields": ["leadId", "activityDate", "activityTypeId"]`. Un `actionResult` de champ supplémentaire peut être spécifié pour inclure l’action d’activité : `("succeeded", "skipped", or "failed")`. |
 
 
 ## Création d’un traitement
