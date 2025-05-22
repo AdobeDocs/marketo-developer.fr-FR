@@ -2,14 +2,18 @@
 title: Flux de données
 description: Présentation des flux de données
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
+source-git-commit: 43bcafd335a2fdc709e917ef74504500422c2889
 workflow-type: tm+mt
-source-wordcount: '1588'
+source-wordcount: '1601'
 ht-degree: 2%
 
 ---
 
 # Flux de données
+
+>[!NOTE]
+> Vous trouverez désormais les informations actuelles sur les flux de données à l’adresse [Utilisation des flux de données](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/).
+>
 
 Les organisations marketing de nos clients comptent sur des campagnes marketing opportunes et ciblées pour rester à la pointe de leur activité et être compétitives. Pour prendre des décisions rapides et permettre un changement stratégique rapide, il est important de disposer de données pour prendre en charge et orienter ces décisions clés qui génèrent des campagnes ciblées et ciblées. Certains clients et clientes effectuent également des efforts marketing à des niveaux de leurs segments de clients et clientes à l’intérieur et à l’extérieur de Marketo Engage. Pour prendre en charge ces différents efforts, Marketo a créé la possibilité d’acquérir d’importants volumes de données en temps quasi réel au moyen de flux de données.
 
@@ -258,7 +262,7 @@ Pour configurer Adobe IO, reportez-vous à la section [Configuration de flux de 
 
 ### Configuration du flux de données d’audit des utilisateurs dans Marketo
 
-Le flux de données de contrôle de l’utilisateur est actuellement disponible dans le cadre des packages de performances avec les 3 autres flux de données. Pour plus d’informations sur les packages, reportez-vous à la [page de description du produit](https://helpx.adobe.com/fr/legal/product-descriptions/adobe-marketo-engage---product-description.html) pour connaître les limites et fonctionnalités du produit.
+Le flux de données de contrôle de l’utilisateur est actuellement disponible dans le cadre des packages de performances avec les 3 autres flux de données. Pour plus d’informations sur les packages, reportez-vous à la [page de description du produit](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) pour connaître les limites et fonctionnalités du produit.
 
 ### Configuration d’Adobe I/O
 
