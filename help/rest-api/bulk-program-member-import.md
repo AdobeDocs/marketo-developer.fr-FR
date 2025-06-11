@@ -1,28 +1,28 @@
 ---
 title: Importation de membres de programme en bloc
 feature: REST API
-description: Importation par lots des données de membre.
+description: Import par lots des données de membre.
 exl-id: b0e1039a-fe9b-4fb7-9aa6-9980a06da673
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 8a785b0719e08544ed1a87772faf90bd9dda3077
 workflow-type: tm+mt
-source-wordcount: '838'
+source-wordcount: '837'
 ht-degree: 0%
 
 ---
 
 # Importation de membres de programme en bloc
 
-[Référence du point de terminaison d’importation de membres du programme en masse](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members)
+[Référence de point d’entrée d’importation de membre de programme en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members)
 
-Pour de grandes quantités d’enregistrements de membres de programme, les membres de programme peuvent être importés de manière asynchrone avec l’ [API en masse](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members). Vous pouvez ainsi importer une liste d’enregistrements dans Marketo à l’aide d’un fichier plat avec les délimiteurs (virgule, tabulation ou point-virgule). Le fichier peut contenir n’importe quel nombre d’enregistrements, à condition que la taille totale du fichier soit inférieure à 10 Mo. L&#39;opération d&#39;enregistrement est &quot;insert or update&quot; uniquement.
+Pour de grandes quantités d’enregistrements de membre de programme, les membres de programme peuvent être importés de manière asynchrone avec l’[API en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members). Vous pouvez ainsi importer une liste d’enregistrements dans Marketo à l’aide d’un fichier plat avec les délimiteurs (virgule, tabulation ou point-virgule). Le fichier peut contenir un nombre illimité d’enregistrements, à condition que la taille totale du fichier soit inférieure à 10 Mo. L’opération d’enregistrement est « insert or update » uniquement.
 
 ## Limites de traitement
 
-Vous pouvez envoyer plusieurs demandes d’importation en bloc, avec des restrictions. Chaque requête est ajoutée en tant que tâche à une file d’attente FIFO à traiter. Au maximum deux tâches sont traitées simultanément. Au maximum dix tâches sont autorisées dans la file d’attente à un moment donné (y compris les deux tâches en cours de traitement). Si vous dépassez la limite de dix tâches, une erreur &quot;1016, Trop d&#39;importations&quot; est renvoyée.
+Vous êtes autorisé à soumettre plusieurs demandes d’importation en bloc, avec certaines limitations. Chaque demande est ajoutée en tant que tâche à une file d’attente FIFO pour être traitée. Deux traitements au maximum sont traités en même temps. Dix tâches au maximum sont autorisées dans la file d’attente à tout moment donné (y compris les deux en cours de traitement). Si vous dépassez le nombre maximal de dix traitements, une erreur « 1016, Too many imports » est renvoyée.
 
 ## Importer fichier
 
-La première ligne du fichier doit être un en-tête qui répertorie les noms d’API REST correspondants sous forme de champs pour mapper les valeurs de chaque ligne. Les noms des API REST peuvent être récupérés à l’aide des points d’entrée [Description du prospect](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) et/ou [Description du membre du programme](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeProgramMemberUsingGET). Les enregistrements peuvent contenir des champs de piste, des champs de piste personnalisés et des champs membres de programme personnalisés.
+La première ligne du fichier doit être un en-tête qui répertorie les noms d’API REST correspondants comme des champs dans lesquels mapper les valeurs de chaque ligne. Les noms d’API REST peuvent être récupérés à l’aide des points d’entrée [Décrire le prospect](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) et/ou [Décrire le membre de programme](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeProgramMemberUsingGET). Les enregistrements peuvent contenir des champs de prospect, des champs de prospect personnalisés et des champs de membre de programme personnalisés.
 
 Un fichier type suit ce modèle de base :
 
@@ -33,15 +33,15 @@ test@example.com,John,Doe
 
 L’appel lui-même est effectué à l’aide du type de contenu `multipart/form-data`.
 
-Ce type de requête peut être difficile à implémenter. Il est donc vivement recommandé d’utiliser une implémentation de bibliothèque existante.
+Ce type de requête pouvant être difficile à implémenter, il est vivement recommandé d’utiliser une implémentation de bibliothèque existante.
 
-## Création d’une tâche
+## Création d’un traitement
 
-Le point d’entrée [Importer des membres de programme](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/importProgramMemberUsingPOST) lit un fichier contenant des enregistrements de membre de programme et les ajoute à un programme avec un état donné. Les enregistrements peuvent contenir à la fois des champs de piste et des champs personnalisés de membre de programme. Tous les enregistrements doivent inclure le champ email, qui est utilisé à des fins de déduplication.
+Le point d’entrée [Importer des membres de programme](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/importProgramMemberUsingPOST) lit un fichier contenant les enregistrements des membres du programme et les ajoute à un programme avec un statut donné. Les enregistrements peuvent contenir à la fois des champs de prospect et des champs personnalisés de membre de programme. Tous les enregistrements doivent inclure le champ d’e-mail, qui est utilisé à des fins de déduplication.
 
-Le paramètre de chemin `programId` spécifie le programme auquel les membres sont ajoutés.
+Le paramètre `programId` path spécifie le programme auquel les membres sont ajoutés.
 
-Il existe trois paramètres de requête requis. Le paramètre `format` spécifie le format de fichier d’importation (CSV, TSV ou SSV), le paramètre `programMemberStatus` spécifie l’état du programme pour les membres ajoutés au programme et le paramètre `file` contient le nom du fichier d’importation contenant les enregistrements des membres du programme.
+Trois paramètres de requête sont requis. Le paramètre `format` spécifie le format du fichier d&#39;importation (CSV, TSV ou SSV), le paramètre `programMemberStatus` spécifie le statut du programme pour les membres qui sont ajoutés au programme et le paramètre `file` contient le nom du fichier d&#39;importation qui contient les enregistrements de membre de programme.
 
 ```
 POST /bulk/v1/program/{programId}/members/import.json?format=csv&programMemberStatus=On List
@@ -85,15 +85,15 @@ Lancel,Lannister,Lancel@Lannister.com,Lannister,House Lannister,0
 }
 ```
 
-Notez dans la réponse à notre appel qu’il existe un champ `batchId` et `status` pour l’enregistrement dans le tableau de résultat. Ce point de terminaison étant asynchrone, il peut renvoyer l’état En file d’attente, Importation ou Échec. Vous devez conserver le `batchId` pour obtenir l’état de la tâche d’importation et récupérer les échecs et/ou les avertissements une fois la tâche terminée. Le `batchId` reste valide pendant sept jours.
+Notez dans la réponse à notre appel qu’il existe un champ `batchId` et `status` pour l’enregistrement dans le tableau de résultats. Comme ce point d’entrée est asynchrone, il peut renvoyer le statut En file d’attente, Importation ou En échec. Vous devez conserver les `batchId` pour obtenir le statut de la tâche d’importation et pour récupérer les échecs et/ou les avertissements une fois l’importation terminée. Le `batchId` reste valable sept jours.
 
-Dans l’exemple ci-dessus, une méthode simple pour appeler le point de terminaison consiste à utiliser cURL à partir de la ligne de commande :
+Dans l’exemple ci-dessus, un moyen simple d’appeler le point d’entrée consiste à utiliser cURL à partir de la ligne de commande :
 
 ```bash
 curl -i -F format='csv' -F programMemberStatus='On List' -F file='@Lead-House-Lannister.csv' -F access_token='<Access Token>' <REST API Endpoint Base URL>/bulk/v1/program/{programId}/members/import.json
 ```
 
-Où le fichier d’importation &quot;Lead-House-Lannister.csv&quot; contient les éléments suivants :
+Où le fichier d’importation « Lead-House-Lannister.csv » contient les éléments suivants :
 
 ```
 firstName,lastName,email,title,company,leadScore
@@ -107,9 +107,9 @@ Dorna,Lannister,Dorna@Lannister.com,Lannister,House Lannister,0
 Lancel,Lannister,Lancel@Lannister.com,Lannister,House Lannister,0
 ```
 
-## État de la tâche d’interrogation
+## Interroger le statut de la tâche
 
-Une fois le traitement d&#39;import créé, vous devez en interroger le statut. Il est recommandé d’interroger la tâche d’importation toutes les 5 à 30 secondes. Pour ce faire, transmettez le paramètre de chemin `batchId` au point de terminaison [Get Import Program Member Status](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET) .
+Une fois le traitement d’import créé, vous devez interroger son statut. Il est recommandé d’interroger le traitement d’importation toutes les 5 à 30 secondes. Pour ce faire, transmettez le paramètre de chemin d’accès `batchId` au point d’entrée [Obtenir le statut du membre du programme d’importation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET).
 
 ```
 GET /bulk/v1/program/members/import/{batchId}/status.json
@@ -133,30 +133,30 @@ GET /bulk/v1/program/members/import/{batchId}/status.json
 }
 ```
 
-Cette réponse affiche une importation terminée. L’état peut être : Terminé, En file d’attente, Importation, Échec.
+Cette réponse affiche un import terminé. Le statut peut être l’un des suivants : Terminé, En file d’attente, Importation, En échec.
 
-Si la tâche est terminée, vous disposez d’une liste du nombre de lignes traitées, échouées ou avec des avertissements. Le paramètre message peut également donner le message d’échec si l’état est En échec.
+Si la tâche est terminée, vous disposez d’une liste du nombre de lignes traitées, ayant échoué ou comportant des avertissements. Le paramètre message peut également générer le message failure si le statut est Failed.
 
 ## Échecs
 
-Les échecs sont indiqués par l’attribut `numOfRowsFailed` dans la réponse [Get Import Program Member Status](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET) . Si numOfRowsFailed est supérieur à zéro, cette valeur indique le nombre d’échecs qui se sont produits.
+Les échecs sont indiqués par l’attribut `numOfRowsFailed` dans la réponse [Obtenir le statut du membre du programme d’importation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET). Si numOfRowsFailed est supérieur à zéro, cette valeur indique le nombre d’échecs survenus.
 
-Utilisez le point d’entrée [Obtenir les échecs des membres du programme d’importation](http://TODO) pour récupérer les enregistrements et les causes des lignes en échec en transmettant le paramètre de chemin d’accès `batchId`.
+Utilisez le point d’entrée Get Import Program Member Failures pour récupérer les enregistrements et les causes des lignes ayant échoué en transmettant le paramètre de chemin d’accès `batchId`.
 
 ```
 GET /bulk/v1/program/members/import/{batchId}/failures.json
 ```
 
-Le point de terminaison répond avec un fichier indiquant les lignes qui ont échoué, ainsi qu’un message indiquant pourquoi l’enregistrement a échoué. Le format du fichier est le même que celui spécifié dans le paramètre `format` lors de la création de la tâche. Un champ supplémentaire est ajouté à chaque enregistrement avec une description de l’échec.
+Le point d’entrée répond avec un fichier indiquant les lignes ayant échoué, ainsi qu’un message indiquant pourquoi l’enregistrement a échoué. Le format du fichier est identique à celui spécifié dans `format` paramètre lors de la création de la tâche. Un champ supplémentaire est ajouté à chaque enregistrement avec une description de l’échec.
 
-Supposons, par exemple, que vous importiez le fichier suivant avec un score de piste non valide :
+Supposons, par exemple, que vous importiez le fichier suivant avec un score de prospect non valide :
 
 ```
 firstName,lastName,email,title,company,leadScore
 Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTEGER_FIELD
 ```
 
-Lorsque vous vérifiez l’état de la tâche, `numOfRowsFailed` est 1 ce qui indique qu’un échec s’est produit :
+Lorsque vous vérifiez le statut de la tâche, vous voyez `numOfRowsFailed` est 1, ce qui indique qu’un échec s’est produit :
 
 ```
 GET /bulk/v1/program/members/import/{batchId}/status.json
@@ -180,7 +180,7 @@ GET /bulk/v1/program/members/import/{batchId}/status.json
 }
 ```
 
-Récupérez ensuite le fichier failure pour plus d’informations sur l’échec :
+Récupérez ensuite le fichier des échecs pour obtenir plus d’informations sur l’échec :
 
 ```
 GET /bulk/v1/program/members/import/{batchId}/failures.json
@@ -193,24 +193,24 @@ Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTE
 
 ## Avertissements
 
-Les avertissements sont indiqués par l’attribut `numOfRowsWithWarning` dans la réponse [Get Import Program Member Status](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET) . Si `numOfRowsWithWarning` est supérieur à zéro, cette valeur indique le nombre d’avertissements qui se sont produits.
+Les avertissements sont indiqués par l’attribut `numOfRowsWithWarning` dans la réponse [Obtenir le statut de membre du programme d’importation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET). Si `numOfRowsWithWarning` est supérieur à zéro, cette valeur indique le nombre d’avertissements qui se sont produits.
 
-Utilisez le point de terminaison [Get Import Program Member Warnings](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET) pour récupérer les enregistrements et les causes des lignes d’avertissement en transmettant le paramètre de chemin d’accès `batchId`.
+Utilisez le point d’entrée [Get Import Program Member Warnings](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET) pour récupérer les enregistrements et les causes des lignes d’avertissement en transmettant le paramètre de chemin d’accès `batchId`.
 
 ```
 GET /bulk/v1/program/members/import/{batchId}/warnings.json
 ```
 
-Le point de terminaison répond avec un fichier indiquant les lignes qui ont généré des avertissements, ainsi qu’un message indiquant pourquoi l’enregistrement a généré un avertissement. Le format du fichier est le même que celui spécifié dans le paramètre `format` lors de la création de la tâche. Un champ supplémentaire est ajouté à chaque enregistrement avec une description de l’avertissement.
+Le point d’entrée répond avec un fichier indiquant les lignes qui ont généré des avertissements, ainsi qu’un message indiquant pourquoi l’enregistrement a généré un avertissement. Le format du fichier est identique à celui spécifié dans `format` paramètre lors de la création de la tâche. Un champ supplémentaire est ajouté à chaque enregistrement avec une description de l&#39;avertissement.
 
-Supposons, par exemple, que vous importiez le fichier suivant avec une adresse électronique non valide :
+Supposons, par exemple, que vous importiez le fichier suivant avec une adresse e-mail non valide :
 
 ```
 firstName,lastName,email,title,company,leadScore
 Aerys,Targaryen,INVALID_EMAIL,Targaryen,House Targaryen,0
 ```
 
-Lorsque vous vérifiez l’état de la tâche, `numOfRowsWithWarning` est 1 ce qui indique qu’un avertissement s’est produit :
+Lorsque vous vérifiez le statut de la tâche, vous voyez `numOfRowsWithWarning` est 1, ce qui indique qu’un avertissement s’est produit :
 
 ```
 GET /bulk/v1/program/members/import/{batchId}/status.json
@@ -234,7 +234,7 @@ GET /bulk/v1/program/members/import/{batchId}/status.json
 }
 ```
 
-Vous récupérez ensuite le fichier des avertissements pour plus de détails sur l’avertissement :
+Vous récupérez ensuite le fichier d’avertissements pour plus d’informations sur l’avertissement :
 
 ```
 GET /bulk/v1/program/members/import/{batchId}/warnings.json
