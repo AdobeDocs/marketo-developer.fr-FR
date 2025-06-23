@@ -290,204 +290,204 @@ Chaque enregistrement d’une requête réussie peut réussir ou échouer sur un
 >[!NOTE]
 >
 ><table>
-<tbody>
-    <tr>
-      <td>Code de réponse</td>
-      <td>Description</td>
-      <td>Commentaire</td>
-    </tr>
-    <tr>
-      <td><a name="1001"></a>1001</td>
-      <td>Valeur « %s » non valide. Obligatoire de type « %s »</td>
-      <td>Une erreur est générée chaque fois qu’une valeur de paramètre présente une incohérence de type. Par exemple, la valeur de chaîne spécifiée pour un paramètre entier.</td>
-    </tr>
-    <tr>
-      <td><a name="1002"></a>1002</td>
-      <td>Valeur manquante pour le paramètre obligatoire « %s »</td>
-      <td>Une erreur est générée lorsqu’un paramètre obligatoire est manquant dans la requête</td>
-    </tr>
-    <tr>
-      <td><a name="1003"></a>1003</td>
-      <td>Données non valides</td>
-      <td>Lorsque le type des données envoyées n’est pas valide pour le point d’entrée ou le mode donné, par exemple lorsque l’ID est envoyé pour un prospect avec une action désignée comme createOnly ou lors de l’utilisation de la campagne Demander sur une campagne par lots.</td>
-    </tr>
-    <tr>
-      <td><a name="1004"></a>1004</td>
-      <td>Lead introuvable</td>
-      <td>Pour syncLead, lorsque l’action est « updateOnly » et si le prospect est introuvable</td>
-    </tr>
-    <tr>
-      <td><a name="1005"></a>1005</td>
-      <td>Le lead existe déjà</td>
-      <td>Pour syncLead, lorsque l’action est « createOnly » et si un prospect existe déjà</td>
-    </tr>
-    <tr>
-      <td><a name="1006"></a>1006</td>
-      <td>Champ « %s » introuvable</td>
-      <td>Un champ inclus dans l’appel n’est pas un champ valide.</td>
-    </tr>
-    <tr>
-      <td><a name="1007"></a>1007</td>
-      <td>Plusieurs prospects correspondent aux critères de recherche</td>
-      <td>Plusieurs prospects correspondent aux critères de recherche. Les mises à jour ne peuvent être effectuées que lorsque la clé correspond à un seul enregistrement</td>
-    </tr>
-    <tr>
-      <td><a name="1008"></a>1008</td>
-      <td>Accès refusé à la partition « %s »</td>
-      <td>L’utilisateur du service personnalisé n’a pas accès à un espace de travail avec la partition où se trouve l’enregistrement.</td>
-    </tr>
-    <tr>
-      <td><a name="1009"></a>1009</td>
-      <td>Le nom de la partition doit être spécifié.</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><a name="1010"></a>1010</td>
-      <td>Mise à jour de partition non autorisée</td>
-      <td>L'enregistrement spécifié existe déjà dans une partition de lead distincte.</td>
-    </tr>
-    <tr>
-      <td><a name="1011"></a>1011</td>
-      <td>Champ « %s » non pris en charge</td>
-      <td>Lorsque le champ de recherche ou « filterType » est spécifié avec des champs standard non pris en charge (par exemple : firstName, lastName)</td>
-    </tr>
-    <tr>
-      <td><a name="1012"></a>1012</td>
-      <td>Valeur de cookie non valide « %s »</td>
-      <td>Peut se produire lors de l’appel de la <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associer le prospect</a> avec une valeur non valide pour le paramètre « cookie ».
-        Cela se produit également lors de l’appel de <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Get Leads by Filter Type</a> avec « filterType=cookies » et une valeur non valide pour le paramètre « filterValues ».</td>
-    </tr>
-    <tr>
-      <td><a name="1013"></a>1013</td>
-      <td>Objet introuvable</td>
-      <td>Obtenir l'objet (liste, campagne) par id renvoie ce code d'erreur</td>
-    </tr>
-    <tr>
-      <td><a name="1014"></a>1014</td>
-      <td>Échec de la création de l’objet</td>
-      <td>Échec de la création de l’objet (liste)</td>
-    </tr>
-    <tr>
-      <td><a name="1015"></a>1015</td>
-      <td>Lead absent de la liste</td>
-      <td>Le prospect désigné n’est pas membre de la liste cible</td>
-    </tr>
-    <tr>
-      <td><a name="1016"></a>1016</td>
-      <td>Trop d’importations</td>
-      <td>Il y a trop d’importations en file d’attente. 10 maximum sont autorisés</td>
-    </tr>
-    <tr>
-      <td><a name="1017"></a>1017</td>
-      <td>L'objet existe déjà</td>
-      <td>Échec de la création car l'enregistrement existe déjà</td>
-    </tr>
-    <tr>
-      <td><a name="1018"></a>1018</td>
-      <td>CRM activé</td>
-      <td>L’action n’a pas pu être effectuée, car l’instance a une intégration CRM native activée.</td>
-    </tr>
-    <tr>
-      <td><a name="1019"></a>1019</td>
-      <td>Importation en cours</td>
-      <td>La liste cible est déjà importée dans</td>
-    </tr>
-    <tr>
-      <td><a name="1020"></a>1020</td>
-      <td>Trop de clones à programmer</td>
-      <td>L’abonnement a atteint l’utilisation allouée de « cloneToProgramName » dans le programme planifié pour la journée</td>
-    </tr>
-    <tr>
-      <td><a name="1021"></a>1021</td>
-      <td>Mise à jour d’entreprise non autorisée</td>
-      <td>Mise à jour d’entreprise non autorisée pendant syncLead</td>
-    </tr>
-    <tr>
-      <td><a name="1022"></a>1022</td>
-      <td>Objet utilisé</td>
-      <td>La suppression n'est pas autorisée lorsqu'un objet est utilisé par un autre objet</td>
-    </tr>
-    <tr>
-      <td><a name="1025"></a>1025</td>
-      <td>Statut de programme introuvable</td>
-      <td>Un statut a été spécifié pour Modifier le statut du programme de lead qui ne correspondait pas à un statut disponible pour le canal du programme.</td>
-    </tr>
-    <tr>
-      <td><a name="1026"></a>1026</td>
-      <td>Objet personnalisé non activé</td>
-      <td>L'action n'a pas pu être exécutée, car l'intégration d'objets personnalisés n'est pas activée pour l'instance.</td>
-    </tr>
-    <tr>
-      <td><a name="1027"></a>1027</td>
-      <td>Limite de type d’activité max. atteinte</td>
-      <td>L’abonnement a atteint le nombre maximum de types d’activités personnalisées disponibles.</td>
-    </tr>
-    <tr>
-      <td><a name="1028"></a>1028</td>
-      <td>Limite de champ maximale atteinte</td>
-      <td>Les activités personnalisées ont un maximum de 20 attributs secondaires.</td>
-    </tr>
-    <tr>
-      <td><a name="1029"></a>1029</td>
-      <td><ul>
-          <li>Trop de tâches dans la file d’attente</li>
-          <li>Quota quotidien d'exportation dépassé</li>
-          <li>Traitement déjà mis en file d’attente</li>
-        </ul></td>
-      <td><ul>
-          <li>Les abonnements peuvent contenir jusqu’à 10 tâches d’extraction en bloc dans la file d’attente à tout moment donné.</li>
-          <li>Par défaut, les tâches d’extraction sont limitées à 500MB par jour (réinitialisé tous les jours à 00:00 CST).</li>
-          <li>L’ID d’exportation a déjà été mis en file d’attente.</li>
-        </ul></td>
-    </tr>
-    <tr>
-      <td><a name="1035"></a>1035</td>
-      <td>Type de filtre non pris en charge</td>
-      <td>Dans certains abonnements, les types de filtre d’extraction de leads en bloc suivants ne sont pas pris en charge : updatedAt, smartListId, smartListName.</td>
-    </tr>
-    <tr>
-      <td><a name="1036"></a>1036</td>
-      <td>Objet en double trouvé dans l’entrée</td>
-      <td>Un appel a été effectué pour mettre à jour deux enregistrements ou plus à l'aide de la même clé étrangère. Par exemple, un appel Sync Companies utilisant le même externalCompanyId pour plusieurs sociétés.</td>
-    </tr>
-    <tr>
-      <td><a name="1037"></a>1037</td>
-      <td>Lead ignoré</td>
-      <td>Le prospect a été ignoré, car il a déjà ce statut ou l’a dépassé.</td>
-    </tr>
-    <tr>
-      <td><a name="1042"></a>1042</td>
-      <td>Date d’exécution non valide</td>
-      <td>La date runAt spécifiée pour Planifier la campagne était trop éloignée dans le futur (la durée maximale est de 2 ans).</td>
-    </tr>
-    <tr>
-      <td><a name="1048"></a>1048</td>
-      <td>Échec de l’abandon du brouillon d’objet personnalisé</td>
-      <td>Un appel a été effectué pour ignorer le brouillon d'un objet personnalisé.</td>
-    </tr>
-    <tr>
-      <td><a name="1049"></a>1049</td>
-      <td>Échec de la création de l’activité</td>
-      <td>Tableau d’attributs trop long.
-        Le tableau d’attributs transmis à l’enregistrement a dépassé la longueur maximale de 65536 octets</td>
-    </tr>
-    <tr>
-      <td><a name="1076"></a>1076</td>
-      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les prospects</a> avec l’indicateur mergeInCRM est le 4.</td>
-      <td>Vous êtes en train de créer un enregistrement en double. Il est recommandé d’utiliser plutôt un enregistrement existant.
-        Il s’agit du message d’erreur que Marketo reçoit lors de la fusion dans Salesforce.</td>
-    </tr>
-    <tr>
-      <td><a name="1077"></a>1077</td>
-      <td>Échec de l’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Merge Leads</a> en raison de la longueur du champ « SFDC »</td>
-      <td>Un appel de fusion de leads avec mergeInCRM défini sur true a échoué, car « SFDC Field » a dépassé la limite de caractères autorisés. Pour corriger ce problème, réduisez la longueur du « champ SFDC » ou définissez mergeInCRM sur false.</td>
-    </tr>
-    <tr>
-      <td><a name="1078"></a>1078</td>
-      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les leads</a> a échoué en raison d’une entité supprimée, d’un lead/contact ou d’un critère de filtre de champ ne correspond pas.</td>
-      <td>Échec de la fusion, impossible d’effectuer l’opération de fusion dans un CRM synchronisé en mode natif
-        Il s’agit du message d’erreur que Marketo reçoit lors de la fusion dans Salesforce.</td>
-    </tr>
-  </tbody>
-</table>
+><tbody>
+>    <tr>
+>      <td>Code de réponse</td>
+>      <td>Description</td>
+>      <td>Commentaire</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1001"></a>1001</td>
+>      <td>Valeur « %s » non valide. Obligatoire de type « %s »</td>
+>      <td>Une erreur est générée chaque fois qu’une valeur de paramètre présente une incohérence de type. Par exemple, la valeur de chaîne spécifiée pour un paramètre entier.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1002"></a>1002</td>
+>      <td>Valeur manquante pour le paramètre obligatoire « %s »</td>
+>      <td>Une erreur est générée lorsqu’un paramètre obligatoire est manquant dans la requête</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1003"></a>1003</td>
+>      <td>Données non valides</td>
+>      <td>Lorsque le type des données envoyées n’est pas valide pour le point d’entrée ou le mode donné, par exemple lorsque l’ID est envoyé pour un prospect avec une action désignée comme createOnly ou lors de l’utilisation de la campagne Demander sur une campagne par lots.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1004"></a>1004</td>
+>      <td>Lead introuvable</td>
+>      <td>Pour syncLead, lorsque l’action est « updateOnly » et si le prospect est introuvable</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1005"></a>1005</td>
+>      <td>Le lead existe déjà</td>
+>      <td>Pour syncLead, lorsque l’action est « createOnly » et si un prospect existe déjà</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1006"></a>1006</td>
+>      <td>Champ « %s » introuvable</td>
+>      <td>Un champ inclus dans l’appel n’est pas un champ valide.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1007"></a>1007</td>
+>      <td>Plusieurs prospects correspondent aux critères de recherche</td>
+>      <td>Plusieurs prospects correspondent aux critères de recherche. Les mises à jour ne peuvent être effectuées que lorsque la clé correspond à un seul enregistrement</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1008"></a>1008</td>
+>      <td>Accès refusé à la partition « %s »</td>
+>      <td>L’utilisateur du service personnalisé n’a pas accès à un espace de travail avec la partition où se trouve l’enregistrement.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1009"></a>1009</td>
+>      <td>Le nom de la partition doit être spécifié.</td>
+>      <td></td>
+>    </tr>
+>    <tr>
+>      <td><a name="1010"></a>1010</td>
+>      <td>Mise à jour de partition non autorisée</td>
+>      <td>L'enregistrement spécifié existe déjà dans une partition de lead distincte.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1011"></a>1011</td>
+>      <td>Champ « %s » non pris en charge</td>
+>      <td>Lorsque le champ de recherche ou « filterType » est spécifié avec des champs standard non pris en charge (par exemple : firstName, lastName)</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1012"></a>1012</td>
+>      <td>Valeur de cookie non valide « %s »</td>
+>      <td>Peut se produire lors de l’appel de la <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associer le prospect</a> avec une valeur non valide pour le paramètre « cookie ».
+>        Cela se produit également lors de l’appel de <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Get Leads by Filter Type</a> avec « filterType=cookies » et une valeur non valide pour le paramètre « filterValues ».</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1013"></a>1013</td>
+>      <td>Objet introuvable</td>
+>      <td>Obtenir l'objet (liste, campagne) par id renvoie ce code d'erreur</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1014"></a>1014</td>
+>      <td>Échec de la création de l’objet</td>
+>      <td>Échec de la création de l’objet (liste)</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1015"></a>1015</td>
+>      <td>Lead absent de la liste</td>
+>      <td>Le prospect désigné n’est pas membre de la liste cible</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1016"></a>1016</td>
+>      <td>Trop d’importations</td>
+>      <td>Il y a trop d’importations en file d’attente. 10 maximum sont autorisés</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1017"></a>1017</td>
+>      <td>L'objet existe déjà</td>
+>      <td>Échec de la création car l'enregistrement existe déjà</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1018"></a>1018</td>
+>      <td>CRM activé</td>
+>      <td>L’action n’a pas pu être effectuée, car l’instance a une intégration CRM native activée.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1019"></a>1019</td>
+>      <td>Importation en cours</td>
+>      <td>La liste cible est déjà importée dans</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1020"></a>1020</td>
+>      <td>Trop de clones à programmer</td>
+>      <td>L’abonnement a atteint l’utilisation allouée de « cloneToProgramName » dans le programme planifié pour la journée</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1021"></a>1021</td>
+>      <td>Mise à jour d’entreprise non autorisée</td>
+>      <td>Mise à jour d’entreprise non autorisée pendant syncLead</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1022"></a>1022</td>
+>      <td>Objet utilisé</td>
+>      <td>La suppression n'est pas autorisée lorsqu'un objet est utilisé par un autre objet</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1025"></a>1025</td>
+>      <td>Statut de programme introuvable</td>
+>      <td>Un statut a été spécifié pour Modifier le statut du programme de lead qui ne correspondait pas à un statut disponible pour le canal du programme.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1026"></a>1026</td>
+>      <td>Objet personnalisé non activé</td>
+>      <td>L'action n'a pas pu être exécutée, car l'intégration d'objets personnalisés n'est pas activée pour l'instance.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1027"></a>1027</td>
+>      <td>Limite de type d’activité max. atteinte</td>
+>      <td>L’abonnement a atteint le nombre maximum de types d’activités personnalisées disponibles.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1028"></a>1028</td>
+>      <td>Limite de champ maximale atteinte</td>
+>      <td>Les activités personnalisées ont un maximum de 20 attributs secondaires.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1029"></a>1029</td>
+>      <td><ul>
+>          <li>Trop de tâches dans la file d’attente</li>
+>          <li>Quota quotidien d'exportation dépassé</li>
+>          <li>Traitement déjà mis en file d’attente</li>
+>        </ul></td>
+>      <td><ul>
+>          <li>Les abonnements peuvent contenir jusqu’à 10 tâches d’extraction en bloc dans la file d’attente à tout moment donné.</li>
+>          <li>Par défaut, les tâches d’extraction sont limitées à 500MB par jour (réinitialisé tous les jours à 00:00 CST).</li>
+>          <li>L’ID d’exportation a déjà été mis en file d’attente.</li>
+>        </ul></td>
+>    </tr>
+>    <tr>
+>      <td><a name="1035"></a>1035</td>
+>      <td>Type de filtre non pris en charge</td>
+>      <td>Dans certains abonnements, les types de filtre d’extraction de leads en bloc suivants ne sont pas pris en charge : updatedAt, smartListId, smartListName.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1036"></a>1036</td>
+>      <td>Objet en double trouvé dans l’entrée</td>
+>      <td>Un appel a été effectué pour mettre à jour deux enregistrements ou plus à l'aide de la même clé étrangère. Par exemple, un appel Sync Companies utilisant le même externalCompanyId pour plusieurs sociétés.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1037"></a>1037</td>
+>      <td>Lead ignoré</td>
+>      <td>Le prospect a été ignoré, car il a déjà ce statut ou l’a dépassé.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1042"></a>1042</td>
+>      <td>Date d’exécution non valide</td>
+>      <td>La date runAt spécifiée pour Planifier la campagne était trop éloignée dans le futur (la durée maximale est de 2 ans).</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1048"></a>1048</td>
+>      <td>Échec de l’abandon du brouillon d’objet personnalisé</td>
+>      <td>Un appel a été effectué pour ignorer le brouillon d'un objet personnalisé.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1049"></a>1049</td>
+>      <td>Échec de la création de l’activité</td>
+>      <td>Tableau d’attributs trop long.
+>        Le tableau d’attributs transmis à l’enregistrement a dépassé la longueur maximale de 65536 octets</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1076"></a>1076</td>
+>      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les prospects</a> avec l’indicateur mergeInCRM est le 4.</td>
+>      <td>Vous êtes en train de créer un enregistrement en double. Il est recommandé d’utiliser plutôt un enregistrement existant.
+>        Il s’agit du message d’erreur que Marketo reçoit lors de la fusion dans Salesforce.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1077"></a>1077</td>
+>      <td>Échec de l’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Merge Leads</a> en raison de la longueur du champ « SFDC »</td>
+>      <td>Un appel de fusion de leads avec mergeInCRM défini sur true a échoué, car « SFDC Field » a dépassé la limite de caractères autorisés. Pour corriger ce problème, réduisez la longueur du « champ SFDC » ou définissez mergeInCRM sur false.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1078"></a>1078</td>
+>      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les leads</a> a échoué en raison d’une entité supprimée, d’un lead/contact ou d’un critère de filtre de champ ne correspond pas.</td>
+>      <td>Échec de la fusion, impossible d’effectuer l’opération de fusion dans un CRM synchronisé en mode natif
+>        Il s’agit du message d’erreur que Marketo reçoit lors de la fusion dans Salesforce.</td>
+>    </tr>
+>  </tbody>
+></table>
 
