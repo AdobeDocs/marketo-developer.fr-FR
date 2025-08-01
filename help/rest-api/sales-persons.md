@@ -1,88 +1,88 @@
 ---
-title: Personnes de vente
+title: Vendeurs
 feature: REST API
 description: Lire les données sur les vendeurs.
 exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '303'
 ht-degree: 0%
 
 ---
 
-# Personnes de vente
+# Vendeurs
 
-[Référence du point de terminaison de la personne commerciale](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Sales-Persons)
+[Référence du point d’entrée du commercial](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Sales-Persons)
 
-Les API de personne commerciale sont un accès en lecture seule pour les abonnements qui ont la [synchronisation SFDC](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou la [synchronisation Microsoft Dynamics](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) activée. Les vendeurs sont un type d’enregistrement de personne qui est le propriétaire des registres de prospect. Elles sont liées aux enregistrements de piste par le champ externalSalesPersonId sur chaque enregistrement de piste. Lorsqu’une piste est associée à une personne commerciale par un champ externalSalesPersonId renseigné, les champs de recherche correspondants du propriétaire de piste sont renseignés pour cet enregistrement de piste dans Marketo, ce qui permet d’utiliser les filtres et jetons correspondants.
+Les API Sales Person sont en lecture seule pour les abonnements pour lesquels la [Synchronisation de SFDC](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou la [Synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) est activée. Les vendeurs sont un type d&#39;enregistrement de personne qui sont les propriétaires de ventes des enregistrements de prospect. Ils sont associés aux enregistrements de lead par le champ externalSalesPersonId sur chaque enregistrement de lead. Lorsqu’un prospect est associé à un commercial par un champ externalSalesPersonId renseigné, les champs de recherche de Propriétaire de prospect correspondants sont renseignés pour cet enregistrement de prospect dans Marketo, ce qui permet d’utiliser les filtres et jetons correspondants.
 
-Les personnes chargées des ventes sont liées aux enregistrements de piste à l’aide du point d’entrée [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) et en transmettant l’attribut externalSalesPersonId.
+Les commerciaux sont associés aux enregistrements de lead à l’aide du point d’entrée [Synchroniser les leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) et en transmettant l’attribut externalSalesPersonId.
 
-Les vendeurs sont associés aux enregistrements d’opportunité en utilisant le point d’entrée [Synchroniser les opportunités](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/syncOpportunitiesUsingPOST) et en transmettant l’attribut externalSalesPersonId.
+Les commerciaux sont associés aux enregistrements d’opportunité à l’aide du point d’entrée [Synchroniser les opportunités](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/syncOpportunitiesUsingPOST) et en transmettant l’attribut externalSalesPersonId.
 
-Les personnes chargées des ventes sont liées aux enregistrements de société à l’aide du point d’entrée [Synchroniser les entreprises](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) et en transmettant l’attribut externalSalesPersonId .
+Les commerciaux sont associés aux enregistrements d’entreprise à l’aide du point d’entrée [Synchroniser les entreprises](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) et en transmettant l’attribut externalSalesPersonId.
 
-Les enregistrements de personne commerciale ne sont modifiables que via l’API.
+Les enregistrements de commercial ne peuvent être modifiés que par le biais de l’API.
 
-## Description
+## Décrire
 
-La description des enregistrements de personne commerciale suit le modèle standard des objets de base de données de piste.
+La description des enregistrements de commercial suit le modèle standard pour les objets de base de données de prospect.
 
 ```
 GET /rest/v1/salespersons/describe.json
 ```
 
 ```json
-{  
+{
    "requestId":"185d6#14b51985ff0",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "name":"SalesPerson",
          "createdAt":"2015-02-03T22:36:23Z",
          "updatedAt":"2015-02-03T22:36:24Z",
          "idField":"id",
-         "dedupeFields":[  
+         "dedupeFields":[
             "externalSalesPersonId"
          ],
-         "searchableFields":[  
-            [  
+         "searchableFields":[
+            [
                "email"
             ],
-            [  
+            [
                "id"
             ],
             [
                "externalSalesPersonId"
             ]
          ],
-         "fields":[  
-            {  
+         "fields":[
+            {
                "name":"id",
                "displayName":"Marketo Id",
                "dataType":"integer",
                "updateable":false
             },
-            {  
+            {
                "name":"createdAt",
                "displayName":"Created At",
                "dataType":"datetime",
                "updateable":false
             },
-            {  
+            {
                "name":"updatedAt",
                "displayName":"Updated At",
                "dataType":"datetime",
                "updateable":false
             },
-            {  
+            {
                "name":"email",
                "displayName":"Email",
                "dataType":"string",
                "length":255,
                "updateable":false
             },
-            {  
+            {
                "name":"externalSalesPersonId",
                "displayName":"External Sales Person Id",
                "dataType":"string",
@@ -95,29 +95,29 @@ GET /rest/v1/salespersons/describe.json
 }
 ```
 
-Par défaut, le `idField` des vendeurs est &quot;id&quot; et `dedupeFields` est simplement &quot;externalSalesPersonId&quot;.
+Par défaut, le `idField` des commerciaux est « id » et le `dedupeFields` est simplement « externalSalesPersonId ».
 
 ## Requête
 
-Ventes de personnes utilisant le modèle de requête standard pour les clés simples. Cet exemple illustre l’adresse électronique de l’utilisateur utilisée comme externalSalesPersonId. Par défaut, la requête renvoie tous les champs renseignés pour les enregistrements renvoyés.
+Vendeurs utilisant le modèle de requête standard pour les clés simples. Cet exemple montre comment l’adresse e-mail de l’utilisateur est utilisée comme externalSalesPersonId. Par défaut, la requête renvoie tous les champs qui sont renseignés pour les enregistrements renvoyés.
 
 ```
 GET /rest/v1/salespersons.json?filterType=dedupeFields&filterValues=david@test.com,sam@test.com
 ```
 
 ```json
- {  
+ {
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "id":53453,
          "externalSalesPersonId":"sam@test.com",
          "createdAt":"2015-02-03T22:36:23Z",
          "updatedAt":"2015-02-03T22:36:23Z"
       },
-      {  
+      {
          "seq":1,
          "id":53454,
          "externalSalesPersonId":"david@test.com",
@@ -130,7 +130,7 @@ GET /rest/v1/salespersons.json?filterType=dedupeFields&filterValues=david@test.c
 
 ## Créer et mettre à jour
 
-Le modèle de mises à jour est standard.
+Le modèle des mises à jour est standard.
 
 ```
 POST /rest/v1/salespersons.json
@@ -178,28 +178,28 @@ POST /rest/v1/salespersons.json
 
 ## Supprimer
 
-Le modèle pour les suppressions est standard.
+Le modèle des suppressions est standard.
 
-La suppression des personnes commerciales n’est pas autorisée lorsqu’elles sont &quot;en service&quot;. Dans ce cas, la Personne commerciale est ignorée. Exemples :
+La suppression de vendeurs n&#39;est pas autorisée lorsqu&#39;ils sont « utilisés ». Dans ce cas, le vendeur est ignoré. Exemples :
 
-- Lorsque la Personne commerciale est associée à des pistes actives
-- Lorsque la personne chargée des ventes est associée à une société qui a été supprimée
+- Lorsque le vendeur est associé à des leads actifs
+- Lorsque le vendeur est associé à une entreprise qui a été supprimée
 
 ```
 POST /rest/v1/salespersons/delete.json
 ```
 
 ```json
-{  
+{
    "deleteBy":"dedupeFields",
-   "input":[  
-      {  
+   "input":[
+      {
          "externalSalesPersonId":"sam@test.com"
       },
-      {  
+      {
          "externalSalesPersonId":"david@test.com"
       },
-      {  
+      {
          "externalSalesPersonId":"raj@test.com"
       }
    ]
@@ -235,8 +235,8 @@ POST /rest/v1/salespersons/delete.json
 }
 ```
 
-## Délais d’expiration
+## Délais dépassés
 
-- Les points de fin de personne commerciale ont un délai d’expiration de 30 s, sauf indication ci-dessous.
-   - Personnes des ventes de synchronisation : 60 s
-   - Supprimer les personnes commerciales : 60 s
+- Le délai d’expiration des points d’entrée commerciaux est de 30 s, sauf indication ci-dessous
+   - Synchroniser les commerciaux : 60s
+   - Supprimer vendeurs : 60s

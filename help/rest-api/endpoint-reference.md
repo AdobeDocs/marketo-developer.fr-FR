@@ -3,10 +3,10 @@ title: Référence du point d’entrée
 feature: REST API
 description: Références du point d’entrée de l’API Marketo
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 3632d2b713d97a2c895c65f144c07e62e1d369cb
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '4676'
-ht-degree: 27%
+source-wordcount: '4448'
+ht-degree: 28%
 
 ---
 
@@ -107,19 +107,19 @@ Voici une liste complète des points d’entrée de l’API REST.
 | Synchroniser les objets personnalisés | Objets personnalisés | POST | /rest/v1/customobjects/{name}.json | Objet personnalisé accessible en lecture/écriture |
 | Synchroniser le type d&#39;objet personnalisé | Objets personnalisés | POST | /rest/v1/customobjects/schema.json | Type d’objet personnalisé accessible en lecture/écriture |
 | Mettre à jour le champ de type d&#39;objet personnalisé | Objets personnalisés | POST | /rest/v1/customobjects/schema/{apiName}/updateField.json | Type d’objet personnalisé accessible en lecture/écriture |
-| Approuver le brouillon du modèle d’e-mail | Modèles d&#39;e-mail | POST | /rest/asset/v1/emailTemplate/{id}/approveDraft.json | Ressource en lecture-écriture |
-| Cloner le modèle d&#39;e-mail | Modèles d&#39;e-mail | POST | /rest/asset/v1/emailTemplate/{id}/clone.json | Ressource en lecture-écriture |
-| Créer un modèle d’e-mail | Modèles d&#39;e-mail | POST | /rest/asset/v1/emailTemplates.json | Ressource en lecture-écriture |
-| Supprimer le modèle d&#39;e-mail | Modèles d&#39;e-mail | POST | /rest/asset/v1/emailTemplate/{id}/delete.json | Ressource en lecture-écriture |
-| Ignorer le brouillon de modèle d&#39;e-mail | Modèles d&#39;e-mail | POST | /rest/asset/v1/emailTemplate/{id}/discardDraft.json | Ressource en lecture-écriture |
-| Obtenir le modèle d’e-mail par ID | Modèles d&#39;e-mail | GET | /rest/asset/v1/emailTemplate/{id}.json | Ressource en lecture seule |
-| Obtenir le modèle d’e-mail par nom | Modèles d&#39;e-mail | GET | /rest/asset/v1/emailTemplate/byName.json | Ressource en lecture seule |
-| Obtenir le contenu du modèle d’e-mail par ID | Modèles d&#39;e-mail | GET | /rest/asset/v1/emailTemplate/{id}/content.json | Ressource en lecture seule |
-| Obtenir Le Modèle D’E-Mail Utilisé Par | Modèles d&#39;e-mail | GET | /rest/asset/v1/emailTemplates/{id}/usedBy.json | Ressource en lecture seule |
-| Obtenir les modèles d’e-mail | Modèles d&#39;e-mail | GET | /rest/asset/v1/emailTemplates.json | Ressource en lecture seule |
-| Désapprouver le brouillon de modèle d&#39;e-mail | Modèles d&#39;e-mail | POST | /rest/asset/v1/emailTemplate/{id}/unapprove.json | Ressource en lecture-écriture |
-| Mettre à jour le contenu du modèle d’e-mail | Modèles d&#39;e-mail | POST | /rest/asset/v1/emailTemplate/{id}/content.json | Ressource en lecture-écriture |
-| Mettre à jour les métadonnées du modèle d&#39;e-mail | Modèles d&#39;e-mail | POST | /rest/asset/v1/emailTemplate/{id}.json | Ressource en lecture-écriture |
+| Approuver le brouillon du modèle d’e-mail | Modèles d’e-mail | POST | /rest/asset/v1/emailTemplate/{id}/approveDraft.json | Ressource en lecture-écriture |
+| Cloner le modèle d&#39;e-mail | Modèles d’e-mail | POST | /rest/asset/v1/emailTemplate/{id}/clone.json | Ressource en lecture-écriture |
+| Créer un modèle d’e-mail | Modèles d’e-mail | POST | /rest/asset/v1/emailTemplates.json | Ressource en lecture-écriture |
+| Supprimer le modèle d&#39;e-mail | Modèles d’e-mail | POST | /rest/asset/v1/emailTemplate/{id}/delete.json | Ressource en lecture-écriture |
+| Ignorer le brouillon de modèle d&#39;e-mail | Modèles d’e-mail | POST | /rest/asset/v1/emailTemplate/{id}/discardDraft.json | Ressource en lecture-écriture |
+| Obtenir le modèle d’e-mail par ID | Modèles d’e-mail | GET | /rest/asset/v1/emailTemplate/{id}.json | Ressource en lecture seule |
+| Obtenir le modèle d’e-mail par nom | Modèles d’e-mail | GET | /rest/asset/v1/emailTemplate/byName.json | Ressource en lecture seule |
+| Obtenir le contenu du modèle d’e-mail par ID | Modèles d’e-mail | GET | /rest/asset/v1/emailTemplate/{id}/content.json | Ressource en lecture seule |
+| Obtenir Le Modèle D’E-Mail Utilisé Par | Modèles d’e-mail | GET | /rest/asset/v1/emailTemplates/{id}/usedBy.json | Ressource en lecture seule |
+| Obtenir les modèles d’e-mail | Modèles d’e-mail | GET | /rest/asset/v1/emailTemplates.json | Ressource en lecture seule |
+| Désapprouver le brouillon de modèle d&#39;e-mail | Modèles d’e-mail | POST | /rest/asset/v1/emailTemplate/{id}/unapprove.json | Ressource en lecture-écriture |
+| Mettre à jour le contenu du modèle d’e-mail | Modèles d’e-mail | POST | /rest/asset/v1/emailTemplate/{id}/content.json | Ressource en lecture-écriture |
+| Mettre à jour les métadonnées du modèle d&#39;e-mail | Modèles d’e-mail | POST | /rest/asset/v1/emailTemplate/{id}.json | Ressource en lecture-écriture |
 | Add Email Module | E-mails | POST | /rest/asset/v1/email/{id}/content/{moduleId}/add.json | Ressource en lecture-écriture |
 | Approuver le brouillon d’e-mail | E-mails | POST | /rest/asset/v1/email/{id}/approveDraft.json | Ressource en lecture-écriture |
 | Cloner l&#39;e-mail | E-mails | POST | /rest/asset/v1/email/{id}/clone.json | Ressource en lecture-écriture |

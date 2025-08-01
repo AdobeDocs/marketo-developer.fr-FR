@@ -1,41 +1,41 @@
 ---
 title: scheduleCampaign
 feature: SOAP, Smart Campaigns
-description: planningCampaign SOAP appels
+description: scheduleCampaign appels SOAP
 exl-id: a9ef2c16-34ef-4e0f-b765-e332335b0b81
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '252'
-ht-degree: 4%
+ht-degree: 5%
 
 ---
 
 # scheduleCampaign
 
-Cette fonction définit le planning d’exécution d’une campagne dynamique par lots immédiatement ou à une date ultérieure. Pour réussir, une campagne dynamique existante est nécessaire. Vous pouvez l’utiliser avec importToList pour charger une liste de pistes, puis exécuter une campagne par lots sur cette nouvelle liste créée.
+Cette fonction définit le planning d’une campagne dynamique par lots à exécuter immédiatement ou à une date ultérieure. Une campagne intelligente existante est nécessaire pour réussir l’opération. Cette méthode peut être utilisée avec importToList pour charger une liste de prospects, puis pour exécuter une campagne par lots sur cette liste nouvellement créée.
 
 ## Jetons de programme facultatifs :
 
-Tout comme la fonction requestCampaign, vous pouvez transmettre un tableau de Mes jetons dans cet appel API qui remplacera les jetons existants. Une fois la campagne exécutée, les jetons sont ignorés.
+De la même manière que pour la fonction requestCampaign, vous pouvez transmettre un tableau de mes jetons dans cet appel API qui remplacera les jetons existants. Une fois la campagne exécutée, les jetons sont ignorés.
 
-Si vous utilisez ce paramètre facultatif avec [importToList](importtolist.md), les jetons sont hiérarchisés dans cet ordre :
+Si vous utilisez ce paramètre facultatif avec [importToList](importtolist.md), les jetons sont prioritaires dans cet ordre :
 
-1. importToList par jetons de piste
+1. importToList par jetons de lead
 1. scheduleCampaign par jetons de campagne
 1. Mes jetons dans le programme
 
-## Demande
+## Requête
 
-| Nom de champ | Obligatoire/Facultatif | Description |
+| Nom du champ | Obligatoire / Facultatif | Description |
 | --- | --- | --- |
-| programName | Requis | Nom du programme conteneur |
-| Nom de campagne | Requis | Nom de la campagne dynamique |
-| campaignRunAt | En option | Heure d’exécution de la campagne planifiée (format de date WSDL W3C). |
-| cloneToProgramName | En option | Lorsque cet attribut est présent, le programme parent de la campagne est cloné et la campagne nouvellement créée est planifiée. L’attribut spécifie le nom souhaité pour le programme obtenu. Remarque : Seuls 10 appels par jour sont autorisés lorsque ce champ est utilisé. |
-| programTokenList->attrib->name | En option | Nom du jeton pour lequel vous souhaitez envoyer une nouvelle valeur. Utilisez le format de jeton complet comme vous le feriez dans l’interface utilisateur de Marketo. C’est-à-dire, &quot;{{my.message}}&quot; |
-| programTokenList->attrib->value | En option | La valeur du nom du jeton associé. |
+| programName | Obligatoire | Nom du programme conteneur |
+| Nom de campagne | Obligatoire | Nom de la campagne intelligente |
+| campaignRunAt | Facultatif | Heure d’exécution de la campagne planifiée (format de date WSDL W3C). |
+| cloneToProgramName | Facultatif | Lorsque cet attribut est présent, le programme parent de la campagne est cloné et la campagne nouvellement créée est planifiée. L’attribut spécifie le nom souhaité pour le programme obtenu. Remarque : seuls 10 appels par jour sont autorisés lorsque ce champ est utilisé. |
+| programTokenList->attrib->name | Facultatif | Nom du jeton pour lequel vous souhaitez envoyer une nouvelle valeur. Utilisez le format de jeton complet comme vous le feriez dans l’interface utilisateur de Marketo. C’est-à-dire « {{my.message}} » |
+| programTokenList->attrib->value | Facultatif | Valeur du nom du jeton associé. |
 
-## Request XML
+## XML de la demande
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -87,21 +87,21 @@ Si vous utilisez ce paramètre facultatif avec [importToList](importtolist.md), 
 
 ```php
  <?php
- 
+
   $debug = true;
- 
+
   $marketoSoapEndPoint     = "";  // CHANGE ME
   $marketoUserId           = "";  // CHANGE ME
   $marketoSecretKey        = "";  // CHANGE ME
   $marketoNameSpace        = "http://www.marketo.com/mktows/";
- 
+
   // Create Signature
   $dtzObj = new DateTimeZone("America/Los_Angeles");
   $dtObj  = new DateTime('now', $dtzObj);
   $timeStamp = $dtObj->format(DATE_W3C);
   $encryptString = $timeStamp . $marketoUserId;
   $signature = hash_hmac('sha1', $encryptString, $marketoSecretKey);
- 
+
   // Create SOAP Header
   $attrs = new stdClass();
   $attrs->mktowsUserId = $marketoUserId;
@@ -112,7 +112,7 @@ Si vous utilisez ce paramètre facultatif avec [importToList](importtolist.md), 
   if ($debug) {
     $options["trace"] = true;
   }
- 
+
   // Create Request
   $params = new stdClass();
   $params->programName = "Trav-Demo-Program";
@@ -120,14 +120,14 @@ Si vous utilisez ce paramètre facultatif avec [importToList](importtolist.md), 
   $dtObj = new DateTime('now', $dtzObj);
   $params->campaignRunAt = $dtObj->format(DATE_W3C);
   $params->cloneToProgramName = "TestProgramCloneFromSOAP";
- 
+
   $token = new stdClass();
   $token->name = "{{my.message}}";
   $token->value = "Updated message";
- 
+
   $params->programTokenList = array("attrib" => $token);
   $params = array("paramsScheduleCampaign" => $params);
- 
+
   $soapClient = new SoapClient($marketoSoapEndPoint ."?WSDL", $options);
   try {
     $response = $soapClient->__soapCall('scheduleCampaign', $params, $options, $authHdr);
@@ -140,7 +140,7 @@ Si vous utilisez ce paramètre facultatif avec [importToList](importtolist.md), 
     print "RAW response:\n" .$soapClient->__getLastResponse() ."\n";
   }
   print_r($response);
- 
+
 ?>
 ```
 
@@ -162,75 +162,75 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
- 
+
 public class ScheduleCampaign {
- 
- 
+
+
     public static void main(String[] args) {
         System.out.println("Executing Schedule Campaign");
         try {
             URL marketoSoapEndPoint = new URL("CHANGE ME" + "?WSDL");
             String marketoUserId = "CHANGE ME";
             String marketoSecretKey = "CHANGE ME";
-             
+
             QName serviceName = new QName("http://www.marketo.com/mktows/", "MktMktowsApiService");
             MktMktowsApiService service = new MktMktowsApiService(marketoSoapEndPoint, serviceName);
             MktowsPort port = service.getMktowsApiSoapPort();
-             
+
             // Create Signature
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
             String text = df.format(new Date());
-            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);           
+            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);
             String encryptString = requestTimestamp + marketoUserId ;
-             
+
             SecretKeySpec secretKey = new SecretKeySpec(marketoSecretKey.getBytes(), "HmacSHA1");
             Mac mac = Mac.getInstance("HmacSHA1");
             mac.init(secretKey);
             byte[] rawHmac = mac.doFinal(encryptString.getBytes());
             char[] hexChars = Hex.encodeHex(rawHmac);
-            String signature = new String(hexChars); 
-             
+            String signature = new String(hexChars);
+
             // Set Authentication Header
             AuthenticationHeader header = new AuthenticationHeader();
             header.setMktowsUserId(marketoUserId);
             header.setRequestTimestamp(requestTimestamp);
             header.setRequestSignature(signature);
-             
+
             // Create Request
             ParamsScheduleCampaign request = new ParamsScheduleCampaign();
-             
+
             request.setProgramName("Trav-Demo-Program");
             request.setCampaignName("Batch Campaign Example");
-             
+
             // Create setCampaignRunAt timestamp
             GregorianCalendar gc = new GregorianCalendar();
             gc.setTimeInMillis(new Date().getTime());
-             
+
             DatatypeFactory factory = DatatypeFactory.newInstance();
             ObjectFactory objectFactory = new ObjectFactory();
             JAXBElement<XMLGregorianCalendar> setCampaignRunAtValue = objectFactory.createParamsScheduleCampaignCampaignRunAt(factory.newXMLGregorianCalendar(gc));
             request.setCampaignRunAt(setCampaignRunAtValue);
 
             request.setCloneToProgramName("TestProgramCloneFromSOAP");
-             
+
             ArrayOfAttrib aoa = new ArrayOfAttrib();
-             
+
             Attrib attrib = new Attrib();
             attrib.setName("{{my.message}}");
             attrib.setValue("Updated message");
-             
+
             aoa.getAttribs().add(attrib);
-             
+
             JAXBElement<ArrayOfAttrib> arrayOfAttrib = objectFactory.createParamsScheduleCampaignProgramTokenList(aoa);
-            request.setProgramTokenList(arrayOfAttrib);         
-             
+            request.setProgramTokenList(arrayOfAttrib);
+
             SuccessScheduleCampaign result = port.scheduleCampaign(request, header);
- 
+
             JAXBContext context = JAXBContext.newInstance(SuccessScheduleCampaign.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal(result, System.out);
-             
+
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -259,9 +259,9 @@ hashedsignature = OpenSSL::HMAC.hexdigest(digest, marketoSecretKey, encryptStrin
 requestSignature = hashedsignature.to_s
 
 #Create SOAP Header
-headers = { 
-    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,                     
-    "requestTimestamp"  => requestTimestamp 
+headers = {
+    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,
+    "requestTimestamp"  => requestTimestamp
     }
 }
 

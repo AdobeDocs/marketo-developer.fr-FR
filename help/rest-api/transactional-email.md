@@ -1,59 +1,59 @@
 ---
-title: Courrier électronique transactionnel
+title: E-mail transactionnel
 feature: REST API
-description: Gérez les emails transactionnels pour les campagnes de requête.
+description: Gérez les e-mails transactionnels pour les campagnes de requêtes.
 exl-id: 057bc342-53f3-4624-a3c0-ae619e0c81a5
-source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '971'
 ht-degree: 0%
 
 ---
 
-# Courrier électronique transactionnel
+# E-mail transactionnel
 
-Un cas d’utilisation courant de l’API Marketo consiste à déclencher l’envoi d’emails transactionnels à des enregistrements spécifiques via l’appel de l’API [Demander la campagne](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/triggerCampaignUsingPOST). Marketo requiert quelques configurations pour exécuter l’appel requis avec l’API REST Marketo.
+Un cas d&#39;utilisation courant de l&#39;API Marketo consiste à déclencher l&#39;envoi d&#39;e-mails transactionnels à des enregistrements spécifiques via l&#39;appel API [Request Campaign](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/triggerCampaignUsingPOST). Il existe quelques exigences de configuration dans Marketo pour exécuter l’appel requis avec l’API REST Marketo.
 
 - Le destinataire doit avoir un enregistrement dans Marketo
-- Un email transactionnel doit être créé et approuvé dans votre instance Marketo.
-- Il doit y avoir une campagne de déclenchement active avec &quot;La campagne est demandée, 1. Source : API de service Web&quot;, configurée pour envoyer le courrier électronique
+- Un e-mail transactionnel doit être créé et approuvé dans votre instance Marketo.
+- Il doit y avoir une campagne de déclenchement active avec le message « La campagne est demandée, 1. Source : API de service web », configurée pour envoyer l’e-mail
 
-Commencez par [créer et approuver votre email](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr). Si l&#39;email est réellement transactionnel, vous devrez probablement le définir comme opérationnel, mais vous devrez vous assurer qu&#39;il est légalement admissible comme opérationnel. Il est configuré à partir de l’écran Modifier sous Actions du courrier électronique > Paramètres de courrier électronique :
+Tout d’abord[ créez et approuvez votre e-mail](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr). Si l’e-mail est véritablement transactionnel, vous devrez probablement le définir comme opérationnel, mais assurez-vous qu’il est juridiquement qualifié comme opérationnel. Elle est configurée à partir de l’écran Modifier sous Actions d’e-mail > Paramètres d’e-mail :
 
 ![Request-Campaign-Email-Settings](assets/request-campaign-email-settings.png)
 
-![Request-Campaign-Operational](assets/request-campaign-operational.png)
+![Demande-Campagne-Opérationnelle](assets/request-campaign-operational.png)
 
-Approuvez-le et nous sommes prêts à créer notre campagne :
+Validez-le et nous sommes prêts à créer notre campagne :
 
 ![RequestCampaign-Approve-Draft](assets/request-campaign-approve-draft.png)
 
-Si vous découvrez l’article [Créer une campagne dynamique](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html?lang=fr) si vous commencez à créer des campagnes. Une fois votre campagne créée, nous devons suivre ces étapes. Configurez votre liste dynamique à l’aide du déclencheur Campaign is Requested :
+Si vous êtes un débutant dans la création de campagnes, consultez l’article [Créer une campagne dynamique](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html). Une fois que vous avez créé votre campagne, nous devons suivre ces étapes. Configurer votre liste dynamique avec le déclencheur Campagne est demandée :
 
-![Request-Campaign-Smart-List](assets/request-campaign-smart-list.png)
+![Requête-Campagne-Liste Dynamique](assets/request-campaign-smart-list.png)
 
-Maintenant, nous devons configurer le flux pour qu’il pointe une étape Envoyer un courrier électronique vers notre courrier électronique :
+Nous devons maintenant configurer le flux pour pointer une étape Envoyer un e-mail vers votre e-mail :
 
 ![Request-Campaign-Flow](assets/request-campaign-flow.png)
 
-Avant l’activation, vous devez choisir certains paramètres dans l’onglet Planning . Si cet email particulier ne doit être envoyé qu’une seule fois à un enregistrement donné, laissez les paramètres de qualification tels quels. S’il est nécessaire qu’ils reçoivent le courrier électronique plusieurs fois, cependant, vous souhaitez l’ajuster à chaque fois ou à l’une des cadences disponibles :
+Avant l’activation, vous devez définir certains paramètres dans l’onglet Planification . Si cet e-mail particulier ne doit être envoyé qu’une seule fois à un enregistrement donné, laissez les paramètres de qualification tels quels. S’il est nécessaire qu’ils reçoivent l’e-mail plusieurs fois, cependant, vous pouvez l’ajuster à chaque fois ou à l’une des cadences disponibles :
 
 Nous sommes maintenant prêts à activer :
 
 ![Request-Campaign-Schedule](assets/request-campaign-schedule.png)
 
-## Envoi des appels d’API
+## Envoi des appels API
 
-**Remarque :** Dans les exemples Java ci-dessous, nous utilisons le [package minimal-json](https://github.com/ralfstx/minimal-json) pour gérer les représentations JSON dans notre code.
+**Remarque :** dans les exemples Java ci-dessous, nous utilisons le [package minimal-json](https://github.com/ralfstx/minimal-json) pour gérer les représentations JSON dans notre code.
 
-La première partie de l’envoi d’un email transactionnel via l’API consiste à s’assurer qu’un enregistrement avec l’adresse email correspondante existe dans votre instance Marketo et que nous avons accès à son ID de prospect. Pour les besoins de cette publication, nous supposons que les adresses électroniques se trouvent déjà dans Marketo et que nous ne devons récupérer que l’identifiant de l’enregistrement. Pour ce faire, nous utilisons l’appel [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET) . Examinons notre Méthode principale pour demander la campagne :
+La première partie de l’envoi d’un e-mail transactionnel par le biais de l’API consiste à s’assurer qu’un enregistrement avec l’adresse e-mail correspondante existe dans votre instance Marketo et que nous avons accès à son identifiant de prospect. Pour les besoins de cette publication, nous supposons que les adresses e-mail se trouvent déjà dans Marketo et que nous devons uniquement récupérer l’identifiant de l’enregistrement. Pour cela, nous utilisons l’appel [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET). Examinons notre méthode principale pour demander la campagne :
 
 ```java
 package dev.marketo.blog_request_campaign;
 
 import com.eclipsesource.json.JsonArray;
 
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
@@ -80,14 +80,14 @@ public class App
 }
 ```
 
-Pour obtenir ces résultats à partir de la réponse JsonObject de leadRequest, nous devons écrire du code . Pour récupérer le premier résultat dans le tableau, nous devons extraire le tableau de JsonObject et obtenir l’objet indexé à 0 :
+Pour obtenir ces résultats à partir de la réponse JsonObject de leadsRequest, nous devons écrire du code . Pour récupérer le premier résultat dans le tableau , nous devons extraire le tableau de JsonObject et obtenir l’objet indexé à 0 :
 
 ```java
 JsonArray leadsResult = leadsRequest.getData().get("result").asArray();
 int leadId = leadsResult.get(0).asObject().get("id").asInt();
 ```
 
-À partir de maintenant, nous ne devons plus faire que l’appel de demande de campagne . Pour ce faire, les paramètres requis sont l’identifiant dans l’URL de la requête et un tableau d’objets JSON contenant un membre, &quot;id&quot;. Examinons le code pour ceci :
+À partir de là, nous n’avons plus qu’à lancer l’appel Demander la campagne . Pour ce faire, les paramètres requis sont ID dans l’URL de la requête et un tableau d’objets JSON contenant un membre, « id ». Examinons le code pour ceci :
 
 ```java
 package dev.marketo.blog_request_campaign;
@@ -108,7 +108,7 @@ public class RequestCampaign {
     private Auth auth;
     public ArrayList leads = new ArrayList();
     public ArrayList tokens = new ArrayList();
-    
+
     public RequestCampaign(Auth auth, int campaignId) {
         this.auth = auth;
         this.endpoint = this.auth.marketoInstance + "/rest/v1/campaigns/" + campaignId + "/trigger.json";
@@ -156,7 +156,7 @@ public class RequestCampaign {
         }
         return result;
     }
-    
+
     private JsonObject buildRequest(){
         JsonObject requestBody = new JsonObject(); //Create a new JsonObject for the Request Body
         JsonObject input = new JsonObject();
@@ -178,19 +178,19 @@ public class RequestCampaign {
 }
 ```
 
-Cette classe comporte un constructeur prenant une authentification et l’identifiant de la campagne. Les pistes sont ajoutées à l’objet soit en transmettant un `ArrayList<Integer>` contenant les identifiants des enregistrements à setLeads, soit en utilisant addLead, qui prend un entier et l’ajoute à la liste ArrayList existante dans la propriété leads. Pour déclencher l’appel API afin de transmettre les enregistrements de piste à la campagne, postData doit être appelé, ce qui renvoie un objet JsonObject contenant les données de réponse de la requête. Lorsque la campagne de requête est appelée, chaque piste transmise à l’appel est traitée par la campagne de déclenchement cible dans Marketo et est envoyée à l’email qui a été créé précédemment. Félicitations, vous avez déclenché un courrier électronique via l’API REST Marketo. Gardez un oeil sur la Partie 2 où nous examinons la personnalisation dynamique du contenu d’un email via la campagne de demande.
+Cette classe a un constructeur qui prend une authentification et l’identifiant de la campagne. Les leads sont ajoutés à l’objet soit en transmettant un `ArrayList<Integer>` contenant les identifiants des enregistrements à setLeads, soit en utilisant addLead, qui prend un entier et l’ajoute à ArrayList existant dans la propriété leads. Pour déclencher l’appel API afin de transmettre les enregistrements de prospect à la campagne, postData doit être appelé, qui renvoie un objet JsonObject contenant les données de réponse de la requête. Lorsque la campagne de requête est appelée, chaque prospect transmis à l’appel est traité par la campagne de déclenchement cible dans Marketo et l’e-mail précédemment créé lui est envoyé. Félicitations, vous avez déclenché un e-mail via l’API REST Marketo. Gardez un œil sur la Partie 2, où nous examinons la personnalisation dynamique du contenu d’un e-mail par le biais de Request Campaign.
 
-### Création de votre email
+### Création de votre e-mail
 
-Pour personnaliser notre contenu, nous devons d&#39;abord configurer un [programme](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html?lang=fr) et un [email](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr) dans Marketo. Pour générer notre contenu personnalisé, nous devons créer des jetons dans le programme, puis les placer dans l&#39;email que nous allons envoyer. Pour plus de simplicité, nous n’utilisons qu’un seul jeton dans cet exemple, mais vous pouvez remplacer n’importe quel nombre de jetons dans un email, dans le champ De l’email, Du nom, Réponse ou tout élément de contenu dans l’email. Créons donc un texte enrichi de jeton pour le remplacer et appelons-le &quot;bodyReplacement&quot;. Le texte enrichi nous permet de remplacer tout contenu du jeton par un HTML arbitraire que nous voulons saisir.
+Pour personnaliser notre contenu, nous devons d’abord configurer un [programme](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html) et un [e-mail](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr) dans Marketo. Pour générer notre contenu personnalisé, nous devons créer des jetons dans le programme, puis les placer dans l’e-mail que nous allons envoyer. Pour plus de simplicité, nous n’utilisons qu’un seul jeton dans cet exemple, mais vous pouvez remplacer un nombre illimité de jetons dans un e-mail, dans l’e-mail de l’expéditeur, le nom de l’expéditeur, le destinataire de la réponse ou tout autre élément de contenu de l’e-mail. Créons donc un jeton de texte enrichi à remplacer et appelons-le « bodyReplacement ». Le texte enrichi nous permet de remplacer n’importe quel contenu du jeton par HTML arbitraire que nous voulons saisir.
 
-![New-Token](assets/New-Token.png)
+![Nouveau-jeton](assets/New-Token.png)
 
-Les jetons ne peuvent pas être enregistrés lorsqu’ils sont vides. Insérez un texte d’espace réservé ici. Maintenant, nous devons insérer notre jeton dans l&#39;email :
+Les jetons ne peuvent pas être enregistrés s’ils sont vides. Continuez donc et insérez du texte d’espace réservé ici. Nous devons maintenant insérer notre jeton dans l’e-mail :
 
 ![Add-Token](assets/Add-Token.png)
 
-Ce jeton sera désormais accessible pour remplacement via un appel de demande de campagne. Ce jeton peut être aussi simple qu’une seule ligne de texte qui doit être remplacée par email ou qui peut inclure presque toute la mise en page de l’email.
+Ce jeton sera désormais accessible pour remplacement par le biais d’un appel de campagne de demande. Ce jeton peut être aussi simple qu’une seule ligne de texte qui doit être remplacée par e-mail, ou peut inclure presque toute la disposition de l’e-mail.
 
 ### Le code
 
@@ -199,22 +199,22 @@ package dev.marketo.blog_request_campaign;
 
 import com.eclipsesource.json.JsonArray;
 
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
         //Create an instance of Auth so that we can authenticate with our Marketo instance
         Auth auth = new Auth("Client ID - CHANGE ME", "Client Secret - CHANGE ME", "Host - CHANGE ME");
-        
+
         //Create and parameterize an instance of Leads
         Leads leadsRequest = new Leads(auth).setFilterType("email").addFilterValue("requestCampaign.test@marketo.com");
-        
+
         //get the inner results array of the response
         JsonArray leadsResult = leadsRequest.getData().get("result").asArray();
-        
+
         //get the id of the record indexed at 0
         int lead = leadsResult.get(0).asObject().get("id").asInt();
-        
+
         //Set the ID of our campaign from Marketo
         int campaignId = 1578;
         RequestCampaign rc = new RequestCampaign(auth, campaignId).addLead(lead);
@@ -227,7 +227,7 @@ public class App
 }
 ```
 
-Si le code vous semble familier, c’est parce qu’il ne comporte que deux lignes supplémentaires provenant de la méthode principale ci-dessus. Cette fois, nous créons le contenu de notre jeton dans la variable bodyReplacement , puis nous utilisons la méthode addToken pour l’ajouter à la requête. addToken prend une clé et une valeur, puis crée une représentation JsonObject et l’ajoute au tableau de jetons internes. Il est ensuite sérialisé pendant la méthode postData et crée un corps qui ressemble à ceci :
+Si le code vous est familier, c’est qu’il ne comporte que deux lignes supplémentaires issues de la méthode principale ci-dessus. Cette fois, nous créons le contenu de notre jeton dans la variable bodyReplacement , puis nous utilisons la méthode addToken pour l’ajouter à la requête. addToken prend une clé et une valeur, puis crée une représentation JsonObject et l’ajoute au tableau de jetons interne. Elle est ensuite sérialisée pendant la méthode postData et crée un corps qui ressemble à ceci :
 
 ```json
 {
@@ -248,7 +248,7 @@ Si le code vous semble familier, c’est parce qu’il ne comporte que deux lign
 }
 ```
 
-Combinée, la sortie de la console ressemble à ceci :
+Combinée, notre sortie console ressemble à ceci :
 
 ```bash
 Token is empty or expired. Trying new authentication
@@ -262,6 +262,6 @@ Result:
 {"requestId":"1e8d#14eadc5143d","result":[{"id":1578}],"success":true}
 ```
 
-## Remplissage
+## Conclusion
 
-Cette méthode est extensible de multiples façons, en modifiant le contenu des emails dans des sections de mise en page individuelles ou en dehors des emails, ce qui permet de transmettre des valeurs personnalisées dans des tâches ou des moments intéressants. Chaque fois qu’un jeton peut être utilisé à partir d’un programme, il est possible de le personnaliser à l’aide de cette méthode. Des fonctionnalités similaires sont également disponibles avec l’appel [Schedule Campaign](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/scheduleCampaignUsingPOST) qui vous permet de traiter des jetons sur l’ensemble d’une campagne par lots. Elles ne peuvent pas être personnalisées par piste, mais sont utiles pour personnaliser le contenu sur un large ensemble de pistes.
+Cette méthode peut être étendue de différentes manières, en modifiant le contenu des e-mails dans des sections de disposition individuelles ou en dehors des e-mails, ce qui permet de transmettre des valeurs personnalisées dans des tâches ou des moments intéressants. Chaque fois qu’un jeton peut être utilisé à partir d’un programme, il peut être personnalisé à l’aide de cette méthode. Une fonctionnalité similaire est également disponible avec l’appel [Planifier la campagne](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/scheduleCampaignUsingPOST) qui vous permet de traiter les jetons dans une campagne par lots entière. Elles ne peuvent pas être personnalisées par prospect, mais sont utiles pour personnaliser le contenu d’un large éventail de prospects.

@@ -3,20 +3,20 @@ title: API SOAP
 feature: SOAP
 description: Présentation de Marketo SOAP
 exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
-source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '245'
+source-wordcount: '244'
 ht-degree: 2%
 
 ---
 
 # API SOAP
 
-L’API SOAP est en cours d’obsolescence et ne sera plus disponible après le 31 octobre 2025. Tout nouveau développement doit être effectué avec l’API Marketo [REST](../rest-api/rest-api.md) et les services existants doivent être migrés avant cette date pour éviter toute interruption de service. Si vous disposez d’un service qui utilise l’API SOAP, consultez le [ Guide de migration de l’API SOAP ](./migration.md) pour plus d’informations sur la migration.
+L’API SOAP sera abandonnée et ne sera plus disponible après le 31 octobre 2025. Tout nouveau développement doit être effectué avec l’API Marketo [REST](../rest-api/rest-api.md) et les services existants doivent être migrés avant cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [ Guide de migration de l’API SOAP ](./migration.md) pour plus d’informations sur la migration.
 
 ## WSDL SOAP
 
-Pour récupérer le document WSDL SOAP, procurez-vous le point d’entrée de l’API SOAP à partir du menu **[!UICONTROL Admin]** > **[!UICONTROL Intégration]** > **[!UICONTROL Services Web]**.
+Pour récupérer le document WSDL SOAP, procurez-vous le point d’entrée de l’API SOAP à partir du menu **[!UICONTROL Admin]** > **[!UICONTROL Intégration]** > **[!UICONTROL Services web]**.
 
 ![Point D’Entrée SOAP](assets/endpoint-soap.png)
 
@@ -28,7 +28,7 @@ N’utilisez pas le point de terminaison défini dans le WSDL. Chaque instance M
 
 ## Limites
 
-- **Quota quotidien :** la plupart des abonnements reçoivent 10 000 appels API par jour (qui sont réinitialisés tous les jours à 00 h 00 CST). Vous pouvez augmenter votre quota quotidien par l&#39;intermédiaire de votre gestionnaire de compte.
+- **Quota quotidien :** la plupart des abonnements reçoivent 10 000 appels API par jour (qui sont réinitialisés tous les jours à 12 :00AM CST). Vous pouvez augmenter votre quota quotidien par l&#39;intermédiaire de votre gestionnaire de compte.
 - **Limite de débit :** accès à l’API par instance limité à 100 appels par 20 secondes.
 - **Limite de simultanéité :**  Maximum de dix appels API simultanés.
 

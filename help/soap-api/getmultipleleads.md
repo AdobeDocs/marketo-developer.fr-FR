@@ -1,9 +1,9 @@
 ---
 title: getMultipleLeads
 feature: SOAP
-description: appels de SOAP getMultipleLeads
+description: appels SOAP getMultipleLeads
 exl-id: db9aabec-8705-40c6-b264-740fdcef8a52
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '384'
 ht-degree: 3%
@@ -12,33 +12,33 @@ ht-degree: 3%
 
 # getMultipleLeads
 
-Comme `getLead`, `getMultipleLeads` récupère les enregistrements de piste de Marketo. Au lieu des données d’une seule piste, cet appel renvoie les données d’un lot de pistes qui correspondent aux critères transmis dans le paramètre leadSelector . Les critères peuvent être une période, telle que la date de la dernière mise à jour ; un tableau de clés de piste ; ou une liste statique.
+Comme `getLead`, `getMultipleLeads` récupère les enregistrements de prospect à partir de Marketo. Au lieu des données d’un prospect unique, cet appel renvoie les données d’un lot de prospects correspondant aux critères transmis dans le paramètre leadSelector. Les critères peuvent être une période, telle que la date de la dernière mise à jour, un tableau de clés de prospect ou une liste statique.
 
-Remarque : Si vous utilisez un tableau de clés de piste, vous êtes limité à 100 par lot ; les clés supplémentaires seront ignorées.
+Remarque : si vous utilisez un tableau de clés de prospect, vous êtes limité à 100 par lot ; les clés supplémentaires seront ignorées.
 
-Si seul un sous-ensemble des champs de piste est requis, le paramètre `includeAttributes` doit être utilisé pour spécifier les champs souhaités.
+Si seul un sous-ensemble des champs de prospect est requis, le paramètre `includeAttributes` doit être utilisé pour spécifier les champs souhaités.
 
-Chaque appel de fonction `getMultipleLeads` renvoie jusqu’à 1 000 pistes. Si vous devez récupérer plus de 1 000 pistes, le résultat renvoie une [position de flux](stream-position.md), qui peut être utilisée dans les appels suivants pour récupérer le lot suivant de 1 000 pistes. Le nombre restant dans le résultat indique exactement combien de pistes il reste. Lors de la récupération à partir d’une liste statique, la condition d’arrêt est restesCount == 0.
+Chaque appel de fonction `getMultipleLeads` renvoie jusqu’à 1 000 prospects. Si vous devez récupérer plus de 1 000 prospects, le résultat renvoie une [position du flux](stream-position.md), qui peut être utilisée dans les appels suivants pour récupérer le lot suivant de 1 000 prospects. Le nombre restant dans le résultat vous indique exactement combien de prospects restent. Lors de l’extraction à partir d’une liste statique, la condition d’arrêt est remainingCount == 0.
 
-Un cas d’utilisation courant de ce point de terminaison est de trouver des pistes qui ont été mises à jour à des dates spécifiques. Le `LastUpdateAtSelector` vous permet de le faire.
+Un cas d’utilisation courant de ce point d’entrée consiste à rechercher les prospects qui ont été mis à jour à des dates spécifiques. Le `LastUpdateAtSelector` vous permet de le faire.
 
-## Demande
+## Requête
 
-| Nom de champ | Obligatoire/Facultatif | Description |
+| Nom du champ | Obligatoire / Facultatif | Description |
 | --- | --- | --- |
-| leadSelector | Requis | Peut être l’un des trois types suivants :`LeadKeySelector`, `StaticListSelector`,`LastUpdateAtSelector` |
-| keyType | Requis | Type d’identifiant que vous souhaitez interroger. Les valeurs comprennent IDNUM, COOKIE, EMAIL, LEADOWNEREMAIL, SFDCACCOUNTID, SFDCCONTACTID, SFDCLEADID, SFDCLEADOWNERID, SFDCOPPTYID. |
-| keyValues->stringItem | Requis | Liste des valeurs clés. C’est-à-dire &quot;lead@email.com&quot; |
-| LastUpdateAtSelector : leadSelector->oldUpdatedAt | Requis | Horodatage permettant de spécifier le critère &quot;depuis&quot;. En d’autres termes, renvoyer toutes les pistes mises à jour depuis l’heure spécifiée. (Format de date et d’heure WSDL W3C) |
-| LastUpdateAtSelector : leadSelector->latestUpdatedAt | En option | Horodatage permettant de spécifier le critère &quot;jusqu’à&quot;. En d’autres termes, renvoyer toutes les pistes mises à jour jusqu’à l’heure spécifiée. (Format de date et d’heure WSDL W3C) |
-| StaticListSelector: leadSelector->staticListName | Facultatif lorsque `leadSelector->staticListId` est présent | Nom de la liste statique |
-| StaticListSelector: leadSelector->staticListId | Facultatif lorsque `leadSelector->staticListName` est présent | L’identifiant de la liste statique |
-| lastUpdatedAt | **Obsolète** | Utilisez `LastUpdateAtSelector` à la place. |
-| includeAttributes | En option | Liste des attributs que vous souhaitez récupérer. La limitation des champs de piste renvoyés peut améliorer le temps de réponse de l’API. |
-| batchSize | En option | Nombre maximum d&#39;enregistrements à renvoyer. Limites système à 100 ou `batchSize`, selon ce qui est moins |
-| streamPosition | En option | Utilisé pour paginer les réponses de piste en grand nombre. La valeur `streamPosition` est renvoyée par le champ de réponse d’appels précédent `newStreamPosition` |
+| leadSelector | Obligatoire | Il peut s’agir de l’un des 3 types suivants : `LeadKeySelector`, `StaticListSelector`, `LastUpdateAtSelector` |
+| keyType | Obligatoire | Type d’identifiant que vous souhaitez interroger. Les valeurs incluent IDNUM, COOKIE, EMAIL, LEADOWNEREMAIL, SFDCACCOUNTID, SFDCCONTACTID, SFDCLEADID, SFDCLEADOWNERID, SFDCOPPTYID. |
+| keyValues->stringItem | Obligatoire | Liste des valeurs clés. C’est-à-dire « lead@email.com » |
+| LastUpdateAtSelector : leadSelector->plusAncienMisÀJourAu | Obligatoire | Horodatage utilisé pour spécifier le critère « depuis ». En d’autres termes, renvoyez tous les prospects mis à jour depuis l’heure spécifiée. (format date-heure WSDL W3C) |
+| LastUpdateAtSelector : leadSelector->latestUpdatedAt | Facultatif | Horodatage utilisé pour spécifier le critère « jusqu’au ». En d’autres termes, renvoyez tous les prospects mis à jour jusqu’à l’heure spécifiée. (format date-heure WSDL W3C) |
+| StaticListSelector : leadSelector->staticListName | Facultatif lorsque `leadSelector->staticListId` est présent | Nom de la liste statique |
+| StaticListSelector : leadSelector->staticListId | Facultatif lorsque `leadSelector->staticListName` est présent | L’identifiant de la liste statique |
+| lastUpdatedAt | **Obsolète** | Utilisez plutôt `LastUpdateAtSelector` . |
+| includeAttributes | Facultatif | Liste des attributs que vous souhaitez récupérer. La limitation des champs de prospect renvoyés peut améliorer le temps de réponse de l’API. |
+| batchSize | Facultatif | Nombre maximum d’enregistrements à renvoyer. Le système est limité à 100 ou `batchSize`, la valeur la moins élevée étant retenue |
+| streamPosition | Facultatif | Utilisé pour paginer dans un grand nombre de réponses de prospect. La valeur `streamPosition` est renvoyée par le champ de réponse des appels précédents `newStreamPosition` |
 
-## Request XML
+## XML de la demande
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -159,14 +159,14 @@ $marketoSoapEndPoint    = "";  // CHANGE ME
 $marketoUserId      = "";  // CHANGE ME
 $marketoSecretKey   = "";  // CHANGE ME
 $marketoNameSpace   = "http://www.marketo.com/mktows/";
- 
+
 // Create Signature
 $dtzObj = new DateTimeZone("America/Los_Angeles");
 $dtObj  = new DateTime('now', $dtzObj);
 $timeStamp = $dtObj->format(DATE_W3C);
 $encryptString = $timeStamp . $marketoUserId;
 $signature = hash_hmac('sha1', $encryptString, $marketoSecretKey);
- 
+
 // Create SOAP Header
 $attrs = new stdClass();
 $attrs->mktowsUserId = $marketoUserId;
@@ -177,9 +177,9 @@ $options = array("connection_timeout" => 15, "location" => $marketoSoapEndPoint)
 if ($debug) {
   $options["trace"] = 1;
 }
- 
+
 // Create Request
-/*  
+/*
 //Query by Email
 $leadSel = new stdClass();
 $leadSel->keyType = 'EMAIL';
@@ -193,7 +193,7 @@ $leadSelSoap = array("leadSelector" => $leadSel);
 // $params = array("paramsGetMultipleLeads" => $leadSelParams);
 $leadSelSoap = new SoapVar($leadSel, SOAP_ENC_OBJECT, "LeadKeySelector", "http://www.marketo.com/mktows/");
 */
- 
+
 /*
 // Query by Update time
 $leadSel = new stdClass();
@@ -203,7 +203,7 @@ $leadSelSoap = new stdClass();
 $leadSelSoap = array("leadSelector" => $leadSel);
 $leadSelSoap = new SoapVar($leadSel, SOAP_ENC_OBJECT, "LastUpdateAtSelector", "http://www.marketo.com/mktows/");
 */
- 
+
 // Query from a Static List
 $leadSel = new stdClass();
 //ProgramName.ListName
@@ -211,7 +211,7 @@ $leadSel->staticListName = "SMSProgram.listForTesting";
 $leadSelSoap = new stdClass();
 $leadSelSoap = array("leadSelector" => $leadSel);
 $leadSelSoap = new SoapVar($leadSel, SOAP_ENC_OBJECT, "StaticListSelector", "http://www.marketo.com/mktows/");
- 
+
 $params->leadSelector = $leadSelSoap;
 $params->streamPosition = $startPosition;
 $params->batchSize = 100;
@@ -233,14 +233,14 @@ if ($debug) {
 
 ```java
 import com.marketo.mktows.*;
- 
+
 import java.net.URL;
 import javax.xml.namespace.QName;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
- 
+
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Hex;
@@ -249,112 +249,112 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
- 
- 
+
+
 public class GetMultipleLeads {
- 
+
     public static void main(String[] args) {
         System.out.println("Executing GetMultipleLeads");
         try {
             URL marketoSoapEndPoint = new URL("CHANGE ME" + "?WSDL");
             String marketoUserId = "CHANGE ME";
             String marketoSecretKey = "CHANGE ME";
-             
+
             QName serviceName = new QName("http://www.marketo.com/mktows/", "MktMktowsApiService");
             MktMktowsApiService service = new MktMktowsApiService(marketoSoapEndPoint, serviceName);
             MktowsPort port = service.getMktowsApiSoapPort();
-             
+
             // Create Signature
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
             String text = df.format(new Date());
-            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);           
+            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);
             String encryptString = requestTimestamp + marketoUserId ;
-             
+
             SecretKeySpec secretKey = new SecretKeySpec(marketoSecretKey.getBytes(), "HmacSHA1");
             Mac mac = Mac.getInstance("HmacSHA1");
             mac.init(secretKey);
             byte[] rawHmac = mac.doFinal(encryptString.getBytes());
             char[] hexChars = Hex.encodeHex(rawHmac);
-            String signature = new String(hexChars); 
-             
+            String signature = new String(hexChars);
+
             // Set Authentication Header
             AuthenticationHeader header = new AuthenticationHeader();
             header.setMktowsUserId(marketoUserId);
             header.setRequestTimestamp(requestTimestamp);
             header.setRequestSignature(signature);
-             
+
             // Create Request
             ParamsGetMultipleLeads request = new ParamsGetMultipleLeads();
-             
+
             // Request Using LeadKey Selector
             ////////////////////////////////////////////////////////
             LeadKeySelector keySelector = new LeadKeySelector();
             keySelector.setKeyType(LeadKeyRef.EMAIL);
-             
+
             ArrayOfString aos = new ArrayOfString();
             aos.getStringItems().add("formtest1@marketo.com");
             aos.getStringItems().add("joe@marketo.com");
             keySelector.setKeyValues(aos);
             request.setLeadSelector(keySelector);
- 
+
             /*
             // Request Using LastUpdateAtSelector
             ////////////////////////////////////////////////////////
             LastUpdateAtSelector leadSelector = new LastUpdateAtSelector();
-             
+
             GregorianCalendar gc = new GregorianCalendar();
             gc.setTimeInMillis(new Date().getTime());
             gc.add( GregorianCalendar.DAY_OF_YEAR, -2);
-             
+
             DatatypeFactory factory = DatatypeFactory.newInstance();
- 
+
             ObjectFactory objectFactory = new ObjectFactory();
-            JAXBElement<XMLGregorianCalendar> until =objectFactory.createLastUpdateAtSelectorLatestUpdatedAt(factory.newXMLGregorianCalendar(gc));            
-             
+            JAXBElement<XMLGregorianCalendar> until =objectFactory.createLastUpdateAtSelectorLatestUpdatedAt(factory.newXMLGregorianCalendar(gc));
+
             GregorianCalendar since = new GregorianCalendar();
             since.setTimeInMillis(new Date().getTime());
             since.add( GregorianCalendar.DAY_OF_YEAR, -5);
-             
+
             leadSelector.setOldestUpdatedAt(factory.newXMLGregorianCalendar(since));
-            leadSelector.setLatestUpdatedAt(until);     
-             
+            leadSelector.setLatestUpdatedAt(until);
+
             request.setLeadSelector(leadSelector);
             */
- 
+
             /*
             // Request Using StaticList Selector
             ////////////////////////////////////////////////////////
             StaticListSelector staticListSelector = new StaticListSelector();
- 
+
             //staticListSelector.setStaticListId(value)
             ObjectFactory objectFactory = new ObjectFactory();
             JAXBElement<String> listName = objectFactory.createStaticListSelectorStaticListName("SMSProgram.listForTesting");
             staticListSelector.setStaticListName(listName);
-             
+
             // JAXBElement<Integer> listId = objectFactory.createStaticListSelectorStaticListId(6926);
             // staticListSelector.setStaticListId(listId);
-             
+
             request.setLeadSelector(staticListSelector);
             */
- 
- 
+
+
             ArrayOfString attributes = new ArrayOfString();
             attributes.getStringItems().add("FirstName");
             attributes.getStringItems().add("AnonymousIP");
             attributes.getStringItems().add("Company");
-             
+
             request.setIncludeAttributes(attributes);
-             
+
             JAXBElement<Integer> batchSize = new ObjectFactory().createParamsGetMultipleLeadsBatchSize(10);
             request.setBatchSize(batchSize);
-             
+
             SuccessGetMultipleLeads result = port.getMultipleLeads(request, header);
-             
+
             JAXBContext context = JAXBContext.newInstance(SuccessGetLead.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal(result, System.out);
-             
+
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -383,9 +383,9 @@ hashedsignature = OpenSSL::HMAC.hexdigest(digest, marketoSecretKey, encryptStrin
 requestSignature = hashedsignature.to_s
 
 #Create SOAP Header
-headers = { 
-    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,                     
-    "requestTimestamp"  => requestTimestamp 
+headers = {
+    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,
+    "requestTimestamp"  => requestTimestamp
     }
 }
 
@@ -398,7 +398,7 @@ request = {
         :key_values => {
             :string_item => ["formtest1@marketo.com", "joe@marketo.com"]
         }
-        
+
     },
     :batch_size => "100"
 }

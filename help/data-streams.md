@@ -2,7 +2,7 @@
 title: Flux de données
 description: Présentation des flux de données
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 43bcafd335a2fdc709e917ef74504500422c2889
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '1601'
 ht-degree: 2%
@@ -124,7 +124,7 @@ Exemple d’événement d’audit d’utilisateur :
             "munchkinId": "123-ABC-456",
             "imsOrgId": "ADOBEORGID@AdobeOrg",
             "user": 253,
-            "userId": "example@marketo.com"          
+            "userId": "example@marketo.com"
         }
     }
 }
@@ -262,7 +262,7 @@ Pour configurer Adobe IO, reportez-vous à la section [Configuration de flux de 
 
 ### Configuration du flux de données d’audit des utilisateurs dans Marketo
 
-Le flux de données de contrôle de l’utilisateur est actuellement disponible dans le cadre des packages de performances avec les 3 autres flux de données. Pour plus d’informations sur les packages, reportez-vous à la [page de description du produit](https://helpx.adobe.com/fr/legal/product-descriptions/adobe-marketo-engage---product-description.html) pour connaître les limites et fonctionnalités du produit.
+Le flux de données de contrôle de l’utilisateur est actuellement disponible dans le cadre des packages de performances avec les 3 autres flux de données. Pour plus d’informations sur les packages, reportez-vous à la [page de description du produit](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) pour connaître les limites et fonctionnalités du produit.
 
 ### Configuration d’Adobe I/O
 

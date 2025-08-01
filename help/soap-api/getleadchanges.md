@@ -1,9 +1,9 @@
 ---
 title: getLeadChanges
 feature: SOAP
-description: appels getLeadChanges SOAP
+description: appels SOAP getLeadChanges
 exl-id: 23445684-d8d9-407b-8f19-cb69e806795c
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '402'
 ht-degree: 3%
@@ -12,39 +12,39 @@ ht-degree: 3%
 
 # getLeadChanges
 
-Cette API est similaire à `getLeadActivity`, mais elle fonctionne sur plusieurs pistes à la fois. L’opération recherche les nouvelles pistes créées, les mises à jour des champs de piste et d’autres activités.
+Cette API est similaire à la `getLeadActivity`, sauf qu’elle fonctionne sur plusieurs prospects à la fois. L’opération recherche les nouveaux prospects créés, les mises à jour des champs de prospect et d’autres activités.
 
-Le résultat contient des activités qui ont provoqué la modification avec une [position du flux](stream-position.md) pour paginer dans de grands ensembles de résultats.
+Le résultat contient des activités qui ont provoqué la modification ainsi qu’une [position du flux](stream-position.md) pour paginer dans des jeux de résultats volumineux.
 
-Vous devez inclure un paramètre d’entrée identifiant les filtres d’activité que vous souhaitez voir renvoyer dans le résultat. Si vous souhaitez que toutes les activités soient exécutées, une valeur vide peut être transmise. Pour plusieurs filtres d’activité, transmettez une liste de filtres d’activité.
+Vous devez inclure un paramètre d’entrée identifiant les filtres d’activité que vous souhaitez renvoyer dans le résultat. Si vous souhaitez que toutes les activités soient effectuées, une valeur vide peut être transmise. Pour plusieurs filtres d’activité, transmettez une liste de filtres d’activité.
 
-Voici quelques exemples de types d’activité : &quot;Visite de page web&quot;, &quot;Remplissage du formulaire&quot; et &quot;Clic sur le lien&quot;.
+Voici quelques exemples de types d’activité : « Visiter la page web », « Remplir le formulaire » et « Cliquer sur le lien ».
 
-Après SOAP API version 2_2, vous pouvez inclure un `leadSelector`.
+Après la version 2_2 de l’API SOAP, vous pouvez inclure un `leadSelector`.
 
-Pour `LastUpdateAtSelector`, la valeur `oldestUpdatedAt` correspondrait à la valeur `oldestCreatedAt` dans le `startPosition`. Et la valeur `latestUpdatedAt` correspond à la valeur `latestCreatedAt` dans la `startPosition`.
+Par `LastUpdateAtSelector`, la valeur `oldestUpdatedAt` correspond à la valeur `oldestCreatedAt` dans le `startPosition` . Et la valeur `latestUpdatedAt` correspondrait à la valeur `latestCreatedAt` dans le `startPosition`.
 
-Remarque : Le nombre maximal de pistes prises en charge dans un `LeadKeySelector` est 100. Si le nombre de pistes dépasse 100, l’API renvoie une exception de paramètre erronée et renvoie un problème SOAP.
+Remarque : le nombre maximal de prospects pris en charge dans un `LeadKeySelector` est de 100. Si le nombre de prospects dépasse 100, l’API renvoie une exception de paramètre erronée et renvoie une erreur SOAP.
 
-## Demande
+## Requête
 
-| Nom de champ | Obligatoire/Facultatif | Description |
+| Nom du champ | Obligatoire / Facultatif | Description |
 | --- | --- | --- |
-| activityFilter->includeAttributes->activityType | Facultatif (obsolète) Utilisez `activityNameFilter` à la place | Limite la réponse afin de n’inclure que les types d’activité spécifiés. Voir WSDL pour tous les types d’activité. |
-| activityFilter->excludeAttributes->activityType | En option | Limite la réponse pour exclure les types d’activité spécifiés. Voir WSDL pour tous les types d’activité. REMARQUE : Vous ne pouvez pas spécifier `includeAttributes` et `excludeAttributes` dans le même appel. |
-| activityNameFilter | En option | Limite la réponse afin de n’inclure que les filtres d’activité spécifiés. |
-| batchSize | En option | Nombre maximum d&#39;enregistrements à renvoyer. Système limité à 1 000 ou `batchSize`, selon ce qui est moins élevé. |
-| startPosition | Requis | Utilisé pour paginer un grand nombre de réponses d’activité. |
-| startPosition->offset | En option | La valeur de décalage est renvoyée par le champ de réponse newStartPosition ->offset de l’appel précédent. |
-| startPosition->oldCreatedAt | En option | L’horodatage utilisé pour filtrer les résultats afin d’inclure uniquement les pistes créées depuis le plus ancienCreatedAt. REMARQUE : Vous pouvez utiliser l’horodatage `LastUpdateAtSelector->oldestUpdatedAt` pour spécifier `oldestCreatedAt`. |
-| startPosition->activityCreatedAt | En option | La date et l’heure utilisées pour filtrer les résultats incluent uniquement les pistes avec activité depuis activityCreatedAt. REMARQUE : Vous pouvez utiliser l’horodatage `LastUpdateAtSelector->latestUpdatedAt` pour spécifier `activityCreatedAt`. |
-| leadSelector | En option | Peut être l’un des trois types suivants : `LeadKeySelector`, `StaticListSelector`, `LastUpdateAtSelector` |
-| LeadKeySelector : leadSelector->keyType | Requis | Type d’identifiant que vous souhaitez interroger. Les valeurs comprennent `IDNUM`, `COOKIE`, `EMAIL`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID`. |
-| LeadKeySelector : leadSelector->keyValues->stringItem | Requis | Liste des valeurs clés. C’est-à-dire &quot;lead@email.com&quot; |
-| StaticListSelector: leadSelector->staticListName | Facultatif lorsque `leadSelector->staticListId` est présent | Nom de la liste statique |
-| StaticListSelector: leadSelector->staticListId | Facultatif lorsque `leadSelector->staticListName` est présent | L’identifiant de la liste statique |
+| activityFilter->includeAttributes->activityType | Facultatif (obsolète) Utilisez plutôt `activityNameFilter` | Limite la réponse pour inclure uniquement les types d’activités spécifiés. Voir WSDL pour tous les types d’activités. |
+| activityFilter->excludeAttributes->activityType | Facultatif | Limite la réponse pour exclure les types d’activité spécifiés. Voir WSDL pour tous les types d’activités. REMARQUE : vous ne pouvez pas spécifier à la fois `includeAttributes` et `excludeAttributes` dans le même appel. |
+| activityNameFilter | Facultatif | Limite la réponse pour n’inclure que les filtres d’activité spécifiés. |
+| batchSize | Facultatif | Nombre maximum d’enregistrements à renvoyer. Système limité à 1 000 ou `batchSize`, le chiffre le moins élevé étant retenu. |
+| startPosition | Obligatoire | Permet de paginer dans un grand nombre de réponses d’activité. |
+| startPosition->décalage | Facultatif | La valeur de décalage est renvoyée par le champ de réponse d&#39;appels précédent newStartPosition->offset. |
+| startPosition->plus ancienCrééÀ | Facultatif | La date et l’heure utilisées pour filtrer les résultats afin d’inclure uniquement les prospects créés depuis la création la plus ancienne de CreatedAt. REMARQUE : vous pouvez utiliser `LastUpdateAtSelector->oldestUpdatedAt` date et l’heure pour spécifier des `oldestCreatedAt`. |
+| startPosition->activityCreatedAt | Facultatif | La date et l’heure utilisées pour filtrer les résultats afin d’inclure uniquement les prospects ayant une activité depuis activityCreatedAt. REMARQUE : vous pouvez utiliser `LastUpdateAtSelector->latestUpdatedAt` date et l’heure pour spécifier des `activityCreatedAt`. |
+| leadSelector | Facultatif | Il peut s’agir de l’un des 3 types suivants : `LeadKeySelector`, `StaticListSelector`, `LastUpdateAtSelector` |
+| LeadKeySelector : leadSelector->keyType | Obligatoire | Type d’identifiant que vous souhaitez interroger. Les valeurs incluent `IDNUM`, `COOKIE`, `EMAIL`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID` et `SFDCOPPTYID`. |
+| LeadKeySelector : leadSelector->keyValues->stringItem | Obligatoire | Liste des valeurs clés. C’est-à-dire « lead@email.com » |
+| StaticListSelector : leadSelector->staticListName | Facultatif lorsque `leadSelector->staticListId` est présent | Nom de la liste statique |
+| StaticListSelector : leadSelector->staticListId | Facultatif lorsque `leadSelector->staticListName` est présent | L’identifiant de la liste statique |
 
-## Request XML
+## XML de la demande
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -497,14 +497,14 @@ $marketoSoapEndPoint    = "";  // CHANGE ME
 $marketoUserId      = "";  // CHANGE ME
 $marketoSecretKey   = ""; // CHANGE ME
 $marketoNameSpace   = "http://www.marketo.com/mktows/";
- 
+
 // Create Signature
 $dtzObj = new DateTimeZone("America/Los_Angeles");
 $dtObj  = new DateTime('now', $dtzObj);
 $timeStamp = $dtObj->format(DATE_W3C);
 $encryptString = $timeStamp . $marketoUserId;
 $signature = hash_hmac('sha1', $encryptString, $marketoSecretKey);
- 
+
 // Create SOAP Header
 $attrs = new stdClass();
 $attrs->mktowsUserId = $marketoUserId;
@@ -515,7 +515,7 @@ $options = array("connection_timeout" => 600, "location" => $marketoSoapEndPoint
 if ($debug) {
   $options["trace"] = 1;
 }
- 
+
 // Create Request
 $params = new stdClass();
 $filter = new stdClass();
@@ -564,73 +564,73 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
 import java.util.GregorianCalendar;
- 
- 
+
+
 public class GetLeadChanges {
- 
+
     public static void main(String[] args) {
         System.out.println("Executing Get Lead Changes");
         try {
             URL marketoSoapEndPoint = new URL("CHANGE ME" + "?WSDL");
             String marketoUserId = "CHANGE ME";
             String marketoSecretKey = "CHANGE ME";
-             
+
             QName serviceName = new QName("http://www.marketo.com/mktows/", "MktMktowsApiService");
             MktMktowsApiService service = new MktMktowsApiService(marketoSoapEndPoint, serviceName);
             MktowsPort port = service.getMktowsApiSoapPort();
-             
+
             // Create Signature
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
             String text = df.format(new Date());
-            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);           
+            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);
             String encryptString = requestTimestamp + marketoUserId;
-             
+
             SecretKeySpec secretKey = new SecretKeySpec(marketoSecretKey.getBytes(), "HmacSHA1");
             Mac mac = Mac.getInstance("HmacSHA1");
             mac.init(secretKey);
             byte[] rawHmac = mac.doFinal(encryptString.getBytes());
             char[] hexChars = Hex.encodeHex(rawHmac);
-            String signature = new String(hexChars); 
-             
+            String signature = new String(hexChars);
+
             // Set Authentication Header
             AuthenticationHeader header = new AuthenticationHeader();
             header.setMktowsUserId(marketoUserId);
             header.setRequestTimestamp(requestTimestamp);
             header.setRequestSignature(signature);
-             
+
             // Create Request
             ParamsGetLeadChanges request = new ParamsGetLeadChanges();
- 
+
             ObjectFactory objectFactory = new ObjectFactory();
             JAXBElement<Integer> batchSize = objectFactory.createParamsGetLeadActivityBatchSize(10);
             request.setBatchSize(batchSize);
-             
+
             ArrayOfString activities = new ArrayOfString();
             activities.getStringItems().add("Visit Webpage");
             activities.getStringItems().add("Click Link");
-            
+
             JAXBElement<ArrayOfString> activityFilter = objectFactory.createParamsGetLeadChangesActivityNameFilter(activities);
             request.setActivityNameFilter(activityFilter);
-             
+
             // Create oldestCreateAt timestamp from 5 days ago
             GregorianCalendar gc = new GregorianCalendar();
             gc.setTimeInMillis(new Date().getTime());
             gc.add( GregorianCalendar.DAY_OF_YEAR, -5);
-             
+
             DatatypeFactory factory = DatatypeFactory.newInstance();
             JAXBElement<XMLGregorianCalendar> oldestCreateAtValue =objectFactory.createStreamPositionOldestCreatedAt(factory.newXMLGregorianCalendar(gc));
- 
+
             StreamPosition sp = new StreamPosition();
             sp.setOldestCreatedAt(oldestCreateAtValue);
             request.setStartPosition(sp);
-             
+
             SuccessGetLeadChanges result = port.getLeadChanges(request, header);
- 
+
             JAXBContext context = JAXBContext.newInstance(SuccessGetLeadChanges.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal(result, System.out);
-             
+
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -659,9 +659,9 @@ hashedsignature = OpenSSL::HMAC.hexdigest(digest, marketoSecretKey, encryptStrin
 requestSignature = hashedsignature.to_s
 
 #Create SOAP Header
-headers = { 
-    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,                     
-    "requestTimestamp"  => requestTimestamp 
+headers = {
+    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,
+    "requestTimestamp"  => requestTimestamp
     }
 }
 

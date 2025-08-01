@@ -1,32 +1,32 @@
 ---
-title: getCampaignsForSource
+title: getCampaignForSource
 feature: SOAP
-description: appels de SOAP getCampaignsForSource
+description: getCampaignsForSource - Appels SOAP
 exl-id: bd8803ef-f462-4346-a381-73f40dc5d9ee
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '131'
-ht-degree: 6%
+ht-degree: 8%
 
 ---
 
-# getCampaignsForSource
+# getCampaignForSource
 
-Cette fonction renvoie une liste des campagnes Marketo éligibles qui peuvent être utilisées comme paramètres d’entrée dans la fonction requestCampaign. Les campagnes sont classées par source de la requête, qui est comptabilisée dans le fichier WSDL.
+Cette fonction renvoie une liste des campagnes Marketo éligibles qui peuvent être utilisées comme paramètres d’entrée dans la fonction requestCampaign. Les campagnes sont classées en fonction de la source de la requête, qui est comptabilisée dans le WSDL.
 
-Important : La campagne dynamique doit comporter un déclencheur &quot;Campaign is Requested&quot; (La campagne est requise) pour être admissible. Sa source doit inclure l’API Web Service.
+Important : la campagne intelligente doit comporter un déclencheur « La campagne est demandée » pour être qualifiée. Sa source doit inclure l’API de service web.
 
-![campaign_is_requests_trigger](assets/campaign-is-requested-trigger.png)
+![campaign_is_requested_trigger](assets/campaign-is-requested-trigger.png)
 
-## Demande
+## Requête
 
-| Nom de champ | Obligatoire/Facultatif | Description |
+| Nom du champ | Obligatoire / Facultatif | Description |
 | --- | --- | --- |
-| source | Requis | La source peut être `MKTOWS` ou `SALES`. Ce dernier fournit une liste des campagnes disponibles pour Sales Insight. |
-| name | En option | utilisez cette option pour filtrer par nom. Il s’agit d’une chaîne unique, et non d’un tableau de chaînes. |
-| exactName | En option | Valeur booléenne indiquant si vous souhaitez une correspondance exacte pour le paramètre name |
+| source | Obligatoire | La source peut être `MKTOWS` ou `SALES`. Ce dernier fournit une liste des campagnes disponibles pour Sales Insight. |
+| name | Facultatif | utilisez cette option pour filtrer par nom. Il s’agit d’une chaîne unique et non d’un tableau de chaînes. |
+| exactName | Facultatif | Valeur booléenne utilisée pour indiquer si vous souhaitez une correspondance exacte pour le paramètre name |
 
-## Request XML
+## XML de la demande
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -139,14 +139,14 @@ $marketoSoapEndPoint    = "";  // CHANGE ME
 $marketoUserId      = "";  // CHANGE ME
 $marketoSecretKey   = "";  // CHANGE ME
 $marketoNameSpace   = "http://www.marketo.com/mktows/";
- 
+
 // Create Signature
 $dtzObj = new DateTimeZone("America/Los_Angeles");
 $dtObj  = new DateTime('now', $dtzObj);
 $timeStamp = $dtObj->format(DATE_W3C);
 $encryptString = $timeStamp . $marketoUserId;
 $signature = hash_hmac('sha1', $encryptString, $marketoSecretKey);
- 
+
 // Create SOAP Header
 $attrs = new stdClass();
 $attrs->mktowsUserId = $marketoUserId;
@@ -162,7 +162,7 @@ $params = new stdClass();
 $params->source = "MKTOWS";
 $params->name="Trigger";
 $params->exactName=false;
- 
+
 $soapClient = new SoapClient($marketoSoapEndPoint ."?WSDL", $options);
 try {
   $leads = $soapClient->__soapCall('getCampaignsForSource', array($params), $options, $authHdr);
@@ -193,58 +193,58 @@ import org.apache.commons.codec.binary.Hex;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
- 
+
 public class GetCampaignsForSource {
- 
+
     public static void main(String[] args) {
         System.out.println("Executing Get Campaigns For Source");
         try {
             URL marketoSoapEndPoint = new URL("CHANGE ME" + "?WSDL");
             String marketoUserId = "CHANGE ME";
             String marketoSecretKey = "CHANGE ME";
-             
+
             QName serviceName = new QName("http://www.marketo.com/mktows/", "MktMktowsApiService");
             MktMktowsApiService service = new MktMktowsApiService(marketoSoapEndPoint, serviceName);
             MktowsPort port = service.getMktowsApiSoapPort();
-             
+
             // Create Signature
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
             String text = df.format(new Date());
-            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);           
+            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);
             String encryptString = requestTimestamp + marketoUserId ;
-             
+
             SecretKeySpec secretKey = new SecretKeySpec(marketoSecretKey.getBytes(), "HmacSHA1");
             Mac mac = Mac.getInstance("HmacSHA1");
             mac.init(secretKey);
             byte[] rawHmac = mac.doFinal(encryptString.getBytes());
             char[] hexChars = Hex.encodeHex(rawHmac);
-            String signature = new String(hexChars); 
-             
+            String signature = new String(hexChars);
+
             // Set Authentication Header
             AuthenticationHeader header = new AuthenticationHeader();
             header.setMktowsUserId(marketoUserId);
             header.setRequestTimestamp(requestTimestamp);
             header.setRequestSignature(signature);
-             
+
             // Create Request
             ParamsGetCampaignsForSource request = new ParamsGetCampaignsForSource();
-             
+
             request.setSource(ReqCampSourceType.MKTOWS);
-             
+
             ObjectFactory objectFactory = new ObjectFactory();
             JAXBElement<String> name = objectFactory.createParamsGetCampaignsForSourceName("Trigger");
             request.setName(name);
-             
+
             JAXBElement<Boolean> exactName = objectFactory.createParamsGetCampaignsForSourceExactName(false);
             request.setExactName(exactName);
-             
+
             SuccessGetCampaignsForSource result = port.getCampaignsForSource(request, header);
- 
+
             JAXBContext context = JAXBContext.newInstance(SuccessGetCampaignsForSource.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal(result, System.out);
-             
+
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -273,9 +273,9 @@ hashedsignature = OpenSSL::HMAC.hexdigest(digest, marketoSecretKey, encryptStrin
 requestSignature = hashedsignature.to_s
 
 #Create SOAP Header
-headers = { 
-    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,                     
-    "requestTimestamp"  => requestTimestamp 
+headers = {
+    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,
+    "requestTimestamp"  => requestTimestamp
     }
 }
 

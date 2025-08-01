@@ -1,32 +1,32 @@
 ---
 title: getCustomObjects
 feature: SOAP, Custom Objects
-description: Appels getCustomObjects SOAP
+description: Appels SOAP getCustomObjects
 exl-id: 32ff208a-f824-4420-a26f-1fd969a2bc4c
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '156'
-ht-degree: 5%
+ht-degree: 7%
 
 ---
 
 # getCustomObjects
 
-Récupère un ou plusieurs objets personnalisés à l’aide d’une combinaison de critères composés de zéro ou d’une clé d’objet personnalisé.
+Récupère un ou plusieurs objets personnalisés à l’aide d’une combinaison de critères consistant en zéro ou une clé d’objet personnalisée.
 
-Renvoie une liste d’objets personnalisés correspondants, tous de type unique, jusqu’à 100 dans un lot, et un jeton [position du flux](stream-position.md) pour récupérer les lots successifs.
+Renvoie une liste d’objets personnalisés correspondants, tous d’un seul type, jusqu’à 100 dans un lot, ainsi qu’un jeton [position du flux](stream-position.md) pour récupérer les lots successifs.
 
-## Demande
+## Requête
 
-| Nom de champ | Obligatoire/Facultatif | Description |
+| Nom du champ | Obligatoire / Facultatif | Description |
 | --- | --- | --- |
-| objTypeName | Requis | Nom de l’objet personnalisé |
-| customObjKeyLists->keyList->attribute | Requis | L’attribut est une paire clé/valeur utilisée pour identifier les objets personnalisés que vous souhaitez récupérer. Vous pouvez spécifier plusieurs attributs dans le `customObjKeyLists` |
-| includeAttributes | Requis | Liste des champs d’objet personnalisé que vous souhaitez récupérer. La transmission de aucune valeur renvoie toutes les valeurs. |
-| batchSize | En option | Nombre d’objets à renvoyer (maximum 100) |
-| streamPosition | En option | Utilisé pour paginer dans plusieurs jeux de résultats. La valeur transmise est la valeur renvoyée par l’appel `getCustomObjects` précédent. |
+| objTypeName | Obligatoire | Nom de l’objet personnalisé |
+| customObjKeyLists->keyList->attribute | Obligatoire | L’attribut est une paire clé/valeur utilisée pour identifier les objets personnalisés que vous souhaitez récupérer. Vous pouvez spécifier plusieurs attributs dans le `customObjKeyLists` |
+| includeAttributes | Obligatoire | Liste des champs de l’objet personnalisé que vous souhaitez récupérer. La transmission de aucun renvoie toutes les valeurs. |
+| batchSize | Facultatif | Nombre d’objets à renvoyer (100 max.) |
+| streamPosition | Facultatif | Permet de paginer dans plusieurs ensembles de résultats. La valeur transmise est la valeur renvoyée par l’appel de `getCustomObjects` précédent. |
 
-## Request XML
+## XML de la demande
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -325,8 +325,8 @@ import org.apache.commons.codec.binary.Hex;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
- 
- 
+
+
 public class GetCustomObjects {
     public static void main(String[] args) {
         System.out.println("Executing Get Custom Objects");
@@ -334,50 +334,50 @@ public class GetCustomObjects {
             URL marketoSoapEndPoint = new URL("CHANGE ME" + "?WSDL");
             String marketoUserId = "CHANGE ME";
             String marketoSecretKey = "CHANGE ME";
-             
+
             QName serviceName = new QName("http://www.marketo.com/mktows/", "MktMktowsApiService");
             MktMktowsApiService service = new MktMktowsApiService(marketoSoapEndPoint, serviceName);
             MktowsPort port = service.getMktowsApiSoapPort();
-             
+
             // Create Signature
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
             String text = df.format(new Date());
-            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);           
+            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);
             String encryptString = requestTimestamp + marketoUserId ;
-             
+
             SecretKeySpec secretKey = new SecretKeySpec(marketoSecretKey.getBytes(), "HmacSHA1");
             Mac mac = Mac.getInstance("HmacSHA1");
             mac.init(secretKey);
             byte[] rawHmac = mac.doFinal(encryptString.getBytes());
             char[] hexChars = Hex.encodeHex(rawHmac);
-            String signature = new String(hexChars); 
-             
+            String signature = new String(hexChars);
+
             // Set Authentication Header
             AuthenticationHeader header = new AuthenticationHeader();
             header.setMktowsUserId(marketoUserId);
             header.setRequestTimestamp(requestTimestamp);
             header.setRequestSignature(signature);
-             
+
             // Create Request
             ParamsGetCustomObjects request = new ParamsGetCustomObjects();
             request.setObjTypeName("RoadShow");
-             
+
             ArrayOfAttribute arrayOfAttribute = new ArrayOfAttribute();
-             
+
             Attribute attr = new Attribute();
             attr.setAttrName("MKTOID");
             attr.setAttrValue("1090177");
             arrayOfAttribute.getAttributes().add(attr);
-             
-            JAXBElement<ArrayOfAttribute> attributes = new ObjectFactory().createParamsGetCustomObjectsCustomObjKeyList(arrayOfAttribute);            
+
+            JAXBElement<ArrayOfAttribute> attributes = new ObjectFactory().createParamsGetCustomObjectsCustomObjKeyList(arrayOfAttribute);
             request.setCustomObjKeyList(attributes);
-             
+
             SuccessGetCustomObjects result = port.getCustomObjects(request, header);
             JAXBContext context = JAXBContext.newInstance(SuccessGetCustomObjects.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal(result, System.out);
-             
+
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -406,9 +406,9 @@ hashedsignature = OpenSSL::HMAC.hexdigest(digest, marketoSecretKey, encryptStrin
 requestSignature = hashedsignature.to_s
 
 #Create SOAP Header
-headers = { 
-    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,                     
-    "requestTimestamp"  => requestTimestamp 
+headers = {
+    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,
+    "requestTimestamp"  => requestTimestamp
     }
 }
 

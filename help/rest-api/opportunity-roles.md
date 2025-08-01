@@ -1,98 +1,98 @@
 ---
-title: Rôles des opportunités
+title: Rôles d’opportunité
 feature: REST API
 description: Gestion des rôles d’opportunité dans Marketo.
 exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '253'
 ht-degree: 0%
 
 ---
 
-# Rôles des opportunités
+# Rôles d’opportunité
 
 [Référence du point d’entrée des rôles d’opportunité](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/getOpportunityRolesUsingGET)
 
-Les pistes sont liées aux opportunités via l’objet intermédiaire `opportunityRole`.
+Les leads sont liés aux opportunités via l’objet de `opportunityRole` intermédiaire.
 
 Les API de rôle d’opportunité ne sont exposées que pour les abonnements pour lesquels la synchronisation CRM native n’est pas activée.
 
-## Description
+## Décrire
 
-À l’instar des opportunités, un appel de description et des opérations CRUD sont exposés pour les rôles d’opportunité.
+Tout comme les opportunités, une description des opérations d’appel et de CRUD est exposée pour les rôles d’opportunité.
 
 ```
 GET /rest/v1/opportunities/roles/describe.json
 ```
 
 ```json
-{  
+{
    "requestId":"185d6#14b51985ff0",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "name":"opportunityRole",
          "displayName":"Opportunity Role",
          "createdAt":"2015-02-03T22:36:23Z",
          "updatedAt":"2015-02-03T22:36:24Z",
          "idField":"marketoGUID",
-         "dedupeFields":[  
+         "dedupeFields":[
             "externalOpportunityId",
             "leadId",
             "role"
          ],
-         "searchableFields":[  
-            [  
+         "searchableFields":[
+            [
                "externalOpportunityId",
                "leadId",
                "role"
             ],
-            [  
+            [
                "marketoGUID"
             ],
-            [  
+            [
                "leadId"
             ],
-            [  
+            [
                "externalOpportunityId"
             ]
          ],
-         "fields":[  
-            {  
+         "fields":[
+            {
                "name":"marketoGUID",
                "displayName":"Marketo GUID",
                "dataType":"string",
                "length":36,
                "updateable":false
             },
-            {  
+            {
                "name":"externalOpportunityId",
                "displayName":"External Opportunity Id",
                "dataType":"string",
                "length":50,
                "updateable":false
             },
-            {  
+            {
                "name":"leadId",
                "displayName":"Lead Id",
                "dataType":"integer",
                "updateable":false
             },
-            {  
+            {
                "name":"role",
                "displayName":"Role",
                "dataType":"string",
                "length":50,
                "updateable":false
             },
-            {  
+            {
                "name":"isPrimary",
                "displayName":"Is Primary",
                "dataType":"boolean",
                "updateable":true
             },
-            {  
+            {
                "name":"externalCreatedDate",
                "displayName":"External Created Date",
                "dataType":"datetime",
@@ -106,33 +106,33 @@ GET /rest/v1/opportunities/roles/describe.json
 
 ## Requête
 
-Notez que `dedupeFields` et `searchableFields` sont légèrement différents des opportunités. `dedupeFields` fournit en fait une clé composite, où les trois `externalOpportunityId`, `leadId` et `role` sont requis. Pour que la création d’enregistrement réussisse, le lien d’opportunité et de piste des champs d’identifiant doit exister dans l’instance de destination. Pour `searchableFields`, `marketoGUID`, `leadId` et `externalOpportunityId`, toutes sont valides pour les requêtes seules et utilisent un modèle identique à Opportunités, mais il existe une option supplémentaire pour utiliser la clé composite pour effectuer des requêtes, ce qui nécessite l’envoi d’un objet JSON via POST, avec le paramètre de requête supplémentaire `_method=GET`.
+Notez que les `dedupeFields` et les `searchableFields` sont un peu différents des opportunités. `dedupeFields` fournit en fait une clé composite, où les trois éléments `externalOpportunityId`, `leadId` et `role` sont requis. Pour que la création d’enregistrements réussisse, les champs d’ID doivent exister dans l’instance de destination pour que l’opportunité et le lien de prospect existent. Par `searchableFields`, `marketoGUID`, `leadId` et `externalOpportunityId` sont tous valides pour les requêtes seules et utilisent un modèle identique à Opportunités, mais il existe une option supplémentaire consistant à utiliser la clé composée pour la requête, ce qui nécessite l’envoi d’un objet JSON via POST, avec le paramètre de requête supplémentaire `_method=GET`.
 
 ```
 POST /rest/v1/opportunities/roles.json?_method=GET
 ```
 
 ```json
-{  
+{
    "filterType": "dedupeFields",
-   "fields": [  
+   "fields": [
       "marketoGuid",
       "externalOpportunityId",
       "leadId",
       "role"
    ],
-   "input": [  
-      {  
+   "input": [
+      {
         "externalOpportunityId": "Opportunity1",
         "leadId": 1,
         "role": "Captain"
       },
-      {  
+      {
         "externalOpportunityId": "Opportunity2",
         "leadId": 1872,
         "role": "Commander"
       },
-      {  
+      {
         "externalOpportunityId": "Opportunity3",
         "leadId": 273891,
         "role": "Lieutenant Commander"
@@ -141,11 +141,11 @@ POST /rest/v1/opportunities/roles.json?_method=GET
 }
 ```
 
-Cela produit le même type de réponse qu’une requête de GET standard. Il dispose simplement d’une interface différente pour effectuer la requête.
+Cela produit le même type de réponse qu’une requête GET standard, mais avec une interface différente pour effectuer la requête.
 
 ## Créer et mettre à jour
 
-Les rôles d’opportunité disposent de la même interface pour créer et mettre à jour des enregistrements que les opportunités.
+Les rôles d’opportunité ont la même interface pour créer et mettre à jour des enregistrements que les opportunités.
 
 ```
 POST /rest/v1/opportunities/roles.json
@@ -156,7 +156,7 @@ POST /rest/v1/opportunities/roles.json
    "action": "createOrUpdate",
    "dedupeBy": "dedupeFields",
    "input": [
-      {  
+      {
          "externalOpportunityId": "19UYA31581L000000",
          "leadId": 456783,
          "role": "Technical Buyer",
@@ -193,17 +193,17 @@ POST /rest/v1/opportunities/roles.json
 
 ## Supprimer
 
-Vous pouvez supprimer des rôles d’opportunité par champs de déduplication ou champ d’identifiant. Spécifiez à l’aide du paramètre deleteBy avec la valeur dedupeFields ou idField. Si elle n’est pas spécifiée, la valeur par défaut est dedupeFields. Le corps de la requête contient un tableau d’entrée de rôles d’opportunité à supprimer. Un maximum de 300 rôles d’opportunité par appel est autorisé.
+Vous pouvez supprimer des rôles d’opportunité en dédupliquant des champs ou des champs d’ID. Spécifiez à l’aide du paramètre deleteBy avec une valeur de dedupeFields ou idField. S’il n’est pas spécifié, la valeur par défaut est dedupeFields. Le corps de la requête contient un tableau d’entrée des rôles d’opportunité à supprimer. Un maximum de 300 rôles d’opportunité par appel est autorisé.
 
 ```
 POST /rest/v1/opportunities/roles/delete.json
 ```
 
 ```json
-{  
+{
    "deleteBy": "dedupeFields",
-   "input": [  
-      {  
+   "input": [
+      {
         "externalOpportunityId": "19UYA31581L000000",
         "leadId": 456783,
         "role": "Technical Buyer"
@@ -226,8 +226,8 @@ POST /rest/v1/opportunities/roles/delete.json
 }
 ```
 
-## Délais d’expiration
+## Délais dépassés
 
-- Les points de fin de rôle d’opportunité ont un délai d’expiration de 30 s, sauf indication ci-dessous.
-   - Rôles d’opportunité de synchronisation : 60 s 
-   - Supprimer les rôles d’opportunité : 60 s
+- Le délai d’expiration des points d’entrée du rôle d’opportunité est de 30, sauf indication ci-dessous
+   - Rôles de l’opportunité de synchronisation : 60 s 
+   - Supprimer rôles d’opportunité : 60 s

@@ -1,9 +1,9 @@
 ---
 title: getMObjects
 feature: SOAP
-description: appels getMObjects SOAP
+description: appels SOAP getMObjects
 exl-id: 5cf18161-f590-4dc3-bba1-ee3ed9fd7e9f
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '226'
 ht-degree: 7%
@@ -12,30 +12,30 @@ ht-degree: 7%
 
 # getMObjects
 
-Récupère un ou plusieurs [MObjects](marketo-objects.md) à l’aide d’une combinaison de critères composée des éléments suivants :
+Récupère un ou plusieurs [MObjects](marketo-objects.md) à l’aide d’une combinaison de critères comprenant :
 
-- Zéro ou un identifiant unique, l’identifiant Marketo ou l’identifiant externe
-- Zéro ou plusieurs filtres d’attributs sous forme de tribus nom/valeur/comparaison
+- Zéro ou un identifiant unique, soit l’identifiant Marketo, soit un identifiant externe
+- Aucun ou plusieurs filtres d’attribut comme trios nom/valeur/comparaison
 - Aucun ou plusieurs filtres d’objet associés en tant que paires nom/ID d’objet
 
-Renvoie une liste de MObjects correspondants, tous de type unique, jusqu’à 100 dans un lot, et un jeton [position du flux](stream-position.md) pour récupérer les lots successifs.
+Renvoie une liste de MObjects correspondants, tous d’un seul type, jusqu’à 100 dans un lot, ainsi qu’un jeton [position du flux](stream-position.md) pour récupérer les lots successifs.
 
-## Demande
+## Requête
 
-| Nom de champ | Obligatoire/Facultatif | Description |
+| Nom du champ | Obligatoire / Facultatif | Description |
 | --- | --- | --- |
-| type | Requis | Type d’objet que vous souhaitez interroger. Peut être l’un des suivants : `Opportunity`, `OpportunityPersonRole` ou `Program` |
-| id | En option | Identifiant du MObject |
-| includeDetails | En option | Lorsque la valeur est true, tous les attributs sont renvoyés pour un objet MObject donné. Ce paramètre ne s’applique qu’avec les MObjects du programme. |
-| mObjCritèresList->mObjCritère->NomAttente | En option | Un ou plusieurs des paramètres d’entrée suivants peuvent être utilisés :`Name`, `Role`, `Type`, `Stage`, `CRM Id`, `Created At`, `Updated At` ou `Tag Type` (un seul peut être spécifié), `Tag Value`, `Workspace Name`, `Workspace Id`, `Include Archive` |
-| mObjCritèresList->mObjCritères->AttributeValue | En option | La valeur que vous souhaitez utiliser pour le filtrage |
-| mObjCritèresList->mObjCritères->comparaison | En option | Un des `EQ`, `NE`, `LT`,`LE`, `GT`, `GE` |
-| mObjAssociationList->mObjAssociation->mObjType | En option |  |
-| mObjAssociationList->mObjAssociation->id | En option | ID de l’objet associé (prospect/entreprise/opportunité) |
-| mObjAssociationList->mObjAssociation->externalKey | En option | Attribut personnalisé de l’objet associé |
-| streamPosition | En option | Utilisé pour paginer dans plusieurs jeux de résultats. La valeur transmise est la valeur renvoyée par l’appel `getMObjects` précédent. |
+| type | Obligatoire | Type d’objet que vous souhaitez interroger. Il peut s’agir de l’un des éléments suivants : `Opportunity`, `OpportunityPersonRole` ou `Program` |
+| identifiant | Facultatif | Id de l’objet mobile |
+| includeDetails | Facultatif | Lorsque la valeur est true, tous les attributs d’un objet mobile sont renvoyés. Ce paramètre s’applique uniquement lorsqu’il est utilisé avec des objets MO de programme |
+| mObjCriteriaList->mObjCriteria->attrName | Facultatif | Un ou plusieurs des paramètres d’entrée suivants peuvent être utilisés : `Name`, `Role`, `Type`, `Stage`, `CRM Id`, `Created At`, `Updated At` ou `Tag Type` (un seul paramètre peut être spécifié), `Tag Value`, `Workspace Name`, `Workspace Id`, `Include Archive` |
+| mObjCriteriaList->mObjCriteria->attrValue | Facultatif | Valeur à utiliser pour le filtrage |
+| mObjCriteriaList->mObjCriteria->comparaison | Facultatif | Un de `EQ`, `NE`, `LT` ,`LE`, `GT`, `GE` |
+| mObjAssociationList->mObjAssociation->mObjType | Facultatif |  |
+| mObjAssociationList->mObjAssociation->id | Facultatif | L’identifiant de l’objet associé (Lead/Entreprise/Opportunité) |
+| mObjAssociationList->mObjAssociation->externalKey | Facultatif | Attribut personnalisé de l’objet associé |
+| streamPosition | Facultatif | Permet de paginer dans plusieurs jeux de résultats. La valeur transmise est la valeur renvoyée par l’appel de `getMObjects` précédent. |
 
-## Request XML
+## XML de la demande
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -441,14 +441,14 @@ $marketoSoapEndPoint    = "";  // CHANGE ME
 $marketoUserId      = "";  // CHANGE ME
 $marketoSecretKey   = "";  // CHANGE ME
 $marketoNameSpace   = "http://www.marketo.com/mktows/";
- 
+
 // Create Signature
 $dtzObj = new DateTimeZone("America/Los_Angeles");
 $dtObj  = new DateTime('now', $dtzObj);
 $timeStamp = $dtObj->format(DATE_W3C);
 $encryptString = $timeStamp . $marketoUserId;
 $signature = hash_hmac('sha1', $encryptString, $marketoSecretKey);
- 
+
 // Create SOAP Header
 $attrs = new stdClass();
 $attrs->mktowsUserId = $marketoUserId;
@@ -462,19 +462,19 @@ if ($debug) {
 // Create Request
 $params->type = 'Program';
 // $params->id = "1003";
- 
+
 $mObjCriteria1 = new stdClass();
 $mObjCriteria1->attrName="Id";
 $mObjCriteria1->comparison="LE";
 $mObjCriteria1->attrValue="1010";
- 
+
 $mObjCriteria2 = new stdClass();
 $mObjCriteria2->attrName="Name";
 $mObjCriteria2->comparison="NE";
 $mObjCriteria2->attrValue="elizprogramtest";
- 
+
 $params->mObjCriteriaList=array($mObjCriteria1, $mObjCriteria2);
- 
+
 $soapClient = new SoapClient($marketoSoapEndPoint ."?WSDL", $options);
 try {
   $leads = $soapClient->__soapCall('getMObjects', array($params), $options, $authHdr);
@@ -504,67 +504,67 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Hex;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
- 
- 
+
+
 public class getMObjects {
- 
+
     public static void main(String[] args) {
         System.out.println("Executing Get MObjects");
         try {
             URL marketoSoapEndPoint = new URL("CHANGE ME" + "?WSDL");
             String marketoUserId = "CHANGE ME";
             String marketoSecretKey = "CHANGE ME";
-             
+
             QName serviceName = new QName("http://www.marketo.com/mktows/", "MktMktowsApiService");
             MktMktowsApiService service = new MktMktowsApiService(marketoSoapEndPoint, serviceName);
             MktowsPort port = service.getMktowsApiSoapPort();
-             
+
             // Create Signature
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
             String text = df.format(new Date());
-            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);           
+            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);
             String encryptString = requestTimestamp + marketoUserId ;
-             
+
             SecretKeySpec secretKey = new SecretKeySpec(marketoSecretKey.getBytes(), "HmacSHA1");
             Mac mac = Mac.getInstance("HmacSHA1");
             mac.init(secretKey);
             byte[] rawHmac = mac.doFinal(encryptString.getBytes());
             char[] hexChars = Hex.encodeHex(rawHmac);
-            String signature = new String(hexChars); 
-             
+            String signature = new String(hexChars);
+
             // Set Authentication Header
             AuthenticationHeader header = new AuthenticationHeader();
             header.setMktowsUserId(marketoUserId);
             header.setRequestTimestamp(requestTimestamp);
             header.setRequestSignature(signature);
-             
+
             // Create Request
             ParamsGetMObjects request = new ParamsGetMObjects();
             request.setType("Program");
-             
+
             MObjCriteria criteria = new MObjCriteria();
             criteria.setAttrName("Id");
             criteria.setComparison(ComparisonEnum.LE);
             criteria.setAttrValue("1010");
-             
+
             MObjCriteria criteria2 = new MObjCriteria();
             criteria2.setAttrName("Name");
             criteria2.setComparison(ComparisonEnum.NE);
             criteria2.setAttrValue("elizprogramtest");
-             
+
             ArrayOfMObjCriteria mObjCriteria= new ArrayOfMObjCriteria();
             mObjCriteria.getMObjCriterias().add(criteria);
             mObjCriteria.getMObjCriterias().add(criteria2);
-             
+
             request.setMObjCriteriaList(mObjCriteria);
- 
+
             SuccessGetMObjects result = port.getMObjects(request, header);
- 
+
             JAXBContext context = JAXBContext.newInstance(SuccessGetMObjects.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal(result, System.out);
-             
+
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -593,9 +593,9 @@ hashedsignature = OpenSSL::HMAC.hexdigest(digest, marketoSecretKey, encryptStrin
 requestSignature = hashedsignature.to_s
 
 #Create SOAP Header
-headers = { 
-    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,                     
-    "requestTimestamp"  => requestTimestamp 
+headers = {
+    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,
+    "requestTimestamp"  => requestTimestamp
     }
 }
 
