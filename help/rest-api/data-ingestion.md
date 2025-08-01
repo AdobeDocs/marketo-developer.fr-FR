@@ -14,7 +14,7 @@ ht-degree: 13%
 
 L’API Data Ingestion est un service à haut volume, à faible latence et à haute disponibilité conçu pour gérer l’ingestion de grandes quantités de données de personnes et de données relatives aux personnes de manière efficace et avec un délai minimal.
 
-Les données sont ingérées en soumettant des requêtes qui s’exécutent de manière asynchrone. Le statut de la requête peut être récupéré en s’abonnant à des événements du flux de données d’observabilité [](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup) de Marketo. &#x200B;
+Les données sont ingérées en soumettant des requêtes qui s’exécutent de manière asynchrone. Le statut de la requête peut être récupéré en s’abonnant à des événements du flux de données d’observabilité [&#128279;](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup) de Marketo. &#x200B;
 
 Les interfaces sont proposées pour deux types d&#39;objets : Personnes, Objets personnalisés. L’opération d’enregistrement est « insert or update » uniquement.
 

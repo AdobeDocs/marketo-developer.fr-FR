@@ -892,7 +892,7 @@ Le point d’entrée [Ajouter des champs de type d’objet personnalisés](https
 Pour une structure d’objet personnalisée un-à-plusieurs, utilisez un champ de lien dans un objet personnalisé pour le connecter à un objet standard : prospect ou entreprise. En utilisant l’exemple de propriétaire de voiture de la documentation du produit Marketo [ici](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure), nous créons un objet personnalisé qui contient des informations relatives à la voiture pour établir une connexion avec les prospects.
 
 1. Créez un objet **Car**
-1. Ajouter des champs à l’objet **Car** : déduplication sur **VIN**, lien vers **Lead****/ID du lead**
+1. Ajouter des champs à l’objet **Car** : déduplication sur **VIN**, lien vers **Lead**&#x200B;**/ID du lead**
 1. Approuver l’objet **Car**
 
 Créez tout d’abord le type d’objet personnalisé pour contenir des informations spécifiques à la voiture.
@@ -996,7 +996,7 @@ Les relations multiples-à-multiples sont représentées à l’aide d’un obje
 1. Ajouter des champs au **Cours :** dédupliquer sur **ID du cours**
 1. Approve **Course**
 1. Créer un objet bridge **Enrollment**
-1. Ajoutez des champs à **Inscription :** dédupliquer sur **ID d’inscription**, lien vers le champ **Cours****/ID de cours** et lien vers **Lead****/ID de lead**.
+1. Ajoutez des champs à **Inscription :** dédupliquer sur **ID d’inscription**, lien vers le champ **Cours**&#x200B;**/ID de cours** et lien vers **Lead**&#x200B;**/ID de lead**.
 1. Approve **Enrollment**
 
 Créez tout d’abord le type d’objet Edge pour contenir des informations spécifiques au cours :
