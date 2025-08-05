@@ -14,7 +14,7 @@ ht-degree: 13%
 
 Ajoute la possibilité de déclencher des fonctions sur certains états de l’objet rtp global.
 
-Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 
 ## Utilisation
 
