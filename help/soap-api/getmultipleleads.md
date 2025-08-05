@@ -3,9 +3,9 @@ title: getMultipleLeads
 feature: SOAP
 description: appels SOAP getMultipleLeads
 exl-id: db9aabec-8705-40c6-b264-740fdcef8a52
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '384'
+source-wordcount: '383'
 ht-degree: 3%
 
 ---
@@ -28,7 +28,7 @@ Un cas d’utilisation courant de ce point d’entrée consiste à rechercher le
 | --- | --- | --- |
 | leadSelector | Obligatoire | Il peut s’agir de l’un des 3 types suivants : `LeadKeySelector`, `StaticListSelector`, `LastUpdateAtSelector` |
 | keyType | Obligatoire | Type d’identifiant que vous souhaitez interroger. Les valeurs incluent IDNUM, COOKIE, EMAIL, LEADOWNEREMAIL, SFDCACCOUNTID, SFDCCONTACTID, SFDCLEADID, SFDCLEADOWNERID, SFDCOPPTYID. |
-| keyValues->stringItem | Obligatoire | Liste des valeurs clés. C’est-à-dire « lead@email.com » |
+| keyValues->stringItem | Obligatoire | Liste des valeurs clés. C’est-à-dire « <lead@email.com> » |
 | LastUpdateAtSelector : leadSelector->plusAncienMisÀJourAu | Obligatoire | Horodatage utilisé pour spécifier le critère « depuis ». En d’autres termes, renvoyez tous les prospects mis à jour depuis l’heure spécifiée. (format date-heure WSDL W3C) |
 | LastUpdateAtSelector : leadSelector->latestUpdatedAt | Facultatif | Horodatage utilisé pour spécifier le critère « jusqu’au ». En d’autres termes, renvoyez tous les prospects mis à jour jusqu’à l’heure spécifiée. (format date-heure WSDL W3C) |
 | StaticListSelector : leadSelector->staticListName | Facultatif lorsque `leadSelector->staticListId` est présent | Nom de la liste statique |

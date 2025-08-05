@@ -3,7 +3,7 @@ title: Authentification
 feature: REST API
 description: Authentification des utilisateurs de Marketo pour l’utilisation de l’API.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: 206724e5177eb9040fa36202d91b2ed9daa734c3
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '618'
 ht-degree: 0%
@@ -55,10 +55,9 @@ Le jeton d’accès doit être envoyé en tant qu’en-tête HTTP.
 
 >[!IMPORTANT]
 >
->La prise en charge de l’authentification à l’aide du paramètre de requête `access_token` sera supprimée le 31 octobre 2025. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête [Authorization](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête `Authorization` .
+>La prise en charge de l’authentification à l’aide du paramètre de requête `access_token` sera supprimée le 31 octobre 2025. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête [Authorization](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête `Authorization` .
 
 ### Passage à l’en-tête d’autorisation
-
 
 Pour passer de l’utilisation du paramètre de requête `access_token` à un en-tête d’autorisation, un petit changement de code est nécessaire.
 

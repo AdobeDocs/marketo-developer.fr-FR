@@ -3,9 +3,9 @@ title: Rediriger
 description: Rediriger
 feature: Javascript
 exl-id: bbf91245-42e5-47ae-a561-e522cc65ff49
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '468'
+source-wordcount: '457'
 ht-degree: 8%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 8%
 
 L’API de redirection RTP vous permet de rediriger des audiences segmentées vers une URL cible.
 
-- Vous devez devenir client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+- Vous devez devenir client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 - RTP ne prend pas en charge les listes de comptes nommés Marketing basées sur les comptes. Les listes et le code ABM ne concernent que les listes de comptes chargées (fichiers CSV) gérées dans RTP.
 
 ## Utilisation
@@ -34,17 +34,16 @@ Organisation, secteur, listes ABM, emplacement, FAI, segments correspondants
 
 | Condition | Hiérarchie des données | Exemple |
 |-------------------------------------------------|----------------------|------------------------------------------------------------------------------------------------------------------|
-| Segments correspondants (fonctionne uniquement après le premier clic) | matchedSegments.name | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;matchSegments.name&#39; , [&#39;Fortune 1 000&#39; , &#39;Entreprise&#39;] , &#39;http://www.marketo.com&#39;); |
-| Segments correspondants (fonctionne uniquement après le premier clic) | matchedSegments.id | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;matchSegments.id&#39; , [106 , 107 , 190] , &#39;http://www.marketo.com&#39;); |
-| Listes ABM | abm.name | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;abm.name&#39; , [&#39;top_key_accounts&#39;, &#39;active_customers&#39;] , &#39;http://www.marketo.com&#39;); |
-| Listes ABM | abm.code | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;abm.code&#39; , [13 , 15] , &#39;http://www.marketo.com&#39;); |
-| Organisations | org | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;org&#39;, [&#39;ebay&#39;], &#39;http://www.marketo.com&#39;); |
-| Emplacement | location.country | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.country&#39; , [&#39;United States&#39;], &#39;http://www.marketo.com&#39;); |
-| Emplacement | location.state | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.state&#39;, [&#39;ca&#39;], &#39;http://www.marketo.com&#39;); |
-| Emplacement | location.city | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.city&#39;, [&#39;San Mateo&#39;], &#39;http://www.marketo.com&#39;); |
-| Secteurs | industries | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;industries&#39; , [&#39;Education&#39;], &#39;http://www.marketo.com&#39;); |
-| Fournisseur de services Internet | fai | rtp( &#39;send&#39;, &#39;redirect&#39; , isp , [&#39;False&#39;], &#39;http://www.marketo.com&#39;); |
-
+| Segments correspondants (fonctionne uniquement après le premier clic) | matchedSegments.name | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;matchSegments.name&#39; , [&#39;Fortune 1 000&#39; , &#39;Entreprise&#39;] , &#39;<http://www.marketo.com>&#39;); |
+| Segments correspondants (fonctionne uniquement après le premier clic) | matchedSegments.id | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;matchSegments.id&#39; , [106 , 107 , 190] , &#39;<http://www.marketo.com>&#39;); |
+| Listes ABM | abm.name | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;abm.name&#39; , [&#39;top_key_accounts&#39;, &#39;active_customers&#39;] , &#39;<http://www.marketo.com>&#39;); |
+| Listes ABM | abm.code | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;abm.code&#39; , [13 , 15] , &#39;<http://www.marketo.com>&#39;); |
+| Organisations | org | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;org&#39;, [&#39;ebay&#39;], &#39;<http://www.marketo.com>&#39;); |
+| Emplacement | location.country | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.country&#39; , [&#39;United States&#39;], &#39;<http://www.marketo.com>&#39;); |
+| Emplacement | location.state | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.state&#39;, [&#39;ca&#39;], &#39;<http://www.marketo.com>&#39;); |
+| Emplacement | location.city | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.city&#39;, [&#39;San Mateo&#39;], &#39;<http://www.marketo.com>&#39;); |
+| Secteurs | industries | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;industries&#39; , [&#39;Education&#39;], &#39;<http://www.marketo.com>&#39;); |
+| Fournisseur de services Internet | fai | rtp( &#39;send&#39;, &#39;redirect&#39; , isp , [&#39;False&#39;], &#39;<http://www.marketo.com>&#39;); |
 
 ## Notes
 
@@ -87,7 +86,7 @@ rtp('get','campaign');
 
 ## Comment rediriger des visiteurs suivis
 
-1. Ajoutez un paramètre à la fin de l’URL cible : par exemple www.marketo.com?rtp=redirect
+1. Ajoutez un paramètre à la fin de l’URL cible : &lt;www.marketo.com?rtp=redirect>.
 1. Créer un segment appelé « Redirigé par RTP »
 1. Utilisez le paramètre « Pages spécifiques » pour cibler les visiteurs qui consultent n’importe quelle page avec le paramètre illustré ci-dessous.
 
@@ -106,8 +105,7 @@ L’appel de redirection prend en charge plusieurs appels. Cela permet de rediri
 | &#39;envoi&#39; | Obligatoire | Chaîne | Action de méthode. |
 | &#39;rediriger&#39; | Obligatoire | Chaîne | Nom de la méthode. |
 | field_name | Obligatoire | Chaîne | Nom du champ à comparer. Exemple : &#39;abm.name&#39; (voir ci-dessus). |
-| url_values_map | Obligatoire | Objet | Mappage entre l’URL de redirection et la liste des valeurs. Exemple :{&#39;http://marketo.com&#39; : [&#39;first_abm&#39;, &#39;second_abm&#39;]} |
-
+| url_values_map | Obligatoire | Objet | Mappage entre l’URL de redirection et la liste des valeurs. Exemple :{&#39;<http://marketo.com>&#39; : [&#39;first_abm&#39;, &#39;second_abm&#39;]} |
 
 #### Exemple
 

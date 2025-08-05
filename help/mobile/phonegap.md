@@ -3,7 +3,7 @@ title: PhoneGap
 feature: Mobile Marketing
 description: Utilisation de PhoneGap avec Marketo sur les appareils mobiles
 exl-id: 99f14c76-9438-4942-9309-643bca434d07
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '818'
 ht-degree: 1%
@@ -16,7 +16,7 @@ Intégration du plug-in Marketo PhoneGap
 
 ## Conditions préalables
 
-1. [Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez la clé secrète de l’application et l’ID Munchkin).
+1. [Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez la clé secrète de l’application et l’ID Munchkin).
 1. Configurer Des Notifications Push ([iOS](push-notifications.md) | [Android](push-notifications.md)).
 1. [Installez PhoneGap/Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
@@ -66,7 +66,7 @@ Vérifier la liste des plateformes ajoutées `$cordova platform ls`
 1. Prise en charge de Firebase Cloud Messaging
 
 1. Configurez l’application Firebase sur la console Firebase.
-   1. Créez/ajoutez un projet sur la console [&#128279;](https://console.firebase.google.com/)Firebase).
+   1. Créez/ajoutez un projet sur la console [](https://console.firebase.google.com/)Firebase).
       1. Dans la [console Firebase](https://console.firebase.google.com/), sélectionnez **[!UICONTROL Ajouter un projet]**.
       1. Sélectionnez votre projet GCM dans la liste des projets Google Cloud existants, puis sélectionnez **[!UICONTROL Ajouter Firebase]**.
       1. Dans l’écran d’accueil de Firebase, sélectionnez Ajouter Firebase à l’application Android.
@@ -112,7 +112,6 @@ Vérifier la liste des plateformes ajoutées `$cordova platform ls`
             //to
             fs.writeFileSync("platforms/android/app/src/main/res/values/strings.xml", strings);
             ```
-
 
 ### &#x200B;3. Activer les notifications push dans xCode
 

@@ -3,7 +3,7 @@ title: Extraction d’activité en bloc
 feature: REST API
 description: Traitement par lots des données d’activité de Marketo.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1332'
 ht-degree: 7%
@@ -105,7 +105,6 @@ Lors de l’utilisation de `primaryAttributeValues`, le filtre `activityTypeIds`
 | format | Chaîne | Non | Accepte l’une des valeurs suivantes : CSV, TSV, SSV Le fichier exporté est rendu sous la forme de valeurs séparées par des virgules, de valeurs séparées par des tabulations ou de valeurs séparées par des espaces, respectivement, s’il est défini. La valeur par défaut est CSV si cette valeur n’est pas définie. |
 | columnHeaderNames | Objet | Non | Un objet JSON contenant des paires clé-valeur de noms d’en-tête de champ et de colonne. La clé doit être le nom d’un champ inclus dans la tâche d’exportation. La valeur est le nom de l’en-tête de colonne exporté pour ce champ. |
 | Champs | Array[String] | Non | Tableau facultatif de chaînes contenant des valeurs de champ. Les champs répertoriés sont inclus dans le fichier exporté. Par défaut, les champs suivants sont renvoyés : <ul><li>`marketoGUIDleadId`</li><li> `activityDate` </li><li>`activityTypeId` </li><li>`campaignId`</li><li> `primaryAttributeValueId` </li><li>`primaryAttributeValue`</li><li> `attributes`</li></ul>. Ce paramètre peut être utilisé pour réduire le nombre de champs renvoyés en spécifiant un sous-ensemble de la liste ci-dessus :`"fields": ["leadId", "activityDate", "activityTypeId"]`. Un `actionResult` de champ supplémentaire peut être spécifié pour inclure l’action d’activité : `("succeeded", "skipped", or "failed")`. |
-
 
 ## Création d’un traitement
 

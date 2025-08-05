@@ -3,7 +3,7 @@ title: Rôles d’opportunité
 feature: REST API
 description: Gestion des rôles d’opportunité dans Marketo.
 exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '253'
 ht-degree: 0%
@@ -229,5 +229,5 @@ POST /rest/v1/opportunities/roles/delete.json
 ## Délais dépassés
 
 - Le délai d’expiration des points d’entrée du rôle d’opportunité est de 30, sauf indication ci-dessous
-   - Rôles de l’opportunité de synchronisation : 60 s 
+   - Rôles de l’opportunité de synchronisation : 60 s
    - Supprimer rôles d’opportunité : 60 s

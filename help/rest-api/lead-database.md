@@ -3,7 +3,7 @@ title: Base de données des leads
 feature: REST API, Database
 description: Manipulez la base de données principale des prospects.
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1342'
 ht-degree: 1%
@@ -245,7 +245,7 @@ La structure de l’objet JSON est principalement plate, et tous les paramètres
 
 Les créations et les mises à jour des enregistrements de la base de données de prospect sont toutes effectuées par le biais de POST avec des corps JSON. Les interfaces pour Opportunités, Rôles, Objets personnalisés, Entreprises et Vendeurs sont toutes identiques. L’interface du prospect est un peu différente, et vous pouvez en savoir plus à ce sujet.
 
-Le seul paramètre obligatoire est un tableau appelé `input` contenant jusqu’à 300 objets, chacun avec les champs que vous souhaitez insérer/mettre à jour en tant que membres. Vous pouvez également inclure de manière facultative un paramètre `action` qui peut être l’un des suivants : `createOnly`, `updateOnly` ou `createOrUpdate`. Si l’action est omise, le mode par défaut est `createOrUpdate`. `dedupeBy` est un autre paramètre facultatif qui peut être utilisé lorsque l’action est définie sur createOnly ou `createOrUpdate`. ` dedupeBy` peut être `idField` ou `dedupeFields`. Si `idField` est sélectionné, les `idField` répertoriées dans la description sont utilisées à des fins de déduplication et doivent être incluses dans chaque enregistrement. Le mode `idField` n’est pas compatible avec le mode `createOnly`. Si `dedupeFields` sont sélectionnés , les `dedupeFields` répertoriés dans la description de l’objet utilisé et chacun d’eux doit être inclus dans chaque enregistrement. Si le paramètre `dedupeBy` est omis, le mode est défini par défaut sur `dedupeFields`.
+Le seul paramètre obligatoire est un tableau appelé `input` contenant jusqu’à 300 objets, chacun avec les champs que vous souhaitez insérer/mettre à jour en tant que membres. Vous pouvez également inclure de manière facultative un paramètre `action` qui peut être l’un des suivants : `createOnly`, `updateOnly` ou `createOrUpdate`. Si l’action est omise, le mode par défaut est `createOrUpdate`. `dedupeBy` est un autre paramètre facultatif qui peut être utilisé lorsque l’action est définie sur createOnly ou `createOrUpdate`. `dedupeBy` peut être `idField` ou `dedupeFields`. Si `idField` est sélectionné, les `idField` répertoriées dans la description sont utilisées à des fins de déduplication et doivent être incluses dans chaque enregistrement. Le mode `idField` n’est pas compatible avec le mode `createOnly`. Si `dedupeFields` sont sélectionnés , les `dedupeFields` répertoriés dans la description de l’objet utilisé et chacun d’eux doit être inclus dans chaque enregistrement. Si le paramètre `dedupeBy` est omis, le mode est défini par défaut sur `dedupeFields`.
 
 Lors de la transmission d’une liste de valeurs de champ, une valeur de `null`, ou une chaîne vide, est écrite dans la base de données comme `null`.
 

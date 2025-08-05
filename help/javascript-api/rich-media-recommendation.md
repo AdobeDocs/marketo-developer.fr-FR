@@ -3,7 +3,7 @@ title: 'Recommandation de média intéractif '
 description: 'Recommandation de média intéractif '
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '812'
 ht-degree: 5%
@@ -22,7 +22,7 @@ Les balises et appels d’API suivants doivent être configurés sur la page sur
 1. Dans le corps de la page
    1. Placez la balise du modèle (classe div) à l’emplacement où vous souhaitez que le modèle apparaisse
 
-Vous trouverez plus d’informations [ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Vous trouverez plus d’informations [ici](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Balise de modèle
 
@@ -67,7 +67,6 @@ Cette méthode renseigne tous les `<divs>` de médias riches de la page avec des
 | &#39;rcmd&#39; | Obligatoire | Chaîne | Nom de la méthode. |
 | &#39;richmedia&#39; | Obligatoire | Chaîne | Nom de la sous-méthode. |
 
-
 ## Modifier la configuration du modèle
 
 Cette méthode modifie la configuration par défaut du modèle.
@@ -85,7 +84,6 @@ Remarque : lors de l&#39;utilisation de cette méthode, elle doit être appelée
 | &#39;richmedia&#39; | Obligatoire | Chaîne | Nom de la sous-méthode. |
 | template_id | Facultatif | Chaîne | Identifiant du modèle pour les modifications de configuration. Permet de spécifier la modification des paramètres pour un seul modèle. |
 | conf_obj | Obligatoire | Objet | Nouvelle configuration. L’objet contient toutes les configurations en tant que paire clé/valeur. |
-
 
 ### Exemples
 
@@ -151,7 +149,6 @@ rtp("set", "rcmd", "richmedia",
 | rcmd.cta.font.color | « rcmd.cta.font.color » : « rgb(90, 84, 164) » | Modifie la couleur de police du bouton. Cette propriété prend en charge toutes les valeurs de couleur de la police (rvb, hex, etc.) |
 | rcmd.cta.text | « rcmd.cta.text » : « Push » | Modifie le texte du bouton. Le texte est le même pour tous les boutons. |
 | Catégorie | « category » : [ « one category »] | Modifie la catégorie de recommandation prise en charge par ce modèle. Le modèle affiche uniquement des recommandations avec l’une des catégories définies par cette configuration. |
-
 
 Remarque : la prise en charge de la configuration peut changer pour chaque modèle.
 

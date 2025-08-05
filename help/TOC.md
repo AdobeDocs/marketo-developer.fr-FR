@@ -5,7 +5,7 @@ breadcrumb-title: Guide de developpement [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 05f8966a2eafca71a00f1e22b6edd4d8dae6b6ac
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '247'
 ht-degree: 42%
@@ -45,7 +45,7 @@ ht-degree: 42%
    - [[!DNL Ionic]](mobile/ionic.md)
    - [Mobile](mobile/mobile.md)
    - [Phonegap](mobile/phonegap.md)
-   - [Notifications Push](mobile/push-notifications.md)
+   - [Notifications push](mobile/push-notifications.md)
    - [React Native](mobile/react-native.md)
    - [Profils utilisateur](mobile/user-profiles.md)
 - REST{#rest}
@@ -55,7 +55,7 @@ ht-degree: 42%
       - [Ressources](rest-api/assets.md)
       - [Contenu dynamique](rest-api/dynamic-content.md)
       - [E-mails](rest-api/emails.md)
-      - [Modèles d&#39;e-mail](rest-api/email-templates.md)
+      - [Modèles d’e-mail](rest-api/email-templates.md)
       - [Fichiers](rest-api/files.md)
       - [Dossiers](rest-api/folders.md)
       - [Formulaires](rest-api/forms.md)

@@ -1,55 +1,53 @@
 ---
-title: Extraction de pistes en bloc
+title: Extrait de lead en masse
 feature: REST API
-description: Extraction par lots des données de piste.
+description: Extraction par lots des données de prospect.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1173'
 ht-degree: 2%
 
 ---
 
-# Extraction de pistes en bloc
+# Extrait de lead en masse
 
-[Référence du point de terminaison d’extraction de pistes en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads)
+[Référence de point d’entrée d’extraction de lead en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads)
 
-L’ensemble des API REST d’extraction de pistes en bloc fournit une interface programmatique pour récupérer de grands ensembles d’enregistrements de pistes/de personnes à partir de Marketo. Il peut également être utilisé pour récupérer les pistes de manière incrémentielle en fonction de la date de création de l’enregistrement, de la mise à jour la plus récente, de l’appartenance à une liste statique ou de l’appartenance à une liste dynamique. Interface recommandée pour les cas d’utilisation qui nécessitent un échange continu de données entre Marketo et un ou plusieurs systèmes externes, à des fins d’ETL, d’entrepôt de données et d’archivage.
+L’ensemble d’API REST d’extraction de lead en bloc fournit une interface de programmation pour récupérer de grands ensembles d’enregistrements de lead/personne en dehors de Marketo. En outre, il peut être utilisé pour récupérer les prospects de manière incrémentielle en fonction de la date de création de l’enregistrement, de la mise à jour la plus récente, de l’appartenance à une liste statique ou à une liste dynamique. Interface recommandée pour les cas d’utilisation qui nécessitent un échange continu de données entre Marketo et un ou plusieurs systèmes externes, à des fins d’ETL, d’entreposage de données et d’archivage.
 
-## Permissions
+## Autorisations
 
-Les API Bulk Lead Extract exigent que l’utilisateur de l’API propriétaire dispose d’un rôle avec l’une des autorisations de piste en lecture seule ou de piste en lecture-écriture, ou les deux.
+Les API Bulk Lead Extract nécessitent que l’utilisateur de l’API propriétaire dispose d’un rôle avec une ou deux des autorisations Lecture seule, Lead ou Lead en lecture-écriture.
 
 ## Filtres
 
-Les pistes prennent en charge diverses options de filtrage. Certains filtres, y compris `updatedAt`, `smartListName` et `smartListId`, nécessitent des composants d’infrastructure supplémentaires qui n’ont pas encore été déployés sur tous les abonnements. Un seul type de filtre peut être spécifié par tâche d’exportation.
+Les prospects prennent en charge différentes options de filtre. Certains filtres, notamment les `updatedAt`, `smartListName` et `smartListId`, nécessitent des composants d’infrastructure supplémentaires qui n’ont pas encore été déployés sur tous les abonnements. Un seul type de filtre peut être spécifié par tâche d&#39;exportation.
 
 | Type de filtre | Type de données | Notes |
 |---|---|---|
-| createdAt | Plage de dates | Accepte un objet JSON avec les membres `startAt` et `endAt`. `startAt` accepte une date et une heure représentant le filigrane bas, et `endAt` accepte une date et une heure représentant le filigrane haut. La période doit être de 31 jours ou moins. Datetimes doit être au format ISO-8601, sans millisecondes. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles créés au cours de la période. |
-| updatedAt* | Plage de dates | Accepte un objet JSON avec les membres `startAt` et `endAt`. `startAt` accepte une date et une heure représentant le filigrane bas, et `endAt` accepte une date et une heure représentant le filigrane haut. La période doit être de 31 jours ou moins. Datetimes doit être au format ISO-8601, sans millisecondes. Remarque : Ce filtre ne filtre pas le champ visible &quot;updatedAt&quot;, qui reflète uniquement les mises à jour apportées aux champs standard. Elle filtre les données en fonction du moment où la mise à jour la plus récente des champs a été effectuée vers un enregistrementJobs de piste avec ce type de filtre renvoie tous les enregistrements accessibles qui ont été mis à jour le plus récemment au cours de la période. |
-| staticListName | Chaîne | Accepte le nom d’une liste statique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres de la liste statique au moment où le traitement de la tâche commence. Récupérez les noms de liste statiques à l’aide du point de terminaison Get List. |
-| staticListId | Entier | Accepte l’identifiant d’une liste statique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres de la liste statique au moment où le traitement de la tâche commence. Récupérez les identifiants de liste statiques à l’aide du point de terminaison Get List. |
-| smartListName* | Chaîne | Accepte le nom d’une liste dynamique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres des listes dynamiques au moment où le traitement de la tâche commence. Récupérez les noms de liste dynamique à l’aide du point de terminaison Get Smart Lists. |
-| smartListId* | Entier | Accepte l’identifiant d’une liste dynamique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres des listes dynamiques au moment où le traitement de la tâche commence. Récupérez les identifiants de liste dynamique à l’aide du point de terminaison Get Smart Lists. |
+| createdAt | Période | Accepte un objet JSON avec les membres `startAt` et `endAt`. `startAt` accepte une valeur datetime représentant le filigrane bas et `endAt` une valeur datetime représentant le filigrane haut. La plage doit être de 31 jours ou moins. Les heures de date doivent être au format ISO-8601, sans millisecondes. Les traitements avec ce type de filtre renvoient tous les enregistrements accessibles qui ont été créés au cours de la période. |
+| updatedAt* | Période | Accepte un objet JSON avec les membres `startAt` et `endAt`. `startAt` accepte une valeur datetime représentant le filigrane bas et `endAt` une valeur datetime représentant le filigrane haut. La plage doit être de 31 jours ou moins. Les heures de date doivent être au format ISO-8601, sans millisecondes. Remarque : ce filtre ne filtre pas sur le champ visible « updatedAt » qui reflète uniquement les mises à jour apportées aux champs standard. Il filtre en fonction de la date à laquelle la mise à jour la plus récente du champ a été apportée à un enregistrement de prospect. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui ont été mis à jour le plus récemment au cours de la période. |
+| staticListName | Chaîne | Accepte le nom d’une liste statique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres de la liste statique au moment où la tâche commence le traitement. Récupérez les noms de listes statiques à l’aide du point d’entrée Get Lists. |
+| staticListId | Nombre entier | Accepte l’identifiant d’une liste statique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres de la liste statique au moment où la tâche commence le traitement. Récupérez les identifiants de liste statiques à l’aide du point d’entrée Get Lists. |
+| smartListName* | Chaîne | Accepte le nom d’une liste dynamique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres des listes dynamiques au moment où la tâche commence à être traitée. Récupérez les noms des listes dynamiques à l’aide du point d’entrée Get Smart Lists. |
+| smartListId* | Nombre entier | Accepte l’identifiant d’une liste dynamique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres des listes dynamiques au moment où la tâche commence à être traitée. Récupérez les ID de liste dynamique à l’aide du point d’entrée Get Smart Lists. |
 
-
-Le type de filtre n’est pas disponible pour certains abonnements. En cas d’indisponibilité de votre abonnement, vous recevez une erreur lors de l’appel du point de terminaison Create Export Lead Job (&quot;1035, Unsupported filter type for target subscription&quot;). Les clients peuvent contacter le support Marketo pour que cette fonctionnalité soit activée dans leur abonnement.
+Le type de filtre n’est pas disponible pour certains abonnements. Si vous n’êtes pas disponible pour votre abonnement, vous recevez une erreur lors de l’appel du point d’entrée Créer une tâche d’exportation de lead (« 1035, Unsupported filter type for target subscription »). Les clients peuvent contacter l’assistance Marketo pour que cette fonctionnalité soit activée dans leur abonnement.
 
 ## Options
 
-Le point de fin Créer une tâche de piste d’exportation fournit plusieurs options de mise en forme, ce qui permet à l’utilisateur d’inclure des champs spécifiques dans le fichier exporté, de renommer les en-têtes de colonne de ces champs et de définir le format du fichier exporté.
+Le point d’entrée Créer une tâche d’exportation principale fournit plusieurs options de mise en forme, ce qui permet à l’utilisateur d’inclure des champs particuliers dans le fichier exporté, de renommer les en-têtes de colonne de ces champs et le format du fichier exporté.
 
-| Paramètre | Type de données | Requis | Notes |
+| Paramètre | Type de données | Obligatoire | Notes |
 |---|---|---|---|
-| Champs | Tableau[Chaîne] | Oui | Le paramètre fields accepte un tableau JSON de chaînes. Chaque chaîne doit correspondre au nom de l’API REST d’un champ de piste Marketo. Les champs répertoriés sont inclus dans le fichier exporté. L’en-tête de colonne de chaque champ est le nom de l’API REST de chaque champ, sauf s’il est remplacé par columnHeader. Remarque : Lorsque la fonction [!DNL Adobe Experience Cloud Audience Sharing] est activée, un processus de synchronisation des cookies se produit qui associe [!DNL Adobe Experience Cloud] ID (ECID) aux pistes Marketo. Vous pouvez spécifier le champ &quot;ecids&quot; pour inclure des ECID dans le fichier d’exportation. |
-| columnHeaderNames | Objet | Non | Objet JSON contenant des paires clé-valeur de noms d’en-tête de champ et de colonne. La clé doit être le nom d’un champ inclus dans la tâche d’exportation. Il s’agit du nom de l’API du champ qui peut être récupéré en appelant &quot;Description de la piste&quot;. La valeur est le nom de l’en-tête de colonne exporté pour ce champ. |
-| format | Chaîne | Non | Accepte l’un des paramètres suivants : CSV, TSV, SSV. Le fichier exporté est rendu sous la forme d’un fichier de valeurs séparées par des virgules, de valeurs séparées par des tabulations ou de valeurs séparées par des espaces, respectivement, s’il est défini. La valeur par défaut est CSV si elle n’est pas définie. |
+| Champs | Array[String] | Oui | Le paramètre fields accepte un tableau JSON de chaînes. Chaque chaîne doit être le nom de l’API REST d’un champ de prospect Marketo. Les champs répertoriés sont inclus dans le fichier exporté. L’en-tête de colonne de chaque champ correspond au nom de l’API REST de chaque champ, sauf si il est remplacé par columnHeader. Remarque : lorsque la fonction [!DNL Adobe Experience Cloud Audience Sharing] est activée, un processus de synchronisation des cookies se produit et associe l’identifiant [!DNL Adobe Experience Cloud] (ECID) aux prospects Marketo. Vous pouvez spécifier le champ « ecid » pour inclure des ECID dans le fichier d’exportation. |
+| columnHeaderNames | Objet | Non | Un objet JSON contenant des paires clé-valeur de noms d’en-tête de champ et de colonne. La clé doit être le nom d’un champ inclus dans la tâche d’exportation. Il s’agit du nom de l’API du champ qui peut être récupéré en appelant la fonction Décrire le prospect. La valeur est le nom de l’en-tête de colonne exporté pour ce champ. |
+| format | Chaîne | Non | Accepte l’un des formats suivants : CSV, TSV, SSV. Le fichier exporté est rendu sous la forme d’un fichier de valeurs séparées par des virgules, des valeurs séparées par des tabulations ou des valeurs séparées par des espaces, respectivement, s’il est défini. La valeur par défaut est CSV si cette valeur n’est pas définie. |
 
+## Création d’un traitement
 
-## Création d’une tâche
-
-Les paramètres de la tâche sont définis avant de lancer l’exportation à l’aide du point de terminaison [Créer une tâche de piste d’exportation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST). Nous devons définir les `fields` nécessaires à l&#39;export, le type des paramètres de `filter`, le `format` du fichier et les noms des en-têtes de colonne, le cas échéant.
+Les paramètres de la tâche sont définis avant le lancement de l’exportation à l’aide du point d’entrée [Créer une tâche d’exportation principale](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST). Nous devons définir les `fields` nécessaires à l’exportation, le type de paramètres du `filter`, le `format` du fichier et les noms des en-têtes de colonne, le cas échéant.
 
 ```
 POST /bulk/v1/leads/export/create.json
@@ -79,7 +77,7 @@ POST /bulk/v1/leads/export/create.json
 }
 ```
 
-Cette requête commencera à exporter un ensemble de pistes créées entre le 1er janvier 2017 et le 31 janvier 2017, y compris les valeurs des champs `firstName`, `lastName`, `id` et `email` correspondants.
+Cette requête commencera à exporter un ensemble de prospects créés entre le 1er janvier 2017 et le 31 janvier 2017, y compris les valeurs des champs `firstName`, `lastName`, `id` et `email` correspondants.
 
 ```json
 {
@@ -97,7 +95,7 @@ Cette requête commencera à exporter un ensemble de pistes créées entre le 1e
 }
 ```
 
-Cela renvoie une réponse d’état indiquant que la tâche a été créée. La tâche a été définie et créée, mais elle n’a pas encore été lancée. Pour ce faire, le point d’entrée [Enqueue Export Lead Job](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST) doit être appelé à l’aide de l’exportId de la réponse d’état de création :
+Cette opération renvoie une réponse de statut indiquant que la tâche a été créée. La tâche a été définie et créée, mais elle n&#39;a pas encore été lancée. Pour ce faire, le point d’entrée [Mettre en file d’attente la tâche d’exportation principale](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST) doit être appelé à l’aide de l’exportId de la réponse de statut de création :
 
 ```
 POST /bulk/v1/leads/export/{exportId}/enqueue.json
@@ -119,13 +117,13 @@ POST /bulk/v1/leads/export/{exportId}/enqueue.json
 }
 ```
 
-Ceci répond avec un `status` de &quot;En file d’attente&quot; après lequel il sera défini sur &quot;Traitement&quot; lorsqu’il y a un emplacement d’exportation disponible.
+Cela répond par un `status` de « Mise en file d’attente », après quoi il est défini sur « Traitement » lorsqu’un emplacement d’exportation est disponible.
 
-## État de la tâche d’interrogation
+## Interroger le statut de la tâche
 
-`Note:` L’état ne peut être récupéré que pour les tâches créées par le même utilisateur API.
+`Note:` statut ne peut être récupéré que pour les tâches créées par le même utilisateur de l’API.
 
-Puisqu’il s’agit d’un point de terminaison asynchrone, après la création de la tâche, nous devons interroger son état pour déterminer sa progression. Sondage à l’aide du point de terminaison [Get Export Lead Job Status](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET). Le statut n’est mis à jour qu’une fois toutes les 60 secondes, donc une fréquence d’interrogation inférieure à celle-ci n’est pas recommandée, et dans presque tous les cas est toujours excessive. Regardons un peu les sondages.
+Puisqu’il s’agit d’un point d’entrée asynchrone, une fois la tâche créée, nous devons interroger son statut pour déterminer sa progression. Interroger à l’aide du point d’entrée [Obtenir le statut de la tâche d’exportation du prospect](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET). Le statut n’est mis à jour qu’une fois toutes les 60 secondes. Il est donc déconseillé d’utiliser une fréquence d’interrogation inférieure à cette fréquence, qui reste excessive dans presque tous les cas. Jetons un coup d&#39;œil aux sondages.
 
 ```
 GET /bulk/v1/leads/export/{exportId}/status.json
@@ -147,9 +145,9 @@ GET /bulk/v1/leads/export/{exportId}/status.json
 }
 ```
 
-Le point de terminaison d’état répond indiquant que la tâche est toujours en cours de traitement. Le fichier n’est donc pas encore disponible pour la récupération. Une fois que l’état de la tâche est défini sur &quot;Terminé&quot;, elle est préparée pour téléchargement.
+Le point d’entrée de statut répond indiquant que la tâche est toujours en cours de traitement et que le fichier n’est donc pas encore disponible pour récupération. Une fois que le statut de la tâche est passé à « Terminé », elle a été préparée pour téléchargement.
 
-Le champ d’état peut répondre avec l’une des réponses suivantes :
+Le champ de statut peut répondre avec l’une des options suivantes :
 
 - Créé
 - En fil d&#39;attente
@@ -160,26 +158,26 @@ Le champ d’état peut répondre avec l’une des réponses suivantes :
 
 ## Récupération de vos données
 
-Pour récupérer le fichier d’une exportation de piste terminée, appelez simplement le point de terminaison [Get Export Lead File](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET) avec votre `exportId`.
+Pour récupérer le fichier d’une exportation de prospect terminée, appelez simplement le point d’entrée [Obtenir le fichier de prospect d’exportation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET) avec votre `exportId`.
 
 ```
 GET /bulk/v1/leads/export/{exportId}/file.json
 ```
 
-La réponse contient un fichier formaté selon la configuration de la tâche. Le point de terminaison répond avec le contenu du fichier.
+La réponse contient un fichier formaté selon la configuration de la tâche. Le point d’entrée répond avec le contenu du fichier .
 
-Si un champ de piste demandé est vide (ne contient aucune donnée), `null` est placé dans le champ correspondant dans le fichier d’exportation. Dans l’exemple ci-dessous, le champ email pour le prospect renvoyé est vide.
+Si un champ de prospect demandé est vide (ne contient aucune donnée), `null` est placé dans le champ correspondant dans le fichier d’exportation. Dans l’exemple ci-dessous, le champ d’e-mail du prospect renvoyé est vide.
 
 ```csv
 firstName,lastName,email,cookies
 Russell,Wilson,null,_mch-localhost-1536605780000-12105
 ```
 
-Pour prendre en charge la récupération partielle et conviviale en cas de reprise des données extraites, le point de fin de fichier prend éventuellement en charge la plage d’en-tête HTTP du type bytes. Si l’en-tête n’est pas défini, l’intégralité du contenu est renvoyée. Pour en savoir plus sur l’utilisation de l’en-tête Plage avec Marketo [Extraction en bloc](bulk-extract.md).
+Pour prendre en charge la récupération partielle et conviviale des données extraites, le point d’entrée du fichier prend éventuellement en charge la plage d’en-têtes HTTP du type octets. Si l’en-tête n’est pas défini, l’intégralité du contenu est renvoyée. En savoir plus sur l’utilisation de l’en-tête de plage avec Marketo [Extraction en bloc](bulk-extract.md).
 
-## Annulation d’une tâche
+## Annulation d’un traitement
 
-Si une tâche a été mal configurée ou devient inutile, elle peut être facilement annulée à l’aide du point de terminaison [Annuler l’exportation de la tâche de piste](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST) :
+Si une tâche n’a pas été configurée correctement ou devient inutile, elle peut facilement être annulée à l’aide du point d’entrée [Annuler la tâche d’exportation du prospect](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST) :
 
 ```
 POST /bulk/v1/leads/export/{exportId}/cancel.json
@@ -200,4 +198,4 @@ POST /bulk/v1/leads/export/{exportId}/cancel.json
 }
 ```
 
-Ceci répond avec un état indiquant que la tâche a été annulée.
+Cette opération répond avec un statut indiquant que la tâche a été annulée.

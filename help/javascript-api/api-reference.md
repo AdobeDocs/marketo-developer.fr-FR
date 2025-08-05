@@ -3,7 +3,7 @@ title: Référence de l’API Munchkin
 description: Utilisez l’API JavaScript Munchkin pour personnaliser vos données Munchkin.
 feature: Munchkin Tracking Code, Javascript
 exl-id: e9727691-5501-4223-bc98-2b4bacc33513
-source-git-commit: 1ad2d793832d882bb32ebf7ef1ecd4148a6ef8d5
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '414'
 ht-degree: 9%
@@ -12,22 +12,22 @@ ht-degree: 9%
 
 # Référence de l’API Munchkin
 
-Munchkin fournit plusieurs fonctions qui peuvent être appelées manuellement via JavaScript. Ils peuvent permettre un suivi personnalisé des événements du navigateur, tels que les lectures de vidéo ou les clics sur des liens autres que les liens.
+Munchkin fournit plusieurs fonctions qui peuvent être appelées manuellement via Javascript. Ils peuvent permettre un suivi personnalisé des événements de navigateur, tels que les lectures de vidéos, ou les clics sur des liens non pertinents.
 
 ## Fonctions
 
-L’API Munchkin comprend les fonctions suivantes : `init`, `createTrackingCookie`, `munchkinFunction`.
+L’API Munchkin comprend les fonctions suivantes : `init`, `createTrackingCookie` et `munchkinFunction`.
 
 <a name="munchkin_init"></a>
 
 ### Munchkin.init()
 
-`Munchkin.init()` doit être appelé avant toute autre fonction. Il configure Munchkin sur la page en cours pour envoyer les activités vers une instance spécifique et génère une activité &quot;Page Web des visites&quot; pour la page en cours.
+`Munchkin.init()` doit être appelé avant toute autre fonction. Il configure Munchkin sur la page active pour envoyer des activités à une instance spécifique et génère une activité « Page Web de visites » pour la page active.
 
-| Nom du paramètre | Facultatif/Obligatoire | Type | Description |
+| Nom du paramètre | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |
-| ID Munchkin | Obligatoire | Chaîne | Identifiant de compte Munchkin situé sous Admin > Intégration > Menu Munchkin. Définit l’instance cible à laquelle envoyer les activités. |
-| [Paramètres de configuration](configuration.md) | Facultatif | Objet | Permet d’activer d’autres paramètres de comportement pour Munchkin. |
+| ID Munchkin | Obligatoire | Chaîne | Identifiant de compte Munchkin sous le menu Admin > Intégration > Munchkin . Définit l’instance cible vers laquelle envoyer les activités. |
+| [ Paramètres de configuration ](configuration.md) | Facultatif | Objet | Active d’autres paramètres de comportement pour Munchkin. |
 
 ```javascript
 Munchkin.init('299-BYM-827');
@@ -35,12 +35,11 @@ Munchkin.init('299-BYM-827');
 
 ### Munchkin.createTrackingCookie()
 
-Lorsqu’elle est appelée, cette vérification vérifie qu’un cookie `_mkto_trk` existe dans le navigateur et, dans le cas contraire, en crée un. Cela s’avère utile pour effectuer le suivi des utilisateurs lors d’actions spécifiques, telles que l’enregistrement ou le téléchargement d’une ressource, si `cookieAnon` est défini sur false.
+Lorsqu’elle est appelée, cette option vérifie qu’un cookie `_mkto_trk` existe dans le navigateur et, dans le cas contraire, en crée un. Cela s’avère utile pour le suivi des utilisateurs et utilisatrices lors d’actions spécifiques, telles que l’enregistrement ou le téléchargement d’une ressource, si `cookieAnon` est défini sur false.
 
-| Nom du paramètre | Facultatif/Obligatoire | Type | Description |
+| Nom du paramètre | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |
 | forceCreate | Obligatoire | Booléen | Créez un cookie même si `cookieAnon` est défini sur false. |
-
 
 ```javascript
 Munchkin.createTrackingCookie(true);
@@ -48,21 +47,21 @@ Munchkin.createTrackingCookie(true);
 
 ### Munchkin.munchkinFunction()
 
-Utilisé pour générer des comportements de suivi personnalisés, tels que les lectures et pauses du lecteur vidéo, ou les visites de pages pour une navigation non standard, comme les codes de hachage.
+Utilisé pour générer des comportements de suivi personnalisés, tels que les lectures et les pauses du lecteur vidéo, ou les visites de page pour une navigation non standard, comme les codes de hachage.
 
-| Nom du paramètre | Facultatif/Obligatoire | Type | Description |
+| Nom du paramètre | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |
-| Type de fonction | Obligatoire | Chaîne | Détermine l’activité à enregistrer. Valeurs valides : `visitWebPage`, `clickLink`, `associateLead` |
+| Type de fonction | Obligatoire | Chaîne | Détermine l’activité à enregistrer. Valeurs autorisées : `visitWebPage`, `clickLink`, `associateLead` |
 | Données | Obligatoire | Objet | Contient les données de l’activité à enregistrer. |
 
 #### visitWebPage
 
-L’appel de `munchkinFunction()` avec `visitWebPage` envoie une activité &quot;visite&quot; à Marketo pour l’utilisateur actuel. Vous pouvez personnaliser l’URL et les `querystring` qui sont envoyés avec l’objet de données dans le deuxième argument.
+L’appel de `munchkinFunction()` avec `visitWebPage` envoie une activité de « visite » à Marketo pour l’utilisateur actuel. Vous pouvez personnaliser l’URL et les `querystring` qui sont envoyés avec l’objet de données dans le deuxième argument.
 
-| Nom de la propriété de données | Facultatif/Obligatoire | Type | Description |
+| Data Property Name | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |
-| url | Obligatoire | Chaîne | Chemin d’accès au fichier URL utilisé pour enregistrer la visite d’une page.  Cette valeur est ajoutée au nom de domaine actuel pour créer un nom de page complet. Par exemple, si l’URL est `/index.html` et que le nom de domaine est `www.example.com`, la page visitée est enregistrée comme `www.example.com/index.html`. |
-| params | Facultatif | Chaîne | Chaîne de requête des paramètres à enregistrer. |
+| url | Obligatoire | Chaîne | Chemin d’accès au fichier URL utilisé pour enregistrer une visite de page.  Cette valeur est ajoutée au nom de domaine actuel pour créer un nom de page complet. Par exemple, si l’URL est `/index.html` et que le nom de domaine est `www.example.com`, la page visitée est enregistrée comme `www.example.com/index.html`. |
+| Paramètres | Facultatif | Chaîne | Chaîne de requête des paramètres souhaités à enregistrer. |
 
 Par exemple : `foo=bar&biz=baz`.
 
@@ -76,13 +75,13 @@ Munchkin.munchkinFunction('visitWebPage', {
 
 #### clickLink
 
-L’appel de `munchkinFunction()` avec `clickLink` envoie une activité de clic à Marketo pour l’utilisateur actuel. Vous pouvez personnaliser l’URL de clic avec la propriété `href` dans l’objet de données.
+L’appel de `munchkinFunction()` avec `clickLink` envoie une activité de clic vers Marketo pour l’utilisateur actuel. Vous pouvez personnaliser l’URL de clic avec la propriété `href` dans l’objet de données.
 
-| Nom de la propriété de données | Facultatif/Obligatoire | Type | Description |
+| Data Property Name | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |
-| href | Obligatoire | Chaîne | Chemin d’accès au fichier URL utilisé pour enregistrer un clic sur les liens. Cette valeur est ajoutée au nom de domaine actuel pour créer un lien complet. |
+| href | Obligatoire | Chaîne | Chemin d’accès au fichier URL utilisé pour enregistrer un clic sur un lien. Cette valeur est ajoutée au nom de domaine actuel pour créer un lien complet. |
 
-Par exemple, si href est `/index.html` et que nom de domaine est `www.example.com`, le clic sur le lien est enregistré comme `www.example.com/index.html`.
+Par exemple, si href est `/index.html` et que le nom de domaine est `www.example.com`, le clic sur le lien est enregistré comme `www.example.com/index.html`.
 
 ```javascript
 Munchkin.munchkinFunction('clickLink', {
@@ -93,4 +92,4 @@ Munchkin.munchkinFunction('clickLink', {
 
 #### associerLead
 
-Cette méthode est obsolète et n’est plus disponible.
+Cette méthode a été abandonnée et n’est plus disponible.

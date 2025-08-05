@@ -3,7 +3,7 @@ title: Objets personnalisés
 feature: SOAP
 description: Création d’objets personnalisés.
 exl-id: 29d65841-4b44-4d94-b14e-c583d433d015
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '231'
 ht-degree: 2%
@@ -12,29 +12,29 @@ ht-degree: 2%
 
 # Objets personnalisés
 
-Un objet personnalisé Marketo permet la création d’une relation unique entre vos prospects Marketo et les enregistrements d’objets personnalisés. Vous pouvez, par exemple, effectuer le suivi de tous les défilés auxquels participe une piste. Comme les prospects peuvent assister à un certain nombre d’animations (sur plusieurs années), les objets personnalisés sont mieux adaptés pour stocker ces informations.
+Un objet personnalisé Marketo permet la création d’une relation un à plusieurs entre vos prospects Marketo et les enregistrements d’objet personnalisé. Vous pouvez, par exemple, effectuer le suivi de toutes les tournées auxquelles a assisté un prospect. Comme les prospects peuvent assister à un certain nombre de tournées de présentation (sur plusieurs années), les objets personnalisés sont mieux adaptés pour stocker ces informations.
 
-Les objets personnalisés sont pris en charge sur toutes les éditions Marketo, à l’exception de Spark. Lorsque l’objet personnalisé Marketo est correctement configuré dans votre compte, vous pouvez
+Les objets personnalisés sont pris en charge sur toutes les éditions de Marketo, à l’exception de Spark. Lorsque l’objet personnalisé Marketo est correctement configuré dans votre compte, vous pouvez :
 
-- Création/lecture/mise à jour/suppression d’enregistrements dans l’objet personnalisé via l’API Marketo SOAP
+- Créer/Lire/Mettre à jour/Supprimer des enregistrements dans l’objet personnalisé via l’API Marketo SOAP
 - Utiliser le déclencheur de liste dynamique lorsque de nouveaux enregistrements sont ajoutés à l’objet personnalisé
-- Utiliser les données d’objet personnalisées comme filtre dans les listes dynamiques
-- Utiliser les données d’objet personnalisées dans les emails à l’aide de Marketo Email Scripting
+- Utilisation des données d’objet personnalisées comme filtre dans les listes dynamiques
+- Utiliser les données d’objet personnalisées dans les e-mails à l’aide du script de messagerie Marketo
 
-## Structure des objets personnalisés
+## Structure d’objets personnalisés
 
-Les objets personnalisés se composent comme suit :
+Les objets personnalisés se composent des éléments suivants :
 
 - Un petit ensemble d’attributs fixes communs à tous les objets personnalisés :
-   - Nom de l’objet (appelé Nom du type d’objet)
+   - Nom de l’objet (ou Nom du type d’objet)
    - Description de l&#39;objet
-   - Nom du champ Lien de piste personnalisé vers Marketo : il s’agit d’un champ de l’objet de piste (Personne) auquel l’objet personnalisé fait référence.
-   - Nom du champ de clé d’objet : clé primaire utilisée par votre objet.
-- Un ou plusieurs champs spécifiques à un objet (50 champs de ce type sont pris en charge)
+   - Nom de champ du lien de lead de l’objet personnalisé vers Marketo - Il s’agit d’un champ sur l’objet de lead (personne) auquel l’objet personnalisé fait référence
+   - Nom du champ de clé de l’objet : la clé primaire utilisée par votre objet
+- Un ou plusieurs champs spécifiques à un objet (nous prenons en charge un maximum de 50 champs de ce type)
 
-## Opérations d’objet personnalisées
+## Opérations d’objet personnalisé
 
-Les appels suivants peuvent être utilisés pour interagir avec les COs.
+Les appels suivants peuvent être utilisés pour interagir avec des CO.
 
 - [getCustomObjects](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/getCustomObjectsUsingGET)
 - [syncCustomObjects](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/syncCustomObjectsUsingPOST)

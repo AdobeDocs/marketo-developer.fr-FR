@@ -3,9 +3,9 @@ title: importToList
 feature: SOAP
 description: importToList appels SOAP
 exl-id: 7e4930a9-a78f-44a3-9e8c-eeca908080c8
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '393'
+source-wordcount: '387'
 ht-degree: 5%
 
 ---
@@ -20,9 +20,9 @@ Cette fonction vous permet d’importer une liste de prospects dans une liste st
 
 | E-mail | Premier | Dernier |
 | --- | --- | --- |
-| joe@company.com | Joe | Smith |
-| mary@company.com | Marie | Rodgers |
-| wanda@megacorp.com | Wanda | Williams |
+| <joe@company.com> | Joe | Smith |
+| <mary@company.com> | Marie | Rodgers |
+| <wanda@megacorp.com> | Wanda | Williams |
 
 `displayName` valeurs doivent être utilisées dans le `importFileHeader` plutôt que les valeurs `name`.
 
@@ -30,9 +30,9 @@ Cette fonction vous permet d’importer une liste de prospects dans une liste st
 
 | E-mail | Premier | Dernier | {{my.specialToken}} | {{my.otherToken}} |
 | --- | --- | --- | --- | --- |
-| joe@company.com | Joe | Smith | Poisson | Bleu |
-| mary@company.com | Marie | Rodgers | Poulet | Marron |
-| wanda@megacorp.com | Wanda | Williams | Veggie | Hazel |
+| <joe@company.com> | Joe | Smith | Poisson | Bleu |
+| <mary@company.com> | Marie | Rodgers | Poulet | Marron |
+| <wanda@megacorp.com> | Wanda | Williams | Veggie | Hazel |
 
 **Important :** si vous ajoutez des jetons pour les prospects, vous devez spécifier la campagne intelligente qui les utilise. La prochaine fois que la campagne dynamique spécifiée s’exécutera, elle utilisera les valeurs de votre liste, au lieu des valeurs normales de Mon jeton . Une fois cette campagne unique exécutée, les jetons seront ignorés.
 

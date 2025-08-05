@@ -3,7 +3,7 @@ title: Extraction de membre de programme en bloc
 feature: REST API
 description: Traitement par lots de l’extraction des données des membres.
 exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1142'
 ht-degree: 5%
@@ -235,7 +235,7 @@ Les membres du programme prennent en charge diverses options de filtre. Plusieur
     <tr>
       <td>isExhausted</td>
       <td>Booléen</td>
-      <td>Accepte une valeur booléenne utilisée pour filtrer les enregistrements d’adhésion au programme pour <a href="https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">les personnes qui ont épuisé le contenu</a>.</td>
+      <td>Accepte une valeur booléenne utilisée pour filtrer les enregistrements d’adhésion au programme pour <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">les personnes qui ont épuisé le contenu</a>.</td>
     </tr>
     <tr>
       <td>nurtureCadence</td>
@@ -323,7 +323,6 @@ Le point d’entrée Créer une tâche de membre du programme d’exportation fo
 | Champs | Array[String] | Oui | Le paramètre fields accepte un tableau JSON de chaînes. Les champs répertoriés sont inclus dans le fichier exporté. Les types de champs suivants peuvent être exportés :`LeadCustom` `LeadProgram` MemberCustom `ProgramMember`. Spécifiez un champ à l’aide de son nom d’API REST qui peut être récupéré à l’aide des points d’entrée Décrire le lead2 et/ou Décrire le membre de programme . |
 | columnHeaderNames | Objet | Non | Un objet JSON contenant des paires clé-valeur de noms d’en-tête de champ et de colonne. La clé doit être le nom d’un champ inclus dans la tâche d’exportation. La valeur est le nom de l’en-tête de colonne exporté pour ce champ. |
 | format | Chaîne | Non | Accepte l’un des formats suivants : CSV, TSV, SSV. Le fichier exporté est rendu sous la forme d’un fichier de valeurs séparées par des virgules, des valeurs séparées par des tabulations ou des valeurs séparées par des espaces, respectivement, s’il est défini. La valeur par défaut est CSV si cette valeur n’est pas définie. |
-
 
 ## Création d’un traitement
 

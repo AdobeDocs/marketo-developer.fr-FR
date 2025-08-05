@@ -1,34 +1,33 @@
 ---
-title: Correspondance de motif
-description: Correspondance de motif
+title: Correspondance de motifs
+description: Correspondance de motifs
 feature: Javascript
 exl-id: 4ebd13e3-375b-449b-850f-3b18f570ca75
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '134'
-ht-degree: 6%
+source-wordcount: '133'
+ht-degree: 7%
 
 ---
 
-# Correspondance de motif
+# Correspondance de motifs
 
-RTP expose une fonction d’utilitaire pour vérifier si le modèle correspond à certaines chaînes. L’utilitaire ne peut pas être utilisé en mode asynchrone, car il renvoie une indication s’il existe une correspondance ou non.
+RTP expose une fonction utilitaire pour vérifier si le motif correspond à une certaine chaîne. L’utilitaire ne peut pas être utilisé en mode asynchrone, car il renvoie une indication s’il existe une correspondance ou non.
 
-Vous devez devenir client Web Personalization et faire déployer la balise [RTP](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+Vous devez devenir client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 
 ## Utilisation
 
 > rtp.checkPattern(check_against, pattern);
 
-| Paramètre | Facultatif/Obligatoire | Type | Description |
+| Paramètre | Facultatif/obligatoire | Type | Description |
 |---|---|---|---|
-| check_against | Requis | Chaîne | Chaîne correspondant au modèle. Par exemple : URL de la page active, nom du produit. |
-| pattern | Requis | Chaîne | Ajoutez % pour le caractère générique. Le modèle peut être le suivant : commencer par avec des conteneurs avec une correspondance complète |
-
+| check_against | Obligatoire | Chaîne | Chaîne avec laquelle comparer le motif. Par exemple : URL de la page actuelle, nom du produit. |
+| pattern | Obligatoire | Chaîne | Ajoutez % pour le caractère générique. Le modèle peut être:start avec fin contenant une correspondance complète |
 
 ## Exemples
 
-Définissez la variable personnalisée dans l’index 1 si l’URL de la page active se termine par &quot;productA&quot;.
+Définissez la variable personnalisée dans l’index 1 si l’URL de la page actuelle se termine par « productA ».
 
 ```javascript
 if (rtp.checkPattern(window.location.href, '%productA')) {
@@ -36,7 +35,7 @@ if (rtp.checkPattern(window.location.href, '%productA')) {
 }
 ```
 
-Le chemin d’accès à l’URL actuelle est &quot;/products/productB&quot;. Cet exemple vérifie si le chemin contient &quot;products&quot; et définit une variable personnalisée.
+Le chemin d’URL actuel est « /products/productB ». Cet exemple montre comment vérifier si le chemin d’accès contient « products » et définir une variable personnalisée.
 
 ```javascript
 var currentURLPath = '/products/productB';

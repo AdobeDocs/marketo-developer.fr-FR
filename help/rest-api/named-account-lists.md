@@ -3,7 +3,7 @@ title: Listes de comptes nommés
 feature: REST API
 description: Configurez les listes de comptes nommés.
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '696'
 ht-degree: 3%
@@ -14,7 +14,7 @@ ht-degree: 3%
 
 [Référence des points d’entrée des listes de comptes nommés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
 
-[Les listes de comptes nommés](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/target-account-management/target/account-lists) dans Marketo représentent des ensembles de comptes nommés. Elles peuvent être utilisées dans de nombreux cas, notamment pour la catégorisation, l’enrichissement des données et le filtrage intelligent des campagnes. Les API de liste des comptes nommés permettent la gestion à distance de ces ressources de liste et de leur appartenance.
+[Les listes de comptes nommés](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) dans Marketo représentent des ensembles de comptes nommés. Elles peuvent être utilisées dans de nombreux cas, notamment pour la catégorisation, l’enrichissement des données et le filtrage intelligent des campagnes. Les API de liste des comptes nommés permettent la gestion à distance de ces ressources de liste et de leur appartenance.
 `Content`
 
 ## Autorisations
@@ -33,7 +33,6 @@ Les listes de comptes nommés comportent un nombre limité de champs standard et
 | createdAt | Datetime | false | Date et heure de création de la liste. Ce champ est géré par le système et n’est pas autorisé en tant que champ lors de la création ou de la mise à jour d’un enregistrement. |
 | updatedAt | Datetime | false | Date et heure de la dernière mise à jour de la liste. Ce champ est géré par le système et n’est pas autorisé en tant que champ lors de la création ou de la mise à jour d’un enregistrement. |
 | type | Chaîne | false | Type de la liste. Peut avoir une valeur « default » ou « external ». Les listes externes sont celles créées par la vue Compte CRM . |
-
 
 ## Requête
 
@@ -294,9 +293,9 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
 ## Délais dépassés
 
 - Le délai d’expiration des points d’entrée de liste de comptes nommés est de 30, sauf indication ci-dessous
-   - Synchroniser les listes de comptes nommés : 60s 
-   - Supprimer les listes de comptes nommés : 60s 
-   - Obtenir les listes de comptes nommés : 60s 
-   - Ajouter des membres de la liste des comptes nommés : 60s 
-   - Supprimer les membres de la liste des comptes nommés : 60s 
+   - Synchroniser les listes de comptes nommés : 60s
+   - Supprimer les listes de comptes nommés : 60s
+   - Obtenir les listes de comptes nommés : 60s
+   - Ajouter des membres de la liste des comptes nommés : 60s
+   - Supprimer les membres de la liste des comptes nommés : 60s
    - Obtenir les membres de la liste des comptes nommés : 60s

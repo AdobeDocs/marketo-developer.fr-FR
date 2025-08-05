@@ -3,7 +3,7 @@ title: scheduleCampaign
 feature: SOAP, Smart Campaigns
 description: scheduleCampaign appels SOAP
 exl-id: a9ef2c16-34ef-4e0f-b765-e332335b0b81
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '252'
 ht-degree: 5%
@@ -14,7 +14,7 @@ ht-degree: 5%
 
 Cette fonction définit le planning d’une campagne dynamique par lots à exécuter immédiatement ou à une date ultérieure. Une campagne intelligente existante est nécessaire pour réussir l’opération. Cette méthode peut être utilisée avec importToList pour charger une liste de prospects, puis pour exécuter une campagne par lots sur cette liste nouvellement créée.
 
-## Jetons de programme facultatifs :
+## Jetons de programme facultatifs
 
 De la même manière que pour la fonction requestCampaign, vous pouvez transmettre un tableau de mes jetons dans cet appel API qui remplacera les jetons existants. Une fois la campagne exécutée, les jetons sont ignorés.
 
