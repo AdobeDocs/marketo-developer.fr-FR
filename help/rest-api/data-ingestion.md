@@ -1,9 +1,9 @@
 ---
-title: Ingestion des données
+title: Ingestion de données
 feature: REST API, Dynamic Content
 description: Utiliser des données avec des API Marketo.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 4bac6968867f1fbee0846b1bcd75b5e34ad91dee
 workflow-type: tm+mt
 source-wordcount: '965'
 ht-degree: 13%
@@ -14,11 +14,13 @@ ht-degree: 13%
 
 L’API Data Ingestion est un service à haut volume, à faible latence et à haute disponibilité conçu pour gérer l’ingestion de grandes quantités de données de personnes et de données relatives aux personnes de manière efficace et avec un délai minimal.
 
-Les données sont ingérées en soumettant des requêtes qui s’exécutent de manière asynchrone. Le statut de la requête peut être récupéré en s’abonnant à des événements du flux de données d’observabilité [&#128279;](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup) de Marketo. &#x200B;
+Les données sont ingérées en soumettant des requêtes qui s’exécutent de manière asynchrone. Le statut de la requête peut être récupéré en s’abonnant à des événements du flux de données d’observabilité [](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup) de Marketo. &#x200B;
 
 Les interfaces sont proposées pour deux types d&#39;objets : Personnes, Objets personnalisés. L’opération d’enregistrement est « insert or update » uniquement.
 
-L’API Data Ingestion est actuellement en version bêta privée.  Les invités doivent disposer d’un droit pour le package [Marketo Engage Performance Tier](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+>[!NOTE]
+>
+>L’API Data Ingestion est actuellement en version bêta privée.  Les invités doivent disposer d’un droit pour le package [Marketo Engage Performance Tier](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Authentification
 
