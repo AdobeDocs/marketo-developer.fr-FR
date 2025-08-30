@@ -5,9 +5,9 @@ breadcrumb-title: Guide de developpement [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: f269cbe6edbd6d3fd5b579b1ea03bab8b99208be
+source-git-commit: f314f153c80416bbccc4328756e71c07e696dd00
 workflow-type: tm+mt
-source-wordcount: '252'
+source-wordcount: '251'
 ht-degree: 41%
 
 ---
@@ -31,7 +31,6 @@ ht-degree: 41%
    - [Predictive Content](javascript-api/predictive-content.md)
    - [Redirections](javascript-api/redirect.md)
    - [Recommandations relatives aux médias riches](javascript-api/rich-media-recommendation.md)
-   - [Social](javascript-api/social.md)
    - [Déclencheurs](javascript-api/triggers.md)
    - [Personnalisation Web](javascript-api/web-personalization.md)
 - Mobile {#mobile}
