@@ -66,7 +66,7 @@ Accédez ensuite au menu **[!UICONTROL Admin]**, puis à **[!UICONTROL Services 
 
 ![Services web](assets/admin-web-services.png)
 
-Recherchez le [!UICONTROL  Point d’entrée ] dans la zone API REST et enregistrez-le dans une note pour l’instant.
+Recherchez le [!UICONTROL &#x200B; Point d’entrée &#x200B;] dans la zone API REST et enregistrez-le dans une note pour l’instant.
 
 ![ Point d’entrée REST ](assets/admin-web-services-rest-endpoint-1.png)
 
