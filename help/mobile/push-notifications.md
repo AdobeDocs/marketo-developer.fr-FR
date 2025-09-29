@@ -1,11 +1,11 @@
 ---
 title: Notifications push
 feature: Mobile Marketing
-description: Activation des notifications push pour Marketo Mobile
+description: Guide d’activation des notifications push iOS avec Marketo, depuis les certificats APNs et la configuration de Xcode jusqu’à l’intégration de Marketo SDK, l’enregistrement et la gestion des jetons.
 exl-id: 41d657d8-9eea-4314-ab24-fd4cb2be7f61
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1329'
+source-wordcount: '1344'
 ht-degree: 0%
 
 ---

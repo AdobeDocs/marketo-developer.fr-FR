@@ -1,12 +1,12 @@
 ---
 title: React Native
 feature: Mobile Marketing
-description: Installation de React Native pour Marketo
+description: Installez et configurez Marketo SDK dans les applications React Native avec les étapes Android Gradle et iOS CocoaPods, le pontage de modules natifs, les notifications push et l’association de prospects.
 exl-id: 462fd32e-91f1-4582-93f2-9efe4d4761ff
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '810'
-ht-degree: 0%
+source-wordcount: '830'
+ht-degree: 1%
 
 ---
 
@@ -16,7 +16,7 @@ Cet article fournit des informations sur la manière d’installer et de configu
 
 ## Conditions préalables
 
-[Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez la clé secrète de l’application et l’ID Munchkin).
+[Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez la clé secrète de l’application et l’ID Munchkin).
 
 ## Intégration de SDK
 
@@ -415,7 +415,7 @@ RNMarketoModule.initializeMarketoPush("350312872033", "MKTO")
 RNMarketoModule.uninitializeMarketoPush()
 ```
 
-#### Configuration Des Notifications Push
+#### Configurer les notifications push
 
 Initialiser la notification push avec l&#39;ID de projet et le nom de canal
 

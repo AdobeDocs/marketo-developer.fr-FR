@@ -1,19 +1,19 @@
 ---
-title: Ingestion des données
-description: Présentation de l’API Data Ingestion
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+title: Ingestion de données
+description: API Marketo Data Ingestion pour les upserts de personnes et d’objets personnalisés à volume élevé et à faible latence, statut asynchrone via Observability, authentification de l’en-tête OAuth, version bêta privée.
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '940'
+source-wordcount: '960'
 ht-degree: 13%
 
 ---
 
 
-# Ingestion des données
+# Ingestion de données
 
 L’API Data Ingestion est un service à haut volume, à faible latence et à haute disponibilité conçu pour gérer l’ingestion de grandes quantités de données de personnes et de données relatives aux personnes de manière efficace et avec un délai minimal.
 
-Les données sont ingérées en soumettant des requêtes qui s’exécutent de manière asynchrone. Le statut de la requête peut être récupéré en s’abonnant à des événements du flux de données d’observabilité [&#128279;](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup/) de Marketo. &#x200B;
+Les données sont ingérées en soumettant des requêtes qui s’exécutent de manière asynchrone. Le statut de la requête peut être récupéré en s’abonnant à des événements du flux de données d’observabilité [](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup/) de Marketo. &#x200B;
 
 Les interfaces sont proposées pour deux types d&#39;objets : Personnes, Objets personnalisés. L’opération d’enregistrement est « insert or update » uniquement.
 

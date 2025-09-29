@@ -1,20 +1,20 @@
 ---
-title: Triggers
-description: Triggers
+title: Déclencheurs
+description: Utilisez des déclencheurs RTP dans Web Personalization pour exécuter des fonctions à l’état rtp, y compris userContextReady, avec une syntaxe, des paramètres et un exemple d’emplacement.
 feature: Javascript
 exl-id: 588836fa-1e4d-41f3-aec5-5cd17eb16071
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '80'
-ht-degree: 13%
+source-wordcount: '100'
+ht-degree: 10%
 
 ---
 
-# Triggers
+# Déclencheurs
 
 Ajoute la possibilité de déclencher des fonctions sur certains états de l’objet rtp global.
 
-Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 
 ## Utilisation
 

@@ -1,11 +1,11 @@
 ---
 title: Référence du point d’entrée
 feature: REST API
-description: Références du point d’entrée de l’API Marketo
+description: Liste complète des points d’entrée de l’API REST Marketo avec les méthodes, les URI et les autorisations requises pour les activités, l’exportation en masse, l’identité, les prospects, les ressources et les utilisateurs.
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '4448'
+source-wordcount: '4464'
 ht-degree: 28%
 
 ---
@@ -158,17 +158,17 @@ Voici une liste complète des points d’entrée de l’API REST.
 | Obtenir le contenu du dossier | Dossiers | GET | /rest/asset/v1/folder/{id}/content.json | Ressource en lecture seule |
 | Obtenir les dossiers | Dossiers | GET | /rest/asset/v1/folders.json | Ressource en lecture seule |
 | Mettre à jour les métadonnées de dossier | Dossiers | POST | /rest/asset/v1/folder/{id}.json | Ressource en lecture-écriture |
-| Ajouter un champ au formulaire | Champs formulaire | POST | /rest/asset/v1/form/{id}/fields.json | Ressource en lecture-écriture |
-| Ajouter un jeu de champs au formulaire | Champs formulaire | POST | /rest/asset/v1/form/{id}/fieldSet.json | Ressource en lecture-écriture |
-| Ajouter des règles de visibilité de champ de formulaire | Champs formulaire | POST | /rest/asset/v1/form/{formId}/field/{fieldId}/visibility.json | Ressource en lecture-écriture |
-| Ajouter un champ de texte enrichi | Champs formulaire | POST | /rest/asset/v1/form/{id}/richText.json | Ressource en lecture-écriture |
-| Supprimer le champ de l’ensemble de champs | Champs formulaire | POST | /rest/asset/v1/form/{id}/fieldSet/{fieldSetId}/field/{fieldId}/delete.json | Ressource en lecture-écriture |
-| Supprimer le champ de formulaire | Champs formulaire | POST | /rest/asset/v1/form/{id}/field/{fieldId}/delete.json | Ressource en lecture-écriture |
-| Obtenir les champs de formulaire disponibles | Champs formulaire | GET | /rest/asset/v1/form/fields.json | Ressource en lecture seule |
-| Obtenir les champs de membre de programme de formulaire disponibles | Champs formulaire | GET | /rest/asset/v1/form/programMemberFields.json | Ressource en lecture seule |
-| Obtenir des champs pour le formulaire | Champs formulaire | GET | /rest/asset/v1/form/{id}/fields.json | Ressource en lecture seule |
-| Mettre à jour les positions des champs | Champs formulaire | POST | /rest/asset/v1/form/{id}/reArrange.json | Ressource en lecture-écriture |
-| Mettre à jour le champ de formulaire | Champs formulaire | POST | /rest/asset/v1/form/{id}/field/{fieldId}.json | Ressource en lecture-écriture |
+| Ajouter un champ au formulaire | Champs de formulaire | POST | /rest/asset/v1/form/{id}/fields.json | Ressource en lecture-écriture |
+| Ajouter un jeu de champs au formulaire | Champs de formulaire | POST | /rest/asset/v1/form/{id}/fieldSet.json | Ressource en lecture-écriture |
+| Ajouter des règles de visibilité de champ de formulaire | Champs de formulaire | POST | /rest/asset/v1/form/{formId}/field/{fieldId}/visibility.json | Ressource en lecture-écriture |
+| Ajouter un champ de texte enrichi | Champs de formulaire | POST | /rest/asset/v1/form/{id}/richText.json | Ressource en lecture-écriture |
+| Supprimer le champ de l’ensemble de champs | Champs de formulaire | POST | /rest/asset/v1/form/{id}/fieldSet/{fieldSetId}/field/{fieldId}/delete.json | Ressource en lecture-écriture |
+| Supprimer le champ de formulaire | Champs de formulaire | POST | /rest/asset/v1/form/{id}/field/{fieldId}/delete.json | Ressource en lecture-écriture |
+| Obtenir les champs de formulaire disponibles | Champs de formulaire | GET | /rest/asset/v1/form/fields.json | Ressource en lecture seule |
+| Obtenir les champs de membre de programme de formulaire disponibles | Champs de formulaire | GET | /rest/asset/v1/form/programMemberFields.json | Ressource en lecture seule |
+| Obtenir des champs pour le formulaire | Champs de formulaire | GET | /rest/asset/v1/form/{id}/fields.json | Ressource en lecture seule |
+| Mettre à jour les positions des champs | Champs de formulaire | POST | /rest/asset/v1/form/{id}/reArrange.json | Ressource en lecture-écriture |
+| Mettre à jour le champ de formulaire | Champs de formulaire | POST | /rest/asset/v1/form/{id}/field/{fieldId}.json | Ressource en lecture-écriture |
 | Approuver le brouillon de formulaire | Formulaires | POST | /rest/asset/v1/form/{id}/approveDraft.json | Ressource en lecture-écriture |
 | Cloner le formulaire | Formulaires | POST | /rest/asset/v1/form/{id}/clone.json | Ressource en lecture-écriture |
 | Créer un formulaire | Formulaires | POST | /rest/asset/v1/forms.json | Ressource en lecture-écriture |

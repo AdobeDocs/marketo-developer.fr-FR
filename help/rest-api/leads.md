@@ -1,11 +1,11 @@
 ---
 title: Prospects
 feature: REST API
-description: Détails sur les appels de l’API des leads
+description: Explorez les fonctionnalités de l’API REST des leads Marketo, notamment la description, la requête par ID ou filtre, les champs par défaut, les limites et la récupération des ECID.
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '3338'
+source-wordcount: '3351'
 ht-degree: 3%
 
 ---
@@ -814,7 +814,7 @@ Adhésion
 Les enregistrements de lead peuvent également être récupérés en fonction de l’appartenance à une liste statique ou à un programme. De plus, vous pouvez récupérer toutes les listes statiques, les programmes ou les campagnes intelligentes dont un prospect est membre.
 
 La structure de réponse et les paramètres facultatifs sont identiques à ceux de l’option Get Leads by Filter Type, bien que filterType et filterValues ne puissent pas être utilisés avec cette API.
-Pour accéder à l’ID de liste via l’interface utilisateur de Marketo, accédez à la liste. La liste `id` se trouve dans l’URL de la liste statique, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. Dans cet exemple, 1001 est la `id` de la liste.
+Pour accéder à l’ID de liste via l’interface utilisateur de Marketo, accédez à la liste. La liste `id` se trouve dans l’URL de la liste statique, `https://app-****.marketo.com/#ST1001A1`. Dans cet exemple, 1001 est la `id` de la liste.
 
 ### Requête
 

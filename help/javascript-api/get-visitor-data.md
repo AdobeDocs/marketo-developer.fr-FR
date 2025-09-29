@@ -1,29 +1,29 @@
 ---
-title: Obtention des données du visiteur
-description: Obtention des données du visiteur
+title: Obtenir les données du visiteur
+description: Obtenez l’identification des visiteurs en temps réel à l’aide de l’API de contexte utilisateur RTP avec des paramètres, un exemple de rappel et des exemples de réponses pour les segments, ABM et l’emplacement.
 feature: Javascript
 exl-id: 39a2446d-8a31-461e-bbe6-a7edf24b4d52
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '184'
-ht-degree: 5%
+source-wordcount: '203'
+ht-degree: 4%
 
 ---
 
-# Obtention des données du visiteur
+# Obtenir les données du visiteur
 
 Cette méthode est utilisée pour obtenir des données d’identification des visiteurs en temps réel.
 
-- Vous devez devenir client Web Personalization et faire déployer la balise [RTP](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
-- Le protocole RTP ne prend pas en charge les listes de comptes nommés Marketing basé sur un compte. Les listes ABM et le code ne se rapportent qu’aux listes de comptes téléchargées (fichiers CSV) gérées dans RTP.
+- Vous devez devenir client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+- RTP ne prend pas en charge les listes de comptes nommés Marketing basées sur les comptes. Les listes et le code ABM ne concernent que les listes de comptes chargées (fichiers CSV) gérées dans RTP.
 
-Si une erreur se produit, un message d’erreur s’affiche dans le cadre de la réponse JSON. Si un code 500 est renvoyé, contactez l’assistance avec la demande que vous avez effectuée.
+Si une erreur se produit, un message d’erreur s’affiche dans le cadre de la réponse JSON. Si un code 500 est renvoyé, contactez l’assistance pour la requête que vous avez effectuée.
 
-| Paramètre | Facultatif/Obligatoire | Type | Description |
+| Paramètre | Facultatif/obligatoire | Type | Description |
 |---|---|---|---|
-| `get` | Requis | Chaîne | Action de méthode. |
-| `visitor` | Requis | Chaîne | Nom de la méthode. |
-| `callback` | Requis | Fonction | Fonction de rappel à déclencher pour chaque campagne renvoyée. |
+| `get` | Obligatoire | Chaîne | Action de méthode. |
+| `visitor` | Obligatoire | Chaîne | Nom de la méthode. |
+| `callback` | Obligatoire | Fonction | Fonction de rappel à déclencher pour chaque campagne renvoyée. |
 
 ## Exemples
 
@@ -36,9 +36,9 @@ function callbackFunction() {
 rtp('get', 'visitor', callbackFunction);
 ```
 
-Réponse avec la correspondance de segment :
+Réponse avec correspondance de segments :
 
-Vous trouverez ci-dessous un exemple de réponse qui est renvoyée si le visiteur correspondait à des segments en temps réel avant l’appel de l’API Get Visitor Data.
+Vous trouverez ci-dessous un exemple de réponse qui est renvoyé si le visiteur correspondait à des segments en temps réel avant l’appel de l’API Get Visitor Data .
 
 ```json
 {
@@ -76,7 +76,7 @@ Vous trouverez ci-dessous un exemple de réponse qui est renvoyée si le visiteu
 
 Réponse sans correspondance de segment :
 
-Vous trouverez ci-dessous un exemple de réponse qui est renvoyée si le visiteur ne correspond à aucun segment en temps réel avant l’appel de l’API Get Visitor Data.
+Vous trouverez ci-dessous un exemple de réponse renvoyée au cas où le visiteur ne correspondait à aucun segment en temps réel avant l’appel de l’API Get Visitor Data .
 
 ```json
 {

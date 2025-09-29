@@ -1,11 +1,11 @@
 ---
 title: Vendeurs
 feature: REST API
-description: Lire les données sur les vendeurs.
+description: Guide de l’API REST Marketo pour les enregistrements de commercial avec synchronisation SFDC ou Dynamics, à l’aide de externalSalesPersonId pour mettre en relation les prospects et effectuer des requêtes, des upserts et des suppressions.
 exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '303'
+source-wordcount: '322'
 ht-degree: 0%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 0%
 
 [Référence du point d’entrée du commercial](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Sales-Persons)
 
-Les API Sales Person sont en lecture seule pour les abonnements pour lesquels la [Synchronisation de SFDC](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou la [Synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) est activée. Les vendeurs sont un type d&#39;enregistrement de personne qui sont les propriétaires de ventes des enregistrements de prospect. Ils sont associés aux enregistrements de lead par le champ externalSalesPersonId sur chaque enregistrement de lead. Lorsqu’un prospect est associé à un commercial par un champ externalSalesPersonId renseigné, les champs de recherche de Propriétaire de prospect correspondants sont renseignés pour cet enregistrement de prospect dans Marketo, ce qui permet d’utiliser les filtres et jetons correspondants.
+Les API Sales Person sont en lecture seule pour les abonnements pour lesquels la [Synchronisation de SFDC](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou la [Synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) est activée. Les vendeurs sont un type d&#39;enregistrement de personne qui sont les propriétaires de ventes des enregistrements de prospect. Ils sont associés aux enregistrements de lead par le champ externalSalesPersonId sur chaque enregistrement de lead. Lorsqu’un prospect est associé à un commercial par un champ externalSalesPersonId renseigné, les champs de recherche de Propriétaire de prospect correspondants sont renseignés pour cet enregistrement de prospect dans Marketo, ce qui permet d’utiliser les filtres et jetons correspondants.
 
 Les commerciaux sont associés aux enregistrements de lead à l’aide du point d’entrée [Synchroniser les leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) et en transmettant l’attribut externalSalesPersonId.
 

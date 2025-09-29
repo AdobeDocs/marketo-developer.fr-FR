@@ -1,11 +1,11 @@
 ---
 title: Extraits
 feature: REST API, Snippets
-description: Gestion des fragments de code via l’API Marketo.
+description: API REST Marketo Asset pour les fragments de code, couvrant la requête par ID et naviguer avec statut, obtenir du contenu, créer et mettre à jour des contenus HTML, Texte et dynamiques.
 exl-id: 87901c29-ee59-4224-848d-3bd6a6c52718
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '438'
+source-wordcount: '456'
 ht-degree: 2%
 
 ---
@@ -14,13 +14,13 @@ ht-degree: 2%
 
 [Référence du point d’entrée du fragment de code](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets)
 
-Les fragments de code sont des composants d’HTML réutilisables qui peuvent être incorporés dans les emails et les landing pages et qui peuvent être segmentés pour le contenu dynamique. Les fragments n’ont pas de modèle associé et peuvent être créés et déployés dans d’autres ressources dans Marketo.
+Les fragments de code sont des composants HTML réutilisables qui peuvent être incorporés dans des e-mails et des landing pages et qui peuvent être segmentés pour le contenu dynamique. Les fragments de code ne sont pas associés à des modèles et peuvent être créés et déployés dans d’autres ressources dans Marketo.
 
 ## Requête
 
-Les fragments de requête suivent le modèle standard pour les ressources, sauf qu’il ne comporte pas de méthode Par nom . Les méthodes [By Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetByIdUsingGET) et [Browse](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetUsingGET) permettent l’utilisation du champ status pour récupérer les versions approuvées ou préliminaires de l’extrait de code.
+L’interrogation de fragments de code suit le modèle standard pour les ressources , sauf qu’elle ne comporte pas de méthode Par nom. Les méthodes [Par ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetByIdUsingGET) et [Parcourir](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetUsingGET) permettent d’utiliser le champ de statut pour récupérer les versions approuvées ou les brouillons du fragment de code.
 
-### Par identifiant
+### Par Id
 
 ```
 GET /rest/asset/v1/snippet/{id}.json?status=approved
@@ -139,11 +139,11 @@ GET /rest/asset/v1/snippet/{id}/content.json
 }
 ```
 
-L’appel renvoie une liste des sections de contenu,  qui se composent de sections de type HTML ou Contenu dynamique, et éventuellement d’une section de type Texte.
+L’appel renvoie une liste de sections de contenu,  qui se composent de sections de type HTML ou DynamicContent, et éventuellement d’une section avec un type de texte.
 
 ## Créer et mettre à jour
 
-Les fragments de code suivent le modèle complexe de création de la ressource, où l’appel à [créer un extrait de code](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/createSnippetUsingPOST) et son contenu sont effectués séparément. Par conséquent, le premier appel doit être au point de terminaison de création, avec une description facultative.   Les données sont transmises sous la forme x-www-form-urlencoded, et non sous la forme JSON.
+Les fragments de code suivent le modèle de création de ressource complexe, où l’appel de la commande [créer un fragment de code](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/createSnippetUsingPOST) et son contenu sont effectués séparément. Par conséquent, le premier appel doit être effectué vers le point d’entrée de création, avec une description facultative.   Les données sont transmises sous la forme x-www-form-urlencoded, et non sous la forme JSON.
 
 ```
 POST /rest/asset/v1/snippets.json
@@ -183,7 +183,7 @@ name=Test Snippet 09 - deverly&folder={"id":395,"type":"Folder"}&description=Thi
 }
 ```
 
-L’ajout ou le remplacement de contenu dans un fragment de code s’effectue par identifiant. Le contenu peut être de type Texte, HTML ou Contenu dynamique. Si le type est Texte, le paramètre de contenu est un point de fin de texte brut, tandis que s’il est HTML, il s’agit du texte de balisage souhaité. Si le type est défini sur DynamicContent, le paramètre de contenu doit être défini sur l’identifiant de la segmentation à associer au fragment de code.
+L’ajout ou le remplacement de contenu dans un fragment de code est effectué par ID. Le contenu peut être de type Texte, HTML ou Contenu dynamique. Si le type est Texte, le paramètre de contenu est le point d’entrée de texte brut, tandis que s’il s’agit d’HTML, il s’agit du texte de balisage souhaité. Si le type est défini sur Contenu dynamique, le paramètre de contenu doit être défini sur l’identifiant de la segmentation à associer au fragment de code.
 
 ```
 POST /rest/asset/v1/snippet/{id}/content.json
@@ -211,7 +211,7 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 }
 ```
 
-[La mise à jour des métadonnées](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/updateSnippetUsingPOST) est également effectuée par identifiant. Seul le nom et la description peuvent être mis à jour :
+La [mise à jour des métadonnées](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/updateSnippetUsingPOST) est également effectuée par l’ID. Seuls le nom et la description peuvent être mis à jour :
 
 ```
 POST /rest/asset/v1/snippet/{id}.json
@@ -253,7 +253,7 @@ name=Test Snippet&description=New Description
 
 ## Contenu dynamique
 
-Les fragments de code suivent le modèle standard pour le contenu dynamique, mais ils ne représentent qu’une seule section de contenu entière. Par conséquent, chaque fragment de code ne peut contenir qu’une seule section dynamique, avec une liste de sections internes facultative pour chaque segment de la segmentation utilisée. Le contenu dynamique peut être interrogé uniquement par l’identifiant de fragment de code, puisqu’il ne peut y avoir qu’une seule section de contenu dynamique dans un fragment de code.
+Les fragments de code suivent le modèle standard pour le contenu dynamique, mais ils ne représentent qu’une seule section de contenu. De ce fait, chaque fragment de code peut ne contenir qu’une seule section dynamique, avec une liste de sections internes éventuellement pour chaque segment de la segmentation utilisée. Le contenu dynamique peut être interrogé uniquement par l’ID de fragment de code, car il ne peut y avoir qu’une seule section de contenu dynamique dans un fragment de code.
 
 ```
 GET /rest/asset/v1/snippet/{id}/dynamicContent.json
@@ -308,7 +308,7 @@ GET /rest/asset/v1/snippet/{id}/dynamicContent.json
 
 ## Validation
 
-Les fragments disposent de points de terminaison disponibles pour l’approbation, l’annulation de l’approbation et le rejet des brouillons, qui suivent le modèle de ressource standard. Un fragment de code doit être à l’état de brouillon pour être approuvé.
+Les fragments de code ont des points d’entrée pour l’approbation, l’annulation et l’abandon des brouillons, qui suivent le modèle de ressource standard. Un fragment de code doit être à l’état de brouillon pour être approuvé.
 
 ### Approuver
 
@@ -344,7 +344,7 @@ POST /rest/asset/v1/snippet/{id}/approveDraft.json
 
 ### Désapprouver
 
-Le point d’entrée `unapprove` ne peut être utilisé que sur les fragments de code approuvés.
+Le point d’entrée `unapprove` ne peut être utilisé que sur des fragments de code approuvés.
 
 ```
 POST /rest/asset/v1/snippet/{id}/unapprove.json
@@ -400,7 +400,7 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 ## Cloner
 
-[Le clonage d’un fragment de code](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/cloneSnippetUsingPOST) avec l’API est simple et suit le modèle standard, avec un nom obligatoire, l’identifiant du fragment de code et du dossier d’origine, ainsi qu’une description facultative.  Si aucune version approuvée n’existe, la version préliminaire est clonée.
+[Le clonage d’un fragment de code](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/cloneSnippetUsingPOST) avec l’API est simple et suit le modèle standard, avec un nom obligatoire, l’identifiant du fragment de code et du dossier d’origine, ainsi qu’une description facultative.  S’il n’existe aucune version approuvée, le brouillon est cloné.
 
 ```
 POST /rest/asset/v1/snippet/{id}/clone.json

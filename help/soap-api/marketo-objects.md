@@ -1,11 +1,11 @@
 ---
 title: Objets Marketo
 feature: SOAP
-description: Présentation des objets Marketo
+description: Présentation des MObjects Marketo, y compris les types, les attributs, le comportement des clés externes et les API SOAP prises en charge pour les enregistrements d’opportunités, de programmes et connexes.
 exl-id: 99b9aed4-94e8-46e8-84d9-2cc5215b0c13
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '249'
+source-wordcount: '265'
 ht-degree: 0%
 
 ---

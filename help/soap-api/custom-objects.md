@@ -1,11 +1,11 @@
 ---
 title: Objets personnalisés
 feature: SOAP
-description: Création d’objets personnalisés.
+description: Découvrez comment les objets personnalisés Marketo lient un prospect à de nombreux enregistrements, avec une structure, des limites et des appels d’API SOAP pour obtenir, synchroniser, supprimer, ainsi que pour l’utilisation de listes dynamiques et d’e-mails.
 exl-id: 29d65841-4b44-4d94-b14e-c583d433d015
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '231'
+source-wordcount: '256'
 ht-degree: 2%
 
 ---

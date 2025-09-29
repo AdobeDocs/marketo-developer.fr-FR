@@ -1,18 +1,18 @@
 ---
 title: Prospects
 feature: SOAP
-description: Passe SOAP appels
+description: Présentation des opérations SOAP pour les leads, y compris getLead, getMultipleLeads, syncLead, syncMultipleLeads et mergeLeads pour récupérer, synchroniser et fusionner les enregistrements.
 exl-id: 412fa16c-bd6e-4344-83ed-33dd5381fda4
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '21'
-ht-degree: 9%
+source-wordcount: '37'
+ht-degree: 5%
 
 ---
 
 # Prospects
 
-Les appels SOAP suivants peuvent être utilisés pour interagir avec Leads.
+Les appels SOAP suivants peuvent être utilisés pour interagir avec les prospects.
 
 - [getLead](getlead.md)
 - [getMultipleLeads](getmultipleleads.md)

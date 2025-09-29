@@ -1,11 +1,11 @@
 ---
 title: Rôles d’opportunité
 feature: REST API
-description: Gestion des rôles d’opportunité dans Marketo.
+description: Gérez les rôles d’opportunité Marketo via l’API REST, notamment la description, les requêtes avec des champs de déduplication composés, la création d’une suppression de mise à jour, les dépassements de délai et aucune synchronisation CRM.
 exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '253'
+source-wordcount: '270'
 ht-degree: 0%
 
 ---

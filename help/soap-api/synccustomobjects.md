@@ -1,11 +1,11 @@
 ---
 title: syncCustomObjects
 feature: SOAP
-description: appels SOAP syncCustomObjects
+description: Utilisez Marketo syncCustomObjects SOAP pour insérer, mettre à jour ou mettre à jour jusqu'à 100 objets personnalisés par appel avec des résultats de statut par enregistrement et des exemples XML et PHP.
 exl-id: dbdd7ee6-f83f-4e20-b847-25a61f0f6046
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '226'
+source-wordcount: '248'
 ht-degree: 4%
 
 ---

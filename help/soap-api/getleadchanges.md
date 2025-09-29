@@ -1,11 +1,11 @@
 ---
 title: getLeadChanges
 feature: SOAP
-description: appels SOAP getLeadChanges
+description: Découvrez comment utiliser l’API getLeadChanges de Marketo SOAP pour récupérer les activités de changement de prospect à l’aide de filtres, d’un sélecteur de prospect, d’une pagination et d’exemples XML.
 exl-id: 23445684-d8d9-407b-8f19-cb69e806795c
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '401'
+source-wordcount: '419'
 ht-degree: 3%
 
 ---

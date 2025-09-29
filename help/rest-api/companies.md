@@ -1,11 +1,11 @@
 ---
 title: Sociétés
 feature: REST API
-description: Configurez les données de société avec les API Marketo.
+description: Utilisez l’API REST Entreprises Marketo pour décrire, interroger et synchroniser les enregistrements d’entreprise, gérer les champs et effectuer une déduplication par externalCompanyId, et notez que la synchronisation CRM est en lecture seule.
 exl-id: 80e514a2-1c86-46a7-82bc-e4db702189b0
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '564'
+source-wordcount: '582'
 ht-degree: 1%
 
 ---
@@ -16,7 +16,7 @@ ht-degree: 1%
 
 Les sociétés représentent l&#39;organisation à laquelle appartiennent les enregistrements de leads. Les leads sont ajoutés à une entreprise en renseignant leur champ de `externalCompanyId` correspondant à l’aide des points d’entrée [Synchroniser les leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) ou [Importation de leads en bloc](bulk-lead-import.md). Une fois qu’un prospect a été ajouté à une entreprise, vous ne pouvez pas le supprimer de cette entreprise (à moins d’ajouter le prospect à une autre entreprise). Les leads liés à un enregistrement d’entreprise héritent directement des valeurs d’un enregistrement d’entreprise comme si les valeurs existaient sur le propre enregistrement du lead.
 
-Les API d’entreprise sont en lecture seule pour les abonnements pour lesquels la [synchronisation de SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=fr) ou la [synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=fr) est activée.
+Les API d’entreprise sont en lecture seule pour les abonnements pour lesquels la [synchronisation de SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou la [synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) est activée.
 
 ## Décrire
 

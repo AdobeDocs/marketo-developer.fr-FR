@@ -1,12 +1,12 @@
 ---
 title: Filtres de type d’activité
 feature: SOAP
-description: Filtres Type d’activité pour les appels SOAP.
+description: Parcourez tous les filtres Type d’activité pris en charge pour les appels SOAP, des clics d’e-mail aux remplissages de formulaires, en passant par les modifications des campagnes SFDC et les mises à jour d’opportunités.
 exl-id: d661bb41-5615-4394-ade0-29254e48f7eb
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '210'
-ht-degree: 94%
+source-wordcount: '226'
+ht-degree: 87%
 
 ---
 
@@ -30,17 +30,17 @@ ht-degree: 94%
 | Modifier le rythme de fidélisation |
 | Modifier fidélisation épuisée |
 | Modifier le suivi de fidélisation |
-| Modifier le détenteur |
+| Modifier l’entité propriétaire |
 | Modifier les données du programme |
 | Modifier l’étape dans le cycle de vente |
 | Modifier l’étape dans le cycle de vente manuellement |
 | Modifier évaluation |
 | Modifier segment |
 | Modifier le statut de progression |
-| Modifier statut dans une campagne SFDC |
-| Cliquer sur e-mail |
+| Modifier le statut dans une campagne SFDC |
+| Cliquer sur l’e-mail |
 | Cliquer sur lien |
-| Cliquer sur e-mail de vente |
+| Cliquer sur l’e-mail commercial |
 | Cliquer sur le lien partagé |
 | Lead converti |
 | Créer une tâche |
@@ -57,7 +57,7 @@ ht-degree: 94%
 | Nouvelle opportunité SFDC |
 | Déployer la fidélisation |
 | Ouvrir e-mail |
-| Ouvrir e-mail de vente |
+| Ouvrir l’e-mail commercial |
 | Recevoir l&#39;e-mail de vente |
 | E-mail de transfert à un ami reçu |
 | Supprimer des flux |

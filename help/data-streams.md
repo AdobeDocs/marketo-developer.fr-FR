@@ -1,10 +1,10 @@
 ---
 title: Flux de données
-description: Présentation des flux de données
+description: Présentation des flux de données Marketo Engage permettant une activité de prospect et des événements de contrôle des utilisateurs en temps quasi réel, ce qui allège les limites d’API pour les clients de niveau de performance
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1601'
+source-wordcount: '1620'
 ht-degree: 2%
 
 ---
@@ -83,7 +83,7 @@ Liste des événements d’audit d’utilisateur diffusés en continu :
 | Programme par défaut | cloner, créer, supprimer, modifier le canal, exporter, modifier la configuration du programme, modifier le jeton de programme, renommer |
 | E-mail | approuver, cloner, créer, supprimer, modifier, déplacer, renommer, annuler l’approbation |
 | Programme d&#39;e-mail en masse | approuver, childUpdate, cloner, créer, supprimer, modifier, modifier le canal, modifier le planning du programme, modifier la configuration du programme, modifier le jeton du programme, renommer, annuler l’approbation |
-| Modèle d&#39;e-mail | approuver, cloner, créer, supprimer, draftCreate, draftDiscard, modifier, renommer, annuler l&#39;approbation |
+| Modèle d’e-mail | approuver, cloner, créer, supprimer, draftCreate, draftDiscard, modifier, renommer, annuler l&#39;approbation |
 | Programme d’engagement | cloner, créer, supprimer, modifier le canal, modifier la configuration du programme, modifier le flux du programme, modifier le jeton du programme, renommer |
 | Programme d’événement | cloner, créer, supprimer, modifier le canal, modifier le planning du programme, modifier la configuration du programme, modifier le jeton du programme, renommer |
 | Dossier | créer, supprimer, modifier, renommer |
@@ -262,7 +262,7 @@ Pour configurer Adobe IO, reportez-vous à la section [Configuration de flux de 
 
 ### Configuration du flux de données d’audit des utilisateurs dans Marketo
 
-Le flux de données de contrôle de l’utilisateur est actuellement disponible dans le cadre des packages de performances avec les 3 autres flux de données. Pour plus d’informations sur les packages, reportez-vous à la [page de description du produit](https://helpx.adobe.com/fr/legal/product-descriptions/adobe-marketo-engage---product-description.html) pour connaître les limites et fonctionnalités du produit.
+Le flux de données de contrôle de l’utilisateur est actuellement disponible dans le cadre des packages de performances avec les 3 autres flux de données. Pour plus d’informations sur les packages, reportez-vous à la [page de description du produit](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) pour connaître les limites et fonctionnalités du produit.
 
 ### Configuration d’Adobe I/O
 

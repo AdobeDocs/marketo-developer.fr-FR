@@ -1,11 +1,11 @@
 ---
 title: Script de l'e-mail
 feature: Email Programs
-description: Présentation des scripts d’e-mail
+description: Découvrez comment créer des scripts pour les e-mails Marketo dynamiques à l’aide des jetons Apache Velocity, des variables, des outils Velocity et tester avec l’exemple d’envoi et la Prévisualisation des e-mails.
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
-source-git-commit: 9012135dc7a295c2462574dad1aca2d06a9077ea
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '963'
+source-wordcount: '981'
 ht-degree: 0%
 
 ---
@@ -130,7 +130,7 @@ La longueur combinée de tous les jetons de script d’e-mail dans un e-mail don
 - Vous pouvez référencer des objets personnalisés connectés à un prospect, un contact ou un compte, mais pas plus d’un.
 - Les objets personnalisés ne peuvent être référencés que par le biais d’une seule connexion, d’un seul lead, contact ou compte
 - Vous devez cocher la case dans l’éditeur de script pour les champs que vous utilisez, sans quoi ils ne seront pas traités
-- Pour chaque objet personnalisé, les dix enregistrements mis à jour le plus récemment par personne/contact sont disponibles au moment de l’exécution et sont classés du plus récemment mis à jour (à 0) au plus ancien mis à jour (à 9). Vous pouvez augmenter le nombre d&#39;enregistrements disponibles en [suivant les instructions](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
+- Pour chaque objet personnalisé, les dix enregistrements mis à jour le plus récemment par personne/contact sont disponibles au moment de l’exécution et sont classés du plus récemment mis à jour (à 0) au plus ancien mis à jour (à 9). Vous pouvez augmenter le nombre d&#39;enregistrements disponibles en [suivant les instructions](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
 - Si vous incluez plusieurs scripts d’e-mail dans un e-mail, ils s’exécutent de haut en bas. La portée des variables définies dans le premier script à exécuter sera disponible dans les scripts suivants.
 - Référence des outils : [https://velocity.apache.org/tools/2.0/index.html](https://velocity.apache.org/tools/2.0/index.html)
 - Une note concernant les jetons qui contiennent des caractères de nouvelle ligne « \\n » ou « \\r\\n ». Lorsqu’un e-mail est envoyé via Envoyer un exemple ou via une campagne par lots, les caractères de nouvelle ligne dans les jetons sont remplacés par des espaces. Lorsque l’e-mail est envoyé via Trigger Campaign, les caractères de nouvelle ligne ne sont pas touchés.

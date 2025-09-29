@@ -1,20 +1,20 @@
 ---
-title: Personnalisation Web
-description: Personnalisation Web
+title: Web Personalization
+description: Guide de l’API JavaScript Web Personalization et de la balise RTP, couvrant les événements de page vue, la configuration du compte, les exclusions de robots et les scripts principaux et à la demande
 feature: Web Personalization, Javascript
 exl-id: b2c26b28-e9bf-4faf-8b6e-c102f41aeaa1
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '401'
-ht-degree: 7%
+source-wordcount: '422'
+ht-degree: 6%
 
 ---
 
-# Personnalisation Web
+# Web Personalization
 
 L’API Web Personalization JavaScript étend la fonctionnalité de personnalisation automatisée de la plateforme. Il permet le suivi des événements et la personnalisation dynamique d’une page web. Fonctionnalités supplémentaires : [Événements de données personnalisés](custom-data-events.md), [Contenu dynamique](web-personalization.md), [Obtention des données du visiteur](get-visitor-data.md), [Exclure la balise pour des robots spécifiques](#exclude_tag_for_specific_bots).
 
-- Vous devez devenir client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+- Vous devez devenir client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 - RTP ne prend pas en charge les listes de comptes nommés Marketing basées sur les comptes. Les listes et le code ABM ne concernent que les listes de comptes chargées (fichiers CSV) gérées dans RTP.
 
 ## Configuration des balises

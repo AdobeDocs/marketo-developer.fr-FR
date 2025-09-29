@@ -1,11 +1,11 @@
 ---
 title: Extraction d’activité en bloc
 feature: REST API
-description: Traitement par lots des données d’activité de Marketo.
+description: API REST d’extraction d’activité en bloc Marketo pour exporter des données d’activité volumineuses à l’aide d’une période de 31 jours, de filtres d’activité et d’attributs principaux pour ETL et CRM.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1332'
+source-wordcount: '1351'
 ht-degree: 7%
 
 ---
@@ -33,8 +33,8 @@ Les API Bulk Activity Extract nécessitent que l’utilisateur de l’API dispos
 
 | Type d’activité | ID de valeur d’attribut de Principal | Point d’entrée de récupération | Groupe de ressources |
 | --- | --- | --- | --- |
-| Modifier la valeur des données | ID de champ de lead | [Décrire le lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nom attribut |
-| Modifier évaluation | ID de champ de lead | [Décrire le lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nom attribut |
+| Modifier la valeur des données | ID de champ de lead | [Décrire le lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nom de l’attribut |
+| Modifier évaluation | ID de champ de lead | [Décrire le lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nom de l’attribut |
 | Modifier le statut de progression | ID du programme | [Obtenir le programme par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET) | Programme Marketing |
 | Ajouter à la liste | Identifiant de liste statique | [Obtenir la liste statique par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) | Liste statique |
 | Supprimer de la liste | Identifiant de liste statique | [Obtenir la liste statique par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) | Liste statique |
@@ -67,8 +67,8 @@ Exemple de corps de requête :
 
 | Type d’activité | Valeur d’attribut de Principal | Point d’entrée de récupération | Groupe de ressources |
 | --- | --- | --- | --- |
-| Modifier la valeur des données | Nom d’affichage du champ de lead | [Décrire le lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nom attribut |
-| Modifier évaluation | Nom d’affichage du champ de lead | [Décrire le lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nom attribut |
+| Modifier la valeur des données | Nom d’affichage du champ de lead | [Décrire le lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nom de l’attribut |
+| Modifier évaluation | Nom d’affichage du champ de lead | [Décrire le lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nom de l’attribut |
 | Modifier le statut de progression | Nom de programme | [Obtenir le programme par ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET) | Programme Marketing |
 | Ajouter à la liste | Nom de liste statique | [Obtenir une liste statique par ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) | Liste statique |
 | Supprimer de la liste | Nom de liste statique | [Obtenir une liste statique par ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) | Liste statique |

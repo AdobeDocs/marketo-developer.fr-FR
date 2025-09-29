@@ -1,11 +1,11 @@
 ---
 title: Référence de l’API Munchkin
-description: Utilisez l’API JavaScript Munchkin pour personnaliser vos données Munchkin.
+description: Utilisez l’API JavaScript Munchkin pour effectuer le suivi des visites de page, des clics sur les liens et des événements personnalisés à l’aide des méthodes init, createTrackingCookie et munchkinFunction.
 feature: Munchkin Tracking Code, Javascript
 exl-id: e9727691-5501-4223-bc98-2b4bacc33513
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '414'
+source-wordcount: '424'
 ht-degree: 9%
 
 ---

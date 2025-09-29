@@ -1,11 +1,11 @@
 ---
 title: Exemples
-description: Exemples de code Marketo pour la configuration des actions de formulaire
+description: Exemples de JavaScript Marketo Forms 2.0 pour masquer ou rediriger lors de l’envoi, de la définition et de la lecture de champs, de la validation avec des erreurs personnalisées, de lightbox et de triggers externes.
 feature: Javascript
 exl-id: dc5f0cc5-ff5a-48b0-be36-52c10e56f798
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '211'
+source-wordcount: '226'
 ht-degree: 0%
 
 ---

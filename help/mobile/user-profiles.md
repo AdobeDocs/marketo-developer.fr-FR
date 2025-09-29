@@ -1,12 +1,12 @@
 ---
 title: Profils utilisateur
 feature: Mobile Marketing, Users and Roles
-description: Utilisation des profils utilisateur dans Marketo Mobile
+description: Découvrez comment créer et mettre à jour des profils utilisateur dans Marketo Mobile SDK sur iOS et Android avec Objective C Swift et Java, des champs standard et personnalisés, associerLead
 exl-id: 1b2cfb7f-d678-4022-8cd9-a56004a1ac46
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '83'
-ht-degree: 0%
+source-wordcount: '103'
+ht-degree: 1%
 
 ---
 
@@ -19,7 +19,7 @@ Création de profils utilisateur
 
 ## Création de profils utilisateur sur iOS {#ios_user_profiles}
 
-Vous pouvez créer des profils enrichis en envoyant les champs utilisateur comme illustré ci-dessous.
+Vous pouvez créer des profils riches en envoyant les champs utilisateur comme illustré ci-dessous.
 
 ```
 MarketoLead *profile = [[MarketoLead alloc] init];
@@ -69,7 +69,7 @@ Ajoutez d’autres [champs standard](../rest-api/list-of-standard-fields.md).
 
 >[!BEGINTABS]
 
->[!TAB Objective C]
+>[!TAB Objectif C]
 
 ```
 // Add other custom fields
@@ -89,11 +89,11 @@ profile.setFieldName("phone", withValue:"123.456.7890");
 
 >[!ENDTABS]
 
-Profil utilisateur du rapport.
+Profil d’utilisateur du rapport.
 
 >[!BEGINTABS]
 
->[!TAB Objective C]
+>[!TAB Objectif C]
 
 ```
 Marketo *sharedInstance = [Marketo sharedInstance];
@@ -115,9 +115,9 @@ marketo.associateLead(profile)
 
 ## Création de profils utilisateur sur Android {#android_user_profiles}
 
-1. Créez un profil utilisateur.
+1. Créer un profil utilisateur.
 
-   Vous pouvez créer des profils enrichis en envoyant des champs utilisateur comme illustré ci-dessous.
+   Vous pouvez créer des profils riches en envoyant des champs utilisateur comme illustré ci-dessous.
 
    ```java
    MarketoLead profile = new MarketoLead();
@@ -152,7 +152,7 @@ marketo.associateLead(profile)
    profile.setCustomField("linkedInDisplayName", "Android");
    ```
 
-1. Profil utilisateur du rapport.
+1. Profil d’utilisateur du rapport.
 
    ```java
    MarketoLead profile = new MarketoLead();

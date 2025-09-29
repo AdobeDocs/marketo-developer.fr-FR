@@ -1,12 +1,12 @@
 ---
 title: getCampaignForSource
 feature: SOAP
-description: getCampaignsForSource - Appels SOAP
+description: Marketo SOAP getCampaignsForSource renvoie les campagnes intelligentes éligibles par source pour requestCampaign. Nécessite que Campaign soit le déclencheur Requested et des exemples XML et PHP.
 exl-id: bd8803ef-f462-4346-a381-73f40dc5d9ee
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '131'
-ht-degree: 8%
+source-wordcount: '148'
+ht-degree: 7%
 
 ---
 

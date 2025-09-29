@@ -1,11 +1,11 @@
 ---
 title: getLeadActivity
 feature: SOAP
-description: Appels SOAP getLeadActivity
+description: Utilisez getLeadActivity SOAP pour récupérer l’historique des activités des prospects par clé, filtrer les types d’activités, définir la taille des lots, paginer via la position du flux avec des exemples XML.
 exl-id: f38dee95-235f-4dc2-8839-61d6008132a5
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '346'
+source-wordcount: '366'
 ht-degree: 4%
 
 ---

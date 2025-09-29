@@ -1,30 +1,30 @@
 ---
 title: Listes statiques
 feature: REST API, Static Lists
-description: Exécutez des opérations CRUD sur des listes statiques.
+description: Utilisez les API REST Marketo pour interroger, créer, mettre à jour et supprimer des listes statiques, avec des points d’entrée pour l’identifiant, le nom, la navigation, la portée de dossier, la pagination et les filtres de date.
 exl-id: 20679fd2-fae2-473e-84bc-cb4fdf2f5151
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '741'
+source-wordcount: '760'
 ht-degree: 1%
 
 ---
 
 # Listes statiques
 
-[Référence de point de terminaison de listes statiques](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists)
+[Référence des points d’entrée des listes statiques](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists)
 
-[Référence du point de terminaison de l’appartenance à la liste](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists)
+[Liste de références de point d’entrée d’appartenance](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists)
 
-Marketo propose un ensemble d’API REST pour effectuer des opérations CRUD sur des listes statiques. Ces API suivent le modèle d’interface standard pour les API de ressources qui offrent les options Requête, Créer, Mettre à jour et Supprimer.
+Marketo propose un ensemble d’API REST pour effectuer des opérations CRUD sur des listes statiques. Ces API suivent le modèle d’interface standard des API de ressources en fournissant les options Requête, Créer, Mettre à jour et Supprimer .
 
 ## Requête
 
-La requête de listes statiques suit les types de requête standard pour les ressources [by id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET), [by name](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) et [browse](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET).
+L’interrogation de listes statiques suit les types d’interrogation standard pour les ressources de [par id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) et [parcourir](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET).
 
-### Par identifiant
+### Par Id
 
-[La requête par id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) utilise une seule liste statique `id` comme paramètre de chemin d’accès et renvoie un seul enregistrement de liste statique.
+[Requête par ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) prend un seul `id` de liste statique comme paramètre de chemin d’accès et renvoie un seul enregistrement de liste statique.
 
 ```
 GET /rest/asset/v1/staticList/{id}.json
@@ -53,7 +53,7 @@ GET /rest/asset/v1/staticList/{id}.json
 
 #### Par nom
 
-[La requête par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByNameUsingGET) prend une liste statique `name` comme paramètre et renvoie un seul enregistrement de liste statique. Une correspondance de chaîne exacte est exécutée par rapport à tous les noms de liste statiques dans l’instance et renvoie un résultat pour la liste statique correspondant à ce nom.
+[Requête par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByNameUsingGET) prend un `name` de liste statique comme paramètre et renvoie un seul enregistrement de liste statique. Une correspondance de chaîne exacte est effectuée par rapport à tous les noms de liste statiques dans l’instance et renvoie un résultat pour la liste statique correspondant à ce nom.
 
 ```
 GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
@@ -82,7 +82,7 @@ GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
 
 #### Parcourir
 
-Les listes statiques peuvent également être [récupérées par lots](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET). Le paramètre `folder` peut être utilisé pour spécifier le dossier parent sous lequel la requête sera exécutée et est formaté en tant qu’objet JSON contenant l’identifiant et le type . Comme les autres points de terminaison de récupération des ressources en masse, `offset` et `maxReturn` sont des paramètres facultatifs qui peuvent être utilisés pour la pagination. Les paramètres `earliestUpdatedAt` et `latestUpdatedAt` vous permettent de définir des filigranes de date et d’heure bas pour renvoyer des listes statiques créées ou mises à jour dans la plage donnée. Les valeurs de date et heure doivent être des chaînes ISO-8601 valides et ne doivent pas inclure de millisecondes.
+Les listes statiques peuvent également être [récupérées par lots](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET). Le paramètre `folder` peut être utilisé pour spécifier le dossier parent sous lequel la requête sera exécutée et est formaté en tant qu’objet JSON contenant l’ID et le type. Comme les autres points d’entrée de récupération de ressources en bloc, `offset` et `maxReturn` sont des paramètres facultatifs qui peuvent être utilisés pour la pagination. Les paramètres `earliestUpdatedAt` et `latestUpdatedAt` vous permettent de définir des filigranes datetime bas et haut pour renvoyer des listes statiques créées ou mises à jour dans la plage donnée. Les valeurs Datetime doivent être des chaînes ISO-8601 valides et ne doivent pas inclure de millisecondes
 
 ```
 GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
@@ -133,7 +133,7 @@ GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
 
 ## Créer et mettre à jour
 
-[La création d’une liste statique](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/createStaticListUsingPOST) est exécutée avec un POST application/x-www-form-urlencoded avec deux paramètres requis. Le paramètre `folder` est utilisé pour spécifier le dossier parent sous lequel la liste statique sera créée et est formaté en tant qu’objet JSON contenant l’identifiant et le type . Le paramètre `name` est utilisé pour nommer la liste statique et doit être unique. Le paramètre `description` peut éventuellement être utilisé pour décrire la liste statique.
+[La création d’une liste statique](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/createStaticListUsingPOST) est exécutée avec une application/x-www-form-urlencoded POST avec deux paramètres obligatoires. Le paramètre `folder` est utilisé pour spécifier le dossier parent sous lequel la liste statique sera créée et est formaté comme un objet JSON contenant l’ID et le type. Le paramètre `name` est utilisé pour nommer la liste statique et doit être unique. Le paramètre `description` peut éventuellement être utilisé pour décrire la liste statique.
 
 ```
 POST /rest/asset/v1/staticLists.json
@@ -168,7 +168,7 @@ folder={"id":1034,"type":"Program"}&name=My Static List
 }
 ```
 
-[Les mises à jour d’une liste statique](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/updateStaticListUsingPOST) sont effectuées par le biais d’un point de terminaison distinct avec deux paramètres facultatifs. Le paramètre `description` peut être utilisé pour mettre à jour la description de liste statique. Le paramètre `name` peut être utilisé pour mettre à jour le nom de liste statique et doit être unique.
+Les [mises à jour d’une liste statique](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/updateStaticListUsingPOST) sont effectuées via un point d’entrée distinct avec deux paramètres facultatifs. Le paramètre `description` peut être utilisé pour mettre à jour la description de la liste statique. Le paramètre `name` peut être utilisé pour mettre à jour le nom de la liste statique et doit être unique.
 
 ```
 POST /rest/asset/v1/staticList/{id}.json
@@ -206,7 +206,7 @@ description=This is a static list used for testing
 
 ### Supprimer
 
-[La suppression d&#39;une liste statique](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/deleteStaticListByIdUsingPOST) utilise une seule liste statique `id` comme paramètre de chemin d&#39;accès. Les suppressions ne peuvent pas être effectuées sur des listes statiques utilisées par une opération d’importation ou d’exportation ou utilisées par d’autres ressources.
+[La suppression d’une liste statique](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/deleteStaticListByIdUsingPOST) utilise une seule liste statique `id` comme paramètre de chemin d’accès. Les listes statiques utilisées par une opération d’importation ou d’exportation ou par d’autres ressources ne peuvent pas être supprimées.
 
 ```
 POST /rest/asset/v1/staticList/{id}/delete.json
@@ -225,15 +225,15 @@ POST /rest/asset/v1/staticList/{id}/delete.json
 }
 ```
 
-## Appartenance à une liste
+## Appartenance à la liste
 
-Les points de terminaison d’appartenance à la liste permettent d’ajouter, de supprimer et d’interroger des membres de liste statique. En outre, vous pouvez interroger l’appartenance à une liste statique.
+Les points d’entrée d’appartenance à une liste permettent d’ajouter, de supprimer et d’interroger des membres de liste statiques. En outre, vous pouvez interroger l’appartenance à une liste statique.
 
 ### Ajouter à la liste
 
-Le point d’entrée [Ajouter à la liste](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/addLeadsToListUsingPOST) est utilisé pour ajouter un ou plusieurs membres à une liste. Le point de terminaison utilise un paramètre de chemin d’accès `listId` obligatoire et un ou plusieurs paramètres de requête d’ID contenant des identifiants de piste (le nombre maximal autorisé est de 300).
+Le point d’entrée [Ajouter à la liste](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/addLeadsToListUsingPOST) permet d’ajouter un ou plusieurs membres à une liste. Le point d’entrée prend un paramètre de chemin d’accès `listId` obligatoire et un ou plusieurs paramètres de requête d’identifiant contenant des ID de prospect (la valeur maximale autorisée est de 300).
 
-La réponse contient un tableau `result` constitué d’objets JSON avec l’état pour chaque ID de piste spécifié dans la requête.
+La réponse contient un tableau `result` composé d’objets JSON avec le statut de chaque ID de prospect spécifié dans la requête.
 
 ```
 POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
@@ -264,9 +264,9 @@ POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
 
 ### Supprimer de la liste
 
-Le point d’entrée [Remove from List](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/removeLeadsFromListUsingDELETE) est utilisé pour supprimer un ou plusieurs membres d’une liste. Le point de terminaison utilise un paramètre de chemin `listId` obligatoire et un ou plusieurs paramètres de requête `id` contenant des identifiants de piste (la limite autorisée est de 300).
+Le point d’entrée [Supprimer de la liste](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/removeLeadsFromListUsingDELETE) permet de supprimer un ou plusieurs membres d’une liste. Le point d’entrée prend un paramètre de chemin d’accès `listId` obligatoire et un ou plusieurs paramètres de requête `id` contenant des ID de lead (la valeur maximale autorisée est de 300).
 
-La réponse contient un tableau `result` constitué d’objets JSON avec l’état pour chaque ID de piste spécifié dans la requête.
+La réponse contient un tableau `result` composé d’objets JSON avec le statut de chaque ID de prospect spécifié dans la requête.
 
 ```
 DELETE /rest/v1/lists/{listId}/leads.json?id=318603&id=318595&id=999999
@@ -301,15 +301,15 @@ DELETE /rest/v1/lists/{listId}/leads.json?id=318603&id=318595&id=999999
 
 ### Liste de requêtes
 
-Le point d’entrée [Get Leads by List Id](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/getLeadsByListIdUsingGET) est utilisé pour récupérer les membres d’une liste. Le point de terminaison utilise un paramètre de chemin `listId` obligatoire et permet à plusieurs paramètres de requête facultatifs de spécifier des critères de filtrage.
+Le point d’entrée [Get Leads by List Id](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/getLeadsByListIdUsingGET) permet de récupérer les membres d’une liste. Le point d’entrée prend un paramètre de chemin d’accès `listId` obligatoire et permet à plusieurs paramètres de requête facultatifs de spécifier des critères de filtrage.
 
-Le paramètre `batchSize` est utilisé pour spécifier le nombre d’enregistrements de piste à renvoyer dans un seul appel (la valeur par défaut et la valeur maximale sont 300).
+Le paramètre `batchSize` est utilisé pour spécifier le nombre d’enregistrements de prospect à renvoyer dans un seul appel (la valeur par défaut et la valeur maximale sont 300).
 
-Le paramètre `nextPageToken` est utilisé pour paginer dans de grands ensembles de résultats. Ce paramètre n’est pas transmis dans le premier appel, mais uniquement dans les appels suivants pour la pagination.
+Le paramètre `nextPageToken` est utilisé pour paginer dans des jeux de résultats volumineux. Ce paramètre n’est pas transmis lors du premier appel, mais uniquement lors des appels suivants de la pagination.
 
-Le paramètre `fields` contient une liste de noms de champ séparés par des virgules à renvoyer dans la réponse. Si le paramètre fields n&#39;est pas inclus dans cette requête, les champs par défaut suivants sont renvoyés : email, updatedAt, createdAt, lastName, firstName et id.
+Le paramètre `fields` contient une liste séparée par des virgules de noms de champ à renvoyer dans la réponse. Si le paramètre fields n’est pas inclus dans cette requête, les champs par défaut suivants sont renvoyés : email, updatedAt, createdAt, lastName, firstName et id.
 
-La réponse contient un tableau `result` constitué d’objets JSON contenant les champs de piste spécifiés dans la requête.
+La réponse contient un tableau `result` composé d’objets JSON contenant les champs de prospect spécifiés dans la requête.
 
 ```
 GET /rest/v1/lists/{listId}/leads.json?batchSize=3
@@ -349,11 +349,11 @@ GET /rest/v1/lists/{listId}/leads.json?batchSize=3
 }
 ```
 
-#### Adhésion à la liste de requêtes par ID de piste
+#### Demander l’appartenance à une liste par ID de lead
 
-Le point d’entrée [Member of List](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET) est utilisé pour déterminer si une ou plusieurs pistes sont membres d’une liste. Le point de terminaison utilise un paramètre de chemin `listId` obligatoire et un ou plusieurs paramètres de requête `id` contenant des identifiants de piste (la limite autorisée est de 300).
+Le point d’entrée [Membre de la liste](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET) permet de voir si un ou plusieurs prospects sont membres d’une liste. Le point d’entrée prend un paramètre de chemin d’accès `listId` obligatoire et un ou plusieurs paramètres de requête `id` contenant des ID de lead (la valeur maximale autorisée est de 300).
 
-La réponse contient un tableau `result` constitué d’objets JSON avec l’état pour chaque ID de piste spécifié dans la requête.
+La réponse contient un tableau `result` composé d’objets JSON avec le statut de chaque ID de prospect spécifié dans la requête.
 
 ```
 GET /rest/v1/lists/{listId}/leads/ismember.json?id=309901&id=318603&id=999999

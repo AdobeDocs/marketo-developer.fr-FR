@@ -1,11 +1,12 @@
 ---
 title: Exemples de script e-mail
 feature: Email Programs
-description: Exemples de script de messagerie Marketo
-source-git-commit: 3ccb27a0d184e0c1314979d404022bc4e0794f7b
+description: Exemples de script d’e-mail Marketo utilisant Velocity, y compris la boucle sur des objets personnalisés, l’analyse/le formatage de la date, l’échappement HTML et l’ajout d’un identifiant d’URL.
+exl-id: 7c801f1c-0ab3-49f0-8577-0c4dccc80d0b
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '52'
-ht-degree: 9%
+source-wordcount: '67'
+ht-degree: 7%
 
 ---
 
@@ -97,7 +98,7 @@ ${formattedDate}
 <a href="//${url1}">View Your Object Record Online</a>
 ```
 
-### Campagne à déclencheurs
+### Campagne à déclencheur
 
 ```html
 ##trigger campaigns triggered by the needed object

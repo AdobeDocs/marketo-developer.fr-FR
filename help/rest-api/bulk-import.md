@@ -1,11 +1,11 @@
 ---
 title: Importation en bloc
 feature: REST API
-description: Import par lots de données de personne.
+description: Import en bloc Marketo pour le chargement de prospects, d’objets personnalisés et de membres de programme par le biais de chargements multipartie, la création de tâches asynchrones, le statut d’interrogation et la gestion des échecs.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '592'
+source-wordcount: '610'
 ht-degree: 2%
 
 ---

@@ -1,11 +1,11 @@
 ---
 title: Extraction d’objet personnalisé en bloc
 feature: REST API, Custom Objects
-description: Traitement par lots d’objets Marketo personnalisés.
+description: Guide des API REST d’extraction d’objets personnalisés en bloc Marketo pour l’exportation d’objets personnalisés liés à un prospect avec des filtres de liste et de date de mise à jour, des champs sélectionnés et...
 exl-id: 86cf02b0-90a3-4ec6-8abd-b4423cdd94eb
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1298'
+source-wordcount: '1315'
 ht-degree: 1%
 
 ---
@@ -16,7 +16,7 @@ ht-degree: 1%
 
 Le jeu d’API REST d’extraction d’objets personnalisés en bloc fournit une interface de programmation pour récupérer de grands jeux d’enregistrements d’objets personnalisés en dehors de Marketo. Il s’agit de l’interface recommandée pour les cas d’utilisation qui nécessitent un échange continu de données entre Marketo et un ou plusieurs systèmes externes, à des fins d’ETL, d’entreposage de données et d’archivage.
 
-Cette API prend en charge l’exportation d’enregistrements d’objet personnalisés Marketo de premier niveau directement liés à un prospect. Transmettez le nom de l’objet personnalisé et une liste de prospects auxquels l’objet est lié. Pour chaque prospect de la liste, les enregistrements d’objet personnalisé liés qui correspondent au nom d’objet personnalisé spécifié sont écrits en tant que lignes dans le fichier d’exportation. Les données d’objet personnalisées sont visibles dans l’onglet [ Objet personnalisé » de la page de détails du prospect dans l’interface utilisateur de Marketo](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
+Cette API prend en charge l’exportation d’enregistrements d’objet personnalisés Marketo de premier niveau directement liés à un prospect. Transmettez le nom de l’objet personnalisé et une liste de prospects auxquels l’objet est lié. Pour chaque prospect de la liste, les enregistrements d’objet personnalisé liés qui correspondent au nom d’objet personnalisé spécifié sont écrits en tant que lignes dans le fichier d’exportation. Les données d’objet personnalisées sont visibles dans l’onglet [ Objet personnalisé » de la page de détails du prospect dans l’interface utilisateur de Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
 
 ## Autorisations
 

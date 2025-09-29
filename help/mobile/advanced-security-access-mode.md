@@ -1,24 +1,24 @@
 ---
-title: Mode d’accès à la sécurité avancé
+title: Mode d’accès de sécurité avancé
 feature: Mobile Marketing
-description: Détails sur le mode d’accès de sécurité avancé
+description: Découvrez le mode d’accès de sécurité avancé pour Marketo Mobile SDK, avec la génération de signatures HMAC, la configuration des points d’entrée du serveur, l’utilisation des identifiants d’appareil et des exemples iOS et Android
 exl-id: bd4730ff-708b-465e-b494-485a4dbf67ff
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '303'
+source-wordcount: '321'
 ht-degree: 0%
 
 ---
 
-# Mode d’accès à la sécurité avancé
+# Mode d’accès de sécurité avancé
 
-Le SDK Marketo expose les méthodes permettant de définir et de supprimer la signature de sécurité. Il existe également une méthode utilitaire pour récupérer l’identifiant de l’appareil. L’identifiant de l’appareil doit être transmis avec l’e-mail, lors de la connexion, au serveur du client pour être utilisé dans le calcul de la signature de sécurité. Le SDK doit accéder au nouveau point de terminaison , en pointant vers l’algorithme répertorié ci-dessus, pour récupérer les champs nécessaires pour instancier l’objet de signature. La définition de cette signature dans le SDK est une étape nécessaire si le mode Accès à la sécurité a été activé dans l’administration mobile Marketo.
+Le SDK Marketo expose des méthodes pour définir et supprimer la signature de sécurité. Il existe également une méthode utilitaire pour récupérer l’identifiant de l’appareil. L’ID d’appareil doit être transmis avec l’e-mail, lors de la connexion, au serveur client pour être utilisé dans le calcul de la signature de sécurité. Le SDK doit accéder au nouveau point d’entrée, en pointant vers l’algorithme répertorié ci-dessus, pour récupérer les champs nécessaires à l’instanciation de l’objet de signature. La définition de cette signature dans SDK est une étape nécessaire si le mode d’accès de sécurité a été activé dans Marketo Mobile Admin.
 
-## Configuration du mode d’accès sécurisé
+## Configuration du mode d&#39;accès sécurisé
 
-Cette configuration doit être implémentée avant que le mode Accès sécurisé n’ait été activé via la page Marketo Admin > Applications et périphériques mobiles . Les étapes supplémentaires suivantes décrivent le processus requis pour terminer le processus de validation de la sécurité :
+Cette configuration doit être implémentée avant que le mode d’accès sécurisé ne soit activé via la page Marketo Admin > Applications et appareils mobiles . Les étapes suivantes décrivent le processus requis pour terminer le processus de validation de la sécurité :
 
-Le mode Accès sécurisé nécessite l’implémentation de l’algorithme de signature côté serveur du client, qui fournit un point de terminaison pour récupérer la clé d’accès, la signature calculée, l’horodatage d’expiration et le courrier électronique. Cet algorithme nécessite que l’utilisateur dispose de la clé d’accès, du secret d’accès, de l’e-mail, de l’horodatage et de l’identifiant de périphérique pour effectuer le calcul. Le client est chargé de configurer le point de terminaison, de mettre en oeuvre l’algorithme pour effectuer les calculs de signature et de conserver l’horodatage d’expiration.
+Le mode d’accès sécurisé nécessite la mise en œuvre de l’algorithme de signature côté serveur du client qui fournira un point d’entrée pour récupérer la clé d’accès, la signature calculée, l’horodatage d’expiration et l’e-mail. Cet algorithme nécessite la clé d’accès utilisateur, le secret d’accès, l’adresse e-mail, l’horodatage et l’ID d’appareil pour effectuer le calcul. Le client est chargé de configurer le point d’entrée, de mettre en œuvre l’algorithme pour effectuer les calculs de signature et de conserver un horodatage d’expiration à jour.
 
 ```python
 import argparse
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     print 'HMAC is ', hmac_string
 ```
 
-Le SDK Marketo expose de nouvelles méthodes pour définir et supprimer la signature de sécurité. Il existe également une méthode utilitaire pour récupérer l’identifiant de l’appareil. L’identifiant de l’appareil doit être transmis avec l’e-mail, lors de la connexion, au serveur du client pour être utilisé dans le calcul de la signature de sécurité. Le SDK doit accéder au nouveau point de terminaison , en pointant vers l’algorithme répertorié ci-dessus, pour récupérer les champs nécessaires pour instancier l’objet de signature. La définition de cette signature dans le SDK est une étape nécessaire si le mode Accès à la sécurité a été activé dans l’administration mobile Marketo.
+Le SDK Marketo propose de nouvelles méthodes pour définir et supprimer la signature de sécurité. Il existe également une méthode utilitaire pour récupérer l’identifiant de l’appareil. L’ID d’appareil doit être transmis avec l’e-mail, lors de la connexion, au serveur client pour être utilisé dans le calcul de la signature de sécurité. Le SDK doit accéder au nouveau point d’entrée, en pointant vers l’algorithme répertorié ci-dessus, pour récupérer les champs nécessaires à l’instanciation de l’objet de signature. La définition de cette signature dans SDK est une étape nécessaire si le mode d’accès de sécurité a été activé dans Marketo Mobile Admin.
 
 ### iOS
 

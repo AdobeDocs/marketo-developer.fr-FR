@@ -1,11 +1,11 @@
 ---
 title: Pages de destination
 feature: REST API, Landing Pages
-description: Interrogation des pages de destination dans Marketo.
+description: Utilisez l’API REST Marketo pour interroger des métadonnées et du contenu, créer, mettre à jour, approuver, supprimer et cloner des pages de destination, y compris des types de formulaires guidés et libres.
 exl-id: 2f986fb0-0a6b-469f-b199-1c526cd5a882
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1000'
+source-wordcount: '1018'
 ht-degree: 2%
 
 ---
@@ -274,7 +274,7 @@ Les variables sont définies sous la forme de balises meta dans `<head>` éléme
 </head>
 ```
 
-Pour plus d’informations, consultez la section « Variable modifiable » de la documentation [Création d’un modèle de page de destination guidé](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
+Pour plus d’informations, consultez la section « Variable modifiable » de la documentation [Création d’un modèle de page de destination guidé](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
 
 ### Requête
 

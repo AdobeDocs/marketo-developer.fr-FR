@@ -1,12 +1,12 @@
 ---
 title: API SOAP
 feature: SOAP
-description: Présentation de Marketo SOAP
+description: L’API Marketo SOAP est obsolète depuis le 31 octobre 2025. Découvrez comment migrer vers REST, récupérer votre WSDL, consulter les quotas, les limites de débit et la configuration de l’authentification.
 exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '244'
-ht-degree: 2%
+source-wordcount: '265'
+ht-degree: 1%
 
 ---
 

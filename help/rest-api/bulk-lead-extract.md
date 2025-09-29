@@ -1,11 +1,11 @@
 ---
 title: Extrait de lead en masse
 feature: REST API
-description: Extraction par lots des données de prospect.
+description: Découvrez comment utiliser les API REST d’extraction de lead en bloc Marketo pour exporter en bloc des leads avec des filtres de date, de liste et de liste dynamique, des champs personnalisés et des formats CSV/TSV.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1173'
+source-wordcount: '1195'
 ht-degree: 2%
 
 ---

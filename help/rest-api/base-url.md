@@ -1,18 +1,18 @@
 ---
 title: URL de base
 feature: REST API
-description: Décrit comment accéder aux URL de Marketo.
+description: Découvrez comment créer des requêtes d’API REST Marketo, comprendre les paramètres et la ressource du chemin d’URL de base et rechercher votre URL de base unique.
 exl-id: 6c3f122c-3ace-4ed3-bed0-a6b89cedc99a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '142'
-ht-degree: 0%
+source-wordcount: '156'
+ht-degree: 2%
 
 ---
 
 # URL de base
 
-La documentation [Référence du point d’entrée](endpoint-reference.md) pour chaque appel d’API affiche la méthode, le chemin, la ressource et les paramètres REST qui doivent être ajoutés à l’URL de base pour former une requête.
+La documentation [Référence du point d’entrée](endpoint-reference.md) pour chaque appel API affiche la méthode REST, le chemin, la ressource et les paramètres qui doivent être ajoutés à l’URL de base pour former une requête.
 
 Voici un exemple d’URL REST bien formée :
 
@@ -25,8 +25,8 @@ qui se compose des parties suivantes :
 - Ressource : `318582.json`
 - Paramètre de requête : `fields=email,firstName,lastName`
 
-L’URL de base contient l’identifiant du compte (alias Munchkin id) et est donc unique pour chaque abonnement Marketo. L’URL de base se trouve en se connectant à Marketo et en accédant au menu **[!UICONTROL Admin]** > **[!UICONTROL Intégration]** > **[!UICONTROL Services Web]** . Il est intitulé &quot;Point de terminaison&quot; sous la section &quot;API REST&quot;, comme illustré dans les captures d’écran suivantes.
+L’URL de base contient l’identifiant du compte (également appelé identifiant Munchkin) et est donc unique pour chaque abonnement Marketo. Pour trouver l’URL de base, connectez-vous à Marketo et accédez au menu **[!UICONTROL Admin]** > **[!UICONTROL Intégration]** > **[!UICONTROL Services Web]**. Il est étiqueté comme « Point d’entrée » sous la section « API REST », comme illustré dans les captures d’écran suivantes.
 
-![ Point d’entrée de l’URL de base des services web ](assets/rest-api-base-url-web-services.png)
+![Point d’entrée de l’URL de base des services web](assets/rest-api-base-url-web-services.png)
 
 Une fois que vous avez trouvé l’URL de base, copiez-la et incluez-la dans les URL que vous utilisez lors de l’appel de l’une des API REST.

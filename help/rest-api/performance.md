@@ -1,11 +1,11 @@
 ---
 title: Performance
 feature: REST API
-description: Conseils de performance pour travailler avec l’API Marketo.
+description: Boostez les performances de l’API REST Marketo avec la compression HTTP. Activez gzip pour réduire la bande passante ; les API en bloc ne sont pas prises en charge et moins de 1 024 octets ne sont pas compressés.
 exl-id: 173a398a-9d36-4e8d-9dd3-7d0d375b085a
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '122'
+source-wordcount: '136'
 ht-degree: 1%
 
 ---

@@ -1,11 +1,11 @@
 ---
 title: Suivi du lead
-description: API de suivi des leads
+description: Découvrez comment intégrer Marketo Munchkin JavaScript, effectuer le suivi des visites et des clics, gérer les prospects connus ou anonymes, les cookies interdomaines et le processus d’opt-out des campagnes intelligentes.
 feature: Munchkin Tracking Code, Javascript
 exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
-source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '766'
+source-wordcount: '786'
 ht-degree: 0%
 
 ---
@@ -28,7 +28,7 @@ Il est vivement recommandé d’utiliser le code de suivi asynchrone pour incorp
 
 Certains systèmes de gestion de contenu peuvent avoir des méthodes spécifiques ou des restrictions lors de l’incorporation de scripts arbitraires.
 
-À titre de référence, votre dernière page doit inclure un code similaire à celui-ci dans la `<head>` de votre document d’HTML :
+À titre de référence, votre page finale doit inclure un code similaire à celui-ci dans la `<head>` de votre document HTML :
 
 ```html
 <head>
@@ -98,9 +98,9 @@ ou
 
 Les cookies Munchkin sont spécifiques à chaque domaine de deuxième niveau, c’est-à-dire `example.com`. La durée de vie par défaut du cookie est de 2 ans (730 jours).
 
-## Version bêta
+## Beta
 
-Pour vous inscrire au canal bêta Munchkin pour vos pages de destination, accédez au menu [Admin -> Coffre au trésor](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) et activez le paramètre « Munchkin Beta sur les pages de destination ». Vous obtenez ainsi de nouveaux fragments de code dans le **[!UICONTROL Admin]** ->  Menu **[!UICONTROL Munchkin]** permettant d&#39;utiliser la version bêta sur des sites externes.
+Pour vous inscrire au canal bêta Munchkin pour vos pages de destination, accédez au menu [Admin -> Coffre au trésor](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) et activez le paramètre « Munchkin Beta sur les pages de destination ». Vous obtenez ainsi de nouveaux fragments de code dans le **[!UICONTROL Admin]** ->  Menu **[!UICONTROL Munchkin]** permettant d&#39;utiliser la version bêta sur des sites externes.
 
 ## Opt-Out
 

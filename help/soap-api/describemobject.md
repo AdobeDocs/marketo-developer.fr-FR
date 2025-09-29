@@ -1,12 +1,12 @@
 ---
 title: defineMObject
 feature: SOAP
-description: appels SOAP descriptiveMObjects
+description: Découvrez comment utiliser descriptionmobject dans Marketo SOAP pour récupérer les métadonnées et les attributs de champ pour ActivityRecord, LeadRecord, Opportunity et OpportunityPersonRole.
 exl-id: a5ee60c4-b0ec-49a2-9a9d-22806ddde8f7
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '71'
-ht-degree: 9%
+source-wordcount: '87'
+ht-degree: 8%
 
 ---
 

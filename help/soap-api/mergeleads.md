@@ -1,12 +1,12 @@
 ---
 title: mergeLeads
 feature: SOAP
-description: appels SOAP mergeLeads
+description: Utilisez mergeLeads avec Marketo SOAP pour fusionner les enregistrements de leads gagnants et perdants. Inclut des champs de requête, une requête et une réponse XML, ainsi que des exemples PHP et Java.
 exl-id: a667cb76-525d-4583-b26a-1181d320a68c
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '83'
-ht-degree: 10%
+source-wordcount: '104'
+ht-degree: 8%
 
 ---
 

@@ -1,11 +1,11 @@
 ---
 title: Base de données des leads
 feature: REST API, Database
-description: Manipulez la base de données principale des prospects.
+description: Guide des API de base de données de lead Marketo couvrant les objets, CRUD et décrire les méthodes, les modèles de requête, les limites de lot et les restrictions d’intégration dans CRM.
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1342'
+source-wordcount: '1357'
 ht-degree: 1%
 
 ---

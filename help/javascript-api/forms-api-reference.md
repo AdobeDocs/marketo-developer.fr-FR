@@ -1,11 +1,11 @@
 ---
 title: Référence de l’API Forms
-description: Référence de l’API Forms
+description: Référence complète pour l’API Marketo Forms 2.0, détaillant les méthodes MktoForms2 et Form, les paramètres, les rappels et les retours pour le chargement et le rendu des formulaires.
 feature: Forms, Javascript
 exl-id: 0f8d242f-0b27-4087-b080-3d41ebaa25b3
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1327'
+source-wordcount: '1345'
 ht-degree: 2%
 
 ---
@@ -93,13 +93,13 @@ Vous interagirez avec deux objets principaux à l’aide de l’API Forms 2.0. L
     <tr valign="top">
       <td>.allForms()</td>
       <td>Récupère un tableau de tous les objets de formulaire qui ont été précédemment construits sur la page.</td>
-      <td>S.O.</td>
+      <td>s/o</td>
       <td>Tableau d’objets de formulaire</td>
     </tr>
     <tr valign="top">
       <td>.getPageFields()</td>
       <td>Obtient un objet JS contenant des données de l’URL et du référent qui peuvent être intéressantes à des fins de suivi.</td>
-      <td>S.O.</td>
+      <td>s/o</td>
       <td>Objet</td>
     </tr>
     <tr valign="top">
@@ -141,19 +141,19 @@ Vous interagirez avec deux objets principaux à l’aide de l’API Forms 2.0. L
     <tr valign="top">
       <td>.getId()</td>
       <td>Obtient l'identifiant du formulaire.</td>
-      <td>S.O.</td>
+      <td>s/o</td>
       <td>Nombre - Identifiant de l’objet de formulaire que ce formulaire représente</td>
     </tr>
     <tr valign="top">
       <td>.getFormElement()</td>
       <td>Obtient l'élément jQuery wrapped form d'un formulaire rendu.</td>
-      <td>S.O.</td>
+      <td>s/o</td>
       <td>Un élément de formulaire enveloppé d’un objet jQuery ou la valeur null si le formulaire n’a pas encore été rendu avec la méthode render().</td>
     </tr>
     <tr valign="top">
       <td>.validate()</td>
       <td>Force la validation du formulaire, en mettant en surbrillance les erreurs éventuelles et en renvoyant le résultat. N’envoie pas le formulaire.</td>
-      <td>S.O.</td>
+      <td>s/o</td>
       <td>Booléen - Renvoie true si tous les validateurs du formulaire ont été transmis, false dans le cas contraire.</td>
     </tr>
     <tr valign="top">
@@ -165,7 +165,7 @@ Vous interagirez avec deux objets principaux à l’aide de l’API Forms 2.0. L
     <tr valign="top">
       <td>.submit()</td>
       <td>Déclenche l’événement d’envoi du formulaire. Cela lancera le flux d’envoi du formulaire, exécutera la validation, déclenchera tous les événements onSubmit, enverra le formulaire et déclenchera tous les événements onSuccess si l’envoi du formulaire a réussi.</td>
-      <td>S.O.</td>
+      <td>s/o</td>
       <td>Objet de formulaire - Objet de formulaire identique à celui sur lequel la méthode a été appelée, à des fins de chaîne.</td>
     </tr>
     <tr valign="top">
@@ -189,7 +189,7 @@ Vous interagirez avec deux objets principaux à l’aide de l’API Forms 2.0. L
     <tr valign="top">
       <td>.allFieldsFilled()</td>
       <td>Renvoie « true » si des valeurs non vides sont définies pour tous les champs du formulaire.</td>
-      <td>S.O.</td>
+      <td>s/o</td>
       <td>Booléen : valeur true si tous les champs ont des valeurs non vides, vides, non définies ou nulles, false dans le cas contraire.</td>
     </tr>
     <tr valign="top">
@@ -201,7 +201,7 @@ Vous interagirez avec deux objets principaux à l’aide de l’API Forms 2.0. L
     <tr valign="top">
       <td>.getValues()</td>
       <td>Obtient toutes les valeurs de tous les champs du formulaire.</td>
-      <td>S.O.</td>
+      <td>s/o</td>
       <td>Objet - Objet JS contenant des paires clé/valeur représentant les noms et les valeurs des champs du formulaire.</td>
     </tr>
     <tr valign="top">

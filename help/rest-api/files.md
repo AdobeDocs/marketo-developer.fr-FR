@@ -1,26 +1,26 @@
 ---
 title: Fichiers
 feature: REST API
-description: Stockage et manipulation de fichiers Marketo.
+description: Guide de requête des fichiers d’API REST Marketo par identifiant ou nom, navigation avec dossier et décalage, création ou mise à jour par chargement multipartie, insertOnly, types MIME, pas de diffusion en continu
 exl-id: 17361cdc-2309-442c-803c-34ce187aee1a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '267'
+source-wordcount: '289'
 ht-degree: 1%
 
 ---
 
 # Fichiers
 
-[Référence du point d’entrée de fichiers](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files)
+[Référence des points d’entrée de fichiers](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files)
 
-Les abonnements Marketo permettent le stockage de fichiers arbitraires tels que des images, des scripts, des documents et des feuilles de style. Tous ces éléments peuvent être utilisés à distance via l’API REST. Le stockage disponible dans les abonnements Marketo n’est pas optimisé pour les applications gourmandes en bande passante. Il est donc conseillé d’utiliser des solutions de remplacement pour les applications de diffusion audio et vidéo en continu appropriées.
+Les abonnements Marketo permettent de stocker des fichiers arbitraires tels que des images, des scripts, des documents et des feuilles de style. Toutes ces fonctionnalités peuvent être exploitées à distance via l’API REST. Le stockage disponible dans les abonnements Marketo n’est pas optimisé pour les applications gourmandes en bande passante. Par conséquent, d’autres solutions doivent être utilisées pour les applications de diffusion en continu audio et vidéo appropriées.
 
 ## Requête
 
-La requête de fichiers est simple et suit les types de requête standard pour les ressources [by id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFileByIdUsingGET), [by name](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFileByNameUsingGET) et [browsing](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFilesUsingGET).
+La requête de fichiers est simple et suit les types de requête standard pour les ressources des catégories [par identifiant](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFileByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFileByNameUsingGET) et [navigation](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFilesUsingGET).
 
-### Par identifiant
+### Par Id
 
 ```
 GET /rest/asset/v1/file/{id}.json
@@ -89,9 +89,9 @@ GET /rest/asset/v1/file/byName.json?name=foo.png
 
 Il existe trois paramètres facultatifs :
 
-- folder - dossier parent spécifié en bloc JSON contenant les attributs &quot;id&quot; et &quot;type&quot;
-- offset : entier qui spécifie où commencer la récupération des entrées (la valeur par défaut est 0) ; peut être utilisé avec le paramètre maxReturn .
-- maxReturn : nombre entier qui spécifie le nombre maximal d’entrées à renvoyer (la valeur par défaut est 20, la valeur maximale est 200).
+- folder - dossier parent spécifié comme bloc JSON contenant les attributs « id » et « type »
+- offset - entier qui spécifie où commencer à récupérer les entrées (la valeur par défaut est 0) ; peut être utilisé avec le paramètre maxReturn
+- maxReturn - entier spécifiant le nombre maximal d’entrées à renvoyer (20 par défaut, 200 au maximum)
 
 ```
 GET /rest/asset/v1/files.json?folder={"id":436, "type": "Folder"}&maxReturn=3
@@ -155,7 +155,7 @@ GET /rest/asset/v1/files.json?folder={"id":436, "type": "Folder"}&maxReturn=3
 
 ## Créer et mettre à jour
 
-[La création d’un fichier](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/createFileUsingPOST) est effectuée avec un type de requête multipart/form-data. Au minimum, le nom, le dossier et le fichier sont requis dans la requête, avec une description facultative, et un indicateur insertOnly, qui empêche un appel de création de mettre à jour un fichier existant portant le même nom. Pour le paramètre de fichier , un &quot;filename&quot; est requis dans l’en-tête Content-Disposition, en plus du paramètre name . Vous devez également transmettre un en-tête Content-Type pour le fichier, qui sera le type MIME que Marketo utilisera pour diffuser le fichier.
+[La création d’un fichier](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/createFileUsingPOST) s’effectue avec une requête de type multipart/form-data . Le nom, le dossier et le fichier sont obligatoires dans la requête, avec une description facultative et un indicateur insertOnly, ce qui empêche un appel de création de mettre à jour un fichier existant portant le même nom. Pour le paramètre de fichier, un « filename » est requis dans l’en-tête Content-Disposition, en plus du paramètre name. Vous devez également transmettre un en-tête Type de contenu pour le fichier , qui sera le type MIME que Marketo utilisera pour diffuser le fichier.
 
 ```
 POST /rest/asset/v1/files.json
@@ -208,7 +208,7 @@ This is a test file
 }
 ```
 
-[La mise à jour d’un fichier](https://developer.adobe.com/marketo-apis/api/asset/#tag/File-Contents/operation/updateContentUsingPOST) peut être effectuée en fonction de son identifiant. Le seul paramètre est un paramètre de fichier ayant les mêmes exigences que la création.
+[La mise à jour d’un fichier](https://developer.adobe.com/marketo-apis/api/asset/#tag/File-Contents/operation/updateContentUsingPOST) peut être effectuée en fonction de son identifiant. Le seul paramètre est un paramètre de fichier qui a les mêmes exigences que la création.
 
 ```
 POST /rest/asset/v1/file/{id}/content.json

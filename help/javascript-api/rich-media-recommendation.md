@@ -1,12 +1,12 @@
 ---
 title: 'Recommandation de média intéractif '
-description: 'Recommandation de média intéractif '
+description: Configurez la recommandation de média enrichi à l’aide de la balise RTP de contenu prédictif Marketo, template1 template2 template3 divs, GET à remplir, DÉFINISSEZ pour configurer les catégories.
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '812'
-ht-degree: 5%
+source-wordcount: '831'
+ht-degree: 4%
 
 ---
 
@@ -22,7 +22,7 @@ Les balises et appels d’API suivants doivent être configurés sur la page sur
 1. Dans le corps de la page
    1. Placez la balise du modèle (classe div) à l’emplacement où vous souhaitez que le modèle apparaisse
 
-Vous trouverez plus d’informations [ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Vous trouverez plus d’informations [ici](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Balise de modèle
 
