@@ -16,7 +16,7 @@ ht-degree: 1%
 
 Marketo propose un ensemble d’API REST pour effectuer des opérations sur des listes intelligentes. Ces API suivent le modèle d’interface standard des API de ressources en fournissant des options de requête, de suppression et de clonage.
 
-Remarque : ces API sont uniquement prises en charge pour les listes dynamiques créées par l’utilisateur. Ils ne peuvent pas être utilisés pour les [listes dynamiques intégrées/système](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
+Remarque : ces API sont uniquement prises en charge pour les listes dynamiques créées par l’utilisateur. Ils ne peuvent pas être utilisés pour les [listes dynamiques intégrées/système](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
 
 ## Requête
 
