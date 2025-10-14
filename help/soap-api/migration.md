@@ -28,9 +28,9 @@ L’API REST Marketo utilise l’authentification basée sur OAuth 2.0 avec le t
 
 ## Prospects
 
-[ Documentation de l’API de lead ](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/lead-database/leads)
+[&#x200B; Documentation de l’API de lead &#x200B;](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/lead-database/leads)
 
-L’API SOAP prend en charge la synchronisation des données de prospect, l’association de cookies [Munchkin ](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/javascriptapi/leadtracking/lead-tracking) et la fusion de prospects. Si votre application appelle la méthode syncLead de SOAP et définit le paramètre `marketoCookie`, vous pouvez effectuer la migration de l’une des manières suivantes :
+L’API SOAP prend en charge la synchronisation des données de prospect, l’association de cookies [Munchkin &#x200B;](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/javascriptapi/leadtracking/lead-tracking) et la fusion de prospects. Si votre application appelle la méthode syncLead de SOAP et définit le paramètre `marketoCookie`, vous pouvez effectuer la migration de l’une des manières suivantes :
 
 1. Utilisation de la méthode REST [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi/#operation/syncLeadUsingPOST), suivie de [Associated Lead](https://developer.adobe.com/marketo-apis/api/mapi/#operation/associateLeadUsingPOST)
 2. Vous pouvez appeler [Envoyer le formulaire](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/lead-database/leads), bien que cela nécessite la configuration de certaines Assets marketing et une interaction avec l’API [Forms](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/assets/forms)
@@ -53,7 +53,7 @@ Documentation REST :
 
 - [Opportunité](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/lead-database/opportunities)
 - [Rôles](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/lead-database/opportunity-roles)
-- [ Programmes ](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/assets/programs)
+- [&#x200B; Programmes &#x200B;](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/assets/programs)
 
 | Méthode SOAP | Méthode(s) REST |
 | --- | --- |

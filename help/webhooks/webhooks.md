@@ -35,7 +35,7 @@ Tous les champs sortants d’un Webhook (URL, modèle et en-têtes personnalisé
 
 - [Présentation des jetons](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
 - [Glossaire des jetons système](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
-- [ Jetons pour les moments significatifs ](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
+- [&#x200B; Jetons pour les moments significatifs &#x200B;](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
 
 Cela se produit généralement lorsqu’un programme ou une campagne est explicitement mappé à une ressource tierce. Un identifiant peut être défini au niveau du programme sous la forme d’un `My Token`, puis transmis à la requête Webhook sous la forme d’un jeton.
 

@@ -32,7 +32,7 @@ La plupart de ces objets incluent au moins les méthodes Create, Read, Update et
 
 ## API
 
-Pour obtenir la liste complète des points d’entrée de l’API de base de données de leads, y compris les paramètres et les informations de modélisation, consultez la [ Référence des points d’entrée de l’API de base de données de leads ](https://developer.adobe.com/marketo-apis/api/mapi/).
+Pour obtenir la liste complète des points d’entrée de l’API de base de données de leads, y compris les paramètres et les informations de modélisation, consultez la [&#x200B; Référence des points d’entrée de l’API de base de données de leads &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi/).
 
 Pour les instances dont l’intégration CRM native est activée (Microsoft Dynamics ou Salesforce.com), les API Société, Opportunité, Rôle de l’opportunité et Commercial sont désactivées. Lorsqu’ils sont activés, les enregistrements sont gérés via le CRM et ne sont pas accessibles ni mis à jour via les API Marketo.
 

@@ -17,7 +17,7 @@ Marketo propose une API REST qui permet l’exécution à distance de nombreuses
 Ces API se répartissent généralement en deux grandes catégories : [Base de données de lead](https://developer.adobe.com/marketo-apis/api/mapi/) et [Ressource](https://developer.adobe.com/marketo-apis/api/asset/). Les API de base de données de leads permettent de récupérer les enregistrements de personne Marketo et les types d’objet associés, tels que les opportunités et les entreprises, ainsi que d’interagir avec eux. Les API de ressources permettent l’interaction avec des dérivés marketing et des enregistrements liés aux workflows.
 
 >[!NOTE]
->L’API SOAP sera abandonnée et ne sera plus disponible après le 31 octobre 2025. Tout nouveau développement doit être effectué avec l’API Marketo [REST](./rest-api.md) et les services existants doivent être migrés avant cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [ Guide de migration de l’API SOAP ](../soap-api/migration.md) pour plus d’informations sur la migration.
+>L’API SOAP sera abandonnée et ne sera plus disponible après le 31 octobre 2025. Tout nouveau développement doit être effectué avec l’API Marketo [REST](./rest-api.md) et les services existants doivent être migrés avant cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [&#x200B; Guide de migration de l’API SOAP &#x200B;](../soap-api/migration.md) pour plus d’informations sur la migration.
 >
 
 - **Quota quotidien :** les abonnements reçoivent 50 000 appels API par jour (qui sont réinitialisés tous les jours à 12 :00AM CST). Vous pouvez augmenter votre quota quotidien par l&#39;intermédiaire de votre gestionnaire de compte.
@@ -68,7 +68,7 @@ Accédez ensuite au menu **[!UICONTROL Admin]**, puis à **[!UICONTROL Services 
 
 Recherchez le [!UICONTROL &#x200B; Point d’entrée &#x200B;] dans la zone API REST et enregistrez-le dans une note pour l’instant.
 
-![ Point d’entrée REST ](assets/admin-web-services-rest-endpoint-1.png)
+![&#x200B; Point d’entrée REST &#x200B;](assets/admin-web-services-rest-endpoint-1.png)
 
 Lors d’appels aux méthodes de l’API REST, un jeton d’accès doit être inclus dans chaque appel pour que l’appel réussisse. Le jeton d’accès doit être envoyé en tant qu’en-tête HTTP.
 

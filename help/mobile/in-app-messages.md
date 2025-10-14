@@ -14,7 +14,7 @@ ht-degree: 1%
 
 Pour utiliser les fonctionnalités de messagerie In-App de Marketo, procédez comme suit :
 
-1. Installez Marketo Mobile SDK comme décrit dans la section [ Installation mobile ](installation.md).
+1. Installez Marketo Mobile SDK comme décrit dans la section [&#x200B; Installation mobile &#x200B;](installation.md).
 1. Ajoutez votre application mobile à Marketo, comme décrit dans la section [Ajouter une application mobile](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app).
 1. Vous pouvez éventuellement ajouter du code à votre application mobile pour capturer [Actions personnalisées](custom-actions.md).
 

@@ -14,7 +14,7 @@ ht-degree: 2%
 
 [Référence des points d’entrée des membres du programme](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members)
 
-Marketo propose des API pour lire, créer, mettre à jour et supprimer des enregistrements de membre de programme. Les enregistrements des membres du programme sont associés aux enregistrements de lead via le champ ID de lead. Les enregistrements sont composés d’un ensemble de champs standard et éventuellement de 20 champs personnalisés supplémentaires. Les champs contiennent des données spécifiques au programme pour chaque membre et peuvent être utilisés dans des formulaires, des filtres, des déclencheurs et des actions de flux. Ces données sont visibles dans l’onglet [ Membres ](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members) du programme dans l’interface utilisateur de Marketo Engage.
+Marketo propose des API pour lire, créer, mettre à jour et supprimer des enregistrements de membre de programme. Les enregistrements des membres du programme sont associés aux enregistrements de lead via le champ ID de lead. Les enregistrements sont composés d’un ensemble de champs standard et éventuellement de 20 champs personnalisés supplémentaires. Les champs contiennent des données spécifiques au programme pour chaque membre et peuvent être utilisés dans des formulaires, des filtres, des déclencheurs et des actions de flux. Ces données sont visibles dans l’onglet [&#x200B; Membres &#x200B;](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members) du programme dans l’interface utilisateur de Marketo Engage.
 
 ## Décrire
 
@@ -346,7 +346,7 @@ Deux points d’entrée prennent en charge l’opération de création/mise à j
 
 ### Statut de membre du programme
 
-Le point d’entrée [ Synchroniser le statut des membres du programme ](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/syncProgramMemberStatusUsingPOST) permet de créer ou de mettre à jour le statut du programme pour un ou plusieurs membres.
+Le point d’entrée [&#x200B; Synchroniser le statut des membres du programme &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/syncProgramMemberStatusUsingPOST) permet de créer ou de mettre à jour le statut du programme pour un ou plusieurs membres.
 
 Le paramètre de chemin d’accès `programId` obligatoire spécifie le programme contenant les membres à créer ou à mettre à jour.
 

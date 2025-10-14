@@ -26,11 +26,11 @@ Pour iOS, reportez-vous à la documentation d’Apple sur [Définition d’un sc
 
 Pour Android, reportez-vous à la documentation de Google sur [Activation des liens profonds pour le contenu d’application](https://developer.android.com/training/app-links/deep-linking).
 
-Pour les applications PhoneGap, la liaison profonde n’est pas aussi simple que pour les applications iOS ou Android natives, mais il existe des plug-ins qui permettent à votre application hybride de répondre aux schémas d’URL personnalisés de lien profond et aux liens universels/d’application sur iOS et Android. Tenez compte de [ ces modules externes ](https://cordova.apache.org/plugins/?q=deeplink).
+Pour les applications PhoneGap, la liaison profonde n’est pas aussi simple que pour les applications iOS ou Android natives, mais il existe des plug-ins qui permettent à votre application hybride de répondre aux schémas d’URL personnalisés de lien profond et aux liens universels/d’application sur iOS et Android. Tenez compte de [&#x200B; ces modules externes &#x200B;](https://cordova.apache.org/plugins/?q=deeplink).
 
 Lorsque vous avez activé la liaison profonde dans votre application, partagez vos URI personnalisés avec vos utilisateurs Marketo afin qu’ils puissent les insérer dans l’action d’appui pour les messages push.
 
-Marketo utilise une structure URI prédéfinie lors de la configuration des appareils de test. Pour plus d&#39;informations, reportez-vous à la section « Périphériques de test » du [ Guide d&#39;installation ](installation.md).
+Marketo utilise une structure URI prédéfinie lors de la configuration des appareils de test. Pour plus d&#39;informations, reportez-vous à la section « Périphériques de test » du [&#x200B; Guide d&#39;installation &#x200B;](installation.md).
 
 ## Bonnes pratiques relatives à la définition d’une structure URI
 

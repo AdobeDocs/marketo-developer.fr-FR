@@ -18,7 +18,7 @@ Un cas d&#39;utilisation courant de l&#39;API Marketo consiste à déclencher l&
 - Un e-mail transactionnel doit être créé et approuvé dans votre instance Marketo.
 - Il doit y avoir une campagne de déclenchement active avec le message « La campagne est demandée, 1. Source : API de service web », configurée pour envoyer l’e-mail
 
-Tout d’abord[ créez et approuvez votre e-mail](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr). Si l’e-mail est véritablement transactionnel, vous devrez probablement le définir comme opérationnel, mais assurez-vous qu’il est juridiquement qualifié comme opérationnel. Elle est configurée à partir de l’écran Modifier sous Actions d’e-mail > Paramètres d’e-mail :
+Tout d’abord[&#x200B; créez et approuvez votre e-mail](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr). Si l’e-mail est véritablement transactionnel, vous devrez probablement le définir comme opérationnel, mais assurez-vous qu’il est juridiquement qualifié comme opérationnel. Elle est configurée à partir de l’écran Modifier sous Actions d’e-mail > Paramètres d’e-mail :
 
 ![Request-Campaign-Email-Settings](assets/request-campaign-email-settings.png)
 

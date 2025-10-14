@@ -27,7 +27,7 @@ Pour que Marketo puisse mapper les valeurs dans un champ, le code de réponse we
 
 Les erreurs des Webhooks peuvent être interceptées et gérées par le déclencheur [!UICONTROL Webhook est appelé] :
 
-![ Webhook est appelé ](assets/webhook-called.png)
+![&#x200B; Webhook est appelé &#x200B;](assets/webhook-called.png)
 
 * Réponse : la réponse est la payload de réponse littérale reçue par la requête.
 * Type d’erreur : il correspond à l’expression de raison du message d’état HTTP.

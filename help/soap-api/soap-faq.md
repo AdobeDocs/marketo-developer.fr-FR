@@ -28,4 +28,4 @@ ht-degree: 0%
 
 **R:** Tout à fait. Vous pouvez demander l’envoi d’un e-mail à partir de Marketo à l’aide de l’une des API SOAP [requestCampaign](requestcampaign.md) ou d’une combinaison des API [importToList](importtolist.md) et [scheduleCampaign](schedulecampaign.md). Pour envoyer immédiatement un e-mail à une ou plusieurs personnes, utilisez [requestCampaign](requestcampaign.md). Si vous souhaitez planifier l’envoi d’un e-mail à une date et une heure spécifiées, vous devez utiliser [importToList](importtolist.md) pour spécifier les destinataires de l’e-mail, et [scheduleCampaign](schedulecampaign.md) pour spécifier le moment où ces destinataires recevront cet e-mail.
 
-Si vous souhaitez personnaliser le contenu pour chaque destinataire d’e-mail, vous pouvez le faire en remplaçant les valeurs des [ jetons de programme ](../rest-api/tokens.md) définies dans le modèle d’e-mail.
+Si vous souhaitez personnaliser le contenu pour chaque destinataire d’e-mail, vous pouvez le faire en remplaçant les valeurs des [&#x200B; jetons de programme &#x200B;](../rest-api/tokens.md) définies dans le modèle d’e-mail.

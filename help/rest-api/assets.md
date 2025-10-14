@@ -31,7 +31,7 @@ Les ressources Marketo incluent :
 
 ## API
 
-Pour obtenir la liste complète des points d’entrée de l’API Asset, y compris les paramètres et les informations de modélisation, consultez la [ Référence des points d’entrée de l’API Asset ](endpoint-reference.md).
+Pour obtenir la liste complète des points d’entrée de l’API Asset, y compris les paramètres et les informations de modélisation, consultez la [&#x200B; Référence des points d’entrée de l’API Asset &#x200B;](endpoint-reference.md).
 
 ## Requête
 

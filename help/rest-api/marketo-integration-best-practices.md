@@ -56,7 +56,7 @@ Les résultats des opérations suivantes peuvent généralement être mis en cac
 
 - Résultats des opérations de description
 - [Types d’activités](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getAllActivityTypesUsingGET)
-- [Partitions ](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadPartitionsUsingGET)
+- [Partitions &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadPartitionsUsingGET)
 
 La mise en cache de certains types de ressources, tels que les programmes, les e-mails et les dossiers, est également appropriée pour certains cas d’utilisation, tels que l’enrichissement des données pour les enregistrements de prospect ou d’activité.
 
