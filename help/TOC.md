@@ -49,7 +49,7 @@ ht-degree: 41%
    - [Profils utilisateur](mobile/user-profiles.md)
 - REST{#rest}
    - [Présentation de l’API REST](rest-api/rest-api.md)
-   - [ Référence de l’API REST ](https://developer.adobe.com/marketo-apis/)
+   - [&#x200B; Référence de l’API REST &#x200B;](https://developer.adobe.com/marketo-apis/)
    - Ressources {#assets}
       - [Ressources](rest-api/assets.md)
       - [Contenu dynamique](rest-api/dynamic-content.md)
