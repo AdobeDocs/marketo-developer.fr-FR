@@ -28,11 +28,11 @@ ht-degree: 41%
       - [Configuration](javascript-api/configuration.md)
       - [Référence de l’API Munchkin](javascript-api/api-reference.md)
    - [Correspondance de motifs](javascript-api/pattern-match.md)
-   - [Predictive Content](javascript-api/predictive-content.md)
+   - [Contenu prédictif](javascript-api/predictive-content.md)
    - [Redirections](javascript-api/redirect.md)
    - [Recommandations relatives aux médias riches](javascript-api/rich-media-recommendation.md)
    - [Déclencheurs](javascript-api/triggers.md)
-   - [Personnalisation Web](javascript-api/web-personalization.md)
+   - [Web Personalization](javascript-api/web-personalization.md)
 - Mobile {#mobile}
    - [Install [!DNL Adobe Launch] Extension](mobile/adobe-launch-extension-installation.md)
    - [Extension [!DNL Adobe Launch]](mobile/adobe-launch-extension.md)
@@ -49,7 +49,7 @@ ht-degree: 41%
    - [Profils utilisateur](mobile/user-profiles.md)
 - REST{#rest}
    - [Présentation de l’API REST](rest-api/rest-api.md)
-   - [&#x200B; Référence de l’API REST &#x200B;](https://developer.adobe.com/marketo-apis/)
+   - [ Référence de l’API REST ](https://developer.adobe.com/marketo-apis/)
    - Ressources {#assets}
       - [Ressources](rest-api/assets.md)
       - [Contenu dynamique](rest-api/dynamic-content.md)
