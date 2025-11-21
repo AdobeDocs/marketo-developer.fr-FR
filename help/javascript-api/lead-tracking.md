@@ -100,7 +100,7 @@ Les cookies Munchkin sont spécifiques à chaque domaine de deuxième niveau, c�
 
 ## Beta
 
-Pour vous inscrire au canal bêta Munchkin pour vos pages de destination, accédez au menu [Admin -> Coffre au trésor](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) et activez le paramètre « Munchkin Beta sur les pages de destination ». Vous obtenez ainsi de nouveaux fragments de code dans le **[!UICONTROL Admin]** ->  Menu **[!UICONTROL Munchkin]** permettant d&#39;utiliser la version bêta sur des sites externes.
+Pour vous inscrire au canal bêta Munchkin pour vos pages de destination, accédez au menu [Admin -> Coffre au trésor](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) et activez le paramètre « Munchkin Beta sur les pages de destination ». Vous obtenez ainsi de nouveaux fragments de code dans le **[!UICONTROL Admin]** ->  Menu **[!UICONTROL Munchkin]** permettant d&#39;utiliser la version bêta sur des sites externes.
 
 ## Opt-Out
 
