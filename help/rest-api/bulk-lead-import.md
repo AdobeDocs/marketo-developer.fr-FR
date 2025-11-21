@@ -3,10 +3,10 @@ title: Importation de leads en bloc
 feature: REST API
 description: Créez et surveillez des importations de leads en bloc asynchrones dans Marketo avec CSV TSV ou SSV.
 exl-id: 615f158b-35f9-425a-b568-0a7041262504
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: c1b9763835b25584f0c085274766b68ddf5c7ae2
 workflow-type: tm+mt
-source-wordcount: '812'
-ht-degree: 0%
+source-wordcount: '795'
+ht-degree: 1%
 
 ---
 
@@ -18,13 +18,13 @@ Pour un grand nombre d’enregistrements de prospect, les prospects peuvent êtr
 
 ## Limites de traitement
 
-Vous êtes autorisé à soumettre plusieurs demandes d’importation en bloc, avec certaines limitations. Chaque demande est ajoutée en tant que tâche à une file d’attente FIFO pour être traitée. Deux traitements au maximum sont traités en même temps. Dix tâches au maximum sont autorisées dans la file d’attente à tout moment donné (y compris les deux en cours de traitement). Si vous dépassez le nombre maximal de dix traitements, une erreur « 1016, Too many imports » est renvoyée.
+Vous êtes autorisé à soumettre plusieurs demandes d’importation en bloc, avec certaines limitations. Chaque demande est ajoutée en tant que tâche à une file d’attente FIFO pour être traitée. Deux traitements au maximum sont traités en même temps. Un maximum de 10 tâches sont autorisées dans la file d’attente à tout moment donné (y compris les deux tâches en cours de traitement). Si vous dépassez le maximum de dix tâches, une erreur de `1016, Too many imports` est renvoyée.
 
 ## Importer fichier
 
 La première ligne du fichier doit être un en-tête qui répertorie les champs API REST correspondants pour mapper les valeurs de chaque ligne. Un fichier type suit ce modèle de base :
 
-```
+```csv
 email,firstName,lastName
 test@example.com,John,Doe
 ```
@@ -37,7 +37,7 @@ Ce type de requête pouvant être difficile à implémenter, il est vivement rec
 
 ## Création d’un traitement
 
-Pour effectuer une demande d’importation en bloc, vous devez définir votre en-tête de type de contenu sur « multipart/form-data » et inclure au moins un paramètre de fichier avec le contenu de votre fichier, ainsi qu’un paramètre de format avec la valeur « csv », « tsv » ou « ssv » indiquant votre format de fichier.
+Pour effectuer une demande d’importation en bloc, vous devez définir votre en-tête de type de contenu sur `multipart/form-data` et inclure au moins un paramètre `file` avec le contenu de votre fichier, ainsi qu’un paramètre `format` avec la valeur `csv`, `tsv` ou `ssv`, indiquant votre format de fichier.
 
 ```
 POST /bulk/v1/leads.json?format=csv
@@ -54,7 +54,7 @@ Host: <munchkinId>.mktorest.com
 Content-Disposition: form-data; name="file"; filename="leads.csv"
 Content-Type: text/csv
 
-FirstName,LastName,Email,Company
+firstName,lastName,email,company
 Able,Baker,ablebaker@marketo.com,Marketo
 Charlie,Dog,charliedog@marketo.com,Marketo
 Easy,Fox,easyfox@marketo.com,Marketo
@@ -75,16 +75,16 @@ Easy,Fox,easyfox@marketo.com,Marketo
 }
 ```
 
-Ce point d’entrée utilise [multipart/form-data comme type de contenu](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Comme il peut s’avérer difficile d’y parvenir, il est recommandé d’utiliser une bibliothèque de prise en charge HTTP pour la langue de votre choix. Voici un moyen simple d’effectuer cette opération avec cURL à partir de la ligne de commande :
+Ce point d’entrée utilise [multipart/form-data comme type de contenu](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Il est recommandé d’utiliser une bibliothèque de prise en charge HTTP pour la langue de votre choix afin d’en garantir l’utilisation correcte. L’exemple suivant est une manière simple de le faire avec cURL à partir de la ligne de commande :
 
 ```
 curl -i -F format=csv -F file=@lead_data.csv -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/leads.json
 ```
 
-Où le fichier d’importation « lead_data.csv » contient les éléments suivants :
+Où le fichier d&#39;import `lead_data.csv` contient les éléments suivants :
 
 ```
-FirstName,LastName,Email,Company
+firstName,lastName,email,company
 Able,Baker,ablebaker@marketo.com,Marketo
 Charlie,Dog,charliedog@marketo.com,Marketo
 Easy,Fox,easyfox@marketo.com,Marketo
@@ -130,7 +130,7 @@ Si la tâche est terminée, vous disposez d’une liste du nombre de lignes trai
 
 ## Échecs
 
-Les échecs sont indiqués par l’attribut « numOfRowsFailed » dans la réponse Get Import Lead Status. Si « numOfRowsFailed » est supérieur à zéro, cette valeur indique le nombre d’échecs qui se sont produits.
+Les échecs sont indiqués par l’attribut `numOfRowsFailed` dans la réponse Obtenir le statut du lead d’importation . Si `numOfRowsFailed` est supérieur à zéro, cette valeur indique le nombre d’échecs qui se sont produits.
 
 Pour récupérer les enregistrements et les causes des lignes ayant échoué, vous devez récupérer le fichier d’échec :
 
@@ -138,11 +138,11 @@ Pour récupérer les enregistrements et les causes des lignes ayant échoué, vo
 GET /bulk/v1/leads/batch/{id}/failures.json
 ```
 
-L’API répond avec un fichier indiquant les lignes ayant échoué, ainsi qu’un message indiquant pourquoi l’enregistrement a échoué. Le format du fichier est identique à celui spécifié dans le paramètre « format » lors de la création de la tâche. Un champ supplémentaire est ajouté à chaque enregistrement avec une description de l’échec.
+L’API répond avec un fichier indiquant les lignes ayant échoué, ainsi qu’un message indiquant pourquoi l’enregistrement a échoué. Le format du fichier est identique à celui spécifié dans `format` paramètre lors de la création de la tâche. Un champ supplémentaire est ajouté à chaque enregistrement avec une description de l’échec.
 
 ## Avertissements
 
-Les avertissements sont indiqués par l’attribut « numOfRowsWithWarning » dans la réponse Get Import Lead Status. Si « numOfRowsWithWarning » est supérieur à zéro, cette valeur indique le nombre d’avertissements qui se sont produits.
+Les avertissements sont indiqués par l’attribut `numOfRowsWithWarning` dans une réponse Get Import Lead Status . Si `numOfRowsWithWarning` est supérieur à zéro, cette valeur indique le nombre d’avertissements qui se sont produits.
 
 Pour récupérer les enregistrements et les causes des lignes d&#39;avertissement, récupérez le fichier d&#39;avertissement :
 
@@ -150,4 +150,4 @@ Pour récupérer les enregistrements et les causes des lignes d&#39;avertissemen
 GET /bulk/v1/leads/batch/{id}/warnings.json
 ```
 
-L’API répond avec un fichier indiquant les lignes qui ont généré des avertissements, ainsi qu’un message indiquant pourquoi l’enregistrement a échoué. Le format du fichier est identique à celui spécifié dans le paramètre « format » lors de la création de la tâche. Un champ supplémentaire est ajouté à chaque enregistrement avec une description de l&#39;avertissement.
+L’API répond avec un fichier indiquant les lignes qui ont généré des avertissements, ainsi qu’un message indiquant pourquoi l’enregistrement a échoué. Le format du fichier est identique à celui spécifié dans `format` paramètre lors de la création de la tâche. Un champ supplémentaire est ajouté à chaque enregistrement avec une description de l&#39;avertissement.

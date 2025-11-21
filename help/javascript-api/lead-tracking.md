@@ -1,11 +1,11 @@
 ---
 title: Suivi du lead
-description: Découvrez comment intégrer Marketo Munchkin JavaScript, effectuer le suivi des visites et des clics, gérer les prospects connus ou anonymes, les cookies interdomaines et le processus d’opt-out des campagnes intelligentes.
+description: Découvrez comment intégrer Marketo Munchkin JavaScript, suivre les visites et les clics, gérer les prospects connus ou anonymes, les cookies interdomaines et refuser les campagnes intelligentes.
 feature: Munchkin Tracking Code, Javascript
 exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: c1b9763835b25584f0c085274766b68ddf5c7ae2
 workflow-type: tm+mt
-source-wordcount: '786'
+source-wordcount: '787'
 ht-degree: 0%
 
 ---
@@ -76,7 +76,7 @@ Lors de la première visite d’un prospect sur une page de votre domaine, un no
 - Le prospect doit remplir un formulaire Marketo.
 - Un appel REST [Associate Lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST) doit être envoyé.
 
-Une fois l’une de ces conditions remplie, le cookie et toute l’activité web associée sont associés au prospect connu.
+Lorsque l’une de ces conditions est remplie, le cookie et toute activité web associée sont associés au prospect connu.
 
 Un nouvel enregistrement d’activité web anonyme est créé pour chaque navigateur individuel. Par conséquent, si un prospect visite votre domaine pour la première fois à l’aide d’un nouvel ordinateur et/ou d’un nouveau navigateur, cette association doit à nouveau avoir lieu.
 
@@ -90,17 +90,17 @@ Si votre domaine de niveau supérieur se compose de deux parties, comme `.co.uk`
 
 Le cookie Munchkin utilise la clé `_mkto_trk` et possède une valeur suivant ce modèle :
 
-`id:561\-HYG\-937&token:_mch\-marketo.com\-1374552656411\-90718`
+`id:561-HYG-937&token:_mch-marketo.com-1374552656411-90718`
 
-ou
+Ou
 
-`id:561\-HYG\-937&token:_mch\-marketo.com\-97bf4361ef4433921a6da262e8df45a`
+`id:561-HYG-937&token:_mch-marketo.com-97bf4361ef4433921a6da262e8df45a`
 
 Les cookies Munchkin sont spécifiques à chaque domaine de deuxième niveau, c’est-à-dire `example.com`. La durée de vie par défaut du cookie est de 2 ans (730 jours).
 
 ## Beta
 
-Pour vous inscrire au canal bêta Munchkin pour vos pages de destination, accédez au menu [Admin -> Coffre au trésor](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) et activez le paramètre « Munchkin Beta sur les pages de destination ». Vous obtenez ainsi de nouveaux fragments de code dans le **[!UICONTROL Admin]** ->  Menu **[!UICONTROL Munchkin]** permettant d&#39;utiliser la version bêta sur des sites externes.
+Pour vous inscrire au canal bêta Munchkin pour vos pages de destination, accédez au menu [Admin -> Coffre au trésor](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) et activez le paramètre « Munchkin Beta sur les pages de destination ». Vous obtenez ainsi de nouveaux fragments de code dans le **[!UICONTROL Admin]** ->  Menu **[!UICONTROL Munchkin]** permettant d&#39;utiliser la version bêta sur des sites externes.
 
 ## Opt-Out
 
