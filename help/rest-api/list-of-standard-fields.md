@@ -3,10 +3,10 @@ title: Champs standard
 feature: REST API, Field Management
 description: Parcourez la liste complète des champs de prospect standard Marketo avec des noms, libellés et descriptions REST et SOAP, et apprenez à les récupérer à l’aide de l’API Describe Lead.
 exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
 workflow-type: tm+mt
-source-wordcount: '1161'
-ht-degree: 28%
+source-wordcount: '727'
+ht-degree: 25%
 
 ---
 
@@ -47,33 +47,6 @@ Vous pouvez récupérer la liste de tous les noms de champ pris en charge dispon
 | mainPhone | MainPhone | Téléphone principal | Numéro de téléphone Principal de la société du prospect |
 | jigsawContactId | ID de contact Marketo Data.com | ID de Marketo Data.com | ID Data.com du lead si disponible |
 | jigsawContactStatus | Statut de contact Marketo data.com | Statut Marketo Data.com | Statut Data.com du lead si disponible |
-| facebookDisplayName | MarketoSocialFacebookDisplayName | Nom d’affichage Marketo pour Facebook | Nom d’affichage Facebook du prospect. Système renseigné lors de la connexion au réseau social |
-| facebookId | MarketoSocialFacebookId | ID Marketo via Facebook | Identifiant Facebook du lead. Système renseigné lors de la connexion au réseau social |
-| facebookPhotoURL | MarketoSocialFacebookPhotoURL | URL de photo Marketo pour Facebook | URL de la photo de profil Facebook du prospect. Système renseigné lors de la connexion au réseau social |
-| facebookProfileURL | MarketoSocialFacebookProfileURL | URL du profil Marketo pour Facebook | URL du profil Facebook du prospect. Système renseigné lors de la connexion au réseau social |
-| facebookReach | MarketoSocialFacebookReach | Portée sociale Marketo via Facebook | La portée Facebook du lead. Système renseigné lors de la connexion au réseau social |
-| facebookReferredEnrollments | MarketoSocialFacebookReferredEnrollments | Inscriptions sur recommandation Marketo via Facebook | Nombre d’inscriptions référencées attribuées au lead via Facebook. Gestion du système |
-| facebookReferredVisits | MarketoSocialFacebookReferredVisits | Visites sur recommandation Marketo via Facebook | Nombre de visites référées attribuées au prospect via Facebook. Gestion du système |
-| sexe | MarketoSocialGender | Sexe Marketo pour réseaux sociaux | Sexe du lead. Système renseigné lors de la connexion au réseau social |
-| lastReferredEnrollment | MarketoSocialLastReferredEnrollment | Dernière inscription sur recommandation Marketo via les réseaux sociaux | Date du dernier parrainage terminé. Gestion du système |
-| lastReferredVisit | MarketoSocialLastReferredVisit | Dernière visite sur recommandation Marketo via les réseaux sociaux | Date de la dernière visite recommandée. Gestion du système |
-| linkedInDisplayName | MarketoSocialLinkedInDisplayName | Nom d’affichage Marketo pour LinkedIn | Nom d’affichage LinkedIn du prospect. Système renseigné lors de la connexion au réseau social |
-| linkedInId | MarketoSocialLinkedInId | ID Marketo via LinkedIn | ID LinkedIn du lead. Système renseigné lors de la connexion au réseau social |
-| linkedInPhotoURL | MarketoSocialLinkedInPhotoURL | URL de la photo Marketo pour LinkedIn | URL de la photo LinkedIn du lead. Système renseigné lors de la connexion au réseau social |
-| linkedInProfileURL | MarketoSocialLinkedInProfileURL | URL du profil Marketo pour LinkedIn | Profil LinkedIn du lead. Système renseigné lors de la connexion au réseau social |
-| linkedInReach | MarketoSocialLinkedInReach | Portée sociale Marketo via LinkedIn | La portée de LinkedIn du lead. Système renseigné lors de la connexion au réseau social |
-| linkedInReferredEnrollments | MarketoSocialLinkedInReferredEnrollments | Inscriptions sur recommandation Marketo via LinkedIn | Nombre d’inscriptions référencées attribuées au lead via LinkedIn. Gestion du système |
-| linkedInReferredVisits | MarketoSocialLinkedInReferredVisits | Visites sur recommandation Marketo via LinkedIn | Nombre de visites référencées attribuées au lead via LinkedIn. Gestion du système |
-| syndicationId |  - | ID association sociale Marketo | Identifiant social Marketo interne du prospect. Gestion du système |
-| totalReferredEnrollments | MarketoSocialTotalReferredEnrollments | Total des inscriptions sur recommandation Marketo via les réseaux sociaux | Nombre total d’inscriptions pour recommandation terminées attribuées au prospect |
-| totalReferredVisits | MarketoSocialTotalReferredVisits | Total des visites Marketo sur recommandation via les réseaux sociaux | Nombre total de visites référées attribuées au prospect |
-| twitterDisplayName | MarketoSocialTwitterDisplayName | Nom d’affichage Marketo pour Twitter | Nom d’affichage Twitter du lead. Système renseigné lors de la connexion au réseau social |
-| twitterId | MarketoSocialTwitterId | ID Marketo via Twitter | ID Twitter du lead. Système renseigné lors de la connexion au réseau social |
-| twitterPhotoURL | MarketoSocialTwitterPhotoURL | URL de la photo Marketo pour Twitter | URL de la photo Twitter du lead. Système renseigné lors de la connexion au réseau social |
-| twitterProfileURL | MarketoSocialTwitterProfileURL | URL du profil Marketo pour Twitter | URL du profil Twitter du lead. Système renseigné lors de la connexion au réseau social |
-| twitterReach | MarketoSocialTwitterReach | Portée sociale Marketo via Twitter | Portée Twitter de Lead. Système renseigné lors de la connexion au réseau social |
-| twitterReferredEnrollments | MarketoSocialTwitterReferredEnrollments | Inscriptions sur recommandation Marketo via Twitter | Nombre d’inscriptions référencées attribuées au prospect via Twitter. Gestion du système |
-| twitterReferredVisits | MarketoSocialTwitterReferredVisits | Visites sur recommandation Marketo via Twitter | Nombre de visites référées attribuées au prospect via Twitter. Gestion du système |
 | middleName | MiddleName | Deuxième prénom | Deuxième prénom du lead |
 | mobilePhone | MobilePhone | Numéro de téléphone mobile | Numéro de téléphone mobile du lead |
 | numberOfEmployees | NumberOfEmployees | Nombre d&#39;employés | Nombre d&#39;employés de la société du prospect |

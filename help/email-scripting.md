@@ -3,9 +3,9 @@ title: Script de l'e-mail
 feature: Email Programs
 description: Découvrez comment créer des scripts pour les e-mails Marketo dynamiques à l’aide des jetons Apache Velocity, des variables, des outils Velocity et tester avec l’exemple d’envoi et la Prévisualisation des e-mails.
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
 workflow-type: tm+mt
-source-wordcount: '981'
+source-wordcount: '969'
 ht-degree: 0%
 
 ---
@@ -14,26 +14,7 @@ ht-degree: 0%
 
 REMARQUE : il est vivement recommandé de lire le [Guide de l’utilisateur Velocity](https://velocity.apache.org/engine/devel/user-guide.html) pour une analyse approfondie du comportement du langage de modèle Velocity.
 
-[Apache Velocity](https://velocity.apache.org/) est un langage basé sur Java qui a été conçu pour créer des modèles et des scripts de contenu HTML. Marketo permet de l’utiliser dans le contexte des e-mails à l’aide de jetons de script. Cela donne accès aux données stockées dans les opportunités et les objets personnalisés, et permet la création de contenu dynamique dans les e-mails. Velocity offre un flux de contrôle standard de haut niveau avec if/else, for et for each pour permettre la manipulation conditionnelle et itérative du contenu. Voici un exemple simple pour imprimer un message d’accueil avec la formule de salutation appropriée :
-
-```java
-##check if the lead is male
-#if(${lead.MarketoSocialGender} == "Male")
-    ##if the lead is male, use the salutation 'Mr.'
-    #set($greeting = "Dear Mr. ${lead.LastName},")
-##check is the lead is female
-#elseif(${lead.MarketoSocialGender} == "Female")
-    ##if female, use the salutation 'Ms.'
-    #set($greeting = "Dear Ms. ${lead.LastName},")
-#else
-    ##otherwise, use the first name
-    #set($greeting = "Dear ${lead.FirstName},")
-#end
-##print the greeting and some content
-${greeting}
-
-    Lorem ipsum dolor sit amet...
-```
+[Apache Velocity](https://velocity.apache.org/) est un langage basé sur Java qui a été conçu pour créer des modèles et des scripts de contenu HTML. Marketo permet de l’utiliser dans le contexte des e-mails à l’aide de jetons de script. Cela donne accès aux données stockées dans les opportunités et les objets personnalisés, et permet la création de contenu dynamique dans les e-mails. Velocity offre un flux de contrôle standard de haut niveau avec if/else, for et for each pour permettre la manipulation conditionnelle et itérative du contenu.
 
 ## Variables
 
@@ -130,7 +111,7 @@ La longueur combinée de tous les jetons de script d’e-mail dans un e-mail don
 - Vous pouvez référencer des objets personnalisés connectés à un prospect, un contact ou un compte, mais pas plus d’un.
 - Les objets personnalisés ne peuvent être référencés que par le biais d’une seule connexion, d’un seul lead, contact ou compte
 - Vous devez cocher la case dans l’éditeur de script pour les champs que vous utilisez, sans quoi ils ne seront pas traités
-- Pour chaque objet personnalisé, les dix enregistrements mis à jour le plus récemment par personne/contact sont disponibles au moment de l’exécution et sont classés du plus récemment mis à jour (à 0) au plus ancien mis à jour (à 9). Vous pouvez augmenter le nombre d&#39;enregistrements disponibles en [suivant les instructions](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
+- Pour chaque objet personnalisé, les dix enregistrements mis à jour le plus récemment par personne/contact sont disponibles au moment de l’exécution et sont classés du plus récemment mis à jour (à 0) au plus ancien mis à jour (à 9). Vous pouvez augmenter le nombre d&#39;enregistrements disponibles en [suivant les instructions](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
 - Si vous incluez plusieurs scripts d’e-mail dans un e-mail, ils s’exécutent de haut en bas. La portée des variables définies dans le premier script à exécuter sera disponible dans les scripts suivants.
 - Référence des outils : [https://velocity.apache.org/tools/2.0/index.html](https://velocity.apache.org/tools/2.0/index.html)
 - Une note concernant les jetons qui contiennent des caractères de nouvelle ligne « \\n » ou « \\r\\n ». Lorsqu’un e-mail est envoyé via Envoyer un exemple ou via une campagne par lots, les caractères de nouvelle ligne dans les jetons sont remplacés par des espaces. Lorsque l’e-mail est envoyé via Trigger Campaign, les caractères de nouvelle ligne ne sont pas touchés.
