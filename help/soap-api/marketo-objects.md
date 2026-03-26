@@ -3,9 +3,9 @@ title: Objets Marketo
 feature: SOAP
 description: Présentation des MObjects Marketo, y compris les types, les attributs, le comportement des clés externes et les API SOAP prises en charge pour les enregistrements d’opportunités, de programmes et connexes.
 exl-id: 99b9aed4-94e8-46e8-84d9-2cc5215b0c13
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '265'
+source-wordcount: '274'
 ht-degree: 0%
 
 ---
@@ -31,12 +31,12 @@ Les MObjects se composent des éléments suivants :
 
 ### External-Keys
 
-Les clés externes sont des champs personnalisés définis sur les objets Marketo, tels que les leads ou les opportunités. Le nom est le nom du champ et la valeur est la valeur du champ, générée dans un système externe. **Marketo n&#39;applique pas de contrainte unique sur ces valeurs.** Il est de la responsabilité de l’utilisateur de l’API de s’assurer que les valeurs sont uniques. En cas de doublon, Marketo utilise l’objet ajouté le plus récemment. Ce comportement est similaire à celui du champ standard Adresse e-mail .
+Les clés externes sont des champs personnalisés définis sur les objets Marketo, tels que les leads ou les opportunités. Le nom est le nom du champ et la valeur est la valeur du champ, générée dans un système externe. **Marketo n’applique pas de contrainte unique à ces valeurs.** Il incombe à l’utilisateur de l’API de s’assurer que les valeurs sont uniques. En cas de doublon, Marketo utilise l’objet ajouté le plus récemment. Ce comportement est similaire à celui du champ standard Adresse e-mail .
 
 ### API disponibles
 
 | API | Peut Fonctionner Sur |
-|---|---|
+| --- | --- |
 | defineMObject | ActivityRecord, LeadRecord, Opportunité, OpportunityPersonRole |
 | getMObjects | Opportunité, Rôle de personne d’opportunité, Programme |
 | syncMObjects | Opportunité, Rôle de personne d’opportunité, Programme |

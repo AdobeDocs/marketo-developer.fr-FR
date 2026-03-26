@@ -3,7 +3,7 @@ title: Filtres de type d’activité
 feature: SOAP
 description: Parcourez tous les filtres Type d’activité pris en charge pour les appels SOAP, des clics d’e-mail aux remplissages de formulaires, en passant par les modifications des campagnes SFDC et les mises à jour d’opportunités.
 exl-id: d661bb41-5615-4394-ade0-29254e48f7eb
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
 source-wordcount: '226'
 ht-degree: 87%
@@ -13,7 +13,7 @@ ht-degree: 87%
 # Filtres de type d’activité
 
 | Ajouter à la liste |
-|-------------------------------------|
+| --- |
 | Ajouter à la fidélisation |
 | Ajouter à l&#39;opportunité |
 | Ajouter au segment |
@@ -26,7 +26,7 @@ ht-degree: 87%
 | Changer de type de données pour l’attribut |
 | Changer d’utilisateur CRM |
 | Changer d’objet personnalisé |
-| Modifier la valeur des données |
+| Modification de la valeur des données |
 | Modifier le rythme de fidélisation |
 | Modifier fidélisation épuisée |
 | Modifier le suivi de fidélisation |

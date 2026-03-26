@@ -3,9 +3,9 @@ title: Bonnes pratiques d’intégration de Marketo
 feature: REST API
 description: Bonnes pratiques relatives aux intégrations d’API Marketo concernant les quotas, les limites de débit et de simultanéité, les traitements par lots, l’importation et l’exportation en masse, la mise en cache et la planification de la latence.
 exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '966'
+source-wordcount: '1012'
 ht-degree: 0%
 
 ---
@@ -39,7 +39,7 @@ Pour optimiser les performances de vos intégrations, lors des insertions ou des
 La détermination de vos tolérances de latence, ou de la durée maximale qui peut s’écouler avant l’envoi d’un appel API, informera de nombreuses décisions, voire de la plupart, que vous prenez lors de la conception de votre intégration à Marketo. Marketo fournit de nombreuses méthodes différentes et options de configuration qui conviennent à différents cas d’utilisation et différentes classes de latence. Par exemple, une intégration en temps réel pour informer un vendeur de l’inscription d’un utilisateur à une version d’essai peut uniquement envoyer des lots d’un seul si un suivi immédiat est requis. Cependant, la plupart des cas ne le nécessitent pas et peuvent tolérer une latence supplémentaire. Ils peuvent également être gérés plus efficacement par le biais d’appels en file d’attente et par lots.
 
 | Latence acceptable | Méthodes préférées | Notes |
-|---|---|---|
+| --- | --- | --- |
 | Faible (&lt;10s) | API synchrones (par lot ou non) | Assurez-vous que votre cas d’utilisation le requiert. L’envoi d’appels immédiats et synchrones pour des cas d’utilisation à volume élevé peut rapidement consommer un quota d’API quotidien et potentiellement dépasser les limites de taux et de simultanéité. |
 | Medium(10s - 60m) | API synchrones (par lots) | Pour les intégrations de données entrantes vers Marketo, il est vivement recommandé d’utiliser une file d’attente avec une limite d’âge et de taille. Lorsque l’une des limites est atteinte, videz la file d’attente et envoyez votre requête API avec les enregistrements accumulés. Il s’agit d’un compromis solide entre vitesse et efficacité. Vous pouvez ainsi vous assurer que vos requêtes se produisent à la cadence requise, tout en traitant autant d’enregistrements que le permet l’âge de la file d’attente. |
 | Élevée (>60m) | Importation/exportation en bloc (si pris en charge) | Pour les intégrations de données entrantes, les enregistrements doivent être placés en file d’attente et envoyés via les API Bulk Marketo chaque fois qu’ils sont disponibles. |
@@ -55,8 +55,8 @@ Comme la capacité est partagée entre tous les services d’API et les utilisat
 Les résultats des opérations suivantes peuvent généralement être mis en cache côté client pendant un jour ou plus, car ils changent rarement :
 
 - Résultats des opérations de description
-- [Types d’activités](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getAllActivityTypesUsingGET)
-- [Partitions &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadPartitionsUsingGET)
+- [Types d’activité](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getAllActivityTypesUsingGET)
+- [Partitions](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadPartitionsUsingGET)
 
 La mise en cache de certains types de ressources, tels que les programmes, les e-mails et les dossiers, est également appropriée pour certains cas d’utilisation, tels que l’enrichissement des données pour les enregistrements de prospect ou d’activité.
 

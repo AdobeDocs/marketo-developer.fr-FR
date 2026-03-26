@@ -3,9 +3,9 @@ title: API REST
 feature: REST API
 description: Découvrez comment utiliser l’API REST Marketo, configurer les utilisateurs d’API et LaunchPoint, afficher les quotas et les limites, vous authentifier avec l’en-tête d’autorisation et récupérer les prospects.
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
-source-git-commit: a0901d2c67aa42368f03494dc8157d2ae93b3dce
+source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
 workflow-type: tm+mt
-source-wordcount: '880'
+source-wordcount: '897'
 ht-degree: 2%
 
 ---
@@ -17,7 +17,7 @@ Marketo propose une API REST qui permet l’exécution à distance de nombreuses
 Ces API se répartissent généralement en deux grandes catégories : [Base de données de lead](https://developer.adobe.com/marketo-apis/api/mapi/) et [Ressource](https://developer.adobe.com/marketo-apis/api/asset/). Les API de base de données de leads permettent de récupérer les enregistrements de personne Marketo et les types d’objet associés, tels que les opportunités et les entreprises, ainsi que d’interagir avec eux. Les API de ressources permettent l’interaction avec des dérivés marketing et des enregistrements liés aux workflows.
 
 >[!NOTE]
->L’API SOAP sera abandonnée et ne sera plus disponible après le 31 juillet 2026. Tout nouveau développement doit être effectué avec l’API Marketo [REST](./rest-api.md) et les services existants doivent être migrés avant cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [&#x200B; Guide de migration de l’API SOAP &#x200B;](../soap-api/migration.md) pour plus d’informations sur la migration.
+>L’API SOAP sera abandonnée et ne sera plus disponible après le 31 juillet 2026. Tout nouveau développement doit être effectué avec l’API Marketo [REST](./rest-api.md) et les services existants doivent être migrés avant cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [ Guide de migration de l’API SOAP ](../soap-api/migration.md) pour plus d’informations sur la migration.
 >
 
 >[!IMPORTANT]
@@ -70,9 +70,9 @@ Accédez ensuite au menu **[!UICONTROL Admin]**, puis à **[!UICONTROL Services 
 
 ![Services web](assets/admin-web-services.png)
 
-Recherchez le [!UICONTROL &#x200B; Point d’entrée &#x200B;] dans la zone API REST et enregistrez-le dans une note pour l’instant.
+Recherchez le [!UICONTROL  Point d’entrée ] dans la zone API REST et enregistrez-le dans une note pour l’instant.
 
-![&#x200B; Point d’entrée REST &#x200B;](assets/admin-web-services-rest-endpoint-1.png)
+![ Point d’entrée REST ](assets/admin-web-services-rest-endpoint-1.png)
 
 Lors d’appels aux méthodes de l’API REST, un jeton d’accès doit être inclus dans chaque appel pour que l’appel réussisse. Le jeton d’accès doit être envoyé en tant qu’en-tête HTTP.
 
@@ -112,3 +112,5 @@ Si vous n’avez pas d’enregistrement de prospect avec votre adresse e-mail da
 ## Utilisation de l’API
 
 Chacun de vos utilisateurs d’API est signalé individuellement dans le rapport d’utilisation de l’API. La division de vos services web par utilisateur vous permet donc de rendre compte facilement de l’utilisation de chacune de vos intégrations. Si le nombre d’appels d’API à votre instance dépasse la limite et provoque l’échec des appels suivants, l’utilisation de cette pratique vous permet de tenir compte du volume de chacun de vos services et d’évaluer comment résoudre le problème. Consultez votre utilisation en accédant à **[!UICONTROL Admin]** -> **[!UICONTROL Intégration]** > **[!UICONTROL Services web]** et en cliquant sur le nombre d’appels au cours des sept derniers jours.
+
+Pour les points d’entrée REST qui renvoient des statistiques d’utilisation et d’erreur quotidiennes et des 7 derniers jours, voir [Utilisation](usage.md).

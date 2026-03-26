@@ -3,9 +3,9 @@ title: Extraction d’objet personnalisé en bloc
 feature: REST API, Custom Objects
 description: Guide des API REST d’extraction d’objets personnalisés en bloc Marketo pour l’exportation d’objets personnalisés liés à un prospect avec des filtres de liste et de date de mise à jour, des champs sélectionnés et...
 exl-id: 86cf02b0-90a3-4ec6-8abd-b4423cdd94eb
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1315'
+source-wordcount: '1473'
 ht-degree: 1%
 
 ---
@@ -16,7 +16,7 @@ ht-degree: 1%
 
 Le jeu d’API REST d’extraction d’objets personnalisés en bloc fournit une interface de programmation pour récupérer de grands jeux d’enregistrements d’objets personnalisés en dehors de Marketo. Il s’agit de l’interface recommandée pour les cas d’utilisation qui nécessitent un échange continu de données entre Marketo et un ou plusieurs systèmes externes, à des fins d’ETL, d’entreposage de données et d’archivage.
 
-Cette API prend en charge l’exportation d’enregistrements d’objet personnalisés Marketo de premier niveau directement liés à un prospect. Transmettez le nom de l’objet personnalisé et une liste de prospects auxquels l’objet est lié. Pour chaque prospect de la liste, les enregistrements d’objet personnalisé liés qui correspondent au nom d’objet personnalisé spécifié sont écrits en tant que lignes dans le fichier d’exportation. Les données d’objet personnalisées sont visibles dans l’onglet [&#x200B; Objet personnalisé » de la page de détails du prospect dans l’interface utilisateur de Marketo](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
+Cette API prend en charge l’exportation d’enregistrements d’objet personnalisés Marketo de premier niveau directement liés à un prospect. Transmettez le nom de l’objet personnalisé et une liste de prospects auxquels l’objet est lié. Pour chaque prospect de la liste, les enregistrements d’objet personnalisé liés qui correspondent au nom d’objet personnalisé spécifié sont écrits en tant que lignes dans le fichier d’exportation. Les données d’objet personnalisées sont visibles dans l’onglet [ Objet personnalisé » de la page de détails du prospect dans l’interface utilisateur de Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
 
 ## Autorisations
 
@@ -27,7 +27,7 @@ Les API d’extraction d’objets personnalisés en bloc nécessitent que l’ut
 L’extraction d’objet personnalisé prend en charge plusieurs options de filtre utilisées pour spécifier une liste de prospects liés à l’objet personnalisé. Si un prospect de la liste est lié à des enregistrements d’objet personnalisés correspondant à un nom d’objet personnalisé donné, les enregistrements sont écrits dans le fichier d’exportation. Un seul type de filtre peut être spécifié par tâche d&#39;exportation.
 
 | Type de filtre | Type de données | Notes |
-|---|---|---|
+| --- | --- | --- |
 | `updatedAt` | Période | Accepte un objet JSON avec les membres `startAt` et `endAt` &amp;nbsp.;`startAt` accepte une valeur datetime représentant le filigrane bas et `endAt` accepte une valeur datetime représentant le filigrane haut. La plage doit être de 31 jours ou moins. Les traitements avec ce type de filtre renvoient tous les enregistrements accessibles qui ont été mis à jour au cours de la période. Les heures de date doivent être au format ISO-8601, sans millisecondes. |
 | `staticListName` | Chaîne | Accepte le nom d’une liste statique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres de la liste statique au moment où la tâche commence le traitement. Récupérez les noms de listes statiques à l’aide du point d’entrée Get Lists. |
 | `staticListId` | Nombre entier | Accepte l’identifiant d’une liste statique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres de la liste statique au moment où la tâche commence le traitement. Récupérez les identifiants de liste statiques à l’aide du point d’entrée Get Lists. |
@@ -45,7 +45,7 @@ Le point d’entrée [Créer une tâche d’exportation d’objet personnalisé]
 - Spécifier le format du fichier exporté
 
 | Paramètre | Type de données | Obligatoire | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `fields` | Array[String] | Oui | Tableau de chaînes contenant la valeur du nom de l’attribut d’objet personnalisé tel que renvoyé par le point d’entrée de l’objet personnalisé Describe. Les champs répertoriés sont inclus dans le fichier exporté. |
 | `columnHeaderNames` | Objet | Non | Un objet JSON contenant des paires clé-valeur de noms d’en-tête de champ et de colonne. La clé doit être le nom d’un champ inclus dans la tâche d’exportation. La valeur est le nom de l’en-tête de colonne exporté pour ce champ. |
 | `format` | Chaîne | Non | Accepte l’un des formats suivants : CSV, TSV, SSV. Le fichier exporté est rendu sous la forme d’un fichier de valeurs séparées par des virgules, des valeurs séparées par des tabulations ou des valeurs séparées par des espaces, respectivement, s’il est défini. La valeur par défaut est CSV si cette valeur n’est pas définie. |

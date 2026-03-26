@@ -3,16 +3,16 @@ title: Extrait de lead en masse
 feature: REST API
 description: Découvrez comment utiliser les API REST d’extraction de lead en bloc Marketo pour exporter en bloc des leads avec des filtres de date, de liste et de liste dynamique, des champs personnalisés et des formats CSV/TSV.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1195'
+source-wordcount: '1273'
 ht-degree: 2%
 
 ---
 
 # Extrait de lead en masse
 
-[Référence de point d’entrée d’extraction de lead en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads)
+[Référence de point d’entrée d’extraction de leads en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads)
 
 L’ensemble d’API REST d’extraction de lead en bloc fournit une interface de programmation pour récupérer de grands ensembles d’enregistrements de lead/personne en dehors de Marketo. En outre, il peut être utilisé pour récupérer les prospects de manière incrémentielle en fonction de la date de création de l’enregistrement, de la mise à jour la plus récente, de l’appartenance à une liste statique ou à une liste dynamique. Interface recommandée pour les cas d’utilisation qui nécessitent un échange continu de données entre Marketo et un ou plusieurs systèmes externes, à des fins d’ETL, d’entreposage de données et d’archivage.
 
@@ -25,9 +25,9 @@ Les API Bulk Lead Extract nécessitent que l’utilisateur de l’API propriéta
 Les prospects prennent en charge différentes options de filtre. Certains filtres, notamment les `updatedAt`, `smartListName` et `smartListId`, nécessitent des composants d’infrastructure supplémentaires qui n’ont pas encore été déployés sur tous les abonnements. Un seul type de filtre peut être spécifié par tâche d&#39;exportation.
 
 | Type de filtre | Type de données | Notes |
-|---|---|---|
-| createdAt | Période | Accepte un objet JSON avec les membres `startAt` et `endAt`. `startAt` accepte une valeur datetime représentant le filigrane bas et `endAt` une valeur datetime représentant le filigrane haut. La plage doit être de 31 jours ou moins. Les heures de date doivent être au format ISO-8601, sans millisecondes. Les traitements avec ce type de filtre renvoient tous les enregistrements accessibles qui ont été créés au cours de la période. |
-| updatedAt* | Période | Accepte un objet JSON avec les membres `startAt` et `endAt`. `startAt` accepte une valeur datetime représentant le filigrane bas et `endAt` une valeur datetime représentant le filigrane haut. La plage doit être de 31 jours ou moins. Les heures de date doivent être au format ISO-8601, sans millisecondes. Remarque : ce filtre ne filtre pas sur le champ visible « updatedAt » qui reflète uniquement les mises à jour apportées aux champs standard. Il filtre en fonction de la date à laquelle la mise à jour la plus récente du champ a été apportée à un enregistrement de prospect. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui ont été mis à jour le plus récemment au cours de la période. |
+| --- | --- | --- |
+| createdAt | Période | Accepte un objet JSON avec les membres `startAt` et `endAt`. `startAt` accepte une valeur datetime représentant le filigrane bas et `endAt` accepte une valeur datetime représentant le filigrane haut. La plage doit être de 31 jours ou moins. Les heures de date doivent être au format ISO-8601, sans millisecondes. Les traitements avec ce type de filtre renvoient tous les enregistrements accessibles qui ont été créés au cours de la période. |
+| updatedAt* | Période | Accepte un objet JSON avec les membres `startAt` et `endAt`. `startAt` accepte une valeur datetime représentant le filigrane bas et `endAt` accepte une valeur datetime représentant le filigrane haut. La plage doit être de 31 jours ou moins. Les heures de date doivent être au format ISO-8601, sans millisecondes. Remarque : ce filtre ne filtre pas sur le champ visible « updatedAt » qui reflète uniquement les mises à jour apportées aux champs standard. Il filtre en fonction de la date à laquelle la mise à jour la plus récente du champ a été apportée à un enregistrement de prospect. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui ont été mis à jour le plus récemment au cours de la période. |
 | staticListName | Chaîne | Accepte le nom d’une liste statique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres de la liste statique au moment où la tâche commence le traitement. Récupérez les noms de listes statiques à l’aide du point d’entrée Get Lists. |
 | staticListId | Nombre entier | Accepte l’identifiant d’une liste statique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres de la liste statique au moment où la tâche commence le traitement. Récupérez les identifiants de liste statiques à l’aide du point d’entrée Get Lists. |
 | smartListName* | Chaîne | Accepte le nom d’une liste dynamique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres des listes dynamiques au moment où la tâche commence à être traitée. Récupérez les noms des listes dynamiques à l’aide du point d’entrée Get Smart Lists. |
@@ -40,7 +40,7 @@ Le type de filtre n’est pas disponible pour certains abonnements. Si vous n’
 Le point d’entrée Créer une tâche d’exportation principale fournit plusieurs options de mise en forme, ce qui permet à l’utilisateur d’inclure des champs particuliers dans le fichier exporté, de renommer les en-têtes de colonne de ces champs et le format du fichier exporté.
 
 | Paramètre | Type de données | Obligatoire | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Champs | Array[String] | Oui | Le paramètre fields accepte un tableau JSON de chaînes. Chaque chaîne doit être le nom de l’API REST d’un champ de prospect Marketo. Les champs répertoriés sont inclus dans le fichier exporté. L’en-tête de colonne de chaque champ correspond au nom de l’API REST de chaque champ, sauf si il est remplacé par columnHeader. Remarque : lorsque la fonction [!DNL Adobe Experience Cloud Audience Sharing] est activée, un processus de synchronisation des cookies se produit et associe l’identifiant [!DNL Adobe Experience Cloud] (ECID) aux prospects Marketo. Vous pouvez spécifier le champ « ecid » pour inclure des ECID dans le fichier d’exportation. |
 | columnHeaderNames | Objet | Non | Un objet JSON contenant des paires clé-valeur de noms d’en-tête de champ et de colonne. La clé doit être le nom d’un champ inclus dans la tâche d’exportation. Il s’agit du nom de l’API du champ qui peut être récupéré en appelant la fonction Décrire le prospect. La valeur est le nom de l’en-tête de colonne exporté pour ce champ. |
 | format | Chaîne | Non | Accepte l’un des formats suivants : CSV, TSV, SSV. Le fichier exporté est rendu sous la forme d’un fichier de valeurs séparées par des virgules, des valeurs séparées par des tabulations ou des valeurs séparées par des espaces, respectivement, s’il est défini. La valeur par défaut est CSV si cette valeur n’est pas définie. |

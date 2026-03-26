@@ -3,10 +3,10 @@ title: Référence du point d’entrée
 feature: REST API
 description: Liste complète des points d’entrée de l’API REST Marketo avec les méthodes, les URI et les autorisations requises pour les activités, l’exportation en masse, l’identité, les prospects, les ressources et les utilisateurs.
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '4464'
-ht-degree: 28%
+source-wordcount: '4793'
+ht-degree: 29%
 
 ---
 
@@ -16,7 +16,7 @@ Vous trouverez ci-dessous des liens vers les références de l’API REST Market
 
 - [Ressource](https://developer.adobe.com/marketo-apis/api/asset/)
 - [Identité](https://developer.adobe.com/marketo-apis/api/identity/)
-- [Base de données de lead](https://developer.adobe.com/marketo-apis/api/mapi/)
+- [Base de données des leads](https://developer.adobe.com/marketo-apis/api/mapi/)
 - [Gestion des utilisateurs](https://developer.adobe.com/marketo-apis/api/user/)
 
 ## Liste des points d’entrée {#endpoint_list}
@@ -24,7 +24,7 @@ Vous trouverez ci-dessous des liens vers les références de l’API REST Market
 Voici une liste complète des points d’entrée de l’API REST.
 
 | Nom | Groupe | Méthode | URI | Autorisation requise |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Ajouter des activités personnalisées | Activités | POST | /rest/v1/activities/external.json | Activité en lecture/écriture |
 | Approuver le type d’activité personnalisé | Activités | POST | /rest/v1/activities/external/type/{apiName}/approve.json | Métadonnées d’activité en lecture/écriture |
 | Créer Des Attributs De Type D’Activité Personnalisés | Activités | POST | /rest/v1/activities/external/type/{apiName}/attributes/create.json | Métadonnées d’activité en lecture/écriture |
@@ -202,7 +202,7 @@ Voici une liste complète des points d’entrée de l’API REST.
 | Mettre à jour les métadonnées du modèle de page de destination | Modèles de pages de destination | POST | /rest/asset/v1/landingPageTemplate/{id}.json | Ressource en lecture-écriture |
 | Approuver le brouillon de la page de destination | Pages de destination | POST | /rest/asset/v1/landingPage/{id}/approveDraft.json | Ressource en lecture-écriture |
 | Cloner la page de destination | Pages de destination | POST | /rest/asset/v1/landingPage/{id}/clone.json | Ressource en lecture-écriture |
-| Créer Des Pages De Destination | Pages de destination | POST | /rest/asset/v1/landingPages.json | Ressource en lecture-écriture |
+| Créer des pages de destination | Pages de destination | POST | /rest/asset/v1/landingPages.json | Ressource en lecture-écriture |
 | Supprimer la page de destination | Pages de destination | POST | /rest/asset/v1/landingPage/{id}/delete.json | Ressource en lecture-écriture |
 | Ignorer le brouillon de la page de destination | Pages de destination | POST | /rest/asset/v1/landingPage/{id}/discardDraft.json | Ressource en lecture-écriture |
 | Obtenir la page de destination par ID | Pages de destination | GET | /rest/asset/v1/landingPage/{id}.json | Ressource en lecture seule |
@@ -329,7 +329,7 @@ Voici une liste complète des points d’entrée de l’API REST.
 | Obtenir la liste statique par nom | Listes statiques | GET | /asset/v1/staticList/byName.json | Ressource en lecture seule |
 | Obtenir des listes statiques | Listes statiques | GET | /asset/v1/staticLists.json | Ressource en lecture seule |
 | Membre de la liste | Listes statiques | GET | /rest/v1/lists/{listId}/leads/ismember.json | Lead en lecture seule |
-| Supprimer de la liste | Listes statiques | DELETE | /rest/v1/lists/{listId}/leads.json | Lead en lecture/écriture |
+| Suppression de la liste | Listes statiques | DELETE | /rest/v1/lists/{listId}/leads.json | Lead en lecture/écriture |
 | Mettre à jour les métadonnées de liste statique | Listes statiques | POST | /asset/v1/staticList/{id}.json | Ressource en lecture-écriture |
 | Obtenir la balise par nom | Balises | GET | /rest/asset/v1/tagType/byName.json | Ressource en lecture seule |
 | Obtenir les types de balises | Balises | GET | /rest/asset/v1/tagTypes.json | Ressource en lecture seule |

@@ -3,9 +3,9 @@ title: Champs
 feature: REST API, Field Management
 description: Découvrez le nommage des champs de prospect REST et SOAP, répertoriez les champs via REST, décrivez le prospect, le mappage des fonctionnalités, la raison pour laquelle sfdcId est nul et utilisez sfdcLeadId ou sfdcContactId.
 exl-id: 9033f32a-c7cb-4bbf-abcf-38ca4112139f
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '212'
+source-wordcount: '213'
 ht-degree: 6%
 
 ---
@@ -23,7 +23,7 @@ Récupérez la liste de tous les noms de champ pris en charge disponibles sur vo
 Il est parfois difficile de savoir quel type de nom de champ vous devez utiliser lors de l’utilisation d’une fonctionnalité spécifique liée à l’intégration. Voici une référence rapide pour les fonctionnalités qui utilisent des types de nom de champ REST ou SOAP.
 
 | Fonctionnalité | Type de nom de champ à utiliser |
-|--- |--- |
+| --- | --- |
 | API de suivi des leads (Munchkin) | SOAP |
 | API Forms 2.0 | SOAP |
 | Importation de liste (interface utilisateur) | SOAP |

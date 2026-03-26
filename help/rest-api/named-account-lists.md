@@ -3,9 +3,9 @@ title: Listes de comptes nommés
 feature: REST API
 description: Découvrez comment gérer les listes de comptes nommés Marketo avec l’API REST, y compris les autorisations, les champs, le filtrage et les points d’entrée pour la requête, la création, la mise à jour et la suppression.
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '716'
+source-wordcount: '746'
 ht-degree: 2%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 2%
 
 [Référence des points d’entrée des listes de comptes nommés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
 
-[Les listes de comptes nommés](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/target-account-management/target/account-lists) dans Marketo représentent des ensembles de comptes nommés. Elles peuvent être utilisées dans de nombreux cas, notamment pour la catégorisation, l’enrichissement des données et le filtrage intelligent des campagnes. Les API de liste des comptes nommés permettent la gestion à distance de ces ressources de liste et de leur appartenance.
+[Les listes de comptes nommés](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) dans Marketo représentent des ensembles de comptes nommés. Elles peuvent être utilisées dans de nombreux cas, notamment pour la catégorisation, l’enrichissement des données et le filtrage intelligent des campagnes. Les API de liste des comptes nommés permettent la gestion à distance de ces ressources de liste et de leur appartenance.
 `Content`
 
 ## Autorisations
@@ -27,7 +27,7 @@ Les listes de comptes nommés comportent un nombre limité de champs standard et
 `Named Account List Field`
 
 | Nom | Type de données | Mise à jour possible | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | marketoGUID | Chaîne | false | Identifiant de chaîne unique de la liste des comptes nommés. Ce champ est géré par le système et n’est pas autorisé en tant que champ lors de la création d’un enregistrement. Champ utilisé par « dedupeBy »:« idField » lors d&#39;une création ou d&#39;une mise à jour. |
 | name | Chaîne | True | Nom de la liste. Champ utilisé par « dedupeBy »:« dedupeFields » lors d&#39;une création ou d&#39;une mise à jour. |
 | createdAt | Datetime | false | Date et heure de création de la liste. Ce champ est géré par le système et n’est pas autorisé en tant que champ lors de la création ou de la mise à jour d’un enregistrement. |

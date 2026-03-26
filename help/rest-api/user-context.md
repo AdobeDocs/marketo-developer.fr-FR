@@ -3,10 +3,10 @@ title: Contexte utilisateur
 feature: REST API
 description: Découvrez comment activer et utiliser l’API de contexte utilisateur de RTP Marketo pour définir des variables personnalisées, lire les données utilisateur lors des visites et suivre les campagnes consultées et ayant fait l’objet d’un clic.
 exl-id: b8daace2-07a5-4621-aa3a-03fa9f66ea73
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '286'
-ht-degree: 5%
+source-wordcount: '303'
+ht-degree: 4%
 
 ---
 
@@ -14,13 +14,13 @@ ht-degree: 5%
 
 L’API User Context JavaScript expose les données au niveau de l’utilisateur et du visiteur sur plusieurs sessions afin d’activer une fonctionnalité de personnalisation avancée utilisant le comportement et les données historiques de l’utilisateur. L’API va au-delà de la lecture de données et expose des variables personnalisées qui vous permettent de transmettre des données et des événements significatifs au serveur principal RTP à des fins de segmentation avancée et de personnalisation. Fonctionnalités supplémentaires : [Triggers](../javascript-api/triggers.md), [Correspondance des motifs](../javascript-api/pattern-match.md).
 
-- Vous devez devenir client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+- Vous devez devenir client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 - L’API User Context est une fonctionnalité qui doit être activée sur demande par le support Marketo. Lorsque l’API est activée, un objet userContext sous l’objet global RTP est exposé.
 
 ## Attributs de contexte utilisateur
 
 | Nom | Type | Description |
-|------------------|-------------|------|
+| --- | --- | --- |
 | customVar[1-5] | Chaîne | Données personnalisées enregistrées dans le contexte utilisateur. |
 | viewsCampagnes | Identifiants de campagne sous forme de chaîne séparée par des virgules | Campagnes affichées au cours des visites actuelles ou précédentes. |
 | clickedCampaign | Identifiants de campagne sous forme de chaîne séparée par des virgules | A cliqué dans des campagnes lors de visites actuelles ou précédentes. |
@@ -34,7 +34,7 @@ Ajout de données personnalisées au contexte utilisateur.
 `rtp('set', 'customVar'[1-5], my_custom_value);`
 
 | Paramètre | Facultatif/obligatoire | Type | Description |
-|-----------------|-------------------|--------|-----------------|
+| --- | --- | --- | --- |
 | &#39;set&#39; | Obligatoire | Chaîne | Action de méthode. |
 | customVar | Obligatoire | Chaîne | Nom de variable personnalisé. |
 | my_custom_value | Obligatoire | Chaîne | Valeur personnalisée à enregistrer sur la variable personnalisée dans l’index 1-5. |

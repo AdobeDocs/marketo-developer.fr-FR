@@ -3,9 +3,9 @@ title: Rediriger
 description: Implémentez l’API de redirection RTP pour envoyer des visiteurs segmentés vers des URL ciblées à l’aide de champs tels que l’ABM, l’organisation, l’emplacement et les segments, avec des exemples et des conseils.
 feature: Javascript
 exl-id: bbf91245-42e5-47ae-a561-e522cc65ff49
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '480'
+source-wordcount: '500'
 ht-degree: 8%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 8%
 
 L’API de redirection RTP vous permet de rediriger des audiences segmentées vers une URL cible.
 
-- Vous devez devenir client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+- Vous devez devenir client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 - RTP ne prend pas en charge les listes de comptes nommés Marketing basées sur les comptes. Les listes et le code ABM ne concernent que les listes de comptes chargées (fichiers CSV) gérées dans RTP.
 
 ## Utilisation
@@ -22,7 +22,7 @@ L’API de redirection RTP vous permet de rediriger des audiences segmentées ve
 `rtp('send' , 'redirect' , 'field_name' , [ 'values_array' , '...' , '...' ] , 'www.redirect_url.com' , true/false )`
 
 | Paramètre | Facultatif/obligatoire | Type | Description |
-|---------------------------|-------------------|---------|-----------------------------|
+| --- | --- | --- | --- |
 | &#39;envoi&#39; | Obligatoire | Chaîne | Action de méthode. |
 | &#39;rediriger&#39; | Obligatoire | Chaîne | Nom de la méthode. |
 | field_name | Obligatoire | Chaîne | Nom du champ à comparer. Exemple : &#39;abm.name&#39; (voir ci-dessous). |
@@ -33,9 +33,9 @@ L’API de redirection RTP vous permet de rediriger des audiences segmentées ve
 Organisation, secteur, listes ABM, emplacement, FAI, segments correspondants
 
 | Condition | Hiérarchie des données | Exemple |
-|-------------------------------------------------|----------------------|------------------------------------------------------------------------------------------------------------------|
-| Segments correspondants (fonctionne uniquement après le premier clic) | matchedSegments.name | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;matchSegments.name&#39; , [&#39;Fortune 1 000&#39; , &#39;Entreprise&#39;] , &#39;<http://www.marketo.com>&#39;); |
-| Segments correspondants (fonctionne uniquement après le premier clic) | matchedSegments.id | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;matchSegments.id&#39; , [106 , 107 , 190] , &#39;<http://www.marketo.com>&#39;); |
+| --- | --- | --- |
+| Segments correspondants (fonctionne uniquement après le premier clic) | matchSegments.name | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;matchSegments.name&#39; , [&#39;Fortune 1 000&#39; , &#39;Entreprise&#39;] , &#39;<http://www.marketo.com>&#39;); |
+| Segments correspondants (fonctionne uniquement après le premier clic) | matchSegments.id | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;matchSegments.id&#39; , [106 , 107 , 190] , &#39;<http://www.marketo.com>&#39;); |
 | Listes ABM | abm.name | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;abm.name&#39; , [&#39;top_key_accounts&#39;, &#39;active_customers&#39;] , &#39;<http://www.marketo.com>&#39;); |
 | Listes ABM | abm.code | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;abm.code&#39; , [13 , 15] , &#39;<http://www.marketo.com>&#39;); |
 | Organisations | org | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;org&#39;, [&#39;ebay&#39;], &#39;<http://www.marketo.com>&#39;); |
@@ -101,7 +101,7 @@ L’appel de redirection prend en charge plusieurs appels. Cela permet de rediri
 `rtp('send', 'redirect', field_name, url_values_map);`
 
 | Paramètre | Facultatif/obligatoire | Type | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | &#39;envoi&#39; | Obligatoire | Chaîne | Action de méthode. |
 | &#39;rediriger&#39; | Obligatoire | Chaîne | Nom de la méthode. |
 | field_name | Obligatoire | Chaîne | Nom du champ à comparer. Exemple : &#39;abm.name&#39; (voir ci-dessus). |

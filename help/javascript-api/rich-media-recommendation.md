@@ -1,17 +1,16 @@
 ---
-title: 'Recommandation de média intéractif '
+title: Recommandation de média intéractif
 description: Configurez la recommandation de média enrichi à l’aide de la balise RTP de contenu prédictif Marketo, template1 template2 template3 divs, GET à remplir, DÉFINISSEZ pour configurer les catégories.
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '831'
+source-wordcount: '854'
 ht-degree: 4%
 
 ---
 
 # Recommandation de média intéractif
-
 
 Les balises et appels d’API suivants doivent être configurés sur la page sur laquelle vous souhaitez afficher le modèle de recommandation de média enrichi.
 
@@ -22,12 +21,12 @@ Les balises et appels d’API suivants doivent être configurés sur la page sur
 1. Dans le corps de la page
    1. Placez la balise du modèle (classe div) à l’emplacement où vous souhaitez que le modèle apparaisse
 
-Vous trouverez plus d’informations [ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Vous trouverez plus d’informations [ici](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Balise de modèle
 
 | Attribut | Facultatif/obligatoire | Description |
-|---|---|---|
+| --- | --- | --- |
 | une classe | Obligatoire | Spécifiez que cet élément div HTML est un div de recommandation RTP. |
 | data-rtp-template-id | Obligatoire | Identifiant du modèle. Cela détermine l’alignement de votre recommandation. Utilisez « template1 » pour l’alignement horizontal, « template2 » pour l’alignement vertical ou « template3 » pour l’alignement vertical qui inclut uniquement le titre et la description. Le script injecte le modèle correspondant dans ces valeurs de `div.Permissible` : template1, template2, template3. |
 
@@ -62,7 +61,7 @@ Cette méthode renseigne tous les `<divs>` de médias riches de la page avec des
 `rtp('get', 'rcmd', 'richmedia');`
 
 | Paramètre | Facultatif/obligatoire | Type | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | &#39;get&#39; | Obligatoire | Chaîne | Action de méthode. |
 | &#39;rcmd&#39; | Obligatoire | Chaîne | Nom de la méthode. |
 | &#39;richmedia&#39; | Obligatoire | Chaîne | Nom de la sous-méthode. |
@@ -78,7 +77,7 @@ Remarque : lors de l&#39;utilisation de cette méthode, elle doit être appelée
 `rtp('set', 'rcmd', 'richmedia', 'template_id', conf_obj);`
 
 | Paramètre | Facultatif/obligatoire | Type | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | &#39;set&#39; | Obligatoire | Chaîne | Action de méthode. |
 | &#39;rcmd&#39; | Obligatoire | Chaîne | Nom de la méthode. |
 | &#39;richmedia&#39; | Obligatoire | Chaîne | Nom de la sous-méthode. |
@@ -137,7 +136,7 @@ rtp("set", "rcmd", "richmedia",
 #### Propriétés de configuration
 
 | Configuration | Exemple | Description |
-|---|---|---|
+| --- | --- | --- |
 | rcmd.general.font.family | « rcmd.general.font.family » : « arial » | Modifie la famille de polices de tout le texte du modèle. Cette propriété prend en charge toutes les valeurs CSS par le type de navigateur. Il est possible d’utiliser une famille de polices personnalisée si elle existe sur la page. |
 | rcmd.content.background.color | « rcmd.content.background.color » : « black » | Modifie la couleur d’arrière-plan des zones internes du modèle. Cette propriété prend en charge toutes les valeurs CSS par le type de navigateur. |
 | rcmd.title.text | « rcmd.title.text » : « CONTENU RECOMMANDÉ » | Modifie le titre du modèle. |
@@ -242,4 +241,4 @@ rtp('get','rcmd', 'richmedia');
 
 #### Exemple de modèle de recommandation de média enrichi #3
 
-**Nom** : template3 **Description** : contenu vertical incluant uniquement le titre et la description. Lorsque vous pointez dessus, l’en-tête change de couleur et contient un lien hypertexte vers l’URL du contenu. La description fournit également des liens vers le contenu sans changement de couleur. ![Modèle Rich Media](assets/rich-media-template3.png)
+**Nom** : template3 **Description** : contenu vertical incluant uniquement le titre et la description. Lorsque vous pointez dessus, l’en-tête change de couleur et contient un lien hypertexte vers l’URL du contenu. La description fournit également des liens vers le contenu sans changement de couleur. ![Modèle de média enrichi ](assets/rich-media-template3.png)

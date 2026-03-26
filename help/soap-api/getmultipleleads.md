@@ -3,9 +3,9 @@ title: getMultipleLeads
 feature: SOAP
 description: Découvrez comment utiliser les getMultipleLeads de Marketo SOAP pour récupérer jusqu’à 1 000 prospects par clé, liste statique ou date de mise à jour, paginer avec la position du flux et filtrer les champs.
 exl-id: db9aabec-8705-40c6-b264-740fdcef8a52
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '407'
+source-wordcount: '409'
 ht-degree: 3%
 
 ---

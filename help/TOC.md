@@ -5,10 +5,10 @@ breadcrumb-title: Guide de developpement [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: f314f153c80416bbccc4328756e71c07e696dd00
+source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
 workflow-type: tm+mt
-source-wordcount: '251'
-ht-degree: 41%
+source-wordcount: '277'
+ht-degree: 39%
 
 ---
 
@@ -49,7 +49,7 @@ ht-degree: 41%
    - [Profils utilisateur](mobile/user-profiles.md)
 - REST{#rest}
    - [Présentation de l’API REST](rest-api/rest-api.md)
-   - [&#x200B; Référence de l’API REST &#x200B;](https://developer.adobe.com/marketo-apis/)
+   - [Référence de l’API REST](https://developer.adobe.com/marketo-apis/)
    - Ressources {#assets}
       - [Ressources](rest-api/assets.md)
       - [Contenu dynamique](rest-api/dynamic-content.md)
@@ -102,6 +102,8 @@ ht-degree: 41%
       - [Rôles d’opportunité](rest-api/opportunity-roles.md)
       - [Membres du programme](rest-api/program-members.md)
       - [Vendeurs](rest-api/sales-persons.md)
+      - [Liste statique](rest-api/list-membership.md)
+      - [Utilisation](rest-api/usage.md)
    - [Jetons de pagination](rest-api/paging-tokens.md)
    - [Performance](rest-api/performance.md)
    - [Architectures de référence](rest-api/reference-architectures.md)
@@ -159,7 +161,7 @@ ht-degree: 41%
 - [Flux de données](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams)
 - [Script de l&#39;e-mail](email-scripting.md)
 - [Exemples de script e-mail](examples.md)
-- [Objets Marketo](marketo-objects.md)
+- [Objets ](marketo-objects.md)
 - [Licence](api-license.md)
 - [Sandbox partenaire](partner-sandbox.md)
 - [Étapes de flux en libre-service](self-service-flow-steps.md)

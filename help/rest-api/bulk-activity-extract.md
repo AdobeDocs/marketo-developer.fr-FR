@@ -3,10 +3,10 @@ title: Extraction d’activité en bloc
 feature: REST API
 description: API REST d’extraction d’activité en bloc Marketo pour exporter des données d’activité volumineuses à l’aide d’une période de 31 jours, de filtres d’activité et d’attributs principaux pour ETL et CRM.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1351'
-ht-degree: 7%
+source-wordcount: '1571'
+ht-degree: 6%
 
 ---
 
@@ -24,7 +24,7 @@ Les API Bulk Activity Extract nécessitent que l’utilisateur de l’API dispos
 
 | Type de filtre | Type de données | Obligatoire | Notes |
 | --- | --- | --- | --- |
-| createdAt | Période | Oui | Accepte un objet JSON avec les membres `startAt` et `endAt`. `startAt` accepte une valeur datetime représentant le filigrane bas et `endAt` une valeur datetime représentant le filigrane haut. La plage doit être de 31 jours ou moins. Les traitements avec ce type de filtre renvoient tous les enregistrements accessibles qui ont été créés au cours de la période. Les heures de date doivent être au format ISO-8601, sans millisecondes. |
+| createdAt | Période | Oui | Accepte un objet JSON avec les membres `startAt` et `endAt`. `startAt` accepte une valeur datetime représentant le filigrane bas et `endAt` accepte une valeur datetime représentant le filigrane haut. La plage doit être de 31 jours ou moins. Les traitements avec ce type de filtre renvoient tous les enregistrements accessibles qui ont été créés au cours de la période. Les heures de date doivent être au format ISO-8601, sans millisecondes. |
 | activityTypeIds | Tableau\[Entier\] | Non | Accepte un objet JSON avec un membre, `activityTypeIds`. La valeur doit être un tableau de nombres entiers correspondant aux types d’activités souhaités. L’activité « Supprimer le prospect » n’est pas prise en charge (utilisez plutôt le point d’entrée [Obtenir les prospects supprimés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getDeletedLeadsUsingGET)). Récupérez les identifiants de type d’activité à l’aide du point d’entrée [Get Activity Types](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getAllActivityTypesUsingGET). |
 | [primaryAttributeValueIds](#primaryattributevalueids-options) | Tableau\[Entier\] | Non | Accepte un objet JSON avec un membre, `primaryAttributeValueIds`. La valeur est un tableau d’identifiants qui spécifie les attributs principaux sur lesquels effectuer le filtrage. Un maximum de 50 identifiants peut être spécifié. Les identifiants sont l’identifiant unique d’un champ de prospect ou d’une ressource et peuvent être récupérés en appelant le point d’entrée de l’API REST approprié. Par exemple, pour filtrer sur un formulaire spécifique pour l’activité « Remplir le formulaire », transmettez le nom du formulaire au point d’entrée [Obtenir le formulaire par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByNameUsingGET) pour récupérer l’ID de formulaire. Voici une liste des types d’activité pour lesquels le filtrage des attributs principaux est pris en charge. |
 | [primaryAttributeValues](#primaryattributevalues-options) | Tableau\[Chaîne\] | Non | Accepte un objet JSON avec un membre, `primaryAttributeValues`. La valeur est un tableau de noms qui spécifient les attributs principaux sur lesquels effectuer le filtrage. 50 noms au maximum peuvent être spécifiés. Les noms sont l’identifiant unique d’un champ de prospect ou d’une ressource et peuvent être récupérés en appelant le point d’entrée approprié de l’API REST. Par exemple, pour filtrer sur un formulaire spécifique pour l’activité « Remplir le formulaire », transmettez l’ID de formulaire au point d’entrée [Obtenir le formulaire par ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) pour récupérer le nom du formulaire. Voici une liste des types d’activité pour lesquels le filtrage des attributs principaux est pris en charge. |
@@ -33,11 +33,11 @@ Les API Bulk Activity Extract nécessitent que l’utilisateur de l’API dispos
 
 | Type d’activité | ID de valeur d’attribut de Principal | Point d’entrée de récupération | Groupe de ressources |
 | --- | --- | --- | --- |
-| Modifier la valeur des données | ID de champ de lead | [Décrire le lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nom de l’attribut |
+| Modification de la valeur des données | ID de champ de lead | [Décrire le lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nom de l’attribut |
 | Modifier évaluation | ID de champ de lead | [Décrire le lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nom de l’attribut |
 | Modifier le statut de progression | ID du programme | [Obtenir le programme par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET) | Programme Marketing |
 | Ajouter à la liste | Identifiant de liste statique | [Obtenir la liste statique par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) | Liste statique |
-| Supprimer de la liste | Identifiant de liste statique | [Obtenir la liste statique par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) | Liste statique |
+| Suppression de la liste | Identifiant de liste statique | [Obtenir la liste statique par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) | Liste statique |
 | Remplir formulaire | ID du formulaire | [Obtenir le formulaire par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByNameUsingGET) | Formulaire web |
 
 Lors de l’utilisation de `primaryAttributeValueIds`, le filtre `activityTypeIds` doit être présent et ne contenir que les identifiants d’activité correspondant au groupe de ressources correspondant. Par exemple, si vous filtrez sur des ressources de formulaire web, seul l’identifiant de type d’activité « Remplir le formulaire » est autorisé dans `activityTypeIds`.
@@ -67,14 +67,14 @@ Exemple de corps de requête :
 
 | Type d’activité | Valeur d’attribut de Principal | Point d’entrée de récupération | Groupe de ressources |
 | --- | --- | --- | --- |
-| Modifier la valeur des données | Nom d’affichage du champ de lead | [Décrire le lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nom de l’attribut |
+| Modification de la valeur des données | Nom d’affichage du champ de lead | [Décrire le lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nom de l’attribut |
 | Modifier évaluation | Nom d’affichage du champ de lead | [Décrire le lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nom de l’attribut |
 | Modifier le statut de progression | Nom de programme | [Obtenir le programme par ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET) | Programme Marketing |
 | Ajouter à la liste | Nom de liste statique | [Obtenir une liste statique par ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) | Liste statique |
-| Supprimer de la liste | Nom de liste statique | [Obtenir une liste statique par ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) | Liste statique |
+| Suppression de la liste | Nom de liste statique | [Obtenir une liste statique par ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) | Liste statique |
 | Remplir formulaire | Nom du formulaire | [Obtenir le formulaire par ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) | Formulaire web |
 
-Notez que vous devez utiliser « &lt;<em>program</em>>.Notation &lt;<em>asset</em>> » pour spécifier le nom des groupes de ressources suivants : Programme marketing, Liste statique, Formulaire web. Par exemple, un formulaire portant le nom « MPS Outbound » et résidant sous un programme nommé « GL_OP_ALL_2021 » est spécifié comme « GL_OP_ALL_2021.MPS Outbound ».
+Notez que vous devez utiliser la notation « &lt;<em>program</em>>.&lt;<em>asset</em>> » pour spécifier le nom des groupes de ressources suivants : Programme marketing, Liste statique, Formulaire web. Par exemple, un formulaire portant le nom « MPS Outbound » et résidant sous un programme nommé « GL_OP_ALL_2021 » est spécifié comme « GL_OP_ALL_2021.MPS Outbound ».
 
 Exemple de corps de requête :
 
@@ -100,7 +100,7 @@ Lors de l’utilisation de `primaryAttributeValues`, le filtre `activityTypeIds`
 ## Options
 
 | Paramètre | Type de données | Obligatoire | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | filter | Array[Object] | Oui | Accepte un tableau de filtres. Un seul filtre `createdAt` doit être inclus dans le tableau . Un filtre `activityTypeIds` facultatif peut être inclus. Les filtres sont appliqués au jeu d’activités accessible et le jeu d’activités résultant est renvoyé par la tâche d’exportation. |
 | format | Chaîne | Non | Accepte l’une des valeurs suivantes : CSV, TSV, SSV Le fichier exporté est rendu sous la forme de valeurs séparées par des virgules, de valeurs séparées par des tabulations ou de valeurs séparées par des espaces, respectivement, s’il est défini. La valeur par défaut est CSV si cette valeur n’est pas définie. |
 | columnHeaderNames | Objet | Non | Un objet JSON contenant des paires clé-valeur de noms d’en-tête de champ et de colonne. La clé doit être le nom d’un champ inclus dans la tâche d’exportation. La valeur est le nom de l’en-tête de colonne exporté pour ce champ. |
@@ -235,7 +235,7 @@ Pour prendre en charge la récupération partielle et conviviale des données ex
 
 ## Annulation d’un traitement
 
-Si une tâche n’a pas été configurée correctement ou devient inutile, elle peut facilement être annulée à l’aide du point d’entrée [&#x200B; Annuler la tâche d’exportation de l’activité &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/cancelExportActivitiesUsingPOST) :
+Si une tâche n’a pas été configurée correctement ou devient inutile, elle peut facilement être annulée à l’aide du point d’entrée [ Annuler la tâche d’exportation de l’activité ](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/cancelExportActivitiesUsingPOST) :
 
 ```
 POST /bulk/v1/activities/export/{exportId}/cancel.json

@@ -3,9 +3,9 @@ title: Extraction En Masse
 feature: REST API
 description: Découvrez comment utiliser l’API REST d’extraction en bloc Marketo pour exporter des prospects, des activités, des membres de programme et des objets personnalisés, avec OAuth, des files d’attente de tâches et des limites quotidiennes 500MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1702'
+source-wordcount: '1723'
 ht-degree: 1%
 
 ---
@@ -118,7 +118,7 @@ Lorsque nous créons la tâche, elle renvoie un ID de tâche dans l’attribut `
 Chaque point d’entrée de création de tâche partage certains paramètres communs pour la configuration du format de fichier, des noms de champ et du filtre d’une tâche d’extraction en bloc. Chaque sous-type de tâche d’extraction peut avoir des paramètres supplémentaires :
 
 | Paramètre | Type de données | Notes |
-|---|---|---|
+| --- | --- | --- |
 | format | Chaîne | Détermine le format de fichier des données extraites avec des options pour les valeurs séparées par des virgules, les valeurs séparées par des tabulations et les valeurs séparées par des points-virgules. Accepte l’un des formats suivants : CSV, SSV, TSV. Le format par défaut est CSV. |
 | columnHeaderNames | Objet | Permet de définir les noms des en-têtes de colonne dans le fichier renvoyé. Chaque clé de membre correspond au nom de l’en-tête de colonne à renommer et la valeur correspond au nouveau nom de l’en-tête de colonne. Par exemple, « columnHeaderNames »: { « firstName »: « First Name », « lastName »: « Last Name » }, |
 | filter | Objet | Filtre appliqué à la tâche d’extraction. Les types et options varient selon les types de tâche. |

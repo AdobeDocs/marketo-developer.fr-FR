@@ -3,9 +3,9 @@ title: Référence de l’API Munchkin
 description: Utilisez l’API JavaScript Munchkin pour effectuer le suivi des visites de page, des clics sur les liens et des événements personnalisés à l’aide des méthodes init, createTrackingCookie et munchkinFunction.
 feature: Munchkin Tracking Code, Javascript
 exl-id: e9727691-5501-4223-bc98-2b4bacc33513
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '424'
+source-wordcount: '426'
 ht-degree: 9%
 
 ---
@@ -27,7 +27,7 @@ L’API Munchkin comprend les fonctions suivantes : `init`, `createTrackingCooki
 | Nom du paramètre | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |
 | ID Munchkin | Obligatoire | Chaîne | Identifiant de compte Munchkin sous le menu Admin > Intégration > Munchkin . Définit l’instance cible vers laquelle envoyer les activités. |
-| [&#x200B; Paramètres de configuration &#x200B;](configuration.md) | Facultatif | Objet | Active d’autres paramètres de comportement pour Munchkin. |
+| [ Paramètres de configuration ](configuration.md) | Facultatif | Objet | Active d’autres paramètres de comportement pour Munchkin. |
 
 ```javascript
 Munchkin.init('299-BYM-827');

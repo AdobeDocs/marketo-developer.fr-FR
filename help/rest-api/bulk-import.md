@@ -3,9 +3,9 @@ title: Importation en bloc
 feature: REST API
 description: Import en bloc Marketo pour le chargement de prospects, d’objets personnalisés et de membres de programme par le biais de chargements multipartie, la création de tâches asynchrones, le statut d’interrogation et la gestion des échecs.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '610'
+source-wordcount: '660'
 ht-degree: 2%
 
 ---
@@ -93,7 +93,7 @@ Lorsque nous soumettons le traitement, il renvoie un batchId, que nous pouvons e
 Chaque point d’entrée de création de tâche partage certains paramètres communs pour la configuration du format de fichier, des noms de champ et du filtre d’une tâche d’extraction en bloc.  Chaque sous-type de tâche d’extraction peut avoir des paramètres supplémentaires :
 
 | Paramètre | Type de données | Notes |
-|---|---|---|
+| --- | --- | --- |
 | format | Chaîne | Détermine le format de fichier des données importées avec des options pour les valeurs séparées par des virgules, des tabulations et des points-virgules. Accepte l’un des formats suivants : CSV, SSV, TSV. Le format par défaut est CSV. |
 | fichier | Chaîne | Les données sont spécifiées via des données de formulaire à parties multiples dans le fichier . |
 

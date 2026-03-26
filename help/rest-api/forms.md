@@ -3,18 +3,18 @@ title: Formulaires
 feature: REST API, Forms
 description: Guide de l’API REST Marketo Forms pour la création et la gestion des formulaires, la récupération par identifiant ou nom, la navigation avec des filtres de statut et la gestion des champs, des ensembles de champs et des règles.
 exl-id: 2e5dfa70-3163-4ab4-b269-3112417714c3
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1616'
+source-wordcount: '1823'
 ht-degree: 2%
 
 ---
 
 # Formulaires
 
-[Référence de point d’entrée Forms](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms)
+[Référence du point d’entrée Forms](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms)
 
-[Référence du point d’entrée des champs de formulaire](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields)
+[Référence des points d’entrée des champs de formulaire](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields)
 
 Les formulaires Marketo comportent un ensemble complexe de points d’entrée permettant un contrôle complet de la gestion des formulaires à partir de systèmes distants. La structure des formulaires peut être complexe, car de nombreux types d’objets différents doivent être gérés dans le cadre d’un formulaire : Forms, Champs, Ensembles de champs, Règles de visibilité et Règles de page de suivi.
 
@@ -290,7 +290,7 @@ Lors de la modification de champs ou de leur comportement dans un formulaire, la
 ### Types de champs
 
 | Type d’interface utilisateur | Nom de l&#39;API |
-|--------------|-----------------|
+| --- | --- |
 | Cases à cocher | case à cocher |
 | Bouton Radio | radio |
 | Zone de texte | zone de texte |
@@ -716,7 +716,7 @@ label=enter the last name here
 
 Dans l’exemple ci-dessus, nous mettons à jour le champ LastName qui est une chaîne simple. Certains champs de formulaire sont plus complexes. Par exemple, le champ Salutation est un type de champ « select » contenant la liste d’éléments et une valeur par défaut. Si vous ajoutez ou mettez à jour un champ de type Sélection, à moins que vous ne définissiez l’un des choix pour qu’il ait une valeur `isDefault` true, le premier choix n’a aucune valeur et est intitulé « Sélectionner... »
 
-![&#x200B; Salutation &#x200B;](assets/form-field-salutation.png)
+![ Salutation ](assets/form-field-salutation.png)
 
 Pour mettre à jour les éléments de la liste, le format du paramètre « values » est le suivant :
 

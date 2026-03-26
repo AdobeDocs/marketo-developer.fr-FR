@@ -2,10 +2,10 @@
 title: Flux de données
 description: Présentation des flux de données Marketo Engage permettant une activité de prospect et des événements de contrôle des utilisateurs en temps quasi réel, ce qui allège les limites d’API pour les clients de niveau de performance
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1620'
-ht-degree: 2%
+source-wordcount: '1719'
+ht-degree: 3%
 
 ---
 
@@ -44,7 +44,7 @@ En offrant des vues sur les modifications apportées aux leads, cela permet aux 
 Liste des activités diffusées en continu :
 
 | AchieveGoalInReferral | ClickPredictiveContent | ReceivedForwardToFriendEmail |
-|--- |--- |--- |
+| --- | --- | --- |
 | AddToList | ClickRTPCallToAction | ReceiveSalesEmail |
 | AddToNurture | ClickSalesEmail | ReferToSocialApp |
 | Ajouter à l’opportunité | ClickSharedLink | RemoveFromList |
@@ -79,7 +79,7 @@ Un bon cas d’utilisation pour l’abonnement à ce flux serait :
 Liste des événements d’audit d’utilisateur diffusés en continu :
 
 | COMPOSANT | LISTE DES TYPES D’ÉVÉNEMENTS |
-|--- |--- |
+| --- | --- |
 | Programme par défaut | cloner, créer, supprimer, modifier le canal, exporter, modifier la configuration du programme, modifier le jeton de programme, renommer |
 | E-mail | approuver, cloner, créer, supprimer, modifier, déplacer, renommer, annuler l’approbation |
 | Programme d&#39;e-mail en masse | approuver, childUpdate, cloner, créer, supprimer, modifier, modifier le canal, modifier le planning du programme, modifier la configuration du programme, modifier le jeton du programme, renommer, annuler l’approbation |
@@ -139,7 +139,7 @@ Actuellement, le centre de notifications de Marketo peut être configuré pour e
 Liste des événements de notification :
 
 | COMPOSANT | LISTE DES TYPES D’ÉVÉNEMENTS |
-|--- |--- |
+| --- | --- |
 | Notification | abandon de campagne, échec de campagne, maturation (programme épuisé), échec de synchronisation de Salesforce, groupe de test (résultat du test A/B), services web (quota quotidien) |
 
 Exemple d’événement de notification :
@@ -266,7 +266,7 @@ Le flux de données de contrôle de l’utilisateur est actuellement disponible 
 
 ### Configuration d’Adobe I/O
 
-[Voir Prise en main de Adobe I/O Events](https://developer.adobe.com/runtime/docs/guides/getting-started/)
+[Consultez Prise en main de Adobe I/O Events .](https://developer.adobe.com/runtime/docs/guides/getting-started/)
 
 Pour obtenir des instructions de base sur ce cas d’utilisation, à partir de [console.adobe.io](https://developer.adobe.com/console) :
 
@@ -278,6 +278,6 @@ Pour commencer à utiliser les services Adobe, ajoutez une API, des événements
 
 ## Documentation publique
 
-- [Flux De Données Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/)
-- [Présentation des événements et Webhooks Adobe IO](https://developer.adobe.com/events/docs/guides/)
+- [Flux de données Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/)
+- [Présentation des événements et Webhooks d’Adobe IO](https://developer.adobe.com/events/docs/guides/)
 - [Blog sur les flux de données](https://blog.developer.adobe.com/introducing-the-adobe-marketo-engage-data-streams-61198b567fbb)

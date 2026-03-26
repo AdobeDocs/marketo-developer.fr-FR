@@ -3,16 +3,16 @@ title: Règles de redirection de page de destination
 feature: REST API, Landing Pages
 description: Utilisez les API REST de ressources Marketo pour créer, interroger, mettre à jour et supprimer des règles de redirection de page de destination avec des filtres, une pagination, des options de nom d’hôte et des cibles autres que Marketo.
 exl-id: f63aa5ef-5872-4401-be75-6fb9b2977734
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '655'
+source-wordcount: '776'
 ht-degree: 3%
 
 ---
 
 # Règles de redirection de page de destination
 
-[Référence du point d’entrée des règles de redirection de page de destination](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules)
+[Référence Du Point D’Entrée Des Règles De Redirection De Page De Destination](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules)
 
 Marketo propose un ensemble d’API REST pour effectuer des opérations CRUD sur des URL de redirection de page de destination. Ces API suivent le modèle d’interface standard des API de ressources en fournissant les options Requête, Créer, Mettre à jour et Supprimer .
 
@@ -143,7 +143,7 @@ Le paramètre `hostname` spécifie le nom d’hôte de la page de destination. I
 Le paramètre `redirectFrom` spécifie la page de destination source. Il s’agit d’un objet JSON qui contient une paire type/valeur qui détermine si la source est une page de destination Marketo ou une page de destination autre que Marketo. L’attribut `type` peut être « landingPageId » ou « path ».
 
 | Paramètre | Facultatif/obligatoire | Type | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | &#39;get&#39; | Obligatoire | Chaîne | Action de méthode. |
 | &#39;visiteur&#39; | Obligatoire | Chaîne | Nom de la méthode. |
 | rappel | Obligatoire | Fonction | Fonction de rappel à déclencher pour chaque campagne renvoyée. |
@@ -151,11 +151,11 @@ Le paramètre `redirectFrom` spécifie la page de destination source. Il s’agi
 Le paramètre `redirectTo` spécifie la page de destination cible. Il s’agit d’un objet JSON qui contient une paire type/valeur qui détermine si la source est une page de destination Marketo ou une page de destination autre que Marketo. L’attribut `type` peut être « landingPageId » ou « url ».
 
 | Type de page de destination | type redirectTo | Exemple |
-|---|---|---|
+| --- | --- | --- |
 | Marketo | landingPageId | {« type »:« landingPageId »,« value »:« 1774 »} |
-| Non Marketo | url | {« type »:« url »,« value »: »www.contactLogs.com« } |
+| Non Marketo | url | {« type »:« url »,« value »:« www.contactLogs.com« } |
 
-Vous trouverez plus d’informations sur la création de règles de redirection de page de destination [ici](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html?lang=fr).
+Vous trouverez plus d’informations sur la création de règles de redirection de page de destination [ici](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html).
 
 ```
 POST /rest/asset/v1/redirectRules.json
@@ -196,7 +196,7 @@ hostname=calqeauto.com&redirectFrom={"type":"landingPageId", "value":"5483"}&red
 }
 ```
 
-## Mise à jour 
+## Mise à jour
 
 Le point d’entrée [Mettre à jour les règles de redirection de page de destination](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/updateLandingPageRedirectRuleUsingPOST) prend une règle de redirection de page de destination unique `id` un paramètre de chemin d’accès. Ce point d’entrée est exécuté avec une requête POST application/x-www-form-urlencoded.
 

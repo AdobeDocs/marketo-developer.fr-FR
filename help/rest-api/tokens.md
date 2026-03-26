@@ -3,16 +3,16 @@ title: Jetons
 feature: REST API, Tokens
 description: Gérez mes jetons Marketo avec l’API REST de ressources. Voir les types de données pris en charge, obtenir par dossier ou programme, créer ou mettre à jour par POST codé par formulaire et supprimer par nom.
 exl-id: 4f8d87d7-ba2a-4c90-8b39-4d20679d404a
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '320'
-ht-degree: 4%
+source-wordcount: '364'
+ht-degree: 3%
 
 ---
 
 # Jetons
 
-[Référence de point d’entrée de jeton](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens)
+[Référence du point d’entrée du jeton](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens)
 
 Les jetons dans Marketo sont des chaînes spéciales similaires à des shortcodes qui sont remplacés par un élément de données distinct au moment de l’exécution. Plusieurs types de jetons sont disponibles dans Marketo, mais seuls Mes jetons peuvent être modifiés à l’aide de l’API. Mes jetons sont des jetons enfants qui sont locaux à un dossier ou un programme spécifique. Les jetons peuvent être lus, créés et supprimés à l’aide de l’API .
 
@@ -21,7 +21,7 @@ Les jetons dans Marketo sont des chaînes spéciales similaires à des shortcode
 Les jetons peuvent être créés avec les types de données suivants :
 
 | Type | Description |
-|---------------|----------------------------------------------------|
+| --- | --- |
 | Date | Valeur de date du formulaire « aaaa-MM-jj » |
 | Nombre | Nombre entier ou à virgule flottante |
 | Texte complet | Une chaîne HTML |

@@ -3,10 +3,10 @@ title: Signature d'authentification
 feature: SOAP
 description: Guide sur l’authentification de l’API Marketo SOAP à l’aide de HMAC-SHA1 sur HTTPS, les champs d’en-tête obligatoires, le format d’horodatage et les exemples de réponses de requête et d’erreur
 exl-id: d6bed8ee-77fa-440c-8f35-a71cf77f45d3
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '225'
-ht-degree: 4%
+source-wordcount: '232'
+ht-degree: 3%
 
 ---
 
@@ -45,7 +45,7 @@ authHeader = "<ns1:AuthenticationHeader>" +
 | --- | --- | --- |
 | `mktowsUserId` | Obligatoire | L’ID d’accès client Marketo se trouve dans le panneau API Marketo Admin SOAP sous Intégration. |
 | `requestSignature` | Obligatoire | Signature HMAC-SHA1 basée sur une clé secrète partagée, un `requestTimestamp` et un ID utilisateur Marketo |
-| `requestTimestamp` | Obligatoire | Date et heure de la demande (format de date WSDL W3C Ex. « 2013-06-09T14:04:54-08:00 ») |
+| `requestTimestamp` | Obligatoire | Date et heure de la demande (format de date WSDL W3C Ex. « 2013-06-:04:54-08:00 ») |
 | `partnerId` | Facultatif | Partenaire technologique LaunchPoint [clé API](../launchpoint-api.pdf). |
 
 ## Requête XML - getLeadActivity
