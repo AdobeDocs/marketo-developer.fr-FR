@@ -241,4 +241,4 @@ rtp('get','rcmd', 'richmedia');
 
 #### Exemple de modèle de recommandation de média enrichi #3
 
-**Nom** : template3 **Description** : contenu vertical incluant uniquement le titre et la description. Lorsque vous pointez dessus, l’en-tête change de couleur et contient un lien hypertexte vers l’URL du contenu. La description fournit également des liens vers le contenu sans changement de couleur. ![Modèle de média enrichi ](assets/rich-media-template3.png)
+**Nom** : template3 **Description** : contenu vertical incluant uniquement le titre et la description. Lorsque vous pointez dessus, l’en-tête change de couleur et contient un lien hypertexte vers l’URL du contenu. La description fournit également des liens vers le contenu sans changement de couleur. ![Modèle de média enrichi &#x200B;](assets/rich-media-template3.png)

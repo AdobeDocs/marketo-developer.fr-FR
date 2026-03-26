@@ -27,7 +27,7 @@ L’API Munchkin comprend les fonctions suivantes : `init`, `createTrackingCooki
 | Nom du paramètre | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |
 | ID Munchkin | Obligatoire | Chaîne | Identifiant de compte Munchkin sous le menu Admin > Intégration > Munchkin . Définit l’instance cible vers laquelle envoyer les activités. |
-| [ Paramètres de configuration ](configuration.md) | Facultatif | Objet | Active d’autres paramètres de comportement pour Munchkin. |
+| [&#x200B; Paramètres de configuration &#x200B;](configuration.md) | Facultatif | Objet | Active d’autres paramètres de comportement pour Munchkin. |
 
 ```javascript
 Munchkin.init('299-BYM-827');

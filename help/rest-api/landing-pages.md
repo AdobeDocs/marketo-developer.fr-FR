@@ -193,7 +193,7 @@ Pour les pages de forme libre, toutes les sections de contenu souhaitées doiven
 
 ### Contenu dynamique
 
-Pour créer une section de contenu dynamique, elle doit déjà être présente dans la liste de contenu de la page de destination. Le point d’entrée [ Mettre à jour le contenu de la page de destination ](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) doit ensuite être utilisé pour définir le type sur « DynamicContent ». Lorsqu’une section est définie sur du contenu dynamique, elle crée des sections dynamiques sous-jacentes dans la section de contenu qui héritent toutes du type de base de l’élément converti. Chaque section dynamique hérite également du contenu de la section convertie.
+Pour créer une section de contenu dynamique, elle doit déjà être présente dans la liste de contenu de la page de destination. Le point d’entrée [&#x200B; Mettre à jour le contenu de la page de destination &#x200B;](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) doit ensuite être utilisé pour définir le type sur « DynamicContent ». Lorsqu’une section est définie sur du contenu dynamique, elle crée des sections dynamiques sous-jacentes dans la section de contenu qui héritent toutes du type de base de l’élément converti. Chaque section dynamique hérite également du contenu de la section convertie.
 
 ```
 GET /rest/asset/v1/landingPage/{id}/dynamicContent/RVMtNDg=.json

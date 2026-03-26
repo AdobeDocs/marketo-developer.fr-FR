@@ -161,7 +161,7 @@ ht-degree: 39%
 - [Flux de données](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams)
 - [Script de l&#39;e-mail](email-scripting.md)
 - [Exemples de script e-mail](examples.md)
-- [Objets ](marketo-objects.md)
+- [Objets &#x200B;](marketo-objects.md)
 - [Licence](api-license.md)
 - [Sandbox partenaire](partner-sandbox.md)
 - [Étapes de flux en libre-service](self-service-flow-steps.md)
