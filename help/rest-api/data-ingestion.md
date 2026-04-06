@@ -3,10 +3,10 @@ title: Ingestion de données
 feature: REST API, Dynamic Content
 description: Utilisez l’API Marketo Data Ingestion pour une ingestion de volume élevé et à faible latence de personnes, d’objets personnalisés, d’entreprises et de membres de programme.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: 6dc068f92d5b0c94035ca484fd1508dfe87bbd76
 workflow-type: tm+mt
-source-wordcount: '1786'
-ht-degree: 16%
+source-wordcount: '1789'
+ht-degree: 17%
 
 ---
 
@@ -14,7 +14,7 @@ ht-degree: 16%
 
 L’API Data Ingestion est un service à haut volume, à faible latence et à haute disponibilité conçu pour gérer l’ingestion de grandes quantités de données de personnes et de données relatives aux personnes de manière efficace et avec un délai minimal.
 
-Les données sont ingérées en soumettant des requêtes qui s’exécutent de manière asynchrone. Le statut de la demande peut être récupéré en s’abonnant aux événements du flux de données d’observabilité [&#128279;](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
+Les données sont ingérées en soumettant des requêtes qui s’exécutent de manière asynchrone. Le statut de la demande peut être récupéré en s’abonnant aux événements du flux de données d’observabilité [](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
 
 Les interfaces sont proposées pour quatre types d’objets : personnes, objets personnalisés, sociétés et membres de programme. L’opération d’enregistrement est « insert or update » uniquement, à l’exception des membres de programme qui prennent également en charge la suppression.
 
@@ -116,7 +116,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 ### Erreur
 
-Lorsqu’un appel génère une erreur, un statut non 202 est renvoyé avec un corps de réponse contenant des détails d’erreur supplémentaires.  Le corps de la réponse est application/json et contient un seul objet avec les membres error_code et message.
+Lorsqu’un appel génère une erreur, un statut non 202 est renvoyé avec un corps de réponse contenant des détails d’erreur supplémentaires. Le corps de la réponse est `application/json` et contient un seul objet avec les membres `error_code` et `message`.
 
 Vous trouverez ci-dessous les codes d’erreur réutilisés de la passerelle Adobe Developer.
 
@@ -139,7 +139,16 @@ Vous trouverez ci-dessous les codes d’erreur propres à l’API Data Ingestion
 
 ## Reprises
 
-Lorsqu’une erreur transitoire est détectée, le service tente à nouveau l’opération trois fois.  La première reprise se produit après une période d’attente de 5 minutes, la seconde après 30 minutes supplémentaires et la troisième après 30 minutes supplémentaires.  Les reprises se produisent pour diverses raisons, principalement lorsqu’un service dépendant expire ou n’est temporairement pas disponible.
+Lorsqu’une erreur transitoire est détectée, le service tente à nouveau l’opération. Les reprises se produisent pour diverses raisons, principalement lorsqu’un service dépendant expire ou n’est temporairement pas disponible.
+
+Intervalles de nouvelles tentatives :
+
+* Opération initiale et première reprise : 5 minutes
+* 1er et 2ème : 15 min
+* 2nd et 3ème : 20 min
+* 3ème et 4ème : 20 min
+* 4ème et 5ème : 2 heures
+* après la 5e reprise -> 3 heures
 
 ## Points d’entrée
 
@@ -166,7 +175,7 @@ Point d’entrée utilisé pour mettre à jour les enregistrements de personne.
 | --- | --- | --- | --- | --- |
 | `priority` | Chaîne | Non | Priorité de la requête : normale ou élevée | normal |
 | `partitionName` | Chaîne | Non | Nom de la partition de la personne | Par défaut |
-| `dedupeFields` | Objet | Non | Attributs à dédupliquer. Un ou deux noms d’attribut sont autorisés. <br/> Deux attributs sont utilisés dans une opération AND. Par exemple, si les opérateurs `email` et `firstName` sont spécifiés, ils sont tous deux utilisés pour rechercher une personne à l’aide de l’opération AND. <br/>Les attributs pris en charge sont les suivants : `id`, `email`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId` `sfdcLeadOwnerId`, les attributs personnalisés (types « string » et « integer » uniquement), `email` |  |
+| `dedupeFields` | Objet | Non | Attributs à dédupliquer. Un ou deux noms d’attribut sont autorisés. <br/> Deux attributs sont utilisés dans une opération AND. Par exemple, si les opérateurs `email` et `firstName` sont spécifiés, ils sont tous deux utilisés pour rechercher une personne à l’aide de l’opération AND. <br/>Les attributs pris en charge sont les suivants : `id`, `email`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId` `sfdcLeadOwnerId`, Attributs personnalisés (type « chaîne » et « entier » uniquement), `email` |  |
 | `persons` | Tableau d’objets | Oui | Liste des paires nom-valeur d’attribut pour la personne | – |
 
 Les autorisations requises sont `Read-Write Lead`.
@@ -239,7 +248,7 @@ Point d’entrée utilisé pour mettre à jour les enregistrements d’objets pe
 
 Les autorisations requises sont `Read-Write Custom Object`.
 
-Si un champ de lien vers une Personne est spécifié dans la requête et que cette Personne n’existe pas, plusieurs reprises se produisent. Si cette personne est ajoutée pendant la fenêtre de nouvelle tentative (65 minutes), la mise à jour est réussie. Par exemple, si le champ Lien est e-mail sur Personne et que Personne n’existe pas, une nouvelle tentative a lieu.
+Si un champ de lien vers une Personne est spécifié dans la requête et que cette Personne n’existe pas, plusieurs reprises se produisent. Si cette personne est ajoutée pendant la fenêtre de nouvelle tentative (65 minutes), la mise à jour est réussie. Par exemple, si le champ Lien est `email` sur Personne et que Personne n’existe pas, des reprises ont lieu.
 
 ### Exemple d’objets personnalisés
 
@@ -380,7 +389,7 @@ Les autorisations requises sont `Read-Write Company`.
 | --- | --- |
 | action | Doit être l’un des suivants : `createOnly`, `updateOnly`, `createOrUpdate`. Respect de la casse. |
 | dedupeBy | Doit être `dedupeFields` ou `idField` (non-respect de la casse). La valeur par défaut est `dedupeFields`. |
-| dedupeBy + action | `createOnly` et `createOrUpdate` autorisent uniquement les `dedupeFields`. `updateOnly` autorise les `dedupeFields` et les `idField`. |
+| dedupeBy + action | `createOnly` et `createOrUpdate` n’autorisent que les `dedupeFields`. `updateOnly` permet à la fois les `dedupeFields` et les `idField`. |
 | Lorsqu’`dedupeBy=dedupeFields` | Chaque entreprise doit avoir des `externalCompanyId`. Le champ `id` doit être absent. |
 | Lorsqu’`dedupeBy=idField` | Chaque entreprise doit avoir des `id`. Le champ `externalCompanyId` doit être absent. |
 | `input` / `companies` | Ne doit pas être nul ou vide. |
@@ -407,7 +416,7 @@ Point d&#39;entrée utilisé pour synchroniser le statut des membres du programm
 
 | Clé | Type de données | Obligatoire | Valeur | Valeur par défaut |
 | --- | --- | --- | --- | --- |
-| programmes | Tableau d’objets | Oui | Liste des opérations du programme. Chaque spécifie un programme, un statut de cible et les prospects à synchroniser. | – |
+| Programmes | Tableau d’objets | Oui | Liste des opérations du programme. Chaque spécifie un programme, un statut de cible et les prospects à synchroniser. | – |
 
 Chaque objet du tableau de `programs` contient :
 
@@ -476,7 +485,7 @@ Les autorisations requises sont `Read-Write Lead`.
 
 | Règle | Détail |
 | --- | --- |
-| programmes | Ne doit pas être nul ou vide. |
+| Programmes | Ne doit pas être nul ou vide. |
 | programId | Obligatoire. Doit être un entier positif. |
 | statut | Obligatoire. Ne doit pas être vide. Ne doit pas être `"Not in Program"` (non-respect de la casse). Utilisez plutôt le point d’entrée de suppression . |
 | membres | Ne doit pas être nul ou vide. |
@@ -508,7 +517,7 @@ Point d’entrée utilisé pour supprimer les prospects des programmes. Cela dé
 
 | Clé | Type de données | Obligatoire | Valeur | Valeur par défaut |
 | --- | --- | --- | --- | --- |
-| programmes | Tableau d’objets | Oui | Liste des opérations de suppression de programme. Chaque spécifie un programme et les prospects à supprimer. | – |
+| Programmes | Tableau d’objets | Oui | Liste des opérations de suppression de programme. Chaque spécifie un programme et les prospects à supprimer. | – |
 
 Chaque objet du tableau de `programs` contient :
 
@@ -573,7 +582,7 @@ Les autorisations requises sont `Read-Write Lead`.
 
 | Règle | Détail |
 | --- | --- |
-| programmes | Ne doit pas être nul ou vide. |
+| Programmes | Ne doit pas être nul ou vide. |
 | programId | Obligatoire. Doit être un entier positif. |
 | membres | Ne doit pas être nul ou vide. |
 | leadId | Obligatoire pour chaque membre du tableau d’entrée. |

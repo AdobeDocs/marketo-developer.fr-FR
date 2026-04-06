@@ -3,9 +3,9 @@ title: Notifications push
 feature: Mobile Marketing
 description: Guide d’activation des notifications push iOS avec Marketo, depuis les certificats APNs et la configuration de Xcode jusqu’à l’intégration de Marketo SDK, l’enregistrement et la gestion des jetons.
 exl-id: 41d657d8-9eea-4314-ab24-fd4cb2be7f61
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 9002bcd494ba125fdc7d3ef5f02385465b6eb5a6
 workflow-type: tm+mt
-source-wordcount: '1344'
+source-wordcount: '1338'
 ht-degree: 0%
 
 ---
@@ -32,7 +32,7 @@ Il existe trois étapes pour activer les notifications push :
 1. Sélectionnez l’identifiant de l’application que vous utilisez dans la version de l’application.![](assets/push-appid.png)
 1. Créez et chargez une demande de signature de certificat pour générer le certificat push. ![](assets/push-ssl.png)
 1. Téléchargez le certificat sur l’ordinateur local et double-cliquez pour l’installer. ![](assets/certificate-download.png)
-1. Ouvrez « Keychain Access », faites un clic droit sur le certificat et exportez 2 éléments dans le fichier `.p12`.![chaîne_clé](assets/key-chain.png)
+1. Ouvrez « Keychain Access », faites un clic droit sur le certificat et exportez 2 éléments dans le fichier `.p12`.![key_chain](assets/key-chain.png)
 1. Chargez ce fichier via Marketo Admin Console pour configurer les notifications.
 1. Mettez à jour les profils d’approvisionnement de l’application.
 
@@ -285,12 +285,12 @@ Vous trouverez ci-dessous un journal des activités Marketo de Marketo qui affic
    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
    ```
 
-1. Configuration de FCM avec HTTPv1 (Google a [protocole XMPP obsolète](https://firebase.google.com/docs/cloud-messaging/xmpp-server-ref) le 12 juin 2023 et sera supprimé en juin 2024)
+1. Configuration de FCM avec HTTPv1
 
 - Activer MME FCM HTTPv1 dans le gestionnaire de fonctionnalités Marketo ![](assets/feature-manager.png)
    - Chargez le fichier Json du compte de service pour l’application dans MLM.
    - Vous pouvez télécharger le fichier Json du compte de service à partir de la console Firebase.   ![](assets/fcm-console.png)
-   - Patientez une heure après le chargement du fichier Json du compte de service dans Marketo avant d’envoyer des notifications push. 
+   - Patientez une heure après le chargement du fichier Json du compte de service dans Marketo avant d’envoyer des notifications push.  
 
 ## Appareils de test Android
 

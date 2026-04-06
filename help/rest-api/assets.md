@@ -3,9 +3,9 @@ title: Ressources
 feature: REST API
 description: Présentation des API REST de ressources Marketo pour les requêtes par identifiant ou nom, la navigation dans les pages et la création ou la mise à jour de dossiers, d’e-mails, de formulaires, de modèles, de fichiers et de jetons.
 exl-id: 4273a5b1-1904-46e8-b583-fc6f46b388d2
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 31a503b3892ed41b3defe3f4956cb5ee0c3d4c3e
 workflow-type: tm+mt
-source-wordcount: '894'
+source-wordcount: '898'
 ht-degree: 2%
 
 ---
@@ -22,6 +22,7 @@ Les ressources Marketo incluent :
 - Programmes
 - E-mails
 - Modèles d’e-mail
+- Fragments
 - Pages de destination
 - Modèles de pages de destination
 - Extraits
@@ -31,7 +32,7 @@ Les ressources Marketo incluent :
 
 ## API
 
-Pour obtenir la liste complète des points d’entrée de l’API Asset, y compris les paramètres et les informations de modélisation, consultez la [&#x200B; Référence des points d’entrée de l’API Asset &#x200B;](endpoint-reference.md).
+Pour obtenir la liste complète des points d’entrée de l’API Asset, y compris les paramètres et les informations de modélisation, consultez la [ Référence des points d’entrée de l’API Asset ](endpoint-reference.md).
 
 ## Requête
 

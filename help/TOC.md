@@ -5,10 +5,10 @@ breadcrumb-title: Guide de developpement [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
+source-git-commit: 6dc068f92d5b0c94035ca484fd1508dfe87bbd76
 workflow-type: tm+mt
-source-wordcount: '277'
-ht-degree: 39%
+source-wordcount: '284'
+ht-degree: 38%
 
 ---
 
@@ -54,10 +54,13 @@ ht-degree: 39%
       - [Ressources](rest-api/assets.md)
       - [Contenu dynamique](rest-api/dynamic-content.md)
       - [E-mails](rest-api/emails.md)
+      - [E-mails (nouveau)](rest-api/emails-new.md)
       - [Modèles d’e-mail](rest-api/email-templates.md)
+      - [Modèles d&#39;e-mail (nouveau)](rest-api/email-templates-new.md)
       - [Fichiers](rest-api/files.md)
       - [Dossiers](rest-api/folders.md)
       - [Formulaires](rest-api/forms.md)
+      - [Fragments (nouveau)](rest-api/fragments.md)
       - [Pages de destination](rest-api/landing-pages.md)
       - [Règles de redirection de page de destination](rest-api/landing-page-redirect-rules.md)
       - [Modèles de pages de destination](rest-api/landing-page-templates.md)
@@ -161,7 +164,7 @@ ht-degree: 39%
 - [Flux de données](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams)
 - [Script de l&#39;e-mail](email-scripting.md)
 - [Exemples de script e-mail](examples.md)
-- [Objets &#x200B;](marketo-objects.md)
+- [Objets Marketo](marketo-objects.md)
 - [Licence](api-license.md)
 - [Sandbox partenaire](partner-sandbox.md)
 - [Étapes de flux en libre-service](self-service-flow-steps.md)

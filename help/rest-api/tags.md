@@ -3,10 +3,10 @@ title: Balises
 feature: REST API, Tags
 description: interroger les types de balises, obtenir les valeurs autorisées par nom, mettre à jour ou supprimer des balises de programme dans Marketo via l’API REST Asset, avec des exemples de requête ;
 exl-id: 64731d1a-a749-4d6f-b336-16c733d002f0
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: b2b1027ccf8016c2e4c081753842a6febac832ec
 workflow-type: tm+mt
-source-wordcount: '221'
-ht-degree: 2%
+source-wordcount: '258'
+ht-degree: 1%
 
 ---
 
@@ -75,7 +75,7 @@ GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 }
 ```
 
-## Mise à jour 
+## Mise à jour
 
 Le point d’entrée [Mettre à jour la balise de programme](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) vous permet de mettre à jour la valeur d’un type de balise donné. Le point d’entrée prend un `id` et `tagType` paramètres de chemin d’accès qui spécifient l’identifiant du programme et le type de balise à mettre à jour. Un paramètre de requête `tagValue` est utilisé pour spécifier la nouvelle valeur pour le type de balise. Tous les paramètres sont requis.
 
@@ -97,7 +97,7 @@ POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 }
 ```
 
-Les balises peuvent être mises à jour en masse à l’aide du point d’entrée [Mettre à jour les métadonnées de programme](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST). Vous trouverez un exemple [ici](programs.md#update).
+Les balises peuvent être mises à jour en masse à l’aide du point d’entrée [Mettre à jour les métadonnées du programme](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST). Consultez un exemple dans la section [Mise à jour des programmes](programs.md#update).
 
 ## Supprimer
 

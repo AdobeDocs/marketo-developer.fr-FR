@@ -3,9 +3,9 @@ title: Dossiers
 feature: REST API
 description: Guide de l’API REST Marketo pour les dossiers couvrant la création, la mise à jour, la suppression, la requête par identifiant et nom, la navigation en masse avec root, workspace, maxDepth et la pagination.
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 31a503b3892ed41b3defe3f4956cb5ee0c3d4c3e
 workflow-type: tm+mt
-source-wordcount: '1025'
+source-wordcount: '1099'
 ht-degree: 1%
 
 ---
@@ -59,7 +59,7 @@ GET /rest/asset/v1/folder/{id}.json?type=Folder
 }
 ```
 
-Le paramètre type est obligatoire et doit être de type « Dossier » ou « Programme ».  Le type détermine si la recherche du dossier est effectuée sur un ID de dossier ou un ID de programme. Pour ce point d’entrée, un seul enregistrement est renvoyé dans le tableau de résultats. Notez le paramètre folderType dans la réponse. Cela peut indiquer de nombreux types de dossiers différents. Les dossiers d’activités Marketo ont un type de dossier marketing ou de programme, qui peut contenir de nombreux types de ressources différents, tandis que les dossiers de Design Studio ont un type correspondant au type de ressource qu’ils peuvent contenir. Par exemple, un dossier dont le type est « E-mail » peut contenir uniquement des e-mails ou d’autres sous-dossiers dont le type est E-mail ou Modèle d’e-mail. Les types peuvent inclure :
+Le paramètre type est obligatoire et doit être de type « Dossier » ou « Programme ».  Le type détermine si la recherche du dossier est effectuée sur un ID de dossier ou un ID de programme. Pour ce point d’entrée, un seul enregistrement est renvoyé dans le tableau de résultats. Notez le paramètre `folderType` dans la réponse. Cela peut indiquer de nombreux types de dossiers différents. Les dossiers d’activités Marketo ont un type de dossier marketing ou de programme, qui peut contenir de nombreux types de ressources différents, tandis que les dossiers de Design Studio ont un type correspondant au type de ressource qu’ils peuvent contenir. Par exemple, un dossier dont le `folderType` est « E-mail » peut contenir uniquement des e-mails ou d’autres sous-dossiers, qui peuvent avoir un `folderType` d’e-mail ou de modèle d’e-mail. Les types peuvent inclure :
 
 - E-mail
 - Modèle d’e-mail

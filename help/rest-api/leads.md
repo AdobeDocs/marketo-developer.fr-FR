@@ -3,9 +3,9 @@ title: Prospects
 feature: REST API
 description: Explorez les fonctionnalités de l’API REST des leads Marketo, notamment la description, la requête par ID ou filtre, les champs par défaut, les limites et la récupération des ECID.
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
+source-git-commit: 66154fa4aa37190a49dcc62f57debef5e1e829a1
 workflow-type: tm+mt
-source-wordcount: '3409'
+source-wordcount: '3457'
 ht-degree: 3%
 
 ---
@@ -95,7 +95,7 @@ Pour cette méthode, il y aura toujours un seul enregistrement à la première p
 
 L’option Obtenir les leads par type de filtre renvoie le même type d’enregistrements, mais peut renvoyer jusqu’à 300 par page. Elle nécessite les paramètres de requête `filterType` et `filterValues`.
 
-`filterType` accepte n’importe quel champ personnalisé ou la plupart des champs couramment utilisés. Appelez le point d’entrée `Describe2` pour obtenir une liste complète des champs pouvant faire l’objet d’une recherche et pouvant être utilisés dans `filterType`. Lors d’une recherche par champ personnalisé, seuls les types de données suivants sont pris en charge : `string`, `email`, `integer`. Vous pouvez obtenir les détails du champ (description, type, etc.) à l’aide de la méthode Describe mentionnée ci-dessus.
+`filterType` accepte n’importe quel champ personnalisé ou la plupart des champs couramment utilisés. Appelez le point d’entrée `Describe2` pour obtenir une liste complète des champs pouvant faire l’objet d’une recherche et pouvant être utilisés dans `filterType`. Lors d’une recherche par champ personnalisé, seuls les types de données suivants sont pris en charge : `string`, `email`, `integer`. Vous pouvez obtenir les détails du champ (description, type, etc.) en utilisant la méthode Describe ci-dessus.
 
 `filterValues` accepte jusqu’à 300 valeurs au format séparé par des virgules. L’appel recherche les enregistrements pour lesquels le champ du prospect correspond à l’un des `filterValues` inclus. Si le nombre de leads correspondant au filtre de lead est supérieur à 1 000, une erreur est renvoyée : « 1 003, Trop de résultats correspondent au filtre ».
 
@@ -221,7 +221,7 @@ POST /rest/v1/leads.json
 }
 ```
 
-Dans cette requête, vous voyez deux champs importants : `action` et `lookupField`.  `action` indique le type d&#39;opération de la demande et peut être `createOrUpdate`, `createOnly`, `updateOnly` ou `createDuplicate`. S’il est omis, l’action est définie par défaut sur `createOrUpdate`.  Le paramètre `lookupField` spécifie la clé à utiliser lorsque l’action est `createOrUpdate` ou `updateOnly`. Si `lookupField` est omis, la clé par défaut est `email`.
+Deux champs importants apparaissent dans cette demande : `action` et `lookupField`. `action` indique le type d&#39;opération de la demande et peut être `createOrUpdate`, `createOnly`, `updateOnly` ou `createDuplicate`. S’il est omis, l’action est définie par défaut sur `createOrUpdate`.  Le paramètre `lookupField` spécifie la clé à utiliser lorsque l’action est `createOrUpdate` ou `updateOnly`. Si `lookupField` est omis, la clé par défaut est `email`.
 
 Par défaut, la partition par défaut est utilisée. Vous pouvez éventuellement spécifier le paramètre `partitionName`, qui ne fonctionne que si l’action est `createOnly` ou `createOrUpdate`. Pour que `partitionName` fonctionne en tant que critère de déduplication supplémentaire, il doit faire partie du type de source dans les règles de déduplication personnalisées. Lors d’une opération de mise à jour, si un prospect n’existe pas dans la partition spécifiée, une erreur est renvoyée. Si l’utilisateur API uniquement n’a pas l’autorisation d’accéder à la partition spécifiée, une erreur est renvoyée.
 
@@ -816,8 +816,10 @@ Adhésion
 
 Les enregistrements de lead peuvent également être récupérés en fonction de l’appartenance à une liste statique ou à un programme. De plus, vous pouvez récupérer toutes les listes statiques, les programmes ou les campagnes intelligentes dont un prospect est membre.
 
-La structure de réponse et les paramètres facultatifs sont identiques à ceux de l’option Get Leads by Filter Type, bien que filterType et filterValues ne puissent pas être utilisés avec cette API.
-Pour accéder à l’ID de liste via l’interface utilisateur de Marketo, accédez à la liste. La liste `id` se trouve dans l’URL de la liste statique, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. Dans cet exemple, 1001 est la `id` de la liste.
+La structure de réponse et les paramètres facultatifs sont identiques à ceux de l’option Get Leads by Filter Type (Obtenir les prospects par type de filtre), bien que `filterType` et `filterValues` ne puissent pas être utilisés avec cette API.
+Pour accéder à l’ID de liste via l’interface utilisateur de Marketo, accédez à la liste. La liste `id` se trouve dans l’URL de la liste statique, `https://app-****.marketo.com/#ST1001A1`. Dans cet exemple, 1001 est la `id` de la liste.
+
+## Obtenir les programmes par ID de lead
 
 ### Requête
 
@@ -855,6 +857,8 @@ GET /rest/v1/list/{listId}/leads.json?batchSize=3
     ]
 }
 ```
+
+## Obtenir des listes par ID de lead
 
 Le point d’entrée Get Lists by Lead Id prend un enregistrement de lead `id` un paramètre de chemin d’accès et renvoie tous les enregistrements de liste statiques dont le lead est membre.
 
