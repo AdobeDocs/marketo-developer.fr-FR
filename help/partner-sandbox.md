@@ -2,9 +2,9 @@
 title: Sandbox partenaire
 description: Présentation des sandbox des partenaires Marketo Engage, avec des informations d’approvisionnement et des limites sur les appels d’API, les enregistrements, les envois d’e-mails, les objets personnalisés et les utilisateurs.
 exl-id: a8f36cb5-d288-4b8b-b4bf-037faa3fe73f
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 14ca3ca1f1aa07bb3e54802003190a4a2b4fbcb9
 workflow-type: tm+mt
-source-wordcount: '202'
+source-wordcount: '206'
 ht-degree: 0%
 
 ---
@@ -13,7 +13,7 @@ ht-degree: 0%
 
 Un sandbox partenaire est une instance Marketo Engage utilisée par les partenaires tout au long du cycle de développement du logiciel. Les partenaires utilisent leur sandbox pour en savoir plus  et hors de l’interface utilisateur de Marketo Engage, et pour accéder aux services de l’API Marketo Engage.
 
-Un sandbox est configuré après l’acceptation d’un partenaire dans  le [Programme de partenariat Adobe Exchange, Expérience digitale](http://partners.adobe.com/technologyprogram/experiencecloud.html). À la plupart des égards, les sandbox partenaires sont fonctionnellement équivalents à une instance de production. Les sandbox partenaires ne disposent pas de modules complémentaires installés et ont des limites de capacité fixes en place. Vous trouverez ci-dessous une FAQ suivie d’un résumé des fonctionnalités des sandbox partenaires.
+Un sandbox est configuré après l’acceptation d’un partenaire dans  le [Programme de partenariat Adobe Exchange, Expérience digitale](https://partners.adobe.com/technologyprogram/experiencecloud.html). À la plupart des égards, les sandbox partenaires sont fonctionnellement équivalents à une instance de production. Les sandbox partenaires ne disposent pas de modules complémentaires installés et ont des limites de capacité fixes en place. Vous trouverez ci-dessous une FAQ suivie d’un résumé des fonctionnalités des sandbox partenaires.
 
 ## Résumé des fonctionnalités
 
