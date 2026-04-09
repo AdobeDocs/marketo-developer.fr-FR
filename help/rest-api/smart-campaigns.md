@@ -3,16 +3,16 @@ title: Campagnes intelligentes
 feature: REST API, Smart Campaigns
 description: Découvrez comment utiliser les API REST Marketo pour les campagnes intelligentes, y compris la requête par identifiant ou nom, parcourir les filtres, créer une suppression de clone et planifier ou demander des déclencheurs
 exl-id: 540bdf59-b102-4081-a3d7-225494a19fdd
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 74964e90ddc68a611706afcad1f6016d05b060d6
 workflow-type: tm+mt
-source-wordcount: '1012'
+source-wordcount: '1196'
 ht-degree: 1%
 
 ---
 
 # Campagnes intelligentes
 
-[Référence du point d’entrée des campagnes intelligentes (ressource)](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns)
+[Référence Des Points D’Entrée Des Campagnes Intelligentes (Ressource)](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns)
 
 [Référence des points d’entrée des campagnes (leads)](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns)
 
@@ -237,7 +237,7 @@ name=Smart Campaign 02&folder={"type": "folder","id": 640}&description=This is a
 }
 ```
 
-## Mise à jour 
+## Mise à jour
 
 Le point d’entrée [Mise à jour de campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset/) est exécuté avec une requête POST application/x-www-form-urlencoded. Un seul `id` de campagne intelligente est utilisé comme paramètre de chemin d’accès. Vous pouvez utiliser le paramètre `name` pour mettre à jour le nom de la campagne intelligente ou le paramètre `description` pour mettre à jour la description de la campagne intelligente.
 
@@ -373,7 +373,7 @@ Les campagnes intelligentes par lots sont lancées à une heure spécifique et a
 
 Utilisez le point d’entrée [Planifier la campagne](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/scheduleCampaignUsingPOST) pour planifier une campagne par lots à exécuter immédiatement ou à une date ultérieure. Le `id` de campagne est un paramètre de chemin obligatoire. Les paramètres facultatifs sont `tokens`, `runAt` et `cloneToProgram` qui sont transmis dans le corps de la requête en tant qu’application/json.
 
-Le paramètre de tableau de jetons est un tableau de Mes jetons qui remplacent les jetons de programme existants. Une fois la campagne exécutée, les jetons sont ignorés.  Chaque élément de tableau de jetons contient des paires nom/valeur. Le nom du jeton doit être au format « {{my.name}} ».
+Le paramètre de tableau de jetons est un tableau de Mes jetons qui remplacent les jetons de programme existants. Une fois la campagne exécutée, les jetons sont ignorés.  Chaque élément de tableau de jetons contient des paires nom/valeur. Le nom du jeton doit être au format « `{{my.name}}` ».
 
 Le paramètre runAt datetime indique quand exécuter la campagne. Si elle n’est pas spécifiée, la campagne sera exécutée 5 minutes après l’appel du point d’entrée. La valeur datetime ne peut pas être située à plus de deux ans dans le futur.
 
@@ -426,7 +426,7 @@ Utilisez le point d’entrée [Demande de campagne](https://developer.adobe.com/
 
 Ce point d’entrée nécessite une campagne `id` comme paramètre de chemin d’accès et un paramètre de tableau d’entiers `leads` contenant les ID de lead . Un maximum de 100 prospects est autorisé par appel.
 
-Le paramètre de tableau `tokens` peut éventuellement être utilisé pour remplacer Mes jetons en local dans le programme parent de la campagne. `tokens` accepte un maximum de 100 jetons. Chaque élément de tableau `tokens` contient une paire nom/valeur. Le nom du jeton doit être au format « {{my.name}} ». Si vous utilisez l’approche [Ajouter un jeton système en tant que lien dans un e-mail](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email) pour ajouter le jeton système « viewAsWebpageLink », vous ne pouvez pas le remplacer à l’aide de `tokens`. Utilisez plutôt l’approche [Ajouter un lien Afficher en tant que page Web à un e-mail](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email) qui vous permet de remplacer « viewAsWebPageLink » à l’aide de `tokens`.
+Le paramètre de tableau `tokens` peut éventuellement être utilisé pour remplacer Mes jetons en local dans le programme parent de la campagne. `tokens` accepte un maximum de 100 jetons. Chaque élément de tableau `tokens` contient une paire nom/valeur. Le nom du jeton doit être au format « `{{my.name}}` ». Si vous utilisez l’approche [Ajouter un jeton système en tant que lien dans un e-mail](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email) pour ajouter le jeton système « viewAsWebpageLink », vous ne pouvez pas le remplacer à l’aide de `tokens`. Utilisez plutôt l’approche [Ajouter un lien Afficher en tant que page Web à un e-mail](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email) qui vous permet de remplacer « viewAsWebPageLink » à l’aide de `tokens`.
 
 Les paramètres `leads` et `tokens` sont transmis dans le corps de la requête en tant qu’application/json.
 

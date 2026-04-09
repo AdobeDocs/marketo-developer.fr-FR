@@ -3,7 +3,7 @@ title: scheduleCampaign
 feature: SOAP, Smart Campaigns
 description: Utilisez scheduleCampaign pour exécuter des campagnes dynamiques par lots Marketo maintenant ou ultérieurement, remplacer des jetons, cloner des programmes et implémenter via le XML SOAP avec des exemples PHP et Java.
 exl-id: a9ef2c16-34ef-4e0f-b765-e332335b0b81
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 74964e90ddc68a611706afcad1f6016d05b060d6
 workflow-type: tm+mt
 source-wordcount: '274'
 ht-degree: 4%
@@ -32,7 +32,7 @@ Si vous utilisez ce paramètre facultatif avec [importToList](importtolist.md), 
 | Nom de campagne | Obligatoire | Nom de la campagne intelligente |
 | campaignRunAt | Facultatif | Heure d’exécution de la campagne planifiée (format de date WSDL W3C). |
 | cloneToProgramName | Facultatif | Lorsque cet attribut est présent, le programme parent de la campagne est cloné et la campagne nouvellement créée est planifiée. L’attribut spécifie le nom souhaité pour le programme obtenu. Remarque : seuls 10 appels par jour sont autorisés lorsque ce champ est utilisé. |
-| programTokenList->attrib->name | Facultatif | Nom du jeton pour lequel vous souhaitez envoyer une nouvelle valeur. Utilisez le format de jeton complet comme vous le feriez dans l’interface utilisateur de Marketo. C’est-à-dire « {{my.message}} » |
+| programTokenList->attrib->name | Facultatif | Nom du jeton pour lequel vous souhaitez envoyer une nouvelle valeur. Utilisez le format de jeton complet comme vous le feriez dans l’interface utilisateur de Marketo. C’est-à-dire « `{{my.message}}` » |
 | programTokenList->attrib->value | Facultatif | Valeur du nom du jeton associé. |
 
 ## XML de la demande

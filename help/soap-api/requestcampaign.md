@@ -3,7 +3,7 @@ title: requestCampaign
 feature: SOAP, Smart Campaigns
 description: Exécuter des leads dans une campagne intelligente Marketo via requestCampaign SOAP, y compris les jeux de paramètres, la gestion des jetons, la limite de 100 leads, les requêtes XML et les exemples Java PHP.
 exl-id: b5367eb9-4f4c-4e1d-8b6d-36de8f134f0e
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 74964e90ddc68a611706afcad1f6016d05b060d6
 workflow-type: tm+mt
 source-wordcount: '298'
 ht-degree: 4%
@@ -29,7 +29,7 @@ Remarque : limite de 100 valeurs leadKey par appel. Les clés supplémentaires s
 | Nom de campagne | Facultatif lorsque campaignId est présent ; autrement requis dans un ensemble comme `campaignName`, programName et programTokenList | Nom de la campagne |
 | programName | Facultatif lorsque campaignId est présent ; autrement requis dans un ensemble comme `campaignName`, programName et programTokenList | Nom du programme |
 | programTokenList | Facultatif lorsque campaignId est présent ; Sinon obligatoire dans un ensemble sous la forme `campaignName`, `programName` et `programTokenList` | Tableau de jetons à utiliser dans la campagne. Lors de la spécification de jetons, programName et `campaignName` sont requis. |
-| programTokenList->attrib->name | Facultatif | Nom du jeton de programme dont vous souhaitez transmettre la valeur. Ex:{{my.message}} |
+| programTokenList->attrib->name | Facultatif | Nom du jeton de programme dont vous souhaitez transmettre la valeur. Ex : `{{my.message}}` |
 | programTokenList->attrib->value | Facultatif | Valeur pour le nom de jeton spécifié. |
 
 ## XML de la demande
