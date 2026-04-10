@@ -36,7 +36,7 @@ Pour les utilisateurs de Swift : supprimez l&#39;instruction d&#39;importation s
 
 ### Appareils de test iOS
 
-Suivez les instructions de la section [ Ajout d’appareils de test iOS ](installation.md#ios_test_devices)
+Suivez les instructions de la section [&#x200B; Ajout d’appareils de test iOS &#x200B;](installation.md#ios_test_devices)
 
 ### Gérer le type d’URL personnalisé dans AppDelegate
 

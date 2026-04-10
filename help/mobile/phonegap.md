@@ -17,7 +17,7 @@ Intégration du plug-in Marketo PhoneGap
 ## Conditions préalables
 
 1. [Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez la clé secrète de l’application et l’ID Munchkin).
-1. Configurez les notifications push ([](push-notifications.md) | [Android](push-notifications.md)).
+1. Configurez les notifications push ([&#128279;](push-notifications.md) | [Android](push-notifications.md)).
 1. [Installez PhoneGap/Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
 ## Instructions d’installation
@@ -66,7 +66,7 @@ Vérifier la liste des plateformes ajoutées `$cordova platform ls`
 1. Prise en charge de Firebase Cloud Messaging
 
 1. Configurez l’application Firebase sur la console Firebase.
-   1. Créez/ajoutez un projet sur la console [](https://console.firebase.google.com/)Firebase).
+   1. Créez/ajoutez un projet sur la console [&#128279;](https://console.firebase.google.com/)Firebase).
       1. Dans la [console Firebase](https://console.firebase.google.com/), sélectionnez **[!UICONTROL Ajouter un projet]**.
       1. Sélectionnez votre projet GCM dans la liste des projets Google Cloud existants, puis sélectionnez **[!UICONTROL Ajouter Firebase]**.
       1. Dans l’écran d’accueil de Firebase, sélectionnez Ajouter Firebase à l’application Android.
