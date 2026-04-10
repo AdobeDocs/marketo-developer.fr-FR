@@ -3,7 +3,7 @@ title: Ingestion de données
 feature: REST API, Dynamic Content
 description: Utilisez l’API Marketo Data Ingestion pour une ingestion de volume élevé et à faible latence de personnes, d’objets personnalisés, d’entreprises et de membres de programme.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: 6dc068f92d5b0c94035ca484fd1508dfe87bbd76
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1789'
 ht-degree: 17%
@@ -14,7 +14,7 @@ ht-degree: 17%
 
 L’API Data Ingestion est un service à haut volume, à faible latence et à haute disponibilité conçu pour gérer l’ingestion de grandes quantités de données de personnes et de données relatives aux personnes de manière efficace et avec un délai minimal.
 
-Les données sont ingérées en soumettant des requêtes qui s’exécutent de manière asynchrone. Le statut de la demande peut être récupéré en s’abonnant aux événements du flux de données d’observabilité [&#128279;](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
+Les données sont ingérées en soumettant des requêtes qui s’exécutent de manière asynchrone. Le statut de la demande peut être récupéré en s’abonnant aux événements du flux de données d’observabilité [](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
 
 Les interfaces sont proposées pour quatre types d’objets : personnes, objets personnalisés, sociétés et membres de programme. L’opération d’enregistrement est « insert or update » uniquement, à l’exception des membres de programme qui prennent également en charge la suppression.
 
@@ -107,7 +107,7 @@ Lorsqu’un appel réussit, un statut 202 est renvoyé.  Aucun corps de réponse
 
 Exemple de réponse de succès :
 
-```
+```http
 HTTP/1.1 202 Accepted
 X-Request-Id: e3d92152-0fb1-444a-8f8f-29d5a2338598
 Content-Length: 0

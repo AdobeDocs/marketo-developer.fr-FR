@@ -3,9 +3,9 @@ title: Fichiers
 feature: REST API
 description: Guide de requête des fichiers d’API REST Marketo par identifiant ou nom, navigation avec dossier et décalage, création ou mise à jour par chargement multipartie, insertOnly, types MIME, pas de diffusion en continu
 exl-id: 17361cdc-2309-442c-803c-34ce187aee1a
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '289'
+source-wordcount: '347'
 ht-degree: 1%
 
 ---
@@ -22,7 +22,7 @@ La requête de fichiers est simple et suit les types de requête standard pour l
 
 ### Par Id
 
-```
+```http
 GET /rest/asset/v1/file/{id}.json
 ```
 
@@ -55,7 +55,7 @@ GET /rest/asset/v1/file/{id}.json
 
 Indiquez le nom du fichier à l’aide du paramètre `name` requis.
 
-```
+```http
 GET /rest/asset/v1/file/byName.json?name=foo.png
 ```
 
@@ -93,7 +93,7 @@ Il existe trois paramètres facultatifs :
 - offset - entier qui spécifie où commencer à récupérer les entrées (la valeur par défaut est 0) ; peut être utilisé avec le paramètre maxReturn
 - maxReturn - entier spécifiant le nombre maximal d’entrées à renvoyer (20 par défaut, 200 au maximum)
 
-```
+```http
 GET /rest/asset/v1/files.json?folder={"id":436, "type": "Folder"}&maxReturn=3
 ```
 
@@ -157,11 +157,11 @@ GET /rest/asset/v1/files.json?folder={"id":436, "type": "Folder"}&maxReturn=3
 
 [La création d’un fichier](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/createFileUsingPOST) s’effectue avec une requête de type multipart/form-data . Le nom, le dossier et le fichier sont obligatoires dans la requête, avec une description facultative et un indicateur insertOnly, ce qui empêche un appel de création de mettre à jour un fichier existant portant le même nom. Pour le paramètre de fichier, un « filename » est requis dans l’en-tête Content-Disposition, en plus du paramètre name. Vous devez également transmettre un en-tête Type de contenu pour le fichier , qui sera le type MIME que Marketo utilisera pour diffuser le fichier.
 
-```
+```http
 POST /rest/asset/v1/files.json
 ```
 
-```
+```html
 ------WebKitFormBoundary2VyWOacQSupl4gUL
 Content-Disposition: form-data; name="file"; filename="marketo.html"
 Content-Type: text/html
@@ -210,11 +210,11 @@ This is a test file
 
 [La mise à jour d’un fichier](https://developer.adobe.com/marketo-apis/api/asset/#tag/File-Contents/operation/updateContentUsingPOST) peut être effectuée en fonction de son identifiant. Le seul paramètre est un paramètre de fichier qui a les mêmes exigences que la création.
 
-```
+```http
 POST /rest/asset/v1/file/{id}/content.json
 ```
 
-```
+```html
 ------WebKitFormBoundary2VyWOacQSupl4gUL
 Content-Disposition: form-data; name="file"; filename="marketo.html"
 Content-Type: text/html

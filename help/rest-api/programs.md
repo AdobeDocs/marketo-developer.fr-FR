@@ -3,10 +3,10 @@ title: Programmes
 feature: REST API, Programs
 description: Guide des programmes Marketo pour l’API REST Asset qui couvre les types, les canaux, les balises, les statuts de membre et les points d’entrée pour obtenir par identifiant ou nom, parcourir et filtrer par statut.
 exl-id: 30700de2-8f4a-4580-92f2-7036905deb80
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '870'
-ht-degree: 2%
+source-wordcount: '979'
+ht-degree: 1%
 
 ---
 
@@ -40,7 +40,7 @@ Le point d’entrée [Obtenir le programme par ID](https://developer.adobe.com/m
 
 L’ID de programme peut être obtenu à partir de l’URL du programme dans l’interface utilisateur, où l’URL ressemblera à `https://app-\*\*\*.marketo.com/#PG1001A1`. Dans cette URL, la `id` est 1001. Elle se situe toujours entre le premier jeu de lettres de l’URL et le deuxième jeu de lettres.
 
-```
+```http
 GET /rest/asset/v1/program/{id}.json
 ```
 
@@ -84,7 +84,7 @@ GET /rest/asset/v1/program/{id}.json
 
 Le point d’entrée [Obtenir le programme par nom](https://developer.adobe.com/marketo-apis/api/asset/) nécessite un paramètre de requête `name`. Les paramètres de requête booléens facultatifs sont `includeTags` et `includeCosts`, qui sont utilisés pour renvoyer les balises et les coûts du programme, respectivement.
 
-```
+```http
 GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
 ```
 
@@ -134,7 +134,7 @@ Le paramètre facultatif `maxReturn` contrôle le nombre de programmes à renvoy
 
 Notez que les balises associées à un programme ne sont pas renvoyées par ce point d’entrée. Les balises de programme peuvent être récupérées à l’aide de l’une des méthodes suivantes : [Obtenir les programmes par ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET) ou [Obtenir les programmes par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET).
 
-```
+```http
 GET /rest/asset/v1/programs.json
 ```
 
@@ -189,7 +189,7 @@ GET /rest/asset/v1/programs.json
 
 Les paramètres `earliestUpdatedAt` et `latestUpdatedAt` de notre point d’entrée [Obtenir les programmes](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) vous permettent de définir des filigranes de date-heure bas et élevés pour renvoyer les programmes qui ont été mis à jour ou créés initialement dans la plage donnée.
 
-```
+```http
 GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&latestUpdatedAt=2017-01-30T00:00:00-05:00
 ```
 
@@ -282,7 +282,7 @@ Le point d’entrée [Obtenir les programmes par balise](https://developer.adobe
 
 Deux paramètres sont requis : `tagType` correspond au type de balise sur laquelle effectuer le filtrage, et `tagValue` correspond à la valeur de balise sur laquelle effectuer le filtrage.  Il existe un paramètre `maxReturn` entier facultatif qui contrôle le nombre de programmes à renvoyer (200 au maximum, 20 par défaut) et un paramètre `offset` entier facultatif utilisé pour les résultats de la pagination (0 par défaut).  Les résultats sont renvoyés dans un ordre aléatoire.
 
-```
+```http
 GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 ```
 
@@ -329,15 +329,15 @@ Lors de la création ou de la mise à jour d’un programme de messagerie, un `s
 
 ### Créer
 
-```
+```http
 POST /rest/asset/v1/programs.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=API Test Program&folder={"id":1035,"type":"Folder"}&description=Sample API Program&type=Default&channel=Email Blast&costs=[{"startDate":"2015-01-01","cost":2000}]
 ```
 
@@ -377,19 +377,19 @@ name=API Test Program&folder={"id":1035,"type":"Folder"}&description=Sample API 
 }
 ```
 
-### Mise à jour 
+### Mise à jour
 
 Lors de la mise à jour des coûts du programme, pour ajouter de nouveaux coûts, ajoutez-les simplement à votre tableau de `costs`. Pour effectuer une mise à jour destructrice, transmettez vos nouveaux coûts, ainsi que le paramètre `costsDestructiveUpdate` défini sur `true`. Pour effacer tous les coûts d’un programme, ne transmettez pas de paramètre `costs`, mais simplement `costsDestructiveUpdate` défini sur `true`.
 
-```
+```http
 POST /rest/asset/v1/program/{id}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 description=This is an updated description&name=Updated Program Name&costs=[{"startDate":"2016-01-01","cost":200,"note":"Google Adwords"}]
 ```
 
@@ -445,7 +445,7 @@ Les programmes de messagerie peuvent être approuvés ou non à distance, ce qui
 
 ### Approuver
 
-```
+```http
 POST /rest/asset/v1/program/{id}/approve.json
 ```
 
@@ -465,7 +465,7 @@ POST /rest/asset/v1/program/{id}/approve.json
 
 ### Désapprouver
 
-```
+```http
 POST /rest/asset/v1/program/{id}/unapprove.json
 ```
 
@@ -489,15 +489,15 @@ Le [clonage de programmes](https://developer.adobe.com/marketo-apis/api/asset/#t
 
 Les programmes contenant certains types de ressources ne peuvent pas être clonés via cette API, y compris les notifications push, les messages In-App, les rapports et Social Assets. Les programmes in-app ne peuvent pas être clonés via cette API.
 
-```
+```http
 POST /rest/asset/v1/program/{id}/clone.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=Cloned Program - PHP&folder={"id":5562,"type":"Folder"}&description=Description
 ```
 
@@ -536,7 +536,7 @@ name=Cloned Program - PHP&folder={"id":5562,"type":"Folder"}&description=Descrip
 
 La suppression de programmes suit le modèle de suppression de ressources standard.
 
-```
+```http
 POST /rest/asset/v1/program/{id}/delete.json
 ```
 

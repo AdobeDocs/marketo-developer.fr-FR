@@ -3,9 +3,9 @@ title: Extraits
 feature: REST API, Snippets
 description: API REST Marketo Asset pour les fragments de code, couvrant la requête par ID et naviguer avec statut, obtenir du contenu, créer et mettre à jour des contenus HTML, Texte et dynamiques.
 exl-id: 87901c29-ee59-4224-848d-3bd6a6c52718
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '456'
+source-wordcount: '511'
 ht-degree: 2%
 
 ---
@@ -22,7 +22,7 @@ L’interrogation de fragments de code suit le modèle standard pour les ressour
 
 ### Par Id
 
-```
+```http
 GET /rest/asset/v1/snippet/{id}.json?status=approved
 ```
 
@@ -52,7 +52,7 @@ GET /rest/asset/v1/snippet/{id}.json?status=approved
 
 ### Parcourir
 
-```
+```http
 GET /rest/asset/v1/snippets.json?maxReturn=3
 ```
 
@@ -116,7 +116,7 @@ GET /rest/asset/v1/snippets.json?maxReturn=3
 
 Le contenu d’un fragment de code donné peut être récupéré en fonction de l’identifiant du fragment de code.
 
-```
+```http
 GET /rest/asset/v1/snippet/{id}/content.json
 ```
 
@@ -145,15 +145,15 @@ L’appel renvoie une liste de sections de contenu,  qui se composent de sectio
 
 Les fragments de code suivent le modèle de création de ressource complexe, où l’appel de la commande [créer un fragment de code](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/createSnippetUsingPOST) et son contenu sont effectués séparément. Par conséquent, le premier appel doit être effectué vers le point d’entrée de création, avec une description facultative.   Les données sont transmises sous la forme x-www-form-urlencoded, et non sous la forme JSON.
 
-```
+```http
 POST /rest/asset/v1/snippets.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=Test Snippet 09 - deverly&folder={"id":395,"type":"Folder"}&description=This is a test snippet
 ```
 
@@ -185,15 +185,15 @@ name=Test Snippet 09 - deverly&folder={"id":395,"type":"Folder"}&description=Thi
 
 L’ajout ou le remplacement de contenu dans un fragment de code est effectué par ID. Le contenu peut être de type Texte, HTML ou Contenu dynamique. Si le type est Texte, le paramètre de contenu est le point d’entrée de texte brut, tandis que s’il s’agit d’HTML, il s’agit du texte de balisage souhaité. Si le type est défini sur Contenu dynamique, le paramètre de contenu doit être défini sur l’identifiant de la segmentation à associer au fragment de code.
 
-```
+```http
 POST /rest/asset/v1/snippet/{id}/content.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 ```
 
@@ -213,15 +213,15 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 
 La [mise à jour des métadonnées](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/updateSnippetUsingPOST) est également effectuée par l’ID. Seuls le nom et la description peuvent être mis à jour :
 
-```
+```http
 POST /rest/asset/v1/snippet/{id}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=Test Snippet&description=New Description
 ```
 
@@ -255,7 +255,7 @@ name=Test Snippet&description=New Description
 
 Les fragments de code suivent le modèle standard pour le contenu dynamique, mais ils ne représentent qu’une seule section de contenu. De ce fait, chaque fragment de code peut ne contenir qu’une seule section dynamique, avec une liste de sections internes éventuellement pour chaque segment de la segmentation utilisée. Le contenu dynamique peut être interrogé uniquement par l’ID de fragment de code, car il ne peut y avoir qu’une seule section de contenu dynamique dans un fragment de code.
 
-```
+```http
 GET /rest/asset/v1/snippet/{id}/dynamicContent.json
 ```
 
@@ -312,7 +312,7 @@ Les fragments de code ont des points d’entrée pour l’approbation, l’annul
 
 ### Approuver
 
-```
+```http
 POST /rest/asset/v1/snippet/{id}/approveDraft.json
 ```
 
@@ -346,7 +346,7 @@ POST /rest/asset/v1/snippet/{id}/approveDraft.json
 
 Le point d’entrée `unapprove` ne peut être utilisé que sur des fragments de code approuvés.
 
-```
+```http
 POST /rest/asset/v1/snippet/{id}/unapprove.json
 ```
 
@@ -380,7 +380,7 @@ POST /rest/asset/v1/snippet/{id}/unapprove.json
 
 Le fragment de code doit être à l’état de brouillon pour être ignoré.  Un fragment de code approuvé ne peut pas être ignoré.
 
-```
+```http
 POST /rest/asset/v1/snippet/{id}/discardDraft.json
 ```
 
@@ -402,15 +402,15 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 [Le clonage d’un fragment de code](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/cloneSnippetUsingPOST) avec l’API est simple et suit le modèle standard, avec un nom obligatoire, l’identifiant du fragment de code et du dossier d’origine, ainsi qu’une description facultative.  S’il n’existe aucune version approuvée, le brouillon est cloné.
 
-```
+```http
 POST /rest/asset/v1/snippet/{id}/clone.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=Test Snippet Clone 3 - deverly&folder={"id":395,"type":"Folder"}&description=This is a test snippet
 ```
 

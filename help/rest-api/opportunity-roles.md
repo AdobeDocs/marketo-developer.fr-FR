@@ -3,9 +3,9 @@ title: Rôles d’opportunité
 feature: REST API
 description: Gérez les rôles d’opportunité Marketo via l’API REST, notamment la description, les requêtes avec des champs de déduplication composés, la création d’une suppression de mise à jour, les dépassements de délai et aucune synchronisation CRM.
 exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '270'
+source-wordcount: '279'
 ht-degree: 0%
 
 ---
@@ -22,7 +22,7 @@ Les API de rôle d’opportunité ne sont exposées que pour les abonnements pou
 
 Tout comme les opportunités, une description des opérations d’appel et de CRUD est exposée pour les rôles d’opportunité.
 
-```
+```http
 GET /rest/v1/opportunities/roles/describe.json
 ```
 
@@ -108,7 +108,7 @@ GET /rest/v1/opportunities/roles/describe.json
 
 Notez que les `dedupeFields` et les `searchableFields` sont un peu différents des opportunités. `dedupeFields` fournit en fait une clé composite, où les trois éléments `externalOpportunityId`, `leadId` et `role` sont requis. Pour que la création d’enregistrements réussisse, les champs d’ID doivent exister dans l’instance de destination pour que l’opportunité et le lien de prospect existent. Par `searchableFields`, `marketoGUID`, `leadId` et `externalOpportunityId` sont tous valides pour les requêtes seules et utilisent un modèle identique à Opportunités, mais il existe une option supplémentaire consistant à utiliser la clé composée pour la requête, ce qui nécessite l’envoi d’un objet JSON via POST, avec le paramètre de requête supplémentaire `_method=GET`.
 
-```
+```http
 POST /rest/v1/opportunities/roles.json?_method=GET
 ```
 
@@ -147,7 +147,7 @@ Cela produit le même type de réponse qu’une requête GET standard, mais avec
 
 Les rôles d’opportunité ont la même interface pour créer et mettre à jour des enregistrements que les opportunités.
 
-```
+```http
 POST /rest/v1/opportunities/roles.json
 ```
 
@@ -195,7 +195,7 @@ POST /rest/v1/opportunities/roles.json
 
 Vous pouvez supprimer des rôles d’opportunité en dédupliquant des champs ou des champs d’ID. Spécifiez à l’aide du paramètre deleteBy avec une valeur de dedupeFields ou idField. S’il n’est pas spécifié, la valeur par défaut est dedupeFields. Le corps de la requête contient un tableau d’entrée des rôles d’opportunité à supprimer. Un maximum de 300 rôles d’opportunité par appel est autorisé.
 
-```
+```http
 POST /rest/v1/opportunities/roles/delete.json
 ```
 

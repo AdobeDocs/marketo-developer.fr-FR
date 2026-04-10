@@ -3,7 +3,7 @@ title: Prospects
 feature: REST API
 description: Explorez les fonctionnalités de l’API REST des leads Marketo, notamment la description, la requête par ID ou filtre, les champs par défaut, les limites et la récupération des ECID.
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 66154fa4aa37190a49dcc62f57debef5e1e829a1
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '3457'
 ht-degree: 3%
@@ -30,7 +30,7 @@ Description est la source principale de vérité pour savoir si les champs sont 
 
 ### Requête
 
-```
+```http
 GET /rest/v1/leads/describe.json
 ```
 
@@ -68,7 +68,7 @@ Vous pouvez éventuellement transmettre un paramètre de champs contenant une li
 
 ### Requête
 
-```
+```http
 GET /rest/v1/lead/{id}.json
 ```
 
@@ -103,7 +103,7 @@ Si la longueur totale de votre requête GET dépasse 8 Ko, une erreur HTTP est r
 
 ### Requête
 
-```
+```http
 GET /rest/v1/leads.json?filterType=id&filterValues=318581,318592
 ```
 
@@ -168,7 +168,7 @@ Outre la récupération des données de prospect, vous pouvez créer, mettre à 
 
 ### Requête
 
-```
+```http
 POST /rest/v1/leads.json
 ```
 
@@ -247,7 +247,7 @@ Le point d’entrée Get Lead Field by Name récupère les métadonnées d’un 
 
 ### Requête
 
-```
+```http
 GET /rest/v1/leads/schema/fields/{fieldApiName}.json
 ```
 
@@ -279,7 +279,7 @@ Le point d’entrée Get Lead Fields récupère les métadonnées de tous les ch
 
 ### Requête
 
-```
+```http
 GET /rest/v1/leads/schema/fields.json
 ```
 
@@ -426,7 +426,7 @@ Quelques règles sont associées au nom et à la dénomination des `displayName`
 
 ### Requête
 
-```
+```http
 POST /rest/v1/leads/schema/fields.json
 ```
 
@@ -557,7 +557,7 @@ Le paramètre de chemin d’accès `fieldApiName` obligatoire spécifie le nom d
 
 ### Requête
 
-```
+```http
 POST /rest/v1/leads/schema/fields/{fieldApiName}.json
 ```
 
@@ -600,7 +600,7 @@ Remarque concernant les activités anonymes. Si vous souhaitez associer des acti
 
 ### Requête
 
-```
+```http
 POST /rest/v1/leads/push.json
 ```
 
@@ -710,13 +710,13 @@ De nouveaux prospects sont créés dans la partition principale de l’espace de
 
 ### Requête
 
-```
+```http
 POST /rest/v1/leads/submitForm.json
 ```
 
 ### Header
 
-```
+```text
 Content-Type: application/json
 ```
 
@@ -775,7 +775,7 @@ Il est parfois nécessaire de fusionner des enregistrements en double. Pour ce f
 
 ### Requête
 
-```
+```http
 POST /rest/v1/leads/{id}/merge.json?leadId=1324
 ```
 
@@ -798,7 +798,7 @@ Grâce au suivi des leads (Munchkin), Marketo enregistre l’activité web des v
 
 ### Requête
 
-```
+```http
 POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marketo.com-1396310362214-46169
 ```
 
@@ -817,13 +817,13 @@ Adhésion
 Les enregistrements de lead peuvent également être récupérés en fonction de l’appartenance à une liste statique ou à un programme. De plus, vous pouvez récupérer toutes les listes statiques, les programmes ou les campagnes intelligentes dont un prospect est membre.
 
 La structure de réponse et les paramètres facultatifs sont identiques à ceux de l’option Get Leads by Filter Type (Obtenir les prospects par type de filtre), bien que `filterType` et `filterValues` ne puissent pas être utilisés avec cette API.
-Pour accéder à l’ID de liste via l’interface utilisateur de Marketo, accédez à la liste. La liste `id` se trouve dans l’URL de la liste statique, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. Dans cet exemple, 1001 est la `id` de la liste.
+Pour accéder à l’ID de liste via l’interface utilisateur de Marketo, accédez à la liste. La liste `id` se trouve dans l’URL de la liste statique, `https://app-****.marketo.com/#ST1001A1`. Dans cet exemple, 1001 est la `id` de la liste.
 
 ## Obtenir les programmes par ID de lead
 
 ### Requête
 
-```
+```http
 GET /rest/v1/list/{listId}/leads.json?batchSize=3
 ```
 
@@ -864,7 +864,7 @@ Le point d’entrée Get Lists by Lead Id prend un enregistrement de lead `id` u
 
 ### Requête
 
-```
+```http
 GET /rest/v1/leads/{id}/listMembership.json?batchSize=3
 ```
 
@@ -906,7 +906,7 @@ La structure de la réponse est très similaire, car chaque élément du tableau
 
 ### Requête
 
-```
+```http
 GET /rest/v1/leads/programs/{programId}.json?batchSize=3
 ```
 
@@ -980,7 +980,7 @@ Le point d’entrée Get Programmes by Lead Id prend un paramètre de chemin d�
 
 ### Requête
 
-```
+```http
 GET /rest/v1/leads/{id}/programMembership.json
 ```
 
@@ -1011,7 +1011,7 @@ Le point d’entrée Get Smart Campaign by Lead Id prend un paramètre de chemin
 
 ### Requête
 
-```
+```http
 GET /rest/v1/leads/{id}/smartCampaignMembership.json?batchSize=3
 ```
 
@@ -1049,7 +1049,7 @@ La suppression des prospects est simple grâce au point d’entrée Supprimer le
 
 ### Requête
 
-```
+```http
 POST /rest/v1/leads/delete.json
 ```
 

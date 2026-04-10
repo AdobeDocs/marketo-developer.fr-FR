@@ -3,7 +3,7 @@ title: Jetons
 feature: REST API, Tokens
 description: Gérez mes jetons Marketo avec l’API REST de ressources. Voir les types de données pris en charge, obtenir par dossier ou programme, créer ou mettre à jour par POST codé par formulaire et supprimer par nom.
 exl-id: 4f8d87d7-ba2a-4c90-8b39-4d20679d404a
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '364'
 ht-degree: 3%
@@ -35,7 +35,7 @@ Il s’agit des seuls types de données qui peuvent être utilisés lors de la c
 
 La méthode [Get Tokens by Folder Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/getTokensByFolderIdUsingGET) utilise un `id` comme paramètre de chemin d’accès d’un type de programme ou de dossier. Ce type est spécifié par le paramètre `folderType`.
 
-```curl
+```http
 GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
 ```
 
@@ -68,15 +68,15 @@ GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
 
 Le point d’entrée [Créer un jeton](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/addTokenTOFolderUsingPOST) crée des jetons ou, s’ils existent, les met à jour avec les valeurs envoyées. Les jetons sont créés dans le contexte d’un dossier ou d’un programme. Le paramètre de chemin d’accès `id` obligatoire est l’identifiant du dossier auquel le jeton sera associé. Les paramètres `name`, `type`, `value` et `folderType` sont tous des paramètres requis du jeton. Les données sont transmises en tant que POST x-www-form-urlencoded, et non en tant que JSON. Le champ `name` du jeton ne peut pas dépasser 50 caractères.
 
-```
+```http
 POST /rest/asset/v1/folder/{id}/tokens.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=April Fools&type=date&value=2015-04-01&folderType=Folder
 ```
 
@@ -109,15 +109,15 @@ name=April Fools&type=date&value=2015-04-01&folderType=Folder
 
 Le paramètre [Supprimer le jeton par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/deleteTokenByNameUsingPOST) prend un identifiant en tant que paramètre de chemin d’accès d’un type de programme ou de dossier. Ce type est spécifié par le paramètre `folderType`. Les jetons sont supprimés en fonction de leur dossier parent, du `name` et de la `type` du jeton, chacun d’eux étant obligatoire. Les données sont transmises en tant que POST x-www-form-urlencoded, et non en tant que JSON.
 
-```
+```http
 POST /rest/asset/v1/folder/{id}/tokens/delete.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=AprilFool - deverly&type=date&folderType=Program
 ```
 

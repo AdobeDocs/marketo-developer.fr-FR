@@ -3,7 +3,7 @@ title: Pages de destination
 feature: REST API, Landing Pages
 description: Utilisez l’API REST Marketo pour interroger des métadonnées et du contenu, créer, mettre à jour, approuver, supprimer et cloner des pages de destination, y compris des types de formulaires guidés et libres.
 exl-id: 2f986fb0-0a6b-469f-b199-1c526cd5a882
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1221'
 ht-degree: 1%
@@ -22,7 +22,7 @@ Comme la plupart des autres ressources, les pages de destination peuvent être i
 
 L’interrogation du contenu de la page de destination renvoie une liste de sections de contenu disponibles dans la page de destination. Une section doit être présente dans la liste de contenu d’une page pour mettre à jour le contenu :
 
-```
+```http
 GET /rest/asset/v1/landingPage/{id}/content.json
 ```
 
@@ -60,15 +60,15 @@ Les résultats diffèrent entre les modèles guidés et les modèles de formulai
 
 Les types de contenu valides pour les points d’entrée [contenu de page de destination](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Content) sont les suivants : texte enrichi, HTML, formulaire, image, rectangle, extrait de code.
 
-```
+```http
 POST rest/asset/v1/landingPages.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=createLandingPage&folder={"type": "Folder", "id": 11}&template=1&description=this is a test&workspace=default&title=test create&keywords=awesome&formPrefill=false
 ```
 
@@ -129,15 +129,15 @@ Le paramètre `template` est utilisé pour spécifier l’identifiant source du 
 
 Le paramètre `description` facultatif est utilisé pour décrire la nouvelle page de destination.
 
-```
+```http
 POST /rest/asset/v1/landingPage/{id}/clone.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=MyNewLandingPage&folder={"type":"Program","id":1119}&template=57
 ```
 
@@ -193,9 +193,9 @@ Pour les pages de forme libre, toutes les sections de contenu souhaitées doiven
 
 ### Contenu dynamique
 
-Pour créer une section de contenu dynamique, elle doit déjà être présente dans la liste de contenu de la page de destination. Le point d’entrée [&#x200B; Mettre à jour le contenu de la page de destination &#x200B;](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) doit ensuite être utilisé pour définir le type sur « DynamicContent ». Lorsqu’une section est définie sur du contenu dynamique, elle crée des sections dynamiques sous-jacentes dans la section de contenu qui héritent toutes du type de base de l’élément converti. Chaque section dynamique hérite également du contenu de la section convertie.
+Pour créer une section de contenu dynamique, elle doit déjà être présente dans la liste de contenu de la page de destination. Le point d’entrée [ Mettre à jour le contenu de la page de destination ](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) doit ensuite être utilisé pour définir le type sur « DynamicContent ». Lorsqu’une section est définie sur du contenu dynamique, elle crée des sections dynamiques sous-jacentes dans la section de contenu qui héritent toutes du type de base de l’élément converti. Chaque section dynamique hérite également du contenu de la section convertie.
 
-```
+```http
 GET /rest/asset/v1/landingPage/{id}/dynamicContent/RVMtNDg=.json
 ```
 
@@ -231,15 +231,15 @@ GET /rest/asset/v1/landingPage/{id}/dynamicContent/RVMtNDg=.json
 
 [La mise à jour du contenu](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Content/operation/updateLandingPageDynamicContentUsingPOST) pour chaque segment individuel est effectuée sur la base de l’identifiant du segment.
 
-```
+```http
 POST /rest/asset/v1/landingPage/{id}/dynamicContent/{dynamicContentId}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 segment=New Segment&value=New Content
 ```
 
@@ -274,13 +274,13 @@ Les variables sont définies sous la forme de balises meta dans `<head>` éléme
 </head>
 ```
 
-Pour plus d’informations, consultez la section « Variable modifiable » de la documentation [Création d’un modèle de page de destination guidé](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
+Pour plus d’informations, consultez la section « Variable modifiable » de la documentation [Création d’un modèle de page de destination guidé](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
 
 ### Requête
 
 Récupérez les variables d’une page de destination guidée en transmettant l’ID de la page de destination au point d’entrée Obtenir les variables de page de destination.
 
-```
+```http
 GET /rest/asset/v1/landingPage/{id}/variables.json
 ```
 
@@ -316,7 +316,7 @@ Dans  Dans cet exemple, la page de destination guidée contient 3 variables : s
 
 Mettez à jour une variable pour une page de destination guidée en transmettant l’identifiant de page de destination, l’identifiant de variable et la valeur de variable au point d’entrée Mettre à jour les variables de page de destination .
 
-```
+```http
 POST /rest/asset/v1/landingPage/{id}/variable/{variableId}.json?value={newValue}
 ```
 
@@ -343,7 +343,7 @@ Marketo fournit le point d’entrée [Obtenir le contenu complet de la page de d
 - segmentation : accepte un tableau d’objets JSON contenant les attributs segmentationId et segmentId. Lorsqu’elle est définie, prévisualise la page de destination comme si vous étiez un prospect correspondant à ces segments.
 - leadId :  Accepte l’identifiant entier d’un prospect. Lorsqu’elle est définie, prévisualise la page de destination comme si elle avait été vue par le prospect désigné.
 
-```
+```http
 GET /rest/asset/v1/landingPage/{id}/fullContent.json?leadId=1001&segmentation=[{"segmentationId":1030,"segmentId":1103}]
 ```
 

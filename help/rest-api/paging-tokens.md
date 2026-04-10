@@ -3,9 +3,9 @@ title: Jetons de pagination
 feature: REST API
 description: Utilisez les jetons de pagination de l’API REST Marketo pour récupérer les activités et les prospects, en couvrant les jetons basés sur la date et la position, la norme ISO 8601 SinceDatetime et les erreurs 414.
 exl-id: 63fbbf03-8daf-4add-85b0-a8546c825e5b
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '370'
+source-wordcount: '424'
 ht-degree: 1%
 
 ---
@@ -29,7 +29,7 @@ Marketo fournit deux types de jetons de pagination associés, mais distincts :
 
 Le premier est un jeton de pagination qui représente une date. Ils sont utilisés pour récupérer les activités, les modifications de valeur de données et les prospects supprimés qui se sont produits après la date représentée par le jeton de pagination. Ce type de jeton de pagination est généré en appelant le point d’entrée [Get Paging Token](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getActivitiesPagingTokenUsingGET) et en incluant une date-heure.
 
-```
+```http
 GET /rest/v1/activities/pagingtoken.json?sinceDatetime=2014-10-06T13:22:17-08:00
 ```
 
@@ -59,7 +59,7 @@ Exemples
 
 La chaîne `nextPageToken` est ensuite fournie à un appel [Obtenir les activités du lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadActivitiesUsingGET), [Obtenir les modifications du lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadChangesUsingGET) ou [Obtenir les leads supprimés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getDeletedLeadsUsingGET) et les activités sont récupérées après la date et l’heure fournies à l’API Obtenir le jeton de pagination.
 
-```
+```http
 GET /rest/v1/activities.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ&activityTypeIds=1&activityTypeIds=12
 ```
 

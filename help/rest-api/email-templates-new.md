@@ -3,7 +3,7 @@ title: Modèles d’e-mail
 feature: REST API
 description: Utilisez l’API REST Marketo Asset pour interroger, créer, mettre à jour, cloner, supprimer, approuver et inspecter les dépendances des modèles d’e-mail.
 exl-id: 50bb0047-d6ea-4c94-a900-18c37b17a147
-source-git-commit: 0e0a3e5a08e81f349044cbc327d1aba963ab30e4
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '292'
 ht-degree: 9%
@@ -38,7 +38,7 @@ Vous pouvez récupérer les métadonnées du modèle d’e-mail par identifiant 
 
 #### Requête
 
-```text
+```http
 GET /rest/asset/v2/emailtemplate/{id}
 ```
 
@@ -69,7 +69,7 @@ Les filtres pris en charge sont les suivants : `folderId`, `folderIds` répété
 
 #### Requête
 
-```text
+```http
 GET /rest/asset/v2/emailtemplate/filter?workspaceId=1001&name=Newsletter&pageIndex=0&pageSize=20
 ```
 
@@ -99,7 +99,7 @@ Créez un modèle d’e-mail en envoyant une payload JSON. `name` et `appData` s
 
 ### Requête
 
-```text
+```http
 POST /rest/asset/v2/emailtemplate
 Content-Type: application/json
 ```
@@ -149,7 +149,7 @@ Mettre à jour un modèle par ID de ressource
 
 ### Requête
 
-```text
+```http
 POST /rest/asset/v2/emailtemplate/{id}/update
 Content-Type: application/json
 ```
@@ -193,7 +193,7 @@ Les valeurs de `action` valides sont les suivantes :
 
 ### Requête
 
-```text
+```http
 POST /rest/asset/v2/emailtemplate/state/transition
 Content-Type: application/json
 ```
@@ -213,7 +213,7 @@ Utilisez le point d’entrée de clone pour créer une copie d’un modèle exis
 
 ### Requête
 
-```text
+```http
 POST /rest/asset/v2/emailtemplate/clone
 Content-Type: application/json
 ```
@@ -236,7 +236,7 @@ Supprimer un modèle par ID de ressource.
 
 ### Requête
 
-```text
+```http
 POST /rest/asset/v2/emailtemplate/{id}/delete
 Content-Type: application/json
 ```
@@ -249,7 +249,7 @@ Utilisez le point d’entrée `usedby` pour récupérer les ressources qui font 
 
 ### Requête
 
-```text
+```http
 POST /rest/asset/v2/emailtemplate/usedby
 Content-Type: application/json
 ```

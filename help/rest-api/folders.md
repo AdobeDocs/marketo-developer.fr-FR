@@ -3,7 +3,7 @@ title: Dossiers
 feature: REST API
 description: Guide de l’API REST Marketo pour les dossiers couvrant la création, la mise à jour, la suppression, la requête par identifiant et nom, la navigation en masse avec root, workspace, maxDepth et la pagination.
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
-source-git-commit: 31a503b3892ed41b3defe3f4956cb5ee0c3d4c3e
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1099'
 ht-degree: 1%
@@ -22,7 +22,7 @@ Les requêtes de dossiers suivent les types de requête standard pour les ressou
 
 ### Par Id
 
-```
+```http
 GET /rest/asset/v1/folder/{id}.json?type=Folder
 ```
 
@@ -72,7 +72,7 @@ Le paramètre type est obligatoire et doit être de type « Dossier » ou « Pro
 
 La [requête par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET) est également autorisée. Le point d’entrée de la requête par nom possède le nom comme seul paramètre obligatoire. Name effectue une correspondance de chaîne exacte par rapport au champ de nom des dossiers dans l’instance et renvoie les résultats pour chaque dossier correspondant à ce nom. Elle comporte également les paramètres de requête facultatifs « type » qui peuvent être Dossier ou Programme, « root » l’identifiant du dossier dans lequel effectuer la recherche ou « workspace » le nom de l’espace de travail dans lequel effectuer la recherche. Si le paramètre racine est défini, le paramètre de type doit également être défini.
 
-```
+```http
 GET /rest/asset/v1/folder/byName.json?name=Test%2010%20-%20deverly
 ```
 
@@ -125,7 +125,7 @@ Comme les autres points d’entrée de récupération de ressources en bloc, off
 - workSpace : nom de l’espace de travail sur lequel effectuer le filtrage.
 - maxDepth - Nombre maximal de niveaux à parcourir dans la hiérarchie des dossiers. Si la valeur est définie sur 0, seul le dossier spécifié à la racine est renvoyé. Si elle n’est pas spécifiée, la valeur par défaut est 2.
 
-```
+```http
 GET /rest/asset/v1/folders.json?root={"id":14,"type":"Folder"}
 ```
 
@@ -213,15 +213,15 @@ Le chemin d’accès d’un dossier affiche sa hiérarchie dans l’arborescence
 
 La [création de dossiers](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/createFolderUsingPOST) est simple et est exécutée avec une application/x-www-form-urlencoded POST qui comporte deux paramètres obligatoires, « name », une chaîne et « parent », le parent dans lequel créer le dossier, qui est un objet JSON incorporé avec deux membres, un identifiant et un type, soit Dossier ou Programme, selon le type du dossier cible. Vous pouvez également inclure une « description » (une chaîne) facultative. Elle peut contenir jusqu’à 2 000 caractères.
 
-```
+```http
 POST /rest/asset/v1/folders.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 parent={"id":416,"type":"Folder"}&name=Test 10 - deverly&description=This is a test
 ```
 
@@ -260,15 +260,15 @@ parent={"id":416,"type":"Folder"}&name=Test 10 - deverly&description=This is a t
 
 Les mises à jour des dossiers sont effectuées via un point d’entrée distinct. La description, le nom et les `isArchive` sont des paramètres facultatifs pour la mise à jour. Si `isArchive` est modifié par une mise à jour, le dossier est archivé (s’il est modifié en vrai) ou désarchivé (s’il est modifié en faux) dans l’interface utilisateur de Marketo. Impossible de mettre à jour les programmes avec cette API.
 
-```
+```http
 POST /rest/asset/v1/folder/{id}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```sql
 type=Folder&description=This is a test (update 01)
 ```
 
@@ -309,7 +309,7 @@ type=Folder&description=This is a test (update 01)
 
 Les suppressions peuvent être effectuées sur des dossiers uniques s’ils sont vides, ce qui signifie qu’ils ne contiennent aucune ressource ni aucun sous-dossier. Si un dossier est de type Programme ou si le champ isSystem est défini sur true, il ne peut pas être supprimé avec cette API.
 
-```
+```http
 POST /rest/asset/v1/folder/{id}/delete.json
 ```
 

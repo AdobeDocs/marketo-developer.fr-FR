@@ -3,7 +3,7 @@ title: Extraction En Masse
 feature: REST API
 description: Découvrez comment utiliser l’API REST d’extraction en bloc Marketo pour exporter des prospects, des activités, des membres de programme et des objets personnalisés, avec OAuth, des files d’attente de tâches et des limites quotidiennes 500MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1723'
 ht-degree: 1%
@@ -69,7 +69,7 @@ Les points d’entrée d’extraction en bloc ne connaissent pas les espaces de 
 
 Les API d’extraction en bloc de Marketo utilisent le concept d’une tâche pour initier et exécuter l’extraction de données. Examinons la création d’une tâche d’exportation de prospect simple.
 
-```
+```http
 POST /bulk/v1/leads/export/create.json
 ```
 
@@ -127,7 +127,7 @@ Chaque point d’entrée de création de tâche partage certains paramètres com
 
 Parfois, vous devrez peut-être récupérer vos tâches récentes. Pour ce faire, utilisez facilement les Tâches d’exportation Get pour le type d’objet correspondant. Chaque point d’entrée Get Export Jobs prend en charge un champ de filtre `status`, un  `batchSize` de limiter le nombre de tâches renvoyées et de `nextPageToken` la pagination dans des jeux de résultats volumineux. Le filtre de statut prend en charge chaque statut valide pour une tâche d’exportation : Créé, En file d’attente, En cours de traitement, Annulé, Terminé et En échec. batchSize a un maximum et une valeur par défaut de 300. Obtenons la liste des tâches d’exportation de leads :
 
-```
+```http
 GET /bulk/v1/leads/export.json?status=Completed,Failed
 ```
 
@@ -159,7 +159,7 @@ Le point d’entrée répond avec `status` réponse de chaque tâche créée au 
 
 Maintenant que notre identifiant de tâche est en main, nous allons commencer la tâche :
 
-```
+```http
 POST /bulk/v1/leads/export/{exportId}/enqueue.json
 ```
 
@@ -171,7 +171,7 @@ La détermination du statut de la tâche est simple.
 
 Le statut ne peut être interrogé que pour les tâches créées par le même utilisateur de l’API qui les a créées.
 
-```
+```http
 GET /bulk/v1/leads/export/{exportId}/status.json
 ```
 
@@ -202,7 +202,7 @@ Le membre de `status` interne indique la progression de la tâche et peut être 
 
 Une fois la tâche terminée, vous pouvez facilement récupérer le fichier.
 
-```
+```http
 GET /bulk/v1/leads/export/{exportId}/file.json
 ```
 
@@ -210,13 +210,13 @@ La réponse contient un fichier formaté selon la configuration de la tâche. Le
 
 Pour prendre en charge la récupération partielle et conviviale des données extraites, le point d’entrée du fichier prend éventuellement en charge le `Range` d’en-tête HTTP de type `bytes` (selon la norme [RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233)). Si l’en-tête n’est pas défini, l’intégralité du contenu est renvoyée. Pour récupérer les 10 000 premiers octets d’un fichier, vous devez transmettre l’en-tête suivant dans le cadre de votre requête GET au point d’entrée , à partir de l’octet 0 :
 
-```
+```text
 Range: bytes=0-9999
 ```
 
 Lors de la récupération du fichier partiel, le point d’entrée répond avec le code d’état 206 et renvoie les en-têtes Accept-Range, Content-Length et Content-Range :
 
-```
+```text
 Accept-Ranges: bytes
 Content-Length: 1000
 Content-Range: bytes 0-9999/123424
@@ -226,7 +226,7 @@ Content-Range: bytes 0-9999/123424
 
 Les fichiers peuvent être récupérés en partie ou reprendre ultérieurement à l’aide de l’en-tête `Range`. La plage d&#39;un fichier commence à l&#39;octet 0 et se termine à la valeur `fileSize` moins 1. La longueur du fichier est également indiquée comme dénominateur dans la valeur de l’en-tête de réponse `Content-Range` lors de l’appel d’un point d’entrée Get Export File. Si une récupération échoue partiellement, elle peut être reprise ultérieurement. Par exemple, si vous essayez de récupérer un fichier de 1 000 octets de long, mais que seuls les 725 premiers octets ont été reçus, la récupération peut être tentée à nouveau à partir du point d’échec en appelant à nouveau le point d’entrée et en transmettant une nouvelle plage :
 
-```
+```text
 Range: bytes 724-999
 ```
 
@@ -255,7 +255,7 @@ Voici un exemple de réponse contenant la somme de contrôle :
 
 Voici un exemple de création du hachage SHA-256 d’un fichier récupéré nommé « bulk_lead_export.csv » à l’aide de l’utilitaire de ligne de commande sha256sum :
 
-```
+```bash
 $ sha256sum bulk_lead_export.csv
 83aca1351c9398d2770330e21a9e278880fd2f1eeaf8c8238bf7676d5c21d1c6 *bulk_lead_export.csv
 ```
@@ -264,7 +264,7 @@ $ sha256sum bulk_lead_export.csv
 
 Si une tâche n’a pas été configurée correctement ou devient inutile, elle peut être facilement annulée :
 
-```
+```http
 POST /bulk/v1/leads/export/{exportId}/cancel.json
 ```
 

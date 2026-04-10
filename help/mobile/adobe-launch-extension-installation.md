@@ -3,9 +3,9 @@ title: Installation de l’extension [!DNL Adobe Launch]
 feature: Mobile Marketing
 description: Installez l’extension Adobe Launch Marketo pour mobile. Suivez les étapes de configuration d’iOS et d’Android, de test des appareils, des autorisations et de FCM pour les notifications push et in-app.
 exl-id: d71b7cd7-309b-4882-9bba-7daaaa5ef32d
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '745'
+source-wordcount: '814'
 ht-degree: 0%
 
 ---
@@ -16,7 +16,7 @@ Instructions d’installation pour [!DNL Adobe Launch] extension Marketo. Les é
 
 ## Conditions préalables
 
-1. [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtention de la clé secrète de l’application et de l’ID Munchkin)
+1. [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtention de la clé secrète de l’application et de l’ID Munchkin)
 1. [Configurer la propriété dans  [!DNL Adobe Launch]  portail](https://experience.adobe.com/#/@amc/data-collection/home)
 1. Configurez la clé secrète de l’application et l’ID Munchkin pour la propriété dans le portail [!DNL Adobe Launch]
 1. [Configurer des notifications push](push-notifications.md) (facultatif)
@@ -27,7 +27,7 @@ Instructions d’installation pour [!DNL Adobe Launch] extension Marketo. Les é
 
 1. Accédez à [!UICONTROL Fichier] > [!UICONTROL Nouveau] > [!UICONTROL Fichier] et sélectionnez **[!UICONTROL Fichier d’en-tête]**.
 
-1. Nommez le fichier « &lt;_ProjectName_>-Bridging-Header ».
+1. Nommez le fichier « _ProjectName_>-Bridging-Header ».
 
 1. Accédez à [!UICONTROL Projet] > [!UICONTROL Cible] > [!UICONTROL Paramètres de build] > [!UICONTROL Compilateur Swift] > [!UICONTROL Génération de code]. Ajoutez le chemin suivant à l’en-tête « Pontage d’objectifs » :
 
@@ -41,7 +41,7 @@ Instructions d’installation pour [!DNL Adobe Launch] extension Marketo. Les é
 
 Mettez à jour la méthode `applicationDidBecomeActive` comme ci-dessous
 
-```
+```objectivec
 (void)applicationDidBecomeActive:(UIApplication*) application
 {
  [[ALMarketo sharedInstance] initializeMarketo:nil];
@@ -52,7 +52,7 @@ Mettez à jour la méthode `applicationDidBecomeActive` comme ci-dessous
 
 Mettez à jour la méthode `applicationDidBecomeActive` comme ci-dessous
 
-```
+```objectivec
 func applicationDidBecomeActive(_ application: UIApplication)
 {
  ALMarketo.sharedInstance().initializeMarketo(nil)
@@ -74,7 +74,7 @@ func applicationDidBecomeActive(_ application: UIApplication)
 
 >[!TAB Objectif C]
 
-```
+```objectivec
 #ifdef __IPHONE_10_0
 -(BOOL)application:(UIApplication *)application
            openURL:(NSURL *)url
@@ -99,7 +99,7 @@ func applicationDidBecomeActive(_ application: UIApplication)
 
 >[!TAB Swift]
 
-```
+```objectivec
 func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
     return ALMarketo.sharedInstance().application(application, open: url, sourceApplication: nil, annotation: nil)
 }
@@ -128,7 +128,7 @@ Configuration de ProGuard (en option)
 
 Si vous utilisez ProGuard pour votre application, ajoutez les lignes suivantes dans votre fichier `proguard.cfg`. Le fichier se trouve dans votre dossier `project`. L’ajout de ce code exclut le SDK Marketo du processus d’obscurcissement.
 
-```
+```text
 -dontwarn com.marketo.*
 -dontnote com.marketo.*
 -keep class com.marketo.**{ *; }
@@ -159,7 +159,7 @@ Les développeurs d’applications Android peuvent désormais utiliser directeme
 
 1. Intégrez la dernière version de Marketo Android SDK dans l’application Android.  Les étapes sont disponibles sur [GitHub](https://github.com/Marketo/android-sdk).
 1. Configurez l’application Firebase sur la console Firebase.
-   1. Créez/ajoutez un projet sur la console [&#128279;](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase).
+   1. Créez/ajoutez un projet sur la console [](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase).
       1. Dans la [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/), sélectionnez **[!UICONTROL Ajouter un projet]**.
       1. Sélectionnez votre projet GCM dans la liste des projets Google Cloud existants, puis sélectionnez **[!UICONTROL Ajouter Firebase]**.
       1. Dans l’écran d’accueil de Firebase, sélectionnez **[!UICONTROL Ajouter Firebase à l’application Android]**.
@@ -217,11 +217,11 @@ Les développeurs d’applications Android peuvent désormais utiliser directeme
 
 Questions fréquentes sur la prise en charge de Firebase Cloud Messaging.
 
-**Q : Où puis-je trouver des instructions pour mettre à jour vers la dernière version de MME SDK ?** instructions se trouvent sur le site du développeur de Marketo [ICI](installation.md).
+**Q : Où puis-je trouver des instructions pour mettre à jour vers la dernière version de MME SDK ?** Vous trouverez des instructions sur le site du développeur de Marketo [ICI](installation.md).
 
-**Q : La mise à jour vers la dernière version de SDK nécessitera-t-elle que je publie une version mise à jour de mon application Android pour mes utilisateurs actuels ?** No.
+**Q : La mise à jour vers la dernière version de SDK nécessitera-t-elle que je publie une version mise à jour de mon application Android pour mes utilisateurs actuels ?** Non.
 
-**Q : Quel est l’impact sur les clients MME existants qui ont publié des applications Android intégrées à Marketo Android SDK ?** Ils peuvent migrer une application cliente GCM existante sur Android vers Firebase Cloud Messaging (FCM) comme suit :
+**Q : Quel est l’impact sur les clients MIME existants qui ont publié des applications Android intégrées à Marketo Android SDK ?** Ils peuvent migrer une application cliente GCM existante sur Android vers Firebase Cloud Messaging (FCM) comme suit :
 
 1. Dans la [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/), sélectionnez **[!UICONTROL Ajouter un projet]**.
 1. Sélectionnez votre projet GCM dans la liste des projets Google Cloud existants, puis sélectionnez **[!UICONTROL Ajouter Firebase]**.

@@ -2,8 +2,8 @@
 title: Appartenance À Une Liste (Listes Statiques)
 feature: REST API, Static Lists
 description: Utilisez les API REST de la base de données des prospects Marketo pour ajouter des prospects aux listes statiques, supprimer des prospects, récupérer les membres de la liste et vérifier l’appartenance à la liste.
-exl-id: 2a91b0f3-5ba1-4b0c-b5e7-a19ab9a7fdc3
-source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
+exl-id: b8f74bcf-834a-44db-81fd-621048afeba4
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '482'
 ht-degree: 5%
@@ -31,7 +31,7 @@ Le point d’entrée [Ajouter à la liste](https://developer.adobe.com/marketo-a
 
 La réponse contient un tableau `result` composé d’objets JSON avec le statut de chaque ID de prospect spécifié dans la requête.
 
-```
+```http
 POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
 ```
 
@@ -64,7 +64,7 @@ Le point d’entrée [Supprimer de la liste](https://developer.adobe.com/marketo
 
 La réponse contient un tableau `result` composé d’objets JSON avec le statut de chaque ID de prospect spécifié dans la requête.
 
-```
+```http
 DELETE /rest/v1/lists/{listId}/leads.json?id=318603&id=318595&id=999999
 ```
 
@@ -107,7 +107,7 @@ Le paramètre `fields` contient une liste séparée par des virgules de noms de 
 
 La réponse contient un tableau `result` composé d’objets JSON contenant les champs de prospect spécifiés dans la requête.
 
-```
+```http
 GET /rest/v1/lists/{listId}/leads.json?batchSize=3
 ```
 
@@ -151,7 +151,7 @@ Le point d’entrée [Membre de la liste](https://developer.adobe.com/marketo-ap
 
 La réponse contient un tableau `result` composé d’objets JSON avec le statut de chaque ID de prospect spécifié dans la requête.
 
-```
+```http
 GET /rest/v1/lists/{listId}/leads/ismember.json?id=309901&id=318603&id=999999
 ```
 

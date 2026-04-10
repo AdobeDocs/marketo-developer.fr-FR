@@ -3,26 +3,26 @@ title: Sociétés
 feature: REST API
 description: Utilisez l’API REST Entreprises Marketo pour décrire, interroger et synchroniser les enregistrements d’entreprise, gérer les champs et effectuer une déduplication par externalCompanyId, et notez que la synchronisation CRM est en lecture seule.
 exl-id: 80e514a2-1c86-46a7-82bc-e4db702189b0
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '582'
+source-wordcount: '676'
 ht-degree: 1%
 
 ---
 
 # Sociétés
 
-[Référence des points d’entrée d’entreprises](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies)
+[Référence des points d’entrée de sociétés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies)
 
 Les sociétés représentent l&#39;organisation à laquelle appartiennent les enregistrements de leads. Les leads sont ajoutés à une entreprise en renseignant leur champ de `externalCompanyId` correspondant à l’aide des points d’entrée [Synchroniser les leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) ou [Importation de leads en bloc](bulk-lead-import.md). Une fois qu’un prospect a été ajouté à une entreprise, vous ne pouvez pas le supprimer de cette entreprise (à moins d’ajouter le prospect à une autre entreprise). Les leads liés à un enregistrement d’entreprise héritent directement des valeurs d’un enregistrement d’entreprise comme si les valeurs existaient sur le propre enregistrement du lead.
 
-Les API d’entreprise sont en lecture seule pour les abonnements pour lesquels la [synchronisation de SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=fr) ou la [synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=fr) est activée.
+Les API d’entreprise sont en lecture seule pour les abonnements pour lesquels la [synchronisation de ](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou la [synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) est activée.
 
 ## Décrire
 
 La description de l&#39;objet société vous donne toutes les informations nécessaires pour interagir avec lui.
 
-```
+```http
 GET /rest/v1/companies/describe.json
 ```
 
@@ -109,7 +109,7 @@ Si le paramètre fields est omis, l’ensemble par défaut de champs renvoyés e
 - updatedAt
 - createdAt
 
-```
+```http
 GET /rest/v1/companies.json?filterType=id&filterValues=3433,5345
 ```
 
@@ -138,11 +138,11 @@ GET /rest/v1/companies.json?filterType=id&filterValues=3433,5345
 
 Le point d’entrée [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) accepte le paramètre `input` obligatoire contenant un tableau d’objets d’entreprise. Tout comme les opportunités, il existe trois modes de création et de mise à jour d’entreprises : createOnly, updateOnly et createOrUpdate.  Les modes sont spécifiés dans le paramètre `action` de la requête. Les paramètres `dedupeBy` et `action` sont facultatifs et utilisent par défaut les modes dedupeFields et createOrUpdate respectivement.
 
-```
+```http
 POST /rest/v1/companies.json
 ```
 
-```
+```text
 Content-Type: application/json
 ```
 
@@ -196,7 +196,7 @@ Interroger les champs d’entreprise est simple. Vous pouvez interroger un seul 
 
 Le point d’entrée [Obtenir le champ d’entreprise par nom](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompanyFieldByNameUsingGET) récupère les métadonnées d’un seul champ sur l’objet d’entreprise. Le paramètre de chemin d’accès `fieldApiName` obligatoire spécifie le nom d’API du champ. La réponse est similaire au point d’entrée Décrire la société, mais elle contient des métadonnées supplémentaires telles que l’attribut `isCustom` qui indique si le champ est un champ personnalisé.
 
-```
+```http
 GET /rest/v1/companies/schema/fields/industry.json
 ```
 
@@ -225,7 +225,7 @@ GET /rest/v1/companies/schema/fields/industry.json
 
 Le point d’entrée [Obtenir les champs d’entreprise](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompanyFieldsUsingGET) récupère les métadonnées de tous les champs de l’objet d’entreprise. Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête `batchSize` pour réduire ce nombre. Si l’attribut `moreResult` est défini sur « true », cela signifie que d’autres résultats sont disponibles. Continuez à appeler ce point d’entrée jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’aucun résultat n’est disponible. Les `nextPageToken` renvoyés par cette API doivent toujours être réutilisés pour l’itération suivante de cet appel.
 
-```
+```http
 GET /rest/v1/companies/schema/fields.json?batchSize=5
 ```
 
@@ -303,11 +303,11 @@ GET /rest/v1/companies/schema/fields.json?batchSize=5
 
 Les critères de suppression sont spécifiés dans le tableau `input` , qui contient une liste de valeurs de recherche.  La méthode de suppression est spécifiée dans le paramètre `deleteBy` .  Les valeurs autorisées sont les suivantes : dedupeFields, idField.  La valeur par défaut est dedupeFields.
 
-```
+```text
 Content-Type: application/json
 ```
 
-```
+```http
 POST /rest/v1/companies/delete.json
 ```
 

@@ -3,10 +3,10 @@ title: Extension mobile Marketo pour  [!DNL Adobe Launch]
 feature: Mobile Marketing
 description: Installez et configurez l’extension Marketo Mobile SDK dans Adobe Launch pour iOS et Android, y compris la configuration pour les notifications push et les messages in-app.
 exl-id: 2f8691ff-0442-45a5-aeba-c91c3af5c711
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '287'
-ht-degree: 1%
+source-wordcount: '305'
+ht-degree: 0%
 
 ---
 
@@ -16,7 +16,7 @@ Instructions d’installation pour l’extension Marketo Mobile SDK dans [!DNL A
 
 ## Conditions préalables
 
-- [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtention de la clé secrète de l’application et de l’ID Munchkin)
+- [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtention de la clé secrète de l’application et de l’ID Munchkin)
 - Suivez les instructions fournies dans le portail [!DNL Adobe Launch] pour l’installation
 - [Configurer des notifications push](push-notifications.md) (facultatif)
 
@@ -25,7 +25,7 @@ Instructions d’installation pour l’extension Marketo Mobile SDK dans [!DNL A
 ### Configurer l&#39;en-tête de pontage Swift
 
 1. Accédez à Fichier > Nouveau > Fichier et sélectionnez « Fichier d’en-tête ».
-1. Nommez le fichier « &lt;_ProjectName_>-Bridging-Header ».
+1. Nommez le fichier « _ProjectName_>-Bridging-Header ».
 1. Accédez à Projet > Cible > Phases de création > Compilateur Swift > Génération de code. Ajoutez le chemin suivant à l’en-tête de pontage d’objectifs :
 
    `$(PODS_ROOT)/<_ProjectName_>-Bridging-Header.h`
@@ -36,7 +36,7 @@ Pour les utilisateurs de Swift : supprimez l&#39;instruction d&#39;importation s
 
 ### Appareils de test iOS
 
-Suivez les instructions de la section [&#x200B; Ajout d’appareils de test iOS &#x200B;](installation.md#ios_test_devices)
+Suivez les instructions de la section [ Ajout d’appareils de test iOS ](installation.md#ios_test_devices)
 
 ### Gérer le type d’URL personnalisé dans AppDelegate
 
@@ -61,7 +61,7 @@ Ouvrez `AndroidManifest.xml` et ajoutez les autorisations suivantes. Votre appli
 
 Si vous utilisez ProGuard pour votre application, ajoutez les lignes suivantes dans votre fichier `proguard.cfg`. Le fichier se trouve dans le dossier du projet. L’ajout de ce code exclut le SDK Marketo du processus d’obscurcissement.
 
-```
+```text
 -dontwarn com.marketo.*
 -dontnote com.marketo.*
 -keep class com.marketo.**{ *; }

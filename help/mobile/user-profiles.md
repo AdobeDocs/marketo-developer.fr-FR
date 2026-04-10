@@ -3,7 +3,7 @@ title: Profils utilisateur
 feature: Mobile Marketing, Users and Roles
 description: Découvrez comment créer et mettre à jour des profils utilisateur dans Marketo Mobile SDK sur iOS et Android avec Objective C Swift et Java, des champs standard et personnalisés, associerLead
 exl-id: 1b2cfb7f-d678-4022-8cd9-a56004a1ac46
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '103'
 ht-degree: 1%
@@ -21,7 +21,7 @@ Création de profils utilisateur
 
 Vous pouvez créer des profils riches en envoyant les champs utilisateur comme illustré ci-dessous.
 
-```
+```objectivec
 MarketoLead *profile = [[MarketoLead alloc] init];
 
 // Get user profile from network and populate
@@ -43,7 +43,7 @@ MarketoLead *profile = [[MarketoLead alloc] init];
 [profile setTwitterId:@"twitterid"];
 ```
 
-```
+```swift
 let profile =  MarketoLead()
 
 // Get user profile from network and populate
@@ -71,7 +71,7 @@ Ajoutez d’autres [champs standard](../rest-api/list-of-standard-fields.md).
 
 >[!TAB Objectif C]
 
-```
+```objectivec
 // Add other custom fields
 [profile setFieldName:@"mobilePhone"withValue:@"123.456.7890"];
 [profile setFieldName:@"numberOfEmployees"withValue:@"10"];
@@ -80,7 +80,7 @@ Ajoutez d’autres [champs standard](../rest-api/list-of-standard-fields.md).
 
 >[!TAB Swift]
 
-```
+```swift
 // Add other custom fields
 profile.setFieldName("mobilePhone" , withValue :"123.456.7890");
 profile.setFieldName("numberOfEmployees", withValue: "10");
@@ -95,7 +95,7 @@ Profil d’utilisateur du rapport.
 
 >[!TAB Objectif C]
 
-```
+```objectivec
 Marketo *sharedInstance = [Marketo sharedInstance];
 
 // This method will update user profile
@@ -104,7 +104,7 @@ Marketo *sharedInstance = [Marketo sharedInstance];
 
 >[!TAB Swift]
 
-```
+```swift
 let marketo = Marketo.sharedInstance()
 
 // This method will update user profile

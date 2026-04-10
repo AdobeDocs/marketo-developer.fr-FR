@@ -3,7 +3,7 @@ title: Authentification
 feature: REST API
 description: Authentifiez les API REST Marketo avec 2 jetons OAuth 2.0, créez et utilisez des jetons d’accès, passez à l’en-tête d’autorisation, gérez l’expiration, gérez les erreurs 601 et 602.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: a0901d2c67aa42368f03494dc8157d2ae93b3dce
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '666'
 ht-degree: 0%
@@ -26,7 +26,7 @@ Le `Identity URL` se trouve dans le menu **[!UICONTROL Admin]** > **[!UICONTROL 
 
 Créez un jeton d’accès à l’aide d’une requête HTTP GET (ou POST) comme suit :
 
-```
+```http
 GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client Id>&client_secret=<Client Secret>
 ```
 
@@ -55,7 +55,7 @@ Le jeton d’accès doit être envoyé en tant qu’en-tête HTTP.
 
 >[!IMPORTANT]
 >
->La prise en charge de l’authentification à l’aide du paramètre de requête `access_token` sera supprimée le 31 juillet 2026. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête [Authorization](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête `Authorization` .
+>La prise en charge de l’authentification à l’aide du paramètre de requête `access_token` sera supprimée le 31 juillet 2026. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête [Authorization](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête `Authorization` .
 
 ### Passage à l’en-tête d’autorisation
 

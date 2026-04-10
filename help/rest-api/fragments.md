@@ -3,7 +3,7 @@ title: Fragments
 feature: REST API
 description: Utilisez l’API REST Marketo Asset pour interroger, créer, mettre à jour, cloner, supprimer, approuver et inspecter les dépendances des fragments.
 exl-id: 9dd532d1-1dd7-4581-86dd-1943fab66cbb
-source-git-commit: 0e0a3e5a08e81f349044cbc327d1aba963ab30e4
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '272'
 ht-degree: 9%
@@ -36,7 +36,7 @@ Vous pouvez récupérer des métadonnées de fragment par ID de ressource ou ave
 
 #### Requête
 
-```text
+```http
 GET /rest/asset/v2/fragment/{id}
 ```
 
@@ -68,7 +68,7 @@ Les filtres pris en charge sont les suivants : `folderId`, `folderIds` répété
 
 #### Requête
 
-```text
+```http
 GET /rest/asset/v2/fragment/filter?workspaceId=1001&fragmentType=email&pageIndex=0&pageSize=20
 ```
 
@@ -98,7 +98,7 @@ Créez un fragment en envoyant une payload JSON. `name`, `appData` et `settings`
 
 ### Requête
 
-```text
+```http
 POST /rest/asset/v2/fragment
 Content-Type: application/json
 ```
@@ -155,7 +155,7 @@ Mettre à jour un fragment par identifiant de ressource.
 
 ### Requête
 
-```text
+```http
 POST /rest/asset/v2/fragment/{id}/update
 Content-Type: application/json
 ```
@@ -202,7 +202,7 @@ Les valeurs de `action` valides sont les suivantes :
 
 ### Requête
 
-```text
+```http
 POST /rest/asset/v2/fragment/state/transition
 Content-Type: application/json
 ```
@@ -222,7 +222,7 @@ Utilisez le point d’entrée de clone pour créer une copie d’un fragment exi
 
 ### Requête
 
-```text
+```http
 POST /rest/asset/v2/fragment/clone
 Content-Type: application/json
 ```
@@ -245,7 +245,7 @@ Supprimer un fragment par ID de ressource.
 
 ### Requête
 
-```text
+```http
 POST /rest/asset/v2/fragment/{id}/delete
 Content-Type: application/json
 ```
@@ -258,7 +258,7 @@ Utilisez le point d’entrée `usedby` pour récupérer les ressources qui font 
 
 ### Requête
 
-```text
+```http
 POST /rest/asset/v2/fragment/usedby
 Content-Type: application/json
 ```

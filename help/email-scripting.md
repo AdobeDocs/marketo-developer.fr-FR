@@ -3,10 +3,10 @@ title: Script de l'e-mail
 feature: Email Programs
 description: Découvrez comment créer des scripts pour les e-mails Marketo dynamiques à l’aide des jetons Apache Velocity, des variables, des outils Velocity et tester avec l’exemple d’envoi et la Prévisualisation des e-mails.
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
-source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '969'
-ht-degree: 0%
+source-wordcount: '1115'
+ht-degree: 1%
 
 ---
 
@@ -20,13 +20,13 @@ REMARQUE : il est vivement recommandé de lire le [Guide de l’utilisateur Velo
 
 Les variables sont toujours précédées du préfixe « $ » et sont définies et mises à jour à l’aide de #set :
 
-```
+```velocity
 #set($variable = "value")
 ```
 
 Leurs valeurs peuvent ensuite être récupérées via plusieurs types de référence différents avec des comportements différents :
 
-```
+```text
 $variable ##outputs 'value'
 $variablename ##outputs '$variablename'
 ${variable}name ##outputs 'valuename'
@@ -34,7 +34,7 @@ ${variable}name ##outputs 'valuename'
 
 Il existe également une notation de référence silencieuse, où un `!` est Inclus après le `$`. Normalement, lorsque la vitesse rencontre une référence non définie, la chaîne représentant la référence est laissée en place. Avec la notation de référence silencieuse, si une référence non définie est rencontrée, alors aucune valeur n’est émise :
 
-```
+```velocity
 ##Defined Reference
 
 #set($foo = "bar")
@@ -55,19 +55,19 @@ Pour plus d’informations sur la référence à des variables, consultez le [Gu
 
 Le projet Apache Velocity rend les fonctionnalités disponibles à l’aide des [outils Velocity](https://velocity.apache.org/tools/devel/apidocs/overview-summary.html). Il s’agit simplement de wrappers pour les objets Java, qui exposent leurs méthodes par le biais de variables globales accessibles à tous les scripts.
 
-- [OutilAlternateur](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/AlternatorTool.html)
+- [AlternatorTool](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/AlternatorTool.html)
 - [ComparisonDateTool](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/ComparisonDateTool.html)
 - [Outil de conversion](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/ConversionTool.html)
 - [Outil de date](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/DateTool.html)
 - [DisplayTool](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/DisplayTool.html)
 - [Outil mathématique](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/MathTool.html)
-- [NumberTool](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/NumberTool.html)
-- [OutilÉchap](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/EscapeTool.html)
+- [Outil Numérique](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/NumberTool.html)
+- [EscapeTool](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/EscapeTool.html)
 - [LoopTool](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/LoopTool.html)
 
 Par exemple, pour utiliser une méthode à partir de `ComparisonDateTool`, accédez à depuis la variable `$date` dans un jeton de script :
 
-```
+```velocity
 #set($birthday = $convert.parseDate("2015-08-07","yyyy-MM-dd"))
 ##use whenIs to determine how many days away it is
 $date.whenIs($birthday).days ##outputs 1
@@ -107,13 +107,13 @@ La longueur combinée de tous les jetons de script d’e-mail dans un e-mail don
 
 - Les variables référencées dans le script de courrier électronique doivent exister dans Marketo sur l’un des objets disponibles pour le script.
 - Vous pouvez référencer des objets personnalisés de premier et deuxième niveau provenant de votre CRM nativement intégré directement connectés au lead ou au contact, mais pas des objets personnalisés de troisième niveau. Les objets personnalisés ne peuvent pas être des parents du prospect ou de l&#39;entreprise
-- Pour les objets personnalisés Marketo, vous pouvez référencer des objets personnalisés de deuxième niveau avec une relation parent-enfant. Par exemple, `Lead <- Parent <- Child`. Vous ne pouvez pas référencer d’objets personnalisés de deuxième niveau avec une relation Edge-Bridge. par ex., `Lead <- Bridge -> Edge`
+- Pour les objets personnalisés Marketo, vous pouvez référencer des objets personnalisés de deuxième niveau avec une relation parent-enfant. Par exemple `Lead <- Parent <- Child`. Vous ne pouvez pas référencer d’objets personnalisés de deuxième niveau avec une relation Edge-Bridge. e.g.,  `Lead <- Bridge -> Edge`
 - Vous pouvez référencer des objets personnalisés connectés à un prospect, un contact ou un compte, mais pas plus d’un.
 - Les objets personnalisés ne peuvent être référencés que par le biais d’une seule connexion, d’un seul lead, contact ou compte
 - Vous devez cocher la case dans l’éditeur de script pour les champs que vous utilisez, sans quoi ils ne seront pas traités
-- Pour chaque objet personnalisé, les dix enregistrements mis à jour le plus récemment par personne/contact sont disponibles au moment de l’exécution et sont classés du plus récemment mis à jour (à 0) au plus ancien mis à jour (à 9). Vous pouvez augmenter le nombre d&#39;enregistrements disponibles en [suivant les instructions](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
+- Pour chaque objet personnalisé, les dix enregistrements mis à jour le plus récemment par personne/contact sont disponibles au moment de l’exécution et sont classés du plus récemment mis à jour (à 0) au plus ancien mis à jour (à 9). Vous pouvez augmenter le nombre d&#39;enregistrements disponibles en [suivant les instructions](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
 - Si vous incluez plusieurs scripts d’e-mail dans un e-mail, ils s’exécutent de haut en bas. La portée des variables définies dans le premier script à exécuter sera disponible dans les scripts suivants.
-- Référence des outils : [https://velocity.apache.org/tools/2.0/index.html](https://velocity.apache.org/tools/2.0/index.html)
+- Référence des outils : [](https://velocity.apache.org/tools/2.0/index.html)
 - Une note concernant les jetons qui contiennent des caractères de nouvelle ligne « \\n » ou « \\r\\n ». Lorsqu’un e-mail est envoyé via Envoyer un exemple ou via une campagne par lots, les caractères de nouvelle ligne dans les jetons sont remplacés par des espaces. Lorsque l’e-mail est envoyé via Trigger Campaign, les caractères de nouvelle ligne ne sont pas touchés.
 - Pour garantir une analyse correcte des URL, le chemin d’accès complet doit être défini en tant que variable, puis imprimé, et la variable ne doit pas être imprimée dans les références d’URL. Le protocole (http:// ou https://) doit être inclus et doit être distinct du reste de l’URL. L’URL doit également faire partie d’une balise d’ancrage entièrement formée (<a>). Le script doit générer une balise d’ancrage entièrement formée pour que les liens soient suivis. Les liens ne sont pas suivis s’ils sont générés à partir d’une boucle for ou foreach.
 

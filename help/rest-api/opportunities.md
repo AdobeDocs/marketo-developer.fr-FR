@@ -3,9 +3,9 @@ title: Opportunités
 feature: REST API
 description: API REST Marketo pour décrire, interroger, créer et mettre à jour des opportunités, dédupliquer et rechercher des champs, des limites et un comportement en lecture seule avec la synchronisation SFDC ou Dynamics.
 exl-id: 46451285-4125-4857-890a-575069a68288
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '803'
+source-wordcount: '879'
 ht-degree: 0%
 
 ---
@@ -16,13 +16,13 @@ ht-degree: 0%
 
 Marketo propose des API pour la lecture, l’écriture, la création et la mise à jour des enregistrements d’opportunité. Dans Marketo, les enregistrements d’opportunité sont liés aux enregistrements de prospect et de contact par le biais de l’objet Rôle d’opportunité intermédiaire. Une opportunité peut donc être liée à de nombreux prospects individuels.  Ces deux types d’objets sont exposés par le biais de l’API et, comme la plupart des types d’objets de la base de données de leads, ils possèdent tous deux un appel Describe correspondant qui renvoie des métadonnées sur les types d’objets.
 
-Les API d’opportunité sont en lecture seule pour les abonnements pour lesquels la [synchronisation de SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=fr) ou la [synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=fr) est activée.
+Les API d’opportunité sont en lecture seule pour les abonnements pour lesquels la [synchronisation de ](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou la [synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) est activée.
 
 ## Décrire
 
 La description des enregistrements d’opportunité suit le modèle standard pour les objets de base de données de prospect.
 
-```
+```http
 GET /rest/v1/opportunities/describe.json
 ```
 
@@ -87,7 +87,7 @@ Les champs les plus importants pour ce type de réponse sont `idField`, `dedupeF
 
 Le modèle d’[opportunités d’interrogation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/getOpportunitiesUsingGET) suit de près celui de l’API de leads avec la restriction ajoutée que le paramètre `filterType` accepte les champs répertoriés dans le tableau `searchableFields` ou de l’appel de description correspondant, ou dedupeFields.  Notez que si vous utilisez des champs d’opportunité personnalisés, seuls les champs d’opportunité personnalisés de type Chaîne ou Entier seront répertoriés dans le tableau searchableFields .
 
-```
+```http
 GET /rest/v1/opportunities.json?filterType=marketoGUID&filterValues=dff23271-f996-47d7-984f-f2676861b5fa&dff23271-f996-47d7-984f-f2676861b5fc,dff23271-f996-47d7-984f-f2676861b5fb
 ```
 
@@ -128,7 +128,7 @@ Le paramètre `lookupField` de l’API de leads n’est pas disponible et est re
 
 Vous pouvez envoyer jusqu’à 300 enregistrements à la fois.
 
-```
+```http
 POST /rest/v1/opportunities.json
 ```
 
@@ -190,7 +190,7 @@ L’interrogation des champs d’opportunité est simple.  Vous pouvez interrog
 
 Le point d’entrée [Obtenir le champ de l’opportunité par nom](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/getOpportunityFieldByNameUsingGET) récupère les métadonnées d’un seul champ sur l’objet d’entreprise.  Le paramètre de chemin d’accès `fieldApiName` obligatoire spécifie le nom d’API du champ.  La réponse est similaire au point d’entrée Décrire l’opportunité, mais contient des métadonnées supplémentaires telles que l’attribut `isCustom` qui indique si le champ est un champ personnalisé.
 
-```
+```http
 GET /rest/v1/opportunities/schema/fields/externalOpportunityId.json
 ```
 
@@ -219,7 +219,7 @@ GET /rest/v1/opportunities/schema/fields/externalOpportunityId.json
 
 Le point d’entrée [Obtenir les champs d’opportunité](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/getOpportunityFieldsUsingGET) récupère les métadonnées de tous les champs de l’objet d’entreprise.  Par défaut, un maximum de 300 enregistrements est renvoyé.  Vous pouvez utiliser le paramètre de requête `batchSize` pour réduire ce nombre.  Si l’attribut `moreResult` est défini sur « true », cela signifie que d’autres résultats sont disponibles.  Continuez à appeler ce point d’entrée jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’aucun résultat n’est disponible.  Les `nextPageToken` renvoyés par cette API doivent toujours être réutilisés pour l’itération suivante de cet appel.
 
-```
+```http
 GET /rest/v1/opportunities/schema/fields.json?batchSize=5
 ```
 
@@ -298,7 +298,7 @@ GET /rest/v1/opportunities/schema/fields.json?batchSize=5
 
 Vous pouvez supprimer des opportunités en dédupliquant des champs ou des champs d’ID. Spécifiez à l’aide du paramètre `deleteBy` avec une valeur de dedupeFields ou idField. S’il n’est pas spécifié, la valeur par défaut est dedupeFields. Le corps de la requête contient un tableau `input` d’opportunités à supprimer. Un maximum de 300 opportunités par appel est autorisé.
 
-```
+```http
 POST /rest/v1/opportunities/delete.json
 ```
 

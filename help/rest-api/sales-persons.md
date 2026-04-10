@@ -3,9 +3,9 @@ title: Vendeurs
 feature: REST API
 description: Guide de l’API REST Marketo pour les enregistrements de commercial avec synchronisation SFDC ou Dynamics, à l’aide de externalSalesPersonId pour mettre en relation les prospects et effectuer des requêtes, des upserts et des suppressions.
 exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '322'
+source-wordcount: '396'
 ht-degree: 0%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 0%
 
 [Référence du point d’entrée du commercial](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Sales-Persons)
 
-Les API Sales Person sont en lecture seule pour les abonnements pour lesquels la [Synchronisation de SFDC](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou la [Synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) est activée. Les vendeurs sont un type d&#39;enregistrement de personne qui sont les propriétaires de ventes des enregistrements de prospect. Ils sont associés aux enregistrements de lead par le champ externalSalesPersonId sur chaque enregistrement de lead. Lorsqu’un prospect est associé à un commercial par un champ externalSalesPersonId renseigné, les champs de recherche de Propriétaire de prospect correspondants sont renseignés pour cet enregistrement de prospect dans Marketo, ce qui permet d’utiliser les filtres et jetons correspondants.
+Les API Sales Person sont en lecture seule pour les abonnements pour lesquels la [Synchronisation de ](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou la [Synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) est activée. Les vendeurs sont un type d&#39;enregistrement de personne qui sont les propriétaires de ventes des enregistrements de prospect. Ils sont associés aux enregistrements de lead par le champ externalSalesPersonId sur chaque enregistrement de lead. Lorsqu’un prospect est associé à un commercial par un champ externalSalesPersonId renseigné, les champs de recherche de Propriétaire de prospect correspondants sont renseignés pour cet enregistrement de prospect dans Marketo, ce qui permet d’utiliser les filtres et jetons correspondants.
 
 Les commerciaux sont associés aux enregistrements de lead à l’aide du point d’entrée [Synchroniser les leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) et en transmettant l’attribut externalSalesPersonId.
 
@@ -28,7 +28,7 @@ Les enregistrements de commercial ne peuvent être modifiés que par le biais de
 
 La description des enregistrements de commercial suit le modèle standard pour les objets de base de données de prospect.
 
-```
+```http
 GET /rest/v1/salespersons/describe.json
 ```
 
@@ -101,7 +101,7 @@ Par défaut, le `idField` des commerciaux est « id » et le `dedupeFields` est 
 
 Vendeurs utilisant le modèle de requête standard pour les clés simples. Cet exemple montre comment l’adresse e-mail de l’utilisateur est utilisée comme externalSalesPersonId. Par défaut, la requête renvoie tous les champs qui sont renseignés pour les enregistrements renvoyés.
 
-```
+```http
 GET /rest/v1/salespersons.json?filterType=dedupeFields&filterValues=david@test.com,sam@test.com
 ```
 
@@ -132,7 +132,7 @@ GET /rest/v1/salespersons.json?filterType=dedupeFields&filterValues=david@test.c
 
 Le modèle des mises à jour est standard.
 
-```
+```http
 POST /rest/v1/salespersons.json
 ```
 
@@ -185,7 +185,7 @@ La suppression de vendeurs n&#39;est pas autorisée lorsqu&#39;ils sont « utili
 - Lorsque le vendeur est associé à des leads actifs
 - Lorsque le vendeur est associé à une entreprise qui a été supprimée
 
-```
+```http
 POST /rest/v1/salespersons/delete.json
 ```
 

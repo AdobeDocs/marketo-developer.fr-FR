@@ -3,10 +3,10 @@ title: Importation de leads en bloc
 feature: REST API
 description: Créez et surveillez des importations de leads en bloc asynchrones dans Marketo avec CSV TSV ou SSV.
 exl-id: 615f158b-35f9-425a-b568-0a7041262504
-source-git-commit: c1b9763835b25584f0c085274766b68ddf5c7ae2
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '795'
-ht-degree: 1%
+source-wordcount: '825'
+ht-degree: 0%
 
 ---
 
@@ -39,17 +39,17 @@ Ce type de requête pouvant être difficile à implémenter, il est vivement rec
 
 Pour effectuer une demande d’importation en bloc, vous devez définir votre en-tête de type de contenu sur `multipart/form-data` et inclure au moins un paramètre `file` avec le contenu de votre fichier, ainsi qu’un paramètre `format` avec la valeur `csv`, `tsv` ou `ssv`, indiquant votre format de fichier.
 
-```
+```http
 POST /bulk/v1/leads.json?format=csv
 ```
 
-```
+```text
 Content-Type: multipart/form-data; boundary=------WebKitFormBoundaryBQACkJZyaiIAXogC
 Content-Length: 311
 Host: <munchkinId>.mktorest.com
 ```
 
-```
+```text
 ------WebKitFormBoundaryBQACkJZyaiIAXogC
 Content-Disposition: form-data; name="file"; filename="leads.csv"
 Content-Type: text/csv
@@ -77,13 +77,13 @@ Easy,Fox,easyfox@marketo.com,Marketo
 
 Ce point d’entrée utilise [multipart/form-data comme type de contenu](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Il est recommandé d’utiliser une bibliothèque de prise en charge HTTP pour la langue de votre choix afin d’en garantir l’utilisation correcte. L’exemple suivant est une manière simple de le faire avec cURL à partir de la ligne de commande :
 
-```
+```bash
 curl -i -F format=csv -F file=@lead_data.csv -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/leads.json
 ```
 
 Où le fichier d&#39;import `lead_data.csv` contient les éléments suivants :
 
-```
+```text
 firstName,lastName,email,company
 Able,Baker,ablebaker@marketo.com,Marketo
 Charlie,Dog,charliedog@marketo.com,Marketo
@@ -98,7 +98,7 @@ Notez dans la réponse à notre appel qu’il n’existe pas de liste de succès
 
 Il est recommandé d’interroger le traitement toutes les 5 à 30 secondes, selon la latence requise et les limitations d’appels API, pour voir le statut du traitement d’importation. Vous pouvez le faire à l’aide de l’API Get Import Lead Status .
 
-```
+```http
 GET /bulk/v1/leads/batch/{id}.json
 ```
 
@@ -134,7 +134,7 @@ Les échecs sont indiqués par l’attribut `numOfRowsFailed` dans la réponse O
 
 Pour récupérer les enregistrements et les causes des lignes ayant échoué, vous devez récupérer le fichier d’échec :
 
-```
+```http
 GET /bulk/v1/leads/batch/{id}/failures.json
 ```
 
@@ -146,7 +146,7 @@ Les avertissements sont indiqués par l’attribut `numOfRowsWithWarning` dans u
 
 Pour récupérer les enregistrements et les causes des lignes d&#39;avertissement, récupérez le fichier d&#39;avertissement :
 
-```
+```http
 GET /bulk/v1/leads/batch/{id}/warnings.json
 ```
 

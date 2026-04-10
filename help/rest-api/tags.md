@@ -3,7 +3,7 @@ title: Balises
 feature: REST API, Tags
 description: interroger les types de balises, obtenir les valeurs autorisées par nom, mettre à jour ou supprimer des balises de programme dans Marketo via l’API REST Asset, avec des exemples de requête ;
 exl-id: 64731d1a-a749-4d6f-b336-16c733d002f0
-source-git-commit: b2b1027ccf8016c2e4c081753842a6febac832ec
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '258'
 ht-degree: 1%
@@ -22,7 +22,7 @@ Les balises sont interrogées avec le modèle de ressource standard, mais n’on
 
 ### Obtenir les balises
 
-```
+```http
 GET /rest/asset/v1/tagTypes.json
 ```
 
@@ -54,7 +54,7 @@ GET /rest/asset/v1/tagTypes.json
 
 ### Par nom
 
-```
+```http
 GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 ```
 
@@ -79,7 +79,7 @@ GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 
 Le point d’entrée [Mettre à jour la balise de programme](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) vous permet de mettre à jour la valeur d’un type de balise donné. Le point d’entrée prend un `id` et `tagType` paramètres de chemin d’accès qui spécifient l’identifiant du programme et le type de balise à mettre à jour. Un paramètre de requête `tagValue` est utilisé pour spécifier la nouvelle valeur pour le type de balise. Tous les paramètres sont requis.
 
-```
+```http
 POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 ```
 
@@ -103,7 +103,7 @@ Les balises peuvent être mises à jour en masse à l’aide du point d’entré
 
 Le point d’entrée [Supprimer la balise de programme](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/deleteProgramUsingPOST) vous permet de supprimer un type de balise superflu. Le point d’entrée prend les paramètres de chemin d’accès `id` et `tagType` qui spécifient l’identifiant du programme et le type de balise à supprimer.
 
-```
+```http
 POST /rest/asset/v1/program/{id}/tag/{tagType}/delete.json
 ```
 

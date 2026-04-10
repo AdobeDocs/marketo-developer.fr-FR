@@ -3,9 +3,9 @@ title: Comptes désignés
 feature: REST API
 description: Guide REST Marketo sur le CRUD sur les comptes nommés pour ABM, avec description, requête, création d’exemples de mise à jour, champs consultables, règles de déduplication et aucun lien de prospect.
 exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '697'
+source-wordcount: '730'
 ht-degree: 1%
 
 ---
@@ -22,7 +22,7 @@ Actuellement, les seules fonctions liées à ABM disponibles via les API Marketo
 
 La description des comptes nommés renvoie des métadonnées relatives à l’utilisation des comptes nommés par le biais des API Marketo, y compris une liste des champs pouvant faire l’objet d’une recherche valide lors de l’interrogation et une liste de tous les champs disponibles pour l’utilisation de l’API. L’`idField` d’un compte nommé est toujours `marketoGUID`. Le seul `dedupeField` disponible et la clé de création est le champ `name` de l’objet .
 
-```
+```http
 GET /rest/v1/namedaccounts/describe.json
 ```
 
@@ -137,7 +137,7 @@ GET /rest/v1/namedaccounts/describe.json
 
 La requête de comptes nommés est basée sur l’utilisation d’un filterType et d’un ensemble de valeurs de filtre pouvant aller jusqu’à 300 séparées par des virgules. `filterType` peut s’agir de n’importe quel champ unique renvoyé dans le membre `searchableFields` du résultat de description pour les comptes nommés, tandis que filterValues peut être n’importe quelle entrée valide pour le type de données du champ. Pour renvoyer un ensemble spécifique de champs depuis , un paramètre fields doit être transmis, où la valeur est une liste de champs séparés par des virgules à renvoyer dans la réponse. Comme les autres options de requête, le nombre maximal d’enregistrements pour une page de requête unique est de 300. Les enregistrements supplémentaires dans le jeu doivent être demandés avec l’utilisation du nextPageToken renvoyé par l’appel .
 
-```
+```http
 GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
 ```
 
@@ -168,11 +168,11 @@ GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
 
 La création et la mise à jour de comptes nommés suivent le modèle standard de la base de données des prospects. Les enregistrements doivent être transmis dans le membre d’entrée d’un corps JSON dans une requête POST. `input` est le seul membre obligatoire, avec `action` et `dedupeBy` comme membres facultatifs. Jusqu’à 300 enregistrements peuvent être inclus dans l’entrée. L’action peut être createOnly, updateOnly ou createOrUpdate. Si elle n’est pas spécifiée, l’action est createOrUpdate par défaut. dedupeBy ne peut être spécifié que lorsque l’action est updateOnly et n’accepte que les champs dedupeFields ou idField , qui correspondent respectivement au champ name et au champ marketoGUID.
 
-```
+```http
 POST /rest/v1/namedaccounts.json
 ```
 
-```
+```text
 Content-Type: application/json
 ```
 
@@ -226,7 +226,7 @@ L’interrogation de champs de compte nommé est simple. Vous pouvez interroger 
 
 Le point d’entrée [Obtenir le champ de compte nommé par nom](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) récupère les métadonnées d’un seul champ sur l’objet de compte nommé. Le paramètre de chemin d’accès fieldApiName obligatoire spécifie le nom d’API du champ. La réponse est similaire au point d’entrée Décrire le compte nommé , mais elle contient des métadonnées supplémentaires telles que l’attribut isCustom qui indique si le champ est un champ personnalisé.
 
-```
+```http
 GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 ```
 
@@ -254,7 +254,7 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 Le point d’entrée [Obtenir les champs de compte nommés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) récupère les métadonnées de tous les champs de l’objet de compte nommé. Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête batchSize pour réduire ce nombre. Si l’attribut moreResult est défini sur true, cela signifie que davantage de résultats sont disponibles. Continuez à appeler ce point d’entrée jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’aucun résultat n’est disponible. Le nextPageToken renvoyé par cette API doit toujours être réutilisé pour l’itération suivante de cet appel.
 
-```
+```http
 GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
 ```
 
@@ -333,11 +333,11 @@ GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
 
 Les suppressions sont effectuées via une requête JSON POST et possèdent un membre d’entrée obligatoire et un membre deleteBy facultatif. deleteBy peut être l’un des champs « dedupeFields » ou « idField », correspondant respectivement à name ou marketoGUID, et sera défini par défaut sur dedupeFields s’il n’est pas défini. Le membre d’entrée accepte un tableau de 300 enregistrements maximum, contenant un membre chacun, soit name, soit marketoGUID selon le paramètre de deleteBy.
 
-```
+```http
 POST /rest/v1/namedaccounts/delete.json
 ```
 
-```
+```text
 Content-Type: application/json
 ```
 

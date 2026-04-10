@@ -3,9 +3,9 @@ title: Modèles de pages de destination
 feature: REST API, Landing Pages
 description: Gérez les modèles de page de destination Marketo via les points d’entrée de l’API REST pour les types de formulaires gratuits et guidés, la requête par identifiant ou nom, la création, la mise à jour d’HTML, le clone et Munchkin.
 exl-id: f9d1255e-ec13-4b75-96d5-b4cc9457a51b
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '552'
+source-wordcount: '703'
 ht-degree: 1%
 
 ---
@@ -18,7 +18,7 @@ Les modèles de page de destination sont une ressource parent et une dépendance
 
 ## Types de modèles
 
-Marketo dispose de deux types de modèles de page de destination, à structure libre et guidés. Les modèles de page de destination à structure libre offrent une expérience de modification vaguement structurée pour les pages qui en sont dérivées. Les modèles guidés fournissent une expérience fortement structurée, où les types d’éléments et les emplacements peuvent être limités au niveau du modèle. Pour plus d’informations sur les différences, voir [ce document](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
+Marketo dispose de deux types de modèles de page de destination, à structure libre et guidés. Les modèles de page de destination à structure libre offrent une expérience de modification vaguement structurée pour les pages qui en sont dérivées. Les modèles guidés fournissent une expérience fortement structurée, où les types d’éléments et les emplacements peuvent être limités au niveau du modèle. Pour plus d’informations sur les différences, voir [ce document](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
 
 ## Requête
 
@@ -28,15 +28,15 @@ Les modèles de page de destination prennent en charge les types de requête sta
 
 Les modèles sont créés en tant que ressources vides avec les métadonnées associées. Lors de la création d’un modèle, un nom et un dossier doivent être inclus, ainsi qu’une description facultative, le paramètre templateType et enableMunchkin. templateType peut être à structure libre ou guidé et est défini par défaut sur freeForm. Pour connaître les différences entre les types, reportez-vous à la section Structure guidée ou Structure libre . enableMunchkin est défini par défaut sur false. Lorsqu’il est activé, il empêche l’exécution du suivi Munchkin sur les pages de destination enfants du modèle.
 
-```
+```http
 POST /rest/asset/v1/landingPageTemplates.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=New LPT - PHP&folder={"id":12,"type":"Folder"}
 ```
 
@@ -76,11 +76,11 @@ Les métadonnées des modèles de page de destination peuvent être mises à jou
 
 Le contenu des modèles de page de destination est transformé en une mise à jour destructrice de l’intégralité du contenu HTML. Le contenu doit être transmis en tant que données multipart/form, le seul paramètre étant nommé content.
 
-```
+```http
 POST /rest/asset/v1/landingPageTemplate/286/content.json
 ```
 
-```
+```html
 content-type: multipart/form-data; boundary=--------------------------435851813185237176536801
 ----------------------------435851813185237176536801
 Content-Disposition: form-data; name="content"; filename="content.txt"
@@ -96,7 +96,7 @@ Content-Type: text/plain
 ----------------------------435851813185237176536801--
 ```
 
-```
+```json
  {
   "success": true,
   "warnings": [],
@@ -122,15 +122,15 @@ Le paramètre `folder` est utilisé pour spécifier le dossier parent dans leque
 
 Le paramètre `description` facultatif est utilisé pour décrire le nouveau modèle de page de destination.
 
-```
+```http
 POST /rest/asset/v1/landingPageTemplate/{id}/clone.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=Standard Template Clone&folder={"type": "Folder", "id": 732}
 ```
 
@@ -167,9 +167,9 @@ Les modèles de page de destination suivent le modèle standard approuvé pour l
 
 Pour qu’un modèle soit approuvé, il doit être conforme aux règles de son type, guidé ou libre. Pour plus d’informations sur les conditions requises pour la création et la validation de modèles de leurs types respectifs, consultez leurs documents de création respectifs :
 
-- [Modèles de page de destination de formulaire libre](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
-- [Modèles Guidés De Landing Page](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
-- [&#x200B; Exemples de modèles guidés &#x200B;](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
+- [Modèles de page de destination de formulaire libre](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
+- [Modèles de page de destination guidée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
+- [Exemples de modèles guidés](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
 
 ## Supprimer
 

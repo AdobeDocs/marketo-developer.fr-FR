@@ -3,9 +3,9 @@ title: Base de données des leads
 feature: REST API, Database
 description: Guide des API de base de données de lead Marketo couvrant les objets, CRUD et décrire les méthodes, les modèles de requête, les limites de lot et les restrictions d’intégration dans CRM.
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '1357'
+source-wordcount: '1373'
 ht-degree: 1%
 
 ---
@@ -32,7 +32,7 @@ La plupart de ces objets incluent au moins les méthodes Create, Read, Update et
 
 ## API
 
-Pour obtenir la liste complète des points d’entrée de l’API de base de données de leads, y compris les paramètres et les informations de modélisation, consultez la [&#x200B; Référence des points d’entrée de l’API de base de données de leads &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi/).
+Pour obtenir la liste complète des points d’entrée de l’API de base de données de leads, y compris les paramètres et les informations de modélisation, consultez la [ Référence des points d’entrée de l’API de base de données de leads ](https://developer.adobe.com/marketo-apis/api/mapi/).
 
 Pour les instances dont l’intégration CRM native est activée (Microsoft Dynamics ou Salesforce.com), les API Société, Opportunité, Rôle de l’opportunité et Commercial sont désactivées. Lorsqu’ils sont activés, les enregistrements sont gérés via le CRM et ne sont pas accessibles ni mis à jour via les API Marketo.
 
@@ -46,7 +46,7 @@ Pour les instances dont l’intégration CRM native est activée (Microsoft Dyna
 
 Pour les prospects, les entreprises, les opportunités, les rôles, les commerciaux et les objets personnalisés, une description de l’API est fournie. L’appel à cette méthode récupère les métadonnées de l’objet et une liste des champs disponibles pour la mise à jour et l’interrogation. La description est une partie essentielle de la conception d’une intégration appropriée à Marketo. Il fournit des métadonnées riches sur la manière dont les objets peuvent et ne peuvent pas être interagissent, ainsi que sur la manière dont ils peuvent être créés, mis à jour et interrogés. Outre les leads de description, chacun d’eux renvoie une liste de clés disponibles pour `deduplication` dans le paramètre de réponse `dedupeFields`. Une liste de champs est disponible en tant que clés pour l’interrogation dans le paramètre de réponse `searchableFields`.
 
-```
+```http
 GET /rest/v1/opportunities/roles/describe.json
 ```
 
@@ -136,7 +136,7 @@ Il existe également un paramètre de réponse aux champs qui fournit le nom de 
 
 Les objets de base de données de lead partagent tous le même modèle de base pour interroger des clés simples, où un seul champ est référencé.
 
-```
+```http
 GET /rest/v1/{type}.json?filterType={field to query}&filterValues={comma-separated list of possible values}
 ```
 
@@ -149,7 +149,7 @@ Pour tous les objets, à l’exception des prospects, vous pouvez sélectionner 
 
 Pour un exemple rapide, examinons les opportunités d’interrogation :
 
-```
+```http
 GET /rest/v1/opportunities.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fa&dff23271-f996-47d7-984f-f2676861b5fc,dff23271-f996-47d7-984f-f2676861b5fb
 ```
 
@@ -188,15 +188,15 @@ Si le jeu d&#39;enregistrements dans la requête dépasse 300 ou la `batchSize` 
 
 Parfois, par exemple lors de l’interrogation par des GUID, votre URI peut être long et dépasser les 8 Ko autorisés par le service REST. Dans ce cas, vous devez utiliser la méthode HTTP POST au lieu de GET et ajouter un paramètre de requête `_method=GET`. En outre, le reste des paramètres de requête doit être transmis dans le corps POST sous la forme d’une chaîne « application/x-www-form-urlencoded » et transmettez l’en-tête Content-Type associé.
 
-```
+```http
 POST /rest/v1/opportunities.json?_method=GET
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fa&dff23271-f996-47d7-984f-f2676861b5fc,dff23271-f996-47d7-984f-f2676861b5fb,544fb7f5-2ddf-4fca-ae32-7e6ef1415e9f,f1ba41a2-69d1-4a35-9807-0e159d66f2c9,f7521272-3331-4a89-a768-222baff2f894
 ```
 
@@ -206,7 +206,7 @@ Outre les URI longs, ce paramètre est également requis lors de l’interrogati
 
 Le modèle d’interrogation des clés composites est différent des clés simples, dans la mesure où il nécessite l’envoi d’un POST avec un corps JSON. Cela n’est pas nécessaire dans tous les cas, uniquement dans ceux où une option `dedupeFields` avec plusieurs champs est utilisée comme `filterType`. Actuellement, les clés composées ne sont utilisées que par les rôles d’opportunité, ainsi que par certains objets personnalisés. Prenons un exemple de requête pour les rôles d’opportunité avec la clé composée de `dedupeFields` :
 
-```
+```http
 POST /rest/v1/opportunities/roles.json?_method=GET
 ```
 
@@ -249,7 +249,7 @@ Le seul paramètre obligatoire est un tableau appelé `input` contenant jusqu’
 
 Lors de la transmission d’une liste de valeurs de champ, une valeur de `null`, ou une chaîne vide, est écrite dans la base de données comme `null`.
 
-```
+```http
 POST /rest/v1/opportunities.json
 ```
 
@@ -301,7 +301,7 @@ Outre l’API de leads, les appels pour créer ou mettre à jour des objets de b
 
 L’interface pour les suppressions est standard pour les objets de base de données de leads autres que les leads. Outre l’entrée, il n’existe qu’un seul paramètre obligatoire `deleteBy,` qui peut avoir la valeur idField ou dedupeFields. Examinons la possibilité de supprimer certains objets personnalisés.
 
-```
+```http
 POST /rest/v1/customobjects/{name}/delete.json
 ```
 

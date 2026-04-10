@@ -3,9 +3,9 @@ title: Installation
 feature: Mobile Marketing
 description: Guide d’installation et d’initialisation de Marketo Mobile SDK sur iOS et Android à l’aide de CocoaPods, de Swift Package Manager ou de Gradle, pour l’activation des messages push et in-app.
 exl-id: e0b79d85-3509-46d2-a77d-cee211c5ec7f
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '779'
+source-wordcount: '855'
 ht-degree: 0%
 
 ---
@@ -18,7 +18,7 @@ Instructions d’installation pour Marketo Mobile SDK. Les étapes ci-dessous so
 
 ### Conditions préalables
 
-1. [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtention de la clé secrète de l’application et de l’ID Munchkin)
+1. [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtention de la clé secrète de l’application et de l’ID Munchkin)
 1. [Configurer des notifications push](push-notifications.md) (facultatif)
 
 ### Installation de Framework via CocoaPods
@@ -39,7 +39,7 @@ Instructions d’installation pour Marketo Mobile SDK. Les étapes ci-dessous so
 
 1. Ajoutez le package Marketo à partir de ce référentiel. Ajoutez cette URL pour ce référentiel : <https://github.com/Marketo/ios-sdk>.
 
-   ![&#x200B; URL du référentiel &#x200B;](assets/dependency-manager-url.png)
+   ![ URL du référentiel ](assets/dependency-manager-url.png)
 
 1. Ajoutez maintenant le lot de ressources comme illustré ci-dessous : recherchez `MarketoFramework.XCframework` dans le navigateur de projets et ouvrez-le dans le Finder. Effectuez un glisser-déposer des `MKTResources.bundle` pour copier les ressources du bundle.
 
@@ -49,7 +49,7 @@ Instructions d’installation pour Marketo Mobile SDK. Les étapes ci-dessous so
 
    ![Sélectionnez « Fichier d’en-tête »](assets/choose-header-file.png)
 
-1. Nommez le fichier « &lt;_ProjectName_>-Bridging-Header ».
+1. Nommez le fichier « _ProjectName_>-Bridging-Header ».
 
 1. Accédez à Projet > Cible > Phases de création > Compilateur Swift > Génération de code. Ajoutez le chemin suivant à l’en-tête de pontage d’objectifs :
 
@@ -75,7 +75,7 @@ Avant de pouvoir utiliser le SDK Marketo iOS, vous devez l’initialiser avec vo
 
 >[!TAB Objectif C]
 
-```
+```objectivec
 Marketo *sharedInstance = [Marketo sharedInstance];
 
 [sharedInstance initializeWithMunchkinID:@"munchkinAccountId" appSecret:@"secretKey" mobileFrameworkType:@"native" launchOptions:launchOptions];
@@ -83,7 +83,7 @@ Marketo *sharedInstance = [Marketo sharedInstance];
 
 >[!TAB Swift]
 
-```
+```swift
 let sharedInstance: Marketo = Marketo.sharedInstance()
 
 sharedInstance.initialize(withMunchkinID: "munchkinAccountId", appSecret: "secretKey", mobileFrameworkType: "native", launchOptions: launchOptions)
@@ -106,7 +106,7 @@ sharedInstance.initialize(withMunchkinID: "munchkinAccountId", appSecret: "secre
 
 >[!TAB Objectif C]
 
-```
+```objectivec
 - (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
@@ -119,7 +119,7 @@ sharedInstance.initialize(withMunchkinID: "munchkinAccountId", appSecret: "secre
 
 >[!TAB Swift]
 
-```
+```swift
 private func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool
     {
         return Marketo.sharedInstance().application(app, open: url, options: options)
@@ -132,7 +132,7 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
 
 ### Conditions préalables
 
-1. [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtention de la clé secrète de l’application et de l’ID Munchkin)
+1. [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtention de la clé secrète de l’application et de l’ID Munchkin)
 1. [Configurer des notifications push](push-notifications.md#android_setup_push) (facultatif)
 1. [Télécharger Marketo SDK pour Android](https://codeload.github.com/Marketo/android-sdk/zip/refs/heads/master)
 
@@ -208,7 +208,7 @@ Les développeurs d’applications Android peuvent désormais utiliser directeme
 
 1. Intégrez la dernière version de Marketo Android SDK dans l’application Android.  Les étapes sont disponibles sur [GitHub](https://github.com/Marketo/android-sdk).
 1. Configurez l’application Firebase sur la console Firebase.
-   1. Créez/ajoutez un projet sur la console [&#128279;](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase).
+   1. Créez/ajoutez un projet sur la console [](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase).
       1. Dans la [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/), sélectionnez `Add Project`.
       1. Sélectionnez votre projet GCM dans la liste des projets Google Cloud existants, puis sélectionnez `Add Firebase`.
       1. Dans l&#39;écran d&#39;accueil de Firebase, sélectionnez `Add Firebase to your Android App`.

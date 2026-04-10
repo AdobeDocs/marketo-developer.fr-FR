@@ -3,7 +3,7 @@ title: Extraction d’activité en bloc
 feature: REST API
 description: API REST d’extraction d’activité en bloc Marketo pour exporter des données d’activité volumineuses à l’aide d’une période de 31 jours, de filtres d’activité et d’attributs principaux pour ETL et CRM.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: b2b1027ccf8016c2e4c081753842a6febac832ec
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1564'
 ht-degree: 6%
@@ -110,7 +110,7 @@ Lors de l’utilisation de `primaryAttributeValues`, le filtre `activityTypeIds`
 
 Pour exporter des enregistrements, vous devez d’abord définir la tâche et le jeu d’enregistrements à récupérer.  Créez la tâche à l’aide du point d’entrée [Créer une tâche d’activité d’exportation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/createExportActivitiesUsingPOST).  Lors de l’exportation d’activités, deux filtres principaux peuvent être appliqués : `createdAt`, qui est toujours obligatoire, et `activityTypeIds`, qui est facultatif.  Le filtre `createdAt` est utilisé pour définir une période dans laquelle les activités ont été créées, à l’aide des paramètres `startAt` et `endAt` , qui sont tous deux des champs de date et d’heure, et qui représentent respectivement la date de création autorisée la plus proche et la date de création autorisée la plus récente.  Vous pouvez également filtrer uniquement certains types d’activités à l’aide du filtre `activityTypeIds`.  Cela s’avère utile pour supprimer les résultats qui ne sont pas pertinents pour votre cas d’utilisation.
 
-```
+```http
 POST /bulk/v1/activities/export/create.json
 ```
 
@@ -149,7 +149,7 @@ POST /bulk/v1/activities/export/create.json
 
 Le statut de la tâche est désormais « Créé », mais elle ne se trouve pas encore dans la file d’attente de traitement.  Pour le mettre en file d’attente afin qu’il puisse commencer le traitement, appelez le point d’entrée [Mettre en file d’attente la tâche d’exportation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/enqueueExportActivitiesUsingPOST) à l’aide de l’exportId de la réponse de statut de création.
 
-```
+```http
 POST /bulk/v1/activities/export/{exportId}/enqueue.json
 ```
 
@@ -177,7 +177,7 @@ Le statut des tâches ne peut être récupéré que pour les tâches créées pa
 
 L’extraction d’activité en bloc Marketo est un point d’entrée asynchrone. Par conséquent, le statut de la tâche doit être interrogé pour déterminer quand la tâche est terminée.  Interrogez à l’aide du point d’entrée [Obtenir le statut de la tâche d’exportation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/getExportActivitiesStatusUsingGET) comme suit :
 
-```
+```http
 GET /bulk/v1/activities/export/{exportId}/status.json
 ```
 
@@ -215,7 +215,7 @@ Le champ de statut peut répondre avec l’une des valeurs suivantes :
 
 Une fois la tâche terminée, récupérez vos données à l’aide du point d’entrée [Obtenir le fichier d’activité d’exportation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/getExportActivitiesFileUsingGET).
 
-```
+```http
 GET /bulk/v1/activities/export/{exportId}/file.json
 ```
 
@@ -235,9 +235,9 @@ Pour prendre en charge la récupération partielle et conviviale des données ex
 
 ## Annulation d’un traitement
 
-Si une tâche n’a pas été configurée correctement ou devient inutile, elle peut facilement être annulée à l’aide du point d’entrée [&#x200B; Annuler la tâche d’exportation de l’activité &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/cancelExportActivitiesUsingPOST) :
+Si une tâche n’a pas été configurée correctement ou devient inutile, elle peut facilement être annulée à l’aide du point d’entrée [ Annuler la tâche d’exportation de l’activité ](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/cancelExportActivitiesUsingPOST) :
 
-```
+```http
 POST /bulk/v1/activities/export/{exportId}/cancel.json
 ```
 
