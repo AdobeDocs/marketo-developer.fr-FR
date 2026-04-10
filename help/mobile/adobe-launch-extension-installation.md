@@ -16,7 +16,7 @@ Instructions d’installation pour [!DNL Adobe Launch] extension Marketo. Les é
 
 ## Conditions préalables
 
-1. [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtention de la clé secrète de l’application et de l’ID Munchkin)
+1. [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtention de la clé secrète de l’application et de l’ID Munchkin)
 1. [Configurer la propriété dans  [!DNL Adobe Launch]  portail](https://experience.adobe.com/#/@amc/data-collection/home)
 1. Configurez la clé secrète de l’application et l’ID Munchkin pour la propriété dans le portail [!DNL Adobe Launch]
 1. [Configurer des notifications push](push-notifications.md) (facultatif)
