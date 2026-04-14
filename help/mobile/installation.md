@@ -39,7 +39,7 @@ Instructions d’installation pour Marketo Mobile SDK. Les étapes ci-dessous so
 
 1. Ajoutez le package Marketo à partir de ce référentiel. Ajoutez cette URL pour ce référentiel : <https://github.com/Marketo/ios-sdk>.
 
-   ![ URL du référentiel ](assets/dependency-manager-url.png)
+   ![&#x200B; URL du référentiel &#x200B;](assets/dependency-manager-url.png)
 
 1. Ajoutez maintenant le lot de ressources comme illustré ci-dessous : recherchez `MarketoFramework.XCframework` dans le navigateur de projets et ouvrez-le dans le Finder. Effectuez un glisser-déposer des `MKTResources.bundle` pour copier les ressources du bundle.
 
@@ -208,7 +208,7 @@ Les développeurs d’applications Android peuvent désormais utiliser directeme
 
 1. Intégrez la dernière version de Marketo Android SDK dans l’application Android.  Les étapes sont disponibles sur [GitHub](https://github.com/Marketo/android-sdk).
 1. Configurez l’application Firebase sur la console Firebase.
-   1. Créez/ajoutez un projet sur la console [](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase).
+   1. Créez/ajoutez un projet sur la console [&#128279;](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase).
       1. Dans la [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/), sélectionnez `Add Project`.
       1. Sélectionnez votre projet GCM dans la liste des projets Google Cloud existants, puis sélectionnez `Add Firebase`.
       1. Dans l&#39;écran d&#39;accueil de Firebase, sélectionnez `Add Firebase to your Android App`.

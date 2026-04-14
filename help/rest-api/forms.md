@@ -716,7 +716,7 @@ label=enter the last name here
 
 Dans l’exemple ci-dessus, nous mettons à jour le champ LastName qui est une chaîne simple. Certains champs de formulaire sont plus complexes. Par exemple, le champ Salutation est un type de champ « select » contenant la liste d’éléments et une valeur par défaut. Si vous ajoutez ou mettez à jour un champ de type Sélection, à moins que vous ne définissiez l’un des choix pour qu’il ait une valeur `isDefault` true, le premier choix n’a aucune valeur et est intitulé « Sélectionner... »
 
-![ Salutation ](assets/form-field-salutation.png)
+![&#x200B; Salutation &#x200B;](assets/form-field-salutation.png)
 
 Pour mettre à jour les éléments de la liste, le format du paramètre « values » est le suivant :
 

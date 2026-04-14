@@ -12,13 +12,13 @@ ht-degree: 1%
 
 # API SOAP
 
-L’API SOAP sera abandonnée et ne sera plus disponible après le 31 juillet 2026. Tout nouveau développement doit être effectué avec l’API Marketo [REST](../rest-api/rest-api.md) et les services existants doivent être migrés avant cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [ Guide de migration de l’API SOAP ](./migration.md) pour plus d’informations sur la migration.
+L’API SOAP sera abandonnée et ne sera plus disponible après le 31 juillet 2026. Tout nouveau développement doit être effectué avec l’API Marketo [REST](../rest-api/rest-api.md) et les services existants doivent être migrés avant cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [&#x200B; Guide de migration de l’API SOAP &#x200B;](./migration.md) pour plus d’informations sur la migration.
 
 ## WSDL SOAP
 
 Pour récupérer le document WSDL SOAP, procurez-vous le point d’entrée de l’API SOAP à partir du menu **[!UICONTROL Admin]** > **[!UICONTROL Intégration]** > **[!UICONTROL Services web]**.
 
-![Point D’Entrée ](assets/endpoint-soap.png)
+![Point D’Entrée &#x200B;](assets/endpoint-soap.png)
 
 Votre URL WSDL est :
 

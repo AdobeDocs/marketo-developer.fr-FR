@@ -18,7 +18,7 @@ Ces API se répartissent généralement en deux grandes catégories : [Base de d
 
 >[!NOTE]
 >
->L’API SOAP sera abandonnée et ne sera plus disponible après le 31 juillet 2026. Tout nouveau développement doit être effectué avec l’API Marketo [REST](./rest-api.md) et les services existants doivent être migrés avant cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [ Guide de migration de l’API SOAP ](../soap-api/migration.md) pour plus d’informations sur la migration.
+>L’API SOAP sera abandonnée et ne sera plus disponible après le 31 juillet 2026. Tout nouveau développement doit être effectué avec l’API Marketo [REST](./rest-api.md) et les services existants doivent être migrés avant cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [&#x200B; Guide de migration de l’API SOAP &#x200B;](../soap-api/migration.md) pour plus d’informations sur la migration.
 >
 
 >[!IMPORTANT]
@@ -72,9 +72,9 @@ Accédez ensuite au menu **[!UICONTROL Admin]**, puis à **[!UICONTROL Services 
 
 ![Services web](assets/admin-web-services.png)
 
-Recherchez le [!UICONTROL  Point d’entrée ] dans la zone API REST et enregistrez-le dans une note pour l’instant.
+Recherchez le [!UICONTROL &#x200B; Point d’entrée &#x200B;] dans la zone API REST et enregistrez-le dans une note pour l’instant.
 
-![ Point d’entrée REST ](assets/admin-web-services-rest-endpoint-1.png)
+![&#x200B; Point d’entrée REST &#x200B;](assets/admin-web-services-rest-endpoint-1.png)
 
 Lors d’appels aux méthodes de l’API REST, un jeton d’accès doit être inclus dans chaque appel pour que l’appel réussisse. Le jeton d’accès doit être envoyé en tant qu’en-tête HTTP.
 

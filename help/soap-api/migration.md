@@ -16,7 +16,7 @@ L’API Marketo Engage SOAP sera supprimée après le 31 mars 2026. Toutes les i
 
 ## Migration
 
-L’API SOAP prend en charge un éventail limité de cas d’utilisation par rapport à l’API [REST](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/rest-api)I. Lorsque vous déterminez les points d’entrée à mapper à vos cas d’utilisation, vous devez suivre les [bonnes pratiques d’intégration de ](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/marketo-integration-best-practices)
+L’API SOAP prend en charge un éventail limité de cas d’utilisation par rapport à l’API [REST](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/rest-api)I. Lorsque vous déterminez les points d’entrée à mapper à vos cas d’utilisation, vous devez suivre les [bonnes pratiques d’intégration de &#x200B;](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/marketo-integration-best-practices)
 
 Les [architectures de référence](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/reference-architectures) sont disponibles pour les cas d’utilisation de [synchronisation CRM](https://experienceleague.adobe.com/docs/marketo-developer/assets/sync-architecture-whitepaper.pdf?lang=en) et [exportation Data Warehouse](https://experienceleague.adobe.com/docs/marketo-developer/assets/reference_architecture.pdf?lang=en).
 
@@ -30,7 +30,7 @@ L’API REST Marketo utilise l’authentification basée sur OAuth 2.0 avec le t
 
 [Documentation de l’API de lead](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/leads)
 
-L’API SOAP prend en charge la synchronisation des données de prospect, l’association de cookies [Munchkin ](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/javascriptapi/leadtracking/lead-tracking) et la fusion de prospects. Si votre application appelle la méthode syncLead de SOAP et définit le paramètre `marketoCookie`, vous pouvez effectuer la migration de l’une des manières suivantes :
+L’API SOAP prend en charge la synchronisation des données de prospect, l’association de cookies [Munchkin &#x200B;](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/javascriptapi/leadtracking/lead-tracking) et la fusion de prospects. Si votre application appelle la méthode syncLead de SOAP et définit le paramètre `marketoCookie`, vous pouvez effectuer la migration de l’une des manières suivantes :
 
 1. Utilisation de la méthode REST [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST), suivie de [Associated Lead](https://developer.adobe.com/marketo-apis/api/mapi#operation/associateLeadUsingPOST)
 2. Vous pouvez appeler [Envoyer le formulaire](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/leads), bien que cela nécessite la configuration de certaines Assets marketing et une interaction avec l’API [Forms](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/assets/forms)
