@@ -3,7 +3,7 @@ title: Comptes désignés
 feature: REST API
 description: Guide REST Marketo sur le CRUD sur les comptes nommés pour ABM, avec description, requête, création d’exemples de mise à jour, champs consultables, règles de déduplication et aucun lien de prospect.
 exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '730'
 ht-degree: 1%
@@ -12,7 +12,7 @@ ht-degree: 1%
 
 # Comptes désignés
 
-[Référence des points d’entrée des comptes nommés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts)
+[Référence des points d’entrée des comptes nommés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts)
 
 Marketo propose un ensemble d’API pour effectuer des opérations CRUD sur des comptes nommés à utiliser avec Marketo ABM. Ces API suivent le modèle d’interface standard des API de base de données de prospect, en fournissant les options Décrire, Créer/Mettre à jour, Supprimer et Requête .
 
@@ -224,7 +224,7 @@ L’interrogation de champs de compte nommé est simple. Vous pouvez interroger 
 
 #### Par nom
 
-Le point d’entrée [Obtenir le champ de compte nommé par nom](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) récupère les métadonnées d’un seul champ sur l’objet de compte nommé. Le paramètre de chemin d’accès fieldApiName obligatoire spécifie le nom d’API du champ. La réponse est similaire au point d’entrée Décrire le compte nommé , mais elle contient des métadonnées supplémentaires telles que l’attribut isCustom qui indique si le champ est un champ personnalisé.
+Le point d’entrée [Obtenir le champ de compte nommé par nom](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) récupère les métadonnées d’un seul champ sur l’objet de compte nommé. Le paramètre de chemin d’accès fieldApiName obligatoire spécifie le nom d’API du champ. La réponse est similaire au point d’entrée Décrire le compte nommé , mais elle contient des métadonnées supplémentaires telles que l’attribut isCustom qui indique si le champ est un champ personnalisé.
 
 ```http
 GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
@@ -252,7 +252,7 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 #### Parcourir
 
-Le point d’entrée [Obtenir les champs de compte nommés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) récupère les métadonnées de tous les champs de l’objet de compte nommé. Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête batchSize pour réduire ce nombre. Si l’attribut moreResult est défini sur true, cela signifie que davantage de résultats sont disponibles. Continuez à appeler ce point d’entrée jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’aucun résultat n’est disponible. Le nextPageToken renvoyé par cette API doit toujours être réutilisé pour l’itération suivante de cet appel.
+Le point d’entrée [Obtenir les champs de compte nommés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) récupère les métadonnées de tous les champs de l’objet de compte nommé. Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête batchSize pour réduire ce nombre. Si l’attribut moreResult est défini sur true, cela signifie que davantage de résultats sont disponibles. Continuez à appeler ce point d’entrée jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’aucun résultat n’est disponible. Le nextPageToken renvoyé par cette API doit toujours être réutilisé pour l’itération suivante de cet appel.
 
 ```http
 GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5

@@ -3,7 +3,7 @@ title: Extrait de lead en masse
 feature: REST API
 description: Découvrez comment utiliser les API REST d’extraction de lead en bloc Marketo pour exporter en bloc des leads avec des filtres de date, de liste et de liste dynamique, des champs personnalisés et des formats CSV/TSV.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '1273'
 ht-degree: 2%
@@ -12,7 +12,7 @@ ht-degree: 2%
 
 # Extrait de lead en masse
 
-[Référence de point d’entrée d’extraction de leads en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads)
+[Référence de point d’entrée d’extraction de leads en bloc](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads)
 
 L’ensemble d’API REST d’extraction de lead en bloc fournit une interface de programmation pour récupérer de grands ensembles d’enregistrements de lead/personne en dehors de Marketo. En outre, il peut être utilisé pour récupérer les prospects de manière incrémentielle en fonction de la date de création de l’enregistrement, de la mise à jour la plus récente, de l’appartenance à une liste statique ou à une liste dynamique. Interface recommandée pour les cas d’utilisation qui nécessitent un échange continu de données entre Marketo et un ou plusieurs systèmes externes, à des fins d’ETL, d’entreposage de données et d’archivage.
 
@@ -47,7 +47,7 @@ Le point d’entrée Créer une tâche d’exportation principale fournit plusie
 
 ## Création d’un traitement
 
-Les paramètres de la tâche sont définis avant le lancement de l’exportation à l’aide du point d’entrée [Créer une tâche d’exportation principale](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST). Nous devons définir les `fields` nécessaires à l’exportation, le type de paramètres du `filter`, le `format` du fichier et les noms des en-têtes de colonne, le cas échéant.
+Les paramètres de la tâche sont définis avant le lancement de l’exportation à l’aide du point d’entrée [Créer une tâche d’exportation principale](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST). Nous devons définir les `fields` nécessaires à l’exportation, le type de paramètres du `filter`, le `format` du fichier et les noms des en-têtes de colonne, le cas échéant.
 
 ```http
 POST /bulk/v1/leads/export/create.json
@@ -95,7 +95,7 @@ Cette requête commencera à exporter un ensemble de prospects créés entre le 
 }
 ```
 
-Cette opération renvoie une réponse de statut indiquant que la tâche a été créée. La tâche a été définie et créée, mais elle n&#39;a pas encore été lancée. Pour ce faire, le point d’entrée [Mettre en file d’attente la tâche d’exportation principale](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST) doit être appelé à l’aide de l’exportId de la réponse de statut de création :
+Cette opération renvoie une réponse de statut indiquant que la tâche a été créée. La tâche a été définie et créée, mais elle n&#39;a pas encore été lancée. Pour ce faire, le point d’entrée [Mettre en file d’attente la tâche d’exportation principale](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST) doit être appelé à l’aide de l’exportId de la réponse de statut de création :
 
 ```http
 POST /bulk/v1/leads/export/{exportId}/enqueue.json
@@ -123,7 +123,7 @@ Cela répond par un `status` de « Mise en file d’attente », après quoi il e
 
 `Note:` statut ne peut être récupéré que pour les tâches créées par le même utilisateur de l’API.
 
-Puisqu’il s’agit d’un point d’entrée asynchrone, une fois la tâche créée, nous devons interroger son statut pour déterminer sa progression. Interroger à l’aide du point d’entrée [Obtenir le statut de la tâche d’exportation du prospect](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET). Le statut n’est mis à jour qu’une fois toutes les 60 secondes. Il est donc déconseillé d’utiliser une fréquence d’interrogation inférieure à cette fréquence, qui reste excessive dans presque tous les cas. Jetons un coup d&#39;œil aux sondages.
+Puisqu’il s’agit d’un point d’entrée asynchrone, une fois la tâche créée, nous devons interroger son statut pour déterminer sa progression. Interroger à l’aide du point d’entrée [Obtenir le statut de la tâche d’exportation du prospect](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET). Le statut n’est mis à jour qu’une fois toutes les 60 secondes. Il est donc déconseillé d’utiliser une fréquence d’interrogation inférieure à cette fréquence, qui reste excessive dans presque tous les cas. Jetons un coup d&#39;œil aux sondages.
 
 ```http
 GET /bulk/v1/leads/export/{exportId}/status.json
@@ -158,7 +158,7 @@ Le champ de statut peut répondre avec l’une des options suivantes :
 
 ## Récupération de vos données
 
-Pour récupérer le fichier d’une exportation de prospect terminée, appelez simplement le point d’entrée [Obtenir le fichier de prospect d’exportation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET) avec votre `exportId`.
+Pour récupérer le fichier d’une exportation de prospect terminée, appelez simplement le point d’entrée [Obtenir le fichier de prospect d’exportation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET) avec votre `exportId`.
 
 ```http
 GET /bulk/v1/leads/export/{exportId}/file.json
@@ -177,7 +177,7 @@ Pour prendre en charge la récupération partielle et conviviale des données ex
 
 ## Annulation d’un traitement
 
-Si une tâche n’a pas été configurée correctement ou devient inutile, elle peut facilement être annulée à l’aide du point d’entrée [Annuler la tâche d’exportation du prospect](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST) :
+Si une tâche n’a pas été configurée correctement ou devient inutile, elle peut facilement être annulée à l’aide du point d’entrée [Annuler la tâche d’exportation du prospect](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST) :
 
 ```http
 POST /bulk/v1/leads/export/{exportId}/cancel.json

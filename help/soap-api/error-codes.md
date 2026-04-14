@@ -3,9 +3,9 @@ title: Codes d’erreur
 feature: SOAP
 description: Guide de référence des codes d’erreur de l’API Marketo SOAP avec des messages et des notes, couvrant les échecs d’authentification, les limites de taux et de simultanéité et les problèmes de requête.
 exl-id: 71796520-7bd6-4a37-94e7-b073d17df06f
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
-source-wordcount: '408'
+source-wordcount: '409'
 ht-degree: 11%
 
 ---

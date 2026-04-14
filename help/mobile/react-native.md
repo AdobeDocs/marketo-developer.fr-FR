@@ -3,9 +3,9 @@ title: React Native
 feature: Mobile Marketing
 description: Installez et configurez Marketo SDK dans les applications React Native avec les étapes Android Gradle et iOS CocoaPods, le pontage de modules natifs, les notifications push et l’association de prospects.
 exl-id: 462fd32e-91f1-4582-93f2-9efe4d4761ff
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '854'
+source-wordcount: '857'
 ht-degree: 1%
 
 ---
@@ -16,7 +16,7 @@ Cet article fournit des informations sur la manière d’installer et de configu
 
 ## Conditions préalables
 
-[Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez la clé secrète de l’application et l’ID Munchkin).
+[Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez la clé secrète de l’application et l’ID Munchkin).
 
 ## Intégration de SDK
 
@@ -462,7 +462,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 Les autorisations doivent être activées dans votre projet Xcode pour envoyer des notifications push à l’appareil de l’utilisateur.
 
-Pour envoyer des notifications push, [&#x200B; ajoutez des notifications push &#x200B;](push-notifications.md).
+Pour envoyer des notifications push, [ ajoutez des notifications push ](push-notifications.md).
 
 Configurer des notifications push iOS,
 Créez le fichier PushNotifications.tsx et ajoutez les éléments suivants :

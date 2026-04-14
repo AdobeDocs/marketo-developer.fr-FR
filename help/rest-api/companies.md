@@ -3,7 +3,7 @@ title: Sociétés
 feature: REST API
 description: Utilisez l’API REST Entreprises Marketo pour décrire, interroger et synchroniser les enregistrements d’entreprise, gérer les champs et effectuer une déduplication par externalCompanyId, et notez que la synchronisation CRM est en lecture seule.
 exl-id: 80e514a2-1c86-46a7-82bc-e4db702189b0
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '676'
 ht-degree: 1%
@@ -12,11 +12,11 @@ ht-degree: 1%
 
 # Sociétés
 
-[Référence des points d’entrée de sociétés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies)
+[Référence des points d’entrée de sociétés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies)
 
-Les sociétés représentent l&#39;organisation à laquelle appartiennent les enregistrements de leads. Les leads sont ajoutés à une entreprise en renseignant leur champ de `externalCompanyId` correspondant à l’aide des points d’entrée [Synchroniser les leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) ou [Importation de leads en bloc](bulk-lead-import.md). Une fois qu’un prospect a été ajouté à une entreprise, vous ne pouvez pas le supprimer de cette entreprise (à moins d’ajouter le prospect à une autre entreprise). Les leads liés à un enregistrement d’entreprise héritent directement des valeurs d’un enregistrement d’entreprise comme si les valeurs existaient sur le propre enregistrement du lead.
+Les sociétés représentent l&#39;organisation à laquelle appartiennent les enregistrements de leads. Les leads sont ajoutés à une entreprise en renseignant leur champ de `externalCompanyId` correspondant à l’aide des points d’entrée [Synchroniser les leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) ou [Importation de leads en bloc](bulk-lead-import.md). Une fois qu’un prospect a été ajouté à une entreprise, vous ne pouvez pas le supprimer de cette entreprise (à moins d’ajouter le prospect à une autre entreprise). Les leads liés à un enregistrement d’entreprise héritent directement des valeurs d’un enregistrement d’entreprise comme si les valeurs existaient sur le propre enregistrement du lead.
 
-Les API d’entreprise sont en lecture seule pour les abonnements pour lesquels la [synchronisation de &#x200B;](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=fr) ou la [synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=fr) est activée.
+Les API d’entreprise sont en lecture seule pour les abonnements pour lesquels la [synchronisation de ](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou la [synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) est activée.
 
 ## Décrire
 
@@ -98,7 +98,7 @@ GET /rest/v1/companies/describe.json
 
 ## Requête
 
-Le modèle pour [interroger des sociétés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompaniesUsingGET) suit de près celui de l’API des prospects avec la restriction ajoutée que le paramètre `filterType` accepte les champs répertoriés dans le tableau searchableFields de l’appel Describe Companies ou dedupeFields.
+Le modèle pour [interroger des sociétés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompaniesUsingGET) suit de près celui de l’API des prospects avec la restriction ajoutée que le paramètre `filterType` accepte les champs répertoriés dans le tableau searchableFields de l’appel Describe Companies ou dedupeFields.
 
 `filterType` et `filterValues` sont des paramètres de requête obligatoires.  `fields`, `nextPageToken` et `batchSize` sont des paramètres facultatifs.  Les paramètres fonctionnent comme les paramètres correspondants dans les API Leads et Opportunités. Lors de la demande d’une liste de `fields`, si un champ particulier est demandé, mais n’est pas renvoyé, la valeur est implicitement nulle.
 
@@ -136,7 +136,7 @@ GET /rest/v1/companies.json?filterType=id&filterValues=3433,5345
 
 ## Créer et mettre à jour
 
-Le point d’entrée [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) accepte le paramètre `input` obligatoire contenant un tableau d’objets d’entreprise. Tout comme les opportunités, il existe trois modes de création et de mise à jour d’entreprises : createOnly, updateOnly et createOrUpdate.  Les modes sont spécifiés dans le paramètre `action` de la requête. Les paramètres `dedupeBy` et `action` sont facultatifs et utilisent par défaut les modes dedupeFields et createOrUpdate respectivement.
+Le point d’entrée [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST) accepte le paramètre `input` obligatoire contenant un tableau d’objets d’entreprise. Tout comme les opportunités, il existe trois modes de création et de mise à jour d’entreprises : createOnly, updateOnly et createOrUpdate.  Les modes sont spécifiés dans le paramètre `action` de la requête. Les paramètres `dedupeBy` et `action` sont facultatifs et utilisent par défaut les modes dedupeFields et createOrUpdate respectivement.
 
 ```http
 POST /rest/v1/companies.json
@@ -194,7 +194,7 @@ Interroger les champs d’entreprise est simple. Vous pouvez interroger un seul 
 
 #### Par nom
 
-Le point d’entrée [Obtenir le champ d’entreprise par nom](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompanyFieldByNameUsingGET) récupère les métadonnées d’un seul champ sur l’objet d’entreprise. Le paramètre de chemin d’accès `fieldApiName` obligatoire spécifie le nom d’API du champ. La réponse est similaire au point d’entrée Décrire la société, mais elle contient des métadonnées supplémentaires telles que l’attribut `isCustom` qui indique si le champ est un champ personnalisé.
+Le point d’entrée [Obtenir le champ d’entreprise par nom](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldByNameUsingGET) récupère les métadonnées d’un seul champ sur l’objet d’entreprise. Le paramètre de chemin d’accès `fieldApiName` obligatoire spécifie le nom d’API du champ. La réponse est similaire au point d’entrée Décrire la société, mais elle contient des métadonnées supplémentaires telles que l’attribut `isCustom` qui indique si le champ est un champ personnalisé.
 
 ```http
 GET /rest/v1/companies/schema/fields/industry.json
@@ -223,7 +223,7 @@ GET /rest/v1/companies/schema/fields/industry.json
 
 #### Parcourir
 
-Le point d’entrée [Obtenir les champs d’entreprise](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompanyFieldsUsingGET) récupère les métadonnées de tous les champs de l’objet d’entreprise. Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête `batchSize` pour réduire ce nombre. Si l’attribut `moreResult` est défini sur « true », cela signifie que d’autres résultats sont disponibles. Continuez à appeler ce point d’entrée jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’aucun résultat n’est disponible. Les `nextPageToken` renvoyés par cette API doivent toujours être réutilisés pour l’itération suivante de cet appel.
+Le point d’entrée [Obtenir les champs d’entreprise](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldsUsingGET) récupère les métadonnées de tous les champs de l’objet d’entreprise. Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête `batchSize` pour réduire ce nombre. Si l’attribut `moreResult` est défini sur « true », cela signifie que d’autres résultats sont disponibles. Continuez à appeler ce point d’entrée jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’aucun résultat n’est disponible. Les `nextPageToken` renvoyés par cette API doivent toujours être réutilisés pour l’itération suivante de cet appel.
 
 ```http
 GET /rest/v1/companies/schema/fields.json?batchSize=5

@@ -2,9 +2,9 @@
 title: Flux de données
 description: Présentation des flux de données Marketo Engage permettant une activité de prospect et des événements de contrôle des utilisateurs en temps quasi réel, ce qui allège les limites d’API pour les clients de niveau de performance
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 6dc068f92d5b0c94035ca484fd1508dfe87bbd76
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
-source-wordcount: '1719'
+source-wordcount: '1721'
 ht-degree: 3%
 
 ---
@@ -12,10 +12,11 @@ ht-degree: 3%
 # Flux de données
 
 >[!NOTE]
-> Vous trouverez désormais les informations actuelles sur les flux de données à l’adresse [Utilisation des flux de données](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams#).
+>
+>Vous trouverez désormais les informations actuelles sur les flux de données à l’adresse [Utilisation des flux de données](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams#).
 >
 
-Les organisations marketing de nos clients comptent sur des campagnes marketing opportunes et ciblées pour rester à la pointe de leur activité et être compétitives. Pour prendre des décisions rapides et permettre un changement stratégique rapide, il est important de disposer de données pour prendre en charge et orienter ces décisions clés qui génèrent des campagnes ciblées et ciblées. Certains clients et clientes effectuent également des efforts marketing à des niveaux de leurs segments de clients et clientes à l’intérieur et à l’extérieur de Marketo Engage. Pour prendre en charge ces différents efforts, Marketo a créé la possibilité d’acquérir d’importants volumes de données en temps quasi réel au moyen de flux de données.
+Les organisations marketing de nos clients comptent sur des campagnes marketing opportunes et ciblées pour rester à la pointe de leur activité et être compétitives. Pour prendre des décisions rapides et permettre un changement stratégique rapide, il est important de disposer de données pour prendre en charge et orienter les décisions clés qui offrent des campagnes ciblées et ciblées. Certains clients et clientes effectuent également des efforts marketing à des niveaux de leurs segments de clients et clientes à l’intérieur et à l’extérieur de Marketo Engage. Pour prendre en charge ces différents efforts, Marketo a créé la possibilité d’acquérir d’importants volumes de données en temps quasi réel au moyen de flux de données.
 
 Outre l’avantage des données en temps quasi réel, il existe des avantages liés aux produits :
 

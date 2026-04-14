@@ -3,9 +3,9 @@ title: Bonnes pratiques d’intégration de Marketo
 feature: REST API
 description: Bonnes pratiques relatives aux intégrations d’API Marketo concernant les quotas, les limites de débit et de simultanéité, les traitements par lots, l’importation et l’exportation en masse, la mise en cache et la planification de la latence.
 exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
-source-wordcount: '1012'
+source-wordcount: '1013'
 ht-degree: 0%
 
 ---
@@ -48,15 +48,15 @@ La détermination de vos tolérances de latence, ou de la durée maximale qui pe
 
 Chaque instance de Marketo compatible avec les API dispose d’une allocation quotidienne d’au moins 10 000 appels d’API REST par jour, mais le plus souvent de 50 000 appels ou plus, et d’une capacité d’extraction en bloc de 500MB ou plus. Bien qu’il soit possible d’acheter de la capacité quotidienne supplémentaire dans le cadre d’un abonnement à Marketo, votre conception d’application doit tenir compte des limites courantes des abonnements à Marketo.
 
-Comme la capacité est partagée entre tous les services d’API et les utilisateurs d’une instance, il est recommandé d’éliminer les appels redondants et d’utiliser les enregistrements par lots en le moins d’appels possible. Le moyen le plus efficace d’importer des enregistrements lors des appels est d’utiliser les API d’importation en bloc de Marketo, disponibles pour les [prospects/personnes](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) et [objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Snippets/operation/createSnippetUsingPOST). Marketo fournit également l’extraction en bloc pour les [prospects](bulk-lead-extract.md) et [activités](bulk-activity-extract.md).
+Comme la capacité est partagée entre tous les services d’API et les utilisateurs d’une instance, il est recommandé d’éliminer les appels redondants et d’utiliser les enregistrements par lots en le moins d’appels possible. Le moyen le plus efficace d’importer des enregistrements lors des appels est d’utiliser les API d’importation en bloc de Marketo, disponibles pour les [prospects/personnes](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) et [objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Snippets/operation/createSnippetUsingPOST). Marketo fournit également l’extraction en bloc pour les [prospects](bulk-lead-extract.md) et [activités](bulk-activity-extract.md).
 
 ### Mise en cache
 
 Les résultats des opérations suivantes peuvent généralement être mis en cache côté client pendant un jour ou plus, car ils changent rarement :
 
 - Résultats des opérations de description
-- [Types d’activité](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getAllActivityTypesUsingGET)
-- [Partitions](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadPartitionsUsingGET)
+- [Types d’activité](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)
+- [Partitions](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadPartitionsUsingGET)
 
 La mise en cache de certains types de ressources, tels que les programmes, les e-mails et les dossiers, est également appropriée pour certains cas d’utilisation, tels que l’enrichissement des données pour les enregistrements de prospect ou d’activité.
 

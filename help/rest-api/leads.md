@@ -3,16 +3,16 @@ title: Prospects
 feature: REST API
 description: Explorez les fonctionnalités de l’API REST des leads Marketo, notamment la description, la requête par ID ou filtre, les champs par défaut, les limites et la récupération des ECID.
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '3457'
+source-wordcount: '3460'
 ht-degree: 3%
 
 ---
 
 # Prospects
 
-[Référence du point d’entrée des leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads)
+[Référence du point d’entrée des leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads)
 
 L’API du prospect Marketo offre un large éventail de fonctionnalités pour les applications CRUD simples par rapport aux enregistrements de prospect, ainsi que la possibilité de modifier l’appartenance d’un prospect à des listes et programmes statiques et de lancer un traitement Smart Campaign pour les prospects.
 
@@ -95,7 +95,7 @@ Pour cette méthode, il y aura toujours un seul enregistrement à la première p
 
 L’option Obtenir les leads par type de filtre renvoie le même type d’enregistrements, mais peut renvoyer jusqu’à 300 par page. Elle nécessite les paramètres de requête `filterType` et `filterValues`.
 
-`filterType` accepte n’importe quel champ personnalisé ou la plupart des champs couramment utilisés. Appelez le point d’entrée `Describe2` pour obtenir une liste complète des champs pouvant faire l’objet d’une recherche et pouvant être utilisés dans `filterType`. Lors d’une recherche par champ personnalisé, seuls les types de données suivants sont pris en charge : `string`, `email`, `integer`. Vous pouvez obtenir les détails du champ (description, type, etc.) en utilisant la méthode Describe ci-dessus.
+`filterType` accepte n’importe quel champ personnalisé ou la plupart des champs couramment utilisés. Appelez le point d’entrée `Describe2` pour obtenir une liste complète des champs pouvant faire l’objet d’une recherche et pouvant être utilisés dans `filterType`. Lors d’une recherche par champ personnalisé, seuls les types de données suivants sont pris en charge : `string`, `email`, `integer`. Vous pouvez obtenir les détails du champ (description, type, etc.) à l’aide de la méthode Describe mentionnée ci-dessus.
 
 `filterValues` accepte jusqu’à 300 valeurs au format séparé par des virgules. L’appel recherche les enregistrements pour lesquels le champ du prospect correspond à l’un des `filterValues` inclus. Si le nombre de leads correspondant au filtre de lead est supérieur à 1 000, une erreur est renvoyée : « 1 003, Trop de résultats correspondent au filtre ».
 
@@ -160,7 +160,7 @@ Outre la récupération des données de prospect, vous pouvez créer, mettre à 
 
 >[!NOTE]
 >
-> La mise à jour des champs Société à l’aide du point d’entrée [Leads de synchronisation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) n’est pas prise en charge. Utilisez plutôt le point d’entrée [Synchroniser les entreprises](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST).
+> La mise à jour des champs Société à l’aide du point d’entrée [Leads de synchronisation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) n’est pas prise en charge. Utilisez plutôt le point d’entrée [Synchroniser les entreprises](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST).
 
 >[!NOTE]
 >
@@ -767,6 +767,7 @@ Vous trouverez ici les détails de l’activité « Remplir le formulaire » cor
 ## Fusionner
 
 >[!NOTE]
+>
 >À compter du 31 mars 2026, les appels qui incluent plus de 25 identifiants dans le paramètre `leadIds` d’un appel de l’API Merge Leads entraîneront un code d’erreur 1080 et l’appel sera ignoré. Les tâches nécessitant la fusion de plus de 25 enregistrements en un seul doivent être divisées en plusieurs tâches pour assurer le succès de ces appels.
 >
 
@@ -817,7 +818,7 @@ Adhésion
 Les enregistrements de lead peuvent également être récupérés en fonction de l’appartenance à une liste statique ou à un programme. De plus, vous pouvez récupérer toutes les listes statiques, les programmes ou les campagnes intelligentes dont un prospect est membre.
 
 La structure de réponse et les paramètres facultatifs sont identiques à ceux de l’option Get Leads by Filter Type (Obtenir les prospects par type de filtre), bien que `filterType` et `filterValues` ne puissent pas être utilisés avec cette API.
-Pour accéder à l’ID de liste via l’interface utilisateur de Marketo, accédez à la liste. La liste `id` se trouve dans l’URL de la liste statique, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. Dans cet exemple, 1001 est la `id` de la liste.
+Pour accéder à l’ID de liste via l’interface utilisateur de Marketo, accédez à la liste. La liste `id` se trouve dans l’URL de la liste statique, `https://app-****.marketo.com/#ST1001A1`. Dans cet exemple, 1001 est la `id` de la liste.
 
 ## Obtenir les programmes par ID de lead
 

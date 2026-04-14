@@ -3,9 +3,9 @@ title: Champs standard
 feature: REST API, Field Management
 description: Parcourez la liste complète des champs de prospect standard Marketo avec des noms, libellés et descriptions REST et SOAP, et apprenez à les récupérer à l’aide de l’API Describe Lead.
 exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
-source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
-source-wordcount: '727'
+source-wordcount: '742'
 ht-degree: 25%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 25%
 
 Voici une liste des champs standards disponibles dans Marketo et accessibles via l&#39;API.
 
-Vous pouvez récupérer la liste de tous les noms de champ pris en charge disponibles dans vos enregistrements de prospect à l’aide du point d’entrée REST [Décrire le prospect](https://developer.adobe.com/marketo-apis/api/mapi/).
+Vous pouvez récupérer la liste de tous les noms de champ pris en charge disponibles dans vos enregistrements de prospect à l’aide du point d’entrée REST [Décrire le prospect](https://developer.adobe.com/marketo-apis/api/mapi).
 
 | REST API Nom | SOAP API Nom | Intitulé convivial | Description |
 | --- | --- | --- | --- |
@@ -53,7 +53,7 @@ Vous pouvez récupérer la liste de tous les noms de champ pris en charge dispon
 | téléphone | Téléphone | Numéro de téléphone | Numéro de téléphone du lead |
 | postalCode | PostalCode | Code postal | Code postal du lead |
 | évaluation | Évaluation | Évaluation du lead | Note de marketing/vente du prospect |
-| salutation | Titre | Titre | Formule de salutation préférée du lead, à savoir Monsieur, Échecs... etc. |
+| salutation | Titre | Titre | La salutation préférée de Lead, c&#39;est-à-dire Monsieur, Mlle... et ainsi de suite |
 | sicCode | SICCode | Code SIC | Code de classification industrielle standard de la société du prospect |
 | site | Site | Site |  |
 | state | État | État | État du lead |

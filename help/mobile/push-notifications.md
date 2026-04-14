@@ -3,7 +3,7 @@ title: Notifications push
 feature: Mobile Marketing
 description: Guide d’activation des notifications push iOS avec Marketo, depuis les certificats APNs et la configuration de Xcode jusqu’à l’intégration de Marketo SDK, l’enregistrement et la gestion des jetons.
 exl-id: 41d657d8-9eea-4314-ab24-fd4cb2be7f61
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '1338'
 ht-degree: 0%
@@ -28,7 +28,7 @@ Il existe trois étapes pour activer les notifications push :
 1. Cliquez sur « Certificats, identifiants et profils ».
 1. Cliquez sur le dossier « Certificats->Tous » sous « iOS, tvOS, watchOS ».
 1. Sélectionnez le signe « + » dans l’écran supérieur gauche en regard de l’![](assets/certificates-plus.png) Certificats .
-1. Activez la case à cocher « SSL du service de notification push Apple (sandbox et production) », puis cliquez sur « Continuer ».
+1. Activez la case à cocher « Service de notification push Apple SSL (sandbox et production) », puis sélectionnez Continuer.
 1. Sélectionnez l’identifiant de l’application que vous utilisez dans la version de l’application.![](assets/push-appid.png)
 1. Créez et chargez une demande de signature de certificat pour générer le certificat push. ![](assets/push-ssl.png)
 1. Téléchargez le certificat sur l’ordinateur local et double-cliquez pour l’installer. ![](assets/certificate-download.png)

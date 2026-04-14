@@ -3,7 +3,7 @@ title: Fichiers
 feature: REST API
 description: Guide de requête des fichiers d’API REST Marketo par identifiant ou nom, navigation avec dossier et décalage, création ou mise à jour par chargement multipartie, insertOnly, types MIME, pas de diffusion en continu
 exl-id: 17361cdc-2309-442c-803c-34ce187aee1a
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '347'
 ht-degree: 1%
@@ -12,13 +12,13 @@ ht-degree: 1%
 
 # Fichiers
 
-[Référence des points d’entrée de fichiers](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files)
+[Référence des points d’entrée de fichiers](https://developer.adobe.com/marketo-apis/api/asset#tag/Files)
 
 Les abonnements Marketo permettent de stocker des fichiers arbitraires tels que des images, des scripts, des documents et des feuilles de style. Toutes ces fonctionnalités peuvent être exploitées à distance via l’API REST. Le stockage disponible dans les abonnements Marketo n’est pas optimisé pour les applications gourmandes en bande passante. Par conséquent, d’autres solutions doivent être utilisées pour les applications de diffusion en continu audio et vidéo appropriées.
 
 ## Requête
 
-La requête de fichiers est simple et suit les types de requête standard pour les ressources des catégories [par identifiant](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFileByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFileByNameUsingGET) et [navigation](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFilesUsingGET).
+La requête de fichiers est simple et suit les types de requête standard pour les ressources des catégories [par identifiant](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFileByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFileByNameUsingGET) et [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFilesUsingGET).
 
 ### Par Id
 
@@ -155,7 +155,7 @@ GET /rest/asset/v1/files.json?folder={"id":436, "type": "Folder"}&maxReturn=3
 
 ## Créer et mettre à jour
 
-[La création d’un fichier](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/createFileUsingPOST) s’effectue avec une requête de type multipart/form-data . Le nom, le dossier et le fichier sont obligatoires dans la requête, avec une description facultative et un indicateur insertOnly, ce qui empêche un appel de création de mettre à jour un fichier existant portant le même nom. Pour le paramètre de fichier, un « filename » est requis dans l’en-tête Content-Disposition, en plus du paramètre name. Vous devez également transmettre un en-tête Type de contenu pour le fichier , qui sera le type MIME que Marketo utilisera pour diffuser le fichier.
+[La création d’un fichier](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/createFileUsingPOST) s’effectue avec une requête de type multipart/form-data . Le nom, le dossier et le fichier sont obligatoires dans la requête, avec une description facultative et un indicateur insertOnly, ce qui empêche un appel de création de mettre à jour un fichier existant portant le même nom. Pour le paramètre de fichier, un « filename » est requis dans l’en-tête Content-Disposition, en plus du paramètre name. Vous devez également transmettre un en-tête Type de contenu pour le fichier , qui sera le type MIME que Marketo utilisera pour diffuser le fichier.
 
 ```http
 POST /rest/asset/v1/files.json
@@ -208,7 +208,7 @@ This is a test file
 }
 ```
 
-[La mise à jour d’un fichier](https://developer.adobe.com/marketo-apis/api/asset/#tag/File-Contents/operation/updateContentUsingPOST) peut être effectuée en fonction de son identifiant. Le seul paramètre est un paramètre de fichier qui a les mêmes exigences que la création.
+[La mise à jour d’un fichier](https://developer.adobe.com/marketo-apis/api/asset#tag/File-Contents/operation/updateContentUsingPOST) peut être effectuée en fonction de son identifiant. Le seul paramètre est un paramètre de fichier qui a les mêmes exigences que la création.
 
 ```http
 POST /rest/asset/v1/file/{id}/content.json

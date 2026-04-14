@@ -3,7 +3,7 @@ title: Canaux
 feature: REST API
 description: Découvrez comment interroger les canaux Marketo via l’API REST Asset, naviguer avec la pagination ou effectuer une récupération par nom, afficher les statuts de progression et comprendre les règles de type de programme.
 exl-id: ec6c279f-a7b4-4a7c-b980-1a68045f37ce
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '151'
 ht-degree: 2%
@@ -12,7 +12,7 @@ ht-degree: 2%
 
 # Canaux
 
-[Référence des points d’entrée des canaux](https://developer.adobe.com/marketo-apis/api/asset/#tag/Channels)
+[Référence des points d’entrée des canaux](https://developer.adobe.com/marketo-apis/api/asset#tag/Channels)
 
 Les canaux sont un champ standard et obligatoire pour tous les types de programme. Chaque type de canal ne peut être utilisé qu’avec le `applicableProgramType` donné et fournit la liste des statuts de programme disponibles qui sont valides pour les membres du programme dans chaque programme. Si les statuts d’un programme d’un canal sont modifiés après la création d’un programme, la liste des statuts du programme auquel un prospect peut être modifié correspond à la liste fournie par le canal à ce moment-là, mais elle ne modifie pas rétroactivement le statut du programme pour les enregistrements d’appartenance à un programme existants.
 

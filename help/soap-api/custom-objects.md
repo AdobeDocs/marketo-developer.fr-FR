@@ -3,9 +3,9 @@ title: Objets personnalisés
 feature: SOAP
 description: Découvrez comment les objets personnalisés Marketo lient un prospect à de nombreux enregistrements, avec une structure, des limites et des appels d’API SOAP pour obtenir, synchroniser, supprimer, ainsi que pour l’utilisation de listes dynamiques et d’e-mails.
 exl-id: 29d65841-4b44-4d94-b14e-c583d433d015
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 9c10469ffa3b763552d176329a426ef51eebe0f1
 workflow-type: tm+mt
-source-wordcount: '256'
+source-wordcount: '286'
 ht-degree: 2%
 
 ---
@@ -36,6 +36,6 @@ Les objets personnalisés se composent des éléments suivants :
 
 Les appels suivants peuvent être utilisés pour interagir avec des CO.
 
-- [getCustomObjects](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/getCustomObjectsUsingGET)
-- [syncCustomObjects](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/syncCustomObjectsUsingPOST)
-- [deleteCustomObjects](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/deleteCustomObjectsUsingPOST)
+- [getCustomObjects](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectsUsingGET)
+- [syncCustomObjects](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/syncCustomObjectsUsingPOST)
+- [deleteCustomObjects](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/deleteCustomObjectsUsingPOST)

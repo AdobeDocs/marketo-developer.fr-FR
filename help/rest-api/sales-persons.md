@@ -3,7 +3,7 @@ title: Vendeurs
 feature: REST API
 description: Guide de l’API REST Marketo pour les enregistrements de commercial avec synchronisation SFDC ou Dynamics, à l’aide de externalSalesPersonId pour mettre en relation les prospects et effectuer des requêtes, des upserts et des suppressions.
 exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '396'
 ht-degree: 0%
@@ -12,15 +12,15 @@ ht-degree: 0%
 
 # Vendeurs
 
-[Référence du point d’entrée du commercial](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Sales-Persons)
+[Référence du point d’entrée du commercial](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
 
-Les API Sales Person sont en lecture seule pour les abonnements pour lesquels la [Synchronisation de &#x200B;](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou la [Synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) est activée. Les vendeurs sont un type d&#39;enregistrement de personne qui sont les propriétaires de ventes des enregistrements de prospect. Ils sont associés aux enregistrements de lead par le champ externalSalesPersonId sur chaque enregistrement de lead. Lorsqu’un prospect est associé à un commercial par un champ externalSalesPersonId renseigné, les champs de recherche de Propriétaire de prospect correspondants sont renseignés pour cet enregistrement de prospect dans Marketo, ce qui permet d’utiliser les filtres et jetons correspondants.
+Les API Sales Person sont en lecture seule pour les abonnements pour lesquels la [Synchronisation de ](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou la [Synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) est activée. Les vendeurs sont un type d&#39;enregistrement de personne qui sont les propriétaires de ventes des enregistrements de prospect. Ils sont associés aux enregistrements de lead par le champ externalSalesPersonId sur chaque enregistrement de lead. Lorsqu’un prospect est associé à un commercial par un champ externalSalesPersonId renseigné, les champs de recherche de Propriétaire de prospect correspondants sont renseignés pour cet enregistrement de prospect dans Marketo, ce qui permet d’utiliser les filtres et jetons correspondants.
 
-Les commerciaux sont associés aux enregistrements de lead à l’aide du point d’entrée [Synchroniser les leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) et en transmettant l’attribut externalSalesPersonId.
+Les commerciaux sont associés aux enregistrements de lead à l’aide du point d’entrée [Synchroniser les leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) et en transmettant l’attribut externalSalesPersonId.
 
-Les commerciaux sont associés aux enregistrements d’opportunité à l’aide du point d’entrée [Synchroniser les opportunités](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/syncOpportunitiesUsingPOST) et en transmettant l’attribut externalSalesPersonId.
+Les commerciaux sont associés aux enregistrements d’opportunité à l’aide du point d’entrée [Synchroniser les opportunités](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/syncOpportunitiesUsingPOST) et en transmettant l’attribut externalSalesPersonId.
 
-Les commerciaux sont associés aux enregistrements d’entreprise à l’aide du point d’entrée [Synchroniser les entreprises](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) et en transmettant l’attribut externalSalesPersonId.
+Les commerciaux sont associés aux enregistrements d’entreprise à l’aide du point d’entrée [Synchroniser les entreprises](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST) et en transmettant l’attribut externalSalesPersonId.
 
 Les enregistrements de commercial ne peuvent être modifiés que par le biais de l’API.
 

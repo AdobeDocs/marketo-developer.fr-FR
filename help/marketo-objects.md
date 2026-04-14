@@ -3,9 +3,9 @@ title: Objets Marketo
 feature: Email Programs
 description: Guide d’utilisation de Marketo Velocity avec les leads, les opportunités et les objets personnalisés, les champs de chargement, l’accès à la liste des 10 premiers, les relations SFDC et $TriggerObject.
 exl-id: 88c63d72-7aa5-4550-9e1a-887a479872e1
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
-source-wordcount: '530'
+source-wordcount: '532'
 ht-degree: 0%
 
 ---
@@ -15,7 +15,6 @@ ht-degree: 0%
 L’implémentation de Marketo Velocity peut fonctionner sur des données provenant de plusieurs sources dans Marketo : Leads, Opportunités, Objets personnalisés, Application mobile, Installation d’application mobile.
 
 ## Champs en cours de chargement
-
 
 Pour charger un champ à utiliser dans un script, ce champ doit être vérifié sous la liste correspondante dans l’éditeur de jeton de script.
 

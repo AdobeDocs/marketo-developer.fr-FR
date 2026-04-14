@@ -3,16 +3,16 @@ title: Importation d’objets personnalisés en bloc
 feature: Custom Objects
 description: Découvrez comment importer en bloc des objets personnalisés Marketo via REST à l’aide de fichiers CSV, TSV ou SSV.
 exl-id: e795476c-14bc-4e8c-b611-1f0941a65825
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '952'
+source-wordcount: '953'
 ht-degree: 0%
 
 ---
 
 # Importation d’objets personnalisés en bloc
 
-[Référence de point d’entrée d’importation d’objet personnalisé en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects)
+[Référence de point d’entrée d’importation d’objet personnalisé en bloc](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects)
 
 Lorsque vous avez de nombreux enregistrements d’objet personnalisés à  Pour les importer, il est recommandé de les importer de manière asynchrone à l’aide de l’API en bloc. Pour ce faire, importez un fichier plat contenant des enregistrements délimités (virgule, tabulation ou point-virgule). Le fichier peut contenir un nombre illimité d’enregistrements, à condition que sa taille soit inférieure à 10 Mo (sinon, il s’agit d’un HTTP  Le code d&#39;état 413 est renvoyé). Le contenu du fichier dépend de votre définition d’objet personnalisée. La première ligne contient toujours un en-tête qui répertorie les champs dans lesquels mapper les valeurs de chaque ligne. Tous les noms de champ de l’en-tête doivent correspondre à un nom d’API (comme expliqué ci-dessous). Les lignes restantes contiennent les données à importer, un enregistrement par ligne. L’opération d’enregistrement est « insert or update » uniquement.
 
@@ -22,7 +22,7 @@ Vous êtes autorisé à soumettre plusieurs demandes d’importation en bloc, da
 
 ## Exemple d’objet personnalisé
 
-Avant d’utiliser l’API en bloc, vous devez d’abord utiliser l’interface utilisateur d’administration de Marketo pour [créer votre objet personnalisé](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects). Par exemple, supposons que nous ayons créé un objet personnalisé « Voiture » avec les champs « Couleur », « Marque », « Modèle » et « VIN ». Vous trouverez ci-dessous les écrans de l’interface utilisateur d’administration affichant l’objet personnalisé. Vous pouvez voir que nous avons utilisé le champ VIN pour le dédoublonnement. Les noms d’API sont mis en surbrillance car ils doivent être utilisés lors de l’appel de points d’entrée liés à l’API en bloc.
+Avant d’utiliser l’API en bloc, vous devez d’abord utiliser l’interface utilisateur d’administration de Marketo pour [créer votre objet personnalisé](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects). Par exemple, supposons que nous ayons créé un objet personnalisé « Voiture » avec les champs « Couleur », « Marque », « Modèle » et « VIN ». Vous trouverez ci-dessous les écrans de l’interface utilisateur d’administration affichant l’objet personnalisé. Vous pouvez voir que nous avons utilisé le champ VIN pour le dédoublonnement. Les noms d’API sont mis en surbrillance car ils doivent être utilisés lors de l’appel de points d’entrée liés à l’API en bloc.
 
 ![Insérer un objet personnalisé](assets/bulk-insert-co-car-1.png)
 
@@ -45,7 +45,7 @@ Vous pouvez récupérer les noms d’API par programmation en transmettant le no
         {
             "name": "car_c",
             "displayName": "Car",
-            "description": "It's a car.",
+            "description": "It is a car.",
             "createdAt": "2017-02-22T19:55:51Z",
             "updatedAt": "2017-02-22T19:55:51Z",
             "idField": "marketoGUID",
@@ -130,7 +130,7 @@ La ligne 1 est l’en-tête et les lignes 2 à 4 sont les enregistrements de don
 
 ## Création d’un traitement
 
-Pour effectuer la demande d’importation en bloc, vous devez inclure le nom d’API de l’objet personnalisé dans le chemin d’accès au point d’entrée [Importer des objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Identity/operation/identityUsingPOST). Vous devez également inclure un paramètre « file » qui fait référence au nom de votre fichier d’importation, ainsi qu’un paramètre « format » qui spécifie le mode de délimitation de votre fichier d’importation (« csv », « tsv » ou « ssv »).
+Pour effectuer la demande d’importation en bloc, vous devez inclure le nom d’API de l’objet personnalisé dans le chemin d’accès au point d’entrée [Importer des objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Identity/operation/identityUsingPOST). Vous devez également inclure un paramètre « file » qui fait référence au nom de votre fichier d’importation, ainsi qu’un paramètre « format » qui spécifie le mode de délimitation de votre fichier d’importation (« csv », « tsv » ou « ssv »).
 
 ```http
 POST /bulk/v1/customobjects/{apiName}/import.json?format=csv
@@ -190,7 +190,7 @@ blue,bmw,325i,WBS3U9C52HP970604
 
 ## Interroger le statut de la tâche
 
-Une fois le traitement d’import créé, vous devez interroger son statut. Il est recommandé d’interroger le traitement d’importation toutes les 5 à 30 secondes. Pour ce faire, transmettez le nom d’API de l’objet personnalisé et le `batchId` dans le chemin d’accès au point d’entrée [Get Import Custom Object Status](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET).
+Une fois le traitement d’import créé, vous devez interroger son statut. Il est recommandé d’interroger le traitement d’importation toutes les 5 à 30 secondes. Pour ce faire, transmettez le nom d’API de l’objet personnalisé et le `batchId` dans le chemin d’accès au point d’entrée [Get Import Custom Object Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET).
 
 ```http
 GET /bulk/v1/customobjects/{apiName}/import/{batchId}/status.json
@@ -220,7 +220,7 @@ Cette réponse affiche un import terminé, mais le `status` peut être l’un de
 
 ## Échecs
 
-Les échecs sont indiqués par l’attribut `numOfRowsFailed` dans la réponse [Get Import Custom Object Status](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET). Si numOfRowsFailed est supérieur à zéro, cette valeur indique le nombre d’échecs survenus. Appelez le point d’entrée [Get Import Custom Object Failures](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectFailuresUsingGET) pour obtenir un fichier avec les détails de l’échec. Là encore, vous devez transmettre le nom et le `batchId` de l’API d’objet personnalisé dans le chemin d’accès. S’il n’existe aucun fichier d’échec, un code d’état HTTP 404 est renvoyé.
+Les échecs sont indiqués par l’attribut `numOfRowsFailed` dans la réponse [Get Import Custom Object Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET). Si numOfRowsFailed est supérieur à zéro, cette valeur indique le nombre d’échecs survenus. Appelez le point d’entrée [Get Import Custom Object Failures](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectFailuresUsingGET) pour obtenir un fichier avec les détails de l’échec. Là encore, vous devez transmettre le nom et le `batchId` de l’API d’objet personnalisé dans le chemin d’accès. S’il n’existe aucun fichier d’échec, un code d’état HTTP 404 est renvoyé.
 
 En poursuivant avec l’exemple, nous pouvons forcer un échec en modifiant l’en-tête et en remplaçant « vin » par « vin » (en ajoutant un espace entre la virgule et « vin »).
 
@@ -267,11 +267,11 @@ yellow,bmw,320i,WBA4R7C30HK896061,missing.dedupe.fields
 blue,bmw,325i,WBS3U9C52HP970604,missing.dedupe.fields
 ```
 
-Et nous pouvons voir que nous manquons notre `vin` de champ de déduplication.
+Et nous pouvons voir que nous manquons nos `vin` de champ de déduplication.
 
 ## Avertissements
 
-Les avertissements sont indiqués par l&#39;attribut `numOfRowsWithWarning` dans la réponse Get Import Custom Object Status. Si numOfRowsWithWarning est supérieur à zéro, cette valeur indique le nombre d&#39;avertissements qui se sont produits. Appelez le point d’entrée [Get Import Custom Object Warnings](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectWarningsUsingGET) pour obtenir un fichier avec les détails de l’avertissement. Là encore, vous devez transmettre le nom et le `batchId` de l’API d’objet personnalisé dans le chemin d’accès. S’il n’existe aucun fichier d’avertissement, un code d’état HTTP 404 est renvoyé.
+Les avertissements sont indiqués par l&#39;attribut `numOfRowsWithWarning` dans la réponse Get Import Custom Object Status. Si numOfRowsWithWarning est supérieur à zéro, cette valeur indique le nombre d&#39;avertissements qui se sont produits. Appelez le point d’entrée [Get Import Custom Object Warnings](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectWarningsUsingGET) pour obtenir un fichier avec les détails de l’avertissement. Là encore, vous devez transmettre le nom et le `batchId` de l’API d’objet personnalisé dans le chemin d’accès. S’il n’existe aucun fichier d’avertissement, un code d’état HTTP 404 est renvoyé.
 
 ```http
 GET /bulk/v1/customobjects/car_c/import/{batchId}/warnings.json

@@ -3,7 +3,7 @@ title: Base de données des leads
 feature: REST API, Database
 description: Guide des API de base de données de lead Marketo couvrant les objets, CRUD et décrire les méthodes, les modèles de requête, les limites de lot et les restrictions d’intégration dans CRM.
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '1373'
 ht-degree: 1%
@@ -32,7 +32,7 @@ La plupart de ces objets incluent au moins les méthodes Create, Read, Update et
 
 ## API
 
-Pour obtenir la liste complète des points d’entrée de l’API de base de données de leads, y compris les paramètres et les informations de modélisation, consultez la [&#x200B; Référence des points d’entrée de l’API de base de données de leads &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi/).
+Pour obtenir la liste complète des points d’entrée de l’API de base de données de leads, y compris les paramètres et les informations de modélisation, consultez la [ Référence des points d’entrée de l’API de base de données de leads ](https://developer.adobe.com/marketo-apis/api/mapi).
 
 Pour les instances dont l’intégration CRM native est activée (Microsoft Dynamics ou Salesforce.com), les API Société, Opportunité, Rôle de l’opportunité et Commercial sont désactivées. Lorsqu’ils sont activés, les enregistrements sont gérés via le CRM et ne sont pas accessibles ni mis à jour via les API Marketo.
 

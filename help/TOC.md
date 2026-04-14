@@ -5,9 +5,9 @@ breadcrumb-title: Guide de developpement [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 74964e90ddc68a611706afcad1f6016d05b060d6
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '284'
+source-wordcount: '286'
 ht-degree: 38%
 
 ---
@@ -165,6 +165,7 @@ ht-degree: 38%
 - [Script de l&#39;e-mail](email-scripting.md)
 - [Exemples de script e-mail](examples.md)
 - [Objets Marketo](marketo-objects.md)
+- [Serveur MCP](mcp-server.md)
 - [Licence](api-license.md)
 - [Sandbox partenaire](partner-sandbox.md)
 - [Étapes de flux en libre-service](self-service-flow-steps.md)

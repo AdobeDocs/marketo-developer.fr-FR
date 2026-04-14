@@ -3,7 +3,7 @@ title: Importation de leads en bloc
 feature: REST API
 description: Créez et surveillez des importations de leads en bloc asynchrones dans Marketo avec CSV TSV ou SSV.
 exl-id: 615f158b-35f9-425a-b568-0a7041262504
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '825'
 ht-degree: 0%
@@ -12,9 +12,9 @@ ht-degree: 0%
 
 # Importation de leads en bloc
 
-[Référence de point d’entrée d’importation de leads en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads)
+[Référence de point d’entrée d’importation de leads en bloc](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads)
 
-Pour un grand nombre d’enregistrements de prospect, les prospects peuvent être importés de manière asynchrone à l’aide de l’[API en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). Vous pouvez ainsi importer une liste d’enregistrements dans Marketo à l’aide d’un fichier plat avec les délimiteurs (virgule, tabulation ou point-virgule). Le fichier peut contenir un nombre illimité d’enregistrements, à condition que la taille totale du fichier soit inférieure à 10 Mo. L’opération d’enregistrement est « insert or update » uniquement.
+Pour un grand nombre d’enregistrements de prospect, les prospects peuvent être importés de manière asynchrone à l’aide de l’[API en bloc](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). Vous pouvez ainsi importer une liste d’enregistrements dans Marketo à l’aide d’un fichier plat avec les délimiteurs (virgule, tabulation ou point-virgule). Le fichier peut contenir un nombre illimité d’enregistrements, à condition que la taille totale du fichier soit inférieure à 10 Mo. L’opération d’enregistrement est « insert or update » uniquement.
 
 ## Limites de traitement
 

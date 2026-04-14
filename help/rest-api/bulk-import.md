@@ -3,9 +3,9 @@ title: Importation en bloc
 feature: REST API
 description: Import en bloc Marketo pour le chargement de prospects, d’objets personnalisés et de membres de programme par le biais de chargements multipartie, la création de tâches asynchrones, le statut d’interrogation et la gestion des échecs.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '660'
+source-wordcount: '661'
 ht-degree: 2%
 
 ---
@@ -46,7 +46,7 @@ L’importation en bloc est une opération d’enregistrement « insérer ou met
 
 ## Création d’un traitement
 
-Les API d’import en bloc Marketo utilisent le concept d’une tâche pour exécuter l’import de données. Examinons la création d’une tâche d’importation de prospect simple à l’aide du point d’entrée [Importer des prospects](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST).  Notez que ce point d’entrée utilise [multipart/form-data comme type de contenu](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Comme il peut s’avérer difficile d’y parvenir, il est recommandé d’utiliser une bibliothèque de prise en charge HTTP pour la langue de votre choix.  Si vous êtes juste en train de vous mouiller les pieds, nous vous suggérons d&#39;utiliser [curl](https://curl.se/).
+Les API d’import en bloc Marketo utilisent le concept d’une tâche pour exécuter l’import de données. Examinons la création d’une tâche d’importation de prospect simple à l’aide du point d’entrée [Importer des prospects](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST).  Notez que ce point d’entrée utilise [multipart/form-data comme type de contenu](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Comme il peut s’avérer difficile d’y parvenir, il est recommandé d’utiliser une bibliothèque de prise en charge HTTP pour la langue de votre choix.  Si vous êtes juste en train de vous mouiller les pieds, nous vous suggérons d&#39;utiliser [curl](https://curl.se/).
 
 ```http
 POST /bulk/v1/leads.json?format=csv
@@ -99,7 +99,7 @@ Chaque point d’entrée de création de tâche partage certains paramètres com
 
 ## Interroger le statut de la tâche
 
-La détermination du statut de la tâche est simple à l’aide du point d’entrée [Obtenir le statut du prospect d’importation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET).
+La détermination du statut de la tâche est simple à l’aide du point d’entrée [Obtenir le statut du prospect d’importation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET).
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}.json
@@ -129,7 +129,7 @@ Le membre de `status` interne indique la progression de la tâche. Il peut s’a
 
 Les échecs sont indiqués par l’attribut `numOfRowsFailed` dans la réponse Obtenir le statut du lead d’importation . Si `numOfRowsFailed` est supérieur à zéro, cette valeur indique le nombre d’échecs qui se sont produits.
 
-Pour récupérer les enregistrements et les causes des lignes ayant échoué, vous devez récupérer le fichier d’échec à l’aide du point d’entrée [Get Import Lead Failures](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET).
+Pour récupérer les enregistrements et les causes des lignes ayant échoué, vous devez récupérer le fichier d’échec à l’aide du point d’entrée [Get Import Lead Failures](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET).
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}/failures.json

@@ -3,7 +3,7 @@ title: Rôles d’opportunité
 feature: REST API
 description: Gérez les rôles d’opportunité Marketo via l’API REST, notamment la description, les requêtes avec des champs de déduplication composés, la création d’une suppression de mise à jour, les dépassements de délai et aucune synchronisation CRM.
 exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '279'
 ht-degree: 0%
@@ -12,7 +12,7 @@ ht-degree: 0%
 
 # Rôles d’opportunité
 
-[Référence du point d’entrée des rôles d’opportunité](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/getOpportunityRolesUsingGET)
+[Référence du point d’entrée des rôles d’opportunité](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityRolesUsingGET)
 
 Les leads sont liés aux opportunités via l’objet de `opportunityRole` intermédiaire.
 

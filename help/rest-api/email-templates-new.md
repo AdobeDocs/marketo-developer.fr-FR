@@ -3,7 +3,7 @@ title: Modèles d’e-mail
 feature: REST API
 description: Utilisez l’API REST Marketo Asset pour interroger, créer, mettre à jour, cloner, supprimer, approuver et inspecter les dépendances des modèles d’e-mail.
 exl-id: 50bb0047-d6ea-4c94-a900-18c37b17a147
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '292'
 ht-degree: 9%
@@ -12,7 +12,7 @@ ht-degree: 9%
 
 # Modèles d’e-mail
 
-[Référence du point d’entrée du modèle d’e-mail](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates)
+[Référence du point d’entrée du modèle d’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates)
 
 Les modèles d’e-mail définissent la structure et la disposition réutilisable utilisées lors de la création d’e-mails.
 

@@ -3,9 +3,9 @@ title: Extraction En Masse
 feature: REST API
 description: Découvrez comment utiliser l’API REST d’extraction en bloc Marketo pour exporter des prospects, des activités, des membres de programme et des objets personnalisés, avec OAuth, des files d’attente de tâches et des limites quotidiennes 500MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '1723'
+source-wordcount: '1724'
 ht-degree: 1%
 
 ---
@@ -53,7 +53,7 @@ Les API d’extraction en bloc sont limitées en fonction de la taille sur le di
 
 Le quota quotidien est de 500MB maximum par jour, qui est partagé entre les prospects, les activités, les membres du programme et les objets personnalisés. Lorsque le quota est dépassé, vous ne pouvez pas créer ou mettre en file d’attente un autre traitement tant que le quota quotidien n’est pas réinitialisé à minuit [heure du Centre](https://en.wikipedia.org/wiki/Central_Time_Zone). Jusque-là, une erreur « 1029, Quota quotidien d’exportation dépassé » est renvoyée. Outre le quota journalier, il n&#39;existe pas de taille de fichier maximale.
 
-Une fois qu’un traitement est mis en file d’attente, il s’exécute jusqu’à la fin (sauf erreur ou annulation du traitement). Si une tâche échoue pour une raison quelconque, vous devez la recréer. Les fichiers sont entièrement écrits uniquement lorsqu’une tâche atteint le statut Terminé (les fichiers partiels ne sont jamais écrits). Vous pouvez vérifier qu’un fichier a été entièrement écrit en calculant son hachage SHA-256 et en le comparant à la somme de contrôle renvoyée par les points d’entrée de statut de tâche.
+Une fois qu’un traitement est mis en file d’attente, il s’exécute jusqu’à la fin (sauf erreur ou annulation du traitement). Si une tâche échoue pour une raison quelconque, vous devez la recréer. Les fichiers sont entièrement écrits uniquement lorsqu’une tâche atteint le statut Terminé (les fichiers partiels ne sont jamais écrits). Vous pouvez vérifier qu’un fichier a été entièrement écrit en calculant qu’il s’agit d’un hachage SHA-256 et en le comparant à la somme de contrôle renvoyée par les points d’entrée de statut de tâche.
 
 Vous pouvez déterminer la quantité totale de disque utilisée pour la journée en cours en appelant la fonction Obtenir les tâches de lead/activité/membre de programme d’exportation. Ces points d’entrée renvoient une liste de toutes les tâches au cours des sept derniers jours. Vous pouvez filtrer cette liste en ne retenant que les tâches terminées au cours de la journée en cours (à l’aide des attributs `status` et `finishedAt`). Additionnez ensuite les tailles de fichiers de ces tâches pour obtenir la quantité totale utilisée. Impossible de supprimer un fichier pour récupérer de l’espace disque.
 

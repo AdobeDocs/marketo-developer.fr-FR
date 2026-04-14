@@ -3,7 +3,7 @@ title: Modèles de pages de destination
 feature: REST API, Landing Pages
 description: Gérez les modèles de page de destination Marketo via les points d’entrée de l’API REST pour les types de formulaires gratuits et guidés, la requête par identifiant ou nom, la création, la mise à jour d’HTML, le clone et Munchkin.
 exl-id: f9d1255e-ec13-4b75-96d5-b4cc9457a51b
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '703'
 ht-degree: 1%
@@ -12,17 +12,17 @@ ht-degree: 1%
 
 # Modèles de pages de destination
 
-[Référence du point d’entrée du modèle de page de destination](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates)
+[Référence du point d’entrée du modèle de page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates)
 
 Les modèles de page de destination sont une ressource parent et une dépendance pour les pages de destination Marketo individuelles. Les landing pages obtiennent le squelette de leur contenu à partir du modèle parent.
 
 ## Types de modèles
 
-Marketo dispose de deux types de modèles de page de destination, à structure libre et guidés. Les modèles de page de destination à structure libre offrent une expérience de modification vaguement structurée pour les pages qui en sont dérivées. Les modèles guidés fournissent une expérience fortement structurée, où les types d’éléments et les emplacements peuvent être limités au niveau du modèle. Pour plus d’informations sur les différences, voir [ce document](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
+Marketo dispose de deux types de modèles de page de destination, à structure libre et guidés. Les modèles de page de destination à structure libre offrent une expérience de modification vaguement structurée pour les pages qui en sont dérivées. Les modèles guidés fournissent une expérience fortement structurée, où les types d’éléments et les emplacements peuvent être limités au niveau du modèle. Pour plus d’informations sur les différences, voir [ce document](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
 
 ## Requête
 
-Les modèles de page de destination prennent en charge les types de requête standard pour les ressources [par identifiant](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET) et [navigation](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Ces points d’entrée renvoient des métadonnées pour les modèles. La récupération du contenu HTML des modèles doit être effectuée modèle par modèle via son identifiant .
+Les modèles de page de destination prennent en charge les types de requête standard pour les ressources [par identifiant](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET) et [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Ces points d’entrée renvoient des métadonnées pour les modèles. La récupération du contenu HTML des modèles doit être effectuée modèle par modèle via son identifiant .
 
 ## Créer et mettre à jour
 
@@ -66,11 +66,11 @@ name=New LPT - PHP&folder={"id":12,"type":"Folder"}
 }
 ```
 
-Le contenu du modèle doit être renseigné séparément via le point d’entrée [Mettre à jour le contenu du modèle de page de destination](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST).
+Le contenu du modèle doit être renseigné séparément via le point d’entrée [Mettre à jour le contenu du modèle de page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST).
 
 ### Mettre à jour les métadonnées
 
-Les métadonnées des modèles de page de destination peuvent être mises à jour via le point d’entrée [Mettre à jour les métadonnées du modèle de page de destination](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST). Le nom, la description et le paramètre enableMunchkin peuvent être mis à jour de cette manière.
+Les métadonnées des modèles de page de destination peuvent être mises à jour via le point d’entrée [Mettre à jour les métadonnées du modèle de page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST). Le nom, la description et le paramètre enableMunchkin peuvent être mis à jour de cette manière.
 
 ### Mettre à jour le contenu
 
@@ -167,9 +167,9 @@ Les modèles de page de destination suivent le modèle standard approuvé pour l
 
 Pour qu’un modèle soit approuvé, il doit être conforme aux règles de son type, guidé ou libre. Pour plus d’informations sur les conditions requises pour la création et la validation de modèles de leurs types respectifs, consultez leurs documents de création respectifs :
 
-- [Modèles de page de destination de formulaire libre](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
-- [Modèles de page de destination guidée](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
-- [Exemples de modèles guidés](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
+- [Modèles de page de destination de formulaire libre](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
+- [Modèles de page de destination guidée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
+- [Exemples de modèles guidés](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
 
 ## Supprimer
 

@@ -3,7 +3,7 @@ title: Activités
 feature: REST API
 description: Utilisez l’API REST Activités Marketo Engage pour répertorier les types d’activité, récupérer les activités de prospect avec des jetons de pagination et gérer les modifications personnalisées et de valeur de données.
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '2139'
 ht-degree: 0%
@@ -22,7 +22,7 @@ La plupart des activités seront purgées après un certain temps.
 
 ## Décrire
 
-Pour récupérer une liste des types disponibles et leurs définitions pour une instance, vous pouvez utiliser le point d’entrée [Get Activity Types](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getAllActivityTypesUsingGET).
+Pour récupérer une liste des types disponibles et leurs définitions pour une instance, vous pouvez utiliser le point d’entrée [Get Activity Types](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET).
 
 ```http
 GET /rest/v1/activities/types.json
@@ -75,7 +75,7 @@ Les réponses du monde réel comprennent beaucoup plus de définitions. Dans cet
 
 ## Requête
 
-Pour récupérer les activités à partir de Marketo, appelez le point d’entrée [Obtenir les activités de lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadActivitiesUsingGET). Vous devez d’abord récupérer un jeton de pagination pour la date et l’heure à partir desquelles vous souhaitez commencer à récupérer les activités. Vous transmettez ensuite le jeton de pagination dans le paramètre de requête `nextPageToken`. En outre, vous transmettez jusqu’à dix identifiants de type d’activité dans le paramètre de requête `activityTypeIds` sous la forme d’une liste séparée par des virgules.
+Pour récupérer les activités à partir de Marketo, appelez le point d’entrée [Obtenir les activités de lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET). Vous devez d’abord récupérer un jeton de pagination pour la date et l’heure à partir desquelles vous souhaitez commencer à récupérer les activités. Vous transmettez ensuite le jeton de pagination dans le paramètre de requête `nextPageToken`. En outre, vous transmettez jusqu’à dix identifiants de type d’activité dans le paramètre de requête `activityTypeIds` sous la forme d’une liste séparée par des virgules.
 
 Vous pouvez éventuellement inclure un paramètre de requête listId pour limiter votre recherche aux seuls enregistrements inclus dans une liste statique spécifique ou un paramètre de requête leadIds et rechercher des activités à partir d’un ensemble de prospects spécifié uniquement. Vous pouvez transmettre jusqu’à 30 leadId sous forme de liste séparée par des virgules.
 
@@ -135,7 +135,7 @@ Notez que dans chaque élément du tableau de résultats, l’attribut entier `i
 
 ### Modifications de la valeur des données
 
-Pour les activités Changement de valeur des données , une version spécialisée de l’API d’activités est fournie. Le point d’entrée [Obtenir les modifications de lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadChangesUsingGET) renvoie uniquement les activités des enregistrements Modification de la valeur des données aux champs de lead. L’interface est identique à l’API Get Lead Activities avec deux différences :
+Pour les activités Changement de valeur des données , une version spécialisée de l’API d’activités est fournie. Le point d’entrée [Obtenir les modifications de lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadChangesUsingGET) renvoie uniquement les activités des enregistrements Modification de la valeur des données aux champs de lead. L’interface est identique à l’API Get Lead Activities avec deux différences :
 
 * Il n’existe aucun paramètre `activityTypeIds`, car le point d’entrée renvoie uniquement les activités Modification de la valeur des données et Nouveau prospect.
 * Le paramètre de requête `fields` est obligatoire, où vous pouvez transmettre une liste de champs séparés par des virgules pour indiquer les champs pour lesquels vous souhaitez récupérer les modifications.
@@ -190,7 +190,7 @@ Notez que dans chaque élément du tableau de résultats, l’attribut entier `i
 
 ### Leads supprimés
 
-Il existe également un point d’entrée spécial [Obtenir les leads supprimés](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getDeletedLeadsUsingGET) pour récupérer les activités supprimées de Marketo.
+Il existe également un point d’entrée spécial [Obtenir les leads supprimés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getDeletedLeadsUsingGET) pour récupérer les activités supprimées de Marketo.
 
 ```http
 GET /rest/v1/activities/deletedleads.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ
@@ -242,11 +242,11 @@ Les activités personnalisées fonctionnent comme les activités standard, à la
 * Nombre maximal d’activités personnalisées : 10
 * Nombre maximal d’attributs par activité personnalisée : 20
 
-La récupération des données d’activité personnalisées est effectuée de la même manière que les activités standard, via l’API [Obtenir les activités du prospect](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadActivitiesUsingGET).
+La récupération des données d’activité personnalisées est effectuée de la même manière que les activités standard, via l’API [Obtenir les activités du prospect](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET).
 
 ## Types de requête
 
-Outre le point d’entrée standard Get Activity Types, les points d’entrée [Get Custom Activity Types](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getCustomActivityTypeUsingGET) et [Describe Custom Activity Type](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/describeCustomActivityTypeUsingGET) renvoient des détails sur les types d’activité configurés dans l’instance Marketo, ainsi que des métadonnées concernant les attributs d’un type donné. La méthode normale [Get Activity Types](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getAllActivityTypesUsingGET) renvoie toujours des métadonnées concernant les activités personnalisées, mais n’indique pas si un type donné est personnalisé.
+Outre le point d’entrée standard Get Activity Types, les points d’entrée [Get Custom Activity Types](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getCustomActivityTypeUsingGET) et [Describe Custom Activity Type](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/describeCustomActivityTypeUsingGET) renvoient des détails sur les types d’activité configurés dans l’instance Marketo, ainsi que des métadonnées concernant les attributs d’un type donné. La méthode normale [Get Activity Types](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET) renvoie toujours des métadonnées concernant les activités personnalisées, mais n’indique pas si un type donné est personnalisé.
 
 ### Obtenir les types
 
@@ -621,7 +621,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/delete.json
 
 ## Ajouter des activités personnalisées
 
-Les activités personnalisées sont des enregistrements en écriture unique d’activités historiques liées aux enregistrements de personnes individuelles dans Marketo. Ces activités possèdent un schéma géré par les administrateurs Marketo ou à distance au moyen d’une intégration d’API. Les activités personnalisées sont ajoutées aux enregistrements de prospect via le point d’entrée [Ajouter des activités personnalisées](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/addCustomActivityUsingPOST) et associées à chaque enregistrement de prospect via son champ `leadId`. Les activités personnalisées peuvent être affichées dans l’interface utilisateur via le journal d’activité du prospect ou récupérées via le point d’entrée Get Lead Activities en spécifiant l’identifiant de type de l’activité personnalisée.
+Les activités personnalisées sont des enregistrements en écriture unique d’activités historiques liées aux enregistrements de personnes individuelles dans Marketo. Ces activités possèdent un schéma géré par les administrateurs Marketo ou à distance au moyen d’une intégration d’API. Les activités personnalisées sont ajoutées aux enregistrements de prospect via le point d’entrée [Ajouter des activités personnalisées](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/addCustomActivityUsingPOST) et associées à chaque enregistrement de prospect via son champ `leadId`. Les activités personnalisées peuvent être affichées dans l’interface utilisateur via le journal d’activité du prospect ou récupérées via le point d’entrée Get Lead Activities en spécifiant l’identifiant de type de l’activité personnalisée.
 
 Les activités personnalisées sont appropriées pour l’enregistrement de données liées à un enregistrement de personne unique et qui n’ont pas besoin d’être mises à jour ou remplacées. Par exemple, l’enregistrement d’une personne assistant à un événement en tant qu’activité « Événement auquel vous avez participé ». Pour les enregistrements liés à une personne qui peuvent changer, comme l’inscription des étudiants, il convient plutôt d’utiliser des objets personnalisés, car ils peuvent être mis à jour, contrairement aux activités personnalisées.
 

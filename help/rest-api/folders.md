@@ -3,7 +3,7 @@ title: Dossiers
 feature: REST API
 description: Guide de l’API REST Marketo pour les dossiers couvrant la création, la mise à jour, la suppression, la requête par identifiant et nom, la navigation en masse avec root, workspace, maxDepth et la pagination.
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '1099'
 ht-degree: 1%
@@ -12,13 +12,13 @@ ht-degree: 1%
 
 # Dossiers
 
-[Référence des points d’entrée des dossiers](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders)
+[Référence des points d’entrée des dossiers](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders)
 
 Les dossiers sont la ressource organisationnelle principale dans Marketo. En outre, chaque autre type de ressource a au moins un dossier comme parent. Ce dossier parent peut être soit un dossier purement organisationnel, soit un programme, qui a une relation fonctionnelle avec d’autres types de ressources et peut également être le parent d’autres ressources. Les dossiers peuvent être créés, interrogés, mis à jour et supprimés par le biais de l’API et permettent également de récupérer une liste de leur contenu. Bien que les programmes puissent être renvoyés en interrogeant l’API Folders, la création, la mise à jour et la suppression de programmes doivent être effectuées via l’API Programmes.
 
 ## Requête
 
-Les requêtes de dossiers suivent les types de requête standard pour les ressources de [par ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET) et [navigation](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderUsingGET).
+Les requêtes de dossiers suivent les types de requête standard pour les ressources de [par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) et [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET).
 
 ### Par Id
 
@@ -70,7 +70,7 @@ Le paramètre type est obligatoire et doit être de type « Dossier » ou « Pro
 
 ### Par nom
 
-La [requête par nom](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET) est également autorisée. Le point d’entrée de la requête par nom possède le nom comme seul paramètre obligatoire. Name effectue une correspondance de chaîne exacte par rapport au champ de nom des dossiers dans l’instance et renvoie les résultats pour chaque dossier correspondant à ce nom. Elle comporte également les paramètres de requête facultatifs « type » qui peuvent être Dossier ou Programme, « root » l’identifiant du dossier dans lequel effectuer la recherche ou « workspace » le nom de l’espace de travail dans lequel effectuer la recherche. Si le paramètre racine est défini, le paramètre de type doit également être défini.
+La [requête par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) est également autorisée. Le point d’entrée de la requête par nom possède le nom comme seul paramètre obligatoire. Name effectue une correspondance de chaîne exacte par rapport au champ de nom des dossiers dans l’instance et renvoie les résultats pour chaque dossier correspondant à ce nom. Elle comporte également les paramètres de requête facultatifs « type » qui peuvent être Dossier ou Programme, « root » l’identifiant du dossier dans lequel effectuer la recherche ou « workspace » le nom de l’espace de travail dans lequel effectuer la recherche. Si le paramètre racine est défini, le paramètre de type doit également être défini.
 
 ```http
 GET /rest/asset/v1/folder/byName.json?name=Test%2010%20-%20deverly
@@ -113,12 +113,12 @@ Lors d’une recherche par nom, il est important de noter que les activités mar
 
 ### Parcourir
 
-Les dossiers peuvent également être [récupérés en bloc](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderUsingGET). Le paramètre « root » peut être utilisé pour spécifier le dossier parent sous lequel la requête sera exécutée et est formaté en tant qu’objet JSON incorporé en tant que valeur pour le paramètre de requête. La racine comporte deux membres :
+Les dossiers peuvent également être [récupérés en bloc](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET). Le paramètre « root » peut être utilisé pour spécifier le dossier parent sous lequel la requête sera exécutée et est formaté en tant qu’objet JSON incorporé en tant que valeur pour le paramètre de requête. La racine comporte deux membres :
 
 1. id - L’identifiant du dossier ou du programme.
 1. type : dossier ou programme, selon le type du dossier racine dans le navigateur.
 
-Si le dossier racine n’est pas connu ou si l’intention est de récupérer tous les dossiers d’une zone donnée, la racine peut être spécifiée comme les zones « Activités marketing », « Design Studio » ou « Base de données de leads ». Les identifiants de chacun de ces éléments peuvent être récupérés à l’aide de l’API [Get Folder By Name](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET) et en spécifiant le nom de la zone souhaitée.
+Si le dossier racine n’est pas connu ou si l’intention est de récupérer tous les dossiers d’une zone donnée, la racine peut être spécifiée comme les zones « Activités marketing », « Design Studio » ou « Base de données de leads ». Les identifiants de chacun de ces éléments peuvent être récupérés à l’aide de l’API [Get Folder By Name](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) et en spécifiant le nom de la zone souhaitée.
 
 Comme les autres points d’entrée de récupération de ressources en bloc, offset et maxReturn sont des paramètres facultatifs pour la pagination.   Les autres paramètres facultatifs sont les suivants :
 
@@ -211,7 +211,7 @@ Le chemin d’accès d’un dossier affiche sa hiérarchie dans l’arborescence
 
 ## Créer et mettre à jour
 
-La [création de dossiers](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/createFolderUsingPOST) est simple et est exécutée avec une application/x-www-form-urlencoded POST qui comporte deux paramètres obligatoires, « name », une chaîne et « parent », le parent dans lequel créer le dossier, qui est un objet JSON incorporé avec deux membres, un identifiant et un type, soit Dossier ou Programme, selon le type du dossier cible. Vous pouvez également inclure une « description » (une chaîne) facultative. Elle peut contenir jusqu’à 2 000 caractères.
+La [création de dossiers](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/createFolderUsingPOST) est simple et est exécutée avec une application/x-www-form-urlencoded POST qui comporte deux paramètres obligatoires, « name », une chaîne et « parent », le parent dans lequel créer le dossier, qui est un objet JSON incorporé avec deux membres, un identifiant et un type, soit Dossier ou Programme, selon le type du dossier cible. Vous pouvez également inclure une « description » (une chaîne) facultative. Elle peut contenir jusqu’à 2 000 caractères.
 
 ```http
 POST /rest/asset/v1/folders.json

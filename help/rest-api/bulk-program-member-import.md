@@ -3,7 +3,7 @@ title: Importation de membres de programme en bloc
 feature: REST API
 description: Découvrez comment importer des membres de programme en bloc via l’API REST Marketo à l’aide de fichiers CSV TSV ou SSV de moins de 10 Mo, des limites de file d’attente, des paramètres requis et du statut de la tâche d’interrogation.
 exl-id: b0e1039a-fe9b-4fb7-9aa6-9980a06da673
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '962'
 ht-degree: 0%
@@ -12,9 +12,9 @@ ht-degree: 0%
 
 # Importation de membres de programme en bloc
 
-[Référence de point d’entrée d’importation de membre de programme en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members)
+[Référence de point d’entrée d’importation de membre de programme en bloc](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members)
 
-Pour de grandes quantités d’enregistrements de membre de programme, les membres de programme peuvent être importés de manière asynchrone avec l’[API en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members). Vous pouvez ainsi importer une liste d’enregistrements dans Marketo à l’aide d’un fichier plat avec les délimiteurs (virgule, tabulation ou point-virgule). Le fichier peut contenir un nombre illimité d’enregistrements, à condition que la taille totale du fichier soit inférieure à 10 Mo. L’opération d’enregistrement est « insert or update » uniquement.
+Pour de grandes quantités d’enregistrements de membre de programme, les membres de programme peuvent être importés de manière asynchrone avec l’[API en bloc](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members). Vous pouvez ainsi importer une liste d’enregistrements dans Marketo à l’aide d’un fichier plat avec les délimiteurs (virgule, tabulation ou point-virgule). Le fichier peut contenir un nombre illimité d’enregistrements, à condition que la taille totale du fichier soit inférieure à 10 Mo. L’opération d’enregistrement est « insert or update » uniquement.
 
 ## Limites de traitement
 
@@ -22,7 +22,7 @@ Vous êtes autorisé à soumettre plusieurs demandes d’importation en bloc, av
 
 ## Importer fichier
 
-La première ligne du fichier doit être un en-tête qui répertorie les noms d’API REST correspondants comme des champs dans lesquels mapper les valeurs de chaque ligne. Les noms d’API REST peuvent être récupérés à l’aide des points d’entrée [Décrire le prospect](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) et/ou [Décrire le membre de programme](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeProgramMemberUsingGET). Les enregistrements peuvent contenir des champs de prospect, des champs de prospect personnalisés et des champs de membre de programme personnalisés.
+La première ligne du fichier doit être un en-tête qui répertorie les noms d’API REST correspondants comme des champs dans lesquels mapper les valeurs de chaque ligne. Les noms d’API REST peuvent être récupérés à l’aide des points d’entrée [Décrire le prospect](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/describeUsingGET_2) et/ou [Décrire le membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/describeProgramMemberUsingGET). Les enregistrements peuvent contenir des champs de prospect, des champs de prospect personnalisés et des champs de membre de programme personnalisés.
 
 Un fichier type suit ce modèle de base :
 
@@ -37,7 +37,7 @@ Ce type de requête pouvant être difficile à implémenter, il est vivement rec
 
 ## Création d’un traitement
 
-Le point d’entrée [Importer des membres de programme](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/importProgramMemberUsingPOST) lit un fichier contenant les enregistrements des membres du programme et les ajoute à un programme avec un statut donné. Les enregistrements peuvent contenir à la fois des champs de prospect et des champs personnalisés de membre de programme. Tous les enregistrements doivent inclure le champ d’e-mail, qui est utilisé à des fins de déduplication.
+Le point d’entrée [Importer des membres de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/importProgramMemberUsingPOST) lit un fichier contenant les enregistrements des membres du programme et les ajoute à un programme avec un statut donné. Les enregistrements peuvent contenir à la fois des champs de prospect et des champs personnalisés de membre de programme. Tous les enregistrements doivent inclure le champ d’e-mail, qui est utilisé à des fins de déduplication.
 
 Le paramètre `programId` path spécifie le programme auquel les membres sont ajoutés.
 
@@ -109,7 +109,7 @@ Lancel,Lannister,Lancel@Lannister.com,Lannister,House Lannister,0
 
 ## Interroger le statut de la tâche
 
-Une fois le traitement d’import créé, vous devez interroger son statut. Il est recommandé d’interroger le traitement d’importation toutes les 5 à 30 secondes. Pour ce faire, transmettez le paramètre de chemin d’accès `batchId` au point d’entrée [Obtenir le statut du membre du programme d’importation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET).
+Une fois le traitement d’import créé, vous devez interroger son statut. Il est recommandé d’interroger le traitement d’importation toutes les 5 à 30 secondes. Pour ce faire, transmettez le paramètre de chemin d’accès `batchId` au point d’entrée [Obtenir le statut du membre du programme d’importation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET).
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/status.json
@@ -139,7 +139,7 @@ Si la tâche est terminée, vous disposez d’une liste du nombre de lignes trai
 
 ## Échecs
 
-Les échecs sont indiqués par l’attribut `numOfRowsFailed` dans la réponse [Obtenir le statut du membre du programme d’importation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET). Si numOfRowsFailed est supérieur à zéro, cette valeur indique le nombre d’échecs survenus.
+Les échecs sont indiqués par l’attribut `numOfRowsFailed` dans la réponse [Obtenir le statut du membre du programme d’importation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET). Si numOfRowsFailed est supérieur à zéro, cette valeur indique le nombre d’échecs survenus.
 
 Utilisez le point d’entrée Get Import Program Member Failures pour récupérer les enregistrements et les causes des lignes ayant échoué en transmettant le paramètre de chemin d’accès `batchId`.
 
@@ -193,9 +193,9 @@ Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTE
 
 ## Avertissements
 
-Les avertissements sont indiqués par l’attribut `numOfRowsWithWarning` dans la réponse [Obtenir le statut de membre du programme d’importation](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET). Si `numOfRowsWithWarning` est supérieur à zéro, cette valeur indique le nombre d’avertissements qui se sont produits.
+Les avertissements sont indiqués par l’attribut `numOfRowsWithWarning` dans la réponse [Obtenir le statut de membre du programme d’importation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET). Si `numOfRowsWithWarning` est supérieur à zéro, cette valeur indique le nombre d’avertissements qui se sont produits.
 
-Utilisez le point d’entrée [Get Import Program Member Warnings](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET) pour récupérer les enregistrements et les causes des lignes d’avertissement en transmettant le paramètre de chemin d’accès `batchId`.
+Utilisez le point d’entrée [Get Import Program Member Warnings](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET) pour récupérer les enregistrements et les causes des lignes d’avertissement en transmettant le paramètre de chemin d’accès `batchId`.
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/warnings.json
