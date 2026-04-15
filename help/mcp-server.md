@@ -3,7 +3,7 @@ title: Serveur MCP
 description: Découvrez comment connecter un assistant AI à Marketo à l’aide du serveur MCP. Configurez le bureau Claude, le curseur, le code Claude ou le code VS avec vos informations d’identification Marketo.
 hidefromtoc: true
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-source-git-commit: 85285b49ce2540542d6169cd1466ced02955b586
+source-git-commit: 3fe1c3e9fe572ef68d20ba10f93535aac9a98602
 workflow-type: tm+mt
 source-wordcount: '1324'
 ht-degree: 1%
@@ -43,7 +43,7 @@ Si vous les avez déjà, passez à [Configurer votre outil d’IA](#configure-yo
 ### ID de compte Munchkin
 
 1. Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Munchkin]**.
-1. Copiez l’ID de compte **&#x200B;**. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
+1. Copiez l’ID de compte ****. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
 
 ### Point d’entrée de l’API REST
 
@@ -73,8 +73,7 @@ Si le fichier contient déjà d’autres serveurs MCP, ajoutez l’entrée `mark
       "headers": {
         "X-Marketo-Client-Id": "YOUR-CLIENT-ID",
         "X-Marketo-Client-Secret": "YOUR-CLIENT-SECRET",
-        "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID",
-        "X-Marketo-Endpoint": "YOUR-REST-API-ENDPOINT"
+        "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID"
       }
     }
   }
@@ -96,8 +95,7 @@ Si votre configuration MCP de curseur contient déjà d&#39;autres serveurs, ajo
       "headers": {
         "X-Marketo-Client-Id": "YOUR-CLIENT-ID",
         "X-Marketo-Client-Secret": "YOUR-CLIENT-SECRET",
-        "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID",
-        "X-Marketo-Endpoint": "YOUR-REST-API-ENDPOINT"
+        "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID"
       }
     }
   }
@@ -115,8 +113,7 @@ claude mcp add --transport http marketo \
   https://marketo-mcp.adobe.io/mcp \
   --header "X-Marketo-Client-Id: YOUR-CLIENT-ID" \
   --header "X-Marketo-Client-Secret: YOUR-CLIENT-SECRET" \
-  --header "X-Marketo-Munchkin-Id: YOUR-MUNCHKIN-ID" \
-  --header "X-Marketo-Endpoint: YOUR-REST-API-ENDPOINT"
+  --header "X-Marketo-Munchkin-Id: YOUR-MUNCHKIN-ID"
 ```
 
 ### VS Code avec pilote GitHub
@@ -133,8 +130,7 @@ Ouvrez votre `settings.json` VS Code en appuyant sur **[!UICONTROL Ctrl+Maj+P]**
         "headers": {
           "X-Marketo-Client-Id": "YOUR-CLIENT-ID",
           "X-Marketo-Client-Secret": "YOUR-CLIENT-SECRET",
-          "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID",
-          "X-Marketo-Endpoint": "YOUR-REST-API-ENDPOINT"
+          "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID"
         }
       }
     }
@@ -234,37 +230,37 @@ Exemples d’invites :
 
 ## Questions fréquentes
 
-+++Mes données sont-elles sécurisées ?
+### Mes données sont-elles sécurisées ?
+
 Les informations d’identification sont transmises dans des en-têtes HTTP avec chaque requête individuelle. Le serveur ne stocke pas et ne met pas en cache les informations d’identification entre les sessions, et chaque requête est entièrement isolée.
-+++
 
-+++Est-ce que plusieurs personnes peuvent l’utiliser en même temps ?
+### Est-ce que plusieurs personnes peuvent l’utiliser en même temps ?
+
 Oui. Le serveur est à clients multiples. Chaque utilisateur se connecte avec ses propres informations d’identification et les requêtes sont isolées les unes des autres.
-+++
 
-+++Que se passe-t-il si mon jeton d’accès expire ?
+### Que se passe-t-il si mon jeton d’accès expire ?
+
 Lorsque vous vous authentifiez à l’aide de l’ID client et du secret client, le serveur gère automatiquement l’actualisation du jeton. Vous n’avez aucune action à effectuer.
-+++
 
-+++Ai-je besoin d’installer ou d’exécuter quelque chose ?
+### Ai-je besoin d’installer ou d’exécuter quelque chose ?
+
 Non. Le serveur MCP est hébergé par Adobe. Il vous suffit de configurer votre outil d’IA pour vous y connecter.
-+++
 
-+++De quelles autorisations [!DNL Marketo] mon utilisateur d’API a-t-il besoin ?
+### De quelles autorisations [!DNL Marketo] mon utilisateur d’API a-t-il besoin ?
+
 L’utilisateur de l’API doit accéder aux types de ressources que vous avez l’intention de gérer. Attribuez au minimum un rôle Lecture seule pour les opérations de navigation et un rôle Lecture-écriture pour la création ou la modification des ressources. Contactez votre administrateur [!DNL Marketo] pour attribuer les autorisations appropriées.
-+++
 
-+++Quelles sont les limites de taux ?
+### Quelles sont les limites de taux ?
+
 Le serveur MCP hérite des limites de débit d’API de l’instance Marketo. Utilisez un utilisateur d’API dédié pour suivre et gérer la consommation des quotas.
-+++
 
-+++Quels outils d’IA sont pris en charge ?
+### Quels outils d’IA sont pris en charge ?
+
 Claude Desktop, Cursor, Claude Code (CLI) et VS Code avec GitHub Copilot. Tout outil d’IA prenant en charge le protocole ModelContext sur HTTP doit fonctionner.
-+++
 
-+++Puis-je me connecter à plusieurs instances [!DNL Marketo] ?
+### Puis-je me connecter à plusieurs instances [!DNL Marketo] ?
+
 Oui. Ajoutez plusieurs entrées dans la configuration MCP de votre outil d’IA, chacune avec un nom unique et les informations d’identification de l’instance correspondante. Par exemple, vous pouvez configurer `marketo-prod` et `marketo-staging` comme des serveurs distincts.
-+++
 
 ## Considérations relatives à la sécurité
 
