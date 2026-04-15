@@ -3,9 +3,9 @@ title: Serveur MCP
 description: Découvrez comment connecter un assistant AI à Marketo à l’aide du serveur MCP. Configurez le bureau Claude, le curseur, le code Claude ou le code VS avec vos informations d’identification Marketo.
 hidefromtoc: true
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-source-git-commit: 3fe1c3e9fe572ef68d20ba10f93535aac9a98602
+source-git-commit: d659eb0f604a68d03d5b00c0109d59ff321415df
 workflow-type: tm+mt
-source-wordcount: '1324'
+source-wordcount: '1303'
 ht-degree: 1%
 
 ---
@@ -30,7 +30,6 @@ Vous avez besoin des valeurs suivantes de votre instance [!DNL Marketo] :
 - **Identifiant du client**
 - **Secret du client**
 - **Identifiant de compte**
-- **Point d’entrée de l’API REST**
 
 Si vous les avez déjà, passez à [Configurer votre outil d’IA](#configure-your-ai-tool).
 
@@ -43,12 +42,7 @@ Si vous les avez déjà, passez à [Configurer votre outil d’IA](#configure-yo
 ### ID de compte Munchkin
 
 1. Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Munchkin]**.
-1. Copiez l’ID de compte **&#x200B;**. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
-
-### Point d’entrée de l’API REST
-
-1. Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Services web]**.
-1. Sous **[!UICONTROL API REST]**, copiez l’URL **[!UICONTROL Point d’entrée]**. Le format est `https://XXX-XXX-XXX.mktorest.com`.
+1. Copiez l’ID de compte ****. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
 
 ## Configuration de votre outil d’IA
 
