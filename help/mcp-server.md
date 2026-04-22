@@ -2,16 +2,20 @@
 title: Serveur MCP
 description: Découvrez comment connecter un assistant AI à Marketo à l’aide du serveur MCP. Configurez le bureau Claude, le curseur, le code Claude ou le code VS avec vos informations d’identification Marketo.
 hidefromtoc: true
-badgeBeta: label="Beta" type="informative" tooltip="Cette fonctionnalité est actuellement en version bêta"
+badgeBeta: label="Beta" type="informative" tooltip="Cette fonctionnalité est actuellement en version bêta fermée"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-source-git-commit: b21ecb7a4dd2730807b0ad601b95fe387498f8f0
+source-git-commit: c21ba0db3115c453f8ec35e18d4a8fd4c1ad8745
 workflow-type: tm+mt
-source-wordcount: '1431'
+source-wordcount: '1428'
 ht-degree: 1%
 
 ---
 
 # [!DNL Marketo] MCP Server
+
+>[!NOTE]
+>
+>Le serveur MCP est actuellement en version bêta fermée. Elle n’est pas disponible pour tous les utilisateurs et utilisatrices pour le moment.
 
 Le protocole MCP (Model Context Protocol) est une norme ouverte qui permet aux outils d’IA de communiquer avec des services externes. Le serveur MCP [!DNL Marketo] fait office de pont entre votre assistant d’IA et [!DNL Marketo]. Il expose plus de 100 opérations sur des formulaires, des programmes, des campagnes intelligentes, des prospects, des e-mails, des fragments de code, des listes et des dossiers.
 
@@ -49,7 +53,7 @@ Si vous les avez déjà, passez à [Configurer votre outil d’IA](#configure-yo
 ### ID de compte Munchkin
 
 1. Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Munchkin]**.
-1. Copiez l’ID de compte **&#x200B;**. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
+1. Copiez l’ID de compte ****. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
 
 ## Configuration de votre outil d’IA
 
@@ -222,7 +226,6 @@ Exemples d’invites :
 
 | Erreur | Cause | Corriger |
 | ------- | ------- | ----- |
-| « Point d’entrée Marketo non fourni » | L’en-tête `X-Marketo-Endpoint` est manquant dans votre configuration. | Vérifiez à nouveau la configuration MCP et confirmez que les quatre en-têtes sont présents. |
 | « Informations d’identification Marketo non fournies » | Un ou plusieurs parmi `X-Marketo-Client-Id`, `X-Marketo-Client-Secret` ou `X-Marketo-Munchkin-Id` sont manquants. | Vérifiez que les quatre en-têtes sont présents dans votre configuration. |
 | « Erreur d’authentification » | Vos informations d’identification ne sont pas valides ou ont expiré. | Vérifiez à nouveau votre ID client et votre secret client dans **[!UICONTROL Admin]** > **[!UICONTROL LaunchPoint]**. |
 | « 403 Interdit » | Votre Munchkin ID ne se trouve pas sur le serveur. | Contactez votre administrateur MCP [!DNL Marketo] pour ajouter votre Munchkin ID. |
