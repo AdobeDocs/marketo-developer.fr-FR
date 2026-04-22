@@ -1,49 +1,50 @@
 ---
-title: Licence API
-description: Contrat de licence de l’API Marketo pour le développement et les tests internes, détaillant les limites de l’API, l’interopérabilité avec la solution Marketo et l’utilisation non commerciale.
+title: API License
+description: Marketo API License Agreement for internal development and testing, detailing API limits, interoperability with Marketo Solution, and non-commercial use.
 exl-id: f0720ba7-b15d-40c8-9145-d3fa3e064a0b
 hide: true
 hidefromtoc: true
-source-git-commit: 14ca3ca1f1aa07bb3e54802003190a4a2b4fbcb9
+source-git-commit: 5260338681c4ea670f6f1b1a1603e30f6acc0865
 workflow-type: tm+mt
 source-wordcount: '3113'
 ht-degree: 0%
 
 ---
 
-# Licence API
+# API License
 
 MARKETO
 
-CONTRAT DE LICENCE API
+API LICENSE AGREEMENT
 
-Le présent Contrat de licence de l’API Marketo (« Contrat ») régit la mise en œuvre et l’utilisation des API Marketo et de la spécification d’API pour permettre à une application logicielle d’interagir avec la solution Marketo à des fins de développement interne ou de test. Si Vous concluez le présent Contrat au nom d&#39;une organisation, Vous représentez Vous avez le pouvoir de lier votre organisation au présent Contrat. Si Vous ne disposez pas de cette autorité ou si Vous n’êtes pas d’accord avec les termes du présent Contrat, Vous ne pouvez pas mettre en œuvre les API Marketo ni utiliser la spécification d’API. En cliquant sur un bouton indiquant l’acceptation du présent Contrat, ou en implémentant, téléchargeant ou accédant d’une autre manière aux API de Marketo, vous acceptez d’être légalement lié par les termes du présent Contrat. Le présent Contrat est effectif entre Vous et Marketo, Inc. (« Marketo ») à compter de la date de Votre acceptation. Vous et Marketo êtes individuellement désignés dans le présent document comme des « Parties » et collectivement comme des « Parties ».
+This Marketo API License Agreement (&quot;Agreement&quot;) governs the implementation and use of the Marketo APIs and API Specification to allow a Software Application to interoperate with the Marketo Solution for internal development or testing purposes. If You are entering into this Agreement on behalf of an organization, You represent You have the authority to bind Your organization to this Agreement. If You do not have that authority, or if You do not agree with the terms of this Agreement, You may not implement the Marketo APIs or use the API Specification. By clicking a button denoting acceptance of this Agreement, or by implementing, downloading or otherwise accessing the Marketo APIs, You agree to be legally bound by the terms of this Agreement. This Agreement is effective between You and Marketo, Inc. (&quot;Marketo&quot;) as of the date of Your acceptance. You and Marketo are each individually referred to herein as a &quot;Party,&quot; and collectively as &quot;Parties.&quot;
 
-1. Définitions
 
-« Limites d’API » signifie des restrictions (par exemple, des limites de débit et des limites de simultanéité) à vos appels API, comme décrit sur le site web du développeur de Marketo, substantiellement décrit à l’adresse : <https://developer.adobe.com/marketo-apis/>.
+1. Definitions
 
-« Interface de programmation d&#39;application » ou « API » désigne un ensemble de routines, classes, paramètres de fonction, protocoles, webhooks, bibliothèques connexes et autres instructions fournies dans le code Source ou sous forme de code objet.
+&quot;API Limits&quot; means restrictions (e.g., rate limits and concurrency limits) to Your API calls as described on the Marketo Developer website substantially described at: <https://developer.adobe.com/marketo-apis/>.
 
-« Spécification d’API » désigne une description ou une définition écrite des routines, classes, paramètres de fonction, protocoles, webhooks, bibliothèques connexes et autres instructions qui permettent à une application logicielle d’interagir avec la solution Marketo, et comme décrit en substance à l’adresse : <https://developer.adobe.com/marketo-apis/>.
+&quot;Application Programming Interface&quot; or &quot;API&quot; means a collection of routines, classes, function parameters, protocols, webhooks, related libraries and other instructions provided in Source Code or Object Code form.
 
-« Commentaires » désigne les suggestions ou commentaires que vous avez fournis à Marketo et qui sont liés aux produits Marketo (par exemple, les API Marketo ou la solution Marketo).
+&quot;API Specification&quot; means a written description or definition of the routines, classes, function parameters, protocols, webhooks, related libraries and other instructions that allow a Software Application to interoperate with the Marketo Solution, and as substantially described at: <https://developer.adobe.com/marketo-apis/>.
 
-Le « branchement » désigne l’acte de créer un ensemble distinct et/ou séparé d’API qui reposent sur les API Marketo, en sont dérivées ou ont été modifiées.
+&quot;Feedback&quot; means suggestions or comments provided by You to Marketo that are related to Marketo products (e.g., Marketo APIs or the Marketo Solution).
 
-« API Marketo » désigne un ensemble de routines, classes, paramètres de fonction, protocoles, bibliothèques associées, outils et autres instructions fournis dans le code Source ou sous forme de code objet qui permettent l’accès ou l’interopérabilité avec la solution Marketo par une application logicielle, tel que décrit en substance et disponible à l’adresse <https://developer.adobe.com/marketo-apis/>.
+&quot;Forking&quot; mean the act of creating a distinct and/or separate set of APIs that are based upon, derived from, or a modification of the Marketo APIs.
 
-« Solution Marketo » désigne un ou plusieurs services mis à votre disposition par le biais des API Marketo et décrits de manière substantielle à l’adresse : <https://www.marketo.com/software/>.
+&quot;Marketo API&quot; means a collection of routines, classes, function parameters, protocols, related libraries, tools and other instructions provided in Source Code or Object Code form that allow access to or interoperability with the Marketo Solution by a Software Application, as substantially described and made available at: <https://developer.adobe.com/marketo-apis/>.
 
-« Code objet » désigne le code Source qui a été interprété, compilé ou traduit d&#39;une autre manière en un format lisible par machine.
+&quot;Marketo Solution&quot; means a service or services made available to You through the Marketo APIs and substantially described at: <https://www.marketo.com/software/>.
 
-« Application logicielle » désigne un logiciel que Vous avez créé sous forme de code objet ou de code Source et qui accède à la solution Marketo ou interagit d’une autre manière avec elle via les API Marketo.
+&quot;Object Code&quot; means Source Code that has been interpreted, compiled or otherwise translated into a machine readable form.
 
-« Code Source » désigne le code informatique sous une forme lisible par l&#39;homme et, en tant que tel, le code informatique qui n&#39;a pas été interprété ou compilé.
+&quot;Software Application&quot; means software authored by You in Object Code or Source Code form that accesses or otherwise interoperates with the Marketo Solution via the Marketo APIs.
 
-« Utilisation » désigne un droit d&#39;exécution ou de reproduction (tel que défini dans les articles 17 U.S.C. § 101 et suivants) ou toute autre loi sur le droit d&#39;auteur applicable, mais n&#39;inclut aucun droit de sous-licence ou de distribution.
+&quot;Source Code&quot; means computer code in a human readable form and as such computer code that has not been interpreted or compiled.
 
-« Vous » ou « Votre » désigne vous, la personne qui conclut le présent Contrat ou, si vous concluez le présent Contrat pour le compte d’une organisation (ou si vous mettez en œuvre la Spécification d’API et les API Marketo associées pour le compte ou dans le cadre d’un produit détenu ou sous licence par une organisation), cette organisation.
+&quot;Use&quot; means a right to perform or reproduce (as defined under 17 U.S.C. § 101 et seq.) or other applicable copyright statute but does not include any right of sublicense or distribution.
+
+&quot;You&quot; or &quot;Your&quot; means you, the person entering into this Agreement or, if you are entering into this Agreement on behalf of an organization (or implementing the API Specification and associated Marketo APIs on behalf of or in a product owned or licensed by an organization), that organization.
 
 1. Licences et restrictions
 
@@ -105,4 +106,4 @@ Le « branchement » désigne l’acte de créer un ensemble distinct et/ou sép
 
 [!DNL K]. Droit applicable ; Avis. Le présent Contrat est régi par les lois de l&#39;État de Californie sans tenir compte des règles de choix ou de conflit de lois. La juridiction et le lieu exclusifs pour toute question juridique liée au présent Accord sont soit la Cour supérieure du comté de San Mateo, en Californie, soit la United States District Court du district nord de la Californie. Les avis en vertu du présent Contrat doivent être écrits et sont réputés avoir été donnés (i) à la livraison personnelle, (ii) le troisième jour ouvrable après l&#39;envoi, (ii) le premier jour ouvrable après l&#39;envoi par courriel. Les avis à Marketo doivent être envoyés à : « Application Programming Interface License Agreement » et Marketo, Inc., 901 Mariner&#39;s Island Boulevard, Suite 500, San Mateo, CA 94404, avec copie à notre avocat général à la même adresse.
 
-Les versions archivées du contrat de licence de l’API sont disponibles à l’adresse : [&#128279;](https://developers.marketo.com/api-license-archived)
+Les versions archivées du contrat de licence de l’API sont disponibles à l’adresse : [](https://developers.marketo.com/api-license-archived)

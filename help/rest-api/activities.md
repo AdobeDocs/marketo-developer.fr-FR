@@ -3,9 +3,9 @@ title: Activités
 feature: REST API
 description: Utilisez l’API REST Activités Marketo Engage pour répertorier les types d’activité, récupérer les activités de prospect avec des jetons de pagination et gérer les modifications personnalisées et de valeur de données.
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: 5260338681c4ea670f6f1b1a1603e30f6acc0865
 workflow-type: tm+mt
-source-wordcount: '2139'
+source-wordcount: '2218'
 ht-degree: 0%
 
 ---
@@ -75,9 +75,13 @@ Les réponses du monde réel comprennent beaucoup plus de définitions. Dans cet
 
 ## Requête
 
-Pour récupérer les activités à partir de Marketo, appelez le point d’entrée [Obtenir les activités de lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET). Vous devez d’abord récupérer un jeton de pagination pour la date et l’heure à partir desquelles vous souhaitez commencer à récupérer les activités. Vous transmettez ensuite le jeton de pagination dans le paramètre de requête `nextPageToken`. En outre, vous transmettez jusqu’à dix identifiants de type d’activité dans le paramètre de requête `activityTypeIds` sous la forme d’une liste séparée par des virgules.
+Pour récupérer les activités à partir de Marketo, appelez le point d’entrée [Obtenir les activités de lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET). You need to first retrieve a paging token for the datetime that you want to begin retrieving activities from. You then pass the paging token in the `nextPageToken` query parameter. In addition, you pass up to ten activity type Ids in the `activityTypeIds` query parameter as a comma-separated list.
 
-Vous pouvez éventuellement inclure un paramètre de requête listId pour limiter votre recherche aux seuls enregistrements inclus dans une liste statique spécifique ou un paramètre de requête leadIds et rechercher des activités à partir d’un ensemble de prospects spécifié uniquement. Vous pouvez transmettre jusqu’à 30 leadId sous forme de liste séparée par des virgules.
+You can optionally include either a `listId` query parameter to narrow your search to only those records included in a specific static list, or a `leadIds` query parameter and search for activities from only a specified set of leads. You can pass up to 30 `leadIds` as a comma separated list.
+
+>[!CAUTION]
+>
+>Beginning 2026-12-30, calls to the `Get Lead Activities` and `Get Lead Changes` endpoints which includes the `listId` parameter will fail (error code 1003) if the target lists contain 10,000 or more leads. To avoid service disruptions, ensure that calls are properly scoped to avoid this limit.
 
 ```http
 GET /rest/v1/activities.json?activityTypeIds=1&nextPageToken=WQV2VQVPPCKHC6AQYVK7JDSA3I3LCWXH3Y6IIZ7YSGQLXHCPVE5Q====
@@ -125,20 +129,24 @@ GET /rest/v1/activities.json?activityTypeIds=1&nextPageToken=WQV2VQVPPCKHC6AQYVK
 }
 ```
 
-Pour le premier appel, utilisez l’API Get Paging Token pour obtenir des `nextPageToken`. Pour les appels suivants vers ce point d’entrée, utilisez le `nextPageToken returned` de la réponse . Ce point d’entrée renvoie toujours `the nextPageToken`.
+For the first call, use the Get Paging Token API to get `nextPageToken`. For subsequent calls to this endpoint, use the `nextPageToken returned` from the response. This endpoint always returns `the nextPageToken`.
 
-Si l’attribut `moreResult` est défini sur « true », cela signifie que d’autres résultats sont disponibles. Continuez à appeler ce point d’entrée jusqu’à ce que l’attribut `moreResult` renvoie false, ce qui signifie qu’aucun résultat n’est disponible. Les `nextPageToken` renvoyés par cette API doivent toujours être réutilisés pour l’itération suivante de cet appel.
+If the `moreResult` attribute is true, this means more results are available. Continue to call this endpoint until the `moreResult` attribute returns false, which means there are no results available. The `nextPageToken` returned from this API should always be reused for the next iteration of this call.
 
-Dans certains cas, cette API peut répondre avec moins de 300 éléments d’activité, mais son attribut `moreResult` est également défini sur true.  Cela indique que d’autres activités peuvent être renvoyées et que le point d’entrée peut être interrogé pour des activités plus récentes en incluant les `nextPageToken` renvoyées dans un appel suivant.
+In some cases, this API may respond with fewer than 300 activity items, but also have the `moreResult` attribute set to true.  This indicates that there are more activities that can be returned and that the endpoint can be queried for more recent activities by including the returned `nextPageToken` in a subsequent call.
 
-Notez que dans chaque élément du tableau de résultats, l’attribut entier `id` est remplacé par l’attribut de chaîne `marketoGUID` en tant qu’identifiant unique.
+Note that within each result array item, the `id` integer attribute is being replaced by the `marketoGUID` string attribute as unique identifier.
 
 ### Modifications de la valeur des données
 
-Pour les activités Changement de valeur des données , une version spécialisée de l’API d’activités est fournie. Le point d’entrée [Obtenir les modifications de lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadChangesUsingGET) renvoie uniquement les activités des enregistrements Modification de la valeur des données aux champs de lead. L’interface est identique à l’API Get Lead Activities avec deux différences :
+For Data Value Change activities, a specialized version of the activities API is provided. The [Get Lead Changes](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadChangesUsingGET) endpoint only returns activities of Data Value Change records to lead fields. The interface is the same as the Get Lead Activities API with two differences:
 
-* Il n’existe aucun paramètre `activityTypeIds`, car le point d’entrée renvoie uniquement les activités Modification de la valeur des données et Nouveau prospect.
-* Le paramètre de requête `fields` est obligatoire, où vous pouvez transmettre une liste de champs séparés par des virgules pour indiquer les champs pour lesquels vous souhaitez récupérer les modifications.
+* There is no `activityTypeIds` parameter, since the endpoint only returns Data Value Change and New Lead activities.
+* The `fields` query parameter is required, where you can pass a comma-separated list of fields to indicate which fields you want to retrieve changes for.
+
+>[!CAUTION]
+>
+>Beginning 2026-12-30, calls to the `Get Lead Activities` and `Get Lead Changes` endpoints which includes the `listId` parameter will fail (error code 1003) if the target lists contain 10,000 or more leads. To avoid service disruptions, ensure that calls are properly scoped to avoid this limit.
 
 ```http
 GET /rest/v1/activities/leadchanges.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ&fields=firstName,lastName,department
@@ -184,9 +192,9 @@ GET /rest/v1/activities/leadchanges.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQG
 }
 ```
 
-Chaque activité de la réponse comporte un tableau de champs , y compris une liste des modifications apportées à l’activité, qui spécifie la `id` et la `name` du champ modifié, ainsi que les nouvelles et anciennes valeurs relatives à la modification.
+Each activity in the response has a fields array, including a list of changes in the activity, which will specify the `id` and `name` of the field changed, as well as the new and old values relative to the change.
 
-Notez que dans chaque élément du tableau de résultats, l’attribut entier `id` est remplacé par l’attribut de chaîne `marketoGUID` en tant qu’identifiant unique.
+Note that within each result array item, the `id` integer attribute is being replaced by the `marketoGUID` string attribute as unique identifier.
 
 ### Leads supprimés
 
