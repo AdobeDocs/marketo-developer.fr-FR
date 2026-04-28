@@ -3,8 +3,7 @@ title: API License
 description: Marketo API License Agreement for internal development and testing, detailing API limits, interoperability with Marketo Solution, and non-commercial use.
 exl-id: f0720ba7-b15d-40c8-9145-d3fa3e064a0b
 hide: true
-hidefromtoc: true
-source-git-commit: 5260338681c4ea670f6f1b1a1603e30f6acc0865
+source-git-commit: 74f277aa200fa54bc386c067ec3302d144ec250a
 workflow-type: tm+mt
 source-wordcount: '3113'
 ht-degree: 0%
@@ -20,7 +19,7 @@ API LICENSE AGREEMENT
 This Marketo API License Agreement (&quot;Agreement&quot;) governs the implementation and use of the Marketo APIs and API Specification to allow a Software Application to interoperate with the Marketo Solution for internal development or testing purposes. If You are entering into this Agreement on behalf of an organization, You represent You have the authority to bind Your organization to this Agreement. If You do not have that authority, or if You do not agree with the terms of this Agreement, You may not implement the Marketo APIs or use the API Specification. By clicking a button denoting acceptance of this Agreement, or by implementing, downloading or otherwise accessing the Marketo APIs, You agree to be legally bound by the terms of this Agreement. This Agreement is effective between You and Marketo, Inc. (&quot;Marketo&quot;) as of the date of Your acceptance. You and Marketo are each individually referred to herein as a &quot;Party,&quot; and collectively as &quot;Parties.&quot;
 
 
-1. Definitions
+1. Définitions
 
 &quot;API Limits&quot; means restrictions (e.g., rate limits and concurrency limits) to Your API calls as described on the Marketo Developer website substantially described at: <https://developer.adobe.com/marketo-apis/>.
 
@@ -106,4 +105,4 @@ This Marketo API License Agreement (&quot;Agreement&quot;) governs the implement
 
 [!DNL K]. Droit applicable ; Avis. Le présent Contrat est régi par les lois de l&#39;État de Californie sans tenir compte des règles de choix ou de conflit de lois. La juridiction et le lieu exclusifs pour toute question juridique liée au présent Accord sont soit la Cour supérieure du comté de San Mateo, en Californie, soit la United States District Court du district nord de la Californie. Les avis en vertu du présent Contrat doivent être écrits et sont réputés avoir été donnés (i) à la livraison personnelle, (ii) le troisième jour ouvrable après l&#39;envoi, (ii) le premier jour ouvrable après l&#39;envoi par courriel. Les avis à Marketo doivent être envoyés à : « Application Programming Interface License Agreement » et Marketo, Inc., 901 Mariner&#39;s Island Boulevard, Suite 500, San Mateo, CA 94404, avec copie à notre avocat général à la même adresse.
 
-Les versions archivées du contrat de licence de l’API sont disponibles à l’adresse : [&#128279;](https://developers.marketo.com/api-license-archived)
+Archived versions of the API License Agreement may be found at: [https://developers.marketo.com/api-license-archived](https://developers.marketo.com/api-license-archived)

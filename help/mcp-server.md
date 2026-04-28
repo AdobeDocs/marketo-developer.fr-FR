@@ -1,10 +1,9 @@
 ---
 title: Serveur MCP
 description: Découvrez comment connecter un assistant AI à Marketo à l’aide du serveur MCP. Configurez le bureau Claude, le curseur, le code Claude ou le code VS avec vos informations d’identification Marketo.
-hidefromtoc: true
 badgeBeta: label="Beta" type="informative" tooltip="Cette fonctionnalité est actuellement en version bêta fermée"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-source-git-commit: c21ba0db3115c453f8ec35e18d4a8fd4c1ad8745
+source-git-commit: 74f277aa200fa54bc386c067ec3302d144ec250a
 workflow-type: tm+mt
 source-wordcount: '1428'
 ht-degree: 1%
@@ -40,7 +39,7 @@ Vous avez besoin des valeurs suivantes de votre instance [!DNL Marketo] :
 
 - **Identifiant du client**
 - **Secret du client**
-- **Identifiant de compte**
+- **Identifiant de compte Munchkin**
 
 Si vous les avez déjà, passez à [Configurer votre outil d’IA](#configure-your-ai-tool).
 
@@ -53,7 +52,7 @@ Si vous les avez déjà, passez à [Configurer votre outil d’IA](#configure-yo
 ### ID de compte Munchkin
 
 1. Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Munchkin]**.
-1. Copiez l’ID de compte **&#x200B;**. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
+1. Copiez l’ID de compte **[!UICONTROL Munchkin]**. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
 
 ## Configuration de votre outil d’IA
 
@@ -252,43 +251,43 @@ Lorsque vous vous authentifiez à l’aide de l’ID client et du secret client,
 
 +++
 
-+++Ai-je besoin d’installer ou d’exécuter quelque chose ?
++++Do I need to install or run anything?
 
-Non. Le serveur MCP est hébergé par Adobe. Il vous suffit de configurer votre outil d’IA pour vous y connecter.
-
-+++
-
-+++De quelles autorisations [!DNL Marketo] mon utilisateur d’API a-t-il besoin ?
-
-L’utilisateur de l’API doit accéder aux types de ressources que vous avez l’intention de gérer. Attribuez au minimum un rôle Lecture seule pour les opérations de navigation et un rôle Lecture-écriture pour la création ou la modification des ressources. Contactez votre administrateur [!DNL Marketo] pour attribuer les autorisations appropriées.
+Non. The MCP server is hosted by Adobe. You only need to configure your AI tool to connect to it.
 
 +++
 
-+++Quelles sont les limites de taux ?
++++What [!DNL Marketo] permissions does my API user need?
 
-Le serveur MCP hérite des limites de débit d’API de l’instance [!DNL Marketo]. Utilisez un utilisateur d’API dédié pour suivre et gérer la consommation des quotas.
-
-+++
-
-+++Quels outils d’IA sont pris en charge ?
-
-Claude Desktop, Cursor, Claude Code (CLI) et VS Code avec GitHub Copilot. Tout outil d’IA prenant en charge le protocole ModelContext sur HTTP doit fonctionner.
+The API user needs access to the asset types you intend to manage. At minimum, assign a Read-Only role for browsing operations and a Read-Write role for creating or modifying assets. Work with your [!DNL Marketo] admin to assign appropriate permissions.
 
 +++
 
-+++Puis-je me connecter à plusieurs instances [!DNL Marketo] ?
++++What are the rate limits?
 
-Oui. Ajoutez plusieurs entrées dans la configuration MCP de votre outil d’IA, chacune avec un nom unique et les informations d’identification de l’instance correspondante. Par exemple, vous pouvez configurer `marketo-prod` et `marketo-staging` comme des serveurs distincts.
+The MCP server inherits the API rate limits of the [!DNL Marketo] instance. Use a dedicated API user to track and manage quota consumption.
 
 +++
 
-## Considérations relatives à la sécurité
++++Which AI tools are supported?
+
+Claude Desktop, Cursor, Claude Code (CLI), and VS Code with GitHub Copilot. Any AI tool that supports the Model Context Protocol over HTTP should work.
+
++++
+
++++Can I connect to multiple [!DNL Marketo] instances?
+
+Oui. Add multiple entries in your AI tool&#39;s MCP configuration, each with a unique name and the credentials for the corresponding instance. For example, you could configure `marketo-prod` and `marketo-staging` as separate servers.
+
++++
+
+## Security considerations
 
 >[!IMPORTANT]
 >
->Utilisez un utilisateur d’API dédié dans [!DNL Marketo] avec uniquement les autorisations requises pour votre travail. Ne réutilisez pas les informations d’identification d’administrateur pour l’accès à l’API.
+>Use a dedicated API user in [!DNL Marketo] with only the permissions required for your work. Do not reuse admin credentials for API access.
 
-- **Informations d’identification par demande.** L’ID client, le secret client, l’ID Munchkin et le point d’entrée de l’API REST sont transmis dans des en-têtes HTTP avec chaque requête. Le serveur ne les stocke pas et ne les met pas en cache.
-- **Isolement à plusieurs clients.** Chaque requête utilise son propre jeu d’informations d’identification. Vos données n’interagissent avec aucune session d’un autre utilisateur.
+- **Per-request credentials.** Client ID, Client Secret, Munchkin ID, and the REST API endpoint are transmitted in HTTP headers with each request. The server does not store or cache them.
+- **Multi-tenant isolation.** Each request uses its own set of credentials. Your data does not intersect with any other user&#39;s session.
 - **Munchkin ID** Le serveur accepte uniquement les demandes d’instances [!DNL Marketo] approuvées. Les requêtes utilisant un ID Munchkin non autorisé sont rejetées avec une erreur 403.
 - **Gardez les informations d’identification hors du contrôle de version.** Utilisez l’interpolation de variable d’environnement (`${MARKETO_CLIENT_SECRET}`) si votre outil d’IA le prend en charge, de sorte que les informations d’identification ne soient pas stockées en texte brut dans les fichiers validés dans un référentiel.

@@ -1,8 +1,8 @@
 ---
 source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '483'
-ht-degree: 100%
+source-wordcount: '521'
+ht-degree: 94%
 
 ---
 # Article sur les contributions
@@ -11,7 +11,7 @@ Nous acceptons les contributions de notre communauté ainsi que des employés d�
 
 ## Code de conduite Adobe Open Source
 
-Ce projet respecte le [Code de conduite d’Adobe Open Source](code-of-conduct.md) ou le [Code de conduite .NET Foundation](https://dotnetfoundation.org/code-of-conduct). Pour plus d’informations, consultez l’article [Contribution](contributing.md).
+Ce projet a adopté le [code de conduite Adobe Open Source](code-of-conduct.md) ou le [code de conduite de la Fondation .NET](https://dotnetfoundation.org/code-of-conduct). Pour plus d’informations, reportez-vous à l’article [Contribution](contributing.md).
 
 ## Comment contribuer au contenu Adobe ?
 
@@ -26,8 +26,8 @@ Ce projet respecte le [Code de conduite d’Adobe Open Source](code-of-conduct.m
 Si vous contribuez à une mise à jour mineure, procédez comme suit :
 
 1. Accédez à la rubrique que vous souhaitez modifier.
-1. Dans la bannière « Ce contenu a-t-il été utile ? » qui apparaît au bas de la fenêtre de votre navigateur, cliquez sur **Options de commentaires détaillées**.
-1. Cliquez sur **Suggérer une modification** et envoyez une requête de tirage (PR) avec vos modifications dans l’interface d’utilisation GitHub.
+1. Dans la bannière « Ce contenu a-t-il été utile ? » La bannière qui s’affiche en bas de la fenêtre du navigateur, cliquez sur **Options détaillées relatives aux commentaires**.
+1. Cliquez sur **Suggérer une modification** et envoyez une requête de tirage (PR) avec vos modifications dans l’interface utilisateur GitHub.
 
    Pour plus d’informations, consultez le [Guide du contributeur de documents Adobe](https://experienceleague.adobe.com/docs/contributor/contributor-guide/introduction.html?lang=fr).
 
@@ -47,18 +47,18 @@ Consultez le [Guide du contributeur de documents Adobe](https://experienceleague
 
 ## Contributeurs et contributrices internes
 
-Si vous êtes une personne chargée de la rédaction technique, de la gestion de projets ou du développement au sein de l’équipe produit d’une solution Adobe Experience Cloud et qu’il vous incombe de contribuer à des articles techniques ou de les rédiger, utilisez le [référentiel privé](https://git.corp.adobe.com/AdobeDocs).
+Si vous êtes en charge de la rédaction technique, si vous êtes responsable de programme ou si vous occupez un poste de développement dans l’équipe produit pour une solution Adobe Experience Cloud et qu’il vous incombe de contribuer à des articles techniques ou de les rédiger, utilisez le [référentiel privé](https://git.corp.adobe.com/AdobeDocs).
 
 ## Formater votre rubrique
 
 Tous les articles de ce référentiel utilisent le markdown GitHub. Si vous ne connaissez pas Markdown, consultez ce qui suit :
 
 * [Concepts de base de Markdown](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/)
-* [Markdown cheatsheet imprimable](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
+* [Aide-mémoire Markdown imprimable](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
 
-## Libellés
+## Étiquettes
 
-Dans le référentiel public, des libellés automatisés sont assignés à des requêtes de tirage afin de nous aider à gérer le workflow de requête de tirage et à vous aider à savoir ce qui se passe avec votre requête de tirage :
+Dans le référentiel public, des étiquettes automatisées sont assignées à des requêtes de tirage afin de nous aider à gérer le workflow de requête de tirage et à vous aider à savoir ce qui se passe avec votre requête de tirage :
 
 * **Change sent to author** : l’auteur a été informé de la requête de tirage en attente.
 * **ready-to-merge** : prêt à être analysé par notre équipe d’analyse de demande de tirage.
