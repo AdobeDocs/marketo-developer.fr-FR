@@ -3,7 +3,7 @@ title: Script de l'e-mail
 feature: Email Programs
 description: Découvrez comment créer des scripts pour les e-mails Marketo dynamiques à l’aide des jetons Apache Velocity, des variables, des outils Velocity et tester avec l’exemple d’envoi et la Prévisualisation des e-mails.
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
-source-git-commit: c21ba0db3115c453f8ec35e18d4a8fd4c1ad8745
+source-git-commit: 6b813020fec6727dc2fe3b4dfe1c98146447e704
 workflow-type: tm+mt
 source-wordcount: '1116'
 ht-degree: 0%
@@ -32,7 +32,9 @@ $variablename ##outputs '$variablename'
 ${variable}name ##outputs 'valuename'
 ```
 
-Il existe également une notation de référence silencieuse, où un `!` est Inclus après le `$`. Normalement, lorsque la vitesse rencontre une référence non définie, la chaîne représentant la référence est laissée en place. Avec la notation de référence silencieuse, si une référence non définie est rencontrée, alors aucune valeur n’est émise :
+
+
+Il existe également une notation de référence silencieuse, où un `!` est Inclus après le `$`. Normalement, lorsque la vitesse rencontre une référence non définie, la chaîne représentant la référence est laissée en place. Avec la notation silencieuse rkkheference, si une référence non définie est rencontrée, aucune valeur n’est émise :
 
 ```velocity
 ##Defined Reference
