@@ -3,9 +3,9 @@ title: Response Mappings
 feature: Webhooks
 description: Mappages de réponse des Webhooks Marketo pour JSON et XML, mappage des attributs aux champs de prospect avec les noms d’API SOAP, la notation par points et par tableau, et compatibilité des types.
 exl-id: 95c6e33e-487c-464b-b920-3c67e248d84e
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: d84b9d0f60734500f16bba237bdd95692d22abbb
 workflow-type: tm+mt
-source-wordcount: '481'
+source-wordcount: '485'
 ht-degree: 1%
 
 ---
@@ -28,7 +28,7 @@ Les propriétés JSON sont accessibles avec la notation par points et la notatio
 { "foo":"bar"}
 ```
 
-Pour accéder à la propriété `foo` dans un mappage de réponse, utilisez la `name` de la propriété , car elle se trouve au premier niveau de l’objet JSON, `foo`. Voici à quoi cela ressemble dans Marketo :
+Pour accéder à la propriété `foo` dans un mappage de réponse, utilisez la `name` de la propriété , car elle se trouve au premier niveau de l’objet JSON, `foo`. Vous trouverez ci-dessous un aperçu de la situation dans Marketo :
 
 ![Mappage de réponse](assets/json-resp.png)
 
@@ -58,7 +58,7 @@ Nous voulons accéder à orderDate à partir du premier élément du tableau de 
 
 ## Mappings XML
 
-Les valeurs sont accessibles à partir d’éléments individuels dans les documents XML. Cette méthode utilise la notation par points similaire aux mappages JSON. Examinons cet exemple simple :
+Les valeurs sont accessibles à partir d’éléments individuels dans les documents XML. Cette méthode utilise la notation par points similaire aux mappages JSON. Prenons cet exemple simple :
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

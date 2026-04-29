@@ -3,9 +3,9 @@ title: Webhooks
 feature: Webhooks
 description: Découvrez comment configurer des Webhooks Marketo pour appeler des services tiers, définir des modèles de payload, un codage, des mappages de réponse, des jetons, des en-têtes personnalisés et des conseils.
 exl-id: fd283c66-05a1-4aa4-8412-0d41b8d1e3c8
-source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
+source-git-commit: d84b9d0f60734500f16bba237bdd95692d22abbb
 workflow-type: tm+mt
-source-wordcount: '721'
+source-wordcount: '724'
 ht-degree: 3%
 
 ---
@@ -20,14 +20,14 @@ Marketo permet d’utiliser des Webhooks pour communiquer avec des services web 
 
 Chaque webhook possède les propriétés suivantes :
 
-- [!UICONTROL URL] - Saisissez l’URL que vous utilisez pour envoyer votre demande au service web.
-- [!UICONTROL Type de requête] - Méthode HTTP.
-- [!UICONTROL Modèle de payload] - Si vous souhaitez transmettre des informations dans le corps du POST, saisissez le modèle. Utilisez n’importe quel format de données prenant en charge HTTP POST, y compris XML, JSON ou SOAP. Le format de sérialisation doit autoriser les guillemets doubles autour des chaînes. Pour insérer un jeton dans votre modèle, sélectionnez **[!UICONTROL Insérer un jeton]**.  Les jetons de type chaîne sont automatiquement placés entre guillemets doubles.
-- [!UICONTROL Encodage du jeton de requête] - Si les valeurs de jeton incluent des caractères spéciaux (par exemple une esperluette, «&amp; »), indiquez le format de votre requête (JSON ou Formulaire/Url). Le codage correct doit être sélectionné pour le corps afin de garantir que le Webhook communique correctement avec le service web.
-- [!UICONTROL &#x200B; Type de réponse &#x200B;] - Sélectionnez le format de la réponse que vous recevez du service (JSON ou XML). Le type de réponse correct doit être sélectionné pour mapper les propriétés de la réponse aux champs de prospect dans Marketo
-- [!UICONTROL En-têtes personnalisés] - Accessible via [!UICONTROL Actions Webhooks] -> [!UICONTROL Définir un en-tête personnalisé], ce menu permet d’ajouter un nombre illimité de paires clé-valeur personnalisées en tant qu’en-têtes HTTP.
+- **[!UICONTROL URL]** - Saisissez l’URL que vous utilisez pour envoyer votre demande au service web.
+- **[!UICONTROL Type de requête]** - Méthode HTTP.
+- **[!UICONTROL Modèle de payload]** - Si vous souhaitez transmettre des informations dans le corps du POST, saisissez le modèle. Utilisez n’importe quel format de données prenant en charge HTTP POST, y compris XML, JSON ou SOAP. Le format de sérialisation doit autoriser les guillemets doubles autour des chaînes. Pour insérer un jeton dans votre modèle, sélectionnez **[!UICONTROL Insérer un jeton]**. Les jetons de type chaîne sont automatiquement placés entre guillemets doubles.
+- **[!UICONTROL Encodage du jeton de requête]** - Si les valeurs de jeton incluent des caractères spéciaux (par exemple une esperluette, «&amp; »), indiquez le format de votre requête (JSON ou Formulaire/Url). Le codage correct doit être sélectionné pour le corps afin de garantir que le Webhook communique correctement avec le service web.
+- **[!UICONTROL Type de réponse]** - Sélectionnez le format de la réponse que vous recevez du service (JSON ou XML). Le type de réponse correct doit être sélectionné pour mapper les propriétés de la réponse aux champs de prospect dans Marketo.
+- **[!UICONTROL En-têtes personnalisés]** - Accessible via **[!UICONTROL Actions Webhooks]** > **[!UICONTROL Définir un en-tête personnalisé]**, ce menu permet d’ajouter un nombre illimité de paires clé-valeur personnalisées en tant qu’en-têtes HTTP.
 
-Les données peuvent être réécrites dans les leads à partir des réponses de service web à l’aide de [Mappages de réponse](response-mappings.md)
+Les données peuvent être réécrites dans les leads à partir de réponses de service web à l’aide de [Mappages de réponse](response-mappings.md).
 
 ## Jetons
 
@@ -51,6 +51,6 @@ Les Webhooks permettent d’utiliser un nombre illimité de champs d’en-tête 
 - Les mises à jour via les mappages de réponse ne se produisent que si le service web répond avec un code de réponse HTTP 2xx. Les autres types de codes n’entraînent pas de mises à jour de l’enregistrement.
 - Vous pouvez utiliser les services web pour effectuer un enrichissement des données personnalisé, une validation ou une normalisation à partir de services internes ou externes.
 - Le temps d’exécution d’un webhook est à la merci du temps de réponse du service en cours d’utilisation, ce qui peut entraîner de longs délais d’exécution des campagnes. Même si l’exécution d’un service ne prend que 50 ms, cela représente 1,5 heure lorsqu’il est exécuté 100 000 fois.
-- Marketo attend jusqu’à 30 secondes pour un appel de service donné avant de mettre fin à l’appel (délai d’expiration).
+- Marketo attend jusqu’à 30 secondes pour un appel de service donné avant de mettre fin à l’appel (également appelé délai d’expiration).
 - Les caractères incorporés dans le champ URL sont transmis tels qu&#39;écrits ; par exemple, &#39;&amp;&#39; est envoyé comme &#39;&amp;&#39;, &#39;%26&#39; est envoyé comme &#39;%26&#39;
    - Si un caractère doit être codé en pourcentage à la réception par le serveur destinataire, il doit être transmis explicitement en tant que chaîne représentant ce caractère
