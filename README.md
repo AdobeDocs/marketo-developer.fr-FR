@@ -1,10 +1,10 @@
 ---
-source-git-commit: f29a5b532704c5fef90812f464efde78d92c2dc4
+source-git-commit: 0bee7ab20891e4a0f2761bbb0f27400bf269c955
 workflow-type: tm+mt
-source-wordcount: '7'
+source-wordcount: '5'
 ht-degree: 0%
 
 ---
-# ARCHIVÉ
+# Développeur Marketo
 
-Ce référentiel a été migré vers <https://github.com/Adobe-Enterprise-Docs/marketo-developer.fr-FR>.
+Documentation destinée aux développeurs de Marketo
