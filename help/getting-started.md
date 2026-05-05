@@ -2,7 +2,7 @@
 title: Prise en main
 description: Commencez avec les API et le modèle de données de Marketo Engage, y compris les prospects, les activités, les programmes, les balises, les listes, les conseils REST et l’avis d’obsolescence de SOAP.
 exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: e3fd965eb0c1fe0968933577963bc6a935c0f26d
 workflow-type: tm+mt
 source-wordcount: '1510'
 ht-degree: 1%
@@ -101,3 +101,4 @@ API associées : [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Cu
 Les enregistrements de commercial et les relations de prospect peuvent être gérés dans Marketo si aucune intégration CRM native n’est activée. Ces enregistrements contiennent des informations de base sur le commercial, telles que le nom, l’adresse e-mail et le titre de la fonction, qui peuvent être utilisées pour le filtrage et les jetons dans Marketo lorsqu’un prospect appartient à un prospect. La relation avec un commercial est gérée au niveau du prospect par le biais du champ « externalSalesPersonId », qui doit être mis à jour via l’API [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST).
 
 API associées : [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
+
