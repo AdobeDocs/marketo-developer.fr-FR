@@ -3,7 +3,7 @@ title: Serveur MCP
 description: Découvrez comment connecter un assistant AI à Marketo à l’aide du serveur MCP. Configurez le bureau Claude, le curseur, le code Claude ou le code VS avec vos informations d’identification Marketo.
 badgeBeta: label="Beta" type="informative" tooltip="Cette fonctionnalité est actuellement en version bêta fermée"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-source-git-commit: 1b33cacdd397b78292d8102b1222d0aa8c43c4b1
+source-git-commit: 738fabea9eefbc6aafee4ffa7972c9e3e2bd430c
 workflow-type: tm+mt
 source-wordcount: '1478'
 ht-degree: 1%
@@ -28,7 +28,7 @@ Lorsque votre outil d’IA appelle le serveur MCP, le serveur exécute l’appel
 
 ## Principes de base de MCP
 
->« Pensez à MCP comme à un port USB-C pour les applications d’IA. Tout comme USB-C offre un moyen normalisé de connecter vos appareils à divers périphériques et accessoires, MCP offre un moyen normalisé de connecter les modèles d’IA à différentes sources de données et outils. » — [Modèle de protocole contextuel](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
+>Imaginez MCP comme un port USB-C pour les applications d’IA. Tout comme USB-C offre un moyen normalisé de connecter vos appareils à divers périphériques et accessoires, MCP offre un moyen normalisé de connecter les modèles d&#39;IA à différentes sources de données et outils. — [Modèle de protocole contextuel](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
 
 MCP permet à un outil d’IA de se connecter à plusieurs services externes en même temps. Par exemple, un assistant d’IA peut :
 
