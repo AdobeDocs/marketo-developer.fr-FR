@@ -3,7 +3,7 @@ title: Objets Marketo
 feature: Email Programs
 description: Guide d’utilisation de Marketo Velocity avec les leads, les opportunités et les objets personnalisés, les champs de chargement, l’accès à la liste des 10 premiers, les relations SFDC et $TriggerObject.
 exl-id: 88c63d72-7aa5-4550-9e1a-887a479872e1
-source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
+source-git-commit: a8bf6680a212dd665841896e4550a755dcdf745d
 workflow-type: tm+mt
 source-wordcount: '532'
 ht-degree: 0%
@@ -34,7 +34,7 @@ Pour pouvoir être utilisé, un objet personnalisé SFDC ne doit avoir qu’une 
 
 ## Déclencher des objets
 
-Lorsqu’une campagne est déclenchée via le déclencheur Ajouté à l’opportunité, l’opportunité est mise à jour ou ajoutée à des déclencheurs de `<Custom Object Name>`, une variable spéciale est disponible dans les Jetons de script exécutés dans le contexte de la campagne de déclenchement : `$TriggerObject ` (non pris en charge pour `<Custom Object Name>` le déclencheur est Mise à jour).  Si un jeton utilisant une référence de `$TriggerObject` est utilisé dans une campagne par lots, l’envoi de l’e-mail échoue, car cet objet n’est disponible dans aucune campagne par lots.  Il s’agit d’une référence à l’objet qui a déclenché la campagne. L’objet contient toutes les données dont dispose l’enregistrement lorsqu’il est accessible via un autre nom de variable.
+Lorsqu’une campagne est déclenchée via le déclencheur Ajouté à l’opportunité, l’opportunité est mise à jour ou ajoutée à des déclencheurs de `<Custom Object Name>`, une variable spéciale est disponible dans les Jetons de script exécutés dans le contexte de la campagne de déclenchement : `$TriggerObject` (non pris en charge pour `<Custom Object Name>` le déclencheur est Mise à jour).  Si un jeton utilisant une référence de `$TriggerObject` est utilisé dans une campagne par lots, l’envoi de l’e-mail échoue, car cet objet n’est disponible dans aucune campagne par lots.  Il s’agit d’une référence à l’objet qui a déclenché la campagne. L’objet contient toutes les données dont dispose l’enregistrement lorsqu’il est accessible via un autre nom de variable.
 
 Par exemple, si une campagne a été déclenchée via un objet personnalisé pour une commande de produit, la commande à laquelle le prospect a été ajouté est exposée dans la variable `$TriggerObject` .
 

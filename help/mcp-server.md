@@ -3,7 +3,9 @@ title: Serveur MCP
 description: Découvrez comment connecter un assistant AI à Marketo à l’aide du serveur MCP. Configurez le bureau Claude, le curseur, le code Claude ou le code VS avec vos informations d’identification Marketo.
 badgeBeta: label="Beta" type="informative" tooltip="Cette fonctionnalité est actuellement en version bêta fermée"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-source-git-commit: 738fabea9eefbc6aafee4ffa7972c9e3e2bd430c
+hidefromtoc: true
+hide: true
+source-git-commit: a8bf6680a212dd665841896e4550a755dcdf745d
 workflow-type: tm+mt
 source-wordcount: '1478'
 ht-degree: 1%
