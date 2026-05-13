@@ -4,9 +4,17 @@ feature: SOAP
 description: Guide détaillé pour la migration de Marketo Engage de SOAP vers REST d’ici le 31 janvier 2026, avec mappages de points d’entrée, OAuth, méthodes de synchronisation des prospects et architectures de référence.
 exl-id: c2956db3-defe-4163-99f3-58654ce8ee2b
 TQID: https://experienceleague.adobe.com/pEtAxdR8gw0XQ9YFM8kEIxhQvK8LbHSFXBYPcXRGUjs
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: c5f60233-d5ea-4453-a799-0ad258b4d399id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: a7170d27-32ab-462b-a333-269abc654483
+  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
+  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 1418
@@ -20,7 +28,7 @@ L’API Marketo Engage SOAP sera supprimée après le 31 mars 2026. Toutes les i
 
 ## Migration
 
-L’API SOAP prend en charge un éventail limité de cas d’utilisation par rapport à l’API [REST](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/rest-api)I. Lorsque vous déterminez les points d’entrée à mapper à vos cas d’utilisation, vous devez suivre les [bonnes pratiques d’intégration de ](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/marketo-integration-best-practices)
+L’API SOAP prend en charge un éventail limité de cas d’utilisation par rapport à l’API [REST](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/rest-api)I. Lorsque vous déterminez les points d’entrée à mapper à vos cas d’utilisation, vous devez suivre les [bonnes pratiques d’intégration de &#x200B;](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/marketo-integration-best-practices)
 
 Les [architectures de référence](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/reference-architectures) sont disponibles pour les cas d’utilisation de [synchronisation CRM](https://experienceleague.adobe.com/docs/marketo-developer/assets/sync-architecture-whitepaper.pdf?lang=en) et [exportation Data Warehouse](https://experienceleague.adobe.com/docs/marketo-developer/assets/reference_architecture.pdf?lang=en).
 
@@ -34,7 +42,7 @@ L’API REST Marketo utilise l’authentification basée sur OAuth 2.0 avec le t
 
 [Documentation de l’API de lead](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/leads)
 
-L’API SOAP prend en charge la synchronisation des données de prospect, l’association de cookies [Munchkin ](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/javascriptapi/leadtracking/lead-tracking) et la fusion de prospects. Si votre application appelle la méthode syncLead de SOAP et définit le paramètre `marketoCookie`, vous pouvez effectuer la migration de l’une des manières suivantes :
+L’API SOAP prend en charge la synchronisation des données de prospect, l’association de cookies [Munchkin &#x200B;](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/javascriptapi/leadtracking/lead-tracking) et la fusion de prospects. Si votre application appelle la méthode syncLead de SOAP et définit le paramètre `marketoCookie`, vous pouvez effectuer la migration de l’une des manières suivantes :
 
 1. Utilisation de la méthode REST [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST), suivie de [Associated Lead](https://developer.adobe.com/marketo-apis/api/mapi#operation/associateLeadUsingPOST)
 2. Vous pouvez appeler [Envoyer le formulaire](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/leads), bien que cela nécessite la configuration de certaines Assets marketing et une interaction avec l’API [Forms](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/assets/forms)

@@ -4,11 +4,19 @@ feature: REST API, Custom Objects
 description: Découvrez comment créer et gérer des objets personnalisés Marketo via l’API REST, y compris comment répertorier et décrire les points d’entrée, les métadonnées, les relations, les champs et les requêtes.
 exl-id: 88e8829b-f8f1-46d7-a753-5aa6e20e2c40
 TQID: https://experienceleague.adobe.com/NWm9CjFVqQdVDJRrnE4nA299-Lg53-JR7xvY-82dUqY
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: c5f60233-d5ea-4453-a799-0ad258b4d399id: d1d0a9cd-295d-4976-8c39-ddae266f240e
-subfeature_v2: id: ea4e3ff5-e7b9-4b4c-a5a0-dc27cc3f4275
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+subfeature_v2:
+  - id: ea4e3ff5-e7b9-4b4c-a5a0-dc27cc3f4275
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 3346
@@ -896,7 +904,7 @@ Le point d’entrée [Ajouter des champs de type d’objet personnalisés](https
 Pour une structure d’objet personnalisée un-à-plusieurs, utilisez un champ de lien dans un objet personnalisé pour le connecter à un objet standard : prospect ou entreprise. En utilisant l’exemple de propriétaire de voiture de la documentation du produit Marketo [ici](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure), nous créons un objet personnalisé qui contient des informations relatives à la voiture pour établir une connexion avec les prospects.
 
 1. Créez un objet **Car**
-1. Ajouter des champs à l’objet **Car** : déduplication sur **VIN**, lien vers **Lead****/ID du lead**
+1. Ajouter des champs à l’objet **Car** : déduplication sur **VIN**, lien vers **Lead**&#x200B;**/ID du lead**
 1. Approuver l’objet **Car**
 
 Créez tout d’abord le type d’objet personnalisé pour contenir des informations spécifiques à la voiture.
@@ -1000,7 +1008,7 @@ Les relations multiples-à-multiples sont représentées à l’aide d’un obje
 1. Ajouter des champs au **Cours :** dédupliquer sur **ID du cours**
 1. Approve **Course**
 1. Créer un objet bridge **Enrollment**
-1. Ajoutez des champs à **Inscription :** dédupliquer sur **ID d’inscription**, lien vers le champ **Cours****/ID de cours** et lien vers **Lead****/ID de lead**.
+1. Ajoutez des champs à **Inscription :** dédupliquer sur **ID d’inscription**, lien vers le champ **Cours**&#x200B;**/ID de cours** et lien vers **Lead**&#x200B;**/ID de lead**.
 1. Approve **Enrollment**
 
 Créez tout d’abord le type d’objet Edge pour contenir des informations spécifiques au cours :

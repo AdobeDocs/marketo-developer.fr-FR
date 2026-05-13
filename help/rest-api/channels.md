@@ -4,8 +4,10 @@ feature: REST API
 description: Découvrez comment interroger les canaux Marketo via l’API REST Asset, naviguer avec la pagination ou effectuer une récupération par nom, afficher les statuts de progression et comprendre les règles de type de programme.
 exl-id: ec6c279f-a7b4-4a7c-b980-1a68045f37ce
 TQID: https://experienceleague.adobe.com/e9TnbxgJCT5X2r5MjTdC49uVz4wvxDy2jhdQP5JOFTI
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 151

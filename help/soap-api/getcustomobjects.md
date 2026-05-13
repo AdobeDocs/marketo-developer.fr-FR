@@ -4,8 +4,10 @@ feature: SOAP, Custom Objects
 description: Découvrez comment utiliser getCustomObjects pour récupérer des objets personnalisés Marketo via SOAP avec des clés, includeAttributes, une taille de lot allant jusqu’à 100 et la pagination streamPosition.
 exl-id: 32ff208a-f824-4420-a26f-1fd969a2bc4c
 TQID: https://experienceleague.adobe.com/KImkpGiX4lbKxYeRXS0oxh7iiyr1R6J9X-cFeC8DOy8
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 177
