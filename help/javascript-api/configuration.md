@@ -3,9 +3,14 @@ title: Configuration
 description: Configurez Marketo Munchkin avec l’API JavaScript. Découvrez les paramètres Munchkin.init tels que altIds, anonymizeIP, asyncOnly, life des cookies, domainLevel, Beacon API.
 feature: Munchkin Tracking Code, Javascript
 exl-id: 4700ce7b-f624-4f27-871e-9a050f203973
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+TQID: https://experienceleague.adobe.com/ip2cCGgoa83v8m9GYLYXe132veYxS1C6UWX1iLB6X5Q
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '613'
+source-wordcount: 614
 ht-degree: 4%
 
 ---
@@ -36,11 +41,11 @@ L’objet des paramètres de configuration peut contenir un nombre illimité de 
 | cookieAnon | Booléen | Si cette valeur est définie sur false, empêche le suivi et la création de cookies pour les nouveaux prospects anonymes. Les leads disposent de cookies et sont suivis après avoir rempli un formulaire Marketo ou en cliquant dessus à partir d’un e-mail Marketo. La valeur par défaut est « true ». |
 | cookieLifeDays | Nombre entier | Définit la date d’expiration de tout nouveau cookie de suivi Munchkin sur ce nombre de jours à l’avenir. La valeur par défaut est de 730 jours (2 ans). |
 | customName | Chaîne | Nom de page personnalisé. Utilisation du système uniquement. |
-| <a name="domainlevel"></a>domainLevel | Nombre entier | Définit le nombre de parties du domaine de la page à utiliser lors de la définition de l’attribut de domaine du cookie. Par exemple, supposons que le domaine de la page active soit « www.example.com ».domainLevel : 2 définira l’attribut de domaine du cookie sur « .example.com »domainLevel : 3 définira l’attribut de domaine du cookie sur « .www.example.com »Background :Munchkin gérera automatiquement certains domaines de niveau supérieur à deux lettres. Il s’agit par défaut de deux parties dans les cas normaux où le domaine de niveau supérieur comporte trois lettres. Par exemple, « www.example.com », les deux parties les plus à droite sont utilisées pour définir le cookie « .example.com ». Pour deux codes de pays de lettre tels que « .jp », « .us », « .cn » et « .uk », le code se compose par défaut de trois parties. Par exemple, « www.example.co.jp » utilisera trois parties de domaine les plus à droite, « .example.co.jp ». Si le modèle de domaine nécessite un comportement différent, cela doit être spécifié à l’aide du paramètre `domainLevel`. |
+| <a name="domainlevel"></a>domainLevel | Nombre entier | Définit le nombre de parties du domaine de la page à utiliser lors de la définition de l’attribut de domaine du cookie.Supposons, par exemple, que le domaine de la page en cours soit « www.example.com ».domainLevel : 2 définisse l’attribut de domaine de cookie sur « .example.com »domainLevel : 3 définisse l’attribut de domaine de cookie sur « .www.example.com »Background :Munchkin afin de gérer automatiquement certains domaines de niveau supérieur à deux lettres. Il s’agit par défaut de deux parties dans les cas normaux où le domaine de niveau supérieur comporte trois lettres. Par exemple, « www.example.com », les deux parties les plus à droite sont utilisées pour définir le cookie « .example.com ». Pour deux codes de pays de lettre tels que « .jp », « .us », « .cn » et « .uk », le code se compose par défaut de trois parties. Par exemple, « www.example.co.jp » utilisera trois parties de domaine les plus à droite, « .example.co.jp ». Si le modèle de domaine nécessite un comportement différent, cela doit être spécifié à l’aide du paramètre `domainLevel`. |
 | domainSelectorV2 | Booléen | Si la valeur est définie sur « true », utilise une méthode améliorée pour déterminer comment définir l’attribut de domaine du cookie. |
 | httpsOnly | Booléen | La valeur par défaut est false. Lorsque la valeur est définie sur true, définit le cookie sur le paramètre Sécurisé lorsque la page suivie a été diffusée via https. |
 | useBeaconAPI | Booléen | La valeur par défaut est false. Lorsque la valeur est définie sur true, utilise l’[API de balise](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API) pour envoyer des requêtes non bloquantes au lieu de [XMLHttpRequest](https://developer.mozilla.org/fr-FR/docs/Web/API/XMLHttpRequest). Si le navigateur ne prend pas en charge cette API, le Munchkin revient à l’utilisation de XMLHttpRequest. |
-| wsInfo | Chaîne | Prend une chaîne pour cibler un espace de travail. Cet identifiant d&#39;espace de travail est obtenu en sélectionnant le Workspace dans le menu Admin > Intégration > Munchkin . Ce paramètre s’applique uniquement à la création initiale d’un enregistrement de prospect anonyme. Une fois que la valeur du cookie Munchkin a été établie pour cet enregistrement de prospect, le paramètre wsInfo ne peut pas être utilisé pour modifier sa partition. Comme ce paramètre affecte uniquement les prospects anonymes, il ne concerne que les [visiteurs anonymes dans les rapports web](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports) spécifiques à une partition. |
+| wsInfo | Chaîne | Prend une chaîne pour cibler un espace de travail. Cet identifiant d&#39;espace de travail est obtenu en sélectionnant le Workspace dans le menu Admin > Intégration > Munchkin . Ce paramètre s’applique uniquement à la création initiale d’un enregistrement de prospect anonyme. Une fois que la valeur du cookie Munchkin a été établie pour cet enregistrement de prospect, le paramètre wsInfo ne peut pas être utilisé pour modifier sa partition. Comme ce paramètre affecte uniquement les prospects anonymes, il ne concerne que les [visiteurs anonymes dans les rapports web](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports) spécifiques à une partition. |
 
 ## Exemples
 

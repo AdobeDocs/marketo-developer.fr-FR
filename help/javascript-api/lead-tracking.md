@@ -3,9 +3,15 @@ title: Suivi du lead
 description: Découvrez comment intégrer Marketo Munchkin JavaScript, suivre les visites et les clics, gérer les prospects connus ou anonymes, les cookies interdomaines et refuser les campagnes intelligentes.
 feature: Munchkin Tracking Code, Javascript
 exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
-source-git-commit: 9c10469ffa3b763552d176329a426ef51eebe0f1
+TQID: https://experienceleague.adobe.com/nGUcLLgL9X7PBKf2E5IzppDj8e-SyEtxmkQaESd90mE
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+subfeature_v2: id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '820'
+source-wordcount: 820
 ht-degree: 0%
 
 ---
@@ -100,7 +106,7 @@ Les cookies Munchkin sont spécifiques à chaque domaine de deuxième niveau, c�
 
 ## Beta
 
-Pour vous inscrire au canal bêta Munchkin pour vos pages de destination, accédez au menu [Admin -> Coffre au trésor](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) et activez le paramètre « Munchkin Beta sur les pages de destination ». Vous obtenez ainsi de nouveaux fragments de code dans le **[!UICONTROL Admin]** ->  Menu **&#x200B;**&#x200B;permettant d&#39;utiliser la version bêta sur des sites externes.
+Pour vous inscrire au canal bêta Munchkin pour vos pages de destination, accédez au menu [Admin -> Coffre au trésor](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) et activez le paramètre « Munchkin Beta sur les pages de destination ». De nouveaux fragments de code sont fournis dans le menu **[!UICONTROL Admin]** -> **[!UICONTROL Munchkin]** pour vous permettre d’utiliser la version bêta sur des sites externes.
 
 ## Opt-Out
 

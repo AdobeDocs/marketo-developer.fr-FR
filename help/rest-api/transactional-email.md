@@ -3,9 +3,13 @@ title: E-mail transactionnel
 feature: REST API
 description: Découvrez comment configurer Marketo pour les e-mails transactionnels et les déclencher via la campagne de requête de l’API REST, avec les étapes de configuration et des exemples de code Java.
 exl-id: 057bc342-53f3-4624-a3c0-ae619e0c81a5
-source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
+TQID: https://experienceleague.adobe.com/eUw2THnwDdIuEO3MsuG4cSaoPnKVvdZ0ZTV-gxP-pJQ
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1092'
+source-wordcount: 1092
 ht-degree: 1%
 
 ---
@@ -18,7 +22,7 @@ Un cas d&#39;utilisation courant de l&#39;API Marketo consiste à déclencher l&
 - Un e-mail transactionnel doit être créé et approuvé dans votre instance Marketo.
 - Il doit y avoir une campagne de déclenchement active avec le message « La campagne est demandée, 1. Source : API de service web », configurée pour envoyer l’e-mail
 
-Tout d’abord[&#x200B; créez et approuvez votre e-mail](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr). Si l’e-mail est véritablement transactionnel, vous devrez probablement le définir comme opérationnel, mais assurez-vous qu’il est juridiquement qualifié comme opérationnel. Elle est configurée à partir de l’écran Modifier sous Actions d’e-mail > Paramètres d’e-mail :
+Tout d’abord[ créez et approuvez votre e-mail](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr). Si l’e-mail est véritablement transactionnel, vous devrez probablement le définir comme opérationnel, mais assurez-vous qu’il est juridiquement qualifié comme opérationnel. Elle est configurée à partir de l’écran Modifier sous Actions d’e-mail > Paramètres d’e-mail :
 
 ![Request-Campaign-Email-Settings](assets/request-campaign-email-settings.png)
 
@@ -28,7 +32,7 @@ Validez-le et nous sommes prêts à créer notre campagne :
 
 ![RequestCampaign-Approve-Draft](assets/request-campaign-approve-draft.png)
 
-Si vous êtes un débutant dans la création de campagnes, consultez l’article [Créer une campagne dynamique](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html?lang=fr). Une fois que vous avez créé votre campagne, nous devons suivre ces étapes. Configurer votre liste dynamique avec le déclencheur Campagne est demandée :
+Si vous êtes un débutant dans la création de campagnes, consultez l’article [Créer une campagne dynamique](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html). Une fois que vous avez créé votre campagne, nous devons suivre ces étapes. Configurer votre liste dynamique avec le déclencheur Campagne est demandée :
 
 ![Requête-Campagne-Liste Dynamique](assets/request-campaign-smart-list.png)
 
@@ -182,7 +186,7 @@ Cette classe a un constructeur qui prend une authentification et l’identifiant
 
 ### Création de votre e-mail
 
-Pour personnaliser notre contenu, nous devons d’abord configurer un [programme](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html?lang=fr) et un [e-mail](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr) dans Marketo. Pour générer notre contenu personnalisé, nous devons créer des jetons dans le programme, puis les placer dans l’e-mail que nous allons envoyer. Pour plus de simplicité, nous n’utilisons qu’un seul jeton dans cet exemple, mais vous pouvez remplacer un nombre illimité de jetons dans un e-mail, dans l’e-mail de l’expéditeur, le nom de l’expéditeur, le destinataire de la réponse ou tout autre élément de contenu de l’e-mail. Créons donc un jeton de texte enrichi à remplacer et appelons-le « bodyReplacement ». Le texte enrichi nous permet de remplacer n’importe quel contenu du jeton par HTML arbitraire que nous voulons saisir.
+Pour personnaliser notre contenu, nous devons d’abord configurer un [programme](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html) et un [e-mail](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr) dans Marketo. Pour générer notre contenu personnalisé, nous devons créer des jetons dans le programme, puis les placer dans l’e-mail que nous allons envoyer. Pour plus de simplicité, nous n’utilisons qu’un seul jeton dans cet exemple, mais vous pouvez remplacer un nombre illimité de jetons dans un e-mail, dans l’e-mail de l’expéditeur, le nom de l’expéditeur, le destinataire de la réponse ou tout autre élément de contenu de l’e-mail. Créons donc un jeton de texte enrichi à remplacer et appelons-le « bodyReplacement ». Le texte enrichi nous permet de remplacer n’importe quel contenu du jeton par HTML arbitraire que nous voulons saisir.
 
 ![Nouveau-jeton](assets/New-Token.png)
 

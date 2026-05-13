@@ -3,9 +3,14 @@ title: Bonnes pratiques d’intégration de Marketo
 feature: REST API
 description: Bonnes pratiques relatives aux intégrations d’API Marketo concernant les quotas, les limites de débit et de simultanéité, les traitements par lots, l’importation et l’exportation en masse, la mise en cache et la planification de la latence.
 exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
-source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
+TQID: https://experienceleague.adobe.com/Ld-rmFCwKSx-0W2-ceYICu0FQHK8BKAC1QgqtiOWDn4
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: df401a2a-327d-468c-a5e4-b7b7ccd071a0
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1013'
+source-wordcount: 1013
 ht-degree: 0%
 
 ---
@@ -16,7 +21,7 @@ ht-degree: 0%
 
 - **Quota quotidien :** la plupart des abonnements reçoivent 50 000 appels API par jour (qui sont réinitialisés tous les jours à 12 :00AM CST). Vous pouvez augmenter votre quota quotidien par l&#39;intermédiaire de votre gestionnaire de compte.
 - **Limite de débit :** accès à l’API par instance limité à 100 appels par 20 secondes.
-- **Limite de simultanéité :**  Maximum de dix appels API simultanés.
+- **Limite de simultanéité :** maximum de dix appels API simultanés.
 - **Taille du lot :** base de données du lead - 300 enregistrements ; requête de ressource - 200 enregistrements.
 - **Taille de la payload de l’API REST :** 1 Mo
 - **Taille du fichier d’importation en bloc :** 10 Mo

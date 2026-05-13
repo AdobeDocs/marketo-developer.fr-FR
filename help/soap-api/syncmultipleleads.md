@@ -3,9 +3,12 @@ title: syncMultipleLeads
 feature: SOAP
 description: Découvrez comment utiliser syncMultipleLeads pour mettre à jour plusieurs prospects Marketo via SOAP, des clés et des règles de déduplication, des limites de taille de lot et des exemples de code XML, PHP et Java.
 exl-id: 91980b82-dff9-48a7-b03e-20dce9d0d046
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+TQID: https://experienceleague.adobe.com/wKdqd4hC3soaYoZ4-Vsx5JLL-me-7PmU-VUn-nXFDpw
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '244'
+source-wordcount: 247
 ht-degree: 4%
 
 ---

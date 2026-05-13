@@ -3,9 +3,13 @@ title: API REST
 feature: REST API
 description: Découvrez comment utiliser l’API REST Marketo, configurer les utilisateurs d’API et LaunchPoint, afficher les quotas et les limites, vous authentifier avec l’en-tête d’autorisation et récupérer les prospects.
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/GqhWI816wWX-2zf89wWj-GXpg9i615HRFVl2ljdYVj0
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: c5f60233-d5ea-4453-a799-0ad258b4d399id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '896'
+source-wordcount: 896
 ht-degree: 2%
 
 ---
@@ -18,7 +22,7 @@ Ces API se répartissent généralement en deux grandes catégories : [Base de d
 
 >[!NOTE]
 >
->L’API SOAP sera abandonnée et ne sera plus disponible après le 31 juillet 2026. Tout nouveau développement doit être effectué avec l’API Marketo [REST](./rest-api.md) et les services existants doivent être migrés avant cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [&#x200B; Guide de migration de l’API SOAP &#x200B;](../soap-api/migration.md) pour plus d’informations sur la migration.
+>L’API SOAP sera abandonnée et ne sera plus disponible après le 31 juillet 2026. Tout nouveau développement doit être effectué avec l’API Marketo [REST](./rest-api.md) et les services existants doivent être migrés avant cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [ Guide de migration de l’API SOAP ](../soap-api/migration.md) pour plus d’informations sur la migration.
 >
 
 >[!IMPORTANT]
@@ -28,7 +32,7 @@ Ces API se répartissent généralement en deux grandes catégories : [Base de d
 
 - **Quota quotidien :** les abonnements reçoivent 50 000 appels API par jour (qui sont réinitialisés tous les jours à 12 :00AM CST). Vous pouvez augmenter votre quota quotidien par l&#39;intermédiaire de votre gestionnaire de compte.
 - **Limite de débit :** l’accès à l’API par instance est limité à 100 appels par 20 secondes.
-- **Limite de simultanéité :**  Maximum de dix appels API simultanés.
+- **Limite de simultanéité :** maximum de dix appels API simultanés.
 
 La taille des appels standard est limitée à une longueur d’URI de 8 Ko et à une taille de corps de 1 Mo, bien que le corps puisse être de 10 Mo pour nos API en bloc. En cas d’erreur dans votre appel , l’API renvoie généralement un code d’état de 200, mais la réponse JSON contient un membre « success » avec une valeur de `false`, ainsi qu’un tableau d’erreurs dans le membre « errors ». En savoir plus sur les erreurs [ici](error-codes.md).
 
@@ -72,9 +76,9 @@ Accédez ensuite au menu **[!UICONTROL Admin]**, puis à **[!UICONTROL Services 
 
 ![Services web](assets/admin-web-services.png)
 
-Recherchez le [!UICONTROL &#x200B; Point d’entrée &#x200B;] dans la zone API REST et enregistrez-le dans une note pour l’instant.
+Recherchez le [!UICONTROL  Point d’entrée ] dans la zone API REST et enregistrez-le dans une note pour l’instant.
 
-![&#x200B; Point d’entrée REST &#x200B;](assets/admin-web-services-rest-endpoint-1.png)
+![ Point d’entrée REST ](assets/admin-web-services-rest-endpoint-1.png)
 
 Lors d’appels aux méthodes de l’API REST, un jeton d’accès doit être inclus dans chaque appel pour que l’appel réussisse. Le jeton d’accès doit être envoyé en tant qu’en-tête HTTP.
 

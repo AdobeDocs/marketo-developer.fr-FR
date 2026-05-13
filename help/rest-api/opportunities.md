@@ -3,9 +3,14 @@ title: Opportunités
 feature: REST API
 description: API REST Marketo pour décrire, interroger, créer et mettre à jour des opportunités, dédupliquer et rechercher des champs, des limites et un comportement en lecture seule avec la synchronisation SFDC ou Dynamics.
 exl-id: 46451285-4125-4857-890a-575069a68288
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/rBDJcXWQrN5qyKRWHyzVC-sc9BH2mQFLm7fKUk-NUn8
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '879'
+source-wordcount: 879
 ht-degree: 0%
 
 ---
@@ -16,7 +21,7 @@ ht-degree: 0%
 
 Marketo propose des API pour la lecture, l’écriture, la création et la mise à jour des enregistrements d’opportunité. Dans Marketo, les enregistrements d’opportunité sont liés aux enregistrements de prospect et de contact par le biais de l’objet Rôle d’opportunité intermédiaire. Une opportunité peut donc être liée à de nombreux prospects individuels.  Ces deux types d’objets sont exposés par le biais de l’API et, comme la plupart des types d’objets de la base de données de leads, ils possèdent tous deux un appel Describe correspondant qui renvoie des métadonnées sur les types d’objets.
 
-Les API d’opportunité sont en lecture seule pour les abonnements pour lesquels la [synchronisation de &#x200B;](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=fr) ou la [synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=fr) est activée.
+Les API d’opportunité sont en lecture seule pour les abonnements pour lesquels la [synchronisation de ](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou la [synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) est activée.
 
 ## Décrire
 

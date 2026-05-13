@@ -3,9 +3,12 @@ title: URL de base
 feature: REST API
 description: Découvrez comment créer des requêtes d’API REST Marketo, comprendre les paramètres et la ressource du chemin d’URL de base et rechercher votre URL de base unique.
 exl-id: 6c3f122c-3ace-4ed3-bed0-a6b89cedc99a
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+TQID: https://experienceleague.adobe.com/NZisV6V-FMPi0RHpdaFrc1kZc3nb15YomwRgohaQmEE
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '156'
+source-wordcount: 157
 ht-degree: 2%
 
 ---

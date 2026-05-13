@@ -3,9 +3,13 @@ title: Response Mappings
 feature: Webhooks
 description: Mappages de réponse des Webhooks Marketo pour JSON et XML, mappage des attributs aux champs de prospect avec les noms d’API SOAP, la notation par points et par tableau, et compatibilité des types.
 exl-id: 95c6e33e-487c-464b-b920-3c67e248d84e
-source-git-commit: d84b9d0f60734500f16bba237bdd95692d22abbb
+TQID: https://experienceleague.adobe.com/-OGDeKLPS1KmWGIKj6BGq5DGXoCSj5ip-dVr7-kKDro
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '485'
+source-wordcount: 485
 ht-degree: 1%
 
 ---

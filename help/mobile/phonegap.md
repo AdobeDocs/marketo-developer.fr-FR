@@ -3,9 +3,14 @@ title: PhoneGap
 feature: Mobile Marketing
 description: Configurez le plug-in Marketo PhoneGap avec Cordova, configurez Firebase Cloud Messaging, activez les notifications push iOS et Android, suivez les notifications et initialisez SDK.
 exl-id: 99f14c76-9438-4942-9309-643bca434d07
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+TQID: https://experienceleague.adobe.com/eFAwR7r5IE6vKigsEWrJdCmC3VrfB-nl0h8x7Vgt1VY
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '862'
+source-wordcount: 862
 ht-degree: 2%
 
 ---
@@ -16,8 +21,8 @@ Intégration du plug-in Marketo PhoneGap
 
 ## Conditions préalables
 
-1. [Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez la clé secrète de l’application et l’ID Munchkin).
-1. Configurez les notifications push ([&#128279;](push-notifications.md) | [Android](push-notifications.md)).
+1. [Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez la clé secrète de l’application et l’ID Munchkin).
+1. Configurez les notifications push ([](push-notifications.md) | [Android](push-notifications.md)).
 1. [Installez PhoneGap/Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
 ## Instructions d’installation
@@ -66,7 +71,7 @@ Vérifier la liste des plateformes ajoutées `$cordova platform ls`
 1. Prise en charge de Firebase Cloud Messaging
 
 1. Configurez l’application Firebase sur la console Firebase.
-   1. Créez/ajoutez un projet sur la console [&#128279;](https://console.firebase.google.com/)Firebase).
+   1. Créez/ajoutez un projet sur la console [](https://console.firebase.google.com/)Firebase).
       1. Dans la [console Firebase](https://console.firebase.google.com/), sélectionnez **[!UICONTROL Ajouter un projet]**.
       1. Sélectionnez votre projet GCM dans la liste des projets Google Cloud existants, puis sélectionnez **[!UICONTROL Ajouter Firebase]**.
       1. Dans l’écran d’accueil de Firebase, sélectionnez Ajouter Firebase à l’application Android.

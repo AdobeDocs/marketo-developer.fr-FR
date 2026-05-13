@@ -3,9 +3,13 @@ title: Recommandation de média intéractif
 description: Configurez la recommandation de média enrichi à l’aide de la balise RTP de contenu prédictif Marketo, template1 template2 template3 divs, GET à remplir, DÉFINISSEZ pour configurer les catégories.
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+TQID: https://experienceleague.adobe.com/ygm5h1FJZZW4mC318-fRR3VAcO6j1sitcAeqIUjDTbI
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '854'
+source-wordcount: 854
 ht-degree: 4%
 
 ---
@@ -21,7 +25,7 @@ Les balises et appels d’API suivants doivent être configurés sur la page sur
 1. Dans le corps de la page
    1. Placez la balise du modèle (classe div) à l’emplacement où vous souhaitez que le modèle apparaisse
 
-Vous trouverez plus d’informations [ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Vous trouverez plus d’informations [ici](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Balise de modèle
 
@@ -241,4 +245,4 @@ rtp('get','rcmd', 'richmedia');
 
 #### Exemple de modèle de recommandation de média enrichi #3
 
-**Nom** : template3 **Description** : contenu vertical incluant uniquement le titre et la description. Lorsque vous pointez dessus, l’en-tête change de couleur et contient un lien hypertexte vers l’URL du contenu. La description fournit également des liens vers le contenu sans changement de couleur. ![Modèle de média enrichi &#x200B;](assets/rich-media-template3.png)
+**Nom** : template3 **Description** : contenu vertical incluant uniquement le titre et la description. Lorsque vous pointez dessus, l’en-tête change de couleur et contient un lien hypertexte vers l’URL du contenu. La description fournit également des liens vers le contenu sans changement de couleur. ![Modèle Rich Media](assets/rich-media-template3.png)

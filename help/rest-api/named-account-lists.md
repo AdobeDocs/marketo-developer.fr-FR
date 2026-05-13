@@ -3,9 +3,13 @@ title: Listes de comptes nommés
 feature: REST API
 description: Découvrez comment gérer les listes de comptes nommés Marketo avec l’API REST, y compris les autorisations, les champs, le filtrage et les points d’entrée pour la requête, la création, la mise à jour et la suppression.
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/18lMhheW21Gz1-3TMHwleHhmLTOqJsZSQ5aqkbbchhM
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '746'
+source-wordcount: 746
 ht-degree: 2%
 
 ---
@@ -14,7 +18,7 @@ ht-degree: 2%
 
 [Référence des points d’entrée des listes de comptes nommés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Account-Lists)
 
-[Les listes de comptes nommés](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/target-account-management/target/account-lists) dans Marketo représentent des ensembles de comptes nommés. Elles peuvent être utilisées dans de nombreux cas, notamment pour la catégorisation, l’enrichissement des données et le filtrage intelligent des campagnes. Les API de liste des comptes nommés permettent la gestion à distance de ces ressources de liste et de leur appartenance.
+[Les listes de comptes nommés](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) dans Marketo représentent des ensembles de comptes nommés. Elles peuvent être utilisées dans de nombreux cas, notamment pour la catégorisation, l’enrichissement des données et le filtrage intelligent des campagnes. Les API de liste des comptes nommés permettent la gestion à distance de ces ressources de liste et de leur appartenance.
 `Content`
 
 ## Autorisations

@@ -3,9 +3,14 @@ title: Importation d’objets personnalisés en bloc
 feature: Custom Objects
 description: Découvrez comment importer en bloc des objets personnalisés Marketo via REST à l’aide de fichiers CSV, TSV ou SSV.
 exl-id: e795476c-14bc-4e8c-b611-1f0941a65825
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/C1LKLZDEvv95XXH3AEoxIXsLK55tgKTrvyxvs4LnYWw
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '953'
+source-wordcount: 953
 ht-degree: 0%
 
 ---
@@ -14,7 +19,7 @@ ht-degree: 0%
 
 [Référence de point d’entrée d’importation d’objet personnalisé en bloc](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects)
 
-Lorsque vous avez de nombreux enregistrements d’objet personnalisés à  Pour les importer, il est recommandé de les importer de manière asynchrone à l’aide de l’API en bloc. Pour ce faire, importez un fichier plat contenant des enregistrements délimités (virgule, tabulation ou point-virgule). Le fichier peut contenir un nombre illimité d’enregistrements, à condition que sa taille soit inférieure à 10 Mo (sinon, il s’agit d’un HTTP  Le code d&#39;état 413 est renvoyé). Le contenu du fichier dépend de votre définition d’objet personnalisée. La première ligne contient toujours un en-tête qui répertorie les champs dans lesquels mapper les valeurs de chaque ligne. Tous les noms de champ de l’en-tête doivent correspondre à un nom d’API (comme expliqué ci-dessous). Les lignes restantes contiennent les données à importer, un enregistrement par ligne. L’opération d’enregistrement est « insert or update » uniquement.
+Lorsque vous devez importer de nombreux enregistrements d’objets personnalisés, il est recommandé de les importer de manière asynchrone à l’aide de l’API en bloc. Pour ce faire, importez un fichier plat contenant des enregistrements délimités (virgule, tabulation ou point-virgule). Le fichier peut contenir un nombre illimité d’enregistrements, à condition que sa taille soit inférieure à 10 Mo (sinon un code d’état HTTP 413 est renvoyé). Le contenu du fichier dépend de votre définition d’objet personnalisée. La première ligne contient toujours un en-tête qui répertorie les champs dans lesquels mapper les valeurs de chaque ligne. Tous les noms de champ de l’en-tête doivent correspondre à un nom d’API (comme expliqué ci-dessous). Les lignes restantes contiennent les données à importer, un enregistrement par ligne. L’opération d’enregistrement est « insert or update » uniquement.
 
 ## Limites de traitement
 
@@ -22,7 +27,7 @@ Vous êtes autorisé à soumettre plusieurs demandes d’importation en bloc, da
 
 ## Exemple d’objet personnalisé
 
-Avant d’utiliser l’API en bloc, vous devez d’abord utiliser l’interface utilisateur d’administration de Marketo pour [créer votre objet personnalisé](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects). Par exemple, supposons que nous ayons créé un objet personnalisé « Voiture » avec les champs « Couleur », « Marque », « Modèle » et « VIN ». Vous trouverez ci-dessous les écrans de l’interface utilisateur d’administration affichant l’objet personnalisé. Vous pouvez voir que nous avons utilisé le champ VIN pour le dédoublonnement. Les noms d’API sont mis en surbrillance car ils doivent être utilisés lors de l’appel de points d’entrée liés à l’API en bloc.
+Avant d’utiliser l’API en bloc, vous devez d’abord utiliser l’interface utilisateur d’administration de Marketo pour [créer votre objet personnalisé](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects). Par exemple, supposons que nous ayons créé un objet personnalisé « Voiture » avec les champs « Couleur », « Marque », « Modèle » et « VIN ». Vous trouverez ci-dessous les écrans de l’interface utilisateur d’administration affichant l’objet personnalisé. Vous pouvez voir que nous avons utilisé le champ VIN pour le dédoublonnement. Les noms d’API sont mis en surbrillance car ils doivent être utilisés lors de l’appel de points d’entrée liés à l’API en bloc.
 
 ![Insérer un objet personnalisé](assets/bulk-insert-co-car-1.png)
 

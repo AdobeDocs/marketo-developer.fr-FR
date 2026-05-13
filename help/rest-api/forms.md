@@ -3,9 +3,15 @@ title: Formulaires
 feature: REST API, Forms
 description: Guide de l’API REST Marketo Forms pour la création et la gestion des formulaires, la récupération par identifiant ou nom, la navigation avec des filtres de statut et la gestion des champs, des ensembles de champs et des règles.
 exl-id: 2e5dfa70-3163-4ab4-b269-3112417714c3
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/56tc1a14d8okxweS7TK7SzfGB8G03WAI2KBlFKQbSdM
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: d65b4a73-87a3-4d56-b638-74e74d9939ceid: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+subfeature_v2: id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1823'
+source-wordcount: 1823
 ht-degree: 2%
 
 ---
@@ -591,7 +597,7 @@ GET /rest/asset/v1/form/fields.json
 }
 ```
 
-Pour les champs personnalisés de membre de programme, appelez [Obtenir les champs de membre de programme disponibles](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getAllProgramMemberFieldsUsingGET)  Point d’entrée pour récupérer les types de données de champ personnalisé du membre de programme et les métadonnées par défaut. Pour utiliser ces champs dans un formulaire, le formulaire doit résider sous un programme (et non dans Design Studio). Les landing pages contenant des formulaires utilisant ces champs doivent également résider sous un programme (ne peuvent pas résider dans Design Studio ni être clonées dans Design Studio).
+Pour les champs personnalisés de membre de programme, appelez le point d’entrée [Obtenir les champs de membre de programme disponibles](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getAllProgramMemberFieldsUsingGET) pour récupérer les types de données de champ personnalisé de membre de programme et les métadonnées par défaut. Pour utiliser ces champs dans un formulaire, le formulaire doit résider sous un programme (et non dans Design Studio). Les landing pages contenant des formulaires utilisant ces champs doivent également résider sous un programme (ne peuvent pas résider dans Design Studio ni être clonées dans Design Studio).
 
 ```http
 GET /rest/asset/v1/form/programMemberFields.json
@@ -716,7 +722,7 @@ label=enter the last name here
 
 Dans l’exemple ci-dessus, nous mettons à jour le champ LastName qui est une chaîne simple. Certains champs de formulaire sont plus complexes. Par exemple, le champ Salutation est un type de champ « select » contenant la liste d’éléments et une valeur par défaut. Si vous ajoutez ou mettez à jour un champ de type Sélection, à moins que vous ne définissiez l’un des choix pour qu’il ait une valeur `isDefault` true, le premier choix n’a aucune valeur et est intitulé « Sélectionner... »
 
-![&#x200B; Salutation &#x200B;](assets/form-field-salutation.png)
+![ Salutation ](assets/form-field-salutation.png)
 
 Pour mettre à jour les éléments de la liste, le format du paramètre « values » est le suivant :
 
