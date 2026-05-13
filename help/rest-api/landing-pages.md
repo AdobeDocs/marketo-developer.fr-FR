@@ -3,9 +3,19 @@ title: Pages de destination
 feature: REST API, Landing Pages
 description: Utilisez l’API REST Marketo pour interroger des métadonnées et du contenu, créer, mettre à jour, approuver, supprimer et cloner des pages de destination, y compris des types de formulaires guidés et libres.
 exl-id: 2f986fb0-0a6b-469f-b199-1c526cd5a882
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/NssOtB6BEMGOQzzauLI7AszLpN3fVcEeJcr9VNTkpJE
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1221'
+source-wordcount: 1221
 ht-degree: 1%
 
 ---
@@ -186,7 +196,7 @@ Les sections de contenu sont classées selon leur propriété d’index et final
 | Rectangle | Vide. |
 | RichText | Envoyez du texte au contenu HTML.  Ne peut contenir que des éléments de texte enrichi. |
 | Extrait | Identifiant du fragment de code. |
-| SocialButton | L’identifiant de  le bouton social. |
+| SocialButton | Identifiant du bouton social. |
 | Vidéo | Identifiant de la vidéo. |
 
 Pour les pages de forme libre, toutes les sections de contenu souhaitées doivent être ajoutées et seront incorporées dans l’élément div avec l’ID `mktoContent`. Pour les pages guidées, une liste d’éléments prédéfinis peut être présente dans la liste à partir du point d’entrée [Get Landing Page Content](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET). Vous pouvez en ajouter plus ou mettre à jour leur [contenu](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) via leurs points d’entrée respectifs.
@@ -310,7 +320,7 @@ GET /rest/asset/v1/landingPage/{id}/variables.json
 }
 ```
 
-Dans  Dans cet exemple, la page de destination guidée contient 3 variables : stringVar, colorVar, boolVar.
+Dans cet exemple, la page de destination guidée contient 3 variables : stringVar, colorVar, boolVar.
 
 ### Mise à jour
 
@@ -341,7 +351,7 @@ POST /rest/asset/v1/landingPage/{id}/variable/{variableId}.json?value={newValue}
 Marketo fournit le point d’entrée [Obtenir le contenu complet de la page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageFullContentUsingGET) pour récupérer un aperçu en direct d’une page de destination telle qu’elle serait rendue dans un navigateur. Il existe un paramètre obligatoire, le paramètre `id` path , qui est l’identifiant de la page de destination que vous souhaitez prévisualiser. Deux paramètres de requête facultatifs supplémentaires sont disponibles :
 
 - segmentation : accepte un tableau d’objets JSON contenant les attributs segmentationId et segmentId. Lorsqu’elle est définie, prévisualise la page de destination comme si vous étiez un prospect correspondant à ces segments.
-- leadId :  Accepte l’identifiant entier d’un prospect. Lorsqu’elle est définie, prévisualise la page de destination comme si elle avait été vue par le prospect désigné.
+- leadId : accepte l’ID entier d’un prospect. Lorsqu’elle est définie, prévisualise la page de destination comme si elle avait été vue par le prospect désigné.
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/fullContent.json?leadId=1001&segmentation=[{"segmentationId":1030,"segmentId":1103}]

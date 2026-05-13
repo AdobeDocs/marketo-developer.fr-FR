@@ -3,9 +3,18 @@ title: Modèles de pages de destination
 feature: REST API, Landing Pages
 description: Gérez les modèles de page de destination Marketo via les points d’entrée de l’API REST pour les types de formulaires gratuits et guidés, la requête par identifiant ou nom, la création, la mise à jour d’HTML, le clone et Munchkin.
 exl-id: f9d1255e-ec13-4b75-96d5-b4cc9457a51b
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/U9K1MG-q2gIgJMgfM3lt1S4olETt8ln9seOIKZUncBY
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '703'
+source-wordcount: 703
 ht-degree: 1%
 
 ---
@@ -118,7 +127,7 @@ Le paramètre de chemin d’accès `id` spécifie l’identifiant du modèle de 
 
 Le paramètre `name` est utilisé pour spécifier le nom du nouveau modèle de page de destination.
 
-Le paramètre `folder` est utilisé pour spécifier le dossier parent dans lequel le nouveau modèle de page de destination résidera. Il se présente sous la forme d’un objet JSON incorporé contenant  `id` et `type`.
+Le paramètre `folder` est utilisé pour spécifier le dossier parent dans lequel le nouveau modèle de page de destination résidera. Il se présente sous la forme d’un objet JSON incorporé contenant `id` et `type`.
 
 Le paramètre `description` facultatif est utilisé pour décrire le nouveau modèle de page de destination.
 

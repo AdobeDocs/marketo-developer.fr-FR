@@ -3,9 +3,20 @@ title: Correspondance de motifs
 description: Utilisez l’utilitaire RTP rtp.checkPattern pour tester les modèles de chaîne avec des caractères génériques de pourcentage, voir les limites de synchronisation, des exemples d’utilisation et d’URL et la configuration requise des balises RTP.
 feature: Javascript
 exl-id: 4ebd13e3-375b-449b-850f-3b18f570ca75
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+TQID: https://experienceleague.adobe.com/-HopUg6-2EchL9kJrPDbz62mRlrqYaXYdufILjkvP1Y
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
+  - id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
+  - id: e0eb8757-182f-49f3-94a4-1587d16f5094
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '171'
+source-wordcount: 171
 ht-degree: 5%
 
 ---

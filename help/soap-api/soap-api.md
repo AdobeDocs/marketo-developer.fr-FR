@@ -3,9 +3,16 @@ title: API SOAP
 feature: SOAP
 description: L’API Marketo SOAP est obsolète depuis le 31 octobre 2025. Découvrez comment migrer vers REST, récupérer votre WSDL, consulter les quotas, les limites de débit et la configuration de l’authentification.
 exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
-source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
+TQID: https://experienceleague.adobe.com/Atnarr7XLzW3B2R5I8nLtayeE5kt3Bd4T46K6yIPc-8
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '269'
+source-wordcount: 269
 ht-degree: 1%
 
 ---
@@ -30,7 +37,7 @@ N’utilisez pas le point de terminaison défini dans le WSDL. Chaque instance M
 
 - **Quota quotidien :** la plupart des abonnements reçoivent 10 000 appels API par jour (qui sont réinitialisés tous les jours à 12 :00AM CST). Vous pouvez augmenter votre quota quotidien par l&#39;intermédiaire de votre gestionnaire de compte.
 - **Limite de débit :** accès à l’API par instance limité à 100 appels par 20 secondes.
-- **Limite de simultanéité :**  Maximum de dix appels API simultanés.
+- **Limite de simultanéité :** maximum de dix appels API simultanés.
 
 Nous recommandons que la taille des lots ne soit pas supérieure à 300. Les tailles plus volumineuses ne sont pas prises en charge et peuvent entraîner des délais d’expiration et, dans des cas extrêmes, une limitation.
 

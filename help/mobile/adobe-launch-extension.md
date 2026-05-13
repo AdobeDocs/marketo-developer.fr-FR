@@ -3,9 +3,18 @@ title: Extension mobile Marketo pour  [!DNL Adobe Launch]
 feature: Mobile Marketing
 description: Installez et configurez l’extension Marketo Mobile SDK dans Adobe Launch pour iOS et Android, y compris la configuration pour les notifications push et les messages in-app.
 exl-id: 2f8691ff-0442-45a5-aeba-c91c3af5c711
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+TQID: https://experienceleague.adobe.com/Bk5GTnQjm6NDosl5Iw6TS-NRjH8owNRUKoE0mZ-H3pY
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: d095671a-1355-40aa-8b5f-06c33c68080b
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '305'
+source-wordcount: 305
 ht-degree: 0%
 
 ---
@@ -25,7 +34,7 @@ Instructions d’installation pour l’extension Marketo Mobile SDK dans [!DNL A
 ### Configurer l&#39;en-tête de pontage Swift
 
 1. Accédez à Fichier > Nouveau > Fichier et sélectionnez « Fichier d’en-tête ».
-1. Nommez le fichier « _ProjectName_>-Bridging-Header ».
+1. Nommez le fichier « &lt;_ProjectName_>-Bridging-Header ».
 1. Accédez à Projet > Cible > Phases de création > Compilateur Swift > Génération de code. Ajoutez le chemin suivant à l’en-tête de pontage d’objectifs :
 
    `$(PODS_ROOT)/<_ProjectName_>-Bridging-Header.h`

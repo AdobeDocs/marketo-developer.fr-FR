@@ -3,9 +3,14 @@ title: Objets Marketo
 feature: SOAP
 description: Présentation des MObjects Marketo, y compris les types, les attributs, le comportement des clés externes et les API SOAP prises en charge pour les enregistrements d’opportunités, de programmes et connexes.
 exl-id: 99b9aed4-94e8-46e8-84d9-2cc5215b0c13
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+TQID: https://experienceleague.adobe.com/-G3BW9oFhPZL68yBUy-aNYycmgADhQCo8OclQAierrU
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '274'
+source-wordcount: 274
 ht-degree: 0%
 
 ---
@@ -31,7 +36,7 @@ Les MObjects se composent des éléments suivants :
 
 ### External-Keys
 
-Les clés externes sont des champs personnalisés définis sur les objets Marketo, tels que les leads ou les opportunités. Le nom est le nom du champ et la valeur est la valeur du champ, générée dans un système externe. **Marketo n’applique pas de contrainte unique à ces valeurs.** Il incombe à l’utilisateur de l’API de s’assurer que les valeurs sont uniques. En cas de doublon, Marketo utilise l’objet ajouté le plus récemment. Ce comportement est similaire à celui du champ standard Adresse e-mail .
+Les clés externes sont des champs personnalisés définis sur les objets Marketo, tels que les leads ou les opportunités. Le nom est le nom du champ et la valeur est la valeur du champ, générée dans un système externe. **Marketo n&#39;applique pas de contrainte unique sur ces valeurs.** Il incombe à l’utilisateur de l’API de s’assurer que les valeurs sont uniques. En cas de doublon, Marketo utilise l’objet ajouté le plus récemment. Ce comportement est similaire à celui du champ standard Adresse e-mail .
 
 ### API disponibles
 

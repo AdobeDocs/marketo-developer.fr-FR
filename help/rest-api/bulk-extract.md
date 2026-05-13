@@ -3,9 +3,16 @@ title: Extraction En Masse
 feature: REST API
 description: Découvrez comment utiliser l’API REST d’extraction en bloc Marketo pour exporter des prospects, des activités, des membres de programme et des objets personnalisés, avec OAuth, des files d’attente de tâches et des limites quotidiennes 500MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/ECSchsjqp8fyxXbUGl5DgXHUkXuN0sIUc3yJfVaIe1E
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1724'
+source-wordcount: 1724
 ht-degree: 1%
 
 ---
@@ -125,7 +132,7 @@ Chaque point d’entrée de création de tâche partage certains paramètres com
 
 ## Récupération des tâches
 
-Parfois, vous devrez peut-être récupérer vos tâches récentes. Pour ce faire, utilisez facilement les Tâches d’exportation Get pour le type d’objet correspondant. Chaque point d’entrée Get Export Jobs prend en charge un champ de filtre `status`, un  `batchSize` de limiter le nombre de tâches renvoyées et de `nextPageToken` la pagination dans des jeux de résultats volumineux. Le filtre de statut prend en charge chaque statut valide pour une tâche d’exportation : Créé, En file d’attente, En cours de traitement, Annulé, Terminé et En échec. batchSize a un maximum et une valeur par défaut de 300. Obtenons la liste des tâches d’exportation de leads :
+Parfois, vous devrez peut-être récupérer vos tâches récentes. Pour ce faire, utilisez facilement les Tâches d’exportation Get pour le type d’objet correspondant. Chaque point d’entrée Obtenir les tâches d’exportation prend en charge un champ de filtre `status`, une `batchSize` pour limiter le nombre de tâches renvoyées et des `nextPageToken` pour la pagination dans des jeux de résultats volumineux. Le filtre de statut prend en charge chaque statut valide pour une tâche d’exportation : Créé, En file d’attente, En cours de traitement, Annulé, Terminé et En échec. batchSize a un maximum et une valeur par défaut de 300. Obtenons la liste des tâches d’exportation de leads :
 
 ```http
 GET /bulk/v1/leads/export.json?status=Completed,Failed

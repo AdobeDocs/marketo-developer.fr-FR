@@ -3,9 +3,22 @@ title: Types de champs
 feature: REST API
 description: Liste complète des types de champs Marketo avec des définitions, des exemples et des formats, y compris la date-heure ISO 8601, les limites de zone de texte, la devise et la valeur booléenne.
 exl-id: a0ba9e02-ed42-4be3-9cdd-a97fee9a726e
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+TQID: https://experienceleague.adobe.com/Q-L1NCCS1caYip-niSrBAkp6k37ErzmsLCFvn7fRJW0
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: a7170d27-32ab-462b-a333-269abc654483
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+subfeature_v2:
+  - id: ad89fb33-8541-4339-afe7-bb13d1633714
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '373'
+source-wordcount: 373
 ht-degree: 8%
 
 ---
@@ -24,7 +37,7 @@ Voici une description des types de champs dans Marketo. Vous trouverez des info
 | Pourcentage | Un pourcentage exprimé sous la forme d’un entier | 30 |
 | URL | Champ de texte qui limite la saisie aux URL, y compris le protocole de l’URL. | <http://example.com/> |
 | Téléphone | Numéro de téléphone | 111-111-1111 |
-| Zone de texte | Texte plus long. | Prend en charge jusqu’à 30 000 octets. Les caractères ASCII standard utilisent 1 octet par caractère (jusqu’à 30 000 caractères). Les caractères Unicode peuvent utiliser jusqu’à 4 octets par caractère (ce qui réduit  nombre de caractères autorisés à être inférieur à 30 000 caractères). |
+| Zone de texte | Texte plus long. | Prend en charge jusqu’à 30 000 octets. Les caractères ASCII standard utilisent 1 octet par caractère (jusqu’à 30 000 caractères). Les caractères Unicode peuvent utiliser jusqu’à 4 octets par caractère (ce qui réduit le nombre de caractères autorisés à moins de 30 000 caractères). |
 | Chaîne | Texte plus court | Texte jusqu’à 255 caractères |
 | Score | Champ entier qui peut être manipulé avec l’étape Modifier le flux de score | 10 |
 | Booléen (précédemment Case à cocher) | Permet aux utilisateurs de sélectionner une valeur True (cochée) ou False (non cochée). | True |

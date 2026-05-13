@@ -3,9 +3,17 @@ title: scheduleCampaign
 feature: SOAP, Smart Campaigns
 description: Utilisez scheduleCampaign pour exécuter des campagnes dynamiques par lots Marketo maintenant ou ultérieurement, remplacer des jetons, cloner des programmes et implémenter via le XML SOAP avec des exemples PHP et Java.
 exl-id: a9ef2c16-34ef-4e0f-b765-e332335b0b81
-source-git-commit: 74964e90ddc68a611706afcad1f6016d05b060d6
+TQID: https://experienceleague.adobe.com/rnBoJz9xCkRQgQuj240w49xMuTGRjK4LXvWQ79rjBcs
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: a7170d27-32ab-462b-a333-269abc654483
+  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '274'
+source-wordcount: 274
 ht-degree: 4%
 
 ---

@@ -3,9 +3,23 @@ title: Objets personnalisés
 feature: REST API, Custom Objects
 description: Découvrez comment créer et gérer des objets personnalisés Marketo via l’API REST, y compris comment répertorier et décrire les points d’entrée, les métadonnées, les relations, les champs et les requêtes.
 exl-id: 88e8829b-f8f1-46d7-a753-5aa6e20e2c40
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/NWm9CjFVqQdVDJRrnE4nA299-Lg53-JR7xvY-82dUqY
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+subfeature_v2:
+  - id: ea4e3ff5-e7b9-4b4c-a5a0-dc27cc3f4275
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '3346'
+source-wordcount: 3346
 ht-degree: 0%
 
 ---
@@ -395,7 +409,7 @@ L’API de métadonnées d’objet personnalisé vous permet de gérer à distan
 
 ### Type de requête
 
-Il existe deux manières de récupérer des métadonnées de type d’objet personnalisé : Décrire le type d’objet personnalisé, qui renvoie  l’enregistrement d’un seul type d’objet personnalisé, et peut être filtré par état d’approbation, et Liste des types d’objet personnalisés, qui renvoie une liste de tous les types d’objet personnalisés de l’abonnement, et peut être filtré par nom et par état d’approbation.
+Il existe deux manières de récupérer des métadonnées de type d’objet personnalisé : Décrire le type d’objet personnalisé, qui renvoie l’enregistrement d’un seul type d’objet personnalisé et peut être filtré par état d’approbation, et Répertorier les types d’objet personnalisés, qui renvoie une liste de tous les types d’objet personnalisés dans l’abonnement et peut être filtré par nom et par état d’approbation.
 
 ### Type de description
 
@@ -514,7 +528,7 @@ Voici les attributs qui s’affichent :
 
 * Métadonnées : état, displayName, description, apiName, idField, createdAt, updatedAt, dedupeFields, searchableFields, relations
 * Champs standard : marketoGUID, createdAt, updatedAt
-* Champs personnalisés leadId, vin, marque,  modèle, année
+* Champs personnalisés leadId, vin, marque, modèle, année
 
 ### Types de liste
 
@@ -701,7 +715,7 @@ Le point d’entrée [Synchroniser le type d’objet personnalisé](https://deve
 
 Soyez prudent lorsque vous nommez des objets personnalisés. Lors de la création d’un objet personnalisé, il est recommandé de faire précéder le nom d’une chaîne qui indique le nom de votre société (caractères alphanumériques ou traits de soulignement autorisés). Cela permet de rechercher facilement l’objet personnalisé dans l’interface utilisateur MLM et permet également de s’assurer que le nom est unique.
 
-Voici un exemple de création d’un type d’objet personnalisé avec l’API  Nommez « transaction ».
+Voici un exemple de création d’un type d’objet personnalisé avec le nom d’API « transaction ».
 
 ```http
 POST /rest/v1/customobjects/schema.json
@@ -883,7 +897,7 @@ Pour plus d’informations sur les champs d’objet personnalisés, consultez la
 
 ### Ajouter des champs
 
-Le point d’entrée [Ajouter des champs de type d’objet personnalisés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/addCustomObjectTypeFieldsUsingPOST) vous permet d’ajouter un ou plusieurs champs à votre objet personnalisé.  Le corps de la requête contient un tableau `input` avec un ou plusieurs éléments .  Chaque élément est un objet JSON avec des attributs qui décrivent un champ. L’attribut `name` obligatoire est le nom d’API du champ et doit être propre à l’objet personnalisé.   La convention consiste à utiliser des minuscules ou des majuscules pour faire la distinction entre d’autres chaînes de texte. L’attribut `displayName` obligatoire est le nom lisible par l’homme du champ et doit être propre à l’objet personnalisé. L’attribut `dataType` obligatoire est le type de données du champ.  A  liste des types de données autorisés pouvant être obtenus en appelant le point d’entrée [Obtenir les types de données de champ de type d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectTypeFieldDataTypesUsingGET).  Les objets personnalisés peuvent contenir des champs avec le type de données « lien ».  Les champs de lien sont utilisés pour établir des relations entre les objets personnalisés et d&#39;autres types d&#39;objets du système, par exemple Lead, Société.  Vous trouverez plus d’informations sur les champs de lien [ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields). L’attribut `description` facultatif est la description du champ. L’attribut booléen `isDedupeField` facultatif indique si le champ est utilisé à des fins de déduplication lors des opérations de mise à jour d’objet personnalisé.  Le paramètre par défaut est false.  Pour les relations de type « un à plusieurs », un champ de déduplication est requis. L’attribut d’objet `relatedTo` facultatif spécifie un champ de lien.  Pour les relations un-à-plusieurs, cet objet contient un attribut `name` qui est l’« objet de lien » ou l’objet parent à lier, et un attribut `field` qui est le « champ de lien »,  ou le champ de l’objet parent à utiliser comme attribut de clé.  Appelez le point d’entrée [Get Custom Object Linkable Objects](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectTypeLinkableObjectsUsingGET) pour récupérer une liste d’objets de lien autorisés.  Pour plus d’informations sur les champs de lien, consultez la documentation du produit [ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields). Un objet personnalisé ne peut pas être lié à un autre objet personnalisé qui possède un champ de lien existant.
+Le point d’entrée [Ajouter des champs de type d’objet personnalisés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/addCustomObjectTypeFieldsUsingPOST) vous permet d’ajouter un ou plusieurs champs à votre objet personnalisé.  Le corps de la requête contient un tableau `input` avec un ou plusieurs éléments .  Chaque élément est un objet JSON avec des attributs qui décrivent un champ. L’attribut `name` obligatoire est le nom d’API du champ et doit être propre à l’objet personnalisé.   La convention consiste à utiliser des minuscules ou des majuscules pour faire la distinction entre d’autres chaînes de texte. L’attribut `displayName` obligatoire est le nom lisible par l’homme du champ et doit être propre à l’objet personnalisé. L’attribut `dataType` obligatoire est le type de données du champ.  Une liste des types de données autorisés peut être obtenue en appelant le point d’entrée [Obtenir les types de données de champ de type d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectTypeFieldDataTypesUsingGET).  Les objets personnalisés peuvent contenir des champs avec le type de données « lien ».  Les champs de lien sont utilisés pour établir des relations entre les objets personnalisés et d&#39;autres types d&#39;objets du système, par exemple Lead, Société.  Vous trouverez plus d’informations sur les champs de lien [ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields). L’attribut `description` facultatif est la description du champ. L’attribut booléen `isDedupeField` facultatif indique si le champ est utilisé à des fins de déduplication lors des opérations de mise à jour d’objet personnalisé.  Le paramètre par défaut est false.  Pour les relations de type « un à plusieurs », un champ de déduplication est requis. L’attribut d’objet `relatedTo` facultatif spécifie un champ de lien.  Pour les relations un-à-plusieurs, cet objet contient un attribut `name` qui est l’« objet de lien » ou l’objet parent à lier, et un attribut `field` qui est le « champ de lien » ou le champ de l’objet parent à utiliser comme attribut clé.  Appelez le point d’entrée [Get Custom Object Linkable Objects](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectTypeLinkableObjectsUsingGET) pour récupérer une liste d’objets de lien autorisés.  Pour plus d’informations sur les champs de lien, consultez la documentation du produit [ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields). Un objet personnalisé ne peut pas être lié à un autre objet personnalisé qui possède un champ de lien existant.
 
 ### Relation De Type « Un À Plusieurs »
 
@@ -988,7 +1002,7 @@ POST /rest/v1/customobjects/schema/course/approve.json
 
 ### Relation Multiple-À-Multiple
 
-Les relations multiples-à-multiples sont représentées à l’aide d’un objet personnalisé « pont », ou intermédiaire, entre un objet personnalisé standard, tel que Lead ou Company, et un objet personnalisé « edge ». L’objet Edge est l’entité principale contenant des attributs descriptifs (champs). L’objet bridge contient les données permettant de résoudre les relations d’objet à l’aide de 2 champs de lien.  Un champ de lien renvoie à l’objet standard parent comme dans un  configuration de relation un-à-plusieurs.  L’autre champ de lien pointe vers l’objet Edge , qui est un objet personnalisé sans liens.  L’objet bridge peut également contenir des attributs descriptifs (champs). En utilisant l’exemple d’inscription à un cours universitaire de la documentation du produit Marketo [ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure), nous créons un objet personnalisé Edge pour contenir des informations relatives au cours, ainsi qu’un objet de passerelle d’inscription utilisé pour connecter les cours aux prospects. La procédure est la suivante :
+Les relations multiples-à-multiples sont représentées à l’aide d’un objet personnalisé « pont », ou intermédiaire, entre un objet personnalisé standard, tel que Lead ou Company, et un objet personnalisé « edge ». L’objet Edge est l’entité principale contenant des attributs descriptifs (champs). L’objet bridge contient les données permettant de résoudre les relations d’objet à l’aide de 2 champs de lien.  Un champ de lien renvoie à l’objet standard parent, comme dans une configuration de relation un-à-plusieurs.  L’autre champ de lien pointe vers l’objet Edge , qui est un objet personnalisé sans liens.  L’objet bridge peut également contenir des attributs descriptifs (champs). En utilisant l’exemple d’inscription à un cours universitaire de la documentation du produit Marketo [ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure), nous créons un objet personnalisé Edge pour contenir des informations relatives au cours, ainsi qu’un objet de passerelle d’inscription utilisé pour connecter les cours aux prospects. La procédure est la suivante :
 
 1. Créer un objet Edge **Course**
 1. Ajouter des champs au **Cours :** dédupliquer sur **ID du cours**

@@ -3,9 +3,14 @@ title: Ingestion de données
 feature: REST API, Dynamic Content
 description: Utilisez l’API Marketo Data Ingestion pour une ingestion de volume élevé et à faible latence de personnes, d’objets personnalisés, d’entreprises et de membres de programme.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+TQID: https://experienceleague.adobe.com/xby7hs-CSLrVzy-FXEBi1FeU1-ca7vI4kB85BYJ9snk
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1789'
+source-wordcount: 1789
 ht-degree: 17%
 
 ---

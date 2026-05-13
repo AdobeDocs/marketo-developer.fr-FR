@@ -3,9 +3,16 @@ title: Vendeurs
 feature: REST API
 description: Guide de l’API REST Marketo pour les enregistrements de commercial avec synchronisation SFDC ou Dynamics, à l’aide de externalSalesPersonId pour mettre en relation les prospects et effectuer des requêtes, des upserts et des suppressions.
 exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/JwLNgM0zgztyoYJotCiSdGxMixnzA0kvkFbvq8kEkzE
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '396'
+source-wordcount: 396
 ht-degree: 0%
 
 ---

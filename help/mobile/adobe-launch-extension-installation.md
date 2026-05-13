@@ -3,9 +3,19 @@ title: Installation de l’extension [!DNL Adobe Launch]
 feature: Mobile Marketing
 description: Installez l’extension Adobe Launch Marketo pour mobile. Suivez les étapes de configuration d’iOS et d’Android, de test des appareils, des autorisations et de FCM pour les notifications push et in-app.
 exl-id: d71b7cd7-309b-4882-9bba-7daaaa5ef32d
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/UZRHaRBISIZsE6E25Ee7CnnYwyZwi6w2YgOQJ-JL00U
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+  - id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: e0eb8757-182f-49f3-94a4-1587d16f5094
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '813'
+source-wordcount: 813
 ht-degree: 0%
 
 ---
@@ -27,7 +37,7 @@ Instructions d’installation pour [!DNL Adobe Launch] extension Marketo. Les é
 
 1. Accédez à [!UICONTROL Fichier] > [!UICONTROL Nouveau] > [!UICONTROL Fichier] et sélectionnez **[!UICONTROL Fichier d’en-tête]**.
 
-1. Nommez le fichier « _ProjectName_>-Bridging-Header ».
+1. Nommez le fichier « &lt;_ProjectName_>-Bridging-Header ».
 
 1. Accédez à [!UICONTROL Projet] > [!UICONTROL Cible] > [!UICONTROL Paramètres de build] > [!UICONTROL Compilateur Swift] > [!UICONTROL Génération de code]. Ajoutez le chemin suivant à l’en-tête « Pontage d’objectifs » :
 
@@ -134,7 +144,7 @@ Si vous utilisez ProGuard pour votre application, ajoutez les lignes suivantes d
 -keep class com.marketo.**{ *; }
 ```
 
-## Android  Test  Appareils
+## Appareils de test Android
 
 Ajoutez « MarketoActivity » à `AndroidManifest.xml` dans la balise de l’application.
 

@@ -3,9 +3,20 @@ title: Gestion des utilisateurs
 feature: REST API
 description: Guide des API User Management de Marketo pour CRUD sur les utilisateurs, l’authentification basée sur l’en-tête, les rôles et les espaces de travail, la gestion du code d’état, le format de date et d’heure et les points d’entrée de requête.
 exl-id: 2a58f496-0fe6-4f7e-98ef-e9e5a017c2de
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+TQID: https://experienceleague.adobe.com/V1NzpIl-peHBi9rqy8YwdJDh3O-dViIdF0cBsDSI-w8
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+  - id: d65b4a73-87a3-4d56-b638-74e74d9939ce
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1581'
+source-wordcount: 1581
 ht-degree: 6%
 
 ---
@@ -429,7 +440,7 @@ La mise à jour de la prise en charge des rôles inclut la possibilité d’ajou
 
 ## Ajouter rôles
 
-Le point d’entrée [Ajouter des rôles](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/addRolesUsingPOST) prend un seul paramètre de chemin d’accès `userid` et ajoute un ou plusieurs rôles utilisateur à l’utilisateur correspondant. Le corps de la requête contient une liste d’un ou de plusieurs objets contenant chacun une  `accessRoleId` et un attribut `workspaceId`. En cas de réussite, la liste complète des paires de `accessRoleId/workspaceId` pour l’utilisateur spécifié est renvoyée.
+Le point d’entrée [Ajouter des rôles](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/addRolesUsingPOST) prend un seul paramètre de chemin d’accès `userid` et ajoute un ou plusieurs rôles utilisateur à l’utilisateur correspondant. Le corps de la requête contient une liste d’un ou de plusieurs objets contenant chacun un `accessRoleId` et un attribut `workspaceId`. En cas de réussite, la liste complète des paires de `accessRoleId/workspaceId` pour l’utilisateur spécifié est renvoyée.
 
 ```http
 POST /userservice/management/v1/users/{userid}/roles/create.json
@@ -467,7 +478,7 @@ Content-Type: application/json
 
 ## Supprimer rôles
 
-Le point d’entrée [Supprimer des rôles](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/deleteRolesUsingPOST) prend un seul paramètre de chemin d’accès `userid` et supprime un ou plusieurs rôles utilisateur de l’utilisateur correspondant. Le corps de la requête contient une liste d’un ou de plusieurs objets contenant chacun une  `accessRoleId` et un attribut `workspaceId`. En cas de réussite, la liste restante des paires accessRoleId/workspaceId pour l’utilisateur spécifié est renvoyée.
+Le point d’entrée [Supprimer des rôles](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/deleteRolesUsingPOST) prend un seul paramètre de chemin d’accès `userid` et supprime un ou plusieurs rôles utilisateur de l’utilisateur correspondant. Le corps de la requête contient une liste d’un ou de plusieurs objets contenant chacun un `accessRoleId` et un attribut `workspaceId`. En cas de réussite, la liste restante des paires accessRoleId/workspaceId pour l’utilisateur spécifié est renvoyée.
 
 ```http
 POST /userservice/management/v1/users/{userid}/roles/delete.json

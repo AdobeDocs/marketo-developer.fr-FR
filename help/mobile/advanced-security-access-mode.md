@@ -3,9 +3,16 @@ title: Mode d’accès de sécurité avancé
 feature: Mobile Marketing
 description: Découvrez le mode d’accès de sécurité avancé pour Marketo Mobile SDK, avec la génération de signatures HMAC, la configuration des points d’entrée du serveur, l’utilisation des identifiants d’appareil et des exemples iOS et Android
 exl-id: bd4730ff-708b-465e-b494-485a4dbf67ff
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+TQID: https://experienceleague.adobe.com/F6lH1aGbCakK-E6IU4wLwYw58BG2-CRE-Ras2bMHeO8
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: d095671a-1355-40aa-8b5f-06c33c68080b
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '322'
+source-wordcount: 322
 ht-degree: 0%
 
 ---

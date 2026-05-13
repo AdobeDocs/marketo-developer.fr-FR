@@ -3,9 +3,16 @@ title: Fichiers
 feature: REST API
 description: Guide de requête des fichiers d’API REST Marketo par identifiant ou nom, navigation avec dossier et décalage, création ou mise à jour par chargement multipartie, insertOnly, types MIME, pas de diffusion en continu
 exl-id: 17361cdc-2309-442c-803c-34ce187aee1a
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/qH8zFwjJkTWHlCj1VHNiTiLK3mNOJFS83cnjEj2qjpA
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '347'
+source-wordcount: 347
 ht-degree: 1%
 
 ---

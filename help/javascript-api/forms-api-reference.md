@@ -3,9 +3,16 @@ title: Référence de l’API Forms
 description: Référence complète pour l’API Marketo Forms 2.0, détaillant les méthodes MktoForms2 et Form, les paramètres, les rappels et les retours pour le chargement et le rendu des formulaires.
 feature: Forms, Javascript
 exl-id: 0f8d242f-0b27-4087-b080-3d41ebaa25b3
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+TQID: https://experienceleague.adobe.com/wLuN1H8tDFEihPqcAfoG-Y80d4Kw1BoSskVQu4Bgss0
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1345'
+source-wordcount: 1352
 ht-degree: 2%
 
 ---
@@ -182,7 +189,7 @@ Vous interagirez avec deux objets principaux à l’aide de l’API Forms 2.0. L
     </tr>
     <tr valign="top">
       <td>.submittable(canSubmit) <em>également disponible sous :</em> <em>.submitable(canSubmit)</em></td>
-      <td>Obtient ou définit si le formulaire peut être envoyé. Si elle est appelée sans argument, elle obtient la valeur, si elle est appelée avec un argument, elle définit la valeur. Cela peut être utilisé pour empêcher l’envoi d’un formulaire tandis que d’autres critères en dehors du formulaire normal doivent être remplis.</td>
+      <td>Obtient ou définit si le formulaire peut être envoyé. Si elle est appelée sans argument, elle obtient la valeur ; si elle est appelée avec un seul argument, elle définit la valeur.Vous pouvez l’utiliser pour empêcher l’envoi d’un formulaire, tandis que d’autres critères en dehors du formulaire normal doivent être remplis.</td>
       <td>canSubmit (facultatif)(booléen) : définit le formulaire comme pouvant être envoyé ou non envoyé.</td>
       <td>Booléen ou objet de formulaire : si cette propriété est appelée sans argument, renvoie une valeur booléenne indiquant si le formulaire peut être envoyé. Si elle est appelée avec un seul argument, renvoie cet objet Form à des fins de chaîne. </td>
     </tr>

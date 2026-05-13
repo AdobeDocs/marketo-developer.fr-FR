@@ -3,9 +3,22 @@ title: Membres du programme
 feature: REST API
 description: Utilisez l’API REST Marketo pour lire, créer, mettre à jour et supprimer des membres de programme, gérer des champs standard et personnalisés et effectuer des requêtes à l’aide de champs pouvant faire l’objet de recherches.
 exl-id: 22f29a42-2a30-4dce-a571-d7776374cf43
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/scEHyXYq9C7cCS1kIX810wG7ahT9fsa448NwIfBmzQM
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1924'
+source-wordcount: 1924
 ht-degree: 2%
 
 ---
@@ -684,7 +697,7 @@ POST /rest/v1/programs/members/schema/fields/pMCFCustomField03.json
 
 ## Supprimer
 
-Le point d’entrée [Supprimer les membres du programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/deleteProgramMemberUsingPOST) est utilisé pour supprimer les enregistrements de membre de programme. Le paramètre de chemin d’accès `programId` obligatoire spécifie le programme contenant les membres à supprimer. Le corps de la requête contient un tableau `input` d’ID de prospect. 300 ID de lead au maximum  sont autorisés par appel.
+Le point d’entrée [Supprimer les membres du programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/deleteProgramMemberUsingPOST) est utilisé pour supprimer les enregistrements de membre de programme. Le paramètre de chemin d’accès `programId` obligatoire spécifie le programme contenant les membres à supprimer. Le corps de la requête contient un tableau `input` d’ID de prospect. Un maximum de 300 ID de lead par appel est autorisé.
 
 Le point d’entrée répond avec une `status` de « supprimé » ou « ignoré ». Si cette opération est ignorée, un tableau `reasons` est également inclus. Le point d’entrée répond également avec un champ `seq` qui est un index qui peut être utilisé pour mettre en corrélation les enregistrements envoyés avec l’ordre de la réponse.
 
