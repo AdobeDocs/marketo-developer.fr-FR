@@ -26,7 +26,7 @@ Vous devez partager ce document avec les personnes ou l’équipe responsables d
 Selon votre cas d’utilisation, il existe deux options de base pour migrer votre application vers :
 
 * Limitez le nombre de listes statiques à partir desquelles vous extrayez des activités à un maximum de 10 000 membres. Vous pouvez diviser n’importe laquelle de vos listes existantes en listes plus petites afin de continuer à interroger la même audience pour les activités .
-* Extrayez vos activités ou modifications de valeur de données à l’aide de l’extraction d’activité en bloc ou de flux de données et joignez ces résultats à l’appartenance à une liste statique avec [getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1) ou [Extraction de lead en bloc](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract)
+* Extrayez vos activités ou modifications de valeur de données à l’aide de l’extraction d’activité en bloc ou de flux de données et joignez ces résultats à l’appartenance à une liste statique avec [getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1) ou [Extraction de lead en bloc](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract)
 
 ## Que Se Passera-T-Il Si Je Ne Fais Rien ?
 
