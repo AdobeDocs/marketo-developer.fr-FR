@@ -6,9 +6,9 @@ role: Admin
 feature-set: "Marketo Engage"
 index: true
 author: Donald
-source-git-commit: d70e61cab3a0e929a85b8ac57836438470988944
+source-git-commit: e71bcf289229867bc969345d79c8f014761aaaf9
 workflow-type: tm+mt
-source-wordcount: '286'
+source-wordcount: '288'
 ht-degree: 37%
 
 ---
@@ -72,46 +72,47 @@ ht-degree: 37%
       - [Extraits](rest-api/snippets.md)
       - [Listes statiques](rest-api/static-lists.md)
       - [Jetons](rest-api/tokens.md)
-      - [Transactional Email](rest-api/transactional-email.md)
+      - [E-mail transactionnel](rest-api/transactional-email.md)
    - [Authentification](rest-api/authentication.md)
    - [URL de base](rest-api/base-url.md)
    - [Meilleures pratiques](rest-api/marketo-integration-best-practices.md)
-   - Bulk Extract {#bulk-extract}
-      - [Bulk Activity](rest-api/bulk-activity-extract.md)
-      - [Bulk Custom Object](rest-api/bulk-custom-object-extract.md)
-      - [Bulk Extract](rest-api/bulk-extract.md)
-      - [Bulk Lead](rest-api/bulk-lead-extract.md)
-      - [Bulk Program Member](rest-api/bulk-program-member-extract.md)
-   - Bulk Import {#bulk-import}
-      - [Bulk Custom Object](rest-api/bulk-custom-object-import.md)
-      - [Bulk Import](rest-api/bulk-import.md)
-      - [Bulk Lead](rest-api/bulk-lead-import.md)
-      - [Bulk Program Member](rest-api/bulk-program-member-import.md)
+   - Extraction En Masse {#bulk-extract}
+      - [Activité en bloc](rest-api/bulk-activity-extract.md)
+      - [Objet personnalisé en bloc](rest-api/bulk-custom-object-extract.md)
+      - [Extraction En Masse](rest-api/bulk-extract.md)
+      - [Lead groupé](rest-api/bulk-lead-extract.md)
+      - [Membre du programme en bloc](rest-api/bulk-program-member-extract.md)
+   - Importation en bloc {#bulk-import}
+      - [Objet personnalisé en bloc](rest-api/bulk-custom-object-import.md)
+      - [Importation en bloc](rest-api/bulk-import.md)
+      - [Lead groupé](rest-api/bulk-lead-import.md)
+      - [Membre du programme en bloc](rest-api/bulk-program-member-import.md)
    - [Canaux](rest-api/channels.md)
-   - [Custom Services](rest-api/custom-services.md)
-   - [Data Ingestion API](rest-api/data-ingestion.md)
-   - [Endpoint Reference](rest-api/endpoint-reference.md)
-   - [Error Codes](rest-api/error-codes.md)
+   - [Services personnalisés](rest-api/custom-services.md)
+   - [API Data Ingestion](rest-api/data-ingestion.md)
+   - [Référence du point d’entrée](rest-api/endpoint-reference.md)
+   - [Codes d’erreur](rest-api/error-codes.md)
    - Base de données des leads {#lead-database}
       - [Activités](rest-api/activities.md)
       - [Sociétés](rest-api/companies.md)
       - [Objets personnalisés](rest-api/custom-objects.md)
-      - [Field List](rest-api/fields.md)
-      - [Field Types](rest-api/field-types.md)
+      - [Liste de champs](rest-api/fields.md)
+      - [Types de champs](rest-api/field-types.md)
       - [Base de données des leads](rest-api/lead-database.md)
       - [Prospects](rest-api/leads.md)
+      - [Guide de migration](rest-api/migration.md)
       - [Comptes désignés](rest-api/named-accounts.md)
-      - [Named Account Lists](rest-api/named-account-lists.md)
+      - [Listes de comptes nommés](rest-api/named-account-lists.md)
       - [Opportunités](rest-api/opportunities.md)
-      - [Opportunity Roles](rest-api/opportunity-roles.md)
+      - [Rôles d’opportunité](rest-api/opportunity-roles.md)
       - [Membres du programme](rest-api/program-members.md)
-      - [Sales Persons](rest-api/sales-persons.md)
+      - [Vendeurs](rest-api/sales-persons.md)
       - [Liste statique](rest-api/list-membership.md)
       - [Utilisation](rest-api/usage.md)
-   - [Paging Tokens](rest-api/paging-tokens.md)
+   - [Jetons de pagination](rest-api/paging-tokens.md)
    - [Performance](rest-api/performance.md)
-   - [Reference Architectures](rest-api/reference-architectures.md)
-   - [Sample Code](https://github.com/Marketo/REST-Sample-Code)
+   - [Architectures de référence](rest-api/reference-architectures.md)
+   - [Exemple de code](https://github.com/Marketo/REST-Sample-Code)
    - [Balises](rest-api/tags.md)
    - [Contexte utilisateur](rest-api/user-context.md)
    - [Gestion des utilisateurs](rest-api/user-management.md)
@@ -166,7 +167,7 @@ ht-degree: 37%
 - [Script de l&#39;e-mail](email-scripting.md)
 - [Exemples de script e-mail](examples.md)
 - [Objets Marketo](marketo-objects.md)
-- {hide-from-toc}[&#x200B; Serveur MCP &#x200B;](mcp-server.md)
+- {hide-from-toc}[ Serveur MCP ](mcp-server.md)
 - {hide-from-toc}[Licence](api-license.md)
 - [Sandbox partenaire](partner-sandbox.md)
 - [Étapes de flux en libre-service](self-service-flow-steps.md)
