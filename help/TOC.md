@@ -167,7 +167,7 @@ ht-degree: 37%
 - [Script de l&#39;e-mail](email-scripting.md)
 - [Exemples de script e-mail](examples.md)
 - [Objets Marketo](marketo-objects.md)
-- {hide-from-toc}[ Serveur MCP ](mcp-server.md)
+- {hide-from-toc}[&#x200B; Serveur MCP &#x200B;](mcp-server.md)
 - {hide-from-toc}[Licence](api-license.md)
 - [Sandbox partenaire](partner-sandbox.md)
 - [Étapes de flux en libre-service](self-service-flow-steps.md)
