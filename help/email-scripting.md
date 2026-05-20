@@ -4,16 +4,11 @@ feature: Email Programs
 description: Découvrez comment créer des scripts pour les e-mails Marketo dynamiques à l’aide des jetons Apache Velocity, des variables, des outils Velocity et tester avec l’exemple d’envoi et la Prévisualisation des e-mails.
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
 TQID: https://experienceleague.adobe.com/xFDjbGWGoWg4Ik6xqoU4L51FG5-1STZ5a0x0KpmwGd4
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: d1d0a9cd-295d-4976-8c39-ddae266f240eid: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 4fbd04f9942f903ab8b44e9740a806b74a4ffaf4
 workflow-type: tm+mt
 source-wordcount: 1116
 ht-degree: 0%
@@ -22,7 +17,7 @@ ht-degree: 0%
 
 # Script de l&#39;e-mail
 
-REMARQUE : il est vivement recommandé de lire le [Guide de l’utilisateur Velocity](https://velocity.apache.org/engine/devel/user-guide.html) pour une explication détaillée du comportement du langage de modèle Velocity.
+REMARQUE : il est vivement recommandé de lire le [Guide de l’utilisateur Velocity](https://velocity.apadche.org/engine/devel/user-guide.html) pour une explication détaillée du comportement du langage de modèle Velocity.
 
 [Apache Velocity](https://velocity.apache.org/) est un langage basé sur Java qui a été conçu pour créer des modèles et des scripts de contenu HTML. Marketo permet de l’utiliser dans le contexte des e-mails à l’aide de jetons de script. Cette fonctionnalité donne accès aux données stockées dans les opportunités et les objets personnalisés, et permet la création de contenu dynamique dans les e-mails. Velocity offre un flux de contrôle standard de haut niveau avec if/else, for et for each pour permettre la manipulation conditionnelle et itérative du contenu.
 
@@ -44,7 +39,7 @@ ${variable}name ##outputs 'valuename'
 
 
 
-Il existe également une notation de référence silencieuse, où un `!` est Inclus après le `$`. Normalement, lorsque la vitesse rencontre une référence non définie, la chaîne représentant la référence est laissée en place. Avec la notation silencieuse rkkheference, si une référence non définie est rencontrée, aucune valeur n’est émise :
+Il existe également une notation de référence silencieuse, où un `!` est inclus après la `$`. Normalement, lorsque la vitesse rencontre une référence non définie, la chaîne représentant la référence est laissée en place. Avec la notation de référence silencieuse, si une référence non définie est rencontrée, alors aucune valeur n’est émise :
 
 ```velocity
 ##Defined Reference
@@ -105,7 +100,7 @@ Une fois que votre script est défini dans un Jeton Mon programme , vous pouvez 
 
 ![Script Email](assets/email-script-marketo-email.png)
 
-Vous pouvez tester votre script à l’aide de l’action d’e-mail [!UICONTROL Envoyer un exemple d’e-mail] dans le concepteur d’e-mail Marketo. Pour que le script puisse s’exécuter correctement, vous devez sélectionner un prospect existant à représenter dans le champ [!UICONTROL Lead]. Si vous effectuez un test avec `$TriggerObject`, vous pouvez sélectionner l’objet de déclenchement via le paramètre [!UICONTROL Déclencheur]. Ce processus utilise les données de l’objet le plus récemment mis à jour de ce type comme variable `$TriggerObject`.
+Vous pouvez tester votre script à l’aide de l’action d’e-mail [!UICONTROL Envoyer un exemple d’e-mail] dans le concepteur d’e-mail Marketo. Pour que le script se déroule correctement, vous devez sélectionner un prospect existant à représenter dans le champ [!UICONTROL Lead]. Si vous effectuez un test avec `$TriggerObject`, vous pouvez sélectionner l’objet de déclenchement via le paramètre [!UICONTROL Déclencheur]. Ce processus utilise les données de l’objet le plus récemment mis à jour de ce type comme variable `$TriggerObject`.
 
 ![Test du script d’e-mail](assets/velocity-test.png)
 
@@ -123,9 +118,9 @@ La longueur combinée de tous les jetons de script d’e-mail dans un e-mail don
 - Vous pouvez référencer des objets personnalisés connectés à un prospect, un contact ou un compte, mais pas plus d’un.
 - Les objets personnalisés ne peuvent être référencés que par le biais d’une seule connexion, d’un seul lead, contact ou compte
 - Cochez la case dans l’éditeur de script pour les champs que vous utilisez ou ils ne sont pas traités
-- Pour chaque objet personnalisé, les dix enregistrements mis à jour le plus récemment par personne/contact sont disponibles au moment de l’exécution et sont classés du plus récemment mis à jour (à 0) au plus ancien mis à jour (à 9). Vous pouvez augmenter le nombre d&#39;enregistrements disponibles en [suivant les instructions](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
+- Pour chaque objet personnalisé, les dix enregistrements mis à jour le plus récemment par personne/contact sont disponibles au moment de l’exécution et sont classés du plus récemment mis à jour (à 0) au plus ancien mis à jour (à 9). Vous pouvez augmenter le nombre d&#39;enregistrements disponibles en [suivant les instructions](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
 - Si vous incluez plusieurs scripts d’e-mail dans un e-mail, ils s’exécutent de haut en bas. L’étendue des variables définies dans le premier script à exécuter est disponible dans les scripts suivants.
-- Référence des outils : [&#128279;](https://velocity.apache.org/tools/2.0/index.html)
+- Référence des outils : [](https://velocity.apache.org/tools/2.0/index.html)
 - Remarque concernant les jetons qui contiennent des caractères de nouvelle ligne « \n » ou « \r\n ». Lorsqu’un e-mail est envoyé via Envoyer un exemple ou via une campagne par lots, les caractères de nouvelle ligne dans les jetons sont remplacés par des espaces. Lorsque l’e-mail est envoyé via Trigger Campaign, les caractères de nouvelle ligne ne sont pas touchés.
 - Pour garantir une analyse correcte des URL, le chemin d’accès complet doit être défini en tant que variable, puis imprimé, et la variable ne doit pas être imprimée dans les références d’URL. Le protocole (http:// ou https://) doit être inclus et doit être distinct du reste de l’URL. L’URL doit également faire partie d’une balise d’ancrage entièrement formée (<a>). Le script doit générer une balise d’ancrage entièrement formée pour que les liens soient suivis. Les liens ne sont pas suivis s’ils sont générés à partir d’une boucle for ou foreach.
 

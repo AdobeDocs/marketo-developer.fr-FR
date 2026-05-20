@@ -1,16 +1,14 @@
 ---
 title: Ingestion de données
-feature: REST API, Dynamic Content
-description: Utilisez l’API Marketo Data Ingestion pour une ingestion de volume élevé et à faible latence de personnes, d’objets personnalisés, d’entreprises et de membres de programme.
+feature: REST API, Dynamic Content, Static Lists
+description: Utilisez l’API Marketo Data Ingestion pour une ingestion de volume élevé et à faible latence de personnes, d’objets personnalisés, d’entreprises, de membres de programme et de listes.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
 TQID: https://experienceleague.adobe.com/xby7hs-CSLrVzy-FXEBi1FeU1-ca7vI4kB85BYJ9snk
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 4fbd04f9942f903ab8b44e9740a806b74a4ffaf4
 workflow-type: tm+mt
-source-wordcount: 1789
+source-wordcount: 2178
 ht-degree: 17%
 
 ---
@@ -19,9 +17,9 @@ ht-degree: 17%
 
 L’API Data Ingestion est un service à haut volume, à faible latence et à haute disponibilité conçu pour gérer l’ingestion de grandes quantités de données de personnes et de données relatives aux personnes de manière efficace et avec un délai minimal.
 
-Les données sont ingérées en soumettant des requêtes qui s’exécutent de manière asynchrone. Le statut de la demande peut être récupéré en s’abonnant aux événements du flux de données d’observabilité [&#128279;](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
+Les données sont ingérées en soumettant des requêtes qui s’exécutent de manière asynchrone. Le statut de la demande peut être récupéré en s’abonnant aux événements du flux de données d’observabilité [](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
 
-Les interfaces sont proposées pour quatre types d’objets : personnes, objets personnalisés, sociétés et membres de programme. L’opération d’enregistrement est « insert or update » uniquement, à l’exception des membres de programme qui prennent également en charge la suppression.
+Les interfaces sont proposées pour cinq types d’objets : personnes, objets personnalisés, entreprises, membres de programme et listes (listes statiques). L’opération d’enregistrement est « insérer ou mettre à jour » uniquement, à l’exception des membres de programme qui prennent également en charge la suppression et des listes qui prennent en charge les opérations d’ajout et de suppression.
 
 >[!NOTE]
 >
@@ -45,6 +43,7 @@ Data Ingestion utilise le même modèle d’autorisations que l’API REST Marke
 | Objets personnalisés | Objet personnalisé accessible en lecture/écriture |
 | Sociétés | Société accessible en lecture/écriture |
 | Membres du programme | Lead en lecture/écriture |
+| Listes | Lead en lecture/écriture |
 
 ## Types d’objet pris en charge
 
@@ -54,6 +53,7 @@ Data Ingestion utilise le même modèle d’autorisations que l’API REST Marke
 | Objets personnalisés | Upsert (insertion ou mise à jour) |
 | Sociétés | Synchronisation (`createOnly`, `updateOnly`, `createOrUpdate`) |
 | Membres du programme | Synchroniser (upsert status), Supprimer (supprimer du programme) |
+| Listes | Ajouter à la liste, Supprimer de la liste |
 
 ## En-têtes
 
@@ -97,6 +97,10 @@ Exemple d’URL pour les sociétés :
 Exemple d’URL pour les membres du programme :
 
 `https://mkto-ingestion-api.adobe.io/subscriptions/556-RJS-213/programmembers`
+
+Exemple d’URL pour les listes :
+
+`https://mkto-ingestion-api.adobe.io/subscriptions/556-RJS-213/lists`
 
 ### Réponses
 
@@ -157,7 +161,7 @@ Intervalles de nouvelles tentatives :
 
 ## Points d’entrée
 
-Les points d’entrée d’ingestion sont disponibles pour les personnes, les objets personnalisés, les sociétés et les membres de programme.
+Les points d’entrée d’ingestion sont disponibles pour les personnes, les objets personnalisés, les entreprises, les membres de programme et les listes.
 
 ### Personnes
 
@@ -593,6 +597,159 @@ Les autorisations requises sont `Read-Write Lead`.
 | leadId | Obligatoire pour chaque membre du tableau d’entrée. |
 | Nb max de leads par requête | 1 000 membres au total pour tous les programmes. |
 
+### Listes (Ajouter à la liste)
+
+Point d&#39;entrée utilisé pour ajouter des leads à une liste statique. Les prospects sont identifiés par leur ID de prospect Marketo.
+
+| Méthode | Chemin |
+| --- | --- |
+| POST | `/subscriptions/{munchkinId}/lists` |
+
+#### En-têtes
+
+| Clé | Valeur | Obligatoire |
+| --- | --- | --- |
+| `Content-Type` | application/json | Oui |
+| `X-Mkto-User-Token` | {accessToken} | Oui |
+| `X-Correlation-Id` | Chaîne arbitraire (longueur maximale de 255 caractères) | Non |
+| `X-Request-Source` | Chaîne arbitraire (longueur maximale de 50 caractères) | Non |
+
+#### Corps de la requête
+
+| Clé | Type de données | Obligatoire | Valeur | Valeur par défaut |
+| --- | --- | --- | --- | --- |
+| `listId` | Long | Oui | Identifiant de liste statique Marketo. Doit être un entier positif. | – |
+| `leads` | Tableau d’objets | Oui | Liste des références de leads à ajouter à la liste. Accepte le `input` ou le `leads` de la clé JSON. | – |
+
+Chaque objet du tableau d’entrée contient :
+
+| Clé | Type de données | Obligatoire | Description |
+| --- | --- | --- | --- |
+| `leadId` | Long | Oui | ID de lead Marketo. Accepte le `leadId` ou le `id` de la clé JSON. |
+
+Les autorisations requises sont `Read-Write Lead`.
+
+### Liste ajoutée à l’exemple de liste
+
+#### Requête
+
+`POST /subscriptions/{munchkinId}/lists`
+
+#### En-têtes
+
+`Content-Type: application/json`
+`X-Mkto-User-Token: {accessToken}`
+
+#### Corps
+
+```json
+{
+   "listId": 1001,
+   "leads": [
+      {
+         "leadId": 10001
+      },
+      {
+         "leadId": 10002
+      },
+      {
+         "leadId": 10003
+      }
+   ]
+}
+```
+
+#### Réponse
+
+`HTTP/1.1 202`
+`X-Request-ID: WOUBf3fHJNU6sTmJqLL281lOmAEpMZFw`
+
+### Listes ajoutées aux règles de validation de liste
+
+| Règle | Détail |
+| --- | --- |
+| listId | Obligatoire. Doit être un entier positif (> 0). |
+| leads | Obligatoire. Ne doit pas être nul ou vide. |
+| leadId | Obligatoire pour chaque prospect dans le tableau d’entrée. |
+| Nb max de leads par requête | 1 000 prospects au total dans le tableau d’entrée. |
+
+### Listes (supprimer de la liste)
+
+Point d’entrée utilisé pour supprimer les prospects d’une liste statique. Les prospects sont identifiés par leur ID de prospect Marketo.
+
+>[!NOTE]
+>
+>Ce point d’entrée utilise la technique POST plutôt que DELETE, car la requête nécessite un corps JSON avec des données structurées.
+
+| Méthode | Chemin |
+| --- | --- |
+| POST | `/subscriptions/{munchkinId}/lists/remove` |
+
+#### En-têtes
+
+| Clé | Valeur | Obligatoire |
+| --- | --- | --- |
+| `Content-Type` | application/json | Oui |
+| `X-Mkto-User-Token` | {accessToken} | Oui |
+| `X-Correlation-Id` | Chaîne arbitraire (longueur maximale de 255 caractères) | Non |
+| `X-Request-Source` | Chaîne arbitraire (longueur maximale de 50 caractères) | Non |
+
+#### Corps de la requête
+
+| Clé | Type de données | Obligatoire | Valeur | Valeur par défaut |
+| --- | --- | --- | --- | --- |
+| `listId` | Long | Oui | Identifiant de liste statique Marketo. Doit être un entier positif. | – |
+| `leads` | Tableau d’objets | Oui | Liste des références de leads à supprimer de la liste. Accepte le `input` ou le `leads` de la clé JSON. | – |
+
+Chaque objet du tableau d’entrée contient :
+
+| Clé | Type de données | Obligatoire | Description |
+| --- | --- | --- | --- |
+| `leadId` | Long | Oui | ID de lead Marketo. Accepte le `leadId` ou le `id` de la clé JSON. |
+
+Les autorisations requises sont `Read-Write Lead`.
+
+### Exemples de listes supprimées
+
+#### Requête
+
+`POST /subscriptions/{munchkinId}/lists/remove`
+
+#### En-têtes
+
+`Content-Type: application/json`
+`X-Mkto-User-Token: {accessToken}`
+
+#### Corps
+
+```json
+{
+   "listId": 1001,
+   "leads": [
+      {
+         "leadId": 10001
+      },
+      {
+         "leadId": 10002
+      }
+   ]
+}
+```
+
+#### Réponse
+
+`HTTP/1.1 202`
+`X-Request-ID: e3d92152-0fb1-444a-8f8f-29d5a2338598`
+
+### Listes supprimées des règles de validation de liste
+
+| Règle | Détail |
+| --- | --- |
+| listId | Obligatoire. Doit être un entier positif (> 0). |
+| leads | Obligatoire. Ne doit pas être nul ou vide. |
+| leadId | Obligatoire pour chaque prospect dans le tableau d’entrée. |
+| Nb max de leads par requête | 1 000 prospects au total dans le tableau d’entrée. |
+
 ## Limites
 
 Voici une liste mise à jour des mécanismes de sécurisation :
@@ -602,7 +759,7 @@ Voici une liste mise à jour des mécanismes de sécurisation :
 * Nombre maximal de requêtes par seconde par ID client : 5 000
 * Nombre maximal d’objets par jour : 10 000 000
 
-Ces limites s&#39;appliquent uniformément aux personnes, aux objets personnalisés, aux sociétés et aux membres de programme. Pour les membres de programme, « objets par demande » correspond au nombre total de références de prospect dans tous les programmes dans une seule demande.
+Ces limites s’appliquent uniformément aux personnes, aux objets personnalisés, aux sociétés, aux membres de programme et aux listes. Pour les membres de programme, « objets par demande » correspond au nombre total de références de prospect dans tous les programmes dans une seule demande. Pour les listes, « objets par requête » correspond au nombre de références de prospect dans le tableau d’entrée.
 
 ## API Data Ingestion et API REST
 

@@ -1,10 +1,10 @@
 ---
 title: Test d’aperçu EXL
 description: Exemples de syntaxe Markdown EXL d’Adobe pour tester l’aperçu de l’extension.
-source-git-commit: 8f7ff2e1b6d0a4d8f63affb7bd1a2d0abbcc118c
+source-git-commit: 87d2584ed0ef2c1fa219f2a3ad120c91dc5491e0
 workflow-type: tm+mt
-source-wordcount: '343'
-ht-degree: 9%
+source-wordcount: '359'
+ht-degree: 13%
 
 ---
 
@@ -93,6 +93,14 @@ Utilisez des sections réductibles pour le contenu facultatif ou avancé qui, au
 
 +++
 
+## Aide contextuelle
+
+L’aide contextuelle est masquée dans l’aperçu. Regarde !
+>[!CONTEXTUALHELP]
+>id="models_insights_undefinedchannels"
+>title="Canaux non définis"
+>abstract="Les canaux non définis sont inclus, mais n’ont aucune conversion attribuée."
+
 ## Vidéo incorporée
 
 >[!VIDEO](https://video.tv.adobe.com/v/3427028/?quality=12&learn=on)
@@ -173,5 +181,6 @@ function greet(name) {
 
 | Colonne 1 | Colonne 2 | Colonne 3 |
 | --- | --- | --- |
-| Ligne 1, cellule 1 | Ligne 1, cellule 2 | Ligne 1, cellule 3 |
+| [!UICONTROL Ligne 1], cellule 1 | Ligne 1, cellule 2 | [!DNL Row 1, cell 3] |
 | Ligne 2, cellule 1 | Ligne 2, cellule 2 | Ligne 2, cellule 3 |
+
