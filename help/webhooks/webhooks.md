@@ -4,20 +4,11 @@ feature: Webhooks
 description: Découvrez comment configurer des Webhooks Marketo pour appeler des services tiers, définir des modèles de payload, un codage, des mappages de réponse, des jetons, des en-têtes personnalisés et des conseils.
 exl-id: fd283c66-05a1-4aa4-8412-0d41b8d1e3c8
 TQID: https://experienceleague.adobe.com/r-GpAqhYPKvlDtMw5l23jeJWzlSqycP65eYJPA3m9EM
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-subfeature_v2:
-  - id: ad89fb33-8541-4339-afe7-bb13d1633714
-  - id: fc9b09fe-b844-4544-887b-e420c3b82065
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: d1d0a9cd-295d-4976-8c39-ddae266f240eid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+subfeature_v2: id: ad89fb33-8541-4339-afe7-bb13d1633714id: fc9b09fe-b844-4544-887b-e420c3b82065
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 724
@@ -27,11 +18,11 @@ ht-degree: 3%
 
 # Webhooks
 
-Marketo permet d’utiliser des Webhooks pour communiquer avec des services web tiers. Les Webhooks prennent en charge l’utilisation des verbes HTTP GET ou POST pour transmettre ou récupérer des données à partir d’une URL spécifique. Pour obtenir des instructions détaillées sur la création de Webhooks dans l’application et sur la manière de les ajouter aux campagnes intelligentes, reportez-vous aux articles suivants :
+Marketo permet d’utiliser des Webhooks pour communiquer avec des services web tiers. Les Webhooks prennent en charge l’utilisation des verbes HTTP GET ou POST pour transmettre ou récupérer des données d’une URL spécifique. Pour obtenir des instructions détaillées sur la création de Webhooks dans l’application et sur la manière de les ajouter aux campagnes intelligentes, reportez-vous aux articles suivants :
 
-- [Créer un webhook](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
-- [Appeler le Webhook](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
-- [Utiliser un webhook dans une campagne intelligente](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
+- [Créer un webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
+- [Appeler le Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
+- [Utiliser un webhook dans une campagne intelligente](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
 
 Chaque webhook possède les propriétés suivantes :
 
@@ -48,9 +39,9 @@ Les données peuvent être réécrites dans les leads à partir de réponses de 
 
 Tous les champs sortants d’un Webhook (URL, modèle et en-têtes personnalisés) renseignent le contenu des jetons dans le même contexte de l’étape de flux. Cela signifie que les jetons de lead et de système sont toujours disponibles, tandis que les jetons de déclencheur, de campagne et de programme sont disponibles dans leurs portées respectives. Voir les articles relatifs aux jetons :
 
-- [Vue d’ensemble des jetons](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
-- [Glossaire des jetons système](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
-- [Jetons pour les moments significatifs](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
+- [Vue d’ensemble des jetons](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
+- [Glossaire des jetons système](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
+- [Jetons pour les moments significatifs](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
 
 Cela se produit généralement lorsqu’un programme ou une campagne est explicitement mappé à une ressource tierce. Un identifiant peut être défini au niveau du programme sous la forme d’un `My Token`, puis transmis à la requête Webhook sous la forme d’un jeton.
 
