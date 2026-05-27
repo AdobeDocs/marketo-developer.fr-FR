@@ -4,12 +4,9 @@ feature: SOAP
 description: Utilisez getMObjects pour récupérer des MObjects Marketo par ID, attribut ou association, jusqu’à 100 par lot, paginer avec streamPosition, avec des exemples XML.
 exl-id: 5cf18161-f590-4dc3-bba1-ee3ed9fd7e9f
 TQID: https://experienceleague.adobe.com/CS9l3RdHszlNQPHzIBKaPltnBmOA3KIx-1ua8Ff0ivQ
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 246

@@ -4,10 +4,8 @@ feature: REST API, Dynamic Content, Static Lists
 description: Utilisez l’API Marketo Data Ingestion pour une ingestion de volume élevé et à faible latence de personnes, d’objets personnalisés, d’entreprises, de membres de programme et de listes.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
 TQID: https://experienceleague.adobe.com/xby7hs-CSLrVzy-FXEBi1FeU1-ca7vI4kB85BYJ9snk
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 1a8345909b679b5651c94a68f8d29950ed47f6ed
 workflow-type: tm+mt
 source-wordcount: 2191
@@ -19,7 +17,7 @@ ht-degree: 17%
 
 L’API Data Ingestion est un service à haut volume, à faible latence et à haute disponibilité conçu pour gérer l’ingestion de grandes quantités de données de personnes et de données relatives aux personnes de manière efficace et avec un délai minimal.
 
-Les données sont ingérées en soumettant des requêtes qui s’exécutent de manière asynchrone. Le statut de la demande peut être récupéré en s’abonnant aux événements du flux de données d’observabilité [&#128279;](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
+Les données sont ingérées en soumettant des requêtes qui s’exécutent de manière asynchrone. Le statut de la demande peut être récupéré en s’abonnant aux événements du flux de données d’observabilité [](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
 
 Les interfaces sont proposées pour cinq types d’objets : personnes, objets personnalisés, entreprises, membres de programme et listes (listes statiques). L’opération d’enregistrement est « insérer ou mettre à jour » uniquement, à l’exception des membres de programme qui prennent également en charge la suppression et des listes qui prennent en charge les opérations d’ajout et de suppression.
 

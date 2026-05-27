@@ -4,14 +4,10 @@ feature: REST API
 description: Utilisez l’API REST Activités Marketo Engage pour répertorier les types d’activité, récupérer les activités de prospect avec des jetons de pagination et gérer les modifications personnalisées et de valeur de données.
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
 TQID: https://experienceleague.adobe.com/62keaj4uNoxIPCzr9AQzKrIsfuHBvC25knYisZRUvF4
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
 source-git-commit: e71bcf289229867bc969345d79c8f014761aaaf9
 workflow-type: tm+mt
 source-wordcount: 2226
@@ -90,7 +86,7 @@ Vous pouvez éventuellement inclure un paramètre de requête `listId` pour limi
 
 >[!CAUTION]
 >
->À compter du 30/12/2026, les appels aux points d’entrée `Get Lead Activities` et `Get Lead Changes` qui incluent le paramètre `listId` échoueront (code d’erreur 1003) si les listes cibles contiennent 10 000 prospects ou plus. Pour éviter toute interruption de service, assurez-vous que la portée des appels est correctement définie pour éviter cette limite. Voir le [&#x200B; Guide de migration &#x200B;](migration.md).
+>À compter du 30/12/2026, les appels aux points d’entrée `Get Lead Activities` et `Get Lead Changes` qui incluent le paramètre `listId` échoueront (code d’erreur 1003) si les listes cibles contiennent 10 000 prospects ou plus. Pour éviter toute interruption de service, assurez-vous que la portée des appels est correctement définie pour éviter cette limite. Voir le [ Guide de migration ](migration.md).
 
 ```
 GET /rest/v1/activities.json?activityTypeIds=1&nextPageToken=WQV2VQVPPCKHC6AQYVK7JDSA3I3LCWXH3Y6IIZ7YSGQLXHCPVE5Q====
@@ -155,7 +151,7 @@ Pour les activités Changement de valeur des données , une version spécialisé
 
 >[!CAUTION]
 >
->À compter du 30/12/2026, les appels aux points d’entrée `Get Lead Activities` et `Get Lead Changes` qui incluent le paramètre `listId` échoueront (code d’erreur 1003) si les listes cibles contiennent 10 000 prospects ou plus. Pour éviter toute interruption de service, assurez-vous que la portée des appels est correctement définie pour éviter cette limite. Voir le [&#x200B; Guide de migration &#x200B;](migration.md).
+>À compter du 30/12/2026, les appels aux points d’entrée `Get Lead Activities` et `Get Lead Changes` qui incluent le paramètre `listId` échoueront (code d’erreur 1003) si les listes cibles contiennent 10 000 prospects ou plus. Pour éviter toute interruption de service, assurez-vous que la portée des appels est correctement définie pour éviter cette limite. Voir le [ Guide de migration ](migration.md).
 
 ```http
 GET /rest/v1/activities/leadchanges.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ&fields=firstName,lastName,department
