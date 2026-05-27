@@ -111,7 +111,7 @@ L’option Obtenir les leads par type de filtre renvoie le même type d’enregi
 
 `filterValues` accepte jusqu’à 300 valeurs au format séparé par des virgules. L’appel recherche les enregistrements pour lesquels le champ du prospect correspond à l’un des `filterValues` inclus. Si le nombre de leads correspondant au filtre de lead est supérieur à 1 000, une erreur est renvoyée : « 1 003, Trop de résultats correspondent au filtre ».
 
-Si la longueur totale de votre requête GET dépasse 8 Ko, une erreur HTTP est renvoyée : « 414, URI trop long » (par RFC 7231). Pour pallier ce problème, vous pouvez remplacer votre GET par POST, ajouter le paramètre _method=GET et placer une chaîne de requête dans le corps de la requête.
+Si la longueur totale de votre requête GET dépasse 8 Ko, une erreur HTTP est renvoyée : « 414, URI trop long » (par RFC 7231). Pour pallier ce problème, vous pouvez modifier votre GET en POST, ajouter le paramètre _method=GET et placer une chaîne de requête dans le corps de la requête.
 
 ### Requête
 
@@ -830,7 +830,7 @@ Adhésion
 Les enregistrements de lead peuvent également être récupérés en fonction de l’appartenance à une liste statique ou à un programme. De plus, vous pouvez récupérer toutes les listes statiques, les programmes ou les campagnes intelligentes dont un prospect est membre.
 
 La structure de réponse et les paramètres facultatifs sont identiques à ceux de l’option Get Leads by Filter Type (Obtenir les prospects par type de filtre), bien que `filterType` et `filterValues` ne puissent pas être utilisés avec cette API.
-Pour accéder à l’ID de liste via l’interface utilisateur de Marketo, accédez à la liste. La liste `id` se trouve dans l’URL de la liste statique, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. Dans cet exemple, 1001 est la `id` de la liste.
+Pour accéder à l’ID de liste via l’interface utilisateur de Marketo, accédez à la liste. La liste `id` se trouve dans l’URL de la liste statique, `https://app-****.marketo.com/#ST1001A1`. Dans cet exemple, 1001 est la `id` de la liste.
 
 ## Obtenir les programmes par ID de lead
 

@@ -182,7 +182,7 @@ GET /rest/v1/customobjects/{apiName}/describe.json
 
 ## Requête
 
-[L’interrogation d’objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectsUsingGET) est légèrement différente des autres API de la base de données de leads et utilise `apiName` paramètre de chemin d’accès tel que descriptionr.  Pour les paramètres filterType classiques, la requête est un GET simple comme les requêtes pour d’autres types d’enregistrements, et nécessite un `filterType` et un `filterValues`.  Il accepte éventuellement les paramètres `**fields**`, `batchSize` et `nextPageToken`.  Lors de la demande d’une liste de champs, si un champ particulier est demandé, mais n’est pas renvoyé, la valeur est implicitement nulle.
+[L’interrogation d’objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectsUsingGET) est légèrement différente des autres API de la base de données de leads et utilise `apiName` paramètre de chemin d’accès tel que descriptionr.  Pour les paramètres filterType normaux, la requête est une simple requête GET comme les requêtes pour d’autres types d’enregistrements, et nécessite un `filterType` et un `filterValues`.  Il accepte éventuellement les paramètres `**fields**`, `batchSize` et `nextPageToken`.  Lors de la demande d’une liste de champs, si un champ particulier est demandé, mais n’est pas renvoyé, la valeur est implicitement nulle.
 
 ```http
 GET /rest/v1/customobjects/{apiName}.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fa,dff23271-f996-47d7-984f-f2676861b5fb

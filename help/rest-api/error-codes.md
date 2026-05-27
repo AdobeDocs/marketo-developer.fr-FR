@@ -68,7 +68,7 @@ Le point d’entrée [Identity](https://developer.adobe.com/marketo-apis/api/ide
     <tr>
       <td><a name="414"></a>414</td>
       <td>Request-URI trop long</td>
-      <td>L’URI de la requête a dépassé 8 000. La requête doit être retentée en tant que POST avec le paramètre `_method=GET` dans l’URL et le reste de la chaîne de requête dans le corps de la requête.</td>
+      <td>L’URI de la requête a dépassé 8 000. La requête doit être retentée en tant que POST avec le paramètre `_method=GET` dans l’URL, et le reste de la chaîne de requête dans le corps de la requête.</td>
     </tr>
   </tbody>
 </table>
