@@ -4,12 +4,9 @@ feature: Mobile Marketing
 description: Découvrez comment activer les liens profonds dans votre application pour les messages push Marketo à l’aide de schémas URI personnalisés, avec les conseils et les bonnes pratiques d’iOS, d’Android et de PhoneGap.
 exl-id: c3647416-d81d-4f15-b660-bcb3e54cb9bc
 TQID: https://experienceleague.adobe.com/UswOvHXGlfTrTUqr4Gsf3j2Z7Xpv2FF2luXeygT4qE0
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 420
@@ -33,11 +30,11 @@ Pour iOS, reportez-vous à la documentation d’Apple sur [Définition d’un sc
 
 Pour Android, reportez-vous à la documentation de Google sur [Activation des liens profonds pour le contenu d’application](https://developer.android.com/training/app-links/deep-linking).
 
-Pour les applications PhoneGap, la liaison profonde n’est pas aussi simple que pour les applications iOS ou Android natives, mais il existe des plug-ins qui permettent à votre application hybride de répondre aux schémas d’URL personnalisés de lien profond et aux liens universels/d’application sur iOS et Android. Tenez compte de [&#x200B; ces modules externes &#x200B;](https://cordova.apache.org/plugins/?q=deeplink).
+Pour les applications PhoneGap, la liaison profonde n’est pas aussi simple que pour les applications iOS ou Android natives, mais il existe des plug-ins qui permettent à votre application hybride de répondre aux schémas d’URL personnalisés de lien profond et aux liens universels/d’application sur iOS et Android. Tenez compte de [ ces modules externes ](https://cordova.apache.org/plugins/?q=deeplink).
 
 Lorsque vous avez activé la liaison profonde dans votre application, partagez vos URI personnalisés avec vos utilisateurs Marketo afin qu’ils puissent les insérer dans l’action d’appui pour les messages push.
 
-Marketo utilise une structure URI prédéfinie lors de la configuration des appareils de test. Pour plus d&#39;informations, reportez-vous à la section « Périphériques de test » du [&#x200B; Guide d&#39;installation &#x200B;](installation.md).
+Marketo utilise une structure URI prédéfinie lors de la configuration des appareils de test. Pour plus d&#39;informations, reportez-vous à la section « Périphériques de test » du [ Guide d&#39;installation ](installation.md).
 
 ## Bonnes pratiques relatives à la définition d’une structure URI
 

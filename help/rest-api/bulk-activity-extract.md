@@ -4,16 +4,10 @@ feature: REST API
 description: API REST d’extraction d’activité en bloc Marketo pour exporter des données d’activité volumineuses à l’aide d’une période de 31 jours, de filtres d’activité et d’attributs principaux pour ETL et CRM.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
 TQID: https://experienceleague.adobe.com/lIlXNjatN-F77Dv3xsVkQ3hAWwLZ4wlSW0zKNkFJFMA
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 1564
@@ -246,7 +240,7 @@ Pour prendre en charge la récupération partielle et conviviale des données ex
 
 ## Annulation d’un traitement
 
-Si une tâche n’a pas été configurée correctement ou devient inutile, elle peut facilement être annulée à l’aide du point d’entrée [&#x200B; Annuler la tâche d’exportation de l’activité &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Activities/operation/cancelExportActivitiesUsingPOST) :
+Si une tâche n’a pas été configurée correctement ou devient inutile, elle peut facilement être annulée à l’aide du point d’entrée [ Annuler la tâche d’exportation de l’activité ](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Activities/operation/cancelExportActivitiesUsingPOST) :
 
 ```http
 POST /bulk/v1/activities/export/{exportId}/cancel.json

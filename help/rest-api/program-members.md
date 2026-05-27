@@ -4,18 +4,10 @@ feature: REST API
 description: Utilisez l’API REST Marketo pour lire, créer, mettre à jour et supprimer des membres de programme, gérer des champs standard et personnalisés et effectuer des requêtes à l’aide de champs pouvant faire l’objet de recherches.
 exl-id: 22f29a42-2a30-4dce-a571-d7776374cf43
 TQID: https://experienceleague.adobe.com/scEHyXYq9C7cCS1kIX810wG7ahT9fsa448NwIfBmzQM
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: c5f60233-d5ea-4453-a799-0ad258b4d399id: d1d0a9cd-295d-4976-8c39-ddae266f240eid: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 1924
@@ -27,7 +19,7 @@ ht-degree: 2%
 
 [Référence du point d’entrée des membres du programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members)
 
-Marketo propose des API pour lire, créer, mettre à jour et supprimer des enregistrements de membre de programme. Les enregistrements des membres du programme sont associés aux enregistrements de lead via le champ ID de lead. Les enregistrements sont composés d’un ensemble de champs standard et éventuellement de 20 champs personnalisés supplémentaires. Les champs contiennent des données spécifiques au programme pour chaque membre et peuvent être utilisés dans des formulaires, des filtres, des déclencheurs et des actions de flux. Ces données sont visibles dans l’onglet [&#x200B; Membres &#x200B;](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members) du programme dans l’interface utilisateur de Marketo Engage.
+Marketo propose des API pour lire, créer, mettre à jour et supprimer des enregistrements de membre de programme. Les enregistrements des membres du programme sont associés aux enregistrements de lead via le champ ID de lead. Les enregistrements sont composés d’un ensemble de champs standard et éventuellement de 20 champs personnalisés supplémentaires. Les champs contiennent des données spécifiques au programme pour chaque membre et peuvent être utilisés dans des formulaires, des filtres, des déclencheurs et des actions de flux. Ces données sont visibles dans l’onglet [ Membres ](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members) du programme dans l’interface utilisateur de Marketo Engage.
 
 ## Décrire
 
@@ -241,7 +233,7 @@ Le paramètre de requête `fields` facultatif accepte une liste séparée par de
 
 Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête `batchSize` pour réduire ce nombre. Si l’attribut **moreResult** est défini sur true, cela signifie que davantage de résultats sont disponibles. Continuez à appeler ce point d’entrée jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’aucun résultat n’est disponible. Les `nextPageToken` renvoyés par cette API doivent toujours être réutilisés pour l’itération suivante de cet appel.
 
-Si la longueur totale de votre requête GET dépasse 8 Ko, une erreur HTTP est renvoyée : « 414, URI trop long ». Pour pallier ce problème, vous pouvez remplacer votre GET par POST, ajouter `_method=GET` paramètre et placer une chaîne de requête dans le corps de la requête.
+Si la longueur totale de votre requête GET dépasse 8 Ko, une erreur HTTP est renvoyée : « 414, URI trop long ». Pour pallier ce problème, vous pouvez modifier votre GET en POST, ajouter `_method=GET` paramètre et placer une chaîne de requête dans le corps de la requête.
 
 ```http
 GET /rest/v1/programs/{programId}/members.json?filterType=statusName&filterValues=Influenced
@@ -359,7 +351,7 @@ Deux points d’entrée prennent en charge l’opération de création/mise à j
 
 ### Statut de membre du programme
 
-Le point d’entrée [&#x200B; Synchroniser le statut des membres du programme &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/syncProgramMemberStatusUsingPOST) permet de créer ou de mettre à jour le statut du programme pour un ou plusieurs membres.
+Le point d’entrée [ Synchroniser le statut des membres du programme ](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/syncProgramMemberStatusUsingPOST) permet de créer ou de mettre à jour le statut du programme pour un ou plusieurs membres.
 
 Le paramètre de chemin d’accès `programId` obligatoire spécifie le programme contenant les membres à créer ou à mettre à jour.
 
@@ -610,9 +602,9 @@ GET /rest/v1/programs/members/schema/fields.json?batchSize=5
 
 ### Créer des champs
 
-Le point d’entrée [Créer des champs de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/createProgramMemberFieldUsingPOST) crée un ou plusieurs champs personnalisés sur l’objet de membre de programme. Ce point d’entrée fournit une fonctionnalité comparable à ce qui est [disponible dans l’interface utilisateur de Marketo Engage](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields). Vous pouvez créer jusqu’à 20 champs personnalisés à l’aide de ce point d’entrée.
+Le point d’entrée [Créer des champs de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/createProgramMemberFieldUsingPOST) crée un ou plusieurs champs personnalisés sur l’objet de membre de programme. Ce point d’entrée fournit une fonctionnalité comparable à ce qui est [disponible dans l’interface utilisateur de Marketo Engage](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields). Vous pouvez créer jusqu’à 20 champs personnalisés à l’aide de ce point d’entrée.
 
-Examinez attentivement chaque champ que vous créez dans votre instance de production de Marketo Engage à l’aide de l’API. Une fois un champ créé, vous ne pouvez pas le supprimer ([vous pouvez uniquement le masquer](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo)). La prolifération des champs inutilisés est une mauvaise pratique qui encombrera votre instance.
+Examinez attentivement chaque champ que vous créez dans votre instance de production de Marketo Engage à l’aide de l’API. Une fois un champ créé, vous ne pouvez pas le supprimer ([vous pouvez uniquement le masquer](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo)). La prolifération des champs inutilisés est une mauvaise pratique qui encombrera votre instance.
 
 Le paramètre `input` requis est un tableau d’objets de champ de membre de programme. Chaque objet contient un ou plusieurs attributs. Les attributs obligatoires sont les `displayName`, `name` et `dataType` qui correspondent respectivement au nom d’affichage de l’interface utilisateur du champ, au nom d’API du champ et au type de champ. Vous pouvez éventuellement spécifier `description`, `isHidden`, `isHtmlEncodingInEmail` et `isSensitive`.
 
