@@ -4,15 +4,10 @@ feature: REST API, Landing Pages
 description: Utilisez l’API REST Marketo pour interroger des métadonnées et du contenu, créer, mettre à jour, approuver, supprimer et cloner des pages de destination, y compris des types de formulaires guidés et libres.
 exl-id: 2f986fb0-0a6b-469f-b199-1c526cd5a882
 TQID: https://experienceleague.adobe.com/NssOtB6BEMGOQzzauLI7AszLpN3fVcEeJcr9VNTkpJE
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 1221
@@ -203,7 +198,7 @@ Pour les pages de forme libre, toutes les sections de contenu souhaitées doiven
 
 ### Contenu dynamique
 
-Pour créer une section de contenu dynamique, elle doit déjà être présente dans la liste de contenu de la page de destination. Le point d’entrée [&#x200B; Mettre à jour le contenu de la page de destination &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) doit ensuite être utilisé pour définir le type sur « DynamicContent ». Lorsqu’une section est définie sur du contenu dynamique, elle crée des sections dynamiques sous-jacentes dans la section de contenu qui héritent toutes du type de base de l’élément converti. Chaque section dynamique hérite également du contenu de la section convertie.
+Pour créer une section de contenu dynamique, elle doit déjà être présente dans la liste de contenu de la page de destination. Le point d’entrée [ Mettre à jour le contenu de la page de destination ](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) doit ensuite être utilisé pour définir le type sur « DynamicContent ». Lorsqu’une section est définie sur du contenu dynamique, elle crée des sections dynamiques sous-jacentes dans la section de contenu qui héritent toutes du type de base de l’élément converti. Chaque section dynamique hérite également du contenu de la section convertie.
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/dynamicContent/RVMtNDg=.json
@@ -284,7 +279,7 @@ Les variables sont définies sous la forme de balises meta dans `<head>` éléme
 </head>
 ```
 
-Pour plus d’informations, consultez la section « Variable modifiable » de la documentation [Création d’un modèle de page de destination guidé](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
+Pour plus d’informations, consultez la section « Variable modifiable » de la documentation [Création d’un modèle de page de destination guidé](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
 
 ### Requête
 
