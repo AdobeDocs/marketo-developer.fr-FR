@@ -27,7 +27,7 @@ ht-degree: 3%
 
 # Webhooks
 
-Marketo permet d’utiliser des Webhooks pour communiquer avec des services web tiers. Les Webhooks prennent en charge l’utilisation des verbes HTTP GET ou POST pour transmettre ou récupérer des données à partir d’une URL spécifique. Pour obtenir des instructions détaillées sur la création de Webhooks dans l’application et sur la manière de les ajouter aux campagnes intelligentes, reportez-vous aux articles suivants :
+Marketo permet d’utiliser des Webhooks pour communiquer avec des services web tiers. Les Webhooks prennent en charge l’utilisation des verbes HTTP GET ou POST pour transmettre ou récupérer des données d’une URL spécifique. Pour obtenir des instructions détaillées sur la création de Webhooks dans l’application et sur la manière de les ajouter aux campagnes intelligentes, reportez-vous aux articles suivants :
 
 - [Créer un webhook](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
 - [Appeler le Webhook](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
