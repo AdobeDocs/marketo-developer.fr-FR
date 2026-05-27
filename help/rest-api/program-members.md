@@ -241,7 +241,7 @@ Le paramètre de requête `fields` facultatif accepte une liste séparée par de
 
 Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête `batchSize` pour réduire ce nombre. Si l’attribut **moreResult** est défini sur true, cela signifie que davantage de résultats sont disponibles. Continuez à appeler ce point d’entrée jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’aucun résultat n’est disponible. Les `nextPageToken` renvoyés par cette API doivent toujours être réutilisés pour l’itération suivante de cet appel.
 
-Si la longueur totale de votre requête GET dépasse 8 Ko, une erreur HTTP est renvoyée : « 414, URI trop long ». Pour pallier ce problème, vous pouvez remplacer votre GET par POST, ajouter `_method=GET` paramètre et placer une chaîne de requête dans le corps de la requête.
+Si la longueur totale de votre requête GET dépasse 8 Ko, une erreur HTTP est renvoyée : « 414, URI trop long ». Pour pallier ce problème, vous pouvez modifier votre GET en POST, ajouter `_method=GET` paramètre et placer une chaîne de requête dans le corps de la requête.
 
 ```http
 GET /rest/v1/programs/{programId}/members.json?filterType=statusName&filterValues=Influenced
