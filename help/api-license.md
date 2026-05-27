@@ -4,15 +4,10 @@ description: Contrat de licence de l’API Marketo pour le développement et les
 exl-id: f0720ba7-b15d-40c8-9145-d3fa3e064a0b
 hide: true
 TQID: https://experienceleague.adobe.com/o39mvaYWSQDqV9RzgB-o6rqJUWIc0RITEl39-KRCGOo
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-  - id: f4e6943a-c91a-4134-a2c7-f4f20cfff2f0
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e2290edd-b061-4880-9d79-dee306cf5aa9
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87cid: f4e6943a-c91a-4134-a2c7-f4f20cfff2f0
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 3113
@@ -115,4 +110,4 @@ Le « branchement » désigne l’acte de créer un ensemble distinct et/ou sép
 
 [!DNL K]. Droit applicable ; Avis. Le présent Contrat est régi par les lois de l&#39;État de Californie sans tenir compte des règles de choix ou de conflit de lois. La juridiction et le lieu exclusifs pour toute question juridique liée au présent Accord sont soit la Cour supérieure du comté de San Mateo, en Californie, soit la United States District Court du district nord de la Californie. Les avis en vertu du présent Contrat doivent être écrits et sont réputés avoir été donnés (i) à la livraison personnelle, (ii) le troisième jour ouvrable après l&#39;envoi, (ii) le premier jour ouvrable après l&#39;envoi par courriel. Les avis à Marketo doivent être envoyés à : « Application Programming Interface License Agreement » et Marketo, Inc., 901 Mariner&#39;s Island Boulevard, Suite 500, San Mateo, CA 94404, avec copie à notre avocat général à la même adresse.
 
-Les versions archivées du contrat de licence de l’API sont disponibles à l’adresse : [&#128279;](https://developers.marketo.com/api-license-archived)
+Les versions archivées du contrat de licence de l’API sont disponibles à l’adresse : [](https://developers.marketo.com/api-license-archived)
