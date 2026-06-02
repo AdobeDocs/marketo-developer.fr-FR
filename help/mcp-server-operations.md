@@ -1,5 +1,5 @@
 ---
-title: Opérations MCP prises en charge
+title: Opérations Marketo Engage MCP
 description: Découvrez les opérations Marketo Engage MCP disponibles à l’utilisation avec les assistants d’IA.
 autotag-review: '2026-06-02T13:31:42.084Z'
 TQID: 'https://experienceleague.adobe.com/qvrWbHOCsCCHctduNDxMhkE8JAKxZk8FCYfKvzxfcYA'
@@ -12,21 +12,21 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: bef569a714bfb797bcf8bb82a406ca6df26facb0
+source-git-commit: 08abe412b9750585f0b75364f20488bea767dcc2
 workflow-type: tm+mt
-source-wordcount: 234
+source-wordcount: 231
 ht-degree: 5%
 
 ---
 
 
-# Opérations MCP [!DNL Marketo Engage] prises en charge
+# [!DNL Marketo Engage] des opérations MCP
 
 Les opérations suivantes sont disponibles via le serveur MCP [!DNL Marketo Engage]. En règle générale, les points d’entrée qui sont en lecture seule ou non destructifs sont disponibles. Le système d’IA ne peut pas effectuer d’`Delete` ou d’autres opérations destructives.
 
 >[!NOTE]
 >
->Cette liste n’est pas définitive et continuera à s’allonger à mesure que nous ajouterons des outils.
+>Cette liste va continuer à s’allonger à mesure que nous ajouterons d’autres outils.
 
 ## Exportation en bloc
 
