@@ -1,32 +1,26 @@
 ---
-title: Opérations MCP prises en charge
+title: Opérations Marketo Engage MCP
 description: Découvrez les opérations Marketo Engage MCP disponibles à l’utilisation avec les assistants d’IA.
 autotag-review: '2026-06-02T13:31:42.084Z'
 TQID: 'https://experienceleague.adobe.com/qvrWbHOCsCCHctduNDxMhkE8JAKxZk8FCYfKvzxfcYA'
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: dca84292-69e9-4116-a575-667d31fa060d
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-topic_v2:
-  - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: bef569a714bfb797bcf8bb82a406ca6df26facb0
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: dca84292-69e9-4116-a575-667d31fa060did: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+topic_v2: id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
+source-git-commit: 08abe412b9750585f0b75364f20488bea767dcc2
 workflow-type: tm+mt
-source-wordcount: 234
+source-wordcount: 231
 ht-degree: 5%
 
 ---
 
 
-# Opérations MCP [!DNL Marketo Engage] prises en charge
+# [!DNL Marketo Engage] des opérations MCP
 
 Les opérations suivantes sont disponibles via le serveur MCP [!DNL Marketo Engage]. En règle générale, les points d’entrée qui sont en lecture seule ou non destructifs sont disponibles. Le système d’IA ne peut pas effectuer d’`Delete` ou d’autres opérations destructives.
 
 >[!NOTE]
 >
->Cette liste n’est pas définitive et continuera à s’allonger à mesure que nous ajouterons des outils.
+>Cette liste va continuer à s’allonger à mesure que nous ajouterons d’autres outils.
 
 ## Exportation en bloc
 
@@ -40,7 +34,7 @@ Les opérations suivantes sont disponibles via le serveur MCP [!DNL Marketo Enga
 
 ## Canaux et balises
 
-[Référence de l’API Channels &#x200B;](https://developer.adobe.com/marketo-apis/api/asset/#tag/Channels){target="_blank"} | [Référence de l’API Tags](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags){target="_blank"}
+[Référence de l’API Channels ](https://developer.adobe.com/marketo-apis/api/asset/#tag/Channels){target="_blank"} | [Référence de l’API Tags](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags){target="_blank"}
 
 - `browse_channels`
 - `browse_tag_types`
