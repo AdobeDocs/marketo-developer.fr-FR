@@ -5,25 +5,13 @@ badgeBeta: label="Disponibilité limitée" type="informative" tooltip="Cette fon
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
 autotag-review: '2026-06-02T13:31:15.329Z'
 TQID: 'https://experienceleague.adobe.com/PJJm7yv8HmbwMB2fsnfDCXs8zprDJK5Q5z2uiiCJRZI'
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: c2dbad80-0f5c-4d96-a798-2a65f93b8721
-  - id: dca84292-69e9-4116-a575-667d31fa060d
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
-topic_v2:
-  - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: bef569a714bfb797bcf8bb82a406ca6df26facb0
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: c2dbad80-0f5c-4d96-a798-2a65f93b8721id: dca84292-69e9-4116-a575-667d31fa060did: e2290edd-b061-4880-9d79-dee306cf5aa9id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+topic_v2: id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
+source-git-commit: 72329b0ee08402c02604d2b6868fdef88c532548
 workflow-type: tm+mt
-source-wordcount: 1433
+source-wordcount: 1440
 ht-degree: 1%
 
 ---
@@ -37,6 +25,7 @@ ht-degree: 1%
 Le protocole MCP (Model Context Protocol) est une norme ouverte qui permet aux outils d’IA de communiquer avec des services externes. Le serveur MCP [!DNL Marketo] fait office de pont entre votre assistant d’IA et [!DNL Marketo]. Il expose plus de 100 opérations sur des formulaires, des programmes, des campagnes intelligentes, des prospects, des e-mails, des fragments de code, des listes et des dossiers.
 
 Lorsque votre outil d’IA appelle le serveur MCP, le serveur exécute l’appel API REST correspondant en votre nom, à l’aide des informations d’identification que vous fournissez dans chaque requête. Vous n’avez pas besoin d’installer, de déployer ou d’exécuter un logiciel côté serveur.
+
 
 >[!IMPORTANT]
 >
@@ -104,7 +93,7 @@ Si vous les avez déjà, passez à [Configurer votre outil d’IA](#configure-yo
 ### ID de compte Munchkin
 
 1. Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Munchkin]**.
-1. Copiez l’ID de compte **&#x200B;**. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
+1. Copiez l’ID de compte ****. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
 
 ## Configuration de votre outil d’IA
 
@@ -116,30 +105,37 @@ Chaque outil d’IA lit la configuration du serveur MCP à partir d’un emplace
 
 ### Claude Desktop
 
-Le fichier de configuration est `claude_desktop_config.json`. Ouvrez-le à partir de l’un des emplacements suivants :
+Pour vous connecter à Claude Desktop, téléchargez [marketo-mcp-bridge.zip](assets/marketo-mcp-bridge.zip) et décompressez-le. Placez le `marketo-mcp-bridge.mjs` à un emplacement connu pour vous y référer à l’étape suivante.
 
-* **macOS** : `~/Library/Application Support/Claude/claude_desktop_config.json`
-* **Windows** : `%APPDATA%\Claude\claude_desktop_config.json`
+Tu auras également besoin de :
 
-Si le fichier contient déjà d’autres serveurs MCP, ajoutez l’entrée `marketo` sous `mcpServers`. L’exemple suivant illustre le bloc de `mcpServers` complet :
+* Node.js v18 et ultérieure
+* npm
+
+1. Ouvrir Claude Desktop
+1. Accédez à **Paramètres > Développeur > Modifier la configuration**
+1. Ajoutez le code suivant à `claude_desktop_config.json` :
 
 ```json
 {
+  "preferences": {
+    ...
+  },
   "mcpServers": {
-    "marketo": {
-      "type": "http",
-      "url": "https://marketo-mcp.adobe.io/mcp",
-      "headers": {
-        "X-Marketo-Client-Id": "YOUR-CLIENT-ID",
-        "X-Marketo-Client-Secret": "YOUR-CLIENT-SECRET",
-        "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID"
+    "marketo-mcp": {
+      "command": "node",
+      "args": ["/path/to/marketo-bridge/bridge.mjs"],
+      "env": {
+        "MARKETO_MCP_PROD_CLIENT_ID": "<your-client-id>",
+        "MARKETO_MCP_PROD_CLIENT_SECRET": "<your-client-secret>",
+        "MARKETO_MCP_PROD_MUNCHKIN_ID": "<your-munchkin-id>"
       }
     }
   }
 }
 ```
 
-Enregistrez le fichier, quittez Claude Desktop et rouvrez-le.
+1. Redémarrez Claude Desktop
 
 ### Curseur
 
