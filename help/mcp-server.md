@@ -5,25 +5,13 @@ badgeBeta: label="Disponibilité limitée" type="informative" tooltip="Cette fon
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
 autotag-review: '2026-06-02T13:31:15.329Z'
 TQID: 'https://experienceleague.adobe.com/PJJm7yv8HmbwMB2fsnfDCXs8zprDJK5Q5z2uiiCJRZI'
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: c2dbad80-0f5c-4d96-a798-2a65f93b8721
-  - id: dca84292-69e9-4116-a575-667d31fa060d
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
-topic_v2:
-  - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 72329b0ee08402c02604d2b6868fdef88c532548
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: c2dbad80-0f5c-4d96-a798-2a65f93b8721id: dca84292-69e9-4116-a575-667d31fa060did: e2290edd-b061-4880-9d79-dee306cf5aa9id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+topic_v2: id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
+source-git-commit: e6cdee16bc2eaaec6b9741181409209586367601
 workflow-type: tm+mt
-source-wordcount: 1440
+source-wordcount: 1627
 ht-degree: 1%
 
 ---
@@ -47,15 +35,15 @@ Lorsque votre outil d’IA appelle le serveur MCP, le serveur exécute l’appel
 
 ## Principes de base de MCP
 
->Imaginez MCP comme un port USB-C pour les applications d’IA. Tout comme USB-C offre un moyen normalisé de connecter vos appareils à divers périphériques et accessoires, MCP offre un moyen normalisé de connecter les modèles d&#39;IA à différentes sources de données et outils. — [Modèle de protocole contextuel](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
+>Imaginez MCP comme un port USB-C pour les applications d’IA. Tout comme USB-C offre un moyen normalisé de connecter vos appareils à divers périphériques et accessoires, MCP offre un moyen normalisé de connecter les modèles d&#39;IA aux sources de données et aux outils. — [Modèle de protocole contextuel](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
 
 MCP permet à un outil d’IA de se connecter à plusieurs services externes en même temps. Par exemple, un assistant d’IA peut :
 
 * Connexion à un traitement de texte pour la génération de documents assistée par l’IA
-* Connectez-vous à des applications de modélisation 3D telles que Blender pour créer des animations
-* Connexion à After Effects pour le montage vidéo
+* Connectez-vous aux outils d’animation, tels que Blender, pour créer des visualisations
+* Connexion à Adobe After Effects pour le montage vidéo
 
-MCP est un protocole de communication, une norme ouverte que toute application peut implémenter pour exposer ses données et actions aux outils d’IA.
+MCP est un protocole de communication : une norme ouverte que toute application peut implémenter pour exposer ses données et actions aux outils d’IA.
 
 ## Ce que [!DNL Marketo Engage] MCP fait et ne fait pas
 
@@ -66,14 +54,14 @@ Comprendre la portée de MCP permet de définir les attentes avant de connecter 
 * Fournir un accès aux données et fonctionnalités [!DNL Marketo] via les API REST standard
 * Exécutez les appels API en votre nom à l’aide des informations d’identification fournies avec chaque requête
 * Prise en charge de plusieurs utilisateurs simultanés, chacun connecté avec ses propres informations d’identification
-* Gérer automatiquement l’actualisation du jeton OAuth - vous n’avez pas besoin de gérer l’expiration du jeton
+* Gérer automatiquement l’actualisation du jeton OAuth. Vous n’avez pas besoin de gérer l’expiration des jetons
 * Fonctionnent dans des environnements isolés du client afin que vos données n’interagissent jamais avec la session d’un autre utilisateur
 
 **MCP ne :**
 
-* Utiliser, héberger ou exécuter n’importe quel modèle d’IA ou de machine learning : tout le traitement de l’IA s’effectue dans votre outil d’IA, et non dans MCP.
+* Utilisez, hébergez ou exécutez des modèles d’IA ou de machine learning. Tout le traitement de l’IA s’effectue dans votre outil d’IA, et non dans le MCP
 * Apprenez-en plus sur les données, y compris les données de vos clients, ou tirez des leçons de ces données.
-* Générer des prédictions, des recommandations ou des décisions : la prise de décision est de la responsabilité de l’outil d’IA ou de l’utilisateur en aval
+* générer des prédictions, des recommandations ou des décisions ; La prise de décision est de la responsabilité de l’outil d’IA ou de l’utilisateur en aval
 * Stocker ou conserver les informations d’identification, les données de requête ou l’état de session entre les requêtes
 * Nécessite l’installation, le déploiement ou la gestion de tout logiciel côté serveur
 
@@ -83,7 +71,7 @@ MCP peut transmettre des données, y compris des champs potentiellement sensible
 
 * Une instance [!DNL Marketo] avec l’accès API REST activé
 * Accès administrateur à la création d’informations d’identification d’API dans [!DNL Marketo] LaunchPoint
-* L’un des outils d’IA suivants : Claude Desktop, Cursor, Claude Code (CLI) ou VS Code avec Copilote GitHub
+* L’un des outils d’IA suivants : Claude Desktop, Cursor, Codex, Claude Code (CLI) ou VS Code avec Copilote GitHub
 * Accès réseau à l’URL du serveur MCP : `https://marketo-mcp.adobe.io/mcp`
 
 ## Obtention des informations d’identification Marketo
@@ -105,17 +93,23 @@ Si vous les avez déjà, passez à [Configurer votre outil d’IA](#configure-yo
 ### ID de compte Munchkin
 
 1. Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Munchkin]**.
-1. Copiez l’ID de compte **&#x200B;**. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
+1. Copiez l’ID de compte ****. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
 
 ## Configuration de votre outil d’IA
 
-Chaque outil d’IA lit la configuration du serveur MCP à partir d’un emplacement différent. Recherchez votre outil ci-dessous et suivez les étapes pour ajouter le serveur MCP [!DNL Marketo].
+Chaque outil d’IA a une configuration légèrement différente. Des exemples de connexion sont fournis pour les outils courants.
+
+* [Claude Desktop](#claude-desktop)
+* [Curseur](#cursor)
+* [Claude Code CLI](#claude-code)
+* [Codex OpenAI](#codex)
+* [VSCode avec le pilote GitHub](#vscode)
 
 >[!TIP]
 >
->Pour vous connecter à plusieurs instances [!DNL Marketo], ajoutez des entrées distinctes dans votre configuration MCP avec des noms uniques (par exemple, `marketo-prod` et `marketo-staging`), chacun avec les informations d’identification correspondantes.
+>Pour vous connecter à plusieurs instances [!DNL Marketo], ajoutez des entrées distinctes dans votre configuration MCP avec des noms uniques : `marketo-prod` et `marketo-staging`, chacun avec les informations d’identification correspondantes.
 
-### Claude Desktop
+### Claude Desktop {#claude-desktop}
 
 Pour vous connecter à Claude Desktop, téléchargez [marketo-mcp-bridge.zip](assets/marketo-mcp-bridge.zip) et décompressez-le. Placez le `marketo-mcp-bridge.mjs` à un emplacement connu pour vous y référer à l’étape suivante.
 
@@ -149,9 +143,13 @@ Tu auras également besoin de :
 
 1. Redémarrez Claude Desktop
 
-### Curseur
+### Curseur {#cursor}
 
 Si votre configuration MCP de curseur contient déjà d&#39;autres serveurs, ajoutez l&#39;entrée `marketo` sous `mcpServers`. L’exemple suivant montre le bloc de `mcpServers` complet dans **[!UICONTROL Paramètres]** > **[!UICONTROL MCP]** ou `.cursor/mcp.json` dans le répertoire du projet :
+
+>[!BEGINTABS]
+
+>[!TAB Informations d’identification du client ]
 
 ```json
 {
@@ -169,11 +167,34 @@ Si votre configuration MCP de curseur contient déjà d&#39;autres serveurs, ajo
 }
 ```
 
+>[!TAB  Jeton IMS ]
+
+```json
+{
+  "mcpServers": {
+    "marketo": {
+      "type": "http",
+      "url": "https://marketo-mcp.adobe.io/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR-IMS-TOKEN",
+        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
+      }
+    }
+  }
+}
+```
+
+>[!ENDTABS]
+
 Redémarrez le curseur.
 
-### Claude Code (CLI)
+### Claude Code (CLI) {#claude-code}
 
 Exécutez la commande suivante dans votre terminal en remplaçant vos informations d’identification :
+
+>[!BEGINTABS]
+
+>[!TAB Informations d’identification du client ]
 
 ```bash
 claude mcp add --transport http marketo \
@@ -183,9 +204,48 @@ claude mcp add --transport http marketo \
   --header "X-Marketo-Munchkin-Id: YOUR-MUNCHKIN-ID"
 ```
 
-### VS Code avec pilote GitHub
+>[!TAB  Jeton IMS ]
+
+```bash
+claude mcp add --transport http marketo \
+  https://marketo-mcp.adobe.io/mcp \
+  --header "Authorization: Bearer YOUR-IMS-TOKEN" \
+  --header "x-gw-ims-org-id: YOUR-IMS-ORG-ID"
+```
+
+>[!ENDTABS]
+
+### Codex OpenAI {#codex}
+
+1. Accédez à Paramètres > Serveurs MCP > Ajouter un serveur .
+1. Ajoutez l&#39;URL du serveur : `https://marketo-mcp.adobe.io/mcp`
+1. Ajoutez les en-têtes pour votre méthode d’authentification :
+
+>[!BEGINTABS]
+
+>[!TAB Informations d’identification du client ]
+
+* X-Marketo-Client-Id : « YOUR-CLIENT-ID »
+* X-Marketo-Client-Secret : « YOUR-CLIENT-SECRET »
+* X-Marketo-Munchkin-Id : « YOUR-MUNCHKIN-ID »
+
+>[!TAB  Jeton IMS ]
+
+* Autorisation : « Porteur DE VOTRE JETON IMS »
+* x-gw-ims-org-id : « YOUR-IMS-ORG-ID »
+
+>[!ENDTABS]
+
+1. Cliquez sur Enregistrer pour terminer le processus.
+
+
+### VS Code avec pilote GitHub {#vscode}
 
 Appuyez sur **[!UICONTROL Ctrl+Maj+P]** (ou **[!UICONTROL Cmd+Maj+P]** sur macOS), saisissez **[!UICONTROL MCP: Open User Configuration]**, puis appuyez sur Entrée. Cette action ouvre `mcp.json`. Ajoutez l’entrée `marketo` dans l’objet `servers` :
+
+>[!BEGINTABS]
+
+>[!TAB Informations d’identification du client ]
 
 ```json
 {
@@ -203,9 +263,28 @@ Appuyez sur **[!UICONTROL Ctrl+Maj+P]** (ou **[!UICONTROL Cmd+Maj+P]** sur macOS
 }
 ```
 
+>[!TAB  Jeton IMS ]
+
+```json
+{
+  "servers": {
+    "marketo": {
+      "type": "http",
+      "url": "https://marketo-mcp.adobe.io/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR-IMS-TOKEN",
+        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
+      }
+    }
+  }
+}
+```
+
+>[!ENDTABS]
+
 >[!NOTE]
 >
->Pour des raisons de sécurité, utilisez l’interpolation des variables d’environnement dans les fichiers de configuration au lieu de coller directement les informations d’identification. Vous pouvez référencer des variables à l’aide d’une syntaxe telle que `${MARKETO_CLIENT_SECRET}` et les définir dans votre environnement. Cela empêche le stockage des informations d’identification en texte brut dans des fichiers qui peuvent être validés pour le contrôle de version.
+>Pour des raisons de sécurité, utilisez l’interpolation des variables d’environnement dans les fichiers de configuration au lieu de coller directement les informations d’identification. Vous pouvez référencer des variables à l’aide d’une syntaxe telle que `${MARKETO_CLIENT_SECRET}` et les définir dans votre environnement. Cela empêche le stockage des informations d’identification en texte brut dans des fichiers dont la version est contrôlée.
 
 ## Opérations disponibles
 
@@ -263,7 +342,7 @@ Exemples d’invites :
 
 ### Structure de l’instance
 
-Parcourez les dossiers, les canaux, les types de balises et les types d’activités pour comprendre votre configuration [!DNL Marketo].
+Pour comprendre la configuration de votre [!DNL Marketo], parcourez les dossiers, les canaux, les types de balises et les types d’activités.
 
 Exemples d’invites :
 
@@ -284,9 +363,10 @@ Exemples d’invites :
 
 | Erreur | Cause | Corriger |
 | ------- | ------- | ----- |
-| « Informations d’identification Marketo non fournies » | Un ou plusieurs parmi `X-Marketo-Client-Id`, `X-Marketo-Client-Secret` ou `X-Marketo-Munchkin-Id` sont manquants. | Vérifiez que les quatre en-têtes sont présents dans votre configuration. |
-| « Erreur d’authentification » | Vos informations d’identification ne sont pas valides ou ont expiré. | Vérifiez à nouveau votre ID client et votre secret client dans **[!UICONTROL Admin]** > **[!UICONTROL LaunchPoint]**. |
-| « 403 Interdit » | Votre Munchkin ID ne se trouve pas sur le serveur. | Contactez votre administrateur MCP [!DNL Marketo] pour ajouter votre Munchkin ID. |
+| « Informations d’identification Marketo non fournies » | Un ou plusieurs parmi `X-Marketo-Client-Id`, `X-Marketo-Client-Secret` ou `X-Marketo-Munchkin-Id` sont manquants. | Vérifiez que tous les en-têtes d’informations d’identification du client Marketo sont présents dans votre configuration. |
+| « 401 Non Autorisé » | Vos informations d’identification sont manquantes, non valides ou expirées. Avec les informations d’identification du client Marketo, l’ID client ou le secret client est incorrect. Avec un jeton IMS, le jeton n’est pas valide ou a expiré. | Vérifiez les informations d’identification de votre méthode d’authentification. Pour les informations d’identification du client, revérifiez les **[!UICONTROL ID client]** et **[!UICONTROL Secret client]** dans **[!UICONTROL Admin]** > **[!UICONTROL LaunchPoint]**. Pour un jeton IMS, générez un nouveau jeton et mettez à jour l’en-tête `Authorization`. |
+| « 403 Interdit » | Vos informations d’identification sont valides, mais votre instance [!DNL Marketo] n’est pas activée pour l’accès au MCP. | Contactez votre administrateur MCP [!DNL Marketo] pour activer l’accès MCP à votre ID de compte Munchkin. |
+| « Trop de requêtes » (limite de taux) | Vous avez envoyé trop de requêtes en une courte période, ou trop de requêtes au même moment, et atteint les limites d’API de votre instance [!DNL Marketo]. | Réduisez la fréquence et le nombre de requêtes que vous envoyez à la fois, et patientez quelques instants avant de réessayer. Utilisez un utilisateur d’API dédié pour suivre et gérer votre quota. |
 | Timeout ou refus de la connexion | Le serveur MCP est inaccessible depuis votre réseau. | Vérifiez que vous pouvez accéder à l’URL du serveur à partir de votre environnement. Vérifiez les exigences VPN, le cas échéant. |
 | Les appels d’outils renvoient des résultats vides | L’utilisateur de l’API ne dispose pas des autorisations pour le type de ressource demandé. | Demandez à votre administrateur [!DNL Marketo] de passer en revue le rôle et les autorisations de l’utilisateur API. |
 
@@ -300,4 +380,4 @@ Exemples d’invites :
 * **Isolement à plusieurs clients.** Chaque requête utilise son propre jeu d’informations d’identification. Vos données n’interagissent avec aucune session d’un autre utilisateur.
 * **Munchkin ID** Le serveur accepte uniquement les demandes d’instances [!DNL Marketo] approuvées. Les requêtes utilisant un ID Munchkin non autorisé sont rejetées avec une erreur 403.
 * **Limites de débit d’API.** Le serveur MCP hérite des limites de débit d’API de votre instance [!DNL Marketo]. Utilisez un utilisateur d’API dédié pour suivre et gérer la consommation des quotas.
-* **Gardez les informations d’identification hors du contrôle de version.** Utilisez l’interpolation de variable d’environnement (`${MARKETO_CLIENT_SECRET}`) si votre outil d’IA le prend en charge, de sorte que les informations d’identification ne soient pas stockées en texte brut dans les fichiers validés dans un référentiel.
+* **Gardez les informations d’identification hors du contrôle de version.** Utilisez l’interpolation de variable d’environnement (`${MARKETO_CLIENT_SECRET}`) si votre outil d’IA le prend en charge, de sorte que les informations d’identification ne soient pas stockées en texte brut dans les fichiers de référentiel.
