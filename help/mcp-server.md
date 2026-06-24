@@ -21,9 +21,9 @@ role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: ccb8e413ee758584c082a272901d2e76b6b1d193
+source-git-commit: 6ec3c35ba988834f3a66b45acaa42af7a92cce20
 workflow-type: tm+mt
-source-wordcount: 1718
+source-wordcount: 1765
 ht-degree: 1%
 
 ---
@@ -116,6 +116,7 @@ Chaque outil d’IA a une configuration légèrement différente. Des exemples d
 * [Claude Code CLI](#claude-code)
 * [Codex OpenAI](#codex)
 * [VSCode avec le pilote GitHub](#vscode)
+* [Glaner](#glean)
 * [Autres outils](#other-tools)
 
 >[!TIP]
@@ -299,6 +300,16 @@ Appuyez sur **[!UICONTROL Ctrl+Maj+P]** (ou **[!UICONTROL Cmd+Maj+P]** sur macOS
 >[!NOTE]
 >
 >Pour des raisons de sécurité, utilisez l’interpolation des variables d’environnement dans les fichiers de configuration au lieu de coller directement les informations d’identification. Vous pouvez référencer des variables à l’aide d’une syntaxe telle que `${MARKETO_CLIENT_SECRET}` et les définir dans votre environnement. Cela empêche le stockage des informations d’identification en texte brut dans des fichiers dont la version est contrôlée.
+
+### Glaner {#glean}
+
+Pour connecter Glean au serveur MCP Marketo Engage, les en-têtes personnalisés suivants doivent être configurés par l’équipe d’assistance [&#x200B; Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features).
+
+| Header | Valeur |
+| ------ | ----- |
+| `X-Marketo-Client-Id` | Votre identifiant client |
+| `X-Marketo-Client-Secret` | Votre Secret Client |
+| `X-Marketo-Munchkin-Id` | Identifiant de votre compte Munchkin |
 
 ### Autres outils {#other-tools}
 
