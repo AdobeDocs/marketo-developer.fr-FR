@@ -1,5 +1,5 @@
 ---
-title: Serveur MCP Marketo Engage
+title: Serveur MCP Marketo Engage
 description: Découvrez comment connecter un assistant d’IA à Marketo à l’aide du serveur MCP Marketo Engage. Configurez le bureau Claude, le curseur, le code Claude ou le code VS avec vos informations d’identification Marketo.
 badgeBeta: label="Disponibilité limitée" type="informative" tooltip="Cette fonctionnalité est actuellement en version bêta limitée"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
@@ -21,9 +21,9 @@ role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 6ec3c35ba988834f3a66b45acaa42af7a92cce20
+source-git-commit: 1a8728ec05e15bef1271274248ce9fc25b14c768
 workflow-type: tm+mt
-source-wordcount: 1765
+source-wordcount: 1956
 ht-degree: 1%
 
 ---
@@ -38,12 +38,11 @@ Le protocole MCP (Model Context Protocol) est une norme ouverte qui permet aux o
 
 Lorsque votre outil d’IA appelle le serveur MCP, le serveur exécute l’appel API REST correspondant en votre nom, à l’aide des informations d’identification que vous fournissez dans chaque requête. Vous n’avez pas besoin d’installer, de déployer ou d’exécuter un logiciel côté serveur.
 
+Pour plus d’informations sur la manière dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 >[!IMPORTANT]
 >
->Le protocole MCP (Model Context Protocol) est une norme open source émergente qui peut présenter des risques pour la sécurité ou la fiabilité. Les intégrations de serveurs Adobe MCP et la documentation associée sont fournies « en l’état », sans garantie d’aucune sorte.
->La connexion des clients ou serveurs MCP aux produits Adobe est une configuration choisie par le client. Ce dernier est chargé d’évaluer la sécurité et l’adéquation de toute intégration MCP. Adobe n’est pas responsable des problèmes résultant d’une mauvaise configuration, d’une utilisation abusive du MCP, de vulnérabilités dans les implémentations tierces ou d’actions involontaires effectuées par le biais de workflows prenant en charge MCP.
->Pour réduire les risques, Adobe encourage à tester les intégrations dans un environnement sandbox avant une utilisation productive et à examiner et valider soigneusement toutes les actions et réponses initiées par MCP avant de les confirmer ou de s’y fier.
+>Le protocole MCP (Model Context Protocol) est une norme open source émergente qui peut présenter des risques pour la sécurité ou la fiabilité. Les intégrations de serveurs Adobe MCP et la documentation associée sont fournies « en l’état », sans garantie d’aucune sorte.La connexion des clients ou serveurs MCP aux produits Adobe est une configuration choisie par le client. Ce dernier est chargé d’évaluer la sécurité et l’adéquation de toute intégration MCP. Adobe n’est pas responsable des problèmes résultant d’une mauvaise configuration, d’une utilisation abusive du MCP, de vulnérabilités dans les implémentations tierces ou d’actions involontaires effectuées par le biais de workflows prenant en charge MCP.Pour réduire les risques, Adobe encourage à tester les intégrations dans un environnement Sandbox avant une utilisation productive et à examiner et valider soigneusement toutes les actions et réponses initiées par MCP avant de les confirmer ou de s’y fier.
 
 ## Principes de base de MCP
 
@@ -159,8 +158,7 @@ Tu auras également besoin de :
 
 ### Curseur {#cursor}
 
-Si votre configuration MCP de curseur contient déjà d&#39;autres serveurs, ajoutez l&#39;entrée `marketo` sous `mcpServers`.
-L’exemple suivant montre le bloc de `mcpServers` complet dans **[!UICONTROL Paramètres]** > **[!UICONTROL MCP]** ou `.cursor/mcp.json` dans le répertoire du projet :
+Si votre configuration MCP de curseur contient déjà d&#39;autres serveurs, ajoutez l&#39;entrée `marketo` sous `mcpServers`.L’exemple suivant montre le bloc de `mcpServers` complet dans **[!UICONTROL Paramètres]** > **[!UICONTROL MCP]** ou `.cursor/mcp.json` dans le répertoire du projet :
 
 >[!BEGINTABS]
 
@@ -313,8 +311,7 @@ Pour connecter Glean au serveur MCP Marketo Engage, les en-têtes personnalisés
 
 ### Autres outils {#other-tools}
 
-Le serveur MCP [!DNL Marketo] est hébergé par Adobe et exposé sous la forme d’une URL publique. Tout client MCP prenant en charge des serveurs distants via un transport HTTP en flux continu peut s’y connecter.
-Vous n’avez pas besoin d’un pont spécifique à un outil ni d’un logiciel installé localement. Si votre outil n’est pas répertorié ci-dessus, utilisez les détails de connexion ci-dessous pour le configurer manuellement.
+Le serveur MCP [!DNL Marketo] est hébergé par Adobe et exposé sous la forme d’une URL publique. Tout client MCP prenant en charge des serveurs distants via un transport HTTP en flux continu peut s’y connecter.Vous n’avez pas besoin d’un pont spécifique à un outil ni d’un logiciel installé localement. Si votre outil n’est pas répertorié ci-dessus, utilisez les détails de connexion ci-dessous pour le configurer manuellement.
 
 **Détails de la connexion :**
 
