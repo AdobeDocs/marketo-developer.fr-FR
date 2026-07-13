@@ -5,25 +5,13 @@ badgeBeta: label="Disponibilité limitée" type="informative" tooltip="Cette fon
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
 autotag-review: '2026-06-02T13:31:15.329Z'
 TQID: 'https://experienceleague.adobe.com/PJJm7yv8HmbwMB2fsnfDCXs8zprDJK5Q5z2uiiCJRZI'
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: c2dbad80-0f5c-4d96-a798-2a65f93b8721
-  - id: dca84292-69e9-4116-a575-667d31fa060d
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
-topic_v2:
-  - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 1a8728ec05e15bef1271274248ce9fc25b14c768
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: c2dbad80-0f5c-4d96-a798-2a65f93b8721id: dca84292-69e9-4116-a575-667d31fa060did: e2290edd-b061-4880-9d79-dee306cf5aa9id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+topic_v2: id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
+source-git-commit: b28708e92f44082eb247d9053d6ebf2306739b38
 workflow-type: tm+mt
-source-wordcount: 1956
+source-wordcount: 2199
 ht-degree: 1%
 
 ---
@@ -38,7 +26,7 @@ Le protocole MCP (Model Context Protocol) est une norme ouverte qui permet aux o
 
 Lorsque votre outil d’IA appelle le serveur MCP, le serveur exécute l’appel API REST correspondant en votre nom, à l’aide des informations d’identification que vous fournissez dans chaque requête. Vous n’avez pas besoin d’installer, de déployer ou d’exécuter un logiciel côté serveur.
 
-Pour plus d’informations sur la manière dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/marketo-ai/data-information).
+Pour plus d’informations sur la manière dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 >[!IMPORTANT]
 >
@@ -46,7 +34,7 @@ Pour plus d’informations sur la manière dont les données sont gérées avec 
 
 ## Principes de base de MCP
 
->Imaginez MCP comme un port USB-C pour les applications d’IA. Tout comme USB-C offre un moyen normalisé de connecter vos appareils à divers périphériques et accessoires, MCP offre un moyen normalisé de connecter les modèles d&#39;IA aux sources de données et aux outils. — [Modèle de protocole contextuel](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
+>Imaginez MCP comme un port USB-C pour les applications d’IA. USB-C fournit un moyen normalisé de connecter vos appareils à divers périphériques et accessoires, et MCP fournit un moyen normalisé de connecter les modèles d&#39;IA aux sources de données et aux outils. — [Modèle de protocole contextuel](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
 
 MCP permet à un outil d’IA de se connecter à plusieurs services externes en même temps. Par exemple, un assistant d’IA peut :
 
@@ -104,7 +92,7 @@ Si vous les avez déjà, passez à [Configurer votre outil d’IA](#configure-yo
 ### ID de compte Munchkin
 
 1. Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Munchkin]**.
-1. Copiez l’ID de compte **&#x200B;**. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
+1. Copiez l’ID de compte ****. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
 
 ## Configuration de votre outil d’IA
 
@@ -297,11 +285,11 @@ Appuyez sur **[!UICONTROL Ctrl+Maj+P]** (ou **[!UICONTROL Cmd+Maj+P]** sur macOS
 
 >[!NOTE]
 >
->Pour des raisons de sécurité, utilisez l’interpolation des variables d’environnement dans les fichiers de configuration au lieu de coller directement les informations d’identification. Vous pouvez référencer des variables à l’aide d’une syntaxe telle que `${MARKETO_CLIENT_SECRET}` et les définir dans votre environnement. Cela empêche le stockage des informations d’identification en texte brut dans des fichiers dont la version est contrôlée.
+>Pour des raisons de sécurité, utilisez l’interpolation des variables d’environnement dans les fichiers de configuration au lieu de coller directement les informations d’identification. Vous pouvez référencer des variables à l’aide d’une syntaxe telle que `${MARKETO_CLIENT_SECRET}` et les définir dans votre environnement. Cela empêche de stocker les informations d’identification en texte brut dans des fichiers dont la version est contrôlée.
 
 ### Glaner {#glean}
 
-Pour connecter Glean au serveur MCP Marketo Engage, les en-têtes personnalisés suivants doivent être configurés par l’équipe d’assistance [&#x200B; Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features).
+Pour connecter Glean au serveur MCP Marketo Engage, l’équipe d’assistance [ Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features) doit configurer les en-têtes personnalisés suivants.
 
 | Header | Valeur |
 | ------ | ----- |
@@ -311,7 +299,7 @@ Pour connecter Glean au serveur MCP Marketo Engage, les en-têtes personnalisés
 
 ### Autres outils {#other-tools}
 
-Le serveur MCP [!DNL Marketo] est hébergé par Adobe et exposé sous la forme d’une URL publique. Tout client MCP prenant en charge des serveurs distants via un transport HTTP en flux continu peut s’y connecter.Vous n’avez pas besoin d’un pont spécifique à un outil ni d’un logiciel installé localement. Si votre outil n’est pas répertorié ci-dessus, utilisez les détails de connexion ci-dessous pour le configurer manuellement.
+Adobe héberge le serveur MCP [!DNL Marketo] et l’expose à une URL publique. Tout client MCP prenant en charge des serveurs distants via un transport HTTP en flux continu peut s’y connecter.Vous n’avez pas besoin d’un pont spécifique à un outil ni d’un logiciel installé localement. Si votre outil n’est pas répertorié ci-dessus, utilisez les détails de connexion ci-dessous pour le configurer manuellement.
 
 **Détails de la connexion :**
 
@@ -440,3 +428,28 @@ Exemples d’invites :
 * **Munchkin ID** Le serveur accepte uniquement les demandes d’instances [!DNL Marketo] approuvées. Les requêtes utilisant un ID Munchkin non autorisé sont rejetées avec une erreur 403.
 * **Limites de débit d’API.** Le serveur MCP hérite des limites de débit d’API de votre instance [!DNL Marketo]. Utilisez un utilisateur d’API dédié pour suivre et gérer la consommation des quotas.
 * **Gardez les informations d’identification hors du contrôle de version.** Utilisez l’interpolation de variable d’environnement (`${MARKETO_CLIENT_SECRET}`) si votre outil d’IA le prend en charge, de sorte que les informations d’identification ne soient pas stockées en texte brut dans les fichiers de référentiel.
+
+## Gouvernance et conservation des données
+
+### Gestion des informations d’identification
+
+* Les informations d’identification du client ne sont pas conservées côté serveur et sont fournies par le client par demande, ce qui permet de limiter l’exposition des informations d’identification dans le service.
+
+### Modèle d’interaction API
+
+* Utilisation des agents : les agents peuvent utiliser le serveur MCP pour appeler les API Marketo prises en charge.
+* Alignement du modèle d’authentification : le service utilise le même modèle d’authentification API externe documenté pour les API Marketo.
+
+### Authentification et autorisation
+
+* Privilèges de moindre importance : les autorisations effectives sont héritées de l’utilisateur de l’API Marketo uniquement affecté au service LaunchPoint du client, ce qui permet l’administration avec les privilèges de moindre importance dans la configuration Marketo du client.
+* Aucune persistance des jetons côté serveur : le service continue d’éviter le stockage côté serveur des informations d’identification du client ou des jetons.  
+
+### Journalisation et surveillance
+
+* Journalisation de sécurité : les journaux JSON structurés sont acheminés par le biais de Fluent Bit vers Splunk, avec le masquage des données sensibles et un filtrage supplémentaire pour prendre en charge les exigences de conformité.
+* Support d’audit : ces contrôles prennent en charge la surveillance continue de la disponibilité du service, des événements liés à la sécurité et de la qualité opérationnelle.
+* Aucun stockage secret côté serveur : les informations d’identification des clients ne sont pas stockées par le déploiement MCP et doivent être fournies par les clients par requête.
+* Gestion des jetons : les jetons d’accès sont de courte durée, les réponses des jetons sont marquées comme étant hors magasin et les jetons sont acceptés par le biais de mécanismes d’autorisation standard plutôt que par la transmission de chaînes de requête.
+* Accès opérationnel basé sur les rôles : l’accès au déploiement administratif est régi par les rôles de l’infrastructure Adobe et les contrôles basés sur les groupes, tandis que les autorisations relatives aux plans de données sont héritées de la configuration utilisateur de l’API Marketo du client.
+* Audit et observabilité : la journalisation de la sécurité, le masquage, la surveillance et les alertes sont activés pour prendre en charge les enquêtes, le suivi de l’intégrité des services et la supervision opérationnelle.
