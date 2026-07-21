@@ -28,7 +28,7 @@ Pour afficher un modèle de recommandation de média enrichi, ajoutez les balise
 1. Dans le corps de la page :
    1. Placez la balise de modèle (classe div) à l’endroit où vous souhaitez que le modèle apparaisse.
 
-Pour plus d’informations, voir [Activer le contenu prédictif pour les médias riches en contenu web](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Pour plus d’informations, voir [Activer le contenu prédictif pour les médias riches en contenu web](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Balise de modèle
 

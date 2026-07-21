@@ -29,7 +29,7 @@ L’API Web Personalization JavaScript suit les événements et personnalise dyn
 
 Les fonctionnalités associées comprennent [Événements de données personnalisés](custom-data-events.md), [Contenu dynamique](web-personalization.md), [Obtenir les données du visiteur](get-visitor-data.md) et [Exclure la balise pour des robots spécifiques](#exclude_tag_for_specific_bots).
 
-- Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+- Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 - RTP ne prend pas en charge les listes de comptes nommés Marketing basées sur les comptes. Les listes et le code ABM ne concernent que les listes de comptes chargées (fichiers CSV) gérées dans RTP.
 
 ## Configuration des balises

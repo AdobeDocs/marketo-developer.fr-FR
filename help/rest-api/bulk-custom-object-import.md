@@ -40,7 +40,7 @@ Si vous dépassez la limite de 10 tâches, l’API renvoie une erreur `1016, Too
 
 ## Exemple d’objet personnalisé
 
-Avant d’utiliser l’API en bloc, utilisez l’interface utilisateur d’administration de Marketo pour [créer votre objet personnalisé](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects).
+Avant d’utiliser l’API en bloc, utilisez l’interface utilisateur d’administration de Marketo pour [créer votre objet personnalisé](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects).
 
 Cet exemple utilise un objet personnalisé `Car` avec des champs `Color`, `Make`, `Model` et `VIN`. Le champ VIN est utilisé pour la déduplication. Les écrans de l’interface utilisateur d’administration mettent en surbrillance les noms d’API requis par les points d’entrée API en masse.
 

@@ -21,7 +21,7 @@ ht-degree: 3%
 
 [Référence des points d’entrée des listes de comptes nommés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Account-Lists)
 
-Les [listes de comptes nommés](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) sont des ensembles de comptes nommés dans Marketo. Utilisez-les pour la catégorisation, l’enrichissement des données et le filtrage intelligent des campagnes.
+Les [listes de comptes nommés](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/target-account-management/target/account-lists) sont des ensembles de comptes nommés dans Marketo. Utilisez-les pour la catégorisation, l’enrichissement des données et le filtrage intelligent des campagnes.
 
 Les API Named Account List vous permettent de gérer à distance des ressources de liste et leur appartenance.
 `Content`

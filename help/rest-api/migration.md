@@ -28,7 +28,7 @@ Partagez ce document avec les personnes ou l’équipe responsables de vos inté
 Selon votre cas d’utilisation, utilisez l’une des options de migration suivantes :
 
 * Limitez à 10 000 membres les listes statiques utilisées pour l’extraction d’activité. Divisez les listes existantes en listes plus petites pour continuer à interroger la même audience pour les activités .
-* Extrayez des activités ou des modifications de valeur de données à l’aide d’une extraction d’activité en bloc ou de flux de données. Joignez les résultats à l’appartenance à une liste statique avec [getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1) ou [Extraction de lead en bloc](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract).
+* Extrayez des activités ou des modifications de valeur de données à l’aide d’une extraction d’activité en bloc ou de flux de données. Joignez les résultats à l’appartenance à une liste statique avec [getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1) ou [Extraction de lead en bloc](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract).
 
 ## Que Se Passera-T-Il Si Je Ne Fais Rien ?
 

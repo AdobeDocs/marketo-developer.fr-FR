@@ -162,7 +162,7 @@ Le paramètre `redirectTo` spécifie la destination sous la forme d’un objet J
 | Marketo | landingPageId | {« type »:« landingPageId »,« value »:« 1774 »} |
 | Non Marketo | url | {« type »:« url »,« value »:« www.contactLogs.com« } |
 
-Pour plus d’informations, voir [Rediriger une page de destination Marketo vers une autre page](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html).
+Pour plus d’informations, voir [Rediriger une page de destination Marketo vers une autre page](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html?lang=fr).
 
 ```http
 POST /rest/asset/v1/redirectRules.json

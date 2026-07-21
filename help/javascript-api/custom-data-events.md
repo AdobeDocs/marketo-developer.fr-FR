@@ -27,7 +27,7 @@ Utilisez cette méthode pour envoyer des événements personnalisés pour le sui
 
 Chaque événement de données personnalisé est comptabilisé une fois au cours de la session d’un visiteur.
 
-Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 
 | Paramètre | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |

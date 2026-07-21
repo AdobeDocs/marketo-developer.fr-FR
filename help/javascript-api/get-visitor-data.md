@@ -26,7 +26,7 @@ ht-degree: 4%
 
 Utilisez cette méthode pour obtenir des données d’identification des visiteurs en temps réel.
 
-- Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+- Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 - RTP ne prend pas en charge les listes de comptes nommés Marketing basées sur les comptes. Les listes et le code ABM ne concernent que les listes de comptes chargées (fichiers CSV) gérées dans RTP.
 
 Si une erreur se produit, le fichier JSON de réponse inclut un message d’erreur. Si l’API renvoie un code 500, contactez l’assistance et indiquez la requête qui a provoqué l’erreur.

@@ -25,7 +25,7 @@ ht-degree: 5%
 
 RTP fournit une fonction utilitaire qui vérifie si un modèle correspond à une chaîne. L’utilitaire renvoie un résultat de correspondance de manière synchrone et ne peut pas être utilisé de manière asynchrone.
 
-Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 
 ## Utilisation
 
