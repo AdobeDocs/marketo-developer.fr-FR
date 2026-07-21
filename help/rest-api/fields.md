@@ -4,31 +4,27 @@ feature: REST API, Field Management
 description: Découvrez le nommage des champs de prospect REST et SOAP, répertoriez les champs via REST, décrivez le prospect, le mappage des fonctionnalités, la raison pour laquelle sfdcId est nul et utilisez sfdcLeadId ou sfdcContactId.
 exl-id: 9033f32a-c7cb-4bbf-abcf-38ca4112139f
 TQID: https://experienceleague.adobe.com/H2Bvhy-67U8JJ1V3JwYJ0O0vj4i11fwUCyYQtjxm8u0
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 213
+source-wordcount: 194
 ht-degree: 6%
 
 ---
 
 # Champs
 
-L’API REST et l’API SOAP utilisent des conventions de nommage différentes pour les champs de prospect.
+L’API REST et l’API SOAP utilisent des conventions de nommage différentes pour les champs de prospect. Utilisez la convention de nom de champ requise par chaque fonction d’intégration.
 
 ## Récupération de la liste des noms de champ
 
-Récupérez la liste de tous les noms de champ pris en charge disponibles sur vos enregistrements de prospect à l’aide du point d’entrée REST « Décrire le prospect ».
+Utilisez le point d’entrée REST « Décrire le lead » pour récupérer tous les noms de champ pris en charge pour les enregistrements de lead.
 
 ## Où utiliser quel type de nom de champ ?
 
-Il est parfois difficile de savoir quel type de nom de champ vous devez utiliser lors de l’utilisation d’une fonctionnalité spécifique liée à l’intégration. Voici une référence rapide pour les fonctionnalités qui utilisent des types de nom de champ REST ou SOAP.
+Le type de nom de champ requis dépend de la fonction d’intégration. Le tableau suivant indique si chaque fonctionnalité utilise des noms de champ REST ou SOAP.
 
 | Fonctionnalité | Type de nom de champ à utiliser |
 | --- | --- |
@@ -43,4 +39,6 @@ Il est parfois difficile de savoir quel type de nom de champ vous devez utiliser
 
 ### Pourquoi le champ sfdcId de l’API REST renvoie-t-il toujours une valeur nulle ?
 
-Le champ `sfdcId` est un champ de formule qui a été inclus par erreur dans le mappage de champs d’origine pour l’API REST. Les enregistrements récupérés via l’API REST ne calculent pas la valeur des champs de formule, la valeur sera donc toujours nulle. Pour capturer l’identifiant SFDC réel, vous devez utiliser les champs appelés `sfdcLeadId` et `sfdcContactId`.
+Le champ `sfdcId` est un champ de formule qui a été inclus dans le mappage de champs d’origine pour l’API REST. Les enregistrements récupérés via l’API REST ne calculent pas les valeurs des champs de formule. Par conséquent, `sfdcId` renvoie toujours la valeur null.
+
+Pour récupérer l’identifiant SFDC, utilisez les champs `sfdcLeadId` et `sfdcContactId` .

@@ -4,51 +4,48 @@ feature: REST API
 description: Bonnes pratiques relatives aux intégrations d’API Marketo concernant les quotas, les limites de débit et de simultanéité, les traitements par lots, l’importation et l’exportation en masse, la mise en cache et la planification de la latence.
 exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
 TQID: https://experienceleague.adobe.com/Ld-rmFCwKSx-0W2-ceYICu0FQHK8BKAC1QgqtiOWDn4
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: df401a2a-327d-468c-a5e4-b7b7ccd071a0
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: df401a2a-327d-468c-a5e4-b7b7ccd071a0
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1013
+source-wordcount: 882
 ht-degree: 0%
 
 ---
 
 # Bonnes pratiques d’intégration de Marketo
 
+Concevez des intégrations autour des limites d’API partagées pour votre instance Marketo. Utilisez les taux de traitement par lots, de mise en cache et de requête prudents pour améliorer le débit et la fiabilité.
+
 ## Limites d’API
 
-- **Quota quotidien :** la plupart des abonnements reçoivent 50 000 appels API par jour (qui sont réinitialisés tous les jours à 12 :00AM CST). Vous pouvez augmenter votre quota quotidien par l&#39;intermédiaire de votre gestionnaire de compte.
-- **Limite de débit :** accès à l’API par instance limité à 100 appels par 20 secondes.
-- **Limite de simultanéité :** maximum de dix appels API simultanés.
-- **Taille du lot :** base de données du lead - 300 enregistrements ; requête de ressource - 200 enregistrements.
-- **Taille de la payload de l’API REST :** 1 Mo
-- **Taille du fichier d’importation en bloc :** 10 Mo
-- **Taille de lot SOAP max. :** 300 enregistrements
-- **Tâches d’extraction en bloc :** 2 en cours d’exécution ; 10 placées en file d’attente (incluse)
+- **Quota quotidien :** la plupart des abonnements reçoivent 50 000 appels d’API par jour. Le quota est réinitialisé tous les jours à 00:00 CST. Contactez votre gestionnaire de compte pour augmenter le quota quotidien.
+- **Limite de débit :** chaque instance est limitée à 100 appels API par période de 20 secondes.
+- **Limite de simultanéité :** chaque instance autorise un maximum de dix appels d’API simultanés.
+- **Taille du lot :** la base de données de lead prend en charge 300 enregistrements ; la requête de ressource prend en charge 200 enregistrements.
+- **Taille de la payload de l’API REST :** 1 Mo.
+- **Taille du fichier d’importation en bloc :** 10 Mo.
+- **Taille de lot maximale de SOAP :** 300 enregistrements.
+- **Tâches d’extraction en bloc :** deux en cours d’exécution et dix en file d’attente, inclus.
 
 ## Conseils rapides
 
-- Supposons que votre application soit en concurrence avec d’autres applications pour les ressources de quota, de taux et de simultanéité, et définissez des limites d’utilisation prudentes.
-- Utilisez les méthodes de Marketo par lot et par lots si elles sont disponibles et appropriées. N’utilisez qu’un seul enregistrement ou qu’un seul appel de résultat, si nécessaire.
+- Définissez des limites d’utilisation conservatrices, car votre application partage des ressources de quota, de taux et de simultanéité avec d’autres applications.
+- Utilisez les méthodes Marketo par lot et par lot si elles sont disponibles. Utilisez des appels à enregistrement unique ou à résultat unique uniquement lorsque cela est nécessaire.
 - Utilisez l’[exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) pour réessayer les appels API qui échouent en raison de limites de taux ou de simultanéité.
-- Évitez d’effectuer des appels API simultanés si votre cas d’utilisation n’en tire pas parti.
+- Évitez les appels API simultanés, sauf s’ils bénéficient à votre cas d’utilisation.
 
 ## Traitement par lots
 
-Pour optimiser les performances de vos intégrations, lors des insertions ou des mises à jour, les enregistrements doivent être regroupés en le moins de transactions possible. Lors de la récupération d’enregistrements d’un magasin de données pour envoi, les enregistrements doivent toujours être agrégés avant envoi, plutôt que d’envoyer une demande pour chaque modification individuelle.
+Pour les insertions et mises à jour, regroupez les enregistrements en aussi peu de transactions que possible. Lors de la récupération d’enregistrements d’un magasin de données, agrégez-les avant l’envoi au lieu d’envoyer une seule demande pour chaque modification.
 
 ## Latence acceptable
 
-La détermination de vos tolérances de latence, ou de la durée maximale qui peut s’écouler avant l’envoi d’un appel API, informera de nombreuses décisions, voire de la plupart, que vous prenez lors de la conception de votre intégration à Marketo. Marketo fournit de nombreuses méthodes différentes et options de configuration qui conviennent à différents cas d’utilisation et différentes classes de latence. Par exemple, une intégration en temps réel pour informer un vendeur de l’inscription d’un utilisateur à une version d’essai peut uniquement envoyer des lots d’un seul si un suivi immédiat est requis. Cependant, la plupart des cas ne le nécessitent pas et peuvent tolérer une latence supplémentaire. Ils peuvent également être gérés plus efficacement par le biais d’appels en file d’attente et par lots.
+Définissez la latence acceptable (durée maximale avant l’envoi d’un appel API) lorsque vous concevez une intégration. Ce choix détermine les méthodes Marketo et les options de configuration qui correspondent au cas d’utilisation.
+
+Par exemple, une intégration en temps réel qui avertit un vendeur lorsqu’un utilisateur ou une utilisatrice commence une évaluation peut envoyer des lots d’un lot lorsqu’un suivi immédiat est requis. La plupart des cas d’utilisation tolèrent une latence plus élevée et fonctionnent plus efficacement en mettant les appels en file d’attente et par lots.
 
 | Latence acceptable | Méthodes préférées | Notes |
 | --- | --- | --- |
@@ -58,9 +55,11 @@ La détermination de vos tolérances de latence, ou de la durée maximale qui pe
 
 ## Limites quotidiennes
 
-Chaque instance de Marketo compatible avec les API dispose d’une allocation quotidienne d’au moins 10 000 appels d’API REST par jour, mais le plus souvent de 50 000 appels ou plus, et d’une capacité d’extraction en bloc de 500MB ou plus. Bien qu’il soit possible d’acheter de la capacité quotidienne supplémentaire dans le cadre d’un abonnement à Marketo, votre conception d’application doit tenir compte des limites courantes des abonnements à Marketo.
+Chaque instance Marketo compatible avec les API dispose d’une allocation quotidienne d’au moins 10 000 appels API REST, bien que 50 000 appels ou plus soient courants. Chaque instance dispose également d’une capacité d’extraction en bloc de 500 Mo ou plus. Une capacité quotidienne supplémentaire peut être achetée dans le cadre d’un abonnement à Marketo, mais les conceptions d’application doivent tenir compte des limites d’abonnement courantes.
 
-Comme la capacité est partagée entre tous les services d’API et les utilisateurs d’une instance, il est recommandé d’éliminer les appels redondants et d’utiliser les enregistrements par lots en le moins d’appels possible. Le moyen le plus efficace d’importer des enregistrements lors des appels est d’utiliser les API d’importation en bloc de Marketo, disponibles pour les [prospects/personnes](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) et [objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Snippets/operation/createSnippetUsingPOST). Marketo fournit également l’extraction en bloc pour les [prospects](bulk-lead-extract.md) et [activités](bulk-activity-extract.md).
+La capacité est partagée par tous les services d’API et les utilisateurs d’une instance. Éliminez les appels redondants et les enregistrements par lots en le réduisant au minimum.
+
+La méthode d’importation la plus efficace pour les appels est l’API d’importation en bloc Marketo, disponible pour les [prospects/personnes](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) et [objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Snippets/operation/createSnippetUsingPOST). Marketo fournit également l’extraction en bloc pour les [prospects](bulk-lead-extract.md) et [activités](bulk-activity-extract.md).
 
 ### Mise en cache
 
@@ -70,18 +69,24 @@ Les résultats des opérations suivantes peuvent généralement être mis en cac
 - [Types d’activité](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)
 - [Partitions](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadPartitionsUsingGET)
 
-La mise en cache de certains types de ressources, tels que les programmes, les e-mails et les dossiers, est également appropriée pour certains cas d’utilisation, tels que l’enrichissement des données pour les enregistrements de prospect ou d’activité.
+Pour les cas d’utilisation tels que l’enrichissement des données de prospect ou d’activité, vous pouvez également mettre en cache des types de ressources tels que des programmes, des e-mails et des dossiers.
 
 ## Limite de débit
 
-Chaque instance de Marketo est limitée à 100 appels par 20 secondes, ce qui est partagé entre tous les services d’API tiers. Si cette limite est dépassée, l’API répond avec un code d’erreur 606 indiquant que la limite de taux a été dépassée. En règle générale, les intégrations tierces doivent limiter leur utilisation à 50 appels par 20 secondes ou moins afin de permettre une utilisation équitable des limites de débit par plusieurs intégrations d’API et utilisateurs. Bien qu&#39;il puisse être approprié de saturer cette limite dans certains cas, en général, les applications qui utilisent le traitement par lots et ciblent leur débit en dessous de cette limite sont plus réactives et cohérentes dans leur fonctionnement, à un faible coût d&#39;augmentation de la latence.
+Chaque instance Marketo a une limite de débit partagé de 100 appels par 20 secondes sur tous les services d’API tiers. Si les appels dépassent cette limite, l’API renvoie un code d’erreur 606.
+
+En règle générale, limitez chaque intégration tierce à 50 appels par 20 secondes ou moins afin que plusieurs intégrations d’API et utilisateurs puissent partager la capacité disponible. Certains cas d’utilisation peuvent nécessiter la limite complète. Toutefois, les applications qui utilisent le traitement par lots et ciblent un débit plus faible sont généralement plus réactives et cohérentes, avec une légère augmentation de la latence.
 
 ## Limite de simultanéité
 
-Chaque instance Marketo a une limite partagée de dix appels d’API REST exécutés simultanément. Comme les limites de quota et de taux journaliers, il est partagé, vous ne devez donc pas supposer que votre application sera le consommateur exclusif de cette limite. Marketo compte le nombre d’appels simultanés comme ceux qui sont en cours de traitement et qui n’ont pas encore été renvoyés. Lorsqu’un appel est renvoyé, il n’est donc plus comptabilisé par rapport à la limite d’appels simultanés.
+Chaque instance Marketo a une limite partagée de dix appels d’API REST exécutés simultanément. Ne supposez pas que votre application est le seul consommateur de cette limite.
 
-La plupart des cas d’utilisation d’intégration ne bénéficient pas des appels simultanés. Déterminez donc si votre application en bénéficie avant de décider d’envoyer des requêtes simultanées à Marketo. Si vous souhaitez implémenter la simultanéité, vous devez limiter le nombre de requêtes simultanées à cinq ou moins dans votre conception initiale, et augmenter ce nombre uniquement après avoir déterminé que votre application en nécessite davantage.
+Marketo comptabilise les appels en cours de traitement qui n’ont pas encore été renvoyés. Lorsqu’un appel est renvoyé, il n’est plus comptabilisé dans la limite de simultanéité.
+
+La plupart des intégrations ne bénéficient pas d’appels simultanés. Si vous implémentez la simultanéité, limitez d’abord l’application à cinq requêtes simultanées ou moins. Augmentez la limite uniquement après avoir déterminé que l’application en nécessite davantage.
 
 ## Erreurs
 
-Sauf dans de rares cas, les requêtes d’API renvoient un code d’état HTTP de 200. Les erreurs de logique commerciale renvoient également un 200, mais contiennent des informations détaillées dans le corps de la réponse. Voir [Codes d’erreur](error-codes.md) pour une explication détaillée. L’expression de raison HTTP ne doit pas être évaluée, car elle est facultative et peut être modifiée.
+Sauf dans de rares cas, les requêtes API renvoient le code d’état HTTP 200. Les erreurs de logique commerciale renvoient également 200, mais incluent des détails dans le corps de la réponse. Voir [Codes d’erreur](error-codes.md) pour plus d’informations.
+
+N’évaluez pas l’expression de raison HTTP, car elle est facultative et peut être modifiée.

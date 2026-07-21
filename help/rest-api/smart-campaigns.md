@@ -4,19 +4,13 @@ feature: REST API, Smart Campaigns
 description: Découvrez comment utiliser les API REST Marketo pour les campagnes intelligentes, y compris la requête par identifiant ou nom, parcourir les filtres, créer une suppression de clone et planifier ou demander des déclencheurs
 exl-id: 540bdf59-b102-4081-a3d7-225494a19fdd
 TQID: https://experienceleague.adobe.com/iysRjtqd9plkreyIMuNjAF3YVFHtDUIrc-GInB4V8mg
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-subfeature_v2:
-  - id: ad89fb33-8541-4339-afe7-bb13d1633714
-  - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+subfeature_v2: id: ad89fb33-8541-4339-afe7-bb13d1633714id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1196
+source-wordcount: 1009
 ht-degree: 1%
 
 ---
@@ -27,11 +21,11 @@ ht-degree: 1%
 
 [Référence des points d’entrée des campagnes (leads)](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns)
 
-Marketo propose un ensemble d’API REST pour effectuer des opérations sur des campagnes intelligentes. Ces API suivent le modèle d’interface standard des API de ressources en fournissant des options de requête, de création, de clonage et de suppression. Vous pouvez également gérer l’exécution de campagnes intelligentes en planifiant des campagnes par lots ou en demandant des campagnes de déclenchement.
+Utilisez les API REST de campagne intelligente pour interroger, créer, cloner et supprimer des campagnes intelligentes. Vous pouvez également planifier des campagnes par lots, demander des campagnes de déclenchement et gérer l’activation des campagnes.
 
 ## Requête
 
-Les requêtes de campagnes intelligentes suivent les types de requête standard pour les ressources de [par identifiant](#by_id), [par nom](#by_name) et [navigation](#browse).
+Exécutez des requêtes sur les campagnes intelligentes [par identifiant](#by_id), [par nom](#by_name) ou par [navigation](#browse).
 
 ### Par Id
 
@@ -73,7 +67,7 @@ GET /rest/asset/v1/smartCampaign/{id}.json
 }
 ```
 
-Avec ce point d’entrée, il y aura toujours un seul enregistrement à la première position du tableau `result`.
+Le point d’entrée renvoie un enregistrement à la première position du tableau de `result`.
 
 ### Par nom
 
@@ -119,21 +113,21 @@ GET /rest/asset/v1/smartCampaign/byName.json?name=Test Trigger Campaign
 }
 ```
 
-Avec ce point d’entrée, il y aura toujours un seul enregistrement à la première position du tableau `result`.
+Le point d’entrée renvoie un enregistrement à la première position du tableau de `result`.
 
 ### Parcourir
 
-Le point d’entrée [Obtenir les campagnes intelligentes](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getAllSmartCampaignsGET) fonctionne comme d’autres points d’entrée de navigation de l’API Assets et permet à plusieurs paramètres de requête facultatifs de spécifier des critères de filtrage.
+Le point d’entrée [Obtenir les campagnes intelligentes](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getAllSmartCampaignsGET) prend en charge les paramètres de requête facultatifs pour le filtrage et la pagination.
 
 Les paramètres `earliestUpdatedAt` et `latestUpdatedAt` acceptent les `datetimes` au format ISO-8601 (sans millisecondes). Si les deux sont définis, la valeur de firstUpdatedAt doit précéder la valeur de latestUpdatedAt.
 
-Le paramètre `folder` spécifie le dossier parent sous lequel naviguer. Le format est le bloc JSON contenant les attributs `id` et `type`.
+Le paramètre `folder` spécifie le dossier parent à parcourir. Transmettez-le en tant qu’objet JSON contenant `id` et `type`.
 
-Le paramètre `maxReturn` est un entier qui spécifie le nombre maximal d’entrées à renvoyer. La valeur par défaut est 20. La valeur maximale est 200.
+L’entier `maxReturn` spécifie le nombre maximal d’entrées. La valeur par défaut est 20 et la valeur maximale est 200.
 
-Le paramètre `offset` est un entier qui spécifie où commencer à récupérer les entrées. Peut être utilisé conjointement avec `maxReturn`. La valeur par défaut est 0.
+L’entier `offset` spécifie où commencer à récupérer les entrées. Utilisez-le avec `maxReturn`. La valeur par défaut est 0.
 
-Le paramètre `isActive` est une valeur booléenne qui spécifie de renvoyer uniquement les campagnes Trigger actives.
+Définissez le paramètre booléen `isActive` pour renvoyer uniquement les campagnes de déclenchement actives.
 
 ```http
 GET /rest/asset/v1/smartCampaigns.json?earliestUpdatedAt=2016-09-10T23:15:00-00:00&latestUpdatedAt=2016-09-10T23:17:00-00:00
@@ -192,11 +186,11 @@ GET /rest/asset/v1/smartCampaigns.json?earliestUpdatedAt=2016-09-10T23:15:00-00:
 }
 ```
 
-Avec ce point d’entrée, il y aura un ou plusieurs enregistrements dans le tableau `result`.
+Le point d’entrée renvoie un ou plusieurs enregistrements dans le tableau `result`.
 
 ## Créer
 
-Le point d’entrée [Créer une campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/createSmartCampaignUsingPOST) est exécuté avec une requête POST application/x-www-form-urlencoded comportant deux paramètres obligatoires. Le paramètre `name` spécifie le nom de la campagne intelligente à créer. Le paramètre `folder` spécifie le dossier parent dans lequel la campagne intelligente est créée. Le format est le bloc JSON contenant les attributs `id` et `type`.
+Envoyez une requête `application/x-www-form-urlencoded` POST au point d’entrée [Créer une campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/createSmartCampaignUsingPOST). Les paramètres `name` et `folder` sont requis. Transmettez `folder` en tant qu’objet JSON contenant des `id` et des `type`.
 
 Vous pouvez éventuellement décrire la campagne intelligente à l’aide du paramètre `description` (2 000 caractères maximum).
 
@@ -250,7 +244,7 @@ name=Smart Campaign 02&folder={"type": "folder","id": 640}&description=This is a
 
 ## Mise à jour
 
-Le point d’entrée [Mise à jour de campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset) est exécuté avec une requête POST application/x-www-form-urlencoded. Un seul `id` de campagne intelligente est utilisé comme paramètre de chemin d’accès. Vous pouvez utiliser le paramètre `name` pour mettre à jour le nom de la campagne intelligente ou le paramètre `description` pour mettre à jour la description de la campagne intelligente.
+Envoyez une requête POST `application/x-www-form-urlencoded` au point d’entrée [Mise à jour de la campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset). Le paramètre de chemin d’accès à la `id` Smart-Campaign est obligatoire. Utilisez `name` pour modifier le nom ou `description` pour modifier la description.
 
 ```http
 POST /rest/asset/v1/smartCampaign/{id}.json
@@ -302,7 +296,7 @@ name=Smart Campaign 02 Update&description=This is a smart campaign update test.
 
 ## Cloner
 
-Le point d’entrée [Cloner la campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) est exécuté avec une requête POST application/x-www-form-urlencoded comportant trois paramètres obligatoires. Il faut un paramètre `id` qui spécifie la campagne intelligente à cloner, un paramètre `name` qui spécifie le nom de la nouvelle campagne intelligente et un paramètre `folder` pour spécifier le dossier parent dans lequel la nouvelle campagne intelligente est créée. Le format est le bloc JSON contenant les attributs `id` et `type`.
+Envoyez une requête `application/x-www-form-urlencoded` POST au point d’entrée [Cloner une campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5). Les paramètres `id`, `name` et `folder` sont requis. Ils spécifient la campagne source, le nouveau nom de campagne et le dossier parent. Transmettez `folder` en tant qu’objet JSON contenant des `id` et des `type`.
 
 Vous pouvez éventuellement décrire la campagne intelligente à l’aide du paramètre `description` (2 000 caractères maximum).
 
@@ -378,15 +372,15 @@ POST /rest/asset/v1/smartCampaign/{id}/delete.json
 
 ## Lot
 
-Les campagnes intelligentes par lots sont lancées à une heure spécifique et affectent simultanément un ensemble spécifique de prospects.
+Les campagnes intelligentes par lots s’exécutent à une heure spécifiée et traitent ensemble un ensemble défini de prospects.
 
-## Planning
+## Programmation
 
-Utilisez le point d’entrée [Planifier la campagne](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/scheduleCampaignUsingPOST) pour planifier une campagne par lots à exécuter immédiatement ou à une date ultérieure. Le `id` de campagne est un paramètre de chemin obligatoire. Les paramètres facultatifs sont `tokens`, `runAt` et `cloneToProgram` qui sont transmis dans le corps de la requête en tant qu’application/json.
+Utilisez [Planifier une campagne](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/scheduleCampaignUsingPOST) pour planifier une campagne par lots. Le paramètre de chemin de `id` de la campagne est obligatoire. Transmettez les paramètres facultatifs `tokens`, `runAt` et `cloneToProgram` dans le corps de la requête JSON.
 
-Le paramètre de tableau de jetons est un tableau de Mes jetons qui remplacent les jetons de programme existants. Une fois la campagne exécutée, les jetons sont ignorés.  Chaque élément de tableau de jetons contient des paires nom/valeur. Le nom du jeton doit être au format « `{{my.name}}` ».
+Le tableau `tokens` remplace les jetons My Tokens du programme existant pour cette exécution. Marketo ignore les remplacements après l’exécution de la campagne. Chaque élément contient une paire nom/valeur et le nom du jeton doit utiliser le format `{{my.name}}`.
 
-Le paramètre runAt datetime indique quand exécuter la campagne. Si elle n’est pas spécifiée, la campagne sera exécutée 5 minutes après l’appel du point d’entrée. La valeur datetime ne peut pas être située à plus de deux ans dans le futur.
+Le paramètre date-heure `runAt` indique quand exécuter la campagne. Si cet attribut est omis, la campagne s’exécute cinq minutes après la requête. La valeur ne peut pas être supérieure à deux ans dans le futur.
 
 Les campagnes planifiées via cette API attendent toujours un minimum de cinq minutes avant d’être exécutées.
 
@@ -429,17 +423,17 @@ POST /rest/v1/campaigns/{id}/schedule.json
 
 ## Déclencheur
 
-Les campagnes intelligentes de déclenchement affectent une personne à la fois en fonction d’un événement déclenché.
+Les campagnes intelligentes Trigger traitent une personne à la fois en réponse à un événement.
 
 ### Requête
 
-Utilisez le point d’entrée [Demande de campagne](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/triggerCampaignUsingPOST) pour transmettre un ensemble de prospects à une campagne de déclenchement afin de l’exécuter dans le flux de la campagne. La campagne doit avoir un déclencheur « La campagne est demandée » avec « API de service web » comme source.
+Utilisez [Demande de campagne](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/triggerCampaignUsingPOST) pour transmettre des prospects par le biais du flux d’une campagne de déclenchement. La campagne doit utiliser un déclencheur Campaign est demandé avec l’API de service web comme source.
 
-Ce point d’entrée nécessite une campagne `id` comme paramètre de chemin d’accès et un paramètre de tableau d’entiers `leads` contenant les ID de lead . Un maximum de 100 prospects est autorisé par appel.
+Le paramètre de chemin d’`id` de la campagne et un tableau entier `leads` d’identifiants de prospect sont requis. Chaque appel accepte un maximum de 100 prospects.
 
-Le paramètre de tableau `tokens` peut éventuellement être utilisé pour remplacer Mes jetons en local dans le programme parent de la campagne. `tokens` accepte un maximum de 100 jetons. Chaque élément de tableau `tokens` contient une paire nom/valeur. Le nom du jeton doit être au format « `{{my.name}}` ». Si vous utilisez l’approche [Ajouter un jeton système en tant que lien dans un e-mail](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email) pour ajouter le jeton système « viewAsWebpageLink », vous ne pouvez pas le remplacer à l’aide de `tokens`. Utilisez plutôt l’approche [Ajouter un lien Afficher en tant que page Web à un e-mail](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email) qui vous permet de remplacer « viewAsWebPageLink » à l’aide de `tokens`.
+Le paramètre de tableau `tokens` peut éventuellement être utilisé pour remplacer Mes jetons en local dans le programme parent de la campagne. `tokens` accepte un maximum de 100 jetons. Chaque élément de tableau `tokens` contient une paire nom/valeur. Le nom du jeton doit être au format « `{{my.name}}` ». Si vous utilisez l’approche [Ajouter un jeton système en tant que lien dans un e-mail](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email) pour ajouter le jeton système « viewAsWebpageLink », vous ne pouvez pas le remplacer à l’aide de `tokens`. Utilisez plutôt l’approche [Ajouter un lien Afficher en tant que page Web à un e-mail](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email) qui vous permet de remplacer « viewAsWebPageLink » à l’aide de `tokens`.
 
-Les paramètres `leads` et `tokens` sont transmis dans le corps de la requête en tant qu’application/json.
+Transmettez les paramètres `leads` et `tokens` dans le corps de la requête JSON.
 
 ```http
 POST /rest/v1/campaigns/{id}/trigger.json
@@ -487,9 +481,9 @@ POST /rest/v1/campaigns/{id}/trigger.json
 
 Le point d’entrée [Activer la campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/activateSmartCampaignUsingPOST) est simple. Un paramètre de chemin d’accès `id` est requis. Pour que l’activation réussisse, ce qui suit doit être vrai pour la campagne :
 
-- Doit être désactivé
-- Doit comporter au moins un déclencheur et une étape de flux
-- Doit comporter des déclencheurs, des filtres et des étapes de flux sans erreur.
+- La campagne est désactivée.
+- La campagne comporte au moins un déclencheur et une étape de flux.
+- La campagne comporte des déclencheurs, des filtres et des étapes de flux sans erreur.
 
 ```http
 POST /rest/asset/v1/smartCampaign/{id}/activate.json

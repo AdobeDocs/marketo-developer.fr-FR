@@ -4,19 +4,14 @@ feature: REST API
 description: Découvrez comment créer et gérer des modèles d’e-mail de l’API REST Marketo, y compris les exigences d’HTML, les requêtes par identifiant ou nom et la navigation dans les dossiers
 exl-id: 0ecf4da6-eb7e-43c1-8d5c-0517c43b47c8
 TQID: https://experienceleague.adobe.com/jKQpibaRP7nAyIsDdjMf8VkNPi5AMFbe7I4Iiy3MGc0
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-  - id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 725
-ht-degree: 1%
+source-wordcount: 570
+ht-degree: 2%
 
 ---
 
@@ -24,11 +19,13 @@ ht-degree: 1%
 
 [Référence du point d’entrée du modèle d’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates)
 
-Les modèles d’e-mail constituent la base de chaque nouvel e-mail dans Marketo.  Bien que le lien entre les e-mails et les modèles puisse être annulé via le remplacement d’HTML, les e-mails doivent être créés initialement avec un modèle comme base.  Les modèles sont créés en tant que documents HTML purs dans Marketo avec des métadonnées telles que les noms et les descriptions.  Il existe peu de restrictions sur le contenu, mais l’HTML du modèle doit être valide et doit contenir au moins une section modifiable, qui suit les exigences [décrites ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
+Chaque nouvel e-mail dans Marketo est initialement basé sur un modèle d’e-mail. Bien que vous puissiez par la suite dissocier un e-mail de son modèle en remplaçant l’HTML, vous devez sélectionner un modèle lors de la création de l’e-mail.
+
+Les modèles sont des documents HTML avec des métadonnées telles qu’un nom et une description. Le modèle HTML doit être valide et contenir au moins une section modifiable conforme aux [exigences de section modifiable](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
 
 ## Requête
 
-L’interrogation de modèles d’e-mail suit le modèle standard pour les ressources, ce qui permet d’effectuer des requêtes [par identifiant](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getTemplateByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getTemplateByNameUsingGET) et [en parcourant](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getEmailTemplatesUsingGET) dans un dossier donné.
+Les modèles d’e-mail prennent en charge les modèles de requête de ressource standard : [par identifiant](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getTemplateByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getTemplateByNameUsingGET) et en [parcourant](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getEmailTemplatesUsingGET) un dossier.
 
 ### Par Id
 
@@ -198,13 +195,19 @@ GET /rest/asset/v1/emailTemplates.json
 }
 ```
 
-L’interrogation de l’enregistrement lui-même renvoie uniquement des métadonnées sur l’enregistrement. Pour obtenir du contenu, consultez la section #content .
+Les requêtes de modèle renvoient uniquement des métadonnées d’enregistrement. Utilisez le point d’entrée de contenu pour récupérer le contenu du modèle.
 
 ## Créer et mettre à jour
 
-La [création](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/createEmailTemplateUsingPOST) ou [mise à jour](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/updateEmailTemplateContentUsingPOST) d’un modèle est assez simple. Le contenu de chaque modèle est stocké en tant que document HTML et doit être transmis dans Marketo à l’aide d’un type de données multipart/form-data de POST. Vous devez transmettre l’en-tête Type de contenu approprié qui inclut une limite comme décrit dans les RFC pour [multipart](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html) et [multipart/form-data](https://www.ietf.org/rfc/rfc2388.txt).
+Pour [créer](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/createEmailTemplateUsingPOST) ou [mettre à jour](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/updateEmailTemplateContentUsingPOST) un modèle, envoyez le document HTML dans une requête POST `multipart/form-data`. L’en-tête `Content-Type` doit inclure une limite comme décrit dans les RFC pour [multipart](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html) et [multipart/form-data](https://www.ietf.org/rfc/rfc2388.txt).
 
-Pour créer un modèle, vous devez inclure trois paramètres : nom, dossier, contenu. Un paramètre de description facultatif peut être inclus.  Le document HTML est transmis dans le paramètre content , qui doit également inclure le paramètre de nom de fichier conventionnel dans le cadre de son en-tête Content-Disposition.
+La création d&#39;un modèle requiert les paramètres suivants :
+
+- `name` : nom du modèle.
+- `folder` : dossier parent.
+- `content` : document HTML. Son en-tête `Content-Disposition` doit inclure le paramètre `filename` conventionnel.
+
+Vous pouvez également inclure un paramètre de `description` facultatif.
 
 ```http
 POST /rest/asset/v1/emailTemplates.json
@@ -267,7 +270,9 @@ Create email template using API
 }
 ```
 
-La mise à jour du contenu s’effectue à l’aide d’un point d’entrée [distinct](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/updateEmailTemplateContentUsingPOST) qui nécessite l’identifiant du modèle d’e-mail. Ce point d’entrée permet uniquement l’envoi du paramètre de contenu dans le corps. Lors d’une mise à jour, tout ce qui est transmis dans le paramètre de contenu remplace complètement le contenu existant de l’e-mail dans un nouveau brouillon en cas de mise à jour d’une version approuvée, ou remplace le brouillon actuel si la ressource est en mode brouillon uniquement.
+Pour mettre à jour le contenu du modèle, appelez le point d’entrée [content](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/updateEmailTemplateContentUsingPOST) avec l’identifiant du modèle d’e-mail. Le corps de la requête accepte uniquement le paramètre `content`.
+
+Le contenu envoyé remplace complètement le contenu du modèle existant. La mise à jour d’une version approuvée crée un nouveau brouillon. La mise à jour d’une ressource en mode brouillon uniquement remplace le brouillon actuel.
 
 ```http
 POST /rest/asset/v1/emailTemplate/{id}/content.json
@@ -309,7 +314,7 @@ Content-Type: text/html
 
 ## Mettre à jour les métadonnées
 
-Pour [mettre à jour les métadonnées](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/updateEmailTemplateUsingPOST) le nom et la description d’un modèle, vous pouvez utiliser le même point d’entrée que pour mettre à jour le contenu, mais transmettre une application/x-www-url-formencoded POST à la place, avec les paramètres de nom et de description.
+Pour [mettre à jour les métadonnées d’un modèle](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/updateEmailTemplateUsingPOST), envoyez une requête POST `application/x-www-form-urlencoded` avec les paramètres `name` et `description`.
 
 ```http
 POST /rest/asset/v1/emailTemplate/{id}.json
@@ -349,11 +354,11 @@ description=Updated description&name=New Name
 
 ## Validation
 
-Les modèles d’e-mail suivent le modèle standard pour les approbations des enregistrements de ressources. Vous pouvez approuver un brouillon, annuler l’approbation d’une version approuvée et ignorer un brouillon existant d’un modèle d’e-mail via chacun de leurs propres points d’entrée.
+Les modèles d’e-mail suivent le cycle de vie standard d’approbation des ressources. Des points d’entrée distincts vous permettent d’approuver un brouillon, d’annuler l’approbation d’une version approuvée ou d’ignorer un brouillon existant.
 
 ### Approuver
 
-Lors de l’appel du point d’entrée d’approbation, l’e-mail sera validé par rapport aux règles pour les e-mails Marketo. Le nom de l’expéditeur, l’adresse électronique de l’expéditeur, l’adresse électronique de réponse et l’objet doivent être renseignés avant que l’adresse électronique puisse être approuvée.
+Le point d’entrée d’approbation valide le modèle par rapport aux règles pour les e-mails Marketo. Le nom de l’expéditeur, l’e-mail de l’expéditeur, l’e-mail de réponse et l’objet doivent être renseignés avant approbation.
 
 ```http
 POST /rest/asset/v1/emailTemplate/{id}/approveDraft.json
@@ -385,7 +390,7 @@ POST /rest/asset/v1/emailTemplate/{id}/approveDraft.json
 
 ### Désapprouver
 
-Le point d’entrée « unapprove » ne peut être utilisé que sur les modèles approuvés.
+N’utilisez le point d’entrée « unapprove » que sur un modèle approuvé.
 
 ```http
 POST /rest/asset/v1/emailTemplate/{id}/unapprove.json
@@ -417,7 +422,7 @@ POST /rest/asset/v1/emailTemplate/{id}/unapprove.json
 
 ### Rejeter
 
-La version brouillon du modèle est créée après la mise à jour d’un e-mail approuvé.
+La mise à jour d’un modèle approuvé crée un brouillon. Utilisez le point d’entrée Ignorer pour ignorer ce brouillon.
 
 ```http
 POST /rest/asset/v1/emailTemplate/{id}/discardDraft.json
@@ -469,7 +474,11 @@ POST /rest/asset/v1/emailTemplate/{id}/delete.json
 
 ## Cloner
 
-Marketo propose une méthode simple pour [cloner un modèle d’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/cloneTemplateUsingPOST). Contrairement à la création, ce type de requête est effectué avec une application/x-www-url-formencoded POST et utilise deux paramètres obligatoires, name et folder, ainsi qu’un objet JSON incorporé avec l’ID et le type.  La description est également un paramètre facultatif.
+Pour [cloner un modèle d’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/cloneTemplateUsingPOST), envoyez une requête POST `application/x-www-form-urlencoded` avec les paramètres suivants :
+
+- `name` : obligatoire. Nom du modèle cloné.
+- `folder` : obligatoire. Un objet JSON incorporé avec `id` et `type`.
+- `description` : facultatif. Description du modèle cloné.
 
 ```http
 POST /rest/asset/v1/emailTemplate/{id}/clone.json
@@ -511,9 +520,12 @@ name=Sample Template 01 - deverly&folder={"id":12,"type":"Folder"}&description=T
 
 ## Dépendances des e-mails de requête
 
-Utilisez le point d’entrée [Obtenir le modèle d’e-mail utilisé par](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getEmailTemplateUsedByUsingGET) pour récupérer une liste d’e-mails qui dépendent d’un modèle d’e-mail donné.  Le paramètre de chemin d’accès `id` spécifie le modèle d’e-mail parent.
+Utilisez le point d’entrée [Obtenir le modèle d’e-mail utilisé par](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getEmailTemplateUsedByUsingGET) pour récupérer les e-mails qui dépendent d’un modèle. Le paramètre de chemin d’accès `id` identifie le modèle d’e-mail parent.
 
-Il existe 2 paramètres facultatifs. `maxReturn` est un entier qui limite le nombre de résultats (20 par défaut, 200 au maximum) et `offset` est un entier qui peut être utilisé avec `maxReturn` pour lire de grands ensembles de résultats (0 par défaut).
+Le point d’entrée prend en charge deux paramètres de pagination facultatifs :
+
+- `maxReturn` : limite le nombre de résultats. La valeur par défaut est 20 et la valeur maximale est 200.
+- `offset` : fonctionne avec les `maxReturn` pour paginer dans des jeux de résultats volumineux. La valeur par défaut est 0.
 
 ```http
 GET /rest/asset/v1/emailTemplates/{id}/usedBy.json

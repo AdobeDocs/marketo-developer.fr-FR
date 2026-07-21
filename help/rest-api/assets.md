@@ -4,28 +4,20 @@ feature: REST API
 description: Présentation des API REST de ressources Marketo pour les requêtes par identifiant ou nom, la navigation dans les pages et la création ou la mise à jour de dossiers, d’e-mails, de formulaires, de modèles, de fichiers et de jetons.
 exl-id: 4273a5b1-1904-46e8-b583-fc6f46b388d2
 TQID: https://experienceleague.adobe.com/gRhXvFtG1FHtGJ4tFQxOyGMkEiOX0K1S0VpjcB6s6xM
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: d65b4a73-87a3-4d56-b638-74e74d9939ce
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-  - id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: d65b4a73-87a3-4d56-b638-74e74d9939ceid: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 899
-ht-degree: 2%
+source-wordcount: 631
+ht-degree: 3%
 
 ---
 
 # Ressources
 
-Marketo fournit des API pour interagir avec la plupart des ressources marketing et organisationnelles dans Marketo.
+Utilisez les API REST de ressources Marketo pour interroger et gérer des ressources marketing et organisationnelles.
 
 ## Ressources
 
@@ -45,13 +37,15 @@ Les ressources Marketo incluent :
 
 ## API
 
-Pour obtenir la liste complète des points d’entrée de l’API Asset, y compris les paramètres et les informations de modélisation, consultez la [&#x200B; Référence des points d’entrée de l’API Asset &#x200B;](endpoint-reference.md).
+Pour obtenir la liste complète des points d’entrée de l’API Asset, y compris les paramètres et les informations de modélisation, consultez la [ Référence des points d’entrée de l’API Asset ](endpoint-reference.md).
 
 ## Requête
 
-Assets comporte généralement trois modèles permettant de les récupérer : par identifiant, par nom et par navigation.  Les options Par id et Par nom récupèrent toutes deux une seule ressource pour un paramètre donné, tandis que l’exploration renvoie et permet la pagination de l’ensemble de la liste des ressources de ce type.  Les différents types de ressources sont dotés de paramètres variables selon lesquels ils peuvent être filtrés. Veillez donc à consulter individuellement leurs documents pour obtenir des informations spécifiques.
+Les API de ressources prennent généralement en charge trois modèles de récupération : par identifiant, par nom et par navigation. Les requêtes par ID ou nom récupèrent une ressource pour le paramètre spécifié. Les points d’entrée de navigation renvoient une liste paginée de ressources de ce type.
 
-Dans certains cas, le point d’entrée de navigation de certains types de ressources ne renvoie pas les ressources enfants, telles que les valeurs autorisées pour une balise, et elles doivent être récupérées individuellement à l’aide du point d’entrée Par nom ou Par ID pour renvoyer l’ensemble complet des métadonnées.  D’autres peuvent avoir des points d’entrée distincts entièrement pour récupérer des objets dépendants tels que des champs de formulaire.
+Les paramètres de filtrage varient selon le type de ressource. Consultez la documentation de chaque type de ressource pour connaître les filtres pris en charge.
+
+Certains points d’entrée de navigation ne renvoient pas de ressources enfants, comme les valeurs autorisées pour une balise. Récupérez ces ressources individuellement par nom ou ID pour obtenir leurs métadonnées complètes. D’autres types de ressources fournissent des points d’entrée distincts pour les objets dépendants tels que les champs de formulaire.
 
 ### Par Id
 
@@ -94,7 +88,7 @@ GET /rest/asset/v1/folder/{id}.json?type=Folder
 
 ### Par nom
 
-Pour des raisons techniques, les API de ressources ne peuvent pas rechercher des noms de ressources contenant des virgules (,).  Il est recommandé d’exclure les virgules de votre convention de nommage pour tous les types de ressources.
+Les API de ressources ne peuvent pas rechercher des noms de ressources contenant des virgules. Excluez les virgules des noms de ressources.
 
 ```http
 GET /rest/asset/v1/file/byName.json?name=My File
@@ -127,10 +121,10 @@ GET /rest/asset/v1/file/byName.json?name=My File
 
 ### Parcourir
 
-La navigation dans les ressources autorise toujours deux paramètres de requête :
+Les points d’entrée de l’exploration des ressources prennent en charge les paramètres de requête suivants :
 
-- offset : décalage entier à partir duquel renvoyer les résultats.
-- maxReturn - Limite le nombre d&#39;enregistrements retournés.  La valeur par défaut est 20 s’il n’est pas défini, et est de 200 au maximum.
+- `offset` - Décalage entier auquel commencer à renvoyer les résultats.
+- `maxReturn` - Nombre maximal d’enregistrements à renvoyer. La valeur par défaut est 20 et la valeur maximale est 200.
 
 ```http
 GET /rest/asset/v1/emailTemplates.json?offset=10&maxReturn=50
@@ -188,9 +182,9 @@ GET /rest/asset/v1/emailTemplates.json?offset=10&maxReturn=50
 
 ## Créer et mettre à jour
 
-Pour les types de ressources simples tels que les dossiers, les jetons et les fichiers, il n’existe généralement qu’un seul point d’entrée pour la création, puis un point d’entrée supplémentaire pour la mise à jour des enregistrements par identifiant.  Les Assets sont créées avec un nom qui est toujours obligatoire, puis toutes les métadonnées et tous les identifiants sont renvoyés par la réponse create ou update.
+Les types de ressources simples, tels que les dossiers, les jetons et les fichiers, fournissent généralement un point d’entrée pour la création et un autre pour les mises à jour par identifiant. Un nom est requis lors de la création d’une ressource. La réponse de création ou de mise à jour renvoie les métadonnées et l’identifiant de la ressource.
 
-Par exemple, voici comment créer un jeton :
+La requête suivante crée un jeton :
 
 ```http
 POST /rest/asset/v1/folder/{id}/tokens.json
@@ -229,7 +223,7 @@ name=April Fools&value=2015-04-01&type=date&folderType=Folder
 }
 ```
 
-Pour mettre à jour un dossier, procédez comme suit :
+La requête suivante met à jour un dossier :
 
 ```http
 POST /rest/asset/v1/folder/{id}.json
@@ -276,13 +270,13 @@ type=Folder&description=This is a test (update 01)
 }
 ```
 
-Les autres ressources ont des structures plus complexes et nécessitent des mises à jour de sous-sections ou d’objets enfants supplémentaires. Elles doivent ensuite être approuvées avant de pouvoir être utilisées.  Ces types de ressources comprennent Forms, les e-mails, les modèles d’e-mail, les pages de destination et les modèles de page de destination.  Ils disposeront chacun d’un point d’entrée unique pour créer un enregistrement, puis de points d’entrée supplémentaires pour mettre à jour les sections de métadonnées, de contenu et de contenu.
+Forms, les e-mails, les modèles d’e-mail, les pages de destination et les modèles de page de destination ont des structures plus complexes. Chaque type fournit un point d’entrée pour la création de la ressource et des points d’entrée supplémentaires pour la mise à jour de ses sections de métadonnées, de contenu et de contenu.
 
-Par exemple, pour créer une page de destination, vous devez appeler son point d’entrée de création avec un identifiant de modèle, puis récupérer ses sections de contenu et les mettre à jour individuellement pour ajouter du contenu, avant de les approuver afin qu’elles puissent être déployées en direct.
+Ces ressources doivent être approuvées avant utilisation. Par exemple, créez une page de destination avec un ID de modèle, récupérez ses sections de contenu, mettez à jour chaque section requise, puis approuvez la page pour le déploiement.
 
 ### Création complexe
 
-Les pages de destination nécessitent d’abord de créer une ressource de page de destination à l’aide d’un modèle parent.  Cela crée une page de destination contenant le contenu par défaut du modèle pour chaque section de contenu.
+Créez une landing page à partir d’un modèle parent. La nouvelle page de destination contient le contenu par défaut du modèle pour chaque section.
 
 ```http
 POST rest/asset/v1/landingPages.json
@@ -331,7 +325,7 @@ name=createLandingPage&folder={"type": "Folder", "id": 11}&template=1&descriptio
 
 #### Obtenir les sections
 
-Pour renseigner le contenu d&#39;une landing page, vous devez récupérer la liste des sections de contenu, puis effectuer des mises à jour individuelles pour toute section qui s&#39;écarte du modèle.
+Récupérez les sections de contenu de la page de destination. Mettez à jour chaque section qui doit être différente du modèle.
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/content.json
@@ -385,7 +379,9 @@ POST /rest/asset/v1/landingPage/{id}/content/{contentId}.json?type=Form&value=1
 
 ## Validation
 
-De nombreux types de ressources sont associés à un système de brouillon et d’approbation, notamment les e-mails, les pages de destination, les fragments de code, le Forms et les modèles correspondants.  Toute tentative d’approbation d’une ressource l’évalue par rapport à un ensemble spécifique de règles de validation, puis la définit sur un état approuvé ou renvoie un motif d’échec.  Pour ces types de ressources, chaque fois qu’une mise à jour est apportée au contenu d’une ressource particulière, les modifications sont apportées à un brouillon de la ressource, ce qui n’affecte pas la version approuvée.  Cela permet d’apporter des modifications au contenu en toute sécurité sans affecter les versions actives de la ressource.  Les modifications peuvent ensuite être appliquées à la version active à l’aide du point d’entrée d’approbation.  Cela efface également l’état de brouillon de la ressource jusqu’à ce que d’autres mises à jour soient appliquées.
+Les e-mails, pages de destination, fragments de code, formulaires et leurs modèles utilisent un système de brouillon et d’approbation. Les mises à jour de contenu modifient le brouillon sans affecter la version active approuvée.
+
+Le point d’entrée d’approbation valide le brouillon. Si la validation réussit, le brouillon remplace la version active et l’état de brouillon est effacé. Si la validation échoue, le point d’entrée renvoie la raison.
 
 ```http
 POST /rest/asset/v1/emailTemplate/{id}/approveDraft.json
@@ -417,7 +413,9 @@ POST /rest/asset/v1/emailTemplate/{id}/approveDraft.json
 
 L’approbation réussie remplace la version active précédente par la version mise à jour.
 
-L’abandon des brouillons est également disponible via un point d’entrée pour chaque type de ressource valide.  L’utilisation de cette option sur une ressource dont le statut est Approuvé avec le statut de brouillon supprime le brouillon actuel et toutes les modifications en attente.  L’utilisation de cette option sur une ressource qui n’a actuellement aucune version approuvée n’aura aucun effet et renverra une erreur.  Les ressources en mode Brouillon uniquement peuvent être supprimées, mais elles ne peuvent pas être ignorées.
+Chaque type de ressource pris en charge fournit un point d’entrée pour ignorer les brouillons. Pour une ressource approuvée avec un brouillon, ce point d’entrée ignore le brouillon et ses modifications en attente.
+
+Le point d’entrée renvoie une erreur si la ressource n’a pas de version approuvée. Vous pouvez supprimer une ressource en mode brouillon uniquement, mais vous ne pouvez pas ignorer son brouillon.
 
 ```http
 POST /rest/asset/v1/emailTemplate/{id}/discardDraft.json
@@ -447,7 +445,9 @@ POST /rest/asset/v1/emailTemplate/{id}/discardDraft.json
 }
 ```
 
-L’approbation d’Assets peut également être annulée si le statut de ces applications est uniquement approuvé.  Cette opération supprimera toutes les versions actives de la ressource et rétablira l’état de la ressource en mode brouillon uniquement, tout en ignorant les brouillons associés.  Cette action ne peut être effectuée sur la plupart des ressources que si elle n’est utilisée nulle part dans Marketo, par exemple lorsqu’un e-mail est référencé dans une étape de flux Envoyer un e-mail ou qu’un fragment de code est incorporé dans un e-mail.
+Vous pouvez annuler l’approbation d’une ressource dont le statut est défini sur Approuvé uniquement. L’annulation de l’approbation supprime la version active, ramène la ressource au statut brouillon uniquement et ignore tout brouillon associé.
+
+Pour la plupart des types de ressources, la ressource ne doit pas être en cours d’utilisation. Par exemple, vous ne pouvez pas annuler l’approbation d’un e-mail référencé par une étape de flux Envoyer un e-mail ou un fragment de code incorporé dans un e-mail.
 
 ```http
 POST /rest/asset/v1/email/{id}/unapprove.json
@@ -469,7 +469,9 @@ POST /rest/asset/v1/email/{id}/unapprove.json
 
 ## Supprimer
 
-Assets avec les états approbation et brouillon, à l’exception des formulaires, ne peut pas être supprimé lors de l’approbation et doit être non approuvé avant suppression.  Les suppressions ne peuvent généralement être effectuées que lorsqu’une ressource n’est pas approuvée et n’est pas utilisée et, dans le cas des dossiers, lorsqu’elle est vide.  Les programmes constituent une exception notable : ils peuvent être supprimés ainsi que l’ensemble de leurs contenus enfants, à condition que le programme et son contenu ne soient pas utilisés en dehors des limites du programme.
+À l’exception des formulaires, les ressources aux états d’approbation et de brouillon doivent être désapprouvées avant suppression. En règle générale, une ressource doit également être inutilisée. Un dossier doit être vide.
+
+Les programmes constituent une exception. Vous pouvez supprimer un programme et son contenu enfant si ni le programme ni son contenu ne sont utilisés en dehors du programme.
 
 ```http
 POST /rest/asset/v1/program/{id}/delete.json
@@ -491,4 +493,4 @@ POST /rest/asset/v1/program/{id}/delete.json
 
 ## Délais dépassés
 
-Le délai d’expiration des API de ressources est de 300
+Le délai d’expiration des API de ressources est de 300 secondes.

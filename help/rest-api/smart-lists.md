@@ -4,18 +4,13 @@ feature: REST API
 description: Découvrez comment utiliser les API REST Marketo pour interroger, cloner et supprimer des listes dynamiques créées par l’utilisateur, y compris des points d’entrée par identifiant, nom, campagne et programme avec des règles.
 exl-id: 4ba37e57-ee56-48c3-bb2b-b4ec8e907911
 TQID: https://experienceleague.adobe.com/wQ2PQFabw8E5XYP4zJ2RMPcurRkoxA7UecpA-YuQuBc
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-subfeature_v2:
-  - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+subfeature_v2: id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 576
+source-wordcount: 431
 ht-degree: 1%
 
 ---
@@ -24,17 +19,17 @@ ht-degree: 1%
 
 [Référence des points d’entrée des listes dynamiques](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists)
 
-Marketo propose un ensemble d’API REST pour effectuer des opérations sur des listes intelligentes. Ces API suivent le modèle d’interface standard des API de ressources en fournissant des options de requête, de suppression et de clonage.
+Utilisez les API REST de listes dynamiques pour interroger, cloner et supprimer des listes dynamiques.
 
-Remarque : ces API sont uniquement prises en charge pour les listes dynamiques créées par l’utilisateur. Ils ne peuvent pas être utilisés pour les [listes dynamiques intégrées/système](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
+Ces API prennent uniquement en charge les listes dynamiques créées par l’utilisateur. Ils ne prennent pas en charge les [listes intelligentes intégrées ou système](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
 
 ## Requête
 
-L’interrogation de listes dynamiques suit les types de requête standard pour les ressources de [par id](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListByNameUsingGET) et [parcourir](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListsUsingGET).
+Interroger des listes dynamiques [par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListByNameUsingGET) ou par [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListsUsingGET).
 
 ### Par Id
 
-[Requête par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListByIdUsingGET) prend un seul `id` de liste dynamique comme paramètre de chemin d’accès et renvoie un seul enregistrement de liste dynamique. Vous pouvez éventuellement transmettre le paramètre booléen `includeRules` pour inclure des règles de liste dynamique dans la réponse.
+[Requête par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListByIdUsingGET) prend un paramètre de chemin d’accès `id` de liste dynamique et renvoie l’enregistrement correspondant. Définissez le paramètre booléen `includeRules` facultatif pour inclure des règles de liste dynamique.
 
 ![Règles de liste dynamique](assets/smartlist-rules.png)
 
@@ -109,7 +104,7 @@ GET /rest/asset/v1/smartList/{id}.json?includeRules=true
 
 ### Par Identifiant De Campagne Dynamique
 
-[Requête par identifiant de campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getSmartListBySmartCampaignIdUsingGET) utilise un seul `id` de campagne intelligente comme paramètre de chemin d’accès et renvoie un seul enregistrement de liste dynamique. Vous pouvez éventuellement transmettre le paramètre booléen `includeRules` pour inclure des règles de liste dynamique dans la réponse.
+[Requête par identifiant de campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getSmartListBySmartCampaignIdUsingGET) prend un paramètre de chemin d’`id` de campagne intelligente et renvoie son enregistrement de liste intelligente. Définissez le paramètre booléen `includeRules` facultatif pour inclure des règles de liste dynamique.
 
 ```http
 GET /rest/asset/v1/smartCampaign/{smartCampaignId}/smartList.json
@@ -140,7 +135,7 @@ GET /rest/asset/v1/smartCampaign/{smartCampaignId}/smartList.json
 
 ### Par ID de programme
 
-[Requête par ID de programme](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getSmartListByProgramIdUsingGET) prend un seul `id` de programme d’e-mail comme paramètre de chemin d’accès et renvoie un seul enregistrement de liste dynamique. Vous pouvez éventuellement transmettre le paramètre booléen `includeRules` pour inclure des règles de liste dynamique dans la réponse.
+[Requête par ID de programme](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getSmartListByProgramIdUsingGET) prend un paramètre de chemin d’`id` de programme d’e-mail et renvoie son enregistrement de liste dynamique. Définissez le paramètre booléen `includeRules` facultatif pour inclure des règles de liste dynamique.
 
 ```http
 GET /rest/asset/v1/program/{programId}/smartList.json
@@ -171,7 +166,7 @@ GET /rest/asset/v1/program/{programId}/smartList.json
 
 ### Par nom
 
-[Requête par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListByNameUsingGET) prend un `name` de liste dynamique en tant que paramètre et renvoie un seul enregistrement de liste dynamique.  Une correspondance de chaîne exacte est effectuée par rapport à tous les noms de liste dynamique dans l’instance et renvoie un résultat pour la liste dynamique correspondant à ce nom.
+[Requête par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListByNameUsingGET) prend un paramètre de `name` de liste dynamique. Le point d’entrée effectue une correspondance de nom exacte et renvoie l’enregistrement correspondant.
 
 ```http
 GET /rest/asset/v1/smartList/byName.json?name=2018 Leads
@@ -201,7 +196,9 @@ GET /rest/asset/v1/smartList/byName.json?name=2018 Leads
 
 ### Parcourir
 
-Les listes dynamiques peuvent également être [récupérées par lots](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListsUsingGET). Le paramètre `folder` est utilisé pour spécifier le dossier parent sous lequel la requête est exécutée. Il est formaté en tant qu’objet JSON contenant `id` et `type`. Comme les autres points d’entrée de récupération de ressources en bloc, `offset` et `maxReturn` sont des paramètres facultatifs qui peuvent être utilisés pour la pagination. Les paramètres de date et d’heure facultatifs `earliestUpdatedAt` et `latestUpdatedAt` peuvent être utilisés pour filtrer les résultats par période UpdatedAt.
+Utilisez le point d’entrée de navigation pour [récupérer des listes intelligentes par lots](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListsUsingGET). Le paramètre facultatif `folder` définit la portée de la requête sur un dossier parent. Transmettez-le en tant qu’objet JSON contenant `id` et `type`.
+
+Utilisez `offset` et `maxReturn` pour la pagination. Utilisez les paramètres facultatifs `earliestUpdatedAt` et `latestUpdatedAt` pour filtrer par période `updatedAt`.
 
 ```http
 GET /rest/asset/v1/smartLists.json?folder={"id":31,"type":"Folder"}
@@ -255,7 +252,9 @@ GET /rest/asset/v1/smartLists.json?folder={"id":31,"type":"Folder"}
 
 ## Cloner
 
-Le [clonage d’une liste dynamique](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/cloneSmartListUsingPOST) est exécuté avec une requête POST d’application/x-www-form-urlencoded. La liste dynamique à cloner est spécifiée dans le paramètre de chemin d’accès `id`. Le paramètre `folder` est utilisé pour spécifier le dossier parent sous lequel la liste dynamique sera créée et est formaté comme un objet JSON contenant l’ID et le type. Le dossier parent doit être un dossier de programme ou de liste dynamique. Le paramètre `name` est utilisé pour nommer la nouvelle liste dynamique et doit être unique. Le paramètre `description` peut éventuellement être utilisé pour décrire la liste dynamique.
+Envoyez une requête `application/x-www-form-urlencoded` POST pour [cloner une liste dynamique](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/cloneSmartListUsingPOST). Le paramètre de chemin d’accès `id` identifie la liste dynamique source.
+
+Transmettez `folder` en tant qu’objet JSON contenant des `id` et des `type`. Le parent doit être un programme ou un dossier de liste dynamique. Le `name` doit être unique. Le paramètre facultatif `description` décrit la nouvelle liste.
 
 ```http
 POST /rest/asset/v1/smartList/{id}/clone.json
@@ -293,7 +292,7 @@ folder={"id":31,"type":"Folder"}&name=2018 Leads Qualified
 
 ## Supprimer
 
-[La suppression d’une liste dynamique](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/deleteSmartListByIdUsingPOST) utilise un seul `id` de liste dynamique comme paramètre de chemin d’accès.
+Pour [supprimer une liste dynamique](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/deleteSmartListByIdUsingPOST), transmettez son `id` en tant que paramètre de chemin d’accès.
 
 ```http
 POST /rest/asset/v1/smartList/{id}/delete.json

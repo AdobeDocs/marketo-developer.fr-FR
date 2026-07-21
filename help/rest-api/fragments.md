@@ -3,9 +3,9 @@ title: Fragments
 feature: REST API
 description: Utilisez l’API REST Marketo Asset pour interroger, créer, mettre à jour, cloner, supprimer, approuver et inspecter les dépendances des fragments.
 exl-id: 9dd532d1-1dd7-4581-86dd-1943fab66cbb
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: '272'
+source-wordcount: '282'
 ht-degree: 9%
 
 ---
@@ -61,10 +61,18 @@ GET /rest/asset/v2/fragment/{id}
 
 ### Filtre
 
-Le point d’entrée du filtre prend en charge la recherche dans un espace de travail et le rétrécissement des résultats avec des paramètres de requête supplémentaires. `workspaceId` est obligatoire.
+Le point d’entrée de filtre effectue des recherches dans un espace de travail. Le paramètre `workspaceId` est requis.
 
-tâche : faire de ce tableau un tableau
-Les filtres pris en charge sont les suivants : `folderId`, `folderIds` répétées, `status` répétées, `pageIndex`, `pageSize`, `createdBy`, `createdAtStart`, `createdAtEnd`, `modifiedBy`, `modifiedAtStart`, `modifiedAtEnd`, `name`, `fragmentType`, `sortKey`, `sortOrder`, `isCreatedByMe`, `isModifiedByMe`, `scriptEngine`, `isValueNonNullable`, `includeArchived` et.
+Utilisez ces paramètres facultatifs pour limiter ou organiser les résultats :
+
+* Dossier : `folderId` ou `folderIds` répété
+* Statut : `status` répétée
+* Pagination : `pageIndex` et `pageSize`
+* Création : `createdBy`, `createdAtStart`, `createdAtEnd` et `isCreatedByMe`
+* Modification : `modifiedBy`, `modifiedAtStart`, `modifiedAtEnd` et `isModifiedByMe`
+* Propriétés du fragment : `name`, `fragmentType`, `scriptEngine` et `isValueNonNullable`
+* Tri : `sortKey` et `sortOrder`
+* Contenu archivé : `includeArchived`
 
 #### Requête
 

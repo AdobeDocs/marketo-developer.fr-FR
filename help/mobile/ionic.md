@@ -4,40 +4,36 @@ feature: Mobile Marketing
 description: Guide détaillé pour l’intégration du plug-in Marketo Cordova à Ionic, l’activation des notifications push, l’initialisation de SDK, le suivi des sessions et l’association des prospects.
 exl-id: 204e5fb4-c9d6-43a6-9d77-0b2a67ddbed3
 TQID: https://experienceleague.adobe.com/UTNWd69NliR896RcO-XM2GG35liuLeNNhTXo9GRtB4o
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 663
+source-wordcount: 581
 ht-degree: 2%
 
 ---
 
 # Ionique
 
-Cette rubrique décrit comment intégrer le plug-in Marketo Cordova. [!DNL Ionic] condensateur n&#39;est actuellement pas pris en charge.
+Intégrez le plug-in Marketo Cordova à une application [!DNL Ionic]. [!DNL Ionic] Le condensateur n&#39;est actuellement pas pris en charge.
 
 ## Conditions préalables
 
-1. [Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez la clé secrète de l’application et l’ID Munchkin).
-1. Configurez les notifications push ([&#128279;](push-notifications.md) | [Android](push-notifications.md) ).
-1. Installez [[!DNL Ionic]](https://ionicframework.com/getting-started/) et [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
+1. [Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) et obtenez la clé secrète de l’application et l’ID Munchkin.
+1. Configurez les notifications push pour [](push-notifications.md) ou [Android](push-notifications.md).
+1. Installez [[!DNL Ionic]](https://ionicframework.com/getting-started/) et l’interface de ligne de commande [Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
 ## Instructions d’installation
 
 ### Configuration du plug-in Marketo [!DNL Ionic]
 
-1. En supposant que l’interface de ligne de commande Cordova soit installée, accédez à votre répertoire d’applications [!DNL Ionic] et exécutez la commande suivante pour ajouter le module externe Marketo à votre application :
+1. Accédez au répertoire de l’application [!DNL Ionic] et exécutez la commande suivante pour ajouter le module externe Marketo :
 
    `$ ionic plugin add https://github.com/Marketo/PhoneGapPlugin.git --variable APPLICATION_SECRET_KEY="YOUR_APPLICATION_SECRET"`
 
-1. Pour confirmer que le module externe a été ajouté à l’application, exécutez la commande suivante :
+1. Exécutez la commande suivante pour vérifier que le module externe a été ajouté :
 
    `$ ionic plugin list com.marketo.plugin 0.X.0 "MarketoPlugin"`
 
@@ -47,7 +43,7 @@ Cette rubrique décrit comment intégrer le plug-in Marketo Cordova. [!DNL Ionic
 
    `$ ionic plugin remove com.marketo.plugin`
 
-1. Pour lire le module externe, exécutez la commande suivante :
+1. Pour ajouter à nouveau le module externe, exécutez la commande suivante :
 
    `$ ionic plugin add https://github.com/Marketo/PhoneGapPlugin.git --variable APPLICATION_SECRET_KEY="YOUR_APPLICATION_SECRET"`
 
@@ -81,9 +77,9 @@ sharedInstance.trackPushNotfication(launchOptions)
 
 ### Initialiser le framework Marketo
 
-Pour vous assurer que le framework Marketo est lancé au démarrage de l’application, ajoutez le code suivant sous la fonction `onDeviceReady` dans votre fichier JavaScript principal.
+Pour initialiser le framework Marketo au démarrage de l’application, ajoutez le code suivant sous la fonction `onDeviceReady` dans le fichier JavaScript principal.
 
-Vous devez transmettre `ionicCordova` comme type de framework pour les applications [!DNL Ionic] Cordova.
+Transmettez `ionicCordova` comme type de framework pour les applications [!DNL Ionic] Cordova.
 
 #### Syntaxe
 
@@ -106,14 +102,14 @@ marketo.onStart(
 
 #### Paramètres
 
-- Rappel de succès : fonction à exécuter si le framework Marketo s’initialise correctement.
-- Rappel d’échec : fonction à exécuter si l’initialisation du framework Marketo échoue.
-- MUNCHKIN ID : Munchkin ID reçu de Marketo au moment de l’enregistrement.
-- CLÉ SECRÈTE : clé secrète reçue de Marketo au moment de l’enregistrement.
+- Rappel de réussite : fonction à exécuter si le framework Marketo s’initialise correctement.
+- Rappel d’échec : fonction à exécuter en cas d’échec d’initialisation du framework Marketo.
+- MUNCHKIN ID : Munchkin ID reçu de Marketo lors de l’enregistrement.
+- CLÉ SECRÈTE : clé secrète reçue de Marketo lors de l’enregistrement.
 
 ### Initialiser la notification push Marketo
 
-Pour vous assurer que la notification push Marketo est lancée, ajoutez le code suivant après la fonction initialisée dans votre fichier JavaScript principal.
+Pour initialiser les notifications push Marketo, ajoutez le code suivant après la fonction initialize dans le fichier JavaScript principal.
 
 #### Syntaxe
 
@@ -128,11 +124,11 @@ marketo.initializeMarketoPush(
 
 #### Paramètres
 
-- Rappel de réussite : fonction à exécuter si la notification push Marketo s’initialise avec succès.
-- Rappel d’échec : fonction à exécuter si l’initialisation de la notification push Marketo échoue.
+- Rappel de réussite : fonction à exécuter si la notification push Marketo s’initialise correctement.
+- Échec du rappel : fonction à exécuter si la notification push Marketo ne parvient pas à s’initialiser.
 - GCM_PROJECT_ID : ID de projet GCM trouvé dans [Google Developers Console](https://accounts.google.com/ServiceLogin?service=cloudconsole&passive=1209600&osid=1&continue=https://console.cloud.google.com/apis/dashboard&followup=https://console.cloud.google.com/apis/dashboard) après la création de l’application.
 
-Le jeton peut également être désenregistré lors de la déconnexion.
+Vous pouvez également annuler l’enregistrement du jeton lors de la déconnexion.
 
 ```javascript
 marketo.uninitializeMarketoPush(
@@ -143,7 +139,7 @@ marketo.uninitializeMarketoPush(
 
 ## Association au prospect
 
-Vous pouvez créer un lead Marketo en appelant la fonction AssociatedLead.
+Appelez la fonction AssociatedLead pour créer un prospect Marketo.
 
 ### Syntaxe
 
@@ -157,7 +153,7 @@ marketo.associateLead(
 
 ### Paramètres
 
-- Rappel de succès : fonction à exécuter si le framework Marketo associe le prospect avec succès.
+- Rappel de réussite : fonction à exécuter si le framework Marketo associe le prospect avec succès.
 - Rappel d’échec : fonction à exécuter si le framework Marketo ne parvient pas à associer le prospect.
 - Données de lead : données de lead au format de chaîne JSON.
 
@@ -186,7 +182,7 @@ marketo.associateLead(
 
 ## Action de rapport
 
-Vous pouvez signaler toute action effectuée par un utilisateur en appelant la fonction `reportaction`.
+Appelez la fonction `reportaction` pour signaler une action de l’utilisateur.
 
 ### Syntaxe
 
@@ -201,9 +197,9 @@ marketo.reportaction(
 
 ### Paramètres
 
-- Rappel de succès : fonction à exécuter si le framework Marketo signale une action avec succès.
-- Rappel d’échec : fonction à exécuter en cas d’échec de l’action de rapport du framework Marketo.
-- Nom de l’action : nom de l’action.
+- Rappel de réussite : fonction à exécuter si le framework Marketo signale l’action avec succès.
+- Rappel d’échec : fonction à exécuter si le framework Marketo ne signale pas l’action.
+- Action Name : nom de l’action.
 - Données d’action : données d’action au format de chaîne JSON.
 
 ### Exemple
@@ -227,7 +223,7 @@ marketo.reportaction(
 
 ## Rapports de session
 
-Liez les types d’événements « pause » et « reprise » comme illustré ci-dessous pour générer des rapports sur les événements Démarrer et Arrêter. Permet d’effectuer le suivi de la durée de consultation de votre application mobile. Remarque : cela est obligatoire dans Android.
+Liez les types d’événements « pause » et « reprise » aux événements de début et d’arrêt du rapport. Ces événements effectuent le suivi du temps passé dans l’application mobile et sont requis sur Android.
 
 ```javascript
 //Add the following code in your www/js/index.js
@@ -258,6 +254,9 @@ Il existe trois façons de créer des prospects à partir d’une application hy
 1. API REST MARKETO
 1. Envoi du formulaire
 
-Selon la méthode utilisée, un prospect nouvellement créé est reconnu par différents déclencheurs et filtres. Les prospects créés à l’aide de l’API REST ou de MME SDK apparaissent dans les déclencheurs et filtres « Lead créé ». Les leads créés par des envois de formulaire apparaissent dans les déclencheurs et filtres « Remplir le formulaire ».
+Les déclencheurs et filtres qui reconnaissent un nouveau prospect dépendent de la méthode de création :
 
-La bonne pratique consiste à rester cohérent avec la méthode utilisée par l’application web lors de la création de prospects. Si vous disposez déjà d’une application web qui utilise l’envoi de formulaire comme mécanisme de création de prospects, utilisez le même mécanisme lors de la création de prospects dans votre application hybride. Si vous disposez déjà d’une application web qui utilise notre API REST comme mécanisme de création de prospects, utilisez ce même mécanisme lors de la création de prospects dans votre application hybride. Dans les cas où vous n’utilisez ni l’envoi de formulaire ni l’API REST comme mécanisme de création de prospects dans votre application web, vous pouvez envisager d’utiliser MME SDK pour créer des prospects dans Marketo.
+- Les leads créés avec l’API SDK ou REST MME apparaissent dans les déclencheurs et filtres « Lead créé ».
+- Les prospects créés par envoi de formulaire apparaissent dans les déclencheurs et filtres « Remplir le formulaire ».
+
+Utilisez la même méthode de création de prospect dans l’application hybride et l’application web. Si l’application web utilise l’envoi de formulaire ou l’API REST, utilisez cette méthode dans l’application hybride. Si l’application web n’utilise aucune méthode, pensez à utiliser MME SDK pour créer des prospects dans Marketo.

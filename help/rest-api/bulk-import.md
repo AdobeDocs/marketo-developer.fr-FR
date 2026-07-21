@@ -4,34 +4,33 @@ feature: REST API
 description: Import en bloc Marketo pour le chargement de prospects, d’objets personnalisés et de membres de programme par le biais de chargements multipartie, la création de tâches asynchrones, le statut d’interrogation et la gestion des échecs.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
 TQID: https://experienceleague.adobe.com/lr9dyX-fY-oJ2LM5P0zE1m24HtFYKQYYbxMkVe--PkE
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 661
-ht-degree: 2%
+source-wordcount: 538
+ht-degree: 3%
 
 ---
 
 # Importation en bloc
 
-Marketo fournit des interfaces pour l’insertion de grands ensembles de données de personne et de données liées à la personne, appelées Importation en bloc. Actuellement, des interfaces sont proposées pour trois types d’objets :
+L’importation en bloc fournit des interfaces pour insérer de grands ensembles de données de personne et de données liées à la personne. Vous pouvez importer trois types d&#39;objets :
 
 - Leads (personnes)
 - Objets personnalisés
 - Membres du programme
 
-L’importation en bloc est effectuée en créant une tâche, puis en attendant que la tâche termine la lecture d’un fichier. Ces traitements sont exécutés de manière asynchrone et peuvent être interrogés pour récupérer le statut de l’importation. Les fichiers sont chargés à l’aide de HTTP multipart/form-data selon la norme RFC 2399.
+Pour effectuer un import en bloc, créez une tâche qui lit un fichier chargé. La tâche s’exécute de manière asynchrone. Consultez-la pour récupérer le statut de l’importation.
 
-Les points d’entrée de l’API en bloc ne sont pas précédés du préfixe « /rest » comme les autres points d’entrée.
+Chargez les fichiers à l’aide du `multipart/form-data` HTTP selon la norme RFC 2399.
+
+Contrairement aux autres points d’entrée, les points d’entrée de l’API en bloc ne comportent pas de préfixe `/rest`.
 
 ## Authentification
 
-Les API d’importation en bloc utilisent la même méthode d’authentification OAuth 2.0 que les autres API REST Marketo.  Un jeton d’accès valide envoyé en tant que `Authorization: Bearer {_AccessToken_}` d’en-tête HTTP est nécessaire.
+Les API d’importation en bloc utilisent la même méthode d’authentification OAuth 2.0 que les autres API REST Marketo. Envoyez un jeton d’accès valide dans l’en-tête HTTP `Authorization: Bearer {_AccessToken_}`.
 
 >[!IMPORTANT]
 >
@@ -39,21 +38,25 @@ Les API d’importation en bloc utilisent la même méthode d’authentification
 
 ## Limites
 
-- Nbre max. de traitements d&#39;importation simultanés : 2
-- Nombre maximal de tâches d&#39;importation en file d&#39;attente (y compris les tâches d&#39;importation actuelles) : 10
-- Taille max du fichier d&#39;importation : 10 Mo
+- Nombre maximal de traitements d’importation simultanés : 2
+- Nombre maximal de tâches d&#39;importation en file d&#39;attente, y compris les tâches en cours d&#39;importation : 10
+- Taille maximale du fichier d’importation : 10 Mo
 
 ## Autorisations
 
-L’importation en bloc utilise le même modèle d’autorisations que l’API REST Marketo et ne nécessite aucune autorisation spéciale supplémentaire pour utiliser , bien que des autorisations spécifiques soient requises pour chaque ensemble de points d’entrée.
+L’importation en bloc utilise le même modèle d’autorisations que l’API REST Marketo. Il ne nécessite pas d’autorisations supplémentaires, mais chaque ensemble de points d’entrée nécessite des autorisations spécifiques.
 
 ## Opérations d’enregistrement
 
-L’importation en bloc est une opération d’enregistrement « insérer ou mettre à jour ». Si un enregistrement correspondant est trouvé dans la base de données, il est mis à jour. Dans le cas contraire, un nouvel enregistrement est créé. La réponse d’importation en bloc n’indique pas si un enregistrement donné a été mis à jour ou inséré.
+L’importation en bloc est une opération d’enregistrement « insérer ou mettre à jour ». Si la base de données contient un enregistrement correspondant, l&#39;opération le met à jour. Dans le cas contraire, l’opération crée un enregistrement.
+
+La réponse d’importation en bloc n’indique pas si un enregistrement individuel a été mis à jour ou inséré.
 
 ## Création d’un traitement
 
-Les API d’import en bloc Marketo utilisent le concept d’une tâche pour exécuter l’import de données. Examinons la création d’une tâche d’importation de prospect simple à l’aide du point d’entrée [Importer des prospects](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST).  Notez que ce point d’entrée utilise [multipart/form-data comme type de contenu](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Comme il peut s’avérer difficile d’y parvenir, il est recommandé d’utiliser une bibliothèque de prise en charge HTTP pour la langue de votre choix.  Si vous êtes juste en train de vous mouiller les pieds, nous vous suggérons d&#39;utiliser [curl](https://curl.se/).
+Créez une tâche d’importation de prospect en appelant le point d’entrée [Importer des prospects](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). Ce point d’entrée utilise [multipart/form-data comme type de contenu](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html).
+
+Utilisez une bibliothèque de prise en charge HTTP pour la langue de votre choix afin de créer la requête multipartie. Vous pouvez également utiliser [curl](https://curl.se/) pour commencer.
 
 ```http
 POST /bulk/v1/leads.json?format=csv
@@ -77,7 +80,7 @@ Easy,Fox,easyfox@marketo.com
 ------WebKitFormBoundaryBQACkJZyaiIAXogC--
 ```
 
-Cette requête va créer un traitement qui importera les valeurs contenues dans le fichier CSV nommé « leads.csv » avec les en-têtes de colonne « FirstName », « LastName », « Email », « Company ».
+Cette requête crée une tâche qui importe des valeurs du fichier CSV nommé `leads.csv`.
 
 ```json
 {
@@ -93,11 +96,11 @@ Cette requête va créer un traitement qui importera les valeurs contenues dans 
 }
 ```
 
-Lorsque nous soumettons le traitement, il renvoie un batchId, que nous pouvons ensuite utiliser pour vérifier son statut.
+La réponse renvoie un `batchId`. Utilisez cette valeur pour vérifier le statut de la tâche.
 
 ### Paramètres communs
 
-Chaque point d’entrée de création de tâche partage certains paramètres communs pour la configuration du format de fichier, des noms de champ et du filtre d’une tâche d’extraction en bloc.  Chaque sous-type de tâche d’extraction peut avoir des paramètres supplémentaires :
+Chaque point d’entrée de création de tâche partage les paramètres de configuration du fichier d’importation. Un sous-type d’importation peut également prendre en charge des paramètres supplémentaires.
 
 | Paramètre | Type de données | Notes |
 | --- | --- | --- |
@@ -106,7 +109,7 @@ Chaque point d’entrée de création de tâche partage certains paramètres com
 
 ## Interroger le statut de la tâche
 
-La détermination du statut de la tâche est simple à l’aide du point d’entrée [Obtenir le statut du prospect d’importation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET).
+Transmettez le `batchId` au point d’entrée [Obtenir le statut du lead d’importation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET) pour récupérer le statut de la tâche.
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}.json
@@ -130,16 +133,18 @@ GET /bulk/v1/leads/batch/{batchId}.json
 }
 ```
 
-Le membre de `status` interne indique la progression de la tâche. Il peut s’agir de l’une des valeurs suivantes : En file d’attente, Importation, Terminé, Échec. Dans ce cas, notre travail est terminé, alors nous pouvons arrêter les sondages.
+Le membre `status` indique la progression du traitement. Sa valeur peut être `Queued`, `Importing`, `Complete` ou `Failed`.
+
+Dans cet exemple, la tâche est terminée. L’interrogation peut donc s’arrêter.
 
 ## Échecs
 
-Les échecs sont indiqués par l’attribut `numOfRowsFailed` dans la réponse Obtenir le statut du lead d’importation . Si `numOfRowsFailed` est supérieur à zéro, cette valeur indique le nombre d’échecs qui se sont produits.
+L’attribut `numOfRowsFailed` dans la réponse Get Import Lead Status indique le nombre de lignes ayant échoué. Une valeur supérieure à zéro signifie que des échecs se sont produits.
 
-Pour récupérer les enregistrements et les causes des lignes ayant échoué, vous devez récupérer le fichier d’échec à l’aide du point d’entrée [Get Import Lead Failures](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET).
+Pour récupérer les enregistrements ayant échoué et leurs causes, utilisez le point d’entrée [Obtenir les échecs d’importation des leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET).
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}/failures.json
 ```
 
-Le fichier indique les lignes ayant échoué, ainsi qu’un message indiquant pourquoi l’enregistrement a échoué.
+Le fichier d’échec identifie chaque ligne ayant échoué et explique pourquoi l’enregistrement a échoué.

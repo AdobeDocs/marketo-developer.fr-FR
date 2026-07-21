@@ -3,10 +3,10 @@ title: Appartenance À Une Liste (Listes Statiques)
 feature: REST API, Static Lists
 description: Utilisez les API REST de la base de données des prospects Marketo pour ajouter des prospects aux listes statiques, supprimer des prospects, récupérer les membres de la liste et vérifier l’appartenance à la liste.
 exl-id: b8f74bcf-834a-44db-81fd-621048afeba4
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: '482'
-ht-degree: 5%
+source-wordcount: '427'
+ht-degree: 6%
 
 ---
 
@@ -14,7 +14,12 @@ ht-degree: 5%
 
 [Référence du point d’entrée de l’appartenance à une liste](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists)
 
-Les API List Membership fournissent des points d’entrée de base de données de prospect pour travailler avec des membres de liste statiques. Ces points d’entrée peuvent être utilisés pour ajouter des prospects à une liste, supprimer des prospects d’une liste, récupérer les membres d’une liste et déterminer si un ou plusieurs prospects sont membres d’une liste.
+Les API List Membership fournissent des points d’entrée de base de données de prospect pour gérer les membres de liste statiques. Utilisez ces points d’entrée pour :
+
+- Ajouter des prospects à une liste.
+- Supprimer des prospects d’une liste.
+- Récupérer les membres d’une liste.
+- Déterminer si les prospects sont membres d’une liste.
 
 ## Points d’entrée
 
@@ -27,9 +32,9 @@ Les API List Membership fournissent des points d’entrée de base de données d
 
 ## Ajouter à la liste
 
-Le point d’entrée [Ajouter à la liste](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/addLeadsToListUsingPOST) permet d’ajouter un ou plusieurs membres à une liste. Le point d’entrée prend un paramètre de chemin d’accès `listId` obligatoire et un ou plusieurs paramètres de requête `id` contenant des ID de lead (la valeur maximale autorisée est de 300).
+Utilisez le point d’entrée [Ajouter à la liste](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/addLeadsToListUsingPOST) pour ajouter un ou plusieurs membres à une liste. Transmettez le paramètre de chemin d’accès au `listId` requis et un ou plusieurs paramètres de requête `id` contenant des identifiants de prospect. Le nombre maximal d’ID de lead est de 300.
 
-La réponse contient un tableau `result` composé d’objets JSON avec le statut de chaque ID de prospect spécifié dans la requête.
+La réponse contient un tableau `result` avec le statut de chaque ID de prospect dans la requête.
 
 ```http
 POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
@@ -60,9 +65,9 @@ POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
 
 ## Suppression de la liste
 
-Le point d’entrée [Supprimer de la liste](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/removeLeadsFromListUsingDELETE) permet de supprimer un ou plusieurs membres d’une liste. Le point d’entrée prend un paramètre de chemin d’accès `listId` obligatoire et un ou plusieurs paramètres de requête `id` contenant des ID de lead (la valeur maximale autorisée est de 300).
+Utilisez le point d’entrée [Supprimer de la liste](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/removeLeadsFromListUsingDELETE) pour supprimer un ou plusieurs membres d’une liste. Transmettez le paramètre de chemin d’accès au `listId` requis et un ou plusieurs paramètres de requête `id` contenant des identifiants de prospect. Le nombre maximal d’ID de lead est de 300.
 
-La réponse contient un tableau `result` composé d’objets JSON avec le statut de chaque ID de prospect spécifié dans la requête.
+La réponse contient un tableau `result` avec le statut de chaque ID de prospect dans la requête.
 
 ```http
 DELETE /rest/v1/lists/{listId}/leads.json?id=318603&id=318595&id=999999
@@ -97,15 +102,15 @@ DELETE /rest/v1/lists/{listId}/leads.json?id=318603&id=318595&id=999999
 
 ## Obtenir les leads par ID de liste
 
-Le point d’entrée [Get Leads by List Id](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/getLeadsByListIdUsingGET) permet de récupérer les membres d’une liste. Le point d’entrée prend un paramètre de chemin d’accès `listId` obligatoire et permet à plusieurs paramètres de requête facultatifs de spécifier des critères de filtrage.
+Utilisez le point d’entrée [Get Leads by List Id](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/getLeadsByListIdUsingGET) pour récupérer les membres d’une liste. Transmettez le paramètre de chemin d’accès au `listId` requis. Vous pouvez également transmettre des paramètres de requête facultatifs pour spécifier des critères de filtrage.
 
-Le paramètre `batchSize` est utilisé pour spécifier le nombre d’enregistrements de prospect à renvoyer dans un seul appel. La valeur par défaut et la valeur maximale sont 300.
+Les paramètres de requête facultatifs sont les suivants :
 
-Le paramètre `nextPageToken` est utilisé pour paginer dans des jeux de résultats volumineux. Ce paramètre n’est pas transmis lors du premier appel, mais uniquement lors des appels suivants pour la pagination.
+- `batchSize` : indique le nombre d’enregistrements de prospect à renvoyer dans un seul appel. La valeur par défaut et la valeur maximale sont 300.
+- `nextPageToken` : pagine dans des jeux de résultats volumineux. Omettez ce paramètre du premier appel et incluez-le dans les appels suivants.
+- `fields` : spécifie une liste de noms de champ séparés par des virgules à renvoyer. Si vous omettez ce paramètre, la réponse inclut `email`, `updatedAt`, `createdAt`, `lastName`, `firstName` et `id`.
 
-Le paramètre `fields` contient une liste séparée par des virgules de noms de champ à renvoyer dans la réponse. Si le paramètre `fields` n’est pas inclus dans cette requête, les champs par défaut suivants sont renvoyés : `email`, `updatedAt`, `createdAt`, `lastName`, `firstName` et `id`.
-
-La réponse contient un tableau `result` composé d’objets JSON contenant les champs de prospect spécifiés dans la requête.
+La réponse contient un tableau `result` avec les champs de prospect spécifiés dans la requête.
 
 ```http
 GET /rest/v1/lists/{listId}/leads.json?batchSize=3
@@ -147,9 +152,9 @@ GET /rest/v1/lists/{listId}/leads.json?batchSize=3
 
 ## Membre de la liste
 
-Le point d’entrée [Membre de la liste](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET) permet de voir si un ou plusieurs prospects sont membres d’une liste. Le point d’entrée prend un paramètre de chemin d’accès `listId` obligatoire et un ou plusieurs paramètres de requête `id` contenant des ID de lead (la valeur maximale autorisée est de 300).
+Utilisez le point d’entrée [Membre de la liste](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET) pour déterminer si un ou plusieurs prospects sont membres d’une liste. Transmettez le paramètre de chemin d’accès au `listId` requis et un ou plusieurs paramètres de requête `id` contenant des identifiants de prospect. Le nombre maximal d’ID de lead est de 300.
 
-La réponse contient un tableau `result` composé d’objets JSON avec le statut de chaque ID de prospect spécifié dans la requête.
+La réponse contient un tableau `result` avec le statut de chaque ID de prospect dans la requête.
 
 ```http
 GET /rest/v1/lists/{listId}/leads/ismember.json?id=309901&id=318603&id=999999

@@ -3,9 +3,9 @@ title: Utilisation
 feature: REST API
 description: Surveillez l’utilisation et les erreurs de l’API REST Marketo avec des points d’entrée de statistiques quotidiens et sur les 7 derniers jours, y compris les nombres par utilisateur et les totaux des codes d’erreur.
 exl-id: 935a00a4-1e1e-4b48-ae9c-72c5e578312a
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: '393'
+source-wordcount: '382'
 ht-degree: 9%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 9%
 
 [Référence du point d’entrée d’utilisation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Usage)
 
-Les API d’utilisation fournissent un résumé de la consommation d’API REST et de l’activité d’erreur pour votre abonnement. Ces points d’entrée sont utiles pour surveiller les intégrations, suivre le volume d’appels quotidien et identifier les tendances d’erreur au fil du temps.
+Les API d’utilisation résument la consommation et l’activité d’erreur de l’API REST pour votre abonnement. Utilisez ces points d’entrée pour surveiller les intégrations, suivre le volume d’appels quotidien et identifier les tendances d’erreur.
 
 Les données d’utilisation comprennent un nombre total d’appels API et une répartition par utilisateur. Les données d’erreur incluent un nombre total d’erreurs et une répartition par code d’erreur.
 
@@ -153,4 +153,4 @@ GET /rest/v1/stats/errors/last7days.json
 
 ## Notes
 
-Chacun de vos utilisateurs d’API est signalé individuellement dans la réponse d’utilisation. Le fractionnement des intégrations entre des utilisateurs d’API distincts facilite l’identification du service qui consomme des quotas et produit des erreurs.
+La réponse d’utilisation signale chaque utilisateur de l’API séparément. L’affectation d’intégrations à des utilisateurs d’API distincts facilite l’identification du service qui consomme des quotas et génère des erreurs.

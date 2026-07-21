@@ -4,16 +4,13 @@ feature: REST API, Landing Pages
 description: Utilisez les API REST de ressources Marketo pour créer, interroger, mettre à jour et supprimer des règles de redirection de page de destination avec des filtres, une pagination, des options de nom d’hôte et des cibles autres que Marketo.
 exl-id: f63aa5ef-5872-4401-be75-6fb9b2977734
 TQID: https://experienceleague.adobe.com/2gePbKA3xeoRdnL8mNnObN-GPTX00Ii4-zcM0lBjs-o
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 776
-ht-degree: 3%
+source-wordcount: 626
+ht-degree: 4%
 
 ---
 
@@ -21,17 +18,17 @@ ht-degree: 3%
 
 [Référence Du Point D’Entrée Des Règles De Redirection De Page De Destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules)
 
-Marketo propose un ensemble d’API REST pour effectuer des opérations CRUD sur des URL de redirection de page de destination. Ces API suivent le modèle d’interface standard des API de ressources en fournissant les options Requête, Créer, Mettre à jour et Supprimer .
+Utilisez les API REST de règles de redirection de page de destination pour interroger, créer, mettre à jour et supprimer des URL de redirection de page de destination.
 
-Les règles de redirection de page de destination permettent de rediriger une URL de page de destination vers une autre URL de page. Vous pouvez rediriger des pages de destination Marketo, des pages de destination autres que Marketo ou des combinaisons de celles-ci. Des informations supplémentaires sur les règles de page de destination de redirection sont disponibles [ici](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr).
+Les règles de redirection envoient une URL de page de destination à une autre URL de page. La source et la destination peuvent être des pages Marketo ou autres que Marketo. Pour consulter la documentation du produit connexe, voir la documentation de [](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr).
 
 ## Requête
 
-La requête aux règles de redirection de page de destination suit les types de requête standard pour les ressources de [par ID](#by_id) et [navigation](#browse).
+Requête sur les règles de redirection des landing pages [par identifiant](#by_id) ou par [navigation](#browse).
 
 ### Par Id
 
-Le point d’entrée [Obtenir les règles de redirection de la page de destination par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/getLandingPageRedirectRuleByIdUsingGET) prend un paramètre de chemin d’`id` de redirection de règle de page de destination unique et renvoie un enregistrement de règle de redirection de page de destination unique.
+Le point d’entrée [Obtenir les règles de redirection de la page de destination par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/getLandingPageRedirectRuleByIdUsingGET) prend un paramètre de chemin d’`id` de la règle de redirection et renvoie l’enregistrement correspondant.
 
 ```http
 GET /rest/asset/v1/redirectRule/{id}.json
@@ -66,17 +63,17 @@ GET /rest/asset/v1/redirectRule/{id}.json
 
 ### Parcourir
 
-Le point d’entrée [Get Landing Page Redirect Rules](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/getLandingPageRedirectRulesUsingGET) renvoie une liste d’enregistrements de règle de redirection de page de destination.
+Le point d’entrée [Get Landing Page Redirect Rules](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/getLandingPageRedirectRulesUsingGET) renvoie des enregistrements de règle de redirection de page de destination.
 
-Plusieurs paramètres de requête facultatifs peuvent être transmis pour filtrer les résultats.
+Utilisez des paramètres de requête facultatifs pour filtrer les résultats.
 
 Le paramètre `offset` est un entier qui spécifie le nombre maximal d’entrées à renvoyer (la valeur par défaut est 20). La valeur maximale est 200. Le paramètre `maxReturn` est un entier qui spécifie où commencer à récupérer les entrées. Peut être utilisé conjointement avec le décalage (la valeur par défaut est 0).
 
-Le paramètre `hostname` peut être utilisé pour filtrer selon le nom d’hôte des pages de destination.
+Le paramètre `hostname` filtre par nom d’hôte de page de destination.
 
-Le `redirectToLandingPageId` est un entier qui peut être utilisé pour filtrer selon l’identifiant de la page de destination vers laquelle vous effectuez une redirection. Le `redirectToPath` peut être utilisé pour filtrer selon le chemin d’accès des pages de destination vers lesquelles vous effectuez une redirection.
+L’entier `redirectToLandingPageId` filtre par l’identifiant de page de destination. Le paramètre `redirectToPath` filtre le chemin d’accès à la page de destination.
 
-Les paramètres `earliestUpdatedAt` et `latestUpdatedAt` vous permettent de définir des filigranes de date/heure bas et élevés pour le renvoi des règles de redirection de page de destination qui ont été mises à jour ou créées initialement dans la plage donnée.
+Les paramètres `earliestUpdatedAt` et `latestUpdatedAt` définissent les limites de date et d’heure basse et haute. Le point d’entrée renvoie les règles créées ou mises à jour dans la plage.
 
 ```http
 GET /rest/asset/v1/redirectRules.json&maxReturn=3
@@ -143,11 +140,11 @@ GET /rest/asset/v1/redirectRules.json&maxReturn=3
 
 ## Créer
 
-Le point d’entrée [Créer une règle de redirection de page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/createLandingPageRedirectRuleUsingPOST) est exécuté avec une requête POST application/x-www-form-urlencoded qui présente les trois paramètres obligatoires suivants.
+Appelez le point d’entrée [Créer une règle de redirection de page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/createLandingPageRedirectRuleUsingPOST) avec une requête POST `application/x-www-form-urlencoded`. La requête présente trois paramètres obligatoires.
 
-Le paramètre `hostname` spécifie le nom d’hôte de la page de destination. Il doit appartenir à un domaine ou à un alias de marque. La longueur maximale est de 255 caractères.
+Le paramètre `hostname` spécifie le nom d’hôte de la page de destination. Il doit appartenir à un domaine ou à un alias de marque et ne peut pas dépasser 255 caractères.
 
-Le paramètre `redirectFrom` spécifie la page de destination source. Il s’agit d’un objet JSON qui contient une paire type/valeur qui détermine si la source est une page de destination Marketo ou une page de destination autre que Marketo. L’attribut `type` peut être « landingPageId » ou « path ».
+Le paramètre `redirectFrom` spécifie la page de destination source sous la forme d’un objet JSON avec une paire type/valeur. L’attribut `type` peut être `landingPageId` pour une page de destination Marketo ou `path` pour une page autre que Marketo.
 
 | Paramètre | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |
@@ -155,14 +152,14 @@ Le paramètre `redirectFrom` spécifie la page de destination source. Il s’agi
 | &#39;visiteur&#39; | Obligatoire | Chaîne | Nom de la méthode. |
 | rappel | Obligatoire | Fonction | Fonction de rappel à déclencher pour chaque campagne renvoyée. |
 
-Le paramètre `redirectTo` spécifie la page de destination cible. Il s’agit d’un objet JSON qui contient une paire type/valeur qui détermine si la source est une page de destination Marketo ou une page de destination autre que Marketo. L’attribut `type` peut être « landingPageId » ou « url ».
+Le paramètre `redirectTo` spécifie la destination sous la forme d’un objet JSON avec une paire type/valeur. L’attribut `type` peut être `landingPageId` pour une page de destination Marketo ou `url` pour une page autre que Marketo.
 
 | Type de page de destination | type redirectTo | Exemple |
 | --- | --- | --- |
 | Marketo | landingPageId | {« type »:« landingPageId »,« value »:« 1774 »} |
 | Non Marketo | url | {« type »:« url »,« value »:« www.contactLogs.com« } |
 
-Vous trouverez plus d’informations sur la création de règles de redirection de page de destination [ici](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html?lang=fr).
+Pour plus d’informations, voir [Rediriger une page de destination Marketo vers une autre page](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html).
 
 ```http
 POST /rest/asset/v1/redirectRules.json
@@ -205,11 +202,11 @@ hostname=calqeauto.com&redirectFrom={"type":"landingPageId", "value":"5483"}&red
 
 ## Mise à jour
 
-Le point d’entrée [Mettre à jour les règles de redirection de page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/updateLandingPageRedirectRuleUsingPOST) prend une règle de redirection de page de destination unique `id` un paramètre de chemin d’accès. Ce point d’entrée est exécuté avec une requête POST application/x-www-form-urlencoded.
+Le point d’entrée [Mettre à jour les règles de redirection de page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/updateLandingPageRedirectRuleUsingPOST) accepte un paramètre de chemin d’accès de `id` de règle de redirection. Envoyez la mise à jour sous la forme d’une requête POST `application/x-www-form-urlencoded`.
 
-Comme pour l’appel de création décrit ci-dessus, un ou plusieurs des paramètres de requête suivants sont transmis pour spécifier l’attribut de la règle à mettre à jour : `hostname`, `redirectFrom`, `redirectTo`.
+Transmettez un ou plusieurs de ces paramètres pour sélectionner les attributs à mettre à jour : `hostname`, `redirectFrom` ou `redirectTo`.
 
-L’enregistrement de règle de redirection de page de destination mis à jour est renvoyé dans la réponse.
+La réponse renvoie l’enregistrement de règle de redirection mis à jour.
 
 ```http
 POST /rest/asset/v1/redirectRule/{id}.json
@@ -252,7 +249,7 @@ redirectTo={"type":"landingPageId", "value":"5561"}
 
 ## Supprimer
 
-Le point d’entrée [Supprimer la règle de redirection de la page de destination par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/deleteLandingPageRedirectRuleUsingPOST) prend un seul paramètre de chemin d’`id` de redirection de règle de page de destination.
+Le point d’entrée [Supprimer la règle de redirection de la page de destination par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/deleteLandingPageRedirectRuleUsingPOST) prend un paramètre de chemin d’`id` de la règle de redirection.
 
 ```http
 POST /rest/asset/v1/redirectRule/{id}/delete.json
@@ -274,9 +271,9 @@ POST /rest/asset/v1/redirectRule/{id}/delete.json
 
 ## Parcourir Les Domaines Des Pages De Destination
 
-Le point d’entrée [Obtenir les domaines de la page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/getLandingPageDomainsUsingGET) renvoie une liste d’enregistrements de domaine de la page de destination.
+Le point d’entrée [Get Landing Page Domains](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/getLandingPageDomainsUsingGET) renvoie des enregistrements de domaine de page de destination.
 
-Deux paramètres de requête facultatifs peuvent être transmis pour filtrer les résultats.
+Utilisez deux paramètres de requête facultatifs pour filtrer les résultats.
 
 Le paramètre `offset` est un entier qui spécifie le nombre maximal d’entrées à renvoyer (20 par défaut, 200 au maximum).
 

@@ -4,77 +4,85 @@ feature: REST API
 description: Découvrez comment utiliser l’API REST d’extraction en bloc Marketo pour exporter des prospects, des activités, des membres de programme et des objets personnalisés, avec OAuth, des files d’attente de tâches et des limites quotidiennes 500MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
 TQID: https://experienceleague.adobe.com/ECSchsjqp8fyxXbUGl5DgXHUkXuN0sIUc3yJfVaIe1E
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1724
+source-wordcount: 1549
 ht-degree: 1%
 
 ---
 
 # Extraction En Masse
 
-Marketo fournit des interfaces pour la récupération de grands ensembles de données relatives aux personnes et à la personne, appelées Extraction en bloc. Actuellement, des interfaces sont proposées pour trois types d’objets :
+L’extraction en bloc Marketo fournit des interfaces pour récupérer de grands ensembles de données de personne et liées à la personne. Les interfaces sont actuellement disponibles pour quatre types d’objets :
 
 - Leads (personnes)
 - Activités
 - Membres du programme
 - Objets personnalisés
 
-L’extraction en bloc est effectuée en créant une tâche, en définissant l’ensemble des données à récupérer, en mettant la tâche en file d’attente, en attendant que la tâche termine d’écrire un fichier, puis en récupérant le fichier via HTTP. Ces traitements sont exécutés de manière asynchrone et peuvent être interrogés pour récupérer le statut de l’exportation.
+Pour effectuer une extraction en bloc :
+
+1. Créez une tâche et définissez les données à récupérer.
+1. Mettre le traitement en file d’attente.
+1. Attendez que le traitement ait fini d’écrire le fichier.
+1. Récupérez le fichier via HTTP.
+
+Les traitements d’extraction en bloc s’exécutent de manière asynchrone. Interrogez la tâche pour récupérer le statut d’exportation.
 
 `Note:` points d’entrée de l’API en bloc ne sont pas précédés du préfixe « /rest » comme les autres points d’entrée.
 
 ## Authentification
 
-Les API d’extraction en masse utilisent la même méthode d’authentification OAuth 2.0 que les autres API REST Marketo. Pour ce faire, un jeton d’accès valide doit être envoyé en tant que `Authorization: Bearer {_AccessToken_}` d’en-tête HTTP.
+Les API d’extraction en masse utilisent la même méthode d’authentification OAuth 2.0 que les autres API REST Marketo. Envoyez un jeton d’accès valide dans l’en-tête HTTP `Authorization: Bearer {_AccessToken_}`.
 
 >[!IMPORTANT]
 >
->La prise en charge de l’authentification à l’aide du paramètre de requête **access_token** sera supprimée le 30 juin 2025. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête **Authorization** dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête **Authorization**.
+>La prise en charge de l’authentification à l’aide du paramètre de requête **access_token** sera supprimée le 31 août 2026. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête **Authorization** dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête **Authorization**.
 
 ## Limites
 
-- Nombre maximal de tâches d’exportation simultanées : 2
-- Nombre maximal de tâches d’exportation en file d’attente (y compris les tâches d’exportation actuelles) : 10
-- Période de conservation des fichiers : sept jours
-- Allocation quotidienne d’exportation par défaut : 500MB (qui se réinitialise tous les jours à 12:00AM CST). Augmente la disponibilité à l’achat.
-- Durée maximale pour le filtre de plage de dates (createdAt ou updatedAt) : 31 jours
+- Nombre maximal de traitements d’exportation simultanés : 2
+- Nombre maximal de tâches d’exportation en file d’attente, y compris les tâches en cours d’exportation : 10
+- Durée de conservation des fichiers : sept jours
+- Affectation quotidienne par défaut des exportations : 500MB. L’affectation se réinitialise tous les jours à 00 h 00 (heure de Paris). Les augmentations peuvent être achetées.
+- Durée maximale du filtre de période (`createdAt` ou `updatedAt`) : 31 jours
 
-Les filtres d’extraction de leads en bloc pour UpdatedAt et la liste dynamique ne sont pas disponibles pour certains types d’abonnement. S’il n’est pas disponible, un appel au point d’entrée Créer une tâche d’exportation de prospect renvoie une erreur « 1035, Unsupported filter type for target subscription » (1035, type de filtre non pris en charge pour l’abonnement cible). Les clients peuvent contacter l’assistance Marketo pour que cette fonctionnalité soit activée dans leur abonnement.
+Les filtres d’extraction de leads en bloc pour UpdatedAt et la liste dynamique ne sont pas disponibles pour certains types d’abonnement. Si ces filtres ne sont pas disponibles, le point d’entrée Créer une tâche d’exportation de prospect renvoie l’erreur « 1035, Unsupported filter type for target subscription » (1035, type de filtre non pris en charge pour l’abonnement cible). Contactez l’assistance Marketo pour activer cette fonctionnalité dans le cadre de votre abonnement.
 
 ### File d&#39;attente
 
-Les API d’extraction en masse utilisent une file d’attente de tâches (partagée entre les prospects, les activités, les membres du programme et les objets personnalisés). Les tâches d’extraction doivent d’abord être créées, puis mises en file d’attente en appelant les points d’entrée Créer une tâche d’exportation de lead/activité/membre de programme et Mettre en file d’attente une tâche d’exportation de lead/activité/membre de programme. Une fois placés en file d’attente, les tâches sont extraites de la file d’attente et démarrées lorsque les ressources de calcul sont disponibles.
+Les API d’extraction en bloc utilisent une file d’attente de tâches partagée entre les prospects, les activités, les membres du programme et les objets personnalisés. Tout d’abord, appelez un point d’entrée Créer une tâche d’exportation de lead/activité/membre de programme pour créer une tâche d’extraction. Ensuite, appelez le point d’entrée correspondant Exporter le prospect/l’activité/le membre de programme en file d’attente pour mettre la tâche en file d’attente. La tâche commence lorsque les ressources informatiques sont disponibles.
 
-Le nombre maximal de tâches dans la file d’attente est de 10. Si vous essayez de mettre en file d’attente une tâche lorsque la file d’attente est pleine, le point d’entrée Mettre en file d’attente la tâche d’exportation renvoie une erreur « 1029, Trop de tâches en file d’attente ». Deux traitements au maximum peuvent être exécutés simultanément (statut : « Traitement »).
+La file d’attente peut contenir jusqu’à 10 tâches. Si vous essayez de mettre en file d’attente une tâche lorsque la file d’attente est pleine, le point d’entrée Mettre en file d’attente la tâche d’exportation renvoie l’erreur « 1029, Trop de tâches en file d’attente ». Deux traitements au maximum peuvent avoir le statut « Traitement » et s’exécuter simultanément.
 
 ### Taille du fichier
 
-Les API d’extraction en bloc sont limitées en fonction de la taille sur le disque des données récupérées par une tâche d’extraction en bloc. La taille explicite en octets d’une tâche peut être déterminée en lisant l’attribut `fileSize` à partir de la réponse de statut terminée d’une tâche d’exportation.
+Les API d’extraction en bloc sont limitées en fonction de la taille sur le disque des données récupérées par une tâche d’extraction en bloc. Pour déterminer la taille du fichier en octets, lisez l’attribut `fileSize` dans la réponse de statut terminée pour une tâche d’exportation.
 
-Le quota quotidien est de 500MB maximum par jour, qui est partagé entre les prospects, les activités, les membres du programme et les objets personnalisés. Lorsque le quota est dépassé, vous ne pouvez pas créer ou mettre en file d’attente un autre traitement tant que le quota quotidien n’est pas réinitialisé à minuit [heure du Centre](https://en.wikipedia.org/wiki/Central_Time_Zone). Jusque-là, une erreur « 1029, Quota quotidien d’exportation dépassé » est renvoyée. Outre le quota journalier, il n&#39;existe pas de taille de fichier maximale.
+Le quota quotidien est 500MB et partagé entre les prospects, les activités, les membres du programme et les objets personnalisés. Lorsque vous dépassez le quota, vous ne pouvez pas créer ni mettre en file d’attente une autre tâche tant que le quota n’a pas été réinitialisé à minuit [heure du Centre](https://en.wikipedia.org/wiki/Central_Time_Zone). Jusqu’à la réinitialisation, l’API renvoie l’erreur « 1 029, Quota d’exportation quotidien dépassé ». Outre le quota journalier, il n&#39;existe pas de taille de fichier maximale.
 
-Une fois qu’un traitement est mis en file d’attente, il s’exécute jusqu’à la fin (sauf erreur ou annulation du traitement). Si une tâche échoue pour une raison quelconque, vous devez la recréer. Les fichiers sont entièrement écrits uniquement lorsqu’une tâche atteint le statut Terminé (les fichiers partiels ne sont jamais écrits). Vous pouvez vérifier qu’un fichier a été entièrement écrit en calculant qu’il s’agit d’un hachage SHA-256 et en le comparant à la somme de contrôle renvoyée par les points d’entrée de statut de tâche.
+Une fois qu’une tâche est mise en file d’attente ou en cours de traitement, elle s’exécute jusqu’à la fin, sauf si une erreur se produit ou si vous annulez la tâche. Si une tâche échoue, vous devez la recréer.
 
-Vous pouvez déterminer la quantité totale de disque utilisée pour la journée en cours en appelant la fonction Obtenir les tâches de lead/activité/membre de programme d’exportation. Ces points d’entrée renvoient une liste de toutes les tâches au cours des sept derniers jours. Vous pouvez filtrer cette liste en ne retenant que les tâches terminées au cours de la journée en cours (à l’aide des attributs `status` et `finishedAt`). Additionnez ensuite les tailles de fichiers de ces tâches pour obtenir la quantité totale utilisée. Impossible de supprimer un fichier pour récupérer de l’espace disque.
+L’API écrit le fichier complet uniquement lorsque la tâche atteint le statut Terminé . Il n’écrit pas de fichiers partiels. Pour vérifier le fichier, calculez son hachage SHA-256 et comparez-le à la somme de contrôle renvoyée par le point d’entrée de statut de la tâche.
+
+Pour déterminer l’espace disque total utilisé pour la journée en cours, appelez un point d’entrée Obtenir l’exportation des tâches de prospect/activité/membre de programme . Ces points d’entrée renvoient toutes les tâches des sept derniers jours.
+
+Filtrez la liste en fonction des tâches effectuées au cours de la journée en cours à l’aide des attributs `status` et `finishedAt`. Ajoutez ensuite les tailles de fichier pour ces tâches. Vous ne pouvez pas supprimer un fichier pour libérer de l’espace disque.
 
 ## Autorisations
 
-L’extraction en bloc utilise le même modèle d’autorisations que l’API REST Marketo et ne nécessite aucune autorisation spéciale supplémentaire à utiliser, bien que des autorisations spécifiques soient requises pour chaque ensemble de points d’entrée.
+L’extraction en bloc utilise le même modèle d’autorisations que l’API REST Marketo. Il ne nécessite pas d’autorisations spéciales supplémentaires, mais chaque ensemble de points d’entrée nécessite des autorisations spécifiques.
 
-Les tâches d’extraction en bloc ne sont accessibles que par l’utilisateur de l’API qui les a créées, y compris l’interrogation des statuts et la récupération du contenu des fichiers.
+Seul l’utilisateur de l’API qui a créé une tâche d’extraction en bloc peut y accéder, interroger son statut ou récupérer le contenu de son fichier.
 
-Les points d’entrée d’extraction en bloc ne connaissent pas les espaces de travail Marketo. Les requêtes d’extraction incluent toujours des données sur tous les espaces de travail, quelle que soit la manière dont vous définissez l’utilisateur API uniquement pour votre service personnalisé.
+Les points d’entrée d’extraction en bloc ne connaissent pas les espaces de travail Marketo. Les requêtes d’extraction incluent les données de tous les espaces de travail, quelle que soit la manière dont vous définissez l’API uniquement pour l’utilisateur de votre service personnalisé.
 
 ## Création d’un traitement
 
-Les API d’extraction en bloc de Marketo utilisent le concept d’une tâche pour initier et exécuter l’extraction de données. Examinons la création d’une tâche d’exportation de prospect simple.
+Les API d’extraction en masse de Marketo utilisent des tâches pour lancer et exécuter des extractions de données. La requête suivante crée une tâche d’exportation de prospect :
 
 ```http
 POST /bulk/v1/leads/export/create.json
@@ -100,7 +108,7 @@ POST /bulk/v1/leads/export/create.json
 }
 ```
 
-Cette requête simple crée une tâche qui renvoie les valeurs contenues dans les champs « firstName » et « lastName », avec les en-têtes de colonne « First Name » et « Last Name » dans un fichier CSV, contenant chaque prospect créé entre le 1er janvier 2023 et le 31 janvier 2023.
+Cette requête crée une tâche qui exporte chaque prospect créé entre le 1er janvier 2023 et le 31 janvier 2023. Le fichier CSV contient des valeurs des champs « firstName » et « lastName » et utilise les en-têtes de colonne « First Name » et « Last Name ».
 
 ```json
 {
@@ -118,11 +126,11 @@ Cette requête simple crée une tâche qui renvoie les valeurs contenues dans le
 }
 ```
 
-Lorsque nous créons la tâche, elle renvoie un ID de tâche dans l’attribut `exportId` . Nous pouvons ensuite utiliser cet ID de tâche pour mettre la tâche en file d’attente, l’annuler, vérifier son statut ou récupérer le fichier terminé.
+La réponse renvoie l’ID de tâche dans l’attribut `exportId`. Utilisez cet ID de tâche pour mettre la tâche en file d’attente ou l’annuler, vérifier son statut ou récupérer le fichier terminé.
 
 ### Paramètres communs
 
-Chaque point d’entrée de création de tâche partage certains paramètres communs pour la configuration du format de fichier, des noms de champ et du filtre d’une tâche d’extraction en bloc. Chaque sous-type de tâche d’extraction peut avoir des paramètres supplémentaires :
+Chaque point d’entrée de création de tâche comporte des paramètres communs pour la configuration du format de fichier, des noms de champ et du filtre. Chaque sous-type de tâche d’extraction peut également comporter des paramètres supplémentaires :
 
 | Paramètre | Type de données | Notes |
 | --- | --- | --- |
@@ -132,7 +140,13 @@ Chaque point d’entrée de création de tâche partage certains paramètres com
 
 ## Récupération des tâches
 
-Parfois, vous devrez peut-être récupérer vos tâches récentes. Pour ce faire, utilisez facilement les Tâches d’exportation Get pour le type d’objet correspondant. Chaque point d’entrée Obtenir les tâches d’exportation prend en charge un champ de filtre `status`, une `batchSize` pour limiter le nombre de tâches renvoyées et des `nextPageToken` pour la pagination dans des jeux de résultats volumineux. Le filtre de statut prend en charge chaque statut valide pour une tâche d’exportation : Créé, En file d’attente, En cours de traitement, Annulé, Terminé et En échec. batchSize a un maximum et une valeur par défaut de 300. Obtenons la liste des tâches d’exportation de leads :
+Utilisez le point d’entrée Get Export Jobs pour le type d’objet correspondant afin de récupérer les tâches récentes. Chaque point d’entrée Get Export Jobs prend en charge les paramètres suivants :
+
+- `status` filtre les tâches en fonction du statut d’exportation. Les valeurs valides sont Création, Mise en file d’attente, Traitement, Annulé, Terminé et Échec.
+- `batchSize` limite le nombre de traitements renvoyés. La valeur par défaut et la valeur maximale sont 300.
+- `nextPageToken` des pages à travers des jeux de résultats volumineux.
+
+La requête suivante récupère les tâches d’exportation de leads avec un statut Terminé ou Échec :
 
 ```http
 GET /bulk/v1/leads/export.json?status=Completed,Failed
@@ -160,23 +174,23 @@ GET /bulk/v1/leads/export.json?status=Completed,Failed
 }
 ```
 
-Le point d’entrée répond avec `status` réponse de chaque tâche créée au cours des sept derniers jours pour ce type d’objet dans le tableau de résultats. La réponse inclut uniquement les résultats des tâches détenues par l’utilisateur de l’API effectuant l’appel.
+Le tableau de résultats contient la réponse de statut de chaque tâche créée pour ce type d’objet au cours des sept derniers jours. La réponse inclut uniquement les tâches détenues par l’utilisateur ou l’utilisatrice de l’API effectuant l’appel.
 
 ## Démarrage d’un traitement
 
-Maintenant que notre identifiant de tâche est en main, nous allons commencer la tâche :
+Après avoir créé une tâche, utilisez son identifiant de tâche pour la mettre en file d’attente et la démarrer :
 
 ```http
 POST /bulk/v1/leads/export/{exportId}/enqueue.json
 ```
 
-Cette opération déclenche l’exécution du traitement et renvoie une réponse de statut. Puisque l’exportation est toujours effectuée de manière asynchrone, nous devons interroger le statut du traitement pour déterminer s’il est terminé. Le statut d’une tâche donnée n’est pas mis à jour plus d’une fois toutes les 60 secondes. Par conséquent, le statut ne doit jamais être interrogé plus fréquemment que cela. Gardez toutefois à l’esprit que la plupart des cas d’utilisation ne doivent pas nécessiter d’interrogations plus fréquentes qu’une fois toutes les 5 minutes. Les données de chaque exportation réussie sont conservées pendant 10 jours.
+La requête démarre la tâche et renvoie une réponse de statut. Comme les exportations s’exécutent de manière asynchrone, interrogez le statut de la tâche pour déterminer quand l’exportation est terminée.
 
 ## Interroger le statut de la tâche
 
-La détermination du statut de la tâche est simple.
+Interroger le point d’entrée de statut pour déterminer la progression d’une tâche. Seul l’utilisateur de l’API qui a créé une tâche peut interroger son statut.
 
-Le statut ne peut être interrogé que pour les tâches créées par le même utilisateur de l’API qui les a créées.
+L’état d’une tâche n’est pas mis à jour plus d’une fois toutes les 60 secondes. N&#39;effectuez pas de sondages plus fréquents. Dans la plupart des cas d’utilisation, une interrogation toutes les 5 minutes est suffisante. Les données de chaque exportation réussie sont conservées pendant 10 jours.
 
 ```http
 GET /bulk/v1/leads/export/{exportId}/status.json
@@ -203,47 +217,53 @@ GET /bulk/v1/leads/export/{exportId}/status.json
 }
 ```
 
-Le membre de `status` interne indique la progression de la tâche et peut être l’une des valeurs suivantes : Créé, Mis en file d’attente, Traitement, Annulé, Terminé, Échec. Dans ce cas, notre tâche est terminée. Nous pouvons donc arrêter l’interrogation et continuer à récupérer le fichier. Une fois l’opération terminée, le membre de `fileSize` indique la longueur totale du fichier en octets, et le membre de `fileChecksum` contient le hachage SHA-256 du fichier. Le statut de la tâche est disponible pendant 30 jours après que le statut Terminé ou En échec a été atteint.
+Le membre de `status` interne indique la progression du traitement. Sa valeur peut être Créé, En file d’attente, En cours de traitement, Annulé, Terminé ou En échec.
+
+Dans cet exemple, la tâche est terminée. Vous pouvez donc arrêter l’interrogation et récupérer le fichier. Pour une tâche terminée, le membre `fileSize` indique la longueur totale du fichier en octets, et le membre `fileChecksum` contient le hachage SHA-256 du fichier. Le statut de la tâche est disponible pendant 30 jours après qu’elle a atteint le statut Terminée ou En échec .
 
 ## Récupération de vos données
 
-Une fois la tâche terminée, vous pouvez facilement récupérer le fichier.
+Une fois la tâche terminée, récupérez le fichier exporté :
 
 ```http
 GET /bulk/v1/leads/export/{exportId}/file.json
 ```
 
-La réponse contient un fichier formaté selon la configuration de la tâche. Le point d’entrée répond avec le contenu du fichier . Si une tâche n’est pas terminée ou si un ID de tâche incorrect est transmis, les points d’entrée de fichier répondent avec un statut 404 Introuvable et un message d’erreur en texte brut comme payload, contrairement à la plupart des autres points d’entrée REST Marketo.
+La réponse contient le fichier au format configuré pour la tâche. Si la tâche est incomplète ou si la requête contient un ID de tâche non valide, le point d’entrée du fichier renvoie un statut 404 Introuvable et un message d’erreur en texte brut. Cette réponse diffère de la plupart des autres réponses de point d’entrée REST Marketo.
 
-Pour prendre en charge la récupération partielle et conviviale des données extraites, le point d’entrée du fichier prend éventuellement en charge le `Range` d’en-tête HTTP de type `bytes` (selon la norme [RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233)). Si l’en-tête n’est pas défini, l’intégralité du contenu est renvoyée. Pour récupérer les 10 000 premiers octets d’un fichier, vous devez transmettre l’en-tête suivant dans le cadre de votre requête GET au point d’entrée , à partir de l’octet 0 :
+Pour prendre en charge la récupération partielle et réutilisable, le point d’entrée du fichier prend en charge l’en-tête `Range` HTTP facultatif avec le type de `bytes`, tel que défini dans [RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233). Si vous ne définissez pas l’en-tête , le point d’entrée renvoie l’intégralité du fichier.
+
+Pour récupérer les 10 000 premiers octets d’un fichier, transmettez l’en-tête suivant dans la requête GET. La plage commence à l&#39;octet 0 :
 
 ```text
 Range: bytes=0-9999
 ```
 
-Lors de la récupération du fichier partiel, le point d’entrée répond avec le code d’état 206 et renvoie les en-têtes Accept-Range, Content-Length et Content-Range :
+Pour un fichier partiel, le point d’entrée renvoie le code d’état 206 et les en-têtes Accept-Range, Content-Length et Content-Range :
 
 ```text
 Accept-Ranges: bytes
-Content-Length: 1000
+Content-Length: 10000
 Content-Range: bytes 0-9999/123424
 ```
 
 ### Récupération et reprise partielles
 
-Les fichiers peuvent être récupérés en partie ou reprendre ultérieurement à l’aide de l’en-tête `Range`. La plage d&#39;un fichier commence à l&#39;octet 0 et se termine à la valeur `fileSize` moins 1. La longueur du fichier est également indiquée comme dénominateur dans la valeur de l’en-tête de réponse `Content-Range` lors de l’appel d’un point d’entrée Get Export File. Si une récupération échoue partiellement, elle peut être reprise ultérieurement. Par exemple, si vous essayez de récupérer un fichier de 1 000 octets de long, mais que seuls les 725 premiers octets ont été reçus, la récupération peut être tentée à nouveau à partir du point d’échec en appelant à nouveau le point d’entrée et en transmettant une nouvelle plage :
+Utilisez l’en-tête `Range` pour récupérer une partie d’un fichier ou reprendre une récupération. La plage de fichiers commence à l&#39;octet 0 et se termine à la valeur `fileSize` moins 1. Le point d’entrée Get Export File indique également la longueur du fichier comme dénominateur dans l’en-tête de réponse `Content-Range`.
+
+Si une récupération échoue partiellement, vous pouvez la reprendre. Par exemple, si vous essayez de récupérer un fichier de 1 000 octets mais que vous ne recevez que les 725 premiers octets, appelez à nouveau le point d’entrée et transmettez une nouvelle plage :
 
 ```text
-Range: bytes 724-999
+Range: bytes=725-999
 ```
 
-Cette opération renvoie les 275 octets restants du fichier.
+Cette requête renvoie les 275 octets restants du fichier.
 
 #### Vérification de l&#39;intégrité du fichier
 
-Les points d’entrée du statut de la tâche renvoient une somme de contrôle dans l’attribut `fileChecksum` lorsque `status` est « Terminé ». La somme de contrôle est un hachage SHA-256 du fichier exporté. Vous pouvez comparer la somme de contrôle avec le hachage SHA-256 du fichier récupéré pour vérifier qu’il est terminé.
+Lorsque `status` est « Terminé », les points d’entrée de statut de la tâche renvoient une somme de contrôle dans l’attribut `fileChecksum`. La somme de contrôle est le hachage SHA-256 du fichier exporté. Comparez-le au hachage SHA-256 du fichier récupéré pour vérifier que le fichier est terminé.
 
-Voici un exemple de réponse contenant la somme de contrôle :
+La réponse suivante contient une somme de contrôle :
 
 ```json
 {
@@ -260,7 +280,7 @@ Voici un exemple de réponse contenant la somme de contrôle :
 }
 ```
 
-Voici un exemple de création du hachage SHA-256 d’un fichier récupéré nommé « bulk_lead_export.csv » à l’aide de l’utilitaire de ligne de commande sha256sum :
+L’exemple suivant utilise l’utilitaire de ligne de commande sha256sum pour créer le hachage SHA-256 d’un fichier récupéré nommé « bulk_lead_export.csv » :
 
 ```bash
 $ sha256sum bulk_lead_export.csv
@@ -269,7 +289,7 @@ $ sha256sum bulk_lead_export.csv
 
 ## Annulation d’un traitement
 
-Si une tâche n’a pas été configurée correctement ou devient inutile, elle peut être facilement annulée :
+Si une tâche n’est pas configurée correctement ou n’est plus nécessaire, annulez-la :
 
 ```http
 POST /bulk/v1/leads/export/{exportId}/cancel.json
@@ -290,4 +310,4 @@ POST /bulk/v1/leads/export/{exportId}/cancel.json
 }
 ```
 
-Cette opération répond avec un statut indiquant que la tâche a été annulée.
+Le statut de la réponse indique que le traitement a été annulé.

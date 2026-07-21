@@ -4,68 +4,65 @@ feature: Webhooks
 description: Découvrez comment configurer des Webhooks Marketo pour appeler des services tiers, définir des modèles de payload, un codage, des mappages de réponse, des jetons, des en-têtes personnalisés et des conseils.
 exl-id: fd283c66-05a1-4aa4-8412-0d41b8d1e3c8
 TQID: https://experienceleague.adobe.com/r-GpAqhYPKvlDtMw5l23jeJWzlSqycP65eYJPA3m9EM
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-subfeature_v2:
-  - id: ad89fb33-8541-4339-afe7-bb13d1633714
-  - id: fc9b09fe-b844-4544-887b-e420c3b82065
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: d1d0a9cd-295d-4976-8c39-ddae266f240eid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+subfeature_v2: id: ad89fb33-8541-4339-afe7-bb13d1633714id: fc9b09fe-b844-4544-887b-e420c3b82065
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 724
-ht-degree: 3%
+source-wordcount: 614
+ht-degree: 4%
 
 ---
 
 # Webhooks
 
-Marketo permet d’utiliser des Webhooks pour communiquer avec des services web tiers. Les Webhooks prennent en charge l’utilisation des verbes HTTP GET ou POST pour transmettre ou récupérer des données d’une URL spécifique. Pour obtenir des instructions détaillées sur la création de Webhooks dans l’application et sur la manière de les ajouter aux campagnes intelligentes, reportez-vous aux articles suivants :
+Les webhooks Marketo communiquent avec des services web tiers. Un webhook utilise le verbe HTTP GET ou POST pour envoyer des données à ou récupérer des données à partir d’une URL spécifique.
 
-- [Créer un webhook](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
-- [Appeler le Webhook](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
-- [Utiliser un webhook dans une campagne intelligente](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
+Pour obtenir des instructions sur la création d’un webhook et son ajout à une campagne dynamique, voir :
 
-Chaque webhook possède les propriétés suivantes :
+- [Créer un webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
+- [Appeler le Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
+- [Utiliser un webhook dans une campagne intelligente](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
 
-- **[!UICONTROL URL]** - Saisissez l’URL que vous utilisez pour envoyer votre demande au service web.
+Configurez chaque webhook avec les propriétés suivantes :
+
+- **[!UICONTROL URL]** - URL vers laquelle vous envoyez la demande de service web.
 - **[!UICONTROL Type de requête]** - Méthode HTTP.
-- **[!UICONTROL Modèle de payload]** - Si vous souhaitez transmettre des informations dans le corps du POST, saisissez le modèle. Utilisez n’importe quel format de données prenant en charge HTTP POST, y compris XML, JSON ou SOAP. Le format de sérialisation doit autoriser les guillemets doubles autour des chaînes. Pour insérer un jeton dans votre modèle, sélectionnez **[!UICONTROL Insérer un jeton]**. Les jetons de type chaîne sont automatiquement placés entre guillemets doubles.
-- **[!UICONTROL Encodage du jeton de requête]** - Si les valeurs de jeton incluent des caractères spéciaux (par exemple une esperluette, «&amp; »), indiquez le format de votre requête (JSON ou Formulaire/Url). Le codage correct doit être sélectionné pour le corps afin de garantir que le Webhook communique correctement avec le service web.
-- **[!UICONTROL Type de réponse]** - Sélectionnez le format de la réponse que vous recevez du service (JSON ou XML). Le type de réponse correct doit être sélectionné pour mapper les propriétés de la réponse aux champs de prospect dans Marketo.
-- **[!UICONTROL En-têtes personnalisés]** - Accessible via **[!UICONTROL Actions Webhooks]** > **[!UICONTROL Définir un en-tête personnalisé]**, ce menu permet d’ajouter un nombre illimité de paires clé-valeur personnalisées en tant qu’en-têtes HTTP.
+- **[!UICONTROL Modèle de payload]** - Modèle pour les informations envoyées dans le corps POST. Utilisez n’importe quel format de données prenant en charge HTTP POST, y compris XML, JSON ou SOAP. Le format de sérialisation doit autoriser les guillemets doubles autour des chaînes. Pour insérer un jeton, sélectionnez **[!UICONTROL Insérer un jeton]**. Marketo met automatiquement les jetons de type chaîne entre guillemets doubles.
+- **[!UICONTROL Encodage du jeton de requête]** - Format de requête, JSON ou Formulaire/Url, utilisé pour coder les valeurs de jeton qui incluent des caractères spéciaux tels qu’une esperluette, «&amp; ». Sélectionnez l’encodage du corps correct afin que le webhook communique correctement avec le service web.
+- **[!UICONTROL Type de réponse]** - Format de réponse, JSON ou XML. Sélectionnez le type approprié pour mapper les propriétés de réponse aux champs de prospect dans Marketo.
+- **[!UICONTROL En-têtes personnalisés]** - Paires clé-valeur ajoutées en tant qu’en-têtes HTTP via **[!UICONTROL Actions Webhooks]** > **[!UICONTROL Définir l’en-tête personnalisé]**. Vous pouvez ajouter un nombre illimité d’en-têtes personnalisés.
 
-Les données peuvent être réécrites dans les leads à partir de réponses de service web à l’aide de [Mappages de réponse](response-mappings.md).
+Utilisez [Mappages de réponse](response-mappings.md) pour écrire des données à partir des réponses de service web dans les prospects.
 
 ## Jetons
 
-Tous les champs sortants d’un Webhook (URL, modèle et en-têtes personnalisés) renseignent le contenu des jetons dans le même contexte de l’étape de flux. Cela signifie que les jetons de lead et de système sont toujours disponibles, tandis que les jetons de déclencheur, de campagne et de programme sont disponibles dans leurs portées respectives. Voir les articles relatifs aux jetons :
+Tous les champs webhook sortants, y compris l’URL, le modèle et les en-têtes personnalisés, renseignent le contenu du jeton dans le même contexte que l’étape de flux.
 
-- [Vue d’ensemble des jetons](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
-- [Glossaire des jetons système](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
-- [Jetons pour les moments significatifs](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
+Les jetons de lead et système sont toujours disponibles. Les jetons Trigger, Campaign et Program sont disponibles dans leurs portées respectives. Pour plus d’informations, consultez les éléments suivants :
 
-Cela se produit généralement lorsqu’un programme ou une campagne est explicitement mappé à une ressource tierce. Un identifiant peut être défini au niveau du programme sous la forme d’un `My Token`, puis transmis à la requête Webhook sous la forme d’un jeton.
+- [Vue d’ensemble des jetons](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
+- [Glossaire des jetons système](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
+- [Jetons pour les moments significatifs](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
+
+Par exemple, lorsqu’un programme ou une campagne est mappé à une ressource tierce, définissez un identifiant au niveau du programme sous la forme d’un `My Token`. Transmettez ensuite l’identifiant dans la requête webhook sous la forme d’un jeton.
 
 ## Personnaliser les titres
 
-Les Webhooks permettent d’utiliser un nombre illimité de champs d’en-tête personnalisé à envoyer avec la requête sortante. Ils peuvent être ajoutés via **[!UICONTROL Actions Webhooks]** > **[!UICONTROL Définir un en-tête personnalisé]**. Chaque en-tête est enregistré en tant que simple paire clé-valeur. Des jetons peuvent être utilisés dans cette zone.
+Les Webhooks peuvent envoyer un nombre illimité de champs d’en-tête personnalisé avec une requête sortante. Ajoutez des en-têtes via **[!UICONTROL Actions Webhooks]** > **[!UICONTROL Définir un en-tête personnalisé]**.
+
+Chaque en-tête est une paire clé-valeur et peut contenir des jetons.
 
 ![En-têtes personnalisés](assets/custom-headers.png)
 
 ## Conseils
 
-- L’étape de flux Appeler le Webhook n’est valide que dans les campagnes Trigger.
-- Les mises à jour via les mappages de réponse ne se produisent que si le service web répond avec un code de réponse HTTP 2xx. Les autres types de codes n’entraînent pas de mises à jour de l’enregistrement.
+- Utilisez l’étape Appeler le flux Webhook uniquement dans les campagnes Trigger.
+- Les mappages de réponse ne mettent à jour un enregistrement que lorsque le service web renvoie un code de réponse HTTP 2xx.
 - Vous pouvez utiliser les services web pour effectuer un enrichissement des données personnalisé, une validation ou une normalisation à partir de services internes ou externes.
-- Le temps d’exécution d’un webhook est à la merci du temps de réponse du service en cours d’utilisation, ce qui peut entraîner de longs délais d’exécution des campagnes. Même si l’exécution d’un service ne prend que 50 ms, cela représente 1,5 heure lorsqu’il est exécuté 100 000 fois.
+- Le temps d’exécution du webhook dépend du temps de réponse du service et peut entraîner de longs délais d’exécution des campagnes. Même si l’exécution d’un service ne prend que 50 ms, 100 000 exécutions prennent 1,5 heure.
 - Marketo attend jusqu’à 30 secondes pour un appel de service donné avant de mettre fin à l’appel (également appelé délai d’expiration).
-- Les caractères incorporés dans le champ URL sont transmis tels qu&#39;écrits ; par exemple, &#39;&amp;&#39; est envoyé comme &#39;&amp;&#39;, &#39;%26&#39; est envoyé comme &#39;%26&#39;
-   - Si un caractère doit être codé en pourcentage à la réception par le serveur destinataire, il doit être transmis explicitement en tant que chaîne représentant ce caractère
+- Marketo transmet les caractères dans le champ URL tel qu’il a été écrit. Par exemple, &#39;&amp;&#39; est envoyé en tant que &#39;&amp;&#39;, et &#39;%26&#39; est envoyé en tant que &#39;%26&#39;.
+  - Pour envoyer un caractère codé en pourcentage au serveur de destinataires, transmettez explicitement la chaîne qui représente ce caractère.
