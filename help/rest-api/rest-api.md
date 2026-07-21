@@ -4,9 +4,14 @@ feature: REST API
 description: Découvrez comment utiliser l’API REST Marketo, configurer les utilisateurs d’API et LaunchPoint, afficher les quotas et les limites, vous authentifier avec l’en-tête d’autorisation et récupérer les prospects.
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
 TQID: https://experienceleague.adobe.com/GqhWI816wWX-2zf89wWj-GXpg9i615HRFVl2ljdYVj0
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: c5f60233-d5ea-4453-a799-0ad258b4d399id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
 source-wordcount: 803
@@ -25,7 +30,7 @@ Les API REST se répartissent en deux grandes catégories :
 
 >[!NOTE]
 >
->L’API SOAP sera abandonnée et ne sera plus disponible après le 31 juillet 2026. Tout nouveau développement doit être effectué avec l’API Marketo [REST](./rest-api.md) et les services existants doivent être migrés avant cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [ Guide de migration de l’API SOAP ](../soap-api/migration.md) pour plus d’informations sur la migration.
+>L’API SOAP sera abandonnée et ne sera plus disponible après le 31 juillet 2026. Tout nouveau développement doit être effectué avec l’API Marketo [REST](./rest-api.md) et les services existants doivent être migrés avant cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [&#x200B; Guide de migration de l’API SOAP &#x200B;](../soap-api/migration.md) pour plus d’informations sur la migration.
 >
 
 >[!IMPORTANT]
@@ -53,7 +58,7 @@ Sélectionnez l’onglet **[!UICONTROL Rôles]**, puis sélectionnez Nouveau rô
 
 ![Nouveau rôle](assets/new-role.png)
 
-Revenez à l’onglet [!UICONTROL  Utilisateurs ] et sélectionnez **[!UICONTROL Inviter un nouvel utilisateur]**. Saisissez un nom explicite qui identifie l’utilisateur en tant qu’utilisateur de l’API, saisissez une adresse e-mail, puis sélectionnez **[!UICONTROL Suivant]**.
+Revenez à l’onglet [!UICONTROL &#x200B; Utilisateurs &#x200B;] et sélectionnez **[!UICONTROL Inviter un nouvel utilisateur]**. Saisissez un nom explicite qui identifie l’utilisateur en tant qu’utilisateur de l’API, saisissez une adresse e-mail, puis sélectionnez **[!UICONTROL Suivant]**.
 
 ![Nouvelles informations sur l’utilisateur](assets/new-user-info.png)
 
@@ -83,7 +88,7 @@ Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Services web]**.
 
 Recherchez le [!UICONTROL Point d’entrée] dans la zone API REST et enregistrez-le pour le premier appel API.
 
-![ Point d’entrée REST ](assets/admin-web-services-rest-endpoint-1.png)
+![&#x200B; Point d’entrée REST &#x200B;](assets/admin-web-services-rest-endpoint-1.png)
 
 Chaque appel de l’API REST doit inclure un jeton d’accès dans un en-tête HTTP.
 

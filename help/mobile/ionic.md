@@ -4,10 +4,14 @@ feature: Mobile Marketing
 description: Guide détaillé pour l’intégration du plug-in Marketo Cordova à Ionic, l’activation des notifications push, l’initialisation de SDK, le suivi des sessions et l’association des prospects.
 exl-id: 204e5fb4-c9d6-43a6-9d77-0b2a67ddbed3
 TQID: https://experienceleague.adobe.com/UTNWd69NliR896RcO-XM2GG35liuLeNNhTXo9GRtB4o
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2: id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
 source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
 source-wordcount: 581
@@ -22,7 +26,7 @@ Intégrez le plug-in Marketo Cordova à une application [!DNL Ionic]. [!DNL Ioni
 ## Conditions préalables
 
 1. [Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) et obtenez la clé secrète de l’application et l’ID Munchkin.
-1. Configurez les notifications push pour [](push-notifications.md) ou [Android](push-notifications.md).
+1. Configurez les notifications push pour [&#128279;](push-notifications.md) ou [Android](push-notifications.md).
 1. Installez [[!DNL Ionic]](https://ionicframework.com/getting-started/) et l’interface de ligne de commande [Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
 ## Instructions d’installation

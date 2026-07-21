@@ -4,8 +4,10 @@ feature: REST API
 description: Découvrez comment créer des requêtes d’API REST Marketo, comprendre les paramètres et la ressource du chemin d’URL de base et rechercher votre URL de base unique.
 exl-id: 6c3f122c-3ace-4ed3-bed0-a6b89cedc99a
 TQID: https://experienceleague.adobe.com/NZisV6V-FMPi0RHpdaFrc1kZc3nb15YomwRgohaQmEE
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
 source-wordcount: 146
@@ -15,7 +17,7 @@ ht-degree: 3%
 
 # URL de base
 
-Chaque appel API dans la [ Référence du point d’entrée ](endpoint-reference.md) spécifie la méthode REST, le chemin d’accès, la ressource et les paramètres. Ajoutez ces composants à l’URL de base pour former une requête.
+Chaque appel API dans la [&#x200B; Référence du point d’entrée &#x200B;](endpoint-reference.md) spécifie la méthode REST, le chemin d’accès, la ressource et les paramètres. Ajoutez ces composants à l’URL de base pour former une requête.
 
 Voici un exemple d’URL REST bien formée :
 

@@ -4,9 +4,12 @@ feature: REST API, Landing Pages
 description: Utilisez les API REST de ressources Marketo pour créer, interroger, mettre à jour et supprimer des règles de redirection de page de destination avec des filtres, une pagination, des options de nom d’hôte et des cibles autres que Marketo.
 exl-id: f63aa5ef-5872-4401-be75-6fb9b2977734
 TQID: https://experienceleague.adobe.com/2gePbKA3xeoRdnL8mNnObN-GPTX00Ii4-zcM0lBjs-o
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
 source-wordcount: 626
@@ -20,7 +23,7 @@ ht-degree: 4%
 
 Utilisez les API REST de règles de redirection de page de destination pour interroger, créer, mettre à jour et supprimer des URL de redirection de page de destination.
 
-Les règles de redirection envoient une URL de page de destination à une autre URL de page. La source et la destination peuvent être des pages Marketo ou autres que Marketo. Pour consulter la documentation du produit connexe, voir la documentation de [](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr).
+Les règles de redirection envoient une URL de page de destination à une autre URL de page. La source et la destination peuvent être des pages Marketo ou autres que Marketo. Pour consulter la documentation du produit connexe, voir la documentation de [&#128279;](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr).
 
 ## Requête
 
