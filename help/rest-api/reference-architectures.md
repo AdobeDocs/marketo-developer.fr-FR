@@ -11,16 +11,16 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 44
+source-wordcount: 45
 ht-degree: 0%
 
 ---
 
 # Architecture de référence
 
-Documents techniques décrivant les bonnes pratiques pour synchroniser les données Marketo avec des systèmes externes.
+Les documents techniques suivants décrivent les bonnes pratiques pour synchroniser les données Marketo avec des systèmes externes :
 
 - [Architecture de synchronisation CRM](../sync-architecture-whitepaper.pdf)
 - [Architecture d’intégration de la base de données/de Data Warehouse](../reference_architecture.pdf)

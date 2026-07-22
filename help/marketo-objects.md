@@ -13,42 +13,56 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 532
-ht-degree: 0%
+source-wordcount: 452
+ht-degree: 1%
 
 ---
 
 # Objets Marketo
 
-L’implémentation de Marketo Velocity peut fonctionner sur des données provenant de plusieurs sources dans Marketo : Leads, Opportunités, Objets personnalisés, Application mobile, Installation d’application mobile.
+L’implémentation de Marketo Velocity peut utiliser les données provenant des sources Marketo suivantes :
+
+- Prospects
+- Opportunités
+- Objets personnalisés
+- Application mobile
+- Installation de l’application mobile
 
 ## Champs en cours de chargement
 
-Pour charger un champ à utiliser dans un script, ce champ doit être vérifié sous la liste correspondante dans l’éditeur de jeton de script.
+Pour utiliser un champ dans un script, sélectionnez-le dans la liste correspondante de l’éditeur de jeton de script.
 
-Si vous ne chargez pas de champ et qu’il est référencé dans le script, l’exécution du script échoue au moment de l’exécution. Vous pouvez faire glisser des champs du menu de champs vers le script. Cela permet de les charger et ajoute une référence au champ au niveau du curseur.
+Si un script fait référence à un champ qui n’est pas chargé, le script échoue au moment de l’exécution. Faites glisser un champ du menu de champ vers le script pour le charger et ajouter une référence au niveau du curseur.
 
 ## Listes d’opportunités et d’objets personnalisés
 
-Lors de la récupération à partir d’Opportunités ou d’Objets personnalisés, seuls les 10 objets d’un type mis à jour le plus récemment sont chargés. Vous pouvez augmenter le nombre d’objets personnalisés disponibles en suivant les étapes décrites ici. Elles sont données sous forme de liste, avec le nom `<objectName>List` et sont classées de l’enregistrement le plus récemment mis à jour à l’enregistrement le moins récemment mis à jour. Ainsi, pour accéder au champ Montant à partir de l’opportunité qui a été mise à jour le plus récemment, vous devez utiliser ce qui suit :
+Pour Opportunités et Objets personnalisés, Marketo ne charge que les 10 objets les plus récemment mis à jour de chaque type. Vous pouvez augmenter le nombre d’objets personnalisés disponibles en suivant les étapes décrites ici.
+
+Marketo fournit les objets dans une liste nommée `<objectName>List`, classée de l’enregistrement le plus récemment mis à jour à l’enregistrement le moins récemment mis à jour. Pour accéder au champ Montant à partir de l’opportunité mise à jour le plus récemment, utilisez :
 
 `${OpportunityList.get(0).Amount}`
 
-Dans cet exemple, vous référencez l’objet OpportunityList, utilisez la méthode get pour accéder à l’enregistrement indexé à 0, puis récupérez la propriété Amount de l’objet renvoyé. Si vous faites glisser un champ d’un objet Opportunité ou Personnalisé vers l’éditeur, il récupère automatiquement le champ de l’enregistrement indexé à 0.
+Cet exemple fait référence à l&#39;objet OpportunityList, utilise la méthode get pour accéder à l&#39;enregistrement à l&#39;index 0 et récupère la propriété Amount à partir de cet enregistrement.
+
+Lorsque vous faites glisser un champ Opportunité ou Objet personnalisé dans l’éditeur, Marketo récupère automatiquement le champ de l’enregistrement à l’index 0.
 
 ## Relations d’objet personnalisé SFDC
 
-Pour pouvoir être utilisé, un objet personnalisé SFDC ne doit avoir qu’une seule relation avec le prospect Marketo. Les objets sont souvent liés à la fois par le biais du contact et du compte. Il est donc important de synchroniser les objets uniquement avec Marketo lorsque la relation lead/contact est activée.
+Pour utiliser un objet personnalisé SFDC, l’objet ne doit avoir qu’une seule relation avec le prospect Marketo. Les objets sont souvent liés à la fois par le biais du contact et du compte. Synchronisez uniquement les objets pour lesquels la relation lead/contact est activée.
 
 ## Déclencher des objets
 
-Lorsqu’une campagne est déclenchée via le déclencheur Ajouté à l’opportunité, l’opportunité est mise à jour ou ajoutée à des déclencheurs de `<Custom Object Name>`, une variable spéciale est disponible dans les Jetons de script exécutés dans le contexte de la campagne de déclenchement : `$TriggerObject` (non pris en charge pour `<Custom Object Name>` le déclencheur est Mise à jour).  Si un jeton utilisant une référence de `$TriggerObject` est utilisé dans une campagne par lots, l’envoi de l’e-mail échoue, car cet objet n’est disponible dans aucune campagne par lots.  Il s’agit d’une référence à l’objet qui a déclenché la campagne. L’objet contient toutes les données dont dispose l’enregistrement lorsqu’il est accessible via un autre nom de variable.
+Lorsqu’une campagne utilise la variable Ajoutée à l’opportunité, l’opportunité est mise à jour ou ajoutée à `<Custom Object Name>` déclencheur, la variable `$TriggerObject` est disponible pour les jetons de script qui s’exécutent dans la campagne de déclenchement. Cette variable n’est pas prise en charge pour le déclencheur `<Custom Object Name>` est mis à jour .
 
-Par exemple, si une campagne a été déclenchée via un objet personnalisé pour une commande de produit, la commande à laquelle le prospect a été ajouté est exposée dans la variable `$TriggerObject` .
+Cette variable fait référence à l’objet qui a déclenché la campagne. Il contient les mêmes données d’enregistrement que celles disponibles lorsque vous accédez à l’objet via un autre nom de variable.
 
-Voici un exemple de script pour un e-mail de suivi de commande :
+N’utilisez pas de jeton qui fait référence à `$TriggerObject` dans une campagne par lots. L’objet n’est pas disponible dans les campagnes par lots et l’envoi de l’e-mail échoue.
+
+Par exemple, si un objet personnalisé pour une commande de produit déclenche une campagne, la variable `$TriggerObject` expose la commande à laquelle le prospect a été ajouté.
+
+L’exemple suivant illustre un script pour un e-mail de suivi de commande :
 
 ```html
 <div>
@@ -65,8 +79,8 @@ Voici un exemple de script pour un e-mail de suivi de commande :
 </div>
 ```
 
-L’avantage de l’utilisation de la variable `$TriggerObject` est que vous n’avez pas besoin de dédier de code pour déterminer lequel des objets disponibles vous souhaitez extraire vos données locales.  L’objet est déterminé par l’action de déclenchement. Il s’agit de la méthode la plus explicite pour choisir un objet à référencer. Elle doit être utilisée lorsqu’elle est disponible et appropriée.
+L’action de déclenchement détermine l’objet . Vous n’avez pas besoin de code supplémentaire pour déterminer quel objet disponible contient les données locales. Utilisez `$TriggerObject` lorsqu’il est disponible et approprié, car il identifie explicitement l’objet à référencer.
 
-Remarque : lors de l&#39;utilisation du `$TriggerObject`, les champs doivent être cochés dans le volet d&#39;édition pour que l&#39;objet soit disponible pour le script.
+Remarque : lorsque vous utilisez `$TriggerObject`, sélectionnez les champs de l&#39;objet dans le volet d&#39;édition pour les rendre disponibles dans le script.
 
-Remarque 2 : le `$TriggerObject` fonctionne uniquement pour les déclencheurs « ajoutés » et non pour les déclencheurs « mis à jour ».
+Remarque 2 : `$TriggerObject` fonctionne uniquement pour les déclencheurs « ajoutés », et non pour les déclencheurs « mis à jour ».

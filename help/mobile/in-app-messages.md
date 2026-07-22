@@ -10,35 +10,37 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: c1579802-ddd4-4214-8a91-97b2066abe11
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 357
-ht-degree: 1%
+source-wordcount: 321
+ht-degree: 2%
 
 ---
 
 # Messages in-app
 
-Pour utiliser les fonctionnalités de messagerie In-App de Marketo, procédez comme suit :
+Pour utiliser la messagerie in-app Marketo, procédez comme suit :
 
 1. Installez Marketo Mobile SDK comme décrit dans la section [&#x200B; Installation mobile &#x200B;](installation.md).
 1. Ajoutez votre application mobile à Marketo, comme décrit dans la section [Ajouter une application mobile](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app).
-1. Vous pouvez éventuellement ajouter du code à votre application mobile pour capturer [Actions personnalisées](custom-actions.md).
+1. Facultatif : ajoutez du code à votre application mobile pour capturer [actions personnalisées](custom-actions.md).
 
-Une fois que vous avez installé Marketo Mobile SDK et que vous avez terminé d’ajouter votre application dans Marketo, vous êtes prêt à envoyer des messages In-App qui s’affichent lorsqu’un utilisateur ouvre votre application.
+Après avoir installé Marketo Mobile SDK et ajouté votre application à Marketo, vous pouvez envoyer des messages in-app qui s’affichent lorsqu’un utilisateur ouvre votre application.
 
-Par défaut, les messages in-app sont déclenchés à l’ouverture de votre application. Si vous souhaitez déclencher des messages in-app pour d’autres événements, tels que lorsqu’une page spécifique est consultée ou lorsqu’un bouton spécifique est enfoncé, vous devez ajouter des actions personnalisées à votre code. Voir la section [Actions personnalisées](custom-actions.md) pour obtenir des exemples de code à ce sujet.
+Par défaut, les messages in-app sont déclenchés à l’ouverture de l’application. Pour déclencher un message pour un autre événement, tel que l’affichage d’une page spécifique ou la sélection d’un bouton spécifique, ajoutez une action personnalisée à votre code. Voir [Actions personnalisées](custom-actions.md) pour obtenir des exemples de code.
 
 ## Dépannage
 
 **Le message in-app ne s’affiche pas**
 
-Marketo ne répond aux déclencheurs des applications qu’après l’initialisation de Marketo Mobile SDK avec Marketo Platform. Le processus d’initialisation se produit lorsque vous installez et ouvrez l’application pour la première fois. Comme l’initialisation se produit après la première ouverture de l’application, l’événement « App Open » n’est pas déclenché tant que l’application n’est pas ouverte une deuxième fois. Fermez l’application et ouvrez-la à nouveau. Un message déclenché par l’ouverture de l’application doit s’afficher sur votre appareil.
+Marketo ne répond aux déclencheurs d’application qu’après l’initialisation de Marketo Mobile SDK avec Marketo Platform. L’initialisation se produit lorsque vous installez et ouvrez l’application pour la première fois.
+
+Comme l’initialisation a lieu après la première ouverture de l’application, l’événement « App Open » n’est pas déclenché tant que vous n’avez pas ouvert l’application une deuxième fois. Fermez et rouvrez l’application. Un message déclenché par l’ouverture de l’application doit alors s’afficher sur votre appareil.
 
 Les événements personnalisés sont déclenchés par une interaction de l’utilisateur une fois l’application ouverte. Les événements personnalisés sont reconnus par Marketo au cours de la première session.
 
 **Suivi Des Activités D’Appui In-App**
 
-Veillez à attribuer une action en plus de l’action « ignorer » à l’un des boutons principaux ou secondaires pour effectuer le suivi des activités d’appui et à utiliser les fréquences d’affichage de base en fonction du nombre d’appuis.
+Pour effectuer le suivi des activités d’appui et baser la fréquence d’affichage sur le nombre d’appuis, affectez une action autre que « ignorer » à un bouton principal ou secondaire.
 
-Pour plus d’informations, voir la section [Messages In-App](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/in-app-messages/creating-in-app-messages/create-an-in-app-message) dans la documentation de notre produit.
+Pour plus d’informations, voir [Messages In-App](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/in-app-messages/creating-in-app-messages/create-an-in-app-message) dans la documentation du produit.

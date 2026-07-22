@@ -10,9 +10,9 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 279
+source-wordcount: 254
 ht-degree: 0%
 
 ---
@@ -21,13 +21,13 @@ ht-degree: 0%
 
 [Référence du point d’entrée des rôles d’opportunité](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityRolesUsingGET)
 
-Les leads sont liés aux opportunités via l’objet de `opportunityRole` intermédiaire.
+Les liens d’objet `opportunityRole` intermédiaires mènent à des opportunités.
 
-Les API de rôle d’opportunité ne sont exposées que pour les abonnements pour lesquels la synchronisation CRM native n’est pas activée.
+Les API de rôle d’opportunité sont disponibles uniquement pour les abonnements pour lesquels la synchronisation CRM native n’est pas activée.
 
 ## Décrire
 
-Tout comme les opportunités, une description des opérations d’appel et de CRUD est exposée pour les rôles d’opportunité.
+Comme pour les opportunités, l’API fournit un appel de description et des opérations CRUD pour les rôles d’opportunité.
 
 ```http
 GET /rest/v1/opportunities/roles/describe.json
@@ -113,7 +113,9 @@ GET /rest/v1/opportunities/roles/describe.json
 
 ## Requête
 
-Notez que les `dedupeFields` et les `searchableFields` sont un peu différents des opportunités. `dedupeFields` fournit en fait une clé composite, où les trois éléments `externalOpportunityId`, `leadId` et `role` sont requis. Pour que la création d’enregistrements réussisse, les champs d’ID doivent exister dans l’instance de destination pour que l’opportunité et le lien de prospect existent. Par `searchableFields`, `marketoGUID`, `leadId` et `externalOpportunityId` sont tous valides pour les requêtes seules et utilisent un modèle identique à Opportunités, mais il existe une option supplémentaire consistant à utiliser la clé composée pour la requête, ce qui nécessite l’envoi d’un objet JSON via POST, avec le paramètre de requête supplémentaire `_method=GET`.
+Les valeurs `dedupeFields` et `searchableFields` diffèrent des opportunités. `dedupeFields` fournit une clé composée qui nécessite `externalOpportunityId`, `leadId` et `role`. Pour que la création d’enregistrements réussisse, l’opportunité et le prospect référencés par les champs d’identifiant doivent exister dans l’instance de destination.
+
+Les valeurs `searchableFields` `marketoGUID`, `leadId` et `externalOpportunityId` sont valides pour les requêtes individuelles qui utilisent le même modèle que les opportunités. Vous pouvez également effectuer une requête à l’aide de la clé composée . Cette requête nécessite un objet JSON envoyé via POST avec le paramètre de requête `_method=GET`.
 
 ```http
 POST /rest/v1/opportunities/roles.json?_method=GET
@@ -148,11 +150,11 @@ POST /rest/v1/opportunities/roles.json?_method=GET
 }
 ```
 
-Cela produit le même type de réponse qu’une requête GET standard, mais avec une interface différente pour effectuer la requête.
+Cette requête produit le même type de réponse qu’une requête GET standard, mais utilise une interface de requête différente.
 
 ## Créer et mettre à jour
 
-Les rôles d’opportunité ont la même interface pour créer et mettre à jour des enregistrements que les opportunités.
+Créez et mettez à jour les rôles d’opportunité à l’aide de la même interface que les opportunités.
 
 ```http
 POST /rest/v1/opportunities/roles.json
@@ -200,7 +202,9 @@ POST /rest/v1/opportunities/roles.json
 
 ## Supprimer
 
-Vous pouvez supprimer des rôles d’opportunité en dédupliquant des champs ou des champs d’ID. Spécifiez à l’aide du paramètre deleteBy avec une valeur de dedupeFields ou idField. S’il n’est pas spécifié, la valeur par défaut est dedupeFields. Le corps de la requête contient un tableau d’entrée des rôles d’opportunité à supprimer. Un maximum de 300 rôles d’opportunité par appel est autorisé.
+Supprimer les rôles d’opportunité par champs de déduplication ou champ d’ID. Définissez le paramètre deleteBy sur dedupeFields ou idField. La valeur par défaut est dedupeFields.
+
+Le corps de la requête contient un tableau d’entrée des rôles d’opportunité à supprimer. Chaque appel autorise un maximum de 300 rôles d’opportunité.
 
 ```http
 POST /rest/v1/opportunities/roles/delete.json
@@ -235,6 +239,6 @@ POST /rest/v1/opportunities/roles/delete.json
 
 ## Délais dépassés
 
-- Le délai d’expiration des points d’entrée du rôle d’opportunité est de 30, sauf indication ci-dessous
-   - Rôles de l’opportunité de synchronisation : 60 s
-   - Supprimer rôles d’opportunité : 60 s
+- Le délai d’expiration des points d’entrée du rôle d’opportunité est de 30, sauf indication contraire.
+- Le délai d’expiration des rôles d’opportunité de synchronisation est de 60.
+- Le délai d’expiration de la suppression des rôles d’opportunité est de 60.

@@ -10,10 +10,10 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 746
-ht-degree: 2%
+source-wordcount: 686
+ht-degree: 3%
 
 ---
 
@@ -21,16 +21,23 @@ ht-degree: 2%
 
 [Référence des points d’entrée des listes de comptes nommés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Account-Lists)
 
-[Les listes de comptes nommés](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/target-account-management/target/account-lists) dans Marketo représentent des ensembles de comptes nommés. Elles peuvent être utilisées dans de nombreux cas, notamment pour la catégorisation, l’enrichissement des données et le filtrage intelligent des campagnes. Les API de liste des comptes nommés permettent la gestion à distance de ces ressources de liste et de leur appartenance.
+Les [listes de comptes nommés](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/target-account-management/target/account-lists) sont des ensembles de comptes nommés dans Marketo. Utilisez-les pour la catégorisation, l’enrichissement des données et le filtrage intelligent des campagnes.
+
+Les API Named Account List vous permettent de gérer à distance des ressources de liste et leur appartenance.
 `Content`
 
 ## Autorisations
 
-Pour interroger les listes de comptes nommés, vous devez disposer de l&#39;autorisation Lecture seule liste des comptes nommés ou Lecture-écriture liste des comptes nommés . Pour créer, mettre à jour ou supprimer des listes, l’autorisation Lecture-écriture sur la liste des comptes nommés est requise. L’appartenance à une liste de requêtes nécessite les autorisations de compte nommé en lecture seule ou de compte nommé en lecture-écriture, tandis que la gestion de l’appartenance nécessite les autorisations de compte nommé en lecture-écriture.
+L’autorisation requise dépend de l’opération :
+
+- Listes des comptes nommés par la requête : liste des comptes nommés en lecture seule ou liste des comptes nommés en lecture-écriture.
+- Créer, mettre à jour ou supprimer des listes : liste des comptes nommés en lecture-écriture.
+- Appartenance à la liste de requête : compte nommé en lecture seule ou compte nommé en lecture-écriture.
+- Gérer l’appartenance à une liste : compte nommé en lecture-écriture.
 
 ## Modèle
 
-Les listes de comptes nommés comportent un nombre limité de champs standard et ne sont pas extensibles avec des champs personnalisés.
+Les listes de comptes nommés comportent un ensemble limité de champs standard et ne prennent pas en charge les champs personnalisés.
 `Named Account List Field`
 
 | Nom | Type de données | Mise à jour possible | Notes |
@@ -43,7 +50,9 @@ Les listes de comptes nommés comportent un nombre limité de champs standard et
 
 ## Requête
 
-L’interrogation des listes de comptes est simple et facile. Actuellement, il n’existe que deux filterTypes valides pour l’interrogation des listes de comptes nommés : « dedupeFields » et « idField ». Le champ sur lequel appliquer un filtre est défini dans le paramètre `filterType` de la requête et les valeurs sont définies `filterValues as` une liste séparée par des virgules. Les filtres `nextPageToken` et `batchSize` sont également des paramètres facultatifs.
+Les requêtes de liste de comptes nommés prennent en charge deux filterTypes : « dedupeFields » et « idField ». Définissez le champ dans le paramètre de requête `filterType` et indiquez les valeurs dans `filterValues as` une liste séparée par des virgules.
+
+Les filtres `nextPageToken` et `batchSize` sont facultatifs.
 
 ```http
 GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fb,dff23271-f996-47d7-984f-f2676861b5fc
@@ -78,11 +87,13 @@ GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f99
 
 ## Créer et mettre à jour
 
-La création et la mise à jour des enregistrements de liste de comptes nommés suivent les modèles établis pour les autres opérations de création et de mise à jour de la base de données de leads. Gardez à l’esprit que les listes de comptes nommés ne comportent qu’un seul champ modifiable, `name`.
+Créez et mettez à jour des enregistrements de liste de comptes nommés à l’aide du modèle de base de données de leads standard. Les listes de comptes nommés ne comportent qu’un seul champ modifiable : `name`.
 
-Le point d’entrée autorise deux types d’actions standard : « createOnly » et « updateOnly ».  `action defaults` de « createOnly ».
+Le point d’entrée prend en charge deux types d’actions standard : « createOnly » et « updateOnly ». `action defaults` de « createOnly ».
 
-Le `dedupeBy parameter` facultatif peut être spécifié si l’action est `updateOnly`.  Les valeurs autorisées sont « dedupeFields » (correspondant à « name ») ou « idField » (correspondant à « marketoGUID »).  Dans les modes de `createOnly`, seul le champ « name » est autorisé comme `dedupeBy`. Vous pouvez envoyer jusqu’à 300 enregistrements à la fois.
+Vous pouvez spécifier la `dedupeBy parameter` facultative lorsque l’action est `updateOnly`. Les valeurs autorisées sont « dedupeFields », qui correspond à « name », et « idField », qui correspond à « marketoGUID ».
+
+Dans les modes de `createOnly`, seul le champ « name » est autorisé comme `dedupeBy`. Vous pouvez envoyer jusqu’à 300 enregistrements à la fois.
 
 ```http
 POST /rest/v1/namedAccountLists.json
@@ -124,7 +135,9 @@ POST /rest/v1/namedAccountLists.json
 
 ## Supprimer
 
-La suppression des listes de comptes nommés est simple et peut être effectuée en fonction du `name` ou de la `marketoGUID` de la liste. Pour sélectionner la clé que vous souhaitez utiliser, transmettez « dedupeFields » pour le nom ou « idField » pour marketoGUID dans le membre `deleteB` de votre requête. Si cette option n’est pas définie, les champs dédupliqués seront utilisés par défaut. Vous pouvez supprimer jusqu’à 300 enregistrements à la fois.
+Supprimez les listes de comptes nommés à l’aide de la `name` ou de la `marketoGUID` de la liste. Pour sélectionner la clé, transmettez « dedupeFields » pour le nom ou « idField » pour marketoGUID dans le membre `deleteB` de la requête.
+
+Si cette valeur n’est pas définie, la valeur par défaut est dedupeFields. Vous pouvez supprimer jusqu’à 300 enregistrements à la fois.
 
 ```http
 POST /rest/v1/namedAccountLists/delete.json
@@ -176,13 +189,13 @@ POST /rest/v1/namedAccountLists/delete.json
 }
 ```
 
-Dans le cas où aucun enregistrement n’est trouvé pour une clé donnée, l’élément de résultat correspondant comporte un `status` de « ignoré » et un motif avec un code et un message décrivant l’échec, comme illustré dans l’exemple ci-dessus.
+Si aucun enregistrement n’est trouvé pour une clé, l’élément de résultat correspondant comporte un `status` de « ignoré ». Elle comprend également une raison avec un code et un message qui décrivent l’échec.
 
 ## Gestion de l’appartenance
 
 ### Appartenance à la requête
 
-La requête d’appartenance à une liste de comptes nommée est simple et ne nécessite que le `i` de la liste de comptes. Les paramètres facultatifs sont les suivants :
+Interrogez l’appartenance à la liste des comptes nommés en fournissant la `i` de la liste des comptes. Les paramètres facultatifs sont les suivants :
 
 -`field` - liste de champs séparés par des virgules à inclure dans les enregistrements de réponse
 -`nextPageToke` - pour paginer dans le jeu de résultats
@@ -219,7 +232,7 @@ GET /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 ### Ajouter des membres
 
-Les comptes nommés peuvent facilement être ajoutés à une liste de comptes nommés. Les comptes ne peuvent être ajoutés qu’en utilisant leur marketoGUID. Vous pouvez ajouter jusqu’à 300 enregistrements à la fois.
+Ajoutez des comptes nommés à une liste de comptes nommés à l’aide de leur marketoGUID. Vous pouvez ajouter jusqu’à 300 enregistrements à la fois.
 
 ```http
 POST /rest/v1/namedAccountList/{id}/namedAccounts.json
@@ -259,7 +272,7 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 ### Supprimer les membres
 
-La suppression d’enregistrements d’une liste de comptes comporte un chemin d’accès différent, mais la même interface, nécessitant un `marketoGUI` pour chaque enregistrement que vous souhaitez supprimer. Vous pouvez supprimer jusqu’à 300 enregistrements à la fois.
+La suppression d’enregistrements d’une liste de comptes utilise un chemin d’accès différent, mais la même interface. Fournissez un `marketoGUI` pour chaque enregistrement à supprimer. Vous pouvez supprimer jusqu’à 300 enregistrements à la fois.
 
 ```http
 POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
@@ -299,10 +312,10 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
 
 ## Délais dépassés
 
-- Le délai d’expiration des points d’entrée de liste de comptes nommés est de 30, sauf indication ci-dessous
-   - Synchroniser les listes de comptes nommés : 60s
-   - Supprimer les listes de comptes nommés : 60s
-   - Obtenir les listes de comptes nommés : 60s
-   - Ajouter des membres de la liste des comptes nommés : 60s
-   - Supprimer les membres de la liste des comptes nommés : 60s
-   - Obtenir les membres de la liste des comptes nommés : 60s
+- Le délai d’expiration des points d’entrée de liste de comptes nommés est de 30, sauf indication contraire.
+- Le délai d’expiration de la synchronisation des listes de comptes nommés est de 60 s.
+- Le délai d’expiration de la suppression des listes de comptes nommés est de 60 s.
+- Le délai d’expiration de l’option Obtenir les listes de comptes nommés est de 60 ans.
+- Le délai d’expiration de l’option Ajouter des membres de liste de comptes nommés est de 60 s.
+- Le délai d’expiration de la suppression des membres de la liste des comptes nommés est de 60 s.
+- Le délai d’expiration de la fonction Obtenir les membres de la liste des comptes nommés est de 60 ans.

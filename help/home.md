@@ -12,22 +12,22 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 141
+source-wordcount: 134
 ht-degree: 3%
 
 ---
 
 # Documentation destinée aux développeurs de Marketo Engage
 
-Documentation détaillée pour vous aider à maîtriser les API Marketo Engage
+Utilisez cette documentation pour savoir comment créer avec les API Marketo Engage et les fonctionnalités de développement.
 
-* [**Prise en main**](getting-started.md) Familiarisez-vous avec les API de Marketo Engage.
-* [**API REST**](https://developer.adobe.com/marketo-apis/) Lisez, écrivez et mettez à jour vos données Marketo Engage via l’API REST.
-* [**Webhooks**](webhooks/webhooks.md) Communiquez avec les services web tiers à l’aide de Webhooks.
-* [**Bibliothèques clientes**](https://github.com/Marketo/Community-Supported-Client-Libraries) utilisez du code source ouvert pour développer les fonctionnalités de Marketo Engage.
-* [**Script Email**](email-scripting.md) Utilisez les API Marketo Engage pour créer et modifier des emails et des modèles d’email.
-* [**Suivi des leads**](javascript-api/lead-tracking.md) gérez vos leads client.
-* [**Mobile Marketo**](mobile/mobile.md) utilisez Marketo Mobile pour écouter et répondre aux clients sur leurs appareils mobiles.
-* [**Web Personalization**](javascript-api/web-personalization.md) utilisez l’API JavaScript pour effectuer le suivi des événements et la personnalisation dynamique d’une page web.
+* [**Prise en main**](getting-started.md) — Découvrez les principes de base des API Marketo Engage.
+* [**API REST**](https://developer.adobe.com/marketo-apis/) — La lecture, l’écriture et la mise à jour des données Marketo Engage via l’API REST.
+* [**Webhooks**](webhooks/webhooks.md) — Communiquez avec des services Web tiers par le biais de Webhooks.
+* [**Bibliothèques clientes**](https://github.com/Marketo/Community-Supported-Client-Libraries) — Utilisez du code open source pour étendre Marketo Engage.
+* [**Script Email**](email-scripting.md) — Créez et modifiez des e-mails et des modèles d&#39;e-mail.
+* [**Suivi des prospects**](javascript-api/lead-tracking.md) — Gérez les prospects des clients.
+* [**Mobile Marketo**](mobile/mobile.md) : utilisez Marketo Mobile pour écouter les clients sur leurs appareils mobiles et leur répondre.
+* [**Web Personalization**](javascript-api/web-personalization.md) : utilisez l’API JavaScript pour effectuer le suivi des événements et personnaliser de manière dynamique les pages web.

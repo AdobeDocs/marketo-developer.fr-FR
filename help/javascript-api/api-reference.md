@@ -10,20 +10,24 @@ feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 426
+source-wordcount: 414
 ht-degree: 9%
 
 ---
 
 # Référence de l’API Munchkin
 
-Munchkin fournit plusieurs fonctions qui peuvent être appelées manuellement via Javascript. Ils peuvent permettre un suivi personnalisé des événements de navigateur, tels que les lectures de vidéos, ou les clics sur des liens non pertinents.
+Munchkin fournit des fonctions JavaScript pour le suivi personnalisé des événements de navigateur. Vous pouvez, par exemple, effectuer le suivi des lectures vidéo ou des clics sur des éléments qui ne sont pas des liens.
 
 ## Fonctions
 
-L’API Munchkin comprend les fonctions suivantes : `init`, `createTrackingCookie` et `munchkinFunction`.
+L’API Munchkin offre les fonctions suivantes :
+
+- `init`
+- `createTrackingCookie`
+- `munchkinFunction`
 
 <a name="munchkin_init"></a>
 
@@ -42,7 +46,9 @@ Munchkin.init('299-BYM-827');
 
 ### Munchkin.createTrackingCookie()
 
-Lorsqu’elle est appelée, cette option vérifie qu’un cookie `_mkto_trk` existe dans le navigateur et, dans le cas contraire, en crée un. Cela s’avère utile pour le suivi des utilisateurs et utilisatrices lors d’actions spécifiques, telles que l’enregistrement ou le téléchargement d’une ressource, si `cookieAnon` est défini sur false.
+`Munchkin.createTrackingCookie()` vérifie si un cookie `_mkto_trk` existe dans le navigateur. Si le cookie n’existe pas, la fonction en crée un.
+
+Lorsque `cookieAnon` est défini sur false, utilisez cette fonction pour suivre les utilisateurs lors d’actions spécifiques, telles que l’enregistrement ou le téléchargement d’une ressource.
 
 | Nom du paramètre | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |
@@ -54,7 +60,7 @@ Munchkin.createTrackingCookie(true);
 
 ### Munchkin.munchkinFunction()
 
-Utilisé pour générer des comportements de suivi personnalisés, tels que les lectures et les pauses du lecteur vidéo, ou les visites de page pour une navigation non standard, comme les codes de hachage.
+Utilisez des `Munchkin.munchkinFunction()` pour créer des comportements de suivi personnalisés. Par exemple, suivez l’activité du lecteur vidéo ou les visites de page à partir d’une navigation non standard telle que des modifications de hachage.
 
 | Nom du paramètre | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |
@@ -63,7 +69,7 @@ Utilisé pour générer des comportements de suivi personnalisés, tels que les 
 
 #### visitWebPage
 
-L’appel de `munchkinFunction()` avec `visitWebPage` envoie une activité de « visite » à Marketo pour l’utilisateur actuel. Vous pouvez personnaliser l’URL et les `querystring` qui sont envoyés avec l’objet de données dans le deuxième argument.
+L’appel de `munchkinFunction()` avec `visitWebPage` envoie une activité de « visite » à Marketo pour l’utilisateur actuel. Utilisez l’objet de données dans le deuxième argument pour personnaliser l’URL et le `querystring`.
 
 | Data Property Name | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |
@@ -82,7 +88,7 @@ Munchkin.munchkinFunction('visitWebPage', {
 
 #### clickLink
 
-L’appel de `munchkinFunction()` avec `clickLink` envoie une activité de clic vers Marketo pour l’utilisateur actuel. Vous pouvez personnaliser l’URL de clic avec la propriété `href` dans l’objet de données.
+L’appel de `munchkinFunction()` avec `clickLink` envoie une activité de clic vers Marketo pour l’utilisateur actuel. Utilisez la propriété `href` dans l’objet de données pour personnaliser l’URL de clic.
 
 | Data Property Name | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |

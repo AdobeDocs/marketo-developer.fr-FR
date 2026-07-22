@@ -11,13 +11,21 @@ subfeature_v2:
   - id: ad89fb33-8541-4339-afe7-bb13d1633714
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 112
+source-wordcount: 98
 ht-degree: 0%
 
 ---
 
 # Étapes de flux en libre-service
 
-Les étapes de flux en libre-service sont un ensemble de fonctionnalités permettant à un intégrateur de déployer une API web qui peut être utilisée comme étape de flux dans les campagnes intelligentes Marketo. Un service d’étape de flux peut recevoir les prospects et d’autres données associées, effectuer tout traitement nécessaire, y compris l’appel d’autres services web, et ensuite écrire les données de prospect et d’activité dans Marketo par le biais d’un rappel. La documentation destinée aux développeurs se trouve sur [GitHub](https://github.com/adobe/Marketo-SSFS-Service-Provider-Interface).
+Les étapes de flux en libre-service permettent à un intégrateur de déployer une API web en tant qu’étape de flux dans les campagnes intelligentes Marketo.
+
+Un service d’étape de flux peut :
+
+- Recevez les données de prospect et connexes.
+- Traitez les données, y compris en appelant d’autres services web.
+- Écrivez les données de prospect et d’activité dans Marketo par le biais d’un rappel.
+
+Pour plus d’informations sur l’implémentation, voir la [documentation destinée aux développeurs sur GitHub](https://github.com/adobe/Marketo-SSFS-Service-Provider-Interface).

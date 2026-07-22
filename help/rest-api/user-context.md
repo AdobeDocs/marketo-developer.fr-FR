@@ -16,19 +16,21 @@ role_v2:
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 296
+source-wordcount: 273
 ht-degree: 5%
 
 ---
 
 # Contexte utilisateur
 
-L’API User Context JavaScript expose les données au niveau de l’utilisateur et du visiteur sur plusieurs sessions afin d’activer une fonctionnalité de personnalisation avancée utilisant le comportement et les données historiques de l’utilisateur. L’API va au-delà de la lecture de données et expose des variables personnalisées qui vous permettent de transmettre des données et des événements significatifs au serveur principal RTP à des fins de segmentation avancée et de personnalisation. Fonctionnalités supplémentaires : [Triggers](../javascript-api/triggers.md), [Correspondance des motifs](../javascript-api/pattern-match.md).
+L’API User Context JavaScript expose les données au niveau de l’utilisateur et du visiteur sur plusieurs sessions. Utilisez le comportement historique et les données pour créer une personnalisation avancée.
 
-- Vous devez devenir client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
-- L’API User Context est une fonctionnalité qui doit être activée sur demande par le support Marketo. Lorsque l’API est activée, un objet userContext sous l’objet global RTP est exposé.
+L’API fournit également des variables personnalisées pour envoyer des données et des événements au serveur principal RTP à des fins de segmentation et de personnalisation. Consultez les fonctionnalités [Triggers](../javascript-api/triggers.md) et [Correspondance des motifs](../javascript-api/pattern-match.md) associées.
+
+- Vous devez être client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site.
+- Vous devez demander à l’assistance Marketo d’activer l’API User Context. Après l’activation, un objet userContext est exposé sous l’objet global RTP.
 
 ## Attributs de contexte utilisateur
 
@@ -40,7 +42,7 @@ L’API User Context JavaScript expose les données au niveau de l’utilisateur
 
 ## Définition de variables personnalisées
 
-Ajout de données personnalisées au contexte utilisateur.
+Définissez des variables personnalisées pour ajouter des données au contexte utilisateur.
 
 ### Utilisation
 
@@ -52,11 +54,11 @@ Ajout de données personnalisées au contexte utilisateur.
 | `customVar` | Obligatoire | Chaîne | Nom de variable personnalisé. |
 | `my_custom_value` | Obligatoire | Chaîne | Valeur personnalisée à enregistrer sur la variable personnalisée dans l’index 1-5. |
 
-Remarque : les variables personnalisées sont envoyées au RTP uniquement lors de l’appel de la vue. Il est donc recommandé de définir des variables personnalisées avant d’appeler la vue. Sinon, elle sera envoyée uniquement lors du prochain appel d’affichage.
+Les variables personnalisées sont envoyées au RTP uniquement dans un appel de vue. Définissez des variables personnalisées avant l’appel d’affichage. Dans le cas contraire, les variables sont envoyées lors du prochain appel d’affichage.
 
-Restrictions des variables personnalisées
+Les variables personnalisées présentent les restrictions suivantes :
 
-- La longueur de la variable personnalisée ne peut pas dépasser 100 caractères.
+- Une variable personnalisée ne peut pas dépasser 100 caractères.
 - Les données de campagne sont limitées aux dix dernières visites avec dix campagnes par visite.
 
 ### Utilisation

@@ -14,18 +14,20 @@ role_v2:
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 263
+source-wordcount: 241
 ht-degree: 3%
 
 ---
 
 # Événements de données personnalisés
 
-Cette méthode envoie des événements personnalisés pour le suivi et la personnalisation en temps réel. Il peut être utilisé pour envoyer des données tierces ou pour déclencher votre propre événement personnalisé en fonction du comportement du visiteur. Les événements de données personnalisées sont comptabilisés une fois dans la session d’un visiteur.
+Utilisez cette méthode pour envoyer des événements personnalisés pour le suivi et la personnalisation en temps réel. Vous pouvez envoyer des données tierces ou déclencher un événement personnalisé en fonction du comportement des visiteurs.
 
-Vous devez devenir client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+Chaque événement de données personnalisé est comptabilisé une fois au cours de la session d’un visiteur.
+
+Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 
 | Paramètre | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |
@@ -44,7 +46,7 @@ rtp('send', 'event', customData);
 
 ### Envoyer l’événement à l’aide d’un tableau de chaînes pour les données personnalisées
 
-Le tableau de données personnalisé peut contenir un maximum de quatre éléments.  Si vous devez envoyer plus de quatre éléments, appelez plusieurs fois l’API d’événement d’envoi (avec un maximum de quatre éléments) jusqu’à ce que tous les éléments soient envoyés.
+Le tableau de données personnalisé peut contenir jusqu’à quatre éléments. Pour envoyer plus de quatre éléments, appelez plusieurs fois l’API d’événement d’envoi sans dépasser quatre éléments à chaque appel.
 
 ```javascript
 var customData = {value: ['MyEvent', 'download - example whitepaper']};
@@ -53,7 +55,9 @@ rtp('send', 'event', customData);
 
 ### Envoyer l’événement en fonction du clic sur le bouton
 
-Marketo personnalise le contenu de son site web pour les visiteurs et visiteuses web qui téléchargent un article technique spécifique. Pour ce faire, ils capturent le clic du visiteur sur le bouton de téléchargement du livre blanc, qui envoie un événement de données personnalisé. Segments RTP en temps réel de tous les visiteurs qui ont cliqué sur le bouton Télécharger le livre blanc, présentant à chaque visiteur une campagne personnalisée offrant 2 clics plus tard. Pour ce faire, affichez un autre élément de contenu lié au livre blanc téléchargé.
+Cet exemple montre comment envoyer un événement de données personnalisé lorsqu’un visiteur sélectionne le bouton permettant de télécharger un article technique spécifique. RTP peut utiliser l’événement pour segmenter ces visiteurs en temps réel.
+
+Après deux clics supplémentaires, le site web peut afficher une campagne personnalisée. Par exemple, la campagne peut présenter un autre élément de contenu lié au livre blanc téléchargé.
 
 ```html
 <button id="download-whitepaper" onclick="rtp('send', 'event', {value :'download - example whitepaper'})">Download</button>

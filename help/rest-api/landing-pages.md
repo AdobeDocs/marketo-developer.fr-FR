@@ -13,10 +13,10 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1221
-ht-degree: 1%
+source-wordcount: 917
+ht-degree: 2%
 
 ---
 
@@ -24,13 +24,13 @@ ht-degree: 1%
 
 [Référence du point d’entrée de la page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages)
 
-Les landing pages sont des pages web hébergées par Marketo.
+Les landing pages sont des pages web hébergées par Marketo. Utilisez les API REST Landing Pages pour interroger et gérer leurs métadonnées, leur contenu, leur cycle de vie et leur aperçu.
 
 ## Requête
 
-Comme la plupart des autres ressources, les pages de destination peuvent être interrogées [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageByNameUsingGET), [par identifiant](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageByIdUsingGET) et par [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/browseLandingPagesUsingGET). Ces requêtes ne renvoient que des métadonnées et la liste des sections de contenu d’une page de destination doit être interrogée séparément à l’aide de l’identifiant de la page de destination.
+Interroger les pages de destination [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageByNameUsingGET), [par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageByIdUsingGET) ou par [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/browseLandingPagesUsingGET). Ces requêtes renvoient uniquement des métadonnées. interroger séparément les sections de contenu d’une page de destination par identifiant de page ;
 
-L’interrogation du contenu de la page de destination renvoie une liste de sections de contenu disponibles dans la page de destination. Une section doit être présente dans la liste de contenu d’une page pour mettre à jour le contenu :
+L’interrogation du contenu d’une landing page renvoie ses sections de contenu disponibles. Une section doit apparaître dans cette liste avant de pouvoir la mettre à jour.
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/content.json
@@ -62,13 +62,15 @@ GET /rest/asset/v1/landingPage/{id}/content.json
 }
 ```
 
-Les résultats diffèrent entre les modèles guidés et les modèles de formulaire libre, car les pages de destination guidées sont fournies avec un ensemble de sections définies par le modèle dont elles sont dérivées, tandis que les pages de formulaire libre ne sont pas fournies avec des sections prédéfinies et leur contenu doit être ajouté avant la modification.  Notez que le format de l’attribut « content » peut varier en fonction de l’attribut « type » et selon que le champ est statique ou dynamique.
+Les pages de destination guidées comprennent des sections définies par leur modèle. Les pages à structure libre n’incluent pas de sections prédéfinies. Ajoutez donc leur contenu avant de le modifier.
+
+Le format de l’attribut `content` dépend de l’attribut `type` et du caractère statique ou dynamique du champ.
 
 ## Créer et mettre à jour
 
-[Les landing pages sont créées](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/createLandingPageUsingPOST) en se référant à un modèle. Les seuls champs obligatoires pour la création sont le nom, le modèle (l’identifiant du modèle) et le dossier dans lequel placer la page. Pour obtenir des métadonnées supplémentaires qui peuvent être renseignées, consultez la référence du point d’entrée .
+[Créer une landing page](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/createLandingPageUsingPOST) à partir d&#39;un modèle. Le nom de la page, l’ID du modèle et le dossier de destination sont obligatoires. Voir la référence du point d’entrée pour les métadonnées facultatives.
 
-Les types de contenu valides pour les points d’entrée [contenu de page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content) sont les suivants : texte enrichi, HTML, formulaire, image, rectangle, extrait de code.
+Les points d’entrée [contenu de la page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content) prennent en charge les types de contenu suivants : `richText`, `HTML`, `Form`, `Image`, `Rectangle` et `Snippet`.
 
 ```http
 POST rest/asset/v1/landingPages.json
@@ -119,25 +121,25 @@ Les métadonnées de page de destination peuvent être mises à jour avec le poi
 
 ## Validation
 
-Les landing pages suivent le modèle standard approuvé pour le brouillon, où il peut y avoir une version brouillon et/ou une version approuvée. Chaque fois que des mises à jour sont appliquées à une page, elles le sont d’abord à la version préliminaire, et ne sont affichées en direct que lorsque la page a été approuvée.
+Les landing pages utilisent le modèle standard brouillon et approuvé. Les mises à jour s’appliquent au brouillon et ne deviennent actives qu’après approbation.
 
 ## Supprimer
 
-Pour supprimer une page de destination, celle-ci doit d’abord être obsolète et non référencée par d’autres ressources Marketo, ainsi que non approuvée. Les pages sont supprimées individuellement avec le point d’entrée [Supprimer la page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/deleteLandingPageByIdUsingPOST). Les landing pages avec des boutons sociaux incorporés ne peuvent pas être supprimées via cette API.
+Avant de supprimer une page de destination, assurez-vous qu’elle n’est pas approuvée et qu’aucune autre ressource Marketo ne la référence. Supprimez des pages individuellement avec le point d’entrée [Supprimer la page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/deleteLandingPageByIdUsingPOST). Vous ne pouvez pas utiliser cette API pour supprimer des pages avec des boutons de réseaux sociaux incorporés.
 
 ## Cloner
 
-Marketo offre une méthode simple pour cloner une page de destination. Il s’agit d’une requête POST codée en application/x-www-url-formencoded.
+Clonez une page de destination avec une requête POST `application/x-www-url-formencoded`.
 
-Le paramètre de chemin d’accès `id` spécifie l’identifiant de la page de destination source à cloner.
+Le paramètre de chemin d’accès `id` spécifie la page de destination source.
 
-Le paramètre `name` est utilisé pour spécifier le nom de la nouvelle page de destination.
+Le paramètre `name` spécifie le nom de la nouvelle page de destination.
 
-Le paramètre `folder` est utilisé pour spécifier le dossier parent dans lequel la nouvelle page de destination est créée. Il se présente sous la forme d’un objet JSON incorporé contenant `id` et `type`.
+Le paramètre `folder` spécifie le dossier parent. Transmettez-le en tant qu’objet JSON incorporé contenant `id` et `type`.
 
-Le paramètre `template` est utilisé pour spécifier l’identifiant source du modèle de page de destination.
+Le paramètre `template` spécifie l’identifiant du modèle de page de destination source.
 
-Le paramètre `description` facultatif est utilisé pour décrire la nouvelle page de destination.
+Le paramètre facultatif `description` décrit la nouvelle page de destination.
 
 ```http
 POST /rest/asset/v1/landingPage/{id}/clone.json
@@ -183,7 +185,9 @@ name=MyNewLandingPage&folder={"type":"Program","id":1119}&template=57
 
 ## Section Gérer le contenu
 
-Les sections de contenu sont classées selon leur propriété d’index et finalement mises en page en fonction des règles CSS appliquées lorsqu’elles sont affichées par le client. Les sections de contenu sont incluses et gérées avec les points d’entrée [Ajouter](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/addLandingPageContentUsingPOST), [Mettre à jour](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) et [Supprimer](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/removeLandingPageContentUsingPOST) correspondants de la section de contenu de la page de destination et peuvent être interrogées à l’aide de [Obtenir le contenu de la page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET). Chaque section comporte un paramètre de type et de valeur. Le type détermine ce qui doit être placé dans la valeur .  Pour ces points d’entrée, les données sont transmises au format POST x-www-form-urlencoded, et non au format JSON.
+Les sections de contenu sont classées selon leur propriété `index` et affichées selon les règles CSS du client. Utilisez les points d’entrée [Ajouter](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/addLandingPageContentUsingPOST), [Mettre à jour](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) et [Supprimer](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/removeLandingPageContentUsingPOST) pour gérer les sections. Utilisez [Obtenir le contenu de la page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET) pour effectuer une requête.
+
+Chaque section comporte des paramètres `type` et `value`. Le `type` détermine le `value` attendu. Transmettez des données à ces points d’entrée en tant que `x-www-form-urlencoded` POST, et non en tant que JSON.
 
 **Types de section**
 
@@ -199,11 +203,15 @@ Les sections de contenu sont classées selon leur propriété d’index et final
 | SocialButton | Identifiant du bouton social. |
 | Vidéo | Identifiant de la vidéo. |
 
-Pour les pages de forme libre, toutes les sections de contenu souhaitées doivent être ajoutées et seront incorporées dans l’élément div avec l’ID `mktoContent`. Pour les pages guidées, une liste d’éléments prédéfinis peut être présente dans la liste à partir du point d’entrée [Get Landing Page Content](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET). Vous pouvez en ajouter plus ou mettre à jour leur [contenu](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) via leurs points d’entrée respectifs.
+Pour les pages à structure libre, ajoutez chaque section de contenu requise. Marketo les incorpore dans l’élément `div` avec l’ID `mktoContent`.
+
+Les pages guidées peuvent inclure des éléments prédéfinis renvoyés par [Obtenir le contenu de la page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET). Utilisez les points d’entrée correspondants pour ajouter des éléments ou [mettre à jour leur contenu](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST).
 
 ### Contenu dynamique
 
-Pour créer une section de contenu dynamique, elle doit déjà être présente dans la liste de contenu de la page de destination. Le point d’entrée [&#x200B; Mettre à jour le contenu de la page de destination &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) doit ensuite être utilisé pour définir le type sur « DynamicContent ». Lorsqu’une section est définie sur du contenu dynamique, elle crée des sections dynamiques sous-jacentes dans la section de contenu qui héritent toutes du type de base de l’élément converti. Chaque section dynamique hérite également du contenu de la section convertie.
+Pour rendre une section dynamique, assurez-vous d’abord qu’elle apparaît dans la liste de contenu de la page de destination. Utilisez ensuite [Mettre à jour la section de contenu de la page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) pour définir son type sur `DynamicContent`.
+
+Marketo crée des sections dynamiques sous-jacentes qui héritent du type de base et du contenu de l’élément converti.
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/dynamicContent/RVMtNDg=.json
@@ -269,11 +277,11 @@ segment=New Segment&value=New Content
 
 ## Variables
 
-Les variables modifiables sont l’une des fonctionnalités introduites dans les pages de destination guidées.  Les variables contiennent des valeurs pour les éléments d’une page de destination.  Les variables peuvent facilement être modifiées à l’aide de l’éditeur de page de destination, comme illustré ci-dessous :
+Les pages de destination guidées prennent en charge les variables modifiables contenant des valeurs d’élément. Modifiez des variables dans l’éditeur de page de destination :
 
 ![Variables de page de destination](assets/landing-page-variables.png)
 
-Les variables sont définies sous la forme de balises meta dans `<head>` élément d’un modèle de page de destination en mode guidé. Trois types de variables sont disponibles : chaîne, couleur et valeur booléenne.  Voici un exemple de trois définitions de variable :
+Les variables sont des balises meta dans l’élément `<head>` d’un modèle de page de destination guidée. Les types pris en charge sont String, Color et Boolean. L’exemple suivant définit une variable de chaque type :
 
 ```html
 <head>
@@ -320,7 +328,7 @@ GET /rest/asset/v1/landingPage/{id}/variables.json
 }
 ```
 
-Dans cet exemple, la page de destination guidée contient 3 variables : stringVar, colorVar, boolVar.
+Cette page de destination guidée contient trois variables : `stringVar`, `colorVar` et `boolVar`.
 
 ### Mise à jour
 
@@ -348,10 +356,10 @@ POST /rest/asset/v1/landingPage/{id}/variable/{variableId}.json?value={newValue}
 
 ## Aperçu de la page de destination
 
-Marketo fournit le point d’entrée [Obtenir le contenu complet de la page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageFullContentUsingGET) pour récupérer un aperçu en direct d’une page de destination telle qu’elle serait rendue dans un navigateur. Il existe un paramètre obligatoire, le paramètre `id` path , qui est l’identifiant de la page de destination que vous souhaitez prévisualiser. Deux paramètres de requête facultatifs supplémentaires sont disponibles :
+Utilisez [Obtenir le contenu complet de la page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageFullContentUsingGET) pour récupérer un aperçu généré par le navigateur. Le paramètre de chemin de `id` de la page de destination est obligatoire. Le point d’entrée accepte également deux paramètres de requête facultatifs :
 
-- segmentation : accepte un tableau d’objets JSON contenant les attributs segmentationId et segmentId. Lorsqu’elle est définie, prévisualise la page de destination comme si vous étiez un prospect correspondant à ces segments.
-- leadId : accepte l’ID entier d’un prospect. Lorsqu’elle est définie, prévisualise la page de destination comme si elle avait été vue par le prospect désigné.
+- `segmentation` : tableau d’objets JSON contenant des `segmentationId` et des `segmentId`. L’aperçu représente un prospect correspondant à ces segments.
+- `leadId` : ID de lead entier. L’aperçu représente le prospect spécifié.
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/fullContent.json?leadId=1001&segmentation=[{"segmentationId":1030,"segmentId":1103}]

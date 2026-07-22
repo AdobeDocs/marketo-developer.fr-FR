@@ -11,50 +11,52 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1092
+source-wordcount: 897
 ht-degree: 1%
 
 ---
 
 # E-mail transactionnel
 
-Un cas d&#39;utilisation courant de l&#39;API Marketo consiste à déclencher l&#39;envoi d&#39;e-mails transactionnels à des enregistrements spécifiques via l&#39;appel API [Request Campaign](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/triggerCampaignUsingPOST). Il existe quelques exigences de configuration dans Marketo pour exécuter l’appel requis avec l’API REST Marketo.
+Utilisez l’API [Request Campaign](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/triggerCampaignUsingPOST) pour envoyer des e-mails transactionnels à des enregistrements Marketo spécifiques. Configurez l’e-mail et déclenchez la campagne avant d’effectuer la requête.
 
-- Le destinataire doit avoir un enregistrement dans Marketo
-- Un e-mail transactionnel doit être créé et approuvé dans votre instance Marketo.
-- Il doit y avoir une campagne de déclenchement active avec le message « La campagne est demandée, 1. Source : API de service web », configurée pour envoyer l’e-mail
+- Assurez-vous que le destinataire dispose d’un enregistrement Marketo.
+- Créez et approuvez un e-mail transactionnel dans l’instance Marketo.
+- Activez une campagne de déclenchement qui utilise « La campagne est demandée », 1. Source : API de service web » et envoie l’e-mail.
 
-Tout d’abord[&#x200B; créez et approuvez votre e-mail](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr). Si l’e-mail est véritablement transactionnel, vous devrez probablement le définir comme opérationnel, mais assurez-vous qu’il est juridiquement qualifié comme opérationnel. Elle est configurée à partir de l’écran Modifier sous Actions d’e-mail > Paramètres d’e-mail :
+Commencez par [créer et approuver l’e-mail](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr). Si l’e-mail est juridiquement qualifié d’opérationnel, configurez-le comme étant opérationnel sous Actions d’e-mail > Paramètres d’e-mail :
 
 ![Request-Campaign-Email-Settings](assets/request-campaign-email-settings.png)
 
 ![Demande-Campagne-Opérationnelle](assets/request-campaign-operational.png)
 
-Validez-le et nous sommes prêts à créer notre campagne :
+Valider l&#39;email avant de créer la campagne :
 
 ![RequestCampaign-Approve-Draft](assets/request-campaign-approve-draft.png)
 
-Si vous êtes un débutant dans la création de campagnes, consultez l’article [Créer une campagne dynamique](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html?lang=fr). Une fois que vous avez créé votre campagne, nous devons suivre ces étapes. Configurer votre liste dynamique avec le déclencheur Campagne est demandée :
+Si nécessaire, consultez [Création d’une campagne dynamique](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html?lang=fr). Configurez la liste dynamique de la campagne avec le déclencheur La campagne est demandée :
 
 ![Requête-Campagne-Liste Dynamique](assets/request-campaign-smart-list.png)
 
-Nous devons maintenant configurer le flux pour pointer une étape Envoyer un e-mail vers votre e-mail :
+Configurez une étape de flux Envoyer un e-mail qui référence l’e-mail transactionnel :
 
 ![Request-Campaign-Flow](assets/request-campaign-flow.png)
 
-Avant l’activation, vous devez définir certains paramètres dans l’onglet Planification . Si cet e-mail particulier ne doit être envoyé qu’une seule fois à un enregistrement donné, laissez les paramètres de qualification tels quels. S’il est nécessaire qu’ils reçoivent l’e-mail plusieurs fois, cependant, vous pouvez l’ajuster à chaque fois ou à l’une des cadences disponibles :
+Avant l’activation, configurez les paramètres de qualification dans l’onglet Planning . Conservez le paramètre par défaut si chaque enregistrement ne doit recevoir l’e-mail qu’une seule fois. Sinon, autorisez les destinataires à se qualifier à chaque fois ou à une cadence disponible.
 
-Nous sommes maintenant prêts à activer :
+Activer la campagne :
 
 ![Request-Campaign-Schedule](assets/request-campaign-schedule.png)
 
 ## Envoi des appels API
 
-**Remarque :** dans les exemples Java ci-dessous, nous utilisons le [package minimal-json](https://github.com/ralfstx/minimal-json) pour gérer les représentations JSON dans notre code.
+Les exemples Java utilisent le package [minimal-json](https://github.com/ralfstx/minimal-json) pour gérer les représentations JSON.
 
-La première partie de l’envoi d’un e-mail transactionnel par le biais de l’API consiste à s’assurer qu’un enregistrement avec l’adresse e-mail correspondante existe dans votre instance Marketo et que nous avons accès à son identifiant de prospect. Pour les besoins de cette publication, nous supposons que les adresses e-mail se trouvent déjà dans Marketo et que nous devons uniquement récupérer l’identifiant de l’enregistrement. Pour cela, nous utilisons l’appel [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET). Examinons notre méthode principale pour demander la campagne :
+Avant d’envoyer l’e-mail, vérifiez qu’il existe un enregistrement Marketo pour l’adresse e-mail et récupérez son ID de prospect. Cet exemple suppose que l’adresse e-mail existe déjà.
+
+Utilisez [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET) pour récupérer l’identifiant. La méthode principale suivante demande ensuite la campagne :
 
 ```java
 package dev.marketo.blog_request_campaign;
@@ -88,14 +90,14 @@ public class App
 }
 ```
 
-Pour obtenir ces résultats à partir de la réponse JsonObject de leadsRequest, nous devons écrire du code . Pour récupérer le premier résultat dans le tableau , nous devons extraire le tableau de JsonObject et obtenir l’objet indexé à 0 :
+Extrayez le tableau de résultats de la réponse `JsonObject` et récupérez l’objet à l’index 0 :
 
 ```java
 JsonArray leadsResult = leadsRequest.getData().get("result").asArray();
 int leadId = leadsResult.get(0).asObject().get("id").asInt();
 ```
 
-À partir de là, nous n’avons plus qu’à lancer l’appel Demander la campagne . Pour ce faire, les paramètres requis sont ID dans l’URL de la requête et un tableau d’objets JSON contenant un membre, « id ». Examinons le code pour ceci :
+Appelez la campagne de demande avec l’identifiant de campagne dans l’URL de demande. Le corps de la requête contient un tableau d’objets JSON avec un membre `id` :
 
 ```java
 package dev.marketo.blog_request_campaign;

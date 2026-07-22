@@ -14,18 +14,18 @@ role_v2:
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 171
+source-wordcount: 188
 ht-degree: 5%
 
 ---
 
 # Correspondance de motifs
 
-RTP expose une fonction utilitaire pour vérifier si le motif correspond à une certaine chaîne. L’utilitaire ne peut pas être utilisé en mode asynchrone, car il renvoie une indication s’il existe une correspondance ou non.
+RTP fournit une fonction utilitaire qui vérifie si un modèle correspond à une chaîne. L’utilitaire renvoie un résultat de correspondance de manière synchrone et ne peut pas être utilisé de manière asynchrone.
 
-Vous devez devenir client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 
 ## Utilisation
 
@@ -33,12 +33,12 @@ Vous devez devenir client de Web Personalization et la balise [RTP doit être d�
 
 | Paramètre | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |
-| check_against | Obligatoire | Chaîne | Chaîne avec laquelle comparer le motif. Par exemple : URL de la page actuelle, nom du produit. |
-| pattern | Obligatoire | Chaîne | Ajoutez % pour le caractère générique. Le modèle peut être:start avec fin contenant une correspondance complète |
+| check_against | Obligatoire | Chaîne | Chaîne en fonction de laquelle comparer le modèle, par exemple l’URL de la page active ou un nom de produit. |
+| pattern | Obligatoire | Chaîne | Motif à faire correspondre. Ajoutez `%` comme caractère générique pour correspondre au début, à la fin ou au contenu d’une chaîne. Omettez `%` pour une correspondance complète. |
 
 ## Exemples
 
-Définissez la variable personnalisée dans l’index 1 si l’URL de la page actuelle se termine par « productA ».
+Cet exemple définit une variable personnalisée à l’index 1 lorsque l’URL de la page active se termine par « productA ».
 
 ```javascript
 if (rtp.checkPattern(window.location.href, '%productA')) {
@@ -46,7 +46,7 @@ if (rtp.checkPattern(window.location.href, '%productA')) {
 }
 ```
 
-Le chemin d’URL actuel est « /products/productB ». Cet exemple montre comment vérifier si le chemin d’accès contient « products » et définir une variable personnalisée.
+Dans l’exemple suivant, le chemin d’URL actuel est « /products/productB ». L’exemple vérifie si le chemin contient « products », puis définit une variable personnalisée.
 
 ```javascript
 var currentURLPath = '/products/productB';

@@ -16,32 +16,37 @@ topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
   - id: eb30f47f-d87a-400f-8f78-63ce7979ff56
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 311
-ht-degree: 1%
+source-wordcount: 267
+ht-degree: 2%
 
 ---
 
 # API JavaScript
 
-Voici un aperçu des fonctionnalités d’intégration de JavaScript côté client de Marketo. Vous devez disposer d’un compte Marketo pour utiliser ces fonctionnalités. En règle générale, l’implémentation implique simplement l’ajout d’un « code intégré » à votre propriété web. Vous pouvez éventuellement utiliser des fonctionnalités supplémentaires en appelant les fonctions JavaScript exposées par le code incorporé. Ces fonctions sont entièrement documentées ici.
+Les intégrations JavaScript côté client de Marketo fournissent des fonctionnalités de suivi des prospects, de formulaires, de personnalisation web et de contenu prédictif. Vous devez disposer d’un compte Marketo pour utiliser ces fonctionnalités.
 
-Le code incorporé est propre à votre instance Marketo, car contient un identifiant de compte. Obtenez le code incorporé en accédant au panneau approprié dans l’interface utilisateur de Marketo, copiez-le dans le presse-papiers, puis collez-le dans votre page web.
+L’implémentation implique généralement l’ajout de code incorporé à votre propriété web. Vous pouvez également appeler les fonctions JavaScript exposées par le code incorporé pour ajouter des fonctionnalités.
+
+Le code incorporé est propre à votre instance Marketo, car il contient un identifiant de compte. Dans l’interface utilisateur de Marketo, accédez au panneau approprié, copiez le code intégré dans le presse-papiers, puis collez-le dans la page web.
 
 ## Suivi des leads (Munchkin)
 
-Le code de suivi Marketo [Munchkin JavaScript](lead-tracking.md) est essentiel aux fonctionnalités de Marketo. Il vous permet de générer des pistes à partir des visites sur votre site web. Il effectue même le suivi des visiteurs qui ne vous ont pas encore communiqué leurs informations personnelles, créant des pistes anonymes qui incluent l’adresse IP et d’autres informations de l’utilisateur. Configurez Munchkin dans la page Munchkin de la zone Admin de Marketo.
+Le code de suivi Marketo [Munchkin JavaScript](lead-tracking.md) génère des prospects à partir des visites sur votre site web. Il suit également les visiteurs qui n’ont pas fourni d’informations personnelles et crée des prospects anonymes qui incluent l’adresse IP et d’autres informations de l’utilisateur.
+
+Configurez Munchkin sur la page Munchkin dans la zone Admin de Marketo.
 
 ## Formulaires 2.0
 
-[Forms 2.0](forms-api-reference.md) permet aux marketeurs de créer des formulaires web beaux, stables et flexibles sans connaissances en programmation. Forms peut résider sur des pages de destination Marketo et être incorporé sur n’importe quelle page de votre site web. Les principales fonctionnalités d’un formulaire web Marketo peuvent être étendues à l’aide de l’API JavaScript Forms 2.0.
+[Forms 2.0](forms-api-reference.md) permet aux spécialistes du marketing de créer des formulaires web sans connaissances en programmation. Forms peut résider sur des pages de destination Marketo ou être incorporé sur n’importe quelle page de votre site web.
+
+Utilisez l’API JavaScript Forms 2.0 pour étendre les fonctionnalités principales d’un formulaire web Marketo.
 
 ## Web Personalization
 
-[Marketo Web Personalization](web-personalization.md) est une plateforme de ciblage et de Personalization qui vous aide à interagir en temps réel avec des milliers de prospects sur votre site web en fonction de leur identité et de leurs activités.
+[Marketo Web Personalization](web-personalization.md) vous aide à interagir en temps réel avec les prospects de votre site Web en fonction de leur identité et de leurs activités.
 
 ## Contenu prédictif
 
-[Contenu prédictif &#x200B;](predictive-content.md) vous permet d’impliquer vos visiteurs et visiteuses web avec le contenu le plus pertinent, optimisé par le machine learning et l’analyse prédictive. Améliorez votre contenu avec des descriptions textuelles et des images, et incorporez plusieurs recommandations de contenu sur votre site web.
-
+[Contenu prédictif &#x200B;](predictive-content.md) utilise le machine learning et l’analyse prédictive pour présenter du contenu pertinent aux visiteurs et visiteuses web. Ajoutez des descriptions textuelles et des images à votre contenu, puis incorporez plusieurs recommandations de contenu sur votre site web.

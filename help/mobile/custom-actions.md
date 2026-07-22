@@ -14,22 +14,22 @@ topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: c1579802-ddd4-4214-8a91-97b2066abe11
   - id: d095671a-1355-40aa-8b5f-06c33c68080b
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 336
-ht-degree: 1%
+source-wordcount: 259
+ht-degree: 2%
 
 ---
 
 # Actions personnalisées
 
-Vous pouvez suivre l’interaction des utilisateurs et utilisatrices en envoyant des actions personnalisées. Lorsque votre application mobile appelle le SDK Marketo pour envoyer une action personnalisée, celle-ci est initialement enregistrée sur l’appareil. Le SDK Marketo vérifie ensuite s’il existe une connectivité Internet adéquate avant d’envoyer l’action personnalisée. Par conséquent, il peut y avoir un délai entre le moment où l’action personnalisée est envoyée et celui où elle est reçue par Marketo.
+Les actions personnalisées effectuent le suivi des interactions utilisateur dans votre application mobile. Lorsque l’application appelle le SDK Marketo pour envoyer une action personnalisée, le SDK enregistre d’abord l’action sur l’appareil. Le SDK envoie l’action lorsqu’il détecte une connectivité Internet adéquate. Il se peut donc que Marketo reçoive l’action après un délai.
 
 Les actions personnalisées peuvent être utilisées comme déclencheurs et filtres dans les campagnes intelligentes. Pour plus d’informations, voir [&#x200B; Activité des applications mobiles &#x200B;](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns).
 
 ## Envoi d’actions personnalisées sur iOS
 
-Envoyer une action personnalisée.
+Envoyez une action personnalisée.
 
 >[!BEGINTABS]
 
@@ -78,7 +78,7 @@ sharedInstance.reportAction("Bought Shirt", withMetaData:meta);
 
 >[!ENDTABS]
 
-Signaler immédiatement toutes les actions (envoyer toutes les actions enregistrées).
+Signaler immédiatement toutes les actions enregistrées.
 
 >[!BEGINTABS]
 
@@ -98,7 +98,7 @@ sharedInstance.reportAll();
 
 ## Envoi d’actions personnalisées sur Android
 
-1. Envoyer une action personnalisée.
+1. Envoyez une action personnalisée.
 
    ```
    Marketo.reportAction("Login", null);
@@ -116,7 +116,7 @@ sharedInstance.reportAll();
    Marketo.reportAction("Bought Shirt", meta);
    ```
 
-1. Signaler immédiatement toutes les actions personnalisées (envoyer toutes les actions enregistrées).
+1. Signalez immédiatement toutes les actions personnalisées enregistrées.
 
    ```
    Marketo.reportAll();
@@ -124,6 +124,8 @@ sharedInstance.reportAll();
 
 ## Résoudre les problèmes liés aux actions personnalisées
 
-La configuration des actions personnalisées pour appareils mobiles est simple, mais il existe des restrictions quant au nombre de caractères que vous pouvez envoyer de Mobile SDK vers Marketo. Assurez-vous que toutes vos actions personnalisées qui génèrent des rapports sur Marketo via le SDK mobile comportent moins de 20 caractères.
+Les noms des actions personnalisées envoyés de Mobile SDK vers Marketo doivent comporter moins de 20 caractères.
 
-**Remarque concernant les cas pratiques multi-utilisateurs sur un appareil partagé :** lorsqu’un utilisateur se connecte à une application mobile intégrée à Marketo SDK, le premier appel est effectué pour associer le prospect à l’installation de l’application. Une fois cet appel terminé, d’autres activités utilisateur dans l’application sont visibles dans le journal d’activité du prospect. Notez qu’il s’agit d’un appel asynchrone. En effet, si des actions personnalisées sont consignées immédiatement après la connexion, elles peuvent être associées à l’utilisateur précédemment connecté jusqu’à ce que l’appel associé réussisse.
+**Cas pratiques multi-utilisateurs sur un appareil partagé :** lorsqu’un utilisateur se connecte à une application mobile qui utilise Marketo SDK, le premier appel associe le prospect à l’installation de l’application. Une fois l’appel réussi, les activités utilisateur suivantes apparaissent dans le journal d’activité du prospect.
+
+L’appel d’association est asynchrone. Les actions personnalisées consignées immédiatement après la connexion peuvent être associées à l’utilisateur précédemment connecté jusqu’à ce que l’appel réussisse.

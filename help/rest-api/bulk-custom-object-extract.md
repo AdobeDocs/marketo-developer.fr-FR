@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1473
+source-wordcount: 1231
 ht-degree: 1%
 
 ---
@@ -23,17 +23,21 @@ ht-degree: 1%
 
 [Référence de point d’entrée d’extraction d’objet personnalisé en bloc](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects)
 
-Le jeu d’API REST d’extraction d’objets personnalisés en bloc fournit une interface de programmation pour récupérer de grands jeux d’enregistrements d’objets personnalisés en dehors de Marketo. Il s’agit de l’interface recommandée pour les cas d’utilisation qui nécessitent un échange continu de données entre Marketo et un ou plusieurs systèmes externes, à des fins d’ETL, d’entreposage de données et d’archivage.
+Les API REST d’extraction d’objets personnalisés en bloc récupèrent de grands ensembles d’enregistrements d’objets personnalisés dans Marketo. Utilisez ces API pour un échange de données continu entre Marketo et des systèmes externes, ETL, Data Warehouse et l’archivage.
 
-Cette API prend en charge l’exportation d’enregistrements d’objet personnalisés Marketo de premier niveau directement liés à un prospect. Transmettez le nom de l’objet personnalisé et une liste de prospects auxquels l’objet est lié. Pour chaque prospect de la liste, les enregistrements d’objet personnalisé liés qui correspondent au nom d’objet personnalisé spécifié sont écrits en tant que lignes dans le fichier d’exportation. Les données d’objet personnalisées sont visibles dans l’onglet [&#x200B; Objet personnalisé » de la page de détails du prospect dans l’interface utilisateur de Marketo](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
+L’API exporte les enregistrements d’objets personnalisés Marketo de premier niveau liés directement aux prospects. Spécifiez le nom de l’objet personnalisé et une liste de prospects liés. Pour chaque prospect, l’API écrit les enregistrements d’objet personnalisés liés correspondants sous forme de lignes dans le fichier d’exportation.
+
+Vous pouvez afficher les données d’objet personnalisées dans l’onglet [&#x200B; Objet personnalisé » de la page des détails du prospect dans l’interface utilisateur de Marketo](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
 
 ## Autorisations
 
-Les API d’extraction d’objets personnalisés en bloc nécessitent que l’utilisateur de l’API dispose d’un rôle avec l’une ou l’autre des autorisations « Objet personnalisé en lecture seule » ou « Objet personnalisé en lecture-écriture », ou les deux.
+L’utilisateur de l’API doit disposer d’un rôle avec l’autorisation Objet personnalisé en lecture seule, l’autorisation Objet personnalisé en lecture-écriture, ou les deux.
 
 ## Filtres
 
-L’extraction d’objet personnalisé prend en charge plusieurs options de filtre utilisées pour spécifier une liste de prospects liés à l’objet personnalisé. Si un prospect de la liste est lié à des enregistrements d’objet personnalisés correspondant à un nom d’objet personnalisé donné, les enregistrements sont écrits dans le fichier d’exportation. Un seul type de filtre peut être spécifié par tâche d&#39;exportation.
+Les filtres d’extraction d’objet personnalisé spécifient une liste de prospects liés à l’objet personnalisé. Si un prospect répertorié est lié à des enregistrements correspondant au nom d’objet personnalisé spécifié, l’API écrit ces enregistrements dans le fichier d’exportation.
+
+Spécifiez un seul type de filtre par tâche d’exportation.
 
 | Type de filtre | Type de données | Notes |
 | --- | --- | --- |
@@ -43,15 +47,15 @@ L’extraction d’objet personnalisé prend en charge plusieurs options de filt
 | `smartListName`* | Chaîne | Accepte le nom d’une liste dynamique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres des listes dynamiques au moment où la tâche commence à être traitée. Récupérez les noms des listes dynamiques à l’aide du point d’entrée Get Smart Lists. |
 | `smartListId`* | Nombre entier | Accepte l’identifiant d’une liste dynamique. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles qui sont membres des listes dynamiques au moment où la tâche commence à être traitée. Récupérez les identifiants de liste dynamique à l’aide du point d’entrée Get Smart Lists. |
 
-Le type de filtre n’est pas disponible pour certains abonnements. Si vous n’êtes pas disponible pour votre abonnement, vous recevez une erreur lors de l’appel du point d’entrée Créer une tâche d’exportation de lead (« 1035, Unsupported filter type for target subscription »). Les clients peuvent contacter l’assistance Marketo pour que cette fonctionnalité soit activée dans leur abonnement.
+Certains abonnements ne prennent pas en charge ce type de filtre. S’il n’est pas disponible, le point d’entrée Créer une tâche d’exportation principale renvoie `1035, Unsupported filter type for target subscription`. Contactez l’assistance Marketo pour demander cette fonctionnalité pour votre abonnement.
 
 ## Options
 
-Le point d’entrée [Créer une tâche d’exportation d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST) fournit plusieurs options de mise en forme. Ces options permettent à l’utilisateur ou à l’utilisatrice de :
+Le point d’entrée [Créer une tâche d’exportation d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST) offre les options suivantes :
 
-- Spécifier les champs à inclure dans le fichier exporté
-- Renommer les en-têtes de colonne de ces champs
-- Spécifier le format du fichier exporté
+- Spécifiez les champs à inclure dans le fichier d’exportation.
+- Renommez les en-têtes de colonne exportés.
+- Spécifiez le format du fichier d’exportation.
 
 | Paramètre | Type de données | Obligatoire | Notes |
 | --- | --- | --- | --- |
@@ -61,11 +65,17 @@ Le point d’entrée [Créer une tâche d’exportation d’objet personnalisé]
 
 ## Création d’un traitement
 
-Les paramètres de la tâche sont définis avant le lancement de l’exportation à l’aide du point d’entrée [Créer une tâche d’exportation d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST).
+Utilisez le point d’entrée [Créer une tâche d’exportation d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST) pour définir la tâche d’exportation.
 
-Le paramètre de chemin d’accès `apiName` obligatoire est le nom d’objet personnalisé renvoyé par le point d’entrée [Décrire l’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/describeUsingGET_1). Indique l’objet personnalisé Marketo à exporter. Les objets personnalisés CRM ne sont pas autorisés. Le paramètre `filter` obligatoire contient la liste des prospects liés à l’objet personnalisé. Il peut s’agir d’une liste statique ou d’une liste dynamique. Le paramètre `fields` obligatoire contient les noms d’API des attributs d’objet personnalisés à inclure dans le fichier d’exportation. En option, nous pouvons définir le `format` du fichier et le `columnHeaderNames`.
+La requête utilise les paramètres suivants :
 
-Par exemple, supposons que nous ayons créé un objet personnalisé appelé « Voiture » avec les champs suivants : Couleur, Marque, Modèle, VIN. Le champ de lien est l’ID de lead et le champ de déduplication est VIN.
+- `apiName` : paramètre de chemin d’accès obligatoire. Spécifie l’objet personnalisé Marketo à exporter, en utilisant le nom renvoyé par le point d’entrée [Décrire l’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/describeUsingGET_1). Les objets personnalisés CRM ne sont pas autorisés.
+- `filter` : obligatoire. Spécifie les leads liés en référençant une liste statique ou une liste dynamique.
+- `fields` : obligatoire. Indique les noms d’API des attributs d’objet personnalisés à inclure dans le fichier d’exportation.
+- `format` : facultatif. Indique le format du fichier d’exportation.
+- `columnHeaderNames` : facultatif. Spécifie les noms d&#39;en-tête de colonne de remplacement.
+
+Cet exemple utilise un objet personnalisé `Car` avec des champs `Color`, `Make`, `Model` et `VIN`. Le champ de lien est l’ID de lead et le champ de déduplication est VIN.
 
 Définition d’objet personnalisé
 
@@ -75,7 +85,7 @@ Champs d’objet personnalisés
 
 ![Champs d’objet personnalisés](assets/custom-object-car-fields.png)
 
-Nous pouvons appeler [Description de l’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/describeUsingGET_1) pour inspecter par programmation les attributs d’objet personnalisés qui apparaissent dans l’attribut `fields` dans la réponse.
+Appelez [Description de l’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/describeUsingGET_1) pour inspecter les attributs d’objet personnalisés par programmation. La réponse renvoie les attributs en `fields`.
 
 ```http
 GET /rest/v1/customobjects/car_c/describe.json
@@ -185,7 +195,7 @@ GET /rest/v1/customobjects/car_c/describe.json
 }
 ```
 
-Créez plusieurs enregistrements d’objet personnalisés et liez chacun d’eux à un prospect différent à l’aide du point d’entrée [Synchroniser les objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/syncCustomObjectsUsingPOST). Un prospect peut être lié à de nombreux enregistrements d’objets personnalisés. C’est ce qu’on appelle une relation « un à plusieurs ».
+Utilisez le point d’entrée [Synchroniser les objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/syncCustomObjectsUsingPOST) pour créer des enregistrements d’objets personnalisés et les lier à un prospect. Un prospect peut être lié à plusieurs enregistrements d’objets personnalisés, créant ainsi une relation un-à-plusieurs.
 
 ```http
 POST /rest/v1/customobjects/car_c.json
@@ -244,7 +254,7 @@ POST /rest/v1/customobjects/car_c.json
 }
 ```
 
-Chacun des trois prospects référencés ci-dessus appartient à une liste statique nommée « Acheteurs de voitures » dont la `id` est 1 081, comme vous pouvez le voir ci-dessous en appelant le point d’entrée [Obtenir les prospects par ID de liste](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/getLeadsByListIdUsingGET_1).
+Les trois prospects de cet exemple appartiennent à la liste statique `Car Buyers`, qui a une `id` de 1 081. Appelez le point d’entrée [Get Leads by List Id](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/getLeadsByListIdUsingGET_1) pour récupérer les membres de la liste.
 
 ```http
 GET /rest/v1/lists/1081/leads.json
@@ -283,7 +293,7 @@ GET /rest/v1/lists/1081/leads.json
 }
 ```
 
-Créons maintenant une tâche d’exportation pour récupérer ces enregistrements. À l’aide du point d’entrée [Créer une tâche d’exportation d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST), nous spécifions des attributs d’objet personnalisés dans le paramètre `fields` et un identifiant de liste statique dans le paramètre `filter`.
+Pour récupérer ces enregistrements, appelez le point d’entrée [Créer une tâche d’exportation d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST). Spécifiez les attributs d’objet personnalisés dans `fields` et l’identifiant de liste statique dans `filter`.
 
 ```http
 POST /bulk/v1/customobjects/car_c/export/create.json
@@ -319,7 +329,7 @@ POST /bulk/v1/customobjects/car_c/export/create.json
 }
 ```
 
-Cette opération renvoie un statut dans la réponse indiquant que la tâche a été créée. La tâche a été définie et créée, mais elle n&#39;a pas encore été lancée. Pour ce faire, le point d’entrée [Mettre en file d’attente la tâche d’exportation d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/enqueueExportCustomObjectsUsingPOST) doit être appelé à l’aide du `apiName` et du `exportId` de la réponse du statut de création.
+La réponse confirme la création du traitement, mais le démarrage de l’exportation n’est pas automatique. Transmettez `apiName` et le `exportId` renvoyé au point d’entrée [Mettre en file d’attente la tâche d’exportation d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/enqueueExportCustomObjectsUsingPOST) pour démarrer la tâche.
 
 ```http
 POST /bulk/v1/customobjects/car_c/export/f2c03f1d-226f-47c1-a557-357af8c2b32a/enqueue.json
@@ -341,13 +351,15 @@ POST /bulk/v1/customobjects/car_c/export/f2c03f1d-226f-47c1-a557-357af8c2b32a/en
 }
 ```
 
-Cela répond par un `status` initial de « Mise en file d’attente », après quoi est défini sur « Traitement » lorsqu’un emplacement d’exportation est disponible.
+La réponse mise en file d&#39;attente renvoie initialement un statut `Queued`. Lorsqu’un emplacement d’exportation devient disponible, le statut passe à `Processing`.
 
 ## Interroger le statut de la tâche
 
-Le statut ne peut être récupéré que pour les tâches créées par le même utilisateur de l’API.
+Vous ne pouvez récupérer le statut que pour les tâches créées par le même utilisateur de l’API.
 
-Puisqu’il s’agit d’un point d’entrée asynchrone, après avoir créé la tâche, nous devons interroger son statut pour déterminer sa progression. Interroger à l’aide du point d’entrée [Obtenir le statut de la tâche d’exportation d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsStatusUsingGET). Le statut n’est mis à jour qu’une fois toutes les 60 secondes. Il est donc déconseillé d’utiliser une fréquence d’interrogation inférieure à cette fréquence, qui reste excessive dans presque tous les cas. Le champ de statut peut répondre par l’une des options suivantes : Créé, En file d’attente, Traitement, Annulé, Terminé ou En échec.
+Comme l’exportation s’exécute de manière asynchrone, utilisez le point d’entrée [Obtenir le statut de la tâche d’exportation de l’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsStatusUsingGET) pour interroger sa progression. Le statut n’est mis à jour qu’une fois toutes les 60 secondes. N’effectuez donc pas d’interrogations plus fréquentes.
+
+Le statut peut être `Created`, `Queued`, `Processing`, `Canceled`, `Completed` ou `Failed`.
 
 ```http
 GET /bulk/v1/customobjects/{apiName}/export/{exportId}/status.json
@@ -370,7 +382,7 @@ GET /bulk/v1/customobjects/{apiName}/export/{exportId}/status.json
 }
 ```
 
-Le point d’entrée de statut répond indiquant que la tâche est toujours en cours de traitement et que le fichier n’est donc pas encore disponible pour récupération. Une fois que le `status` de traitement est remplacé par « Terminé », il peut être téléchargé.
+Cette réponse indique que la tâche est toujours en cours de traitement et que le fichier n’est donc pas disponible. Lorsque le statut de la tâche passe à `Completed`, le fichier est prêt à être téléchargé.
 
 ```json
 {
@@ -395,9 +407,9 @@ Le point d’entrée de statut répond indiquant que la tâche est toujours en c
 
 ## Récupération de vos données
 
-Pour récupérer le fichier d’une exportation d’objet personnalisé terminée, appelez simplement le point d’entrée [Obtenir l’exportation du fichier d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsFileUsingGET) avec vos `apiName` et `exportId`.
+Pour récupérer une exportation d’objet personnalisé terminée, transmettez `apiName` et `exportId` au point d’entrée [Obtenir l’exportation du fichier d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsFileUsingGET).
 
-La réponse contient un fichier formaté selon la configuration de la tâche. Le point d’entrée répond avec le contenu du fichier . Si un attribut d’objet personnalisé demandé est vide (ne contient aucune donnée), `null` est placé dans le champ correspondant dans le fichier d’exportation.
+Le point d’entrée renvoie le fichier au format configuré pour la tâche. Si un attribut d’objet personnalisé demandé ne contient aucune donnée, le champ d’exportation correspondant contient `null`.
 
 ```http
 GET /bulk/v1/customobjects/car_c/export/f2c03f1d-226f-47c1-a557-357af8c2b32a/file.json
@@ -410,11 +422,11 @@ leadId,color,make,model,vIN
 13,Fusion Red,Tesla,Roadster,SFGRC3C41FF154321
 ```
 
-Pour prendre en charge la récupération partielle et conviviale des données extraites, le point d’entrée du fichier prend éventuellement en charge le `Range` d’en-tête HTTP de type `bytes`. Si l’en-tête n’est pas défini, l’intégralité du contenu est renvoyée. Vous pouvez en savoir plus sur l’utilisation de l’en-tête Plage dans Marketo [Extraction en bloc](bulk-extract.md).
+Pour une récupération partielle ou pouvant être reprise, le point d’entrée du fichier prend en charge l’en-tête `Range` HTTP facultatif avec un type de plage de `bytes`. Si vous ne définissez pas l’en-tête , le point d’entrée renvoie l’intégralité du fichier. Pour plus d’informations, voir [&#x200B; Extraction en bloc &#x200B;](bulk-extract.md).
 
 ## Annulation d’un traitement
 
-Si une tâche n’a pas été configurée correctement ou devient inutile, elle peut facilement être annulée à l’aide du point d’entrée [Annuler la tâche d’exportation d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsFileUsingPOST). Cette opération répond avec un `status` indiquant que la tâche a été annulée.
+Pour annuler une tâche mal configurée ou qui n’est plus nécessaire, appelez le point d’entrée [&#x200B; Annuler la tâche d’exportation d’objet personnalisé &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsFileUsingPOST). Le statut de la réponse indique que le traitement est annulé.
 
 ```http
 POST /bulk/v1/customobjects/car_c/export/f2c03f1d-226f-47c1-a557-357af8c2b32a/cancel.json

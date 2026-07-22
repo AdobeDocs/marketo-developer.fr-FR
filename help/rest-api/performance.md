@@ -8,20 +8,20 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 146
+source-wordcount: 131
 ht-degree: 1%
 
 ---
 
 # Performance
 
-Cette page contient une liste de rubriques relatives aux performances que vous pouvez utiliser pour améliorer les performances de votre intégration.
+Utilisez les options de performances de cette page pour améliorer l’efficacité de votre intégration.
 
 ## Compression HTTP
 
-L’API REST Marketo prend en charge la compression HTTP des corps de réponse à l’aide des normes définies par la spécification HTTP 1.1. L’activation de la compression est recommandée, car elle réduit l’utilisation de la bande passante et le temps passé à récupérer les données.
+L’API REST Marketo prend en charge la compression du corps de la réponse HTTP telle que définie par la spécification HTTP 1.1. Activez la compression pour réduire l’utilisation de la bande passante et le temps de récupération des données.
 
 >[!NOTE]
 >
@@ -33,13 +33,13 @@ Pour activer la compression, incluez l’en-tête HTTP suivant dans la requête 
 Accept-Encoding: gzip
 ```
 
-L’API REST Marketo compresse le corps de la réponse et inclut cet en-tête :
+L’API REST Marketo compresse le corps de la réponse et inclut l’en-tête suivant :
 
 ```html
 Content-Encoding: gzip
 ```
 
-Voici un exemple utilisant Curl pour appeler le point d’entrée [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET) afin de récupérer 5 prospects :
+L’exemple cURL suivant appelle le point d’entrée [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET) pour récupérer cinq prospects :
 
 ```bash
 curl -H 'Accept-Encoding: gzip' 'https://123-ABC-456.mktorest.com/rest/v1/leads.json?filterType=id&filterValues=4,5,7,12,13'

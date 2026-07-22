@@ -13,16 +13,16 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 614
-ht-degree: 4%
+source-wordcount: 541
+ht-degree: 5%
 
 ---
 
 # Configuration
 
-Munchkin peut accepter différents paramètres de configuration pour personnaliser le comportement. Les paramètres de configuration sont les propriétés d&#39;un objet JavaScript transmis en tant que deuxième paramètre lors de l&#39;appel de [Munchkin.init()](api-reference.md#munchkin_init)
+Munchkin accepte les paramètres de configuration qui personnalisent son comportement. Transmettez les paramètres en tant que propriétés d’un objet JavaScript dans le deuxième paramètre de [Munchkin.init()](api-reference.md#munchkin_init).
 
 ```json
 Munchkin.init("AAA-BBB-CCC", {
@@ -32,25 +32,25 @@ Munchkin.init("AAA-BBB-CCC", {
 );
 ```
 
-L’objet des paramètres de configuration peut contenir un nombre illimité de propriétés du tableau ci-dessous.
+L’objet des paramètres de configuration peut contenir un nombre indéfini de propriétés dans le tableau suivant.
 
 ## Propriétés
 
 | Nom | Type de données | Description |
 | --- | --- | --- |
-| altIds | Tableau | Accepte un tableau de chaînes d’ID Munchkin. Lorsqu’elle est activée, cette option duplique toutes les activités web vers les abonnements ciblés, en fonction de leur identifiant Munchkin. |
+| altIds | Tableau | Accepte un tableau de chaînes d’ID Munchkin. Lorsqu’elle est activée, cette option duplique toutes les activités web sur les abonnements identifiés par leurs identifiants Munchkin. |
 | anonymizeIP | Booléen | Rend anonyme l’adresse IP enregistrée dans Marketo pour les nouveaux visiteurs. |
 | apiOnly | Booléen | Si la valeur est définie sur true, `Munchkin.Init()` fonction n’appelle pas `visitsWebPage`. Cela s’avère utile pour les applications web monopages qui nécessitent un contrôle total sur chaque événement `visitsWebPage`. |
-| asyncOnly | Booléen | Si la valeur est définie sur « true », envoie le de XMLHttpRequest de manière asynchrone. La valeur par défaut est false. |
-| clickTime | Nombre entier | Définit la durée du blocage après un clic pour autoriser la requête de suivi des clics (en millisecondes). Cela réduit la précision du suivi des clics. La valeur par défaut est de 350 ms. |
-| cookieAnon | Booléen | Si cette valeur est définie sur false, empêche le suivi et la création de cookies pour les nouveaux prospects anonymes. Les leads disposent de cookies et sont suivis après avoir rempli un formulaire Marketo ou en cliquant dessus à partir d’un e-mail Marketo. La valeur par défaut est « true ». |
+| asyncOnly | Booléen | Si la valeur est définie sur true, envoie XMLHttpRequests de manière asynchrone. La valeur par défaut est false. |
+| clickTime | Nombre entier | Définit le temps, en millisecondes, à bloquer après un clic afin que la demande de suivi des clics puisse se terminer. La réduction de cette valeur réduit la précision du suivi des clics. La valeur par défaut est de 350 ms. |
+| cookieAnon | Booléen | Si cette valeur est définie sur false, empêche le suivi et la création de cookies pour les nouveaux prospects anonymes. Les leads reçoivent des cookies et sont suivis après l’envoi d’un formulaire Marketo ou un clic sur à partir d’un e-mail Marketo. La valeur par défaut est « true ». |
 | cookieLifeDays | Nombre entier | Définit la date d’expiration de tout nouveau cookie de suivi Munchkin sur ce nombre de jours à l’avenir. La valeur par défaut est de 730 jours (2 ans). |
 | customName | Chaîne | Nom de page personnalisé. Utilisation du système uniquement. |
-| <a name="domainlevel"></a>domainLevel | Nombre entier | Définit le nombre de parties du domaine de la page à utiliser lors de la définition de l’attribut de domaine du cookie.Supposons, par exemple, que le domaine de la page en cours soit « www.example.com ».domainLevel : 2 définisse l’attribut de domaine de cookie sur « .example.com »domainLevel : 3 définisse l’attribut de domaine de cookie sur « .www.example.com »Background :Munchkin afin de gérer automatiquement certains domaines de niveau supérieur à deux lettres. Il s’agit par défaut de deux parties dans les cas normaux où le domaine de niveau supérieur comporte trois lettres. Par exemple, « www.example.com », les deux parties les plus à droite sont utilisées pour définir le cookie « .example.com ». Pour deux codes de pays de lettre tels que « .jp », « .us », « .cn » et « .uk », le code se compose par défaut de trois parties. Par exemple, « www.example.co.jp » utilisera trois parties de domaine les plus à droite, « .example.co.jp ». Si le modèle de domaine nécessite un comportement différent, cela doit être spécifié à l’aide du paramètre `domainLevel`. |
+| <a name="domainlevel"></a>domainLevel | Nombre entier | Définit le nombre de parties du domaine de la page à utiliser pour l’attribut de domaine du cookie.<br><br> Pour « www.example.com », `domainLevel: 2` définit le domaine du cookie sur « .example.com » et `domainLevel: 3` le définit sur « .www.example.com ».<br><br>Par défaut, Munchkin utilise deux parties lorsque le domaine de niveau supérieur comporte trois lettres. Par exemple, « www.example.com » utilise « .example.com ».<br><br>Pour les codes de pays à deux lettres tels que « .jp », « .us », « .cn » et « .uk », Munchkin utilise trois parties. Par exemple, « www.example.co.jp » utilise « .example.co.jp ».<br><br>Utilisez le paramètre `domainLevel` lorsque le modèle de domaine nécessite un comportement différent. |
 | domainSelectorV2 | Booléen | Si la valeur est définie sur « true », utilise une méthode améliorée pour déterminer comment définir l’attribut de domaine du cookie. |
 | httpsOnly | Booléen | La valeur par défaut est false. Lorsque la valeur est définie sur true, définit le cookie sur le paramètre Sécurisé lorsque la page suivie a été diffusée via https. |
-| useBeaconAPI | Booléen | La valeur par défaut est false. Lorsque la valeur est définie sur true, utilise l’[API de balise](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API) pour envoyer des requêtes non bloquantes au lieu de [XMLHttpRequest](https://developer.mozilla.org/fr-FR/docs/Web/API/XMLHttpRequest). Si le navigateur ne prend pas en charge cette API, le Munchkin revient à l’utilisation de XMLHttpRequest. |
-| wsInfo | Chaîne | Prend une chaîne pour cibler un espace de travail. Cet identifiant d&#39;espace de travail est obtenu en sélectionnant le Workspace dans le menu Admin > Intégration > Munchkin . Ce paramètre s’applique uniquement à la création initiale d’un enregistrement de prospect anonyme. Une fois que la valeur du cookie Munchkin a été établie pour cet enregistrement de prospect, le paramètre wsInfo ne peut pas être utilisé pour modifier sa partition. Comme ce paramètre affecte uniquement les prospects anonymes, il ne concerne que les [visiteurs anonymes dans les rapports web](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports) spécifiques à une partition. |
+| useBeaconAPI | Booléen | La valeur par défaut est false. Lorsque la valeur est définie sur true, utilise l’[API de balise](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API) pour envoyer des requêtes non bloquantes au lieu de [XMLHttpRequest](https://developer.mozilla.org/fr-FR/docs/Web/API/XMLHttpRequest). Si le navigateur ne prend pas en charge l’API de balise, Munchkin utilise XMLHttpRequest. |
+| wsInfo | Chaîne | Cible un espace de travail. Obtenez l’identifiant de l’espace de travail en le sélectionnant dans le menu Admin > Intégration > Munchkin .<br><br>Ce paramètre s’applique uniquement lorsqu’un enregistrement de prospect anonyme est initialement créé. Une fois la valeur du cookie Munchkin établie pour cet enregistrement de prospect, le paramètre wsInfo ne peut plus modifier sa partition.<br><br>Ce paramètre affecte uniquement les prospects anonymes. Il n’est donc pertinent que pour les [visiteurs anonymes dans les rapports web](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports) spécifiques à une partition. |
 
 ## Exemples
 
@@ -86,7 +86,7 @@ Cet exemple montre comment envoyer toute l’activité web aux instances dont le
 
 ### Définir le suivi sur Asynchrone
 
-Cet exemple force l&#39;envoi asynchrone de tous les XMLHttpRequest à partir du thread principal.
+Cet exemple force l&#39;envoi asynchrone de toutes les XMLHttpRequests à partir du thread principal.
 
 ```javascript
 <script type="text/javascript">

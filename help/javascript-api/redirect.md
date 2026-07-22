@@ -15,18 +15,18 @@ topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
   - id: cdd65e7e-8839-44a2-bc21-0e03623b5dd1
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 502
-ht-degree: 7%
+source-wordcount: 473
+ht-degree: 8%
 
 ---
 
 # Rediriger
 
-L’API de redirection RTP vous permet de rediriger des audiences segmentées vers une URL cible.
+Utilisez l’API de redirection RTP pour envoyer des audiences segmentées à une URL cible.
 
-- Vous devez devenir client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
+- Vous devez être client de Web Personalization et avoir déployé la balise [RTP](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site avant d’utiliser l’API de contexte utilisateur.
 - RTP ne prend pas en charge les listes de comptes nommés Marketing basées sur les comptes. Les listes et le code ABM ne concernent que les listes de comptes chargées (fichiers CSV) gérées dans RTP.
 
 ## Utilisation
@@ -42,7 +42,7 @@ L’API de redirection RTP vous permet de rediriger des audiences segmentées ve
 | redirect_url | Obligatoire | Chaîne | URL cible pour rediriger les visiteurs correspondant à la condition. |
 | redirect_match_visitor | Facultatif | Booléen | Si la condition est vraie, les visiteurs correspondants seront redirigés. Si la valeur est false, les visiteurs sans correspondance sont redirigés. Valeur par défaut : true. |
 
-Organisation, secteur, listes ABM, emplacement, FAI, segments correspondants
+Les conditions de redirection peuvent utiliser l’organisation, le secteur, les listes ABM, l’emplacement, le FAI ou les segments correspondants.
 
 | Condition | Hiérarchie des données | Exemple |
 | --- | --- | --- |
@@ -59,10 +59,10 @@ Organisation, secteur, listes ABM, emplacement, FAI, segments correspondants
 
 ## Notes
 
-- Si la règle/condition de redirection est basée sur Firmographics (société, secteur, emplacement) vous pouvez insérer le code de redirection avant le rtp(&#39;send&#39;, &#39;view&#39;) et le rtp(&#39;get&#39;,&#39;campaign&#39;) pour réduire la latence.
-- La redirection via JavaScript est une redirection côté navigateur et dépend du chargement et de l’optimisation du site web pour atteindre la vitesse maximale.
-- La bonne pratique consiste à définir le code de redirection juste après la balise rtp et à le placer dans l’en-tête.
-- Assurez-vous de ne pas exécuter une redirection automatique (il existe un filet de sécurité dans rtp pour bloquer les appels de redirection cycliques).
+- Pour réduire la latence d’une redirection basée sur des micrographiques, tels que l’entreprise, le secteur ou l’emplacement, insérez le code de redirection avant rtp(’envoi’, ’affichage’) et rtp(’obtention’,’campagne’).
+- Placez le code de redirection immédiatement après la balise rtp dans l’en-tête de la page.
+- Optimisez le chargement du site web pour améliorer la vitesse de la redirection JavaScript côté navigateur.
+- Évitez les redirections automatiques. rtp comprend une sauvegarde qui bloque les appels de redirection cycliques.
 
 ```html
 <!DOCTYPE html>
@@ -98,15 +98,15 @@ rtp('get','campaign');
 
 ## Comment rediriger des visiteurs suivis
 
-1. Ajoutez un paramètre à la fin de l&#39;URL cible : &lt;www.marketo.com?rtp=redirect>
-1. Créer un segment appelé « Redirigé par RTP »
-1. Utilisez le paramètre « Pages spécifiques » pour cibler les visiteurs qui consultent n’importe quelle page avec le paramètre illustré ci-dessous.
+1. Ajoutez le paramètre à l’URL cible, par exemple &lt;www.marketo.com?rtp=redirect>.
+1. Créez un segment nommé « Redirigé par RTP ».
+1. Utilisez le paramètre « Pages spécifiques » pour cibler les visiteurs et visiteuses qui consultent une page contenant ce paramètre.
 
 ![tracking-redirect-vistors](assets/tracking-redirected-vistors.png)
 
 ## Définition de plusieurs conditions avec différentes URL Target
 
-L’appel de redirection prend en charge plusieurs appels. Cela permet de rediriger avec plusieurs champs et de créer des conditions complexes avec différentes URL et valeurs.
+L’appel de redirection prend en charge plusieurs appels. Utilisez plusieurs appels pour combiner des champs et créer des conditions avec différentes URL et valeurs.
 
 ### Utilisation
 

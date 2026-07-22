@@ -10,16 +10,16 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 463
-ht-degree: 2%
+source-wordcount: 329
+ht-degree: 3%
 
 ---
 
 # Contenu dynamique
 
-Marketo facilite l’utilisation du contenu dynamique par le biais d’une segmentation de piste sur plusieurs types de ressources :
+Utilisez les segmentations de leads pour fournir du contenu dynamique dans ces types de ressources :
 
 - E-mails
 - Pages de destination
@@ -27,13 +27,17 @@ Marketo facilite l’utilisation du contenu dynamique par le biais d’une segme
 
 ## Vue d’ensemble
 
-Le contenu dynamique est implémenté au niveau de la section, en désignant des variations spécifiques d’une section à diffuser à un prospect en fonction de leur qualification dans un segment au sein d’une segmentation choisie. Si un élément de contenu est configuré pour diffuser du contenu dynamique en fonction d’une certaine segmentation, un prospect constatant que ce contenu est diffusé présente la variation de contenu correspondant au segment dans lequel il se trouve, ou le contenu par défaut, s’il n’est pas éligible à un segment.
+Le contenu dynamique fonctionne au niveau de la section. Chaque section peut fournir des variations pour les segments dans une segmentation sélectionnée.
+
+Lorsqu’un prospect consulte la ressource, Marketo affiche la variation du segment du prospect. Si le prospect ne répond pas aux critères d’un segment, Marketo affiche le contenu par défaut.
 
 ## Exemple
 
-Prenons un exemple d’e-mail dans lequel nous avons une segmentation Région (États-Unis) et voulons afficher une promotion d’événement uniquement pour les prospects du segment Sud-Ouest, qui inclut les prospects de Californie, du Nevada, de l’Utah, du Colorado, de l’Arizona et du Nouveau-Mexique. Pour ce faire, nous transformons une section modifiable dans notre e-mail avec l’identifiant « Q1-promotion-banner » en section Contenu dynamique. Pour ce faire, nous devons utiliser le point d’entrée [Mettre à jour le contenu de l’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST) pour notre e-mail. Le paramètre `value` est utilisé pour spécifier l’identifiant de la segmentation.
+Cet exemple utilise une segmentation Région (États-Unis) pour afficher une promotion d’événement aux prospects du segment Sud-Ouest. Le segment comprend des prospects de Californie, du Nevada, de l’Utah, du Colorado, de l’Arizona et du Nouveau-Mexique.
 
-Remarque : les e-mails et les pages de destination suivent ce modèle. Les fragments de code ont un modèle différent, détaillé dans la documentation de l’API Fragments de code .
+Utilisez le point d’entrée [Mettre à jour le contenu de l’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST) pour transformer la section modifiable avec l’ID `Q1-promotion-banner` en section `DynamicContent`. Le paramètre `value` spécifie l’identifiant de segmentation.
+
+Les e-mails et les landing pages suivent ce modèle. Les fragments de code utilisent le modèle différent décrit dans la documentation de l’API Fragments de code .
 
 L’exemple suivant définit la section sur une section Contenu dynamique, segmentée par segmentation 1001.
 
@@ -59,9 +63,9 @@ type=DynamicContent&value=1001
 }
 ```
 
-Pour ajouter du contenu pour des segments individuels, nous devons appeler le point d’entrée [Mettre à jour le contenu dynamique d’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailDynamicContentUsingPOST) pour la section spécifique.
+Appelez le point d’entrée [Mettre à jour le contenu dynamique d’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailDynamicContentUsingPOST) pour ajouter du contenu pour un segment dans une section spécifique.
 
-L’exemple suivant montre comment définir la section afin d’afficher notre image de bannière spéciale pour les prospects du segment Sud-Ouest au lieu de la valeur par défaut. Si nous voulions créer d’autres variations pour d’autres segments, nous appellerions de nouveau ce point d’entrée pour chaque segment et section.
+La requête suivante affiche une bannière spéciale au lieu du contenu par défaut pour les prospects du segment Sud-Ouest. Pour créer d’autres variations, appelez le point d’entrée pour chaque segment et section.
 
 ```http
 POST /rest/asset/v1/email/{id}/dynamicContent/{dynamicContentId}.json
@@ -87,11 +91,13 @@ segment=Southwest&type=HTML&value=<img src='//www.example.com/SuperSpecialBanner
 
 ## Segmentation
 
-La segmentation est le cœur du contenu dynamique de Marketo. Une segmentation est une liste définie par l’utilisateur d’ensembles individuels de règles qui sont évaluées de haut en bas par rapport à l’ensemble de la base de données de prospects. Un prospect ne peut être membre que d’un segment dans chaque segmentation et sera membre du premier qu’il qualifie pour dans chaque segmentation. S’il n’est pas qualifié pour un segment, il sera membre du segment par défaut et recevra le contenu par défaut pour tout élément de contenu dynamique donné utilisant cette segmentation.
+Une segmentation est une liste définie par l’utilisateur d’ensembles de règles que Marketo évalue de haut en bas par rapport à la base de données de prospect. Un prospect ne peut appartenir qu’à un seul segment dans chaque segmentation. Le prospect rejoint le premier segment pour lequel il remplit les conditions.
+
+Si le prospect ne remplit pas les critères d’un autre segment, il rejoint le segment par défaut et reçoit le contenu par défaut de la segmentation.
 
 ### Liste
 
-Les segmentations ont un point d’entrée de liste qui renvoie une réponse avec une liste de segmentations disponibles.
+Utilisez le point d’entrée de liste pour récupérer les segmentations disponibles.
 
 ```http
 GET /rest/asset/v1/segmentation.json
@@ -138,7 +144,7 @@ GET /rest/asset/v1/segmentation.json
 }
 ```
 
-Les segmentations ont également un point d’entrée qui renvoie une réponse avec une liste de segments d’une segmentation parente.
+Utilisez le point d’entrée des segments pour récupérer les segments dans une segmentation parent.
 
 ```http
 GET /rest/asset/v1/segmentation/1001/segments.json

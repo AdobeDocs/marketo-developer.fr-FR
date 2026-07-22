@@ -13,9 +13,9 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1099
+source-wordcount: 806
 ht-degree: 1%
 
 ---
@@ -24,11 +24,13 @@ ht-degree: 1%
 
 [Référence des points d’entrée des dossiers](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders)
 
-Les dossiers sont la ressource organisationnelle principale dans Marketo. En outre, chaque autre type de ressource a au moins un dossier comme parent. Ce dossier parent peut être soit un dossier purement organisationnel, soit un programme, qui a une relation fonctionnelle avec d’autres types de ressources et peut également être le parent d’autres ressources. Les dossiers peuvent être créés, interrogés, mis à jour et supprimés par le biais de l’API et permettent également de récupérer une liste de leur contenu. Bien que les programmes puissent être renvoyés en interrogeant l’API Folders, la création, la mise à jour et la suppression de programmes doivent être effectuées via l’API Programmes.
+Les dossiers sont les ressources organisationnelles principales dans Marketo. Tous les autres types de ressources ont au moins un parent qui est un dossier ou un programme. Un dossier est purement organisationnel, tandis qu’un programme a une relation fonctionnelle avec d’autres types de ressources et peut également contenir des ressources.
+
+Utilisez l’API Folders pour créer, interroger, mettre à jour et supprimer des dossiers ou récupérer leur contenu. Les requêtes de dossier peuvent renvoyer des programmes, mais vous devez utiliser l’API de programmes pour créer, mettre à jour ou supprimer un programme.
 
 ## Requête
 
-Les requêtes de dossiers suivent les types de requête standard pour les ressources de [par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) et [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET).
+Les dossiers prennent en charge les modèles de requête de ressource standard : [par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) et par [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET).
 
 ### Par Id
 
@@ -69,7 +71,11 @@ GET /rest/asset/v1/folder/{id}.json?type=Folder
 }
 ```
 
-Le paramètre type est obligatoire et doit être de type « Dossier » ou « Programme ».  Le type détermine si la recherche du dossier est effectuée sur un ID de dossier ou un ID de programme. Pour ce point d’entrée, un seul enregistrement est renvoyé dans le tableau de résultats. Notez le paramètre `folderType` dans la réponse. Cela peut indiquer de nombreux types de dossiers différents. Les dossiers d’activités Marketo ont un type de dossier marketing ou de programme, qui peut contenir de nombreux types de ressources différents, tandis que les dossiers de Design Studio ont un type correspondant au type de ressource qu’ils peuvent contenir. Par exemple, un dossier dont le `folderType` est « E-mail » peut contenir uniquement des e-mails ou d’autres sous-dossiers, qui peuvent avoir un `folderType` d’e-mail ou de modèle d’e-mail. Les types peuvent inclure :
+Le paramètre `type` est obligatoire et doit être `Folder` ou `Program`. Il détermine si le point d’entrée recherche un ID de dossier ou un ID de programme. Le point d’entrée renvoie un enregistrement dans le tableau de résultats.
+
+Le `folderType` de réponse identifie ce que le dossier peut contenir. Les dossiers d’activités marketing ont un type de dossier ou de programme marketing et peuvent contenir plusieurs types de ressources. Les dossiers Design Studio sont dotés d’un type qui correspond aux ressources qu’ils peuvent contenir. Par exemple, un dossier E-mail peut contenir des e-mails et des sous-dossiers avec un type de dossier E-mail ou Modèle d’e-mail.
+
+Les types de dossier sont les suivants :
 
 - E-mail
 - Modèle d’e-mail
@@ -80,7 +86,13 @@ Le paramètre type est obligatoire et doit être de type « Dossier » ou « Pro
 
 ### Par nom
 
-La [requête par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) est également autorisée. Le point d’entrée de la requête par nom possède le nom comme seul paramètre obligatoire. Name effectue une correspondance de chaîne exacte par rapport au champ de nom des dossiers dans l’instance et renvoie les résultats pour chaque dossier correspondant à ce nom. Elle comporte également les paramètres de requête facultatifs « type » qui peuvent être Dossier ou Programme, « root » l’identifiant du dossier dans lequel effectuer la recherche ou « workspace » le nom de l’espace de travail dans lequel effectuer la recherche. Si le paramètre racine est défini, le paramètre de type doit également être défini.
+Le point d’entrée [requête par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) nécessite `name`, qui effectue une correspondance exacte avec les noms de dossier et renvoie chaque dossier correspondant.
+
+Le point d’entrée accepte également les paramètres facultatifs suivants :
+
+- `type` : type de dossier, `Folder` ou `Program`.
+- `root` : ID du dossier à rechercher. Si vous définissez des `root`, vous devez également définir des `type`.
+- `workspace` : nom de l’espace de travail dans lequel effectuer la recherche.
 
 ```http
 GET /rest/asset/v1/folder/byName.json?name=Test%2010%20-%20deverly
@@ -119,21 +131,21 @@ GET /rest/asset/v1/folder/byName.json?name=Test%2010%20-%20deverly
 }
 ```
 
-Lors d’une recherche par nom, il est important de noter que les activités marketing et Design Studio sont leurs propres dossiers racine. Ils peuvent donc être récupérés par nom et utilisés pour parcourir le reste de la hiérarchie de dossiers dans une instance de destination.
+Les activités marketing et Design Studio sont des dossiers racine. Récupérez l’une des racines par nom, puis utilisez-la pour parcourir la hiérarchie de dossiers dans l’instance de destination.
 
 ### Parcourir
 
-Les dossiers peuvent également être [récupérés en bloc](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET). Le paramètre « root » peut être utilisé pour spécifier le dossier parent sous lequel la requête sera exécutée et est formaté en tant qu’objet JSON incorporé en tant que valeur pour le paramètre de requête. La racine comporte deux membres :
+Vous pouvez également [récupérer des dossiers en bloc](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET). Utilisez le paramètre `root` pour spécifier le dossier parent sous lequel effectuer la requête. Transmettez `root` en tant qu’objet JSON incorporé avec deux membres :
 
-1. id - L’identifiant du dossier ou du programme.
-1. type : dossier ou programme, selon le type du dossier racine dans le navigateur.
+1. `id` : ID du dossier ou du programme.
+1. `type` : `Folder` ou `Program`, selon le type de dossier racine.
 
-Si le dossier racine n’est pas connu ou si l’intention est de récupérer tous les dossiers d’une zone donnée, la racine peut être spécifiée comme les zones « Activités marketing », « Design Studio » ou « Base de données de leads ». Les identifiants de chacun de ces éléments peuvent être récupérés à l’aide de l’API [Get Folder By Name](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) et en spécifiant le nom de la zone souhaitée.
+Si vous ne connaissez pas le dossier racine ou si vous souhaitez récupérer tous les dossiers d’une zone, utilisez la racine Activités marketing, Design Studio ou Base de données de leads. Récupérez l’ID racine en transmettant le nom de la zone à l’API [Obtenir le dossier par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET).
 
-Comme les autres points d’entrée de récupération de ressources en bloc, offset et maxReturn sont des paramètres facultatifs pour la pagination.   Les autres paramètres facultatifs sont les suivants :
+Comme avec d’autres points d’entrée de récupération de ressources en bloc, utilisez les paramètres facultatifs `offset` et `maxReturn` pour la pagination. Les autres paramètres facultatifs sont les suivants :
 
-- workSpace : nom de l’espace de travail sur lequel effectuer le filtrage.
-- maxDepth - Nombre maximal de niveaux à parcourir dans la hiérarchie des dossiers. Si la valeur est définie sur 0, seul le dossier spécifié à la racine est renvoyé. Si elle n’est pas spécifiée, la valeur par défaut est 2.
+- `workSpace` : nom de l’espace de travail en fonction duquel effectuer le filtrage.
+- `maxDepth` : nombre maximal de niveaux à parcourir dans la hiérarchie des dossiers. Une valeur égale à 0 renvoie uniquement le dossier spécifié par `root`. La valeur par défaut est 2.
 
 ```http
 GET /rest/asset/v1/folders.json?root={"id":14,"type":"Folder"}
@@ -215,13 +227,21 @@ GET /rest/asset/v1/folders.json?root={"id":14,"type":"Folder"}
 
 ## Structure de réponse
 
-La plupart de la structure de réponse des dossiers s’explique d’elle-même, mais quelques champs méritent d’être notés individuellement. Les champs `folderId` et parents sont des objets JSON qui incluent l’identifiant explicite et le type du dossier lui-même. Ce type est celui qui est utilisé dans les requêtes, les paramètres racine et parent par l’API pour assurer une délimitation correcte entre les types de dossiers Dossier et Programme. `folderType` reflète l’utilisation du dossier, qui peut être « Dossier marketing », « Programme », « E-mail », « Modèle d’e-mail », « Page de destination », « Modèle de page de destination », « Extrait de code », « Image », « Zone » ou « Fichier ».  Les types Dossier marketing et Programme indiquent qu’ils existent dans les activités marketing et peuvent contenir plusieurs types de ressources. Les autres types indiquent qu’ils peuvent contenir uniquement ce type de ressource, les sous-dossiers et la version du modèle de ce type, le cas échéant. La zone de type représente les dossiers de niveau racine figurant dans les activités marketing.
+Les champs `folderId` et `parent` sont des objets JSON contenant l’ID et le type de dossier. L’API utilise ce type dans les paramètres de requête, de `root` et de `parent` pour distinguer les types de dossiers Dossier et Programme .
 
-Le chemin d’accès d’un dossier affiche sa hiérarchie dans l’arborescence des dossiers, comme pour un chemin d’accès de style Unix. La première entrée du chemin sera toujours Activités marketing ou Design Studio. Si l’instance cible comporte des espaces de travail, la deuxième entrée du chemin d’accès correspond au nom de l’espace de travail propriétaire. Le champ `url` affiche l’URL explicite de la ressource dans l’instance désignée. Il ne s’agit pas d’un lien universel, qui doit être authentifié en tant qu’utilisateur pour fonctionner correctement. `isSystem` indique si le dossier est un dossier système. Si cette valeur est définie sur « true », le dossier est en lecture seule, bien que des dossiers puissent être créés en tant qu’enfants.
+Le champ `folderType` décrit l’utilisation du dossier. Sa valeur peut être Dossier marketing, Programme, E-mail, Modèle d’e-mail, Page de destination, Modèle de page de destination, Extrait de code, Image, Zone ou Fichier. Le dossier et le programme marketing existent dans les activités marketing et peuvent contenir plusieurs types de ressources. Les autres types de dossiers contiennent uniquement le type de ressource correspondant, les sous-dossiers et la version du modèle de ce type de ressource, le cas échéant. La zone représente un dossier de niveau racine dans les activités marketing.
+
+Le dossier `path` affiche sa hiérarchie sous la forme d’un chemin de style Unix. La première entrée est toujours Activités marketing ou Design Studio. Si l’instance comporte des espaces de travail, la deuxième entrée est le nom de l’espace de travail propriétaire.
+
+Le champ `url` contient l’URL de la ressource pour l’instance désignée. Il ne s’agit pas d’un lien universel qui nécessite une authentification de l’utilisateur. Le champ `isSystem` indique si le dossier est un dossier système en lecture seule. Vous pouvez créer des dossiers enfants sous un dossier système.
 
 ## Créer et mettre à jour
 
-La [création de dossiers](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/createFolderUsingPOST) est simple et est exécutée avec une application/x-www-form-urlencoded POST qui comporte deux paramètres obligatoires, « name », une chaîne et « parent », le parent dans lequel créer le dossier, qui est un objet JSON incorporé avec deux membres, un identifiant et un type, soit Dossier ou Programme, selon le type du dossier cible. Vous pouvez également inclure une « description » (une chaîne) facultative. Elle peut contenir jusqu’à 2 000 caractères.
+Pour [créer un dossier](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/createFolderUsingPOST), envoyez une requête POST `application/x-www-form-urlencoded` avec les paramètres suivants :
+
+- `name` : chaîne obligatoire contenant le nom du dossier.
+- `parent` : objet JSON incorporé obligatoire contenant des `id` et des `type`. Le type est `Folder` ou `Program`, selon le parent.
+- `description` : chaîne facultative de 2 000 caractères maximum.
 
 ```http
 POST /rest/asset/v1/folders.json
@@ -268,7 +288,9 @@ parent={"id":416,"type":"Folder"}&name=Test 10 - deverly&description=This is a t
 }
 ```
 
-Les mises à jour des dossiers sont effectuées via un point d’entrée distinct. La description, le nom et les `isArchive` sont des paramètres facultatifs pour la mise à jour. Si `isArchive` est modifié par une mise à jour, le dossier est archivé (s’il est modifié en vrai) ou désarchivé (s’il est modifié en faux) dans l’interface utilisateur de Marketo. Impossible de mettre à jour les programmes avec cette API.
+Utilisez le point d’entrée de mise à jour pour modifier les paramètres facultatifs `description`, `name` ou `isArchive`. La définition de `isArchive` pour `true` archive le dossier dans l’interface utilisateur de Marketo. La définition sur `false` supprime le dossier de l’archive.
+
+Vous ne pouvez pas mettre à jour les programmes avec cette API.
 
 ```http
 POST /rest/asset/v1/folder/{id}.json
@@ -317,7 +339,7 @@ type=Folder&description=This is a test (update 01)
 
 ### Supprimer
 
-Les suppressions peuvent être effectuées sur des dossiers uniques s’ils sont vides, ce qui signifie qu’ils ne contiennent aucune ressource ni aucun sous-dossier. Si un dossier est de type Programme ou si le champ isSystem est défini sur true, il ne peut pas être supprimé avec cette API.
+Vous ne pouvez supprimer un seul dossier que s’il ne contient aucune ressource ou sous-dossier. Vous ne pouvez pas utiliser cette API pour supprimer un programme ou un dossier dont le champ `isSystem` est `true`.
 
 ```http
 POST /rest/asset/v1/folder/{id}/delete.json

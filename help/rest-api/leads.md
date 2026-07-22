@@ -15,9 +15,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 3460
+source-wordcount: 2728
 ht-degree: 3%
 
 ---
@@ -26,19 +26,19 @@ ht-degree: 3%
 
 [Référence du point d’entrée des leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads)
 
-L’API du prospect Marketo offre un large éventail de fonctionnalités pour les applications CRUD simples par rapport aux enregistrements de prospect, ainsi que la possibilité de modifier l’appartenance d’un prospect à des listes et programmes statiques et de lancer un traitement Smart Campaign pour les prospects.
+L’API Leads de Marketo prend en charge les opérations CRUD sur les enregistrements de leads. Vous pouvez également modifier l’appartenance d’un prospect à des listes et programmes statiques et lancer le traitement Smart Campaign pour les prospects.
 
 ## Décrire
 
-L’une des fonctionnalités clés de l’API Leads est la méthode Describe. Utilisez Décrire les leads pour récupérer une liste complète des champs disponibles pour l’interaction via l’API REST, ainsi que des métadonnées pour chacun :
+Utilisez Décrire les prospects pour récupérer les champs disponibles par le biais de l’API REST et les métadonnées de chaque champ :
 
-* Type de données
-* Noms d’API REST
-* Longueur (le cas échéant)
-* Lecture Seule
-* Libellé convivial
+- Type de données
+- Nom de l’API REST
+- Longueur, le cas échéant
+- Statut en lecture seule
+- Libellé convivial
 
-Description est la source principale de vérité pour savoir si les champs sont disponibles et pour connaître les métadonnées de ces champs.
+Describe est la principale source de vérité pour la disponibilité des champs et des métadonnées.
 
 ### Requête
 
@@ -70,13 +70,18 @@ GET /rest/v1/leads/describe.json
 }
 ```
 
-Normalement, les réponses incluent un ensemble de champs beaucoup plus grand dans le tableau de résultats, mais nous les omettons à des fins de démonstration. Chaque élément du tableau de résultats correspond à un champ disponible sur l’enregistrement du prospect et possède au minimum un id, un displayName et un type de données. Les objets enfants rest et soap peuvent être présents ou non pour un champ donné et leur présence indique si le champ peut être utilisé dans les API REST ou SOAP. La propriété `readOnly` indique si le champ est en lecture seule via l’API correspondante (REST ou SOAP). La propriété length indique la longueur maximale du champ, le cas échéant. La propriété dataType indique le type de données du champ.
+Les réponses réelles incluent davantage de champs dans le tableau de résultats. Chaque élément représente un champ disponible dans l’enregistrement de prospect et contient au moins un id, un displayName et un type de données.
+
+Les objets enfants rest et soap n’apparaissent que lorsque le champ est valide pour l’API correspondante. La propriété `readOnly` indique si l’API correspondante peut mettre à jour le champ. Lorsqu’elle est présente, la propriété length indique la longueur maximale du champ, et la propriété dataType indique le type de données du champ.
 
 ## Requête
 
-Il existe deux méthodes principales pour la récupération des prospects : les méthodes Obtenir le prospect par ID et Obtenir les prospects par type de filtre . L’option Obtenir le prospect par ID utilise un ID de prospect unique comme paramètre de chemin d’accès et renvoie un enregistrement de prospect unique.
+Utilisez l’une des deux méthodes principales suivantes pour récupérer les prospects :
 
-Vous pouvez éventuellement transmettre un paramètre de champs contenant une liste de noms de champs séparés par des virgules à renvoyer. Si le paramètre fields n’est pas inclus dans cette requête, les champs par défaut suivants sont renvoyés : `email`, `updatedAt`, `createdAt`, `lastName`, `firstName` et `id`. Lors de la demande d’une liste de champs, si un champ particulier est demandé, mais n’est pas renvoyé, la valeur est implicitement nulle.
+- L’option Obtenir le lead par ID utilise un ID de lead comme paramètre de chemin d’accès et renvoie un enregistrement de lead.
+- L’option Obtenir les prospects par type de filtre recherche les enregistrements dont le champ sélectionné correspond à l’une des valeurs fournies.
+
+Pour Obtenir le prospect par ID, transmettez éventuellement un paramètre de champ avec une liste de noms de champs séparés par des virgules à renvoyer. Si la requête omet des champs, la réponse inclut `email`, `updatedAt`, `createdAt`, `lastName`, `firstName` et `id`. Si un champ demandé n’est pas renvoyé, sa valeur est implicitement nulle.
 
 ### Requête
 
@@ -103,15 +108,15 @@ GET /rest/v1/lead/{id}.json
 }
 ```
 
-Pour cette méthode, il y aura toujours un seul enregistrement à la première position du tableau de résultats.
+L’option Obtenir le prospect par ID renvoie toujours un enregistrement à la première position du tableau de résultats.
 
-L’option Obtenir les leads par type de filtre renvoie le même type d’enregistrements, mais peut renvoyer jusqu’à 300 par page. Elle nécessite les paramètres de requête `filterType` et `filterValues`.
+L’option Obtenir les prospects par type de filtre renvoie le même type d’enregistrement et peut renvoyer jusqu’à 300 enregistrements par page. Les paramètres de requête `filterType` et `filterValues` sont requis.
 
-`filterType` accepte n’importe quel champ personnalisé ou la plupart des champs couramment utilisés. Appelez le point d’entrée `Describe2` pour obtenir une liste complète des champs pouvant faire l’objet d’une recherche et pouvant être utilisés dans `filterType`. Lors d’une recherche par champ personnalisé, seuls les types de données suivants sont pris en charge : `string`, `email`, `integer`. Vous pouvez obtenir les détails du champ (description, type, etc.) à l’aide de la méthode Describe mentionnée ci-dessus.
+`filterType` accepte n’importe quel champ personnalisé et les champs les plus couramment utilisés. Appelez le point d’entrée `Describe2` pour récupérer les champs pouvant faire l’objet d’une recherche autorisés pour `filterType`. Lors d’une recherche par champ personnalisé, les types de données pris en charge sont `string`, `email` et `integer`. Utilisez la méthode Describe pour récupérer les détails du champ, tels que la description et le type.
 
-`filterValues` accepte jusqu’à 300 valeurs au format séparé par des virgules. L’appel recherche les enregistrements pour lesquels le champ du prospect correspond à l’un des `filterValues` inclus. Si le nombre de leads correspondant au filtre de lead est supérieur à 1 000, une erreur est renvoyée : « 1 003, Trop de résultats correspondent au filtre ».
+`filterValues` accepte jusqu’à 300 valeurs séparées par des virgules. L’appel renvoie les enregistrements pour lesquels le champ de prospect sélectionné correspond à l’une de ces valeurs. Si plus de 1 000 prospects correspondent au filtre, l’API renvoie « 1 003, trop de résultats correspondent au filtre ».
 
-Si la longueur totale de votre requête GET dépasse 8 Ko, une erreur HTTP est renvoyée : « 414, URI trop long » (par RFC 7231). Pour pallier ce problème, vous pouvez modifier votre GET en POST, ajouter le paramètre _method=GET et placer une chaîne de requête dans le corps de la requête.
+Si le nombre total de requêtes GET dépasse 8 Ko, l’API renvoie « 414, URI too long » sous RFC 7231. Pour contourner cette limite, modifiez GET en POST, ajoutez le paramètre _method=GET et placez la chaîne de requête dans le corps de la requête.
 
 ### Requête
 
@@ -146,9 +151,9 @@ GET /rest/v1/leads.json?filterType=id&filterValues=318581,318592
 }
 ```
 
-Cet appel recherche les enregistrements correspondant aux ID inclus dans `filterValues` et renvoie tous les enregistrements correspondants.
+Cet appel renvoie les enregistrements dont les identifiants correspondent aux valeurs de `filterValues`.
 
-Si aucun enregistrement n’est trouvé, la réponse indique la réussite, mais le tableau de résultats est vide.
+Si aucun enregistrement ne correspond, la réponse indique la réussite et contient un tableau de résultats vide.
 
 ### Réponse
 
@@ -160,15 +165,15 @@ Si aucun enregistrement n’est trouvé, la réponse indique la réussite, mais 
 }
 ```
 
-Les options Obtenir les prospects par ID et Obtenir les prospects par type de filtre acceptent également un paramètre de requête de champ, qui accepte une liste de champs API séparés par des virgules. Si cela est inclus, alors chaque enregistrement de la réponse inclura ces champs répertoriés.  Si cet attribut est omis, un ensemble de champs par défaut est renvoyé : `id`, `email`, `updatedAt`, `createdAt`, `firstName` et `lastName`.
+Les deux options Obtenir les prospects par ID et Obtenir les prospects par type de filtre acceptent un paramètre de requête de champ contenant une liste de champs API séparés par des virgules. Lorsque des champs sont présents, chaque enregistrement de réponse inclut les champs répertoriés. Si elle est omise, la réponse inclut `id`, `email`, `updatedAt`, `createdAt`, `firstName` et `lastName`.
 
 ## ADOBE ECID
 
-Lorsque la fonction Partage d’audience Adobe Experience Cloud est activée, un processus de synchronisation des cookies se produit qui associe l’identifiant Adobe Experience Cloud ID (ECID) aux prospects Marketo.  Les méthodes de récupération de prospect mentionnées ci-dessus peuvent être utilisées pour récupérer les valeurs ECID associées.  Pour ce faire, spécifiez `ecids` dans le paramètre fields . Par exemple : `&fields=email,firstName,lastName,ecids`.
+Lorsque le partage d’audiences Adobe Experience Cloud est activé, la synchronisation des cookies associe les valeurs d’identifiant Adobe Experience Cloud (ECID) aux prospects Marketo. Pour récupérer les valeurs ECID associées avec les méthodes de récupération de prospect précédentes, incluez `ecids` dans le paramètre fields . Par exemple : `&fields=email,firstName,lastName,ecids`.
 
 ## Créer et mettre à jour
 
-Outre la récupération des données de prospect, vous pouvez créer, mettre à jour et supprimer l’enregistrement de prospect via l’API. La création et la mise à jour de leads partagent le même point d’entrée avec le type d’opération défini dans la requête, et jusqu’à 300 enregistrements peuvent être créés ou mis à jour en même temps.
+L’API Leads peut créer, mettre à jour et supprimer des enregistrements de leads. Les opérations de création et de mise à jour utilisent le même point d’entrée, avec le type d’opération défini dans la requête. Une requête peut créer ou mettre à jour jusqu’à 300 enregistrements.
 
 >[!NOTE]
 >
@@ -233,29 +238,40 @@ POST /rest/v1/leads.json
 }
 ```
 
-Deux champs importants apparaissent dans cette demande : `action` et `lookupField`. `action` indique le type d&#39;opération de la demande et peut être `createOrUpdate`, `createOnly`, `updateOnly` ou `createDuplicate`. S’il est omis, l’action est définie par défaut sur `createOrUpdate`.  Le paramètre `lookupField` spécifie la clé à utiliser lorsque l’action est `createOrUpdate` ou `updateOnly`. Si `lookupField` est omis, la clé par défaut est `email`.
+La requête utilise deux champs importants :
 
-Par défaut, la partition par défaut est utilisée. Vous pouvez éventuellement spécifier le paramètre `partitionName`, qui ne fonctionne que si l’action est `createOnly` ou `createOrUpdate`. Pour que `partitionName` fonctionne en tant que critère de déduplication supplémentaire, il doit faire partie du type de source dans les règles de déduplication personnalisées. Lors d’une opération de mise à jour, si un prospect n’existe pas dans la partition spécifiée, une erreur est renvoyée. Si l’utilisateur API uniquement n’a pas l’autorisation d’accéder à la partition spécifiée, une erreur est renvoyée.
+- `action` indique le type d’opération : `createOrUpdate`, `createOnly`, `updateOnly` ou `createDuplicate`. En cas d’omission, la valeur par défaut est `createOrUpdate`.
+- `lookupField` spécifie la clé lorsque l’action est `createOrUpdate` ou `updateOnly`. En cas d’omission, la valeur par défaut est `email`.
 
-Le champ `id` ne peut être inclus en tant que paramètre que lors de l’utilisation de l’action `updateOnly`, car `id` s’agit d’une clé unique gérée par le système.
+Par défaut, l’opération utilise la partition par défaut. Le paramètre de `partitionName` facultatif fonctionne uniquement lorsque l’action est `createOnly` ou `createOrUpdate`. Pour utiliser `partitionName` comme critère de déduplication supplémentaire, incluez-le dans le type de source pour les règles de déduplication personnalisées.
 
-La requête doit également comporter un paramètre `input`, qui est un tableau d’enregistrements de prospect. Chaque enregistrement de prospect est un objet JSON comportant un nombre illimité de champs de prospect. Les clés incluses dans un enregistrement doivent être uniques pour cet enregistrement et toutes les chaînes JSON doivent être codées au format UTF-8. Le champ `externalCompanyId` peut être utilisé pour lier l’enregistrement du prospect à un enregistrement d’entreprise. Le champ `externalSalesPersonId` peut être utilisé pour lier l&#39;enregistrement du prospect à un enregistrement de vendeur.
+Lors d’une mise à jour, l’API renvoie une erreur si le prospect n’existe pas dans la partition spécifiée ou si l’utilisateur uniquement API ne peut pas accéder à cette partition.
 
-Remarque : lors de l’exécution simultanée ou en succession rapide de demandes d’upsert de lead, des enregistrements en double peuvent se produire lors de l’exécution de plusieurs demandes avec la même valeur de clé si un appel suivant de la même valeur est effectué avant le premier retour. Cela peut être évité en utilisant la `createOnly` ou la `updateOnly` appropriée, ou en mettant les appels en file d’attente et en attendant que votre appel revienne avant d’effectuer des appels upsert suivants avec la même clé.
+Étant donné qu’`id` est une clé unique gérée par le système, incluez-la uniquement avec l’action `updateOnly`.
+
+La requête doit inclure un paramètre `input` contenant un tableau d’enregistrements de prospect. Chaque enregistrement de prospect est un objet JSON comportant un nombre illimité de champs de prospect. Les clés doivent être uniques dans chaque enregistrement et toutes les chaînes JSON doivent utiliser le codage UTF-8.
+
+Utilisez `externalCompanyId` pour lier un enregistrement de prospect à un enregistrement d’entreprise. Utilisez `externalSalesPersonId` pour lier un enregistrement de prospect à un enregistrement de vendeur.
+
+Des requêtes upsert simultanées ou étroitement synchronisées peuvent créer des enregistrements en double lorsque plusieurs requêtes utilisent la même valeur de clé avant le retour de la première requête. Pour éviter les doublons, utilisez `createOnly` ou `updateOnly` selon vos besoins. Vous pouvez également mettre en file d’attente les appels et attendre que chaque appel revienne avant d’envoyer un autre upsert avec la même clé.
 
 ## Champs
 
-L’objet de prospect contient des champs standard et éventuellement des champs personnalisés. Des champs standard sont présents dans chaque abonnement Marketo Engage, tandis que des champs personnalisés sont créés par l’utilisateur selon les besoins. Chaque définition de champ se compose d’un ensemble d’attributs qui décrivent le champ. Les exemples d’attributs sont le nom d’affichage, le nom de l’API et dataType. Ces attributs sont collectivement appelés métadonnées.
+L’objet de prospect contient des champs standard et des champs personnalisés facultatifs. Des champs standard existent dans chaque abonnement Marketo Engage, tandis que les utilisateurs créent des champs personnalisés selon leurs besoins.
 
-Les points d’entrée suivants vous permettent d’interroger, de créer et de mettre à jour des champs sur l’objet de prospect. Ces API nécessitent que l&#39;utilisateur propriétaire de l&#39;API dispose d&#39;un rôle avec l&#39;une ou l&#39;autre des autorisations Read-Write Schema Standard Field ou Read-Write Schema Custom Field , ou les deux.
+Chaque définition de champ contient des attributs de métadonnées tels que le nom d’affichage, le nom de l’API et le dataType.
+
+Utilisez les points d’entrée suivants pour interroger, créer et mettre à jour des champs sur l’objet de prospect. Le rôle de l’utilisateur de l’API doit disposer de l’autorisation Champ standard du schéma en lecture-écriture, de l’autorisation Champ personnalisé du schéma en lecture-écriture ou des deux.
 
 ## Champs de requête
 
-L’interrogation des champs de prospect est simple. Vous pouvez interroger un seul champ de prospect par nom d’API ou interroger l’ensemble de tous les champs de prospect. Les champs standard et personnalisés peuvent être récupérés, selon les autorisations de rôle utilisées. Les champs masqués sont également récupérés.
+Interroger un champ de lead par nom d’API ou interroger tous les champs de lead. Selon les autorisations du rôle, la réponse peut inclure des champs standard, des champs personnalisés et des champs masqués.
 
 ## Par nom
 
-Le point d’entrée Get Lead Field by Name récupère les métadonnées d’un seul champ sur l’objet du prospect. Le paramètre de chemin d’accès fieldApiName obligatoire spécifie le nom d’API du champ. La réponse est similaire au point d’entrée Décrire le prospect, mais contient des métadonnées supplémentaires telles que l’attribut isCustom, qui indique si le champ est un champ personnalisé.
+Le point d’entrée Get Lead Field by Name récupère les métadonnées d’un champ de prospect. Le paramètre de chemin d’accès fieldApiName obligatoire spécifie le nom de l’API du champ.
+
+La réponse ressemble à la réponse Décrire le lead, mais elle comprend des métadonnées supplémentaires. Par exemple, l’attribut isCustom indique si le champ est personnalisé.
 
 ### Requête
 
@@ -287,7 +303,9 @@ GET /rest/v1/leads/schema/fields/{fieldApiName}.json
 
 ## Parcourir
 
-Le point d’entrée Get Lead Fields récupère les métadonnées de tous les champs de l’objet de prospect, y compris. Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête `batchSize` pour réduire ce nombre. Si l’attribut `moreResult` est défini sur « true », cela signifie que d’autres résultats sont disponibles. Continuez à appeler ce point d’entrée jusqu’à ce que l’attribut `moreResult` renvoie false, ce qui signifie qu’aucun résultat n’est disponible. Les `nextPageToken` renvoyés par cette API doivent toujours être réutilisés pour l’itération suivante de cet appel.
+Le point d’entrée Get Lead Fields récupère les métadonnées de tous les champs de l’objet du prospect. Par défaut, elle renvoie un maximum de 300 enregistrements. Utilisez le paramètre de requête `batchSize` pour réduire ce nombre.
+
+Si `moreResult` est vrai, d’autres résultats sont disponibles. Transmettez le `nextPageToken` renvoyé à chaque appel suivant jusqu’à ce que `moreResult` ait la valeur false.
 
 ### Requête
 
@@ -429,12 +447,21 @@ GET /rest/v1/leads/schema/fields.json
 
 ## Créer des champs
 
-Le point d’entrée Créer des champs de prospect crée un ou plusieurs champs personnalisés sur l’objet de prospect. Ce point d’entrée fournit des fonctionnalités comparables à celles disponibles dans l’interface utilisateur de Marketo Engage. Vous pouvez créer jusqu’à 100 champs personnalisés à l’aide de ce point d’entrée.
-Examinez attentivement chaque champ que vous créez dans votre instance de production de Marketo Engage à l’aide de l’API.  Une fois qu’un champ a été créé, vous ne pouvez pas le supprimer (vous pouvez uniquement le masquer). La prolifération des champs inutilisés est une mauvaise pratique qui encombrera votre instance.
+Le point d’entrée Créer des champs de prospect crée un ou plusieurs champs personnalisés sur l’objet de prospect et fournit des fonctionnalités comparables à celles de l’interface utilisateur de Marketo Engage. Vous pouvez créer jusqu’à 100 champs personnalisés avec ce point d’entrée.
 
-Le paramètre d’entrée requis est un tableau d’objets de champ de prospect. Chaque objet contient un ou plusieurs attributs. Les attributs obligatoires sont les `displayName`, `name` et `dataType` qui correspondent respectivement au nom d’affichage de l’interface utilisateur du champ, au nom d’API du champ et au type de champ.  Vous pouvez éventuellement spécifier `description`, `isHidden`, `isHtmlEncodingInEmail` et `isSensitive`.
+Examinez attentivement chaque champ avant de le créer dans une instance de production. Une fois un champ créé, vous pouvez le masquer, mais ne pouvez pas le supprimer. Les champs non utilisés encombrent l’instance.
 
-Quelques règles sont associées au nom et à la dénomination des `displayName`. L’attribut name doit être unique, commencer par une lettre et contenir uniquement des lettres, des chiffres ou des traits de soulignement. Le `displayName` doit être unique et ne peut pas contenir de caractères spéciaux.  Une convention d’affectation des noms courante consiste à appliquer la casse mixte aux `displayName` pour produire le nom. Par exemple, une `displayName` de « Mon champ personnalisé » génère le nom « myCustomField ».
+Le paramètre d’entrée requis est un tableau d’objets de champ de prospect. Chaque objet nécessite les attributs suivants :
+
+- `displayName` est le nom d’affichage de l’interface utilisateur du champ.
+- `name` est le nom de l’API du champ.
+- `dataType` est le type de champ.
+
+Les attributs facultatifs sont `description`, `isHidden`, `isHtmlEncodingInEmail` et `isSensitive`.
+
+L’attribut name doit être unique, commencer par une lettre et contenir uniquement des lettres, des chiffres ou des traits de soulignement. Le `displayName` doit être unique et ne peut pas contenir de caractères spéciaux.
+
+Une convention courante applique la casse mixte aux `displayName` pour produire le nom. Par exemple, une `displayName` de « Mon champ personnalisé » génère le nom « myCustomField ».
 
 ### Requête
 
@@ -484,7 +511,7 @@ POST /rest/v1/leads/schema/fields.json
 
 ## Mettre à jour le champ
 
-Le point d’entrée Mettre à jour le champ de prospect met à jour un seul champ personnalisé sur l’objet de prospect. Pour la plupart, les opérations de mise à jour des champs effectuées à l’aide de l’interface utilisateur de Marketo Engage sont réalisables à l’aide de l’API . Quelques différences sont résumées dans le tableau ci-dessous.
+Le point d’entrée Mettre à jour le champ de prospect met à jour un champ personnalisé sur l’objet de prospect. La plupart des mises à jour des champs disponibles dans l’interface utilisateur de Marketo Engage le sont également via l’API. Le tableau suivant résume les différences.
 
 <table>
 <tbody>
@@ -565,7 +592,7 @@ Le point d’entrée Mettre à jour le champ de prospect met à jour un seul cha
 </tbody>
 </table>
 
-Le paramètre de chemin d’accès `fieldApiName` obligatoire spécifie le nom d’API du champ à mettre à jour. Le paramètre d’entrée requis est un tableau qui contient un seul objet de champ de prospect.  L’objet de champ contient un ou plusieurs attributs.
+Le paramètre de chemin d’accès `fieldApiName` obligatoire spécifie le nom d’API du champ à mettre à jour. Le paramètre d’entrée obligatoire est un tableau contenant un objet de champ de prospect avec un ou plusieurs attributs.
 
 ### Requête
 
@@ -604,11 +631,15 @@ POST /rest/v1/leads/schema/fields/{fieldApiName}.json
 
 ## Transmettre le lead à Marketo
 
-Push Lead est une alternative pour la synchronisation des leads avec Marketo, principalement conçue pour permettre un plus grand degré de capacité de déclenchement que les leads de synchronisation standard (similaire en utilisation à un formulaire Marketo). Outre la synchronisation des champs de prospect, ce point d’entrée permet l’association de prospects basée sur les valeurs de cookie transmises au point d’entrée . Pour ce faire, transmettez la valeur de `mkt_tok` générée en cliquant sur un e-mail Marketo ou en transmettant un nom de programme dans l’appel. Ce point d’entrée crée également une activité déclenchable unique, qui est associée à un programme et/ou à une campagne dans Marketo. Cela permet de déclencher des événements de capture de prospect attribués à une campagne ou un programme spécifique afin de lancer les workflows associés depuis Marketo.
+Le lead push est une alternative aux leads de synchronisation et fournit des options de déclenchement supplémentaires, similaires à un formulaire Marketo. Outre la synchronisation des champs de prospect, le point d’entrée peut associer un prospect en fonction d’une valeur de cookie. Transmettez la valeur de `mkt_tok` générée par un clic provenant d’un e-mail Marketo ou transmettez un nom de programme dans l’appel.
 
-L’interface des leads push est très similaire aux leads de synchronisation. Toutes les mêmes clés primaires sont valides et les mêmes noms d’API sont utilisés pour les champs (il n’existe aucun paramètre d’action car il s’agit toujours d’une opération d’upsert). Les paramètres d’`programName` et d’entrée sont obligatoires, et les paramètres `lookupField`, `source` et `reason` sont facultatifs. Le paramètre d’entrée est un tableau d’objets de prospect. L’activité résultante est attribuée au programme nommé correspondant. Les paramètres `source` et `reason` sont des champs de chaîne arbitraires qui peuvent être ajoutés à la requête pour incorporer ces valeurs dans les activités résultantes. Ils peuvent être utilisés comme contraintes dans les déclencheurs correspondants (le prospect est envoyé vers Marketo) et dans les filtres (le prospect a été envoyé vers Marketo).
+Le point d’entrée crée également une activité déclenchable associée à un programme Marketo, à une campagne ou aux deux. Utilisez cette activité pour démarrer des workflows à partir d’événements de capture de pistes attribués à une campagne ou un programme spécifique.
 
-Remarque concernant les activités anonymes. Si vous souhaitez associer des activités anonymes antérieures au prospect nouvellement créé, ne spécifiez pas l’attribut cookies dans l’objet de prospect et appelez le prospect associé à la suite de l’envoi du prospect. Si vous souhaitez créer un prospect sans historique d’activité, il vous suffit de spécifier l’attribut cookies dans l’objet de prospect.
+Le lead push utilise les mêmes clés primaires et noms d’API de champ que les leads de synchronisation. Il n’a aucun paramètre d’action, car il effectue toujours un upsert.
+
+Les paramètres d’`programName` et d’entrée sont requis. Le paramètre d’entrée est un tableau d’objets de prospect et l’activité résultante est attribuée au programme nommé. Les paramètres `lookupField`, `source` et `reason` sont facultatifs. Ajoutez des chaînes arbitraires dans `source` et `reason` pour inclure ces valeurs dans les activités résultantes. Vous pouvez utiliser les valeurs comme contraintes dans les déclencheurs correspondants (le prospect est envoyé vers Marketo) et les filtres (le prospect a été envoyé vers Marketo).
+
+Pour associer des activités anonymes antérieures à un prospect nouvellement créé, omettez l’attribut cookies de l’objet de prospect et appelez Associer le prospect après l’intégrer. Pour créer un prospect sans historique d’activité, spécifiez l’attribut cookies dans l’objet de prospect.
 
 ### Requête
 
@@ -674,7 +705,7 @@ POST /rest/v1/leads/push.json
 }
 ```
 
-Pour transmettre le paramètre `mkt_tok`, affectez la valeur au membre mktToken dans un enregistrement de prospect dans le paramètre d’entrée comme suit.
+Pour transmettre le paramètre `mkt_tok`, affectez sa valeur au membre mktToken dans un enregistrement de prospect au sein du paramètre d’entrée.
 
 ### Corps
 
@@ -699,24 +730,28 @@ Pour transmettre le paramètre `mkt_tok`, affectez la valeur au membre mktToken 
 
 ## Envoyer le formulaire
 
-Envoi de formulaire constitue une alternative pour la synchronisation des prospects vers Marketo et a été conçu pour fournir une fonctionnalité équivalente à un envoi de formulaire Marketo. Cela permet de déclencher des événements de capture de prospect attribués à une campagne ou un programme spécifique afin de lancer les workflows associés depuis Marketo.
+Envoyer le formulaire est une alternative pour synchroniser les prospects et fournit des fonctionnalités équivalentes à un envoi de formulaire Marketo. Utilisez-le pour démarrer des workflows à partir d’événements de capture de prospect attribués à une campagne ou un programme spécifique.
 
 Le point d’entrée Envoyer le formulaire prend en charge les fonctionnalités suivantes :
 
-* Insère un enregistrement de prospect en utilisant le champ d’e-mail comme clé primaire
-* Crée une activité « Remplir le formulaire » associée à un programme et/ou à une campagne
-* Autorise l’association de prospects en fonction de la valeur du cookie
-* Effectue la validation du champ de formulaire
+- Insère un enregistrement de prospect en utilisant le champ d’e-mail comme clé primaire.
+- Crée une activité « Remplir le formulaire » associée à un programme, à une campagne ou aux deux.
+- Associe un prospect en fonction d’une valeur de cookie.
+- Valide les champs de formulaire.
 
-L’envoi d’un formulaire suit le modèle standard de la base de données de prospects. Un seul enregistrement d’objet est transmis dans le membre d’entrée requis du corps JSON d’une requête POST. Le membre de `formId` requis contient l’identifiant du formulaire Marketo cible.
+Envoyez un formulaire avec le modèle de base de données de prospect standard. Transmettez un enregistrement d’objet dans le membre d’entrée requis du corps JSON de la requête POST. Le membre de `formId` requis contient l’identifiant du formulaire Marketo cible.
 
-Le `programId` facultatif peut être utilisé pour spécifier le programme auquel ajouter le prospect et/ou spécifier le programme auquel ajouter des champs personnalisés de membre de programme. Si `programId` est fourni, le prospect est ajouté au programme et tous les champs de membre de programme présents dans le formulaire sont également ajoutés. Notez que le programme spécifié doit se trouver dans le même espace de travail que le formulaire. Si le formulaire ne contient pas de champs personnalisés de membre de programme et que `programId` n’est pas fourni, le prospect n’est pas ajouté à un programme. Si le formulaire réside dans un programme et `programId` n’est pas fourni, ce programme est utilisé lorsqu’un ou plusieurs champs personnalisés membres du programme sont présents dans le formulaire.
+Utilisez le `programId` facultatif pour identifier le programme qui reçoit le prospect, les champs personnalisés des membres du programme ou les deux. Si `programId` est présent, le prospect est ajouté au programme avec tous les champs de membre de programme du formulaire. Le programme doit se trouver dans le même espace de travail que le formulaire.
 
-Dans l’enregistrement d’entrée, l’objet `leadFormFields` est obligatoire. Cet objet contient une ou plusieurs paires nom/valeur qui correspondent aux champs de formulaire à remplir.  Tous les champs spécifiés doivent être définis dans le formulaire spécifié. Le nom correspond au nom de l’API REST pour le champ . Notez que le champ `email` est obligatoire.
+Si le formulaire ne contient pas de champs personnalisés de membre de programme et que `programId` est omis, le prospect n’est pas ajouté à un programme. Si le formulaire appartient à un programme, contient un ou plusieurs champs personnalisés de membre de programme et omet les `programId`, le point d’entrée utilise le programme du formulaire.
 
-L’objet membre de `visitorData` est facultatif et contient des paires nom/valeur qui correspondent aux données de page-visite, y compris `pageURL`, `queryString`, `leadClientIpAddress` et `userAgentString`. Peut être utilisé pour remplir des champs d’activité supplémentaires à des fins de filtrage et de déclenchement.
+L’objet `leadFormFields` obligatoire contient une ou plusieurs paires nom/valeur à remplir pour les champs. Chaque champ doit être défini dans le formulaire spécifié et chaque nom doit être le nom de l’API REST du champ. Le champ `email` est obligatoire.
 
-La chaîne de membre du cookie est facultative et vous permet d’associer un cookie Munchkin à un enregistrement de personne dans Marketo. Lorsqu’un nouveau prospect est créé, toutes les activités anonymes antérieures sont associées à ce prospect, sauf si la valeur du cookie avait été précédemment associée à un autre enregistrement connu. Si la valeur du cookie a été précédemment associée, les nouvelles activités sont suivies par rapport à l’enregistrement, mais les anciennes activités ne seront pas migrées loin de l’enregistrement connu existant. Pour créer un prospect sans historique d’activité, omettez simplement le membre de cookie.
+L’objet `visitorData` facultatif contient des données sur les visites de page, notamment `pageURL`, `queryString`, `leadClientIpAddress` et `userAgentString`. Utilisez-la pour remplir des champs d’activité supplémentaires pour les filtres et les déclencheurs.
+
+Le membre de cookie facultatif associe un cookie Munchkin à un enregistrement de personne Marketo. Lorsque le point d’entrée crée un prospect, il associe des activités anonymes antérieures à ce prospect, sauf si le cookie a été précédemment associé à un autre enregistrement connu.
+
+Si le cookie a été précédemment associé, les nouvelles activités sont suivies par rapport au nouvel enregistrement, mais les anciennes activités restent avec l’enregistrement connu existant. Pour créer un prospect sans historique d’activité, omettez le membre de cookie.
 
 De nouveaux prospects sont créés dans la partition principale de l’espace de travail dans lequel se trouve le formulaire.
 
@@ -772,7 +807,7 @@ Content-Type: application/json
 }
 ```
 
-Vous trouverez ici les détails de l’activité « Remplir le formulaire » correspondante dans l’interface utilisateur de Marketo Engage :
+L’image suivante montre les détails de l’activité « Remplir le formulaire » correspondants dans l’interface utilisateur de Marketo Engage :
 
 ![Remplir l’interface utilisateur de formulaire](assets/fill_out_form_activity_details.png)
 
@@ -783,7 +818,9 @@ Vous trouverez ici les détails de l’activité « Remplir le formulaire » cor
 >À compter du 31 mars 2026, les appels qui incluent plus de 25 identifiants dans le paramètre `leadIds` d’un appel de l’API Merge Leads entraîneront un code d’erreur 1080 et l’appel sera ignoré. Les tâches nécessitant la fusion de plus de 25 enregistrements en un seul doivent être divisées en plusieurs tâches pour assurer le succès de ces appels.
 >
 
-Il est parfois nécessaire de fusionner des enregistrements en double. Pour ce faire, Marketo utilise l’API Merge Leads. La fusion des prospects combinera leurs journaux d’activités, programmes, campagnes et listes d’appartenances et informations CRM, et fusionnera toutes leurs valeurs de champ en un seul enregistrement. La fusion des prospects prend un ID de prospect comme paramètre de chemin d’accès et soit un seul `leadId` comme paramètre de requête, soit une liste de 25 ID séparés par des virgules ou moins dans le paramètre de `leadIds`
+Utilisez l’API Merge Leads pour combiner les enregistrements en double en un seul enregistrement. Une fusion combine des journaux d’activité, des abonnements de programme, de campagne et de liste, des informations CRM et des valeurs de champ.
+
+Transmettez l’ID de lead gagnant comme paramètre de chemin d’accès. Transmettez un `leadId` en tant que paramètre de requête ou jusqu’à 25 identifiants séparés par des virgules dans le paramètre de `leadIds`.
 
 
 ### Requête
@@ -801,13 +838,15 @@ POST /rest/v1/leads/{id}/merge.json?leadId=1324
 }
 ```
 
-Le prospect spécifié dans le paramètre de chemin d’accès est le prospect gagnant. Par conséquent, s’il existe des champs en conflit entre les enregistrements fusionnés, la valeur du gagnant est récupérée, sauf si le champ de l’enregistrement gagnant est vide et que le champ correspondant de l’enregistrement perdant ne l’est pas. Les prospects spécifiés dans le paramètre `leadId` ou `leadIds` sont les prospects perdus.
+Le prospect du paramètre de chemin d’accès est le prospect gagnant. Lorsque les valeurs de champ entrent en conflit, la fusion utilise la valeur du gagnant, sauf si cette valeur est vide et que la valeur de l&#39;enregistrement perdant ne l&#39;est pas. Les prospects du paramètre `leadId` ou `leadIds` sont les prospects perdus.
 
-Si vous disposez d’un abonnement activé pour la synchronisation de SFDC, vous pouvez également utiliser le paramètre `mergeInCRM` dans votre requête. Si la valeur est définie sur true, la fusion correspondante dans votre CRM est également effectuée. Si les deux prospects sont dans SFDC et que l’un est un prospect CRM et que l’autre est un contact CRM, le gagnant est le contact CRM (quel que soit le prospect spécifié comme gagnant). Si l’un des prospects se trouve dans SFDC et que l’autre est Marketo uniquement, le gagnant est le prospect SFDC (quel que soit le prospect spécifié comme gagnant).
+Pour un abonnement activé pour la synchronisation SFDC, utilisez le paramètre `mergeInCRM` pour effectuer également la fusion dans le CRM. Si les deux enregistrements se trouvent dans SFDC et que l’un est un prospect CRM tandis que l’autre est un contact CRM, le contact CRM gagne, quel que soit le gagnant spécifié. Si un enregistrement est dans SFDC et que l’autre n’existe que dans Marketo, le prospect SFDC gagne, quel que soit le gagnant spécifié.
 
 ## Associer l&#39;activité Web
 
-Grâce au suivi des leads (Munchkin), Marketo enregistre l’activité web des visiteurs de votre site web et de vos pages de destination Marketo. Ces activités, Visites et Clics, sont enregistrées avec une clé qui correspond à un cookie « _mkto_trk » défini dans le navigateur du prospect. Marketo l’utilise pour suivre les activités de la même personne. Normalement, l’association aux enregistrements de prospect se produit lorsqu’un prospect clique sur un e-mail de Marketo ou remplit un formulaire Marketo, mais une association peut parfois être déclenchée par un autre type d’événement, ce que vous pouvez faire à l’aide du point d’entrée Associer le prospect. Le point d’entrée prend l’identifiant d’enregistrement de prospect connu comme paramètre de chemin d’accès et la valeur du cookie « _mkto_trk » dans le paramètre de requête de cookie.
+Le suivi des leads (Munchkin) enregistre les visites et les clics des visiteurs de votre site web et des pages de destination Marketo. Ces activités utilisent une clé qui correspond au cookie « _mkto_trk » dans le navigateur du prospect, ce qui permet à Marketo de suivre les activités de la même personne.
+
+L’association à un enregistrement de prospect se produit généralement lorsqu’un prospect suit un lien provenant d’un e-mail Marketo ou envoie un formulaire Marketo. Pour associer un prospect après un autre type d’événement, utilisez le point d’entrée Associer le prospect. Transmettez l’ID d’enregistrement de prospect connu en tant que paramètre de chemin d’accès et la valeur du cookie « _mkto_trk » dans le paramètre de requête de cookie.
 
 ### Requête
 
@@ -824,13 +863,14 @@ POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marke
 }
 ```
 
-Si un cookie est déjà associé à un enregistrement de prospect connu, l’utilisation de cette API sur un autre enregistrement de prospect entraîne l’enregistrement d’une nouvelle activité web par rapport à cet enregistrement, mais ne déplacera aucune activité web existante vers le nouvel enregistrement.
-Adhésion
+Si le cookie est déjà associé à un prospect connu, l’utilisation de cette API pour un autre prospect enregistre une nouvelle activité web par rapport au nouvel enregistrement. L’activité web existante ne passe pas au nouvel enregistrement.
+Appartenance
 
-Les enregistrements de lead peuvent également être récupérés en fonction de l’appartenance à une liste statique ou à un programme. De plus, vous pouvez récupérer toutes les listes statiques, les programmes ou les campagnes intelligentes dont un prospect est membre.
+Récupérez les enregistrements de prospect en fonction de l’appartenance à une liste ou un programme statique. Vous pouvez également récupérer toutes les listes statiques, les programmes ou les campagnes intelligentes qui incluent un prospect spécifique.
 
-La structure de réponse et les paramètres facultatifs sont identiques à ceux de l’option Get Leads by Filter Type (Obtenir les prospects par type de filtre), bien que `filterType` et `filterValues` ne puissent pas être utilisés avec cette API.
-Pour accéder à l’ID de liste via l’interface utilisateur de Marketo, accédez à la liste. La liste `id` se trouve dans l’URL de la liste statique, `https://app-****.marketo.com/#ST1001A1`. Dans cet exemple, 1001 est la `id` de la liste.
+La structure de réponse et les paramètres facultatifs correspondent à Obtenir les prospects par type de filtre, mais cette API n’accepte ni les `filterType` ni les `filterValues`.
+
+Pour trouver l’identifiant de liste dans l’interface utilisateur de Marketo, accédez à la liste et inspectez son URL. En `https://app-****.marketo.com/#ST1001A1`, 1001 est la liste `id`.
 
 ## Obtenir les programmes par ID de lead
 
@@ -873,7 +913,7 @@ GET /rest/v1/list/{listId}/leads.json?batchSize=3
 
 ## Obtenir des listes par ID de lead
 
-Le point d’entrée Get Lists by Lead Id prend un enregistrement de lead `id` un paramètre de chemin d’accès et renvoie tous les enregistrements de liste statiques dont le lead est membre.
+Le point d’entrée Get Lists by Lead Id prend un paramètre de chemin de `id` d’enregistrement de lead et renvoie chaque liste statique qui inclut le lead.
 
 ### Requête
 
@@ -911,11 +951,13 @@ GET /rest/v1/leads/{id}/listMembership.json?batchSize=3
 
 ## Programmes
 
-L’appartenance à un programme peut être récupérée de la même manière que les listes. Les mêmes paramètres de requête facultatifs sont disponibles lors de l’appel du point d’entrée Get Leads by Program Id et de la transmission du paramètre de chemin d’accès `programId`.
+Récupérez l’appartenance à un programme de la même manière que l’appartenance à une liste. L’option Obtenir les prospects par ID de programme accepte les mêmes paramètres de requête facultatifs et nécessite le paramètre de chemin d’accès `programId`.
 
-Vous pouvez éventuellement transmettre un paramètre de champs contenant une liste de noms de champs séparés par des virgules à renvoyer. Si le paramètre fields n’est pas inclus dans cette requête, les champs par défaut suivants seront renvoyés : `email`, `updatedAt`, `createdAt`, `lastName`, `firstName`, `membership` et `id`. Lors de la demande d’une liste de champs, si un champ particulier est demandé, mais n’est pas renvoyé, la valeur est implicitement nulle.
+Vous pouvez éventuellement transmettre un paramètre de champs contenant une liste de noms de champs séparés par des virgules. Si des champs sont omis, la réponse inclut `email`, `updatedAt`, `createdAt`, `lastName`, `firstName`, `membership` et `id`. Si un champ demandé n’est pas renvoyé, sa valeur est implicitement nulle.
 
-La structure de la réponse est très similaire, car chaque élément du tableau de résultats est un prospect, excepté que chaque enregistrement possède également un objet enfant appelé « appartenance ». Cet objet d’abonnement inclut des données sur la relation du prospect avec le programme indiqué dans l’appel, affichant toujours ses `progressionStatus`, `acquiredBy`, `reachedSuccess` et `membershipDate`. Si le programme parent est également un programme de participation, les membres auront des `stream`, des `nurtureCadence` et des `isExhausted` pour indiquer leur position et leur activité dans le programme de participation.
+Chaque élément du tableau de résultats est un prospect avec un objet enfant appelé « appartenance ». Cet objet décrit la relation du prospect avec le programme demandé et inclut toujours `progressionStatus`, `acquiredBy`, `reachedSuccess` et `membershipDate`.
+
+Si le programme parent est un programme d&#39;engagement, les membres comprennent également des `stream`, des `nurtureCadence` et des `isExhausted` pour décrire la position et l&#39;activité du responsable dans ce programme.
 
 ### Requête
 
@@ -989,7 +1031,7 @@ GET /rest/v1/leads/programs/{programId}.json?batchSize=3
 }
 ```
 
-Le point d’entrée Get Programmes by Lead Id prend un paramètre de chemin d’accès à l’ID d’enregistrement du prospect et renvoie tous les enregistrements de programme dont le prospect est membre. Les paramètres facultatifs `filterType` et `filterValues` vous permettent de filtrer par ID de programme.
+Le point d’entrée Get Programmes by Lead Id prend un paramètre de chemin d’accès à l’ID d’enregistrement du prospect et renvoie chaque programme qui inclut le prospect. Utilisez les paramètres facultatifs `filterType` et `filterValues` pour filtrer par ID de programme.
 
 ### Requête
 
@@ -1020,7 +1062,7 @@ GET /rest/v1/leads/{id}/programMembership.json
 
 ## Campagnes intelligentes
 
-Le point d’entrée Get Smart Campaign by Lead Id prend un paramètre de chemin d’accès à l’identifiant d’enregistrement du prospect et renvoie tous les enregistrements de campagne intelligente dont le prospect est membre.
+Le point d’entrée Get Smart Campaign by Lead Id prend un paramètre de chemin d’accès à l’identifiant d’enregistrement du prospect et renvoie chaque campagne intelligente qui inclut le prospect.
 
 ### Requête
 
@@ -1058,7 +1100,7 @@ GET /rest/v1/leads/{id}/smartCampaignMembership.json?batchSize=3
 
 ## Supprimer
 
-La suppression des prospects est simple grâce au point d’entrée Supprimer les prospects.  Spécifiez les ID de prospect à supprimer à l’aide des attributs d’ID du corps.  La limite maximale est de 300 prospects par requête.  Utilisez Content-Type : en-tête application/json .
+Utilisez le point d’entrée Supprimer les prospects pour supprimer les enregistrements de prospect. Spécifiez les ID de prospect dans le corps avec les attributs d’ID. Une requête peut supprimer jusqu’à 300 prospects. Envoyez l’en-tête Content-Type : application/json .
 
 ### Requête
 
@@ -1102,22 +1144,22 @@ POST /rest/v1/leads/delete.json
 
 ## Relations
 
-* Sociétés via le champ externalCompanyId dans l’enregistrement de prospect
-* SalesPersons via le champ externalSalesPersonId dans l&#39;enregistrement du lead
-* Programmes via l’appartenance à un programme
-* Listes via l’appartenance à une liste
-* Activités via le champ leadId dans l’activité
-* Segmentation par champs de segment individuels sur l’enregistrement de prospect
-* Partitions via leadPartitionId dans l’enregistrement de prospect
+- Sociétés via le champ externalCompanyId dans l’enregistrement de prospect
+- SalesPersons via le champ externalSalesPersonId dans l’enregistrement du prospect
+- Programmes via l’appartenance à un programme
+- Listes via l’appartenance à une liste
+- Activités via le champ leadId dans l’activité
+- Segmentation par champs de segment individuels sur l’enregistrement de prospect
+- Partitionne par le biais du champ leadPartitionId dans l’enregistrement de prospect
 
 ## Délais dépassés
 
-Les points d’entrée des leads ont un délai d’expiration de 30 s, sauf indication ci-dessous :
+Les points d’entrée des leads ont un délai d’expiration de 30 s, à l’exception des points d’entrée suivants :
 
-* Leads de synchronisation : 90s
-* Responsable associé : années 60
-* Fusionner les leads : 180s
-* Mise à jour de la partition de lead : années 60
-* Intégrer le lead à Marketo : années 90
-* Get Leads by Filter Type : 60s
-* Get Leads by List ID : 60s
+- Leads de synchronisation : 90s
+- Responsable associé : années 60
+- Fusionner les leads : 180s
+- Mise à jour de la partition de lead : années 60
+- Intégrer le lead à Marketo : années 90
+- Get Leads by Filter Type : 60s
+- Get Leads by List ID : 60s

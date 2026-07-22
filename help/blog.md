@@ -2,9 +2,9 @@
 title: Archive de blog
 description: Archive du blog du développeur de Marketo 2014-2023 offrant des publications historiques sur Forms 2.0, Zapier, les mises à jour des API, l’obsolescence de SOAP et la migration vers REST.
 exl-id: d7ae88dd-9938-4957-9798-db43090dab4e
-source-git-commit: 9c6aa420e451d529f3a1618fafe70b59392a4670
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: '65019'
+source-wordcount: '59469'
 ht-degree: 0%
 
 ---
@@ -22,7 +22,7 @@ ht-degree: 0%
 >
 
 >[!IMPORTANT]
->La prise en charge de l’authentification à l’aide du paramètre de requête `access_token` sera supprimée le 31 juillet 2026. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête [Authorization](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête d’autorisation .
+>La prise en charge de l’authentification à l’aide du paramètre de requête `access_token` sera supprimée le 31 août 2026. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête [Authorization](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête d’autorisation .
 >
 
 ## Bienvenue sur le blog du développeur de Marketo
@@ -575,7 +575,7 @@ $(function(){
 Cet article contient le code utilisé pour implémenter des intégrations personnalisées. En raison de sa nature personnalisée, l’équipe d’assistance technique de Marketo ne peut pas résoudre les problèmes liés au travail personnalisé. N’essayez pas de mettre en œuvre l’exemple de code suivant sans expérience technique appropriée ou sans accès à un développeur expérimenté.
 
 Pour les pages comportant du contenu multimédia, par exemple, vous pouvez effectuer un suivi personnalisé. Un exemple courant consiste à ajouter le code de suivi Munchkin à la page et à utiliser l’API Munchkin pour générer des événements dans votre instance Marketo pour des activités telles que la lecture d’une vidéo ou l’écoute d’un clip audio. Nous vous recommandons de placer le code de suivi Munchkin sur la plupart ou la totalité de vos pages web. Le code de suivi Munchkin est automatiquement inclus dans les pages de destination que vous créez à l’aide de Marketo. Utilisez cet appel pour enregistrer que l’utilisateur a fait quelque chose, comme visiter une page dans Ajax, Flash ou un autre environnement RIA. L’URL ne doit pas contenir « » ni aucun domaine, mais elle peut pointer vers n’importe quelle page, même des pages qui n’existent pas. Si vous souhaitez ajouter des paramètres d’URL, utilisez l’argument params .
-L’événement s’affiche en tant qu’événement de page web de visite dans le journal d’activité de l’utilisateur ou de l’utilisatrice sous le domaine de la page web appelante. Remarque Votre premier appel à `mktoMunchkin()` crée toujours un événement Visiter la page Web pour la page active. Vous n’avez pas besoin d’appeler `visitWebPage` , sauf si vous souhaitez effectuer le suivi d’une visite supplémentaire de la page web. `mktoMunchkinFunction('visitWebPage', { url: '/MyFlashMovie/Story1', params: 'x=y&2=3' });`  Remarque Assurez-vous d’avoir accès à un développeur JavaScript expérimenté. L’assistance technique de Marketo n’est pas configurée pour vous aider à résoudre les problèmes liés au JavaScript personnalisé. L’API Munchkin JavaScript vous permet d’intégrer un système web tiers à votre compte Marketo. Grâce à certains développements web, vous pouvez capturer de nouveaux prospects ou mettre à jour les prospects actuels avec des applications existantes sur votre site web. Supposons que vous ayez une application web pour l’enregistrement des clients qui recueille de nouvelles informations sur les clients. Avec juste un peu de programmation, vous pouvez également avoir des informations de prospect pour les utilisateurs capturés dans Marketo, ainsi qu’un cookie Marketo défini pour le suivi web futur.
+L’événement s’affiche en tant qu’événement de page web de visite dans le journal d’activité de l’utilisateur ou de l’utilisatrice sous le domaine de la page web appelante. Remarque Votre premier appel à `mktoMunchkin()` crée toujours un événement Visiter la page Web pour la page active. Vous n’avez pas besoin d’appeler `visitWebPage` , sauf si vous souhaitez effectuer le suivi d’une visite supplémentaire de la page web. `mktoMunchkinFunction('visitWebPage', { url: '/MyFlashMovie/Story1', params: 'x=y&2=3' });` Remarque Assurez-vous d’avoir accès à un développeur JavaScript expérimenté. L’assistance technique de Marketo n’est pas configurée pour vous aider à résoudre les problèmes liés au JavaScript personnalisé. L’API Munchkin JavaScript vous permet d’intégrer un système web tiers à votre compte Marketo. Grâce à certains développements web, vous pouvez capturer de nouveaux prospects ou mettre à jour les prospects actuels avec des applications existantes sur votre site web. Supposons que vous ayez une application web pour l’enregistrement des clients qui recueille de nouvelles informations sur les clients. Avec juste un peu de programmation, vous pouvez également avoir des informations de prospect pour les utilisateurs capturés dans Marketo, ainsi qu’un cookie Marketo défini pour le suivi web futur.
 
 En outre, une autre fonctionnalité permet à vos développeurs web de capturer et de suivre les informations d’activité web à partir d’environnements web riches, tels que Flash ou Ajax. Remarque : si vous disposez des ressources de développement appropriées, vous devez envisager d’utiliser notre API SOAP pour l’intégration au lieu de cette API. L’API SOAP est plus robuste et dispose de davantage de fonctionnalités que l’API Munchkin. Exigences en matière d’API Marketo SOAP Pour que cela fonctionne, vous devez inclure le code Munchkin JavaScript sur votre page web. Vous trouverez les balises de script nécessaires dans le tutoriel Munchkin. Activez également l’API Munchkin, qui est également décrite dans le tutoriel.
 Sous le capot Après avoir effectué un appel API Munchkin, l’utilisateur reçoit automatiquement un cookie s’il n’en a pas. Dans Marketo, il consigne l’événement (clic sur un lien, visite une page web ou un nouveau prospect) dans le journal d’activité de la personne. Si vous utilisez le lien de clic ou consultez un appel de page web, l’événement est ajouté au journal d’activité de ce prospect (connu ou anonyme). S’il s’agit d’un nouveau prospect et que vous utilisez l’appel de prospect associé, ce prospect devient un prospect connu et son historique d’activité est conservé. S’il s’agit d’un prospect existant (en fonction de la correspondance d’adresse e-mail), toute valeur modifiée ou nouvelle sera mise à jour dans l’enregistrement de ce prospect.
@@ -1012,7 +1012,7 @@ response = client.call(:sync_lead, message: request)
 puts response
 ```
 
-**via un champ personnalisé dans un formulaire** vous pouvez créer un champ personnalisé pour la « Nouvelle adresse e-mail » dans Marketo. Demandez ensuite à l’utilisateur de remplir un formulaire contenant ce nouveau champ. Créez ensuite un programme dans Marketo qui modifierait la valeur des données du champ d’adresse e-mail système avec le jeton `{{lead.newEmailAddress}}` en cas de modification du nouveau champ personnalisé « Nouvelle adresse e-mail ». **Via l’interface utilisateur de Marketo** vous pouvez mettre à jour manuellement l’adresse e-mail d’un prospect via l’interface utilisateur de Marketo. Voici un [article d’aide](https://nation.marketo.com/) qui décrit comment procéder (connexion à Marketo requise pour voir l’article). **Via l’importation d’une liste** vous pouvez mettre à jour l’adresse e-mail d’un prospect à l’aide de la méthode d’importation d’une liste dans Marketo décrite [ici](https://nation.marketo.com/) (connexion Marketo requise pour consulter l’article).  
+**via un champ personnalisé dans un formulaire** vous pouvez créer un champ personnalisé pour la « Nouvelle adresse e-mail » dans Marketo. Demandez ensuite à l’utilisateur de remplir un formulaire contenant ce nouveau champ. Créez ensuite un programme dans Marketo qui modifierait la valeur de données du champ d’adresse e-mail du système avec le jeton `{{lead.newEmailAddress}}` en cas de modification du nouveau champ personnalisé « Nouvelle adresse e-mail ». **Via l’interface utilisateur de Marketo** vous pouvez mettre à jour manuellement l’adresse e-mail d’un prospect via l’interface utilisateur de Marketo. Voici un [article d’aide](https://nation.marketo.com/) qui décrit comment procéder (connexion à Marketo requise pour voir l’article). **Via l’importation d’une liste** vous pouvez mettre à jour l’adresse e-mail d’un prospect à l’aide de la méthode d’importation d’une liste dans Marketo décrite [ici](https://nation.marketo.com/) (connexion Marketo requise pour consulter l’article).  
 
 Cet article contient le code utilisé pour implémenter des intégrations personnalisées. En raison de sa nature personnalisée, l’équipe d’assistance technique de Marketo ne peut pas résoudre les problèmes liés au travail personnalisé. N’essayez pas de mettre en œuvre l’exemple de code suivant sans expérience technique appropriée ou sans accès à un développeur expérimenté.
 
@@ -1092,7 +1092,7 @@ Publié le _2014-08-19_ par _Murta_
 **Partie 1 : ajouter le code de suivi Marketo à Unbounce** l’ajout du script de suivi Marketo Munchkin aux pages Unbounce est nécessaire pour que les analyses et l’intégration des formulaires fonctionnent. Procédez comme suit : Copiez votre code Munchkin à partir de Marketo : Accédez à Admin -> Munchkin et copiez la version « Simple » de JavaScript. Ouvrez la page de destination Rebond et cliquez sur JavaScript-> Ajouter un nouveau JavaScript.  Cliquez sur Ajouter, appelez le script « Munchkin », sélectionnez « Before Body End Tag », puis collez le code Munchkin. Cliquez sur le bouton Terminé . Pour les prochaines pages Annuler le rebond, accédez à JavaScript et activez le script Munchkin que nous avons créé. Il n’est pas nécessaire de la recréer.
 **Partie 2 : Convertissez le formulaire Unbounce en formulaire Marketo** Nous devons maintenant modifier le formulaire Unbounce en ajoutant de nouveaux champs masqués et un nouveau JavaScript pour permettre à vos pages de destination Unbounce d&#39;envoyer des informations de prospect directement dans Marketo. Nous allons d’abord créer un formulaire d’espace réservé Marketo. Dans Marketo, créez un formulaire vierge et approuvez-le.
 
-Il s’agit du formulaire de proxy dans Marketo qui représente le formulaire d’annulation de rebond. Ajouter des champs masqués au formulaire d’annulation du rebond. Ces champs masqués sont requis par Marketo pour déterminer à quelle instance Marketo, à quel formulaire et à quelle session utilisateur cet envoi de formulaire s’appliquera. Dans Unbounce, ouvrez votre formulaire en double-cliquant. Ajoutez un champ masqué appelé `_mkt_trk`. Ajoutez un second champ masqué appelé `formid`. L’ID 233 doit être remplacé par l’ID de votre formulaire, qui se trouve dans le code intégré du formulaire Marketo dans Marketo. Dans Marketo, ouvrez votre formulaire, puis sélectionnez Actions du formulaire ->Code incorporé. Ajoutez un champ masqué appelé `returnurl`. `https://hooshmarketing.com.au/thank-you` doit être remplacé par l&#39;URL de relance, il s&#39;agit de l&#39;URL vers laquelle vous souhaitez que les utilisateurs soient redirigés après l&#39;envoi du formulaire. Par exemple, il peut s’agir de votre page de remerciement.
+Il s’agit du formulaire de proxy dans Marketo qui représente le formulaire d’annulation de rebond. Ajouter des champs masqués au formulaire d’annulation du rebond. Ces champs masqués sont requis par Marketo pour déterminer à quelle instance Marketo, à quel formulaire et à quelle session utilisateur cet envoi de formulaire s’appliquera. Dans Unbounce, ouvrez votre formulaire en double-cliquant. Ajoutez un champ masqué appelé `_mkt_trk`. Ajoutez un second champ masqué appelé `formid`. L’ID 233 doit être remplacé par l’ID de votre formulaire, qui se trouve dans le code intégré du formulaire Marketo dans Marketo. Dans Marketo, ouvrez votre formulaire, puis sélectionnez Actions du formulaire ->Code incorporé. Ajoutez un champ masqué appelé `returnurl`. `https://hooshmarketing.com.au/thank-you` doit être remplacé par une URL de relance, il s&#39;agit de l&#39;URL vers laquelle vous souhaitez rediriger les utilisateurs après l&#39;envoi du formulaire. Par exemple, il peut s’agir de votre page de remerciement.
 **Partie 3 : formulaire de rebond direct vers Marketo** l’URL de suivi est la page vers laquelle votre prospect sera redirigé une fois qu’il aura été envoyé à Marketo. Dans Unbounce, procédez comme suit : cliquez sur votre formulaire. Modifiez la section Confirmation du formulaire . Modifiez la Confirmation pour Publier les données de formulaire dans une URL. Définissez l’URL sur la page de relance de votre choix. `fpmarkets` doit être remplacé par la chaîne de votre compte Marketo, qui se trouve dans Marketo sous Admin->Pages de destination.
 **Partie 4 : Ajouter JavaScript à la page Annuler le rebond** Ce JavaScript convertira le formulaire pour qu’il soit compatible avec Marketo et l’enverra à Marketo. Dans Unbounce, procédez comme suit : ouvrez la page de destination Unbounce et cliquez sur JavaScript-> Ajouter un nouveau JavaScript. Cliquez sur Ajouter, appelez le script « Marketo Form Convert », puis sélectionnez « Before Body End Tag ». Collez le code JavaScript ci-dessous :
 
@@ -1176,7 +1176,7 @@ UNBOUNCE_MARKETO_FIELD_MAP['first_name'] = 'FirstName';
 UNBOUNCE_MARKETO_FIELD_MAP['email'] = 'Email';
 ```
 
-_comments est le nom du champ dans Unbounce. _Comments_c_ est le nom du champ dans Marketo. Pour les prochaines pages Annuler le rebond, il vous suffira d’accéder à JavaScript et d’activer le script Munchkin que nous avons créé. Il n’est pas nécessaire de la recréer.
+_comments est le nom du champ dans Unbounce._Comments_c_ est le nom du champ dans Marketo. Pour les prochaines pages Annuler le rebond, il vous suffira d’accéder à JavaScript et d’activer le script Munchkin que nous avons créé. Il n’est pas nécessaire de la recréer.
 **Partie 5 : Tests** La dernière étape consiste à tester le bon fonctionnement de l’intégration de ce formulaire. Créez un déclencheur dans Marketo qui s’active lors du remplissage du formulaire Marketo et assurez-vous que les prospects sont correctement insérés dans Marketo. Une fois le formulaire envoyé, la page doit vous rediriger vers l’URL de relance.
 
 Publié le _2014-08-04_ par _
@@ -1359,7 +1359,7 @@ Publié le _1970-01-01_ par _Murta_
 1. Recherchez et copiez votre fragment de code Optimizely.** Accédez à votre tableau de bord dans Optimizely, puis cliquez sur le lien Code du projet . Copiez la ligne de code qui s’affiche dans le pop-up.
 1. Connectez-vous à Marketo et sélectionnez votre modèle de page de destination. Cliquez ensuite sur « Modifier le brouillon »**
 1. Cliquez sur Actions de la page de destination. Cliquez ensuite sur Modifier la page Meta Tags**
-1. Collez votre fragment de code Optimizely dans la section HTML d’HEAD personnalisée, puis cliquez sur Enregistrer.
+1. Collez votre fragment de code Optimizely dans la section HTML HEAD personnalisée, puis cliquez sur Enregistrer.
 1. Testez votre page de destination pour vérifier que le fragment de code Optimizely fonctionne
 
 Publié le _2014-09-18_ par _Murta_
@@ -1449,7 +1449,7 @@ Publié le _2014-09-16_ par _Murta_
 ## Ajout des données de localisation de l’API RTP au remplissage de formulaire Marketo
 
 **Vous avez besoin d’abonnements au RTP et au MLM actifs pour implémenter le cas d’utilisation décrit dans cet article de blog.**
-À l’aide des [API JavaScript RTP](/help/javascript-api/web-personalization.md) et [Forms Marketo 2.0](/help/javascript-api/forms-api-reference.md), vous pouvez extraire les données d’emplacement déduites de RTP et les transmettre à Marketo via un remplissage de formulaire. Vous pouvez ainsi afficher l’emplacement déduit de l’utilisateur (en fonction de l’adresse IP) au cours de l’activité de formulaire la plus récente. Pour commencer, vous devez créer trois champs de chaîne personnalisés dans Marketo. Vous pouvez le faire via votre CRM s’il dispose d’une intégration native à Marketo, ou à partir du menu Gestion des champs de la section d’administration de Marketo. Je vous recommande de nommer ces champs « Pays le plus récent », « État le plus récent » et « Ville la plus récente ». Nous continuons ce blog en utilisant cette convention de nommage. Les noms d’API pour ces champs sont « mostRecentCountry », « mostRecentState » et « mostRecentCity ». Pour récupérer les données d’emplacement, nous utilisons la méthode [RTP pour obtenir les données d’emplacement du visiteur](/help/javascript-api/web-personalization.md), puis nous les transmettons dans le formulaire à l’aide des méthodes [addHiddenFields et vals](/help/javascript-api/forms-api-reference.md) de Marketo Forms 2.0. Sur votre page, ajoutez la balise RTP JS et un formulaire Marketo. Insérez ensuite le script ci-dessous. Vous devez modifier les noms des champs du formulaire cible dans l’exemple de code si vous utilisez une convention de nommage différente de celle décrite ci-dessus.
+À l’aide des API [RTP JavaScript](/help/javascript-api/web-personalization.md) et de [Marketo Forms 2.0](/help/javascript-api/forms-api-reference.md), vous pouvez extraire les données d’emplacement déduites de RTP et les transmettre à Marketo via un remplissage de formulaire. Vous pouvez ainsi afficher l’emplacement déduit de l’utilisateur (en fonction de l’adresse IP) au cours de l’activité de formulaire la plus récente. Pour commencer, vous devez créer trois champs de chaîne personnalisés dans Marketo. Vous pouvez le faire via votre CRM s’il dispose d’une intégration native à Marketo, ou à partir du menu Gestion des champs de la section d’administration de Marketo. Je vous recommande de nommer ces champs « Pays le plus récent », « État le plus récent » et « Ville la plus récente ». Nous continuons ce blog en utilisant cette convention de nommage. Les noms d’API pour ces champs sont « mostRecentCountry », « mostRecentState » et « mostRecentCity ». Pour récupérer les données d’emplacement, nous utilisons la méthode [RTP pour obtenir les données d’emplacement du visiteur](/help/javascript-api/web-personalization.md), puis nous les transmettons dans le formulaire à l’aide des méthodes [addHiddenFields et vals](/help/javascript-api/forms-api-reference.md) de Marketo Forms 2.0. Sur votre page, ajoutez la balise RTP JS et un formulaire Marketo. Insérez ensuite le script ci-dessous. Vous devez modifier les noms des champs du formulaire cible dans l’exemple de code si vous utilisez une convention de nommage différente de celle décrite ci-dessus.
 
 ```javascript
 <script>
@@ -2523,7 +2523,7 @@ Supposons que vous souhaitiez modifier la couleur du texte de l’indice (égale
 </style>
 ```
 
-**Option 3 : si vous utilisez un formulaire Marketo sur une page de destination Marketo, vous pouvez ajouter ce CSS personnalisé via l’interface utilisateur de Marketo.** Recherchez la page de destination dans l’arborescence de navigation de Marketo. Cliquez ensuite sur Modifier le brouillon. Cliquez sur Modifier la page Meta Tags. Ajoutez le code CSS ci-dessous à la section HTML HEAD personnalisé . Les balises `<style></style>` doivent être incluses.
+**Option 3 : si vous utilisez un formulaire Marketo sur une page de destination Marketo, vous pouvez ajouter ce CSS personnalisé via l’interface utilisateur de Marketo.** Recherchez la page de destination dans l’arborescence de navigation de Marketo. Cliquez ensuite sur Modifier le brouillon. Cliquez sur Modifier la page Meta Tags. Ajoutez le CSS ci-dessous à la section HTML HEAD personnalisée . Les balises `<style></style>` doivent être incluses.
 
 ```css
 <style>
@@ -2748,7 +2748,7 @@ Définir les propriétés : avant de commencer à appeler REST, il est important
 * Dossier - Sortant : le chemin d’accès au dossier sortant sur le serveur SFTP. Dans cet exemple, j’utilise « /data/outcoming ». Cela nous permet de paramétrer l’opération SFTP pour la rendre générique.
 
 Le jeton d&#39;authentification : Comme je l&#39;ai mentionné, nous placerons un connecteur sur la zone de travail après avoir créé le processus avec une forme de début « Aucune donnée » (il s&#39;agit simplement d&#39;un choix personnel, j&#39;aime tous mes connecteurs qui ressemblent à des prises britanniques).
-Le connecteur doit être configuré comme suit : - Le connecteur est un client HTTP GET - La connexion utilise l’URL : `https://123-ABC-456.mktorest.com` (notez qu’il n’y a pas de chaîne /rest à la fin, afin que nous puissions l’utiliser pour les appels REST et pour obtenir le jeton d’accès à l’identité. et remplacez 123-ABC-456 par le bon pour votre instance Marketo) - L’opération est « Obtenir le jeton oAuth » (nouveau !) - Profil de requête = Aucun - Profil de réponse = JSON - Nouveau profil appelé « Réponse du jeton d’authentification » - Type de contenu : Brut - Méthode HTTP : GET - Chemin de ressource (ajoutez 4 sans guillemets) : « identity/oAuth/token?grant_type=client_credentials&amp;client_id= »; « ClientID (Variable de remplacement) »; « Client_secret= »; « ClientSecret (Variable de remplacement) » - Définir les paramètres sous Configurer —> Paramètres —>(+) : Définir ClientID = ID client de la propriété du processus ; Définir ClientSecret = Secret client du processus Après cela, stockez le jeton de succès dans le processus Propriétés Variable « AccessToken » comme illustré, en l’extrayant de la réponse jSON.
+Le connecteur doit être configuré comme suit : - Le connecteur est un client HTTP GET - La connexion utilise l’URL : `https://123-ABC-456.mktorest.com` (notez qu’il n’y a pas de chaîne /rest à la fin afin que nous puissions l’utiliser pour les appels REST et pour obtenir le jeton d’accès à l’identité. et remplacez 123-ABC-456 par le bon pour votre instance Marketo) - L’opération est « Get oAuth Token » (nouveau !) - Request Profile = None - Response Profile = JSON - New Profile named « Authentication Token Response » - Content Type : Plain - Méthode HTTP : GET - Resource Path (ajoutez 4 sans guillemets) : « identity/oAuth/token?grant_type=client_credentials&amp;client_id= »; « ClientID (Variable de remplacement) »; « &amp;client_secret= »; « ClientSecret (Variable de remplacement) » - Définissez les paramètres sous Configurer —> Paramètres —>(+) : Définissez ClientID = ID client de la propriété du processus ; Définissez ClientSecret = Secret client de la propriété du processus Ensuite, stockez le jeton de succès dans la variable Propriétés du processus « AccessToken » comme illustré, en l’extrayant de la réponse jSON.
 Le modèle de cette étape sera répété pour les étapes suivantes, mais en utilisant de nouvelles opérations avec différents profils de retour jSON. En fait, de nombreux appels REST seront traités de la même manière avec des modifications mineures ! Dans la prochaine partie, nous développerons ce sujet et obtiendrons une liste de prospects à partir d’une liste statique à l’aide de REST ! Pour l’instant, exécutez le processus, mais placez une forme d’arrêt après votre « Définition des propriétés », puis exécutez dans debug pour vous assurer de voir le même jeton que celui que vous voyez dans Marketo. Ils devraient parfaitement s&#39;accorder !
 
 Publié le _2015-01-26_ par _John_
@@ -2756,7 +2756,7 @@ Publié le _2015-01-26_ par _John_
 ## Utilisation d’une API de police Google pour ajouter une police personnalisée à une page de destination Marketo
 
 **Note : Voici un billet de blog de [Murtza Manzur](https://www.linkedin.com/in/murtzam). Murtza est une développeuse évangéliste de Marketo basée dans la région de la baie de San Francisco.**
-Supposons que vous êtes en train de créer une page de destination dans Marketo et que vous souhaitiez utiliser une police personnalisée. Pour ce faire, utilisez l’API de polices Google.  Ajoutez une méthode d’importation à votre fichier CSS avec la référence aux polices Google :
+Supposons que vous êtes en train de créer une page de destination dans Marketo et que vous souhaitiez utiliser une police personnalisée. Pour ce faire, utilisez l’API de polices Google. Ajoutez une méthode d’importation à votre fichier CSS avec une référence aux polices Google :
 
 `@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);`
 
@@ -4176,7 +4176,7 @@ Dans cet exemple de méthode principale, nous créons une instance d’authentif
 Le jeton est vide ou a expiré. Essai d’une nouvelle authentification
 Tentative d’authentification avec `https://299-BYM-827.mktorest.com/identity/oauth/token?grant_type=client_credentials&client_id=b417d98f-9289-47d1-a61f-db141bf0267f&client_secret=0DipOvz4h2wP1ANeVjlfwMvECJpo0ZYc`
 Réponse d&#39;authentification reçue : {« access_token »:« ec0f02c0-28ac-4d6c-b7d7-00e47ae85ff1:st »,« token_type »:« bearer »,« expires_in »:538,« scope »:« <apiuser@mktosupport.com>« }
-{« requestId »:« 14fb6#14e6a7a9ad6 »,« result »:[{« id »:1026322,« updatedAt »:« 2015-07-07T21:43:25Z »,« lastName »:« Lead »,« email »:« <testlead@marketo.com> »,« createdAt »:« 2015-07-07T21:43:25Z »,« firstName »:« Test »},{« id »:1026323,« updatedAt »:« 2015-07 -07T21:43:43Z »,« lastName »:« Lead2 »,« email »:« <testlead@marketo.com> »,« createdAt »:« 2015-07-07T2143Z »,« firstName »:« Test »}:43:,« success »] :true}
+{« requestId »:« 14fb6#14e6a7a9ad6 »,« result »:[{« id »:1026322,« updatedAt »:« 2015-07-07T21:43:25Z »,« lastName »:« Lead »,« email »:« <testlead@marketo.com> »,« createdAt »:« 2015-07-07T21:43:25Z »,« firstName »:« Test »},{« id »:1026323,« updatedAt »:« 2015-0 7-07T21:43:43Z »,« lastName »:« Lead2 »,« email »:« <testlead@marketo.com> »,« createdAt »:« 2015-07-07T2143Z »,« firstName »:« Test »}:43:,« success »] :true}
 
 Nous avons maintenant des données sur les leads que nous pouvons traiter de la manière dont nous en avons besoin. Merci d&#39;avoir lu cet article. Veuillez laisser vos commentaires dans les commentaires.
 
@@ -5615,10 +5615,10 @@ En tant que consommateur d’API Marketo, il s’agit d’informations utiles qu
 
 * Lisez les informations du compte Marketo (ID Munchkin et Informations d’identification du client) à partir d’une source externe. Remarque : cette source doit être sécurisée pour empêcher d’autres utilisateurs d’accéder aux données du compte.
 * Effectuez une itération sur chaque compte et...
-   * Appelez Get Daily Usage pour récupérer les données d&#39;utilisation pendant un jour
-   * Ajout de données d’utilisation quotidienne à un fichier « d’utilisation » mensuel
-   * Appelez Get Daily Errors pour récupérer les données d&#39;erreurs d&#39;une journée
-   * Ajouter des données d’erreurs quotidiennes à un fichier d’« erreurs » mensuel
+  * Appelez Get Daily Usage pour récupérer les données d&#39;utilisation pendant un jour
+  * Ajout de données d’utilisation quotidienne à un fichier « d’utilisation » mensuel
+  * Appelez Get Daily Errors pour récupérer les données d&#39;erreurs d&#39;une journée
+  * Ajouter des données d’erreurs quotidiennes à un fichier d’« erreurs » mensuel
 
 Format du fichier de sortie Le format des fichiers de sortie est JSON, qui correspond au tableau « result » renvoyé par les appels d’API respectifs (utilisation et erreur). Chaque élément du tableau « result » est un objet JSON qui contient des données pour un jour. Dénomination du fichier de sortie Les fichiers de sortie sont nommés comme suit :
 
@@ -6583,7 +6583,7 @@ Publié le _2014-03-24_ par _Travis Kaufman_
 ## Envoyer un e-mail transactionnel à partir de Marketo à l’aide de l’API
 
 Une campagne intelligente existante doit être créée à l’aide de l’interface utilisateur de Marketo. Le destinataire de l’e-mail doit également exister dans Marketo. Par conséquent, avant d’appeler l’API requestCampaign, utilisez l’API [getLead]&#x200B;(/help/soap-api/getlead.md) pour vérifier si l’e-mail existe dans Marketo. Après avoir effectué un appel via l’API requestCampaign, vous pouvez le confirmer en vérifiant si la campagne intelligente s’est exécutée dans Marketo. Nous vous montrons d’abord comment créer une campagne intelligente, ensuite comment configurer un déclencheur pour envoyer une campagne via l’API, enfin comment définir un e-mail dans le cadre d’une action de flux et, enfin, un exemple de code qui serait utilisé pour exécuter cette campagne.
-**Création d’une campagne intelligente dans Marketo** les campagnes intelligentes dans Marketo exécutent toutes vos activités marketing. Vous pouvez configurer une série d’actions automatisées pour prendre en charge une liste dynamique de contacts. Dans le cas de l&#39;envoi d&#39;e-mails transactionnels, vous configurez un déclencheur dans la campagne, comme illustré ci-dessous, pour envoyer des e-mails à l&#39;aide de l&#39;API . Commençons par configurer la campagne intelligente. 1. Dans Activités marketing, choisissez un programme puis, dans la liste déroulante Nouveau , cliquez sur Nouvelle ressource locale.
+**Création d’une campagne intelligente dans Marketo** les campagnes intelligentes dans Marketo exécutent toutes vos activités marketing. Vous pouvez configurer une série d’actions automatisées pour prendre en charge une liste dynamique de contacts. Dans le cas de l&#39;envoi d&#39;e-mails transactionnels, vous configurez un déclencheur dans la campagne, comme illustré ci-dessous, pour envoyer des e-mails à l&#39;aide de l&#39;API . Commençons par configurer la campagne intelligente. 1. Dans Activités marketing, choisissez un programme puis, dans la liste déroulante Nouveau , cliquez sur Nouvelle ressource locale .
 
 1. Clic sur la campagne intelligente
 1. Saisissez un nom de campagne intelligente et cliquez sur Créer .
@@ -6595,7 +6595,7 @@ Une campagne intelligente existante doit être créée à l’aide de l’interf
 **Création d’une action de flux d’e-mail sur une campagne** l’association d’un e-mail à une campagne intelligente permet aux spécialistes marketing de gérer l’aspect qu’ils souhaitent donner à un e-mail et permet à l’application tierce de déterminer qui le reçoit et quand. Après avoir créé un e-mail en tant que nouvelle ressource locale, vous pouvez le définir en tant qu’action de flux dans une campagne.  Recherchez et sélectionnez l’e-mail à envoyer.
 
 **Exemple de code pour appeler l’API requestCampaign** Après la configuration de la campagne et des déclencheurs dans l’interface Marketo, nous vous montrons comment utiliser l’API pour envoyer un email. Le premier exemple est une requête XML, le second est une réponse XML et le dernier est un exemple de code Java qui peut être utilisé pour générer la requête XML. Nous vous montrons également comment trouver l’identifiant de campagne utilisé lors d’un appel à l’API `requestCampaign`.
-L’appel API nécessite également que vous connaissiez à l’avance l’identifiant de la campagne Marketo. Vous pouvez déterminer l&#39;identifiant de la campagne à l&#39;aide de l&#39;une des méthodes suivantes : 1. Utilisez l’API [getCampaignsForSource](/help/soap-api/getcampaignsforsource.md) 1. Ouvrez la campagne Marketo dans un navigateur et regardez la barre d’adresse URL. L’identifiant de campagne (représenté sous la forme d’un entier de 4 chiffres) se trouve immédiatement après « SC ». Par exemple : `<https://app-stage.marketo.com/#SC**1025**A1>`. La partie en gras est l’identifiant de campagne « 1025 ». Demande de `requestCampaign` SOAP
+L’appel API nécessite également que vous connaissiez à l’avance l’identifiant de la campagne Marketo. Vous pouvez déterminer l&#39;identifiant de la campagne à l&#39;aide de l&#39;une des méthodes suivantes : 1. Utilisez l’API [getCampaignsForSource](/help/soap-api/getcampaignsforsource.md) 1. Ouvrez la campagne Marketo dans un navigateur et regardez la barre d’adresse URL. L’identifiant de campagne (représenté sous la forme d’un entier de 4 chiffres) se trouve immédiatement après « SC ». Par exemple, `<https://app-stage.marketo.com/#SC**1025**A1>`. La partie en gras est l’identifiant de campagne « 1025 ». Demande de `requestCampaign` SOAP
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -6742,9 +6742,9 @@ Imaginez que vous souhaitiez automatiser les e-mails de suivi de votre centre d�
 
 **Comment transmettre du contenu dynamique à l’aide de l’API** dans Marketo, mes jetons sont des variables que vous pouvez utiliser dans votre programme. Mes jetons vous permettent de saisir des informations relatives à votre programme à un emplacement, de remplacer ces informations par une valeur que vous spécifiez et de récupérer ces informations dans d’autres parties de l’application, comme un modèle de courrier électronique. À l’aide de l’API requestCampaign SOAP, vous pouvez transmettre un tableau de jetons de programme qui remplaceront les jetons existants. Une fois la campagne exécutée, les jetons sont ignorés. Vous créez mes jetons au niveau du dossier Campagne ou au niveau du programme. Mes jetons au niveau du dossier Campaign hériteront de tous les programmes contenus dans le dossier Campaign. Si vous créez Mes jetons au niveau du dossier Campagne, vous pouvez remplacer la valeur héritée au niveau du programme. Par exemple, si vous définissez des jetons pour la Date du programme et la Description du programme au niveau du dossier Campagne, vous pouvez remplacer ces valeurs au niveau du programme individuel.
 
-Voici comment procéder. 1. Dans l&#39;arborescence des Activités marketing, sélectionnez le dossier ou le programme de la campagne dans lequel vous souhaitez créer les jetons. Dans la barre de menus supérieure, sélectionnez Mes jetons . La zone de travail Mes jetons s’affiche. Dans l’arborescence de droite, faites glisser un Type de jeton vers la zone de travail, qui est dans ce cas « Texte ». Dans le champ Nom du jeton , mettez en surbrillance Mon jeton et saisissez un Nom de jeton unique, qui est dans ce cas « my.conversationtopic ». Dans le champ Valeur , saisissez une valeur appropriée pour le jeton, qui est dans ce cas « Merci de nous avoir appelés aujourd’hui ». Notez qu’en utilisant l’API , nous remplacerons la valeur par défaut de Mon jeton . Cliquez sur « Enregistrer » pour enregistrer le jeton personnalisé.  1. Créez un e-mail en cliquant sur Nouveau. Cliquez ensuite sur Nouvelle Assets locale et sélectionnez Email. Remplissez ensuite les champs appropriés pour nommer votre e-mail. Lors de la rédaction de votre e-mail, cliquez sur l’icône Jeton pour inclure des jetons dans votre e-mail. Maintenant que vous avez créé votre modèle d’e-mail avec des jetons, nous allons ajouter l’e-mail en tant qu’action de flux pour la campagne à l’étape suivante. Ainsi, lorsque vous appelez la campagne via l’API, l’e-mail est envoyé.
+Voici comment procéder. 1. Dans l’arborescence des Activités marketing, sélectionnez le dossier ou le programme de campagne dans lequel vous souhaitez créer les jetons. Dans la barre de menus supérieure, sélectionnez Mes jetons . La zone de travail Mes jetons s’affiche. Dans l’arborescence de droite, faites glisser un Type de jeton vers la zone de travail, qui est dans ce cas « Texte ». Dans le champ Nom du jeton , mettez en surbrillance Mon jeton et saisissez un Nom de jeton unique, qui est dans ce cas « my.conversationtopic ». Dans le champ Valeur , saisissez une valeur appropriée pour le jeton, qui est dans ce cas « Merci de nous avoir appelés aujourd’hui ». Notez qu’en utilisant l’API , nous remplacerons la valeur par défaut de Mon jeton . Cliquez sur « Enregistrer » pour enregistrer le jeton personnalisé.  1. Créez un e-mail en cliquant sur Nouveau. Cliquez ensuite sur Nouvelle Assets locale et sélectionnez Email. Remplissez ensuite les champs appropriés pour nommer votre e-mail. Lors de la rédaction de votre e-mail, cliquez sur l’icône Jeton pour inclure des jetons dans votre e-mail. Maintenant que vous avez créé votre modèle d’e-mail avec des jetons, nous allons ajouter l’e-mail en tant qu’action de flux pour la campagne à l’étape suivante. Ainsi, lorsque vous appelez la campagne via l’API, l’e-mail est envoyé.
 **Création d’une action de flux d’e-mail sur une campagne** l’association d’un e-mail à une campagne intelligente permet aux spécialistes marketing de gérer l’aspect qu’ils souhaitent donner à un e-mail et permet à l’application tierce de déterminer qui le reçoit et quand. Après avoir créé un e-mail en tant que nouvelle ressource locale, vous pouvez le définir en tant qu’action de flux dans une campagne. Recherchez et sélectionnez l’e-mail à envoyer.
-**Exemple de code pour appeler l’API requestCampaign** Après la configuration de la campagne et des déclencheurs dans l’interface Marketo, nous vous montrons comment utiliser l’API pour envoyer un email. Le premier exemple est une requête XML, le second est une réponse XML et le dernier est un exemple de code Java qui peut être utilisé pour générer la requête XML. Nous vous montrons également comment trouver l’identifiant de campagne utilisé lors d’un appel à l’API requestCampaign. L’appel API nécessite également que vous connaissiez à l’avance l’identifiant de la campagne Marketo. Vous pouvez déterminer l&#39;identifiant de la campagne à l&#39;aide de l&#39;une des méthodes suivantes : 1. Utilisez l’API [getCampaignsForSource](/help/soap-api/getcampaignsforsource.md) 1. Ouvrez la campagne Marketo dans un navigateur et regardez la barre d’adresse URL. L’identifiant de campagne (représenté sous la forme d’un entier de 4 chiffres) se trouve immédiatement après « SC ». Par exemple : `<https://app-stage.marketo.com/#SC**1025**A1>`. La partie en gras est l’identifiant de campagne « 1025 ». Requête SOAP pour requestCampaign
+**Exemple de code pour appeler l’API requestCampaign** Après la configuration de la campagne et des déclencheurs dans l’interface Marketo, nous vous montrons comment utiliser l’API pour envoyer un email. Le premier exemple est une requête XML, le second est une réponse XML et le dernier est un exemple de code Java qui peut être utilisé pour générer la requête XML. Nous vous montrons également comment trouver l’identifiant de campagne utilisé lors d’un appel à l’API requestCampaign. L’appel API nécessite également que vous connaissiez à l’avance l’identifiant de la campagne Marketo. Vous pouvez déterminer l&#39;identifiant de la campagne à l&#39;aide de l&#39;une des méthodes suivantes : 1. Utilisez l’API [getCampaignsForSource](/help/soap-api/getcampaignsforsource.md) 1. Ouvrez la campagne Marketo dans un navigateur et regardez la barre d’adresse URL. L’identifiant de campagne (représenté sous la forme d’un entier de 4 chiffres) se trouve immédiatement après « SC ». Par exemple, `<https://app-stage.marketo.com/#SC**1025**A1>`. La partie en gras est l’identifiant de campagne « 1025 ». Requête SOAP pour requestCampaign
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -7085,8 +7085,8 @@ Publié le _2016-02-02_ par _Yanir_
 ### Objets personnalisés
 
 * [Relations N:N des objets personnalisés désormais prises en charge](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects)
-   * Les enregistrements de leads ou de comptes peuvent désormais avoir des relations multiples-à-multiples par le biais d’objets personnalisés via la définition d’objets intermédiaires. Après avoir créé un type d’objet personnalisé autonome, vous pouvez créer un type d’objet intermédiaire avec des champs de lien à la fois vers l’objet autonome et vers les prospects ou les comptes.
-   * Il n’existe aucun nouvel appel API pour cette fonctionnalité, mais les définitions d’objet doivent être configurées correctement pour tirer parti de ces relations via l’API.
+  * Les enregistrements de leads ou de comptes peuvent désormais avoir des relations multiples-à-multiples par le biais d’objets personnalisés via la définition d’objets intermédiaires. Après avoir créé un type d’objet personnalisé autonome, vous pouvez créer un type d’objet intermédiaire avec des champs de lien à la fois vers l’objet autonome et vers les prospects ou les comptes.
+  * Il n’existe aucun nouvel appel API pour cette fonctionnalité, mais les définitions d’objet doivent être configurées correctement pour tirer parti de ces relations via l’API.
 * `getLeadActivities` et `getLeadChanges` ne renverront plus les activités de prospects anonymes. Pour plus d’informations, consultez la [FAQ sur le suivi de Munchkin de nouvelle génération](https://experienceleague.adobe.com/fr/docs/marketo/using/home)
 
 Publié le _2016-02-05_ par _Kenny_
@@ -7234,9 +7234,8 @@ Cet article explique en détail comment intégrer Marketo à potentiellement plu
 
 **Accès à une instance Marketo en tant qu’administrateur ou avec un compte utilisateur d’API fourni** Notre connecteur Zapier utilisera l’API REST Marketo pour transmettre les données de lead à Marketo. Pour utiliser cette API, vous avez besoin d’un utilisateur de l’API et d’un service personnalisé que vous pouvez créer vous-même si vous êtes administrateur de votre instance Marketo. Si ce n’est pas le cas, un administrateur ou une administratrice devra vous les fournir. Il existe également un Webhook à créer, accessible uniquement par un administrateur Marketo. Vous trouverez ici une explication détaillée de la création de l’utilisateur de l’API Marketo et du service personnalisé. Une fois que vous avez terminé, vous devez disposer des informations d’identification suivantes pour appeler l’API REST Marketo : ID client, secret client, ID de compte Munchkin, ID de compte Munchkin
 
-Vous pouvez obtenir l’ID de compte Munchkin à partir des écrans Munchkin ou Web Services Admin . Son modèle ressemble à ceci : `000-XXX-000`.  Pas besoin d’obtenir un jeton d’accès, car il ne serait valide que pendant une seule heure. Le connecteur génère automatiquement des jetons pour vous.
-**L&#39;inscription à un compte gratuit avec Google Docs, Sheets et Slides sont des applications de productivité qui vous permettent de créer différents types de documents en ligne, de travailler sur eux en temps réel avec d&#39;autres personnes et de les stocker en ligne dans votre Google Drive. Notre cas d’utilisation nécessite une feuille de Google. Les différentes fonctionnalités de Google Docs et de création de compte avec Google sont disponibles [ici](https://workspace.google.com/products/docs/).
-**Inscrivez-vous à un compte gratuit avec FullContact** FullContact vous permet de rester pleinement connecté aux personnes qui comptent le plus en extrayant tous vos contacts et en les synchronisant en permanence avec les modifications apportées aux profils sociaux, aux photos, aux signatures d&#39;e-mails, aux informations sur l&#39;entreprise, etc. Ils offrent un lecteur de cartes de visite mobile qui peut numériser des cartes dans plus de 250 applications Web, y compris Zapier. Vous pouvez vous inscrire à un compte gratuit ici. Vous pouvez également vous abonner à un compte premium payant avec plus de fonctionnalités et de capacité. L’application mobile peut être téléchargée à partir de l’AppStore d’Apple ou de Google Play. Les Zap FullContact sont documentées dans la section [Intégrations FullContact Zapier](https://zapier.com/apps/contacts-plus/integrations).
+Vous pouvez obtenir l’ID de compte Munchkin à partir des écrans Munchkin ou Web Services Admin . Son modèle ressemble à ceci : `000-XXX-000`. Nul besoin d’obtenir un jeton d’accès, car il ne serait valide que pendant une seule heure. Le connecteur génère automatiquement des jetons pour vous.
+**L&#39;inscription à un compte gratuit avec Google Docs, Sheets et Slides sont des applications de productivité qui vous permettent de créer différents types de documents en ligne, de travailler sur eux en temps réel avec d&#39;autres personnes et de les stocker en ligne dans votre Google Drive. Notre cas d’utilisation nécessite une feuille de Google. Les différentes fonctionnalités de Google Docs et de création de compte avec Google sont disponibles [ici](https://workspace.google.com/products/docs/).** Inscrivez-vous à un compte gratuit avec FullContact** FullContact vous permet de rester pleinement connecté aux personnes qui comptent le plus en extrayant tous vos contacts et en les synchronisant en permanence avec les modifications apportées aux profils sociaux, aux photos, aux signatures d&#39;e-mails, aux informations sur l&#39;entreprise, etc. Ils offrent un lecteur de cartes de visite mobile qui peut numériser des cartes dans plus de 250 applications Web, y compris Zapier. Vous pouvez vous inscrire à un compte gratuit ici. Vous pouvez également vous abonner à un compte premium payant avec plus de fonctionnalités et de capacité. L’application mobile peut être téléchargée à partir de l’AppStore d’Apple ou de Google Play. Les Zap FullContact sont documentées dans la section [Intégrations FullContact Zapier](https://zapier.com/apps/contacts-plus/integrations).
 
 ### Mise en œuvre du connecteur Marketo pour Zapier
 
@@ -7532,52 +7531,52 @@ Publié le _2016-04-17_ par _David_
 **API REST**
 
 * API de ressources - Pages web
-   * Les **landing pages** sont désormais accessibles via quinze nouveaux points d’entrée, ce qui permet la création, la mise à jour, la suppression, le clonage et la gestion des brouillons pour les landing pages. Les modèles de page de destination ont désormais également les points d’entrée de gestion de brouillon exposés
-      * Obtenir les pages de destination
-      * Obtenir la page de destination par ID
-      * Obtenir la page de destination par nom
-      * Créer la page de destination
-      * Mettre à jour les métadonnées de la page de destination
-      * Obtenir le contenu de la page de destination
-      * Ajouter une section de contenu de page de destination
-      * Mettre à jour la section de contenu de la page de destination
-      * Supprimer la section de contenu de la page de destination
-      * Obtenir la section de contenu dynamique
-      * Mettre à jour la section de contenu dynamique
-      * Ignorer le brouillon de la page de destination
-      * Approuver la page de destination
-      * Annuler l’approbation du brouillon de page de destination
-      * Supprimer la page de destination
-   * **Modèles de landing page**
-      * Ignorer le brouillon du modèle de page de destination
-      * Approuver le modèle de page de destination
-      * Annuler l’approbation du modèle de page de destination
-      * Supprimer le modèle de page de destination
-   * **&#x200B;**&#x200B;a publié 21 nouveaux points d’entrée qui offrent des fonctionnalités complètes de création, d’édition et de gestion via l’API. Les API ne prennent pas en charge les modifications apportées aux formulaires Forms 1.0.
-      * Obtenir Forms
-      * Obtenir le formulaire par ID
-      * Obtenir le formulaire par nom
-      * Obtenir la liste des champs de formulaire
-      * Mettre à jour la liste des champs de formulaire
-      * Créer un formulaire
-      * Obtenir la page de remerciement du formulaire
-      * Mettre à jour la page de remerciement du formulaire
-      * Mettre à jour le formulaire
-      * Ignorer le brouillon de formulaire
-      * Approuver le formulaire
-      * Désapprouver le formulaire
-      * Cloner le formulaire
-      * Supprimer le formulaire
-      * Mettre à jour le champ de formulaire
-      * Supprimer le champ de formulaire
-      * Mettre à jour les règles de visibilité des champs de formulaire
-      * Ajouter un champ de formulaire de texte enrichi
-      * Ajouter un jeu de champs
-      * Supprimer le champ de l’ensemble de champs
-      * Obtenir les champs de formulaire disponibles
-      * Modifier la position des champs de formulaire
-      * Mettre à jour le bouton Envoyer
-   * Lors de l’utilisation de **Obtenir ou parcourir les programmes**, l’identifiant de campagne SFDC est renvoyé pour les programmes liés à une campagne SFDC
+  * Les **landing pages** sont désormais accessibles via quinze nouveaux points d’entrée, ce qui permet la création, la mise à jour, la suppression, le clonage et la gestion des brouillons pour les landing pages. Les modèles de page de destination ont désormais également les points d’entrée de gestion de brouillon exposés
+    * Obtenir les pages de destination
+    * Obtenir la page de destination par ID
+    * Obtenir la page de destination par nom
+    * Créer la page de destination
+    * Mettre à jour les métadonnées de la page de destination
+    * Obtenir le contenu de la page de destination
+    * Ajouter une section de contenu de page de destination
+    * Mettre à jour la section de contenu de la page de destination
+    * Supprimer la section de contenu de la page de destination
+    * Obtenir la section de contenu dynamique
+    * Mettre à jour la section de contenu dynamique
+    * Ignorer le brouillon de la page de destination
+    * Approuver la page de destination
+    * Annuler l’approbation du brouillon de page de destination
+    * Supprimer la page de destination
+  * **Modèles de landing page**
+    * Ignorer le brouillon du modèle de page de destination
+    * Approuver le modèle de page de destination
+    * Annuler l’approbation du modèle de page de destination
+    * Supprimer le modèle de page de destination
+  * **&#x200B;**&#x200B;a publié 21 nouveaux points d’entrée qui offrent des fonctionnalités complètes de création, d’édition et de gestion via l’API. Les API ne prennent pas en charge les modifications apportées aux formulaires Forms 1.0.
+    * Obtenir Forms
+    * Obtenir le formulaire par ID
+    * Obtenir le formulaire par nom
+    * Obtenir la liste des champs de formulaire
+    * Mettre à jour la liste des champs de formulaire
+    * Créer un formulaire
+    * Obtenir la page de remerciement du formulaire
+    * Mettre à jour la page de remerciement du formulaire
+    * Mettre à jour le formulaire
+    * Ignorer le brouillon de formulaire
+    * Approuver le formulaire
+    * Désapprouver le formulaire
+    * Cloner le formulaire
+    * Supprimer le formulaire
+    * Mettre à jour le champ de formulaire
+    * Supprimer le champ de formulaire
+    * Mettre à jour les règles de visibilité des champs de formulaire
+    * Ajouter un champ de formulaire de texte enrichi
+    * Ajouter un jeu de champs
+    * Supprimer le champ de l’ensemble de champs
+    * Obtenir les champs de formulaire disponibles
+    * Modifier la position des champs de formulaire
+    * Mettre à jour le bouton Envoyer
+  * Lors de l’utilisation de **Obtenir ou parcourir les programmes**, l’identifiant de campagne SFDC est renvoyé pour les programmes liés à une campagne SFDC
 
 **Objets personnalisés** les objets personnalisés prennent désormais en charge les types de données de zone de texte, ce qui permet de stocker des champs de chaîne de 2 000 caractères maximum dans des champs d’objet personnalisés de ce type. **Whiteliste des adresses IP** Les utilisateurs administrateurs pourront désormais gérer une liste blanche d’adresses IP afin d’empêcher tout accès non autorisé via les API. [Vous pouvez en savoir plus sur cette fonctionnalité ici](https://experienceleague.adobe.com/fr/docs/marketo/using/home). **Interface utilisateur d’activité personnalisée** Les utilisateurs administrateurs pourront désormais définir des types d’activité personnalisés dans leur menu d’administration et ajouter des enregistrements aux prospects via l’API [Ajouter des activités personnalisées](https://developer.adobe.com/marketo-apis/api/mapi#operation/addCustomActivityUsingPOST). [Vous pouvez en savoir plus sur la définition de types d’activité personnalisés ici](https://experienceleague.adobe.com/fr/docs/marketo/using/home).
 
@@ -7708,7 +7707,7 @@ Commencez avec un nouveau classeur Excel. Nous allons créer une feuille de calc
 
 Table « **REST_API_Authentication** » avec les colonnes : **URL** : votre point d’entrée de l’API REST Marketo. **ID client** : à partir de vos informations d’identification OAuth2.0 de l’API REST Marketo. **Secret client** : à partir de vos informations d’identification OAuth2.0 de l’API REST Marketo.
 Table « **Portée** » avec les colonnes : **Jeton de pagination depuis Datetime** : date suivant la notation de date standard ISO 8601 (par exemple, « 2016-10-06T13:22:17-08:00 », « 2016-10-06 » sont des dates/heures valides) utilisée pour récupérer les activités Marketo depuis une période donnée, grâce à un jeton de pagination initial « basé sur la date ». Cette date est principalement utilisée pour limiter la quantité de données à importer dans le classeur. **ID de liste** : l’identifiant d’une liste statique dans Marketo qui fait référence à tous les leads/contacts avec lesquels nous avons affaire. Cette liste statique peut être gérée librement dans Marketo (par exemple, une campagne intelligente peut l’alimenter périodiquement ou en temps réel en leads et contacts).
-Pour obtenir l’identifiant d’une liste statique, ouvrez-le dans Marketo et obtenez son identifiant numérique à partir de l’URL, par exemple `<https://myorg.marketo.com/#ST3517A1LA1>`, ID de liste=3511. **Pages d’enregistrements max** : utilisé pour nos algorithmes pseudo-récursifs qui parcourent les données de sortie Marketo, à l’aide de jetons de pagination « basés sur la position », avec une capacité de 300 enregistrements max. par page. Puisque c&#39;est notre intérêt d&#39;obtenir autant de documents que possible par page, nous allons nous en tenir à 300. En règle générale, une taille de pages d’enregistrements max définie sur 33,333 signifie une capacité de 33,333 x 300 = 9,9999 millions d’enregistrements ; mais cela signifie également 33,333 000 K sur votre limite de requête quotidienne de l’API Marketo. Les algorithmes s’arrêteront de toute façon dès que toutes les données des requêtes seront obtenues. Ce paramètre n’est donc qu’une limite de sécurité pour une boucle.
+Pour obtenir l’identifiant d’une liste statique, ouvrez-le dans Marketo et obtenez son identifiant numérique à partir de l’URL, par exemple `<https://myorg.marketo.com/#ST3517A1LA1>`, List ID=3511. **Max Enregistre Pages** : utilisé pour nos algorithmes pseudo-récursifs qui parcourent les données de sortie Marketo à l’aide de jetons de pagination « basés sur la position », avec une capacité de 300 enregistrements max. par page. Puisque c&#39;est notre intérêt d&#39;obtenir autant de documents que possible par page, nous allons nous en tenir à 300. En règle générale, une taille de pages d’enregistrements max définie sur 33,333 signifie une capacité de 33,333 x 300 = 9,9999 millions d’enregistrements ; mais cela signifie également 33,333 000 K sur votre limite de requête quotidienne de l’API Marketo. Les algorithmes s’arrêteront de toute façon dès que toutes les données des requêtes seront obtenues. Ce paramètre n’est donc qu’une limite de sécurité pour une boucle.
 
 Tableau `Leads` avec la colonne : **Champs de lead** : champs de lead séparés par des virgules à rassembler dans Marketo lors de l’interrogation des leads et des contacts. La déclaration d&#39;un tableau dans Excel est simple. Saisissez deux lignes dans la feuille de calcul avec les noms et les valeurs des colonnes, surlignez avec la souris le périmètre du tableau, puis sélectionnez l&#39;icône Tableau dans le menu &#39;Insérer&#39; et donnez-lui un nom. Les noms donnés aux tables et leurs colonnes sont importants car ils seront appelés directement par nos scripts.
 
@@ -8060,18 +8059,18 @@ Dans la version de l’automne 2016, nous ajoutons la prise en charge CRUD des v
 ### API de la base de données du lead
 
 * [**Comptes nommés**](/help/rest-api/named-accounts.md)
-   * Nouveaux points d’entrée pour la lecture, la mise à jour et la suppression des comptes nommés
-   * Problèmes connus :
-      * Depuis la version de l’automne 2016, les prospects ne peuvent plus être associés à des comptes nommés via l’API
+  * Nouveaux points d’entrée pour la lecture, la mise à jour et la suppression des comptes nommés
+  * Problèmes connus :
+    * Depuis la version de l’automne 2016, les prospects ne peuvent plus être associés à des comptes nommés via l’API
 
 ### API d’actifs
 
 * [**E-mail**](https://developer.adobe.com/marketo-apis/api/asset#operation/describeUsingGET_5)
-   * Nouveaux points d’entrée pour la manipulation des variables d’e-mail v2
-   * Nouveaux points d’entrée pour la manipulation des modules Email v2
-   * Problèmes connus :
-      * Les requêtes et mises à jour des sections qui contiennent des jetons prédictifs renvoient une erreur
-      * Les e-mails dont les sections de contenu contiennent des jetons prédictifs peuvent ne pas être approuvés à l’aide de l’API
+  * Nouveaux points d’entrée pour la manipulation des variables d’e-mail v2
+  * Nouveaux points d’entrée pour la manipulation des modules Email v2
+  * Problèmes connus :
+    * Les requêtes et mises à jour des sections qui contiennent des jetons prédictifs renvoient une erreur
+    * Les e-mails dont les sections de contenu contiennent des jetons prédictifs peuvent ne pas être approuvés à l’aide de l’API
 
 Publié le _2016-12-07_ par _Kenny_
 
@@ -8120,9 +8119,9 @@ Renseignez toutes les informations requises à partir de la feuille de calcul de
 * **Authentification de l’API REST Marketo :** requise
 * **Portée :** définissez le Jeton de pagination SinceDatetime et l’identifiant de votre liste statique Marketo contenant tous les prospects à analyser
 * **Leads :** pour les rapports à venir, vous devez au moins spécifier les champs de lead suivants : `id`, `firstName`, `lastName`, `email`, create`edAt`, `updatedAt`, `title`, `company`, `industry`, `inferredCountry`, `inferredCity`
-   * Si les informations sur la ville sont plus précises dans l’un de vos champs personnalisés, vous pouvez utiliser votre propre champ à la place
+  * Si les informations sur la ville sont plus précises dans l’un de vos champs personnalisés, vous pouvez utiliser votre propre champ à la place
 * **Activités :** les types d’activités à récupérer de la base de données Marketo sont spécifiés ici pour chaque ensemble d’activités. Il n’est pas nécessaire de modifier ceci maintenant.
-   * Notez que nous avons fourni une requête utilitaire sur le classeur qui répertorie, directement dans le classeur Excel, tous les types d’activité existants si vous souhaitez ajuster ces informations ultérieurement
+  * Notez que nous avons fourni une requête utilitaire sur le classeur qui répertorie, directement dans le classeur Excel, tous les types d’activité existants si vous souhaitez ajuster ces informations ultérieurement
 
 Notez que des fenêtres contextuelles liées à la sécurité peuvent s’afficher. Approuvez les connexions externes et définissez-les sur « Public ». Si la fenêtre pop-up ci-dessous s’affiche, conservez le contenu d’accès web « Anonyme ». L’authentification à Marketo est directement gérée par nos requêtes personnalisées. Il n’est donc pas nécessaire d’activer d’autres types d’accès.
 
@@ -8328,11 +8327,11 @@ L&#39;Internet des objets (IoT) est l&#39;interconnexion de dispositifs connect�
 * Donner un coup de pouce à votre équipe des ventes chaque fois qu&#39;une transaction est remportée en déclenchant automatiquement une cloche branchée sur une prise d&#39;alimentation connectée
 * Publier automatiquement les jalons de succès marketing sur les réseaux sociaux tels que LinkedIn, Facebook, Slack, etc. ...
 * Lancez automatiquement une campagne marketing basée sur :
-   * lorsqu&#39;une alerte météorologique se produit (vent, température, pluie, etc.)
-   * lorsqu’un nouvel article est publié par un journal comme le New York Times, répondant à certains critères spécifiques
-   * quand le Sénat ou la Chambre des représentants des États-Unis voteront
-   * lorsque la Station spatiale internationale passe au-dessus d&#39;un certain endroit
-   * etc.
+  * lorsqu&#39;une alerte météorologique se produit (vent, température, pluie, etc.)
+  * lorsqu’un nouvel article est publié par un journal comme le New York Times, répondant à certains critères spécifiques
+  * quand le Sénat ou la Chambre des représentants des États-Unis voteront
+  * lorsque la Station spatiale internationale passe au-dessus d&#39;un certain endroit
+  * etc.
 
 Vous pouvez trouver ces scénarios amusants mais inutiles, mais ils sont ici pour démontrer une nouvelle façon conceptuelle de faire du marketing non seulement avec les gens, mais aussi avec des choses dans notre monde connecté. Un autre point intéressant abordé dans cet article est comment tirer parti d’une plateforme d’intégration web ouverte telle que Zapier comme une « trappe de service » entre un système tiers et Marketo, pour gérer l’authentification par exemple.
 
@@ -8393,7 +8392,7 @@ Il n’est pas nécessaire de définir un mapping de réponse.
 
 ### Applet IFTTT
 
-Dans le portail Web IFTTT, sélectionnez « Mes Applets » dans le menu principal.  Cliquez sur le bouton « Nouvelle applet » et cliquez sur la section **+ceci**.  Recherchez le service Maker.  Créez le déclencheur qui se déclenchera chaque fois que le service Maker recevra une demande web pour l’avertir d’un événement. Utilisez le même nom d’événement que celui spécifié dans l’URL de votre Webhook Marketo, par exemple « MarketoProgramSuccess » et cliquez sur le bouton « Créer un déclencheur ».  Il est maintenant temps de spécifier le service d’action en cliquant sur la section **+cela**.  Nous allons commencer avec un service d&#39;action simple que n&#39;importe qui pourrait tester sans avoir à investir dans des appareils IoT, le service de notifications. Recherchez et sélectionnez le service de notifications .
+Dans le portail Web IFTTT, sélectionnez « Mes Applets » dans le menu principal.  Cliquez sur le bouton « Nouvelle applet » et cliquez sur la section **+this**. Recherchez le service Maker.  Créez le déclencheur qui se déclenchera chaque fois que le service Maker recevra une demande web pour l’avertir d’un événement. Utilisez le même nom d’événement que celui spécifié dans l’URL de votre Webhook Marketo, par exemple « MarketoProgramSuccess » et cliquez sur le bouton « Créer un déclencheur ».  Il est maintenant temps de spécifier le Service d’action en cliquant sur la section **+this**. Nous allons commencer avec un service d’action simple que tout le monde pourrait tester sans avoir à investir dans des appareils IoT, le Service de notifications. Recherchez et sélectionnez le service de notifications .
 Sélectionnez l’action « Envoyer une notification » qui envoie une notification à vos appareils.  Vous pouvez exploiter les 3 valeurs que vous avez envoyées depuis Marketo en les ajoutant en tant qu’ingrédients pour envoyer une notification significative à l’utilisateur, comme dans l’exemple ci-dessous ... , puis cliquez sur le bouton « Créer une action ». Examinez et terminez l&#39;applet IFTTT. Assurez-vous qu’il est activé.
 
 ### Test de l&#39;applet IFTTT
@@ -8427,9 +8426,9 @@ Nous devons créer un connecteur Zapier personnalisé qui s’authentifie auprè
 * Conditions préalables
 * Mise en œuvre du connecteur Marketo pour Zapier
 * Utilisez un autre titre, tel que « Campagne Marketo ».
-   * Effectuez l’étape « Authentification ».
-   * Exécutez l’étape « Déclencheurs » (requise à des fins de test Zapier).
-   * Effectuez l’étape « Actions » spécifique suivante, responsable du lancement d’une campagne Marketo, expliquée ci-dessous :
+  * Effectuez l’étape « Authentification ».
+  * Exécutez l’étape « Déclencheurs » (requise à des fins de test Zapier).
+  * Effectuez l’étape « Actions » spécifique suivante, responsable du lancement d’une campagne Marketo, expliquée ci-dessous :
 
 Où envoyer l’URL du point d’entrée de l’action de données :
 
@@ -8768,10 +8767,10 @@ La version d’été 2018 est principalement une version de maintenance composé
 ### API REST
 
 * Ajout de la prise en charge des champs de disposition des e-mails qui ont été inutilement omis à l’origine. Ces champs seront désormais disponibles pour la lecture et l’écriture sur REST, selon les besoins.
-   * Sur liste noire
-   * Marketing interrompu
-   * E-mail interrompu
-   * Urgence relative
+  * Sur liste noire
+  * Marketing interrompu
+  * E-mail interrompu
+  * Urgence relative
 * Le point d’entrée Get Leads by Filter prend désormais en charge leadPartionId en tant que filterType.
 
 ### Résolutions des défauts
@@ -9690,7 +9689,7 @@ En mai 2021, nous publierons de nouvelles API REST, améliorerons les API REST e
 
 * Ajout d’API de membre de programme qui vous permettent de récupérer, mettre à jour et supprimer des enregistrements d’appartenance à un programme. Pour plus d’informations, consultez [API REST > Base de données de leads > Membres du programme](/help/rest-api/program-members.md).
 * Ajout d’API d’extraction d’objets personnalisés en bloc qui vous permettent d’exporter des enregistrements d’objets personnalisés Marketo de premier niveau associés aux prospects dans une relation un-à-plusieurs. Pour plus d’informations, consultez [API REST > Extraction en bloc > Extraction d’objet personnalisé en bloc](/help/rest-api/bulk-custom-object-extract.md).
-* Nous avons amélioré l’[API de lead](/help/rest-api/leads.md) et l’[API d’extraction de lead en bloc](/help/rest-api/bulk-lead-extract.md) pour permettre aux utilisateurs de récupérer l’ID de Adobe Experience Cloud (ECID). Cela permet aux utilisateurs qui [synchronisent les audiences à partir de Adobe Experience Cloud](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/miscellaneous/set-up-adobe-experience-cloud-audience-sharing.html?lang=fr) d’identifier les prospects auxquels des ECID sont associés. Cela ouvre la porte [possibilités d’intégration](https://adobeexchangeec.zendesk.com/hc/en-us/articles/360024277392-Adobe-Experience-Cloud-Using-the-ECID-for-integration) à d’autres produits Adobe Experience Cloud.
+* Nous avons amélioré l’[API de lead](/help/rest-api/leads.md) et l’[API d’extraction de lead en bloc](/help/rest-api/bulk-lead-extract.md) pour permettre aux utilisateurs de récupérer l’Adobe Experience Cloud Id (ECID). Cela permet aux utilisateurs qui [synchronisent les audiences à partir d’Adobe Experience Cloud](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/miscellaneous/set-up-adobe-experience-cloud-audience-sharing.html?lang=fr) d’identifier les prospects auxquels des ECID sont associés. Cela permet d’ouvrir [possibilités d’intégration](https://adobeexchangeec.zendesk.com/hc/en-us/articles/360024277392-Adobe-Experience-Cloud-Using-the-ECID-for-integration) à d’autres produits Adobe Experience Cloud.
 * Nous avons amélioré l’[API d’importation de leads en bloc](/help/rest-api/bulk-lead-import.md) pour prendre en charge l’ajout de leads aux enregistrements d’entreprise pendant le processus d’importation. Pour ce faire, incluez le champ **externalCompanyId** dans le fichier d’importation.
 * Nous avons amélioré plusieurs points d’entrée du programme pour fournir la parité avec les fonctionnalités de l’interface utilisateur de Marketo Engage. Nous avons amélioré les points d’entrée [Créer des programmes](/help/rest-api/assets.md) et [Cloner des programmes](https://developer.adobe.com/marketo-apis/api/asset) pour permettre la création, le clonage ou le déplacement d’opérations sur les programmes d’événement. Ceci est destiné aux utilisateurs qui organisent des programmes d’événement en les « imbriquant » sous d’autres types de programmes. Nous avons également amélioré le point d’entrée [Supprimer le programme](https://developer.adobe.com/marketo-apis/api/asset) afin de permettre la suppression des programmes contenant les ressources suivantes : notifications push, messages In-App, rapports, pages de destination avec social Assets intégré.
 * En tant qu’administrateur Marketo, vous pouvez [marquer un champ spécifique comme « sensible »](https://experienceleague.adobe.com/fr/docs/marketo/using/home) de sorte que ses valeurs [ne soient jamais préremplies dans les formulaires](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/forms/form-fields/disable-pre-fill-for-a-form-field), protégeant ainsi les données sensibles des utilisateurs. Nous avons amélioré plusieurs points d’entrée de champ de formulaire pour fournir une parité avec cette fonctionnalité disponible dans l’interface utilisateur de Marketo Engage.

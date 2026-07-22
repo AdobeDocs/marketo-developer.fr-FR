@@ -12,10 +12,10 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 703
-ht-degree: 1%
+source-wordcount: 519
+ht-degree: 2%
 
 ---
 
@@ -23,19 +23,23 @@ ht-degree: 1%
 
 [Référence du point d’entrée du modèle de page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates)
 
-Les modèles de page de destination sont une ressource parent et une dépendance pour les pages de destination Marketo individuelles. Les landing pages obtiennent le squelette de leur contenu à partir du modèle parent.
+Les modèles de page de destination sont des ressources parentes pour les pages de destination Marketo. Chaque page de destination tire sa structure de contenu initiale de son modèle parent.
 
 ## Types de modèles
 
-Marketo dispose de deux types de modèles de page de destination, à structure libre et guidés. Les modèles de page de destination à structure libre offrent une expérience de modification vaguement structurée pour les pages qui en sont dérivées. Les modèles guidés fournissent une expérience fortement structurée, où les types d’éléments et les emplacements peuvent être limités au niveau du modèle. Pour plus d’informations sur les différences, voir [ce document](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
+Marketo fournit des modèles de page de destination guidés et de forme libre. Les modèles à structure libre offrent une expérience de modification vaguement structurée. Les modèles guidés peuvent limiter les types d’éléments et les emplacements au niveau du modèle.
+
+Pour une comparaison détaillée, consultez la section [Comprendre les pages de destination de forme libre par rapport aux pages de destination guidées](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
 
 ## Requête
 
-Les modèles de page de destination prennent en charge les types de requête standard pour les ressources [par identifiant](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET) et [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Ces points d’entrée renvoient des métadonnées pour les modèles. La récupération du contenu HTML des modèles doit être effectuée modèle par modèle via son identifiant .
+Interroger les modèles de landing page [par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET) ou par [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Ces points d’entrée renvoient des métadonnées de modèle. Récupérez le contenu HTML séparément pour chaque modèle par ID.
 
 ## Créer et mettre à jour
 
-Les modèles sont créés en tant que ressources vides avec les métadonnées associées. Lors de la création d’un modèle, un nom et un dossier doivent être inclus, ainsi qu’une description facultative, le paramètre templateType et enableMunchkin. templateType peut être à structure libre ou guidé et est défini par défaut sur freeForm. Pour connaître les différences entre les types, reportez-vous à la section Structure guidée ou Structure libre . enableMunchkin est défini par défaut sur false. Lorsqu’il est activé, il empêche l’exécution du suivi Munchkin sur les pages de destination enfants du modèle.
+Les modèles sont créés en tant que ressources vides avec des métadonnées. Les paramètres `name` et `folder` sont requis. Les paramètres `description`, `templateType` et `enableMunchkin` sont facultatifs.
+
+La valeur `templateType` peut être `freeform` ou `guided` et est définie par défaut sur `freeForm`. La valeur `enableMunchkin` par défaut est `false`. Lorsqu’elle est activée, elle empêche le suivi Munchkin sur les pages de destination enfants du modèle.
 
 ```http
 POST /rest/asset/v1/landingPageTemplates.json
@@ -75,15 +79,15 @@ name=New LPT - PHP&folder={"id":12,"type":"Folder"}
 }
 ```
 
-Le contenu du modèle doit être renseigné séparément via le point d’entrée [Mettre à jour le contenu du modèle de page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST).
+Ajoutez du contenu de modèle séparément avec le point d’entrée [&#x200B; Mettre à jour le contenu du modèle de page de destination &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST).
 
 ### Mettre à jour les métadonnées
 
-Les métadonnées des modèles de page de destination peuvent être mises à jour via le point d’entrée [Mettre à jour les métadonnées du modèle de page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST). Le nom, la description et le paramètre enableMunchkin peuvent être mis à jour de cette manière.
+Utilisez le point d’entrée [Mettre à jour les métadonnées du modèle de page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST) pour modifier le nom, la description ou le paramètre de `enableMunchkin`.
 
 ### Mettre à jour le contenu
 
-Le contenu des modèles de page de destination est transformé en une mise à jour destructrice de l’intégralité du contenu HTML. Le contenu doit être transmis en tant que données multipart/form, le seul paramètre étant nommé content.
+La mise à jour du contenu du modèle remplace tout le contenu HTML existant. Transmettez le remplacement comme `multipart/form-data` dans le paramètre `content` .
 
 ```http
 POST /rest/asset/v1/landingPageTemplate/286/content.json
@@ -121,15 +125,15 @@ Content-Type: text/plain
 
 ## Cloner
 
-Marketo offre une méthode simple pour cloner des modèles de page de destination. Il s’agit d’une requête POST codée en application/x-www-url-formencoded.
+Clonez un modèle de page de destination avec une requête POST `application/x-www-url-formencoded`.
 
-Le paramètre de chemin d’accès `id` spécifie l’identifiant du modèle de page de destination source à cloner.
+Le paramètre de chemin d’accès `id` spécifie le modèle de page de destination source.
 
-Le paramètre `name` est utilisé pour spécifier le nom du nouveau modèle de page de destination.
+Le paramètre `name` spécifie le nom du nouveau modèle de page de destination.
 
-Le paramètre `folder` est utilisé pour spécifier le dossier parent dans lequel le nouveau modèle de page de destination résidera. Il se présente sous la forme d’un objet JSON incorporé contenant `id` et `type`.
+Le paramètre `folder` spécifie le dossier parent du nouveau modèle. Transmettez-le en tant qu’objet JSON incorporé contenant `id` et `type`.
 
-Le paramètre `description` facultatif est utilisé pour décrire le nouveau modèle de page de destination.
+Le paramètre facultatif `description` décrit le nouveau modèle.
 
 ```http
 POST /rest/asset/v1/landingPageTemplate/{id}/clone.json
@@ -172,14 +176,14 @@ name=Standard Template Clone&folder={"type": "Folder", "id": 732}
 
 ## Validation
 
-Les modèles de page de destination suivent le modèle standard approuvé pour le brouillon, où il peut y avoir un brouillon et/ou une version approuvée. Chaque fois que des mises à jour sont appliquées à un modèle, elles sont toujours appliquées en premier au brouillon et ne sont affichées en direct que lorsque le modèle a été approuvé.
+Les modèles de page de destination utilisent le modèle brouillon et approuvé standard. Les mises à jour s’appliquent d’abord au brouillon et ne deviennent actives qu’une fois le modèle approuvé.
 
-Pour qu’un modèle soit approuvé, il doit être conforme aux règles de son type, guidé ou libre. Pour plus d’informations sur les conditions requises pour la création et la validation de modèles de leurs types respectifs, consultez leurs documents de création respectifs :
+Avant approbation, un modèle doit répondre aux exigences de son type guidé ou de forme libre. Consultez ces ressources :
 
 - [Modèles de page de destination de formulaire libre](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
-- [Modèles de page de destination guidée](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
+- [Modèles de page de destination guidés](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
 - [Exemples de modèles guidés](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
 
 ## Supprimer
 
-Pour supprimer un modèle, il doit être obsolète et non approuvé, ce qui signifie qu’aucune page de destination enfant ne peut y faire référence.  Les modèles de page de destination avec des boutons sociaux incorporés ne peuvent pas être supprimés avec cette API.
+Pour supprimer un modèle, assurez-vous qu’il n’est pas approuvé et qu’aucune page de destination enfant ne le référence. Vous ne pouvez pas utiliser cette API pour supprimer des modèles de page de destination avec des boutons de réseaux sociaux incorporés.

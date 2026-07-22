@@ -16,9 +16,9 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1924
+source-wordcount: 1670
 ht-degree: 2%
 
 ---
@@ -27,11 +27,16 @@ ht-degree: 2%
 
 [Référence du point d’entrée des membres du programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members)
 
-Marketo propose des API pour lire, créer, mettre à jour et supprimer des enregistrements de membre de programme. Les enregistrements des membres du programme sont associés aux enregistrements de lead via le champ ID de lead. Les enregistrements sont composés d’un ensemble de champs standard et éventuellement de 20 champs personnalisés supplémentaires. Les champs contiennent des données spécifiques au programme pour chaque membre et peuvent être utilisés dans des formulaires, des filtres, des déclencheurs et des actions de flux. Ces données sont visibles dans l’onglet [&#x200B; Membres &#x200B;](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members) du programme dans l’interface utilisateur de Marketo Engage.
+Marketo fournit des API pour lire, créer, mettre à jour et supprimer des enregistrements de membre de programme. Le champ ID lead associe les enregistrements de membre de programme aux enregistrements de lead.
+
+Chaque enregistrement contient des champs standard et peut contenir jusqu’à 20 champs personnalisés. Ces champs stockent des données de membre spécifiques au programme à utiliser dans des formulaires, des filtres, des déclencheurs et des actions de flux. Vous pouvez afficher ces données dans l’onglet [Membres](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members) du programme dans l’interface utilisateur de Marketo Engage.
 
 ## Décrire
 
-Le point d’entrée [Décrire le membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2) suit le modèle standard pour les objets de base de données de prospect. Le tableau `searchableFields` vous donne l’ensemble des champs valides pour l’interrogation. Le tableau `fields` contient des métadonnées de champ, notamment le nom de l’API REST, le nom d’affichage et la possibilité de mise à jour des champs.
+Le point d’entrée [Décrire le membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2) suit le modèle standard pour les objets de base de données de leads.
+
+- Le tableau `searchableFields` identifie les champs valides pour les requêtes.
+- Le tableau `fields` contient des métadonnées telles que le nom de l’API REST, le nom d’affichage et la possibilité de mise à jour du champ.
 
 ```http
 GET /rest/v1/programs/members/describe.json
@@ -222,26 +227,30 @@ GET /rest/v1/programs/members/describe.json
 
 ## Requête
 
-Le point d’entrée [Obtenir les membres du programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/getProgramMembersUsingGET) vous permet de récupérer les membres d’un programme. Elle nécessite un paramètre de chemin d’accès `programId`, ainsi que des paramètres de requête `filterType` et `filterValues`.
+Utilisez le point d’entrée [Obtenir les membres du programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/getProgramMembersUsingGET) pour récupérer les membres d’un programme. La requête nécessite un paramètre de chemin d’accès `programId` et des paramètres de requête `filterType` et `filterValues`.
 
-`programId` est utilisé pour spécifier le programme à rechercher.
+`programId` indique le programme à rechercher.
 
-`filterType` est utilisé pour spécifier le champ à utiliser comme filtre de recherche. Il accepte n’importe quel champ de la liste « searchableFields » renvoyée par le point d’entrée [Décrire le membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2). Si vous spécifiez un filterType qui est un champ personnalisé, le dataType du champ personnalisé doit être « string » ou « integer ». Si vous spécifiez un filterType autre que « leadId », 100 000 enregistrements de membre de programme au maximum peuvent être traités par la requête. Selon la configuration de votre instance Marketo, vous recevez l’une des erreurs suivantes :
+`filterType` indique le champ à utiliser comme filtre de recherche. Il accepte n’importe quel champ de la liste « searchableFields » renvoyée par le point d’entrée [Décrire le membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2). Pour un champ personnalisé, le type de données doit être « string » ou « integer ».
+
+Lorsque filterType n’est pas « leadId », la requête peut traiter un maximum de 100 000 enregistrements de membre de programme. Selon la configuration de votre instance Marketo, vous recevez l’une des erreurs suivantes :
 
 - Si le nombre total de membres du programme dépasse 100 000, une erreur est renvoyée : « 1003, Taille totale des membres : 100 001 dépasse la limite autorisée de 100 000 pour le filtre ».
 - Si le nombre total de membres du programme _qui correspondent au filtre_ dépasse 100 000, une erreur est renvoyée : « 1003, Taille d’abonnement correspondante : 100 001 dépasse la limite autorisée (100 000) pour cette api ».
 
 Pour interroger un programme dont le nombre d’adhésions dépasse la limite, utilisez plutôt l’API [Bulk Program Member Extract](bulk-program-member-extract.md).
 
-`filterValues` est utilisé pour spécifier les valeurs à rechercher et accepte jusqu’à 300 valeurs dans un format séparé par des virgules. L’appel recherche les enregistrements pour lesquels le champ du membre du programme correspond à l’une des filterValues incluses.
+`filterValues` spécifie les valeurs à rechercher et accepte jusqu’à 300 valeurs séparées par des virgules. L’appel recherche les enregistrements pour lesquels le champ de membre de programme correspond à l’une des filterValues incluses.
 
-Vous pouvez également filtrer par période en spécifiant `updatedAt` comme filterType avec les paramètres datetime `startAt` et `endAt`. La plage doit être de sept jours ou moins. Les heures de date doivent être au format ISO-8601, sans millisecondes.
+Vous pouvez également filtrer par période en spécifiant `updatedAt` comme filterType et en fournissant les paramètres datetime `startAt` et `endAt`. La plage doit être de sept jours ou moins. Utilisez le format ISO-8601 sans millisecondes pour les valeurs de date et d’heure.
 
-Le paramètre de requête `fields` facultatif accepte une liste séparée par des virgules de noms d’API de champ renvoyés par le point d’entrée [Décrire le membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2). Lorsqu’il est inclus, chaque enregistrement de la réponse inclut les champs spécifiés. Si cet attribut est omis, l’ensemble par défaut des champs renvoyés est `acquiredBy`, `leadId`, `membershipDate`, `programId` et `reachedSuccess`.
+Le paramètre de requête `fields` facultatif accepte une liste de noms d’API de champ séparés par des virgules renvoyée par le point d’entrée [Décrire le membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2). Lorsqu’il est inclus, chaque enregistrement de réponse contient les champs spécifiés. Lorsqu’elle est omise, la réponse renvoie `acquiredBy`, `leadId`, `membershipDate`, `programId` et `reachedSuccess` par défaut.
 
-Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête `batchSize` pour réduire ce nombre. Si l’attribut **moreResult** est défini sur true, cela signifie que davantage de résultats sont disponibles. Continuez à appeler ce point d’entrée jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’aucun résultat n’est disponible. Les `nextPageToken` renvoyés par cette API doivent toujours être réutilisés pour l’itération suivante de cet appel.
+Par défaut, le point d’entrée renvoie un maximum de 300 enregistrements. Utilisez le paramètre de requête `batchSize` pour réduire ce nombre.
 
-Si la longueur totale de votre requête GET dépasse 8 Ko, une erreur HTTP est renvoyée : « 414, URI trop long ». Pour pallier ce problème, vous pouvez modifier votre GET en POST, ajouter `_method=GET` paramètre et placer une chaîne de requête dans le corps de la requête.
+Si l’attribut **moreResult** est défini sur true, d’autres résultats sont disponibles. Continuez à appeler le point d’entrée avec la `nextPageToken` renvoyée jusqu’à ce que moreResult ait la valeur false.
+
+Si la longueur totale de la requête GET dépasse 8 Ko, le point d’entrée renvoie l’erreur HTTP « 414, URI trop long ». Pour contourner cette limite, modifiez la requête de GET en POST, ajoutez le paramètre `_method=GET` et placez la chaîne de requête dans le corps de la requête.
 
 ```http
 GET /rest/v1/programs/{programId}/members.json?filterType=statusName&filterValues=Influenced
@@ -355,19 +364,26 @@ GET /rest/v1/programs/{programId}/members.json?filterType=statusName&filterValue
 
 ## Créer et mettre à jour
 
-Deux points d’entrée prennent en charge l’opération de création/mise à jour sur les membres du programme. L’un d’eux vous permet de mettre à jour uniquement le statut de membre du programme. L’autre vous permet de mettre à jour l’ensemble des champs des membres du programme marqués comme « modifiables ». Les deux points d’entrée vous permettent de modifier jusqu’à 300 enregistrements de membre de programme par appel.
+Deux points d’entrée prennent en charge les opérations de création et de mise à jour sur les membres du programme :
+
+- Un point d’entrée ne met à jour que le statut de membre du programme.
+- Un point d’entrée met à jour les champs des membres du programme marqués comme « modifiables ».
+
+Chaque point d’entrée peut modifier jusqu’à 300 enregistrements de membre de programme par appel.
 
 ### Statut de membre du programme
 
-Le point d’entrée [&#x200B; Synchroniser le statut des membres du programme &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/syncProgramMemberStatusUsingPOST) permet de créer ou de mettre à jour le statut du programme pour un ou plusieurs membres.
+Utilisez le point d’entrée [Synchroniser le statut du membre du programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/syncProgramMemberStatusUsingPOST) pour créer ou mettre à jour le statut du programme pour un ou plusieurs membres.
 
-Le paramètre de chemin d’accès `programId` obligatoire spécifie le programme contenant les membres à créer ou à mettre à jour.
+Les paramètres requis sont les suivants :
 
-Le paramètre `statusName` requis spécifie le statut du programme à appliquer à une liste de prospects. Le statusName doit correspondre à un statut disponible pour le canal du programme. Les statuts valides peuvent être récupérés à l’aide du point d’entrée [Obtenir les canaux](https://developer.adobe.com/marketo-apis/api/asset#tag/Channels/operation/getAllChannelsUsingGET). Si le statut d’un prospect a une valeur d’étape supérieure à la valeur statusName désignée, ce prospect est ignoré.
+- `programId` : paramètre de chemin d’accès qui spécifie le programme contenant les membres à créer ou à mettre à jour.
+- `statusName` : indique le statut du programme à appliquer à une liste de prospects. Le statusName doit correspondre à un statut disponible pour le canal du programme. Récupérez les statuts valides avec le point d’entrée [Obtenir les canaux](https://developer.adobe.com/marketo-apis/api/asset#tag/Channels/operation/getAllChannelsUsingGET). Si le statut d’un prospect a une valeur d’étape supérieure à la valeur statusName désignée, la requête ignore ce prospect.
+- `input` : tableau de valeurs `leadId` qui correspondent aux membres du programme. Vous pouvez soumettre jusqu’à 300 leadId par appel.
 
-Le paramètre `input` requis est un tableau de `leadId` qui correspondent aux membres du programme. Vous pouvez soumettre jusqu’à 300 leadId par appel. Une opération d’upsert est effectuée sur chaque enregistrement. Si l’ID de prospect est associé à un membre du programme, son statut d’abonnement est mis à jour. Dans le cas contraire, un nouvel enregistrement de membre du programme est créé, l’enregistrement est associé à l’ID de lead et le statut d’abonnement est attribué.
+Le point d’entrée effectue un upsert sur chaque enregistrement. Si l’ID de lead est associé à un membre du programme, le point d’entrée met à jour son statut d’abonnement. Dans le cas contraire, il crée un enregistrement de membre du programme, associe l’enregistrement à l’ID de prospect et attribue le statut d’abonnement.
 
-Le point d’entrée répond avec une `status` de « mis à jour », « créé » ou « ignoré ». Si cette opération est ignorée, un tableau `reasons` est également inclus. Le point d’entrée répond également avec un champ `seq` qui est un index qui peut être utilisé pour mettre en corrélation les enregistrements envoyés avec l’ordre de la réponse.
+La réponse inclut une `status` de « mis à jour », « créé » ou « ignoré ». Un résultat ignoré comprend également un tableau `reasons`. Le champ `seq` est un index qui met en corrélation chaque enregistrement envoyé avec l’ordre de réponse.
 
 Si l’appel aboutit, une activité « Modifier le statut du programme » est consignée dans le journal d’activité du prospect.
 
@@ -427,13 +443,16 @@ Content-Type: application/json
 
 ### Données des membres du programme
 
-Le point d’entrée [Synchroniser les données des membres du programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/syncProgramMemberDataUsingPOST) est utilisé pour mettre à jour les données de champ des membres du programme pour un ou plusieurs membres. Vous pouvez modifier n’importe quel champ personnalisé ou champ standard « modifiable » (voir [Description du membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2) point d’entrée).
+Utilisez le point d’entrée [Synchroniser les données de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/syncProgramMemberDataUsingPOST) pour mettre à jour les données de champ de membre de programme pour un ou plusieurs membres. Vous pouvez modifier n’importe quel champ personnalisé ou champ standard marqué comme « modifiable » par le point d’entrée [Décrire le membre du programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2).
 
-Le paramètre de chemin d’accès `programId` obligatoire spécifie le programme contenant les membres à mettre à jour.
+Les paramètres requis sont les suivants :
 
-Le paramètre `input` requis est un tableau . Chaque élément de tableau contient un `leadId` et un ou plusieurs champs à mettre à jour (à l’aide du nom de l’API). Une opération de mise à jour est effectuée sur chaque enregistrement. L’ID de lead doit être associé à un membre du programme. Les champs doivent être modifiables. Vous pouvez soumettre jusqu’à 300 leadId par appel.
+- `programId` : un paramètre de chemin d’accès qui spécifie le programme contenant les membres à mettre à jour.
+- `input` : tableau dont les éléments contiennent un `leadId` et un ou plusieurs champs à mettre à jour par nom d’API. Vous pouvez soumettre jusqu’à 300 leadId par appel.
 
-Le point d’entrée répond avec une `status` de « mise à jour » ou « ignoré ». Si cette opération est ignorée, un tableau `reasons` est également inclus. Le point d’entrée répond également avec un champ `seq` qui est un index qui peut être utilisé pour mettre en corrélation les enregistrements envoyés avec l’ordre de la réponse.
+Le point d’entrée met à jour chaque enregistrement. L’ID de prospect doit être associé à un membre du programme et chaque champ doit pouvoir être mis à jour.
+
+La réponse inclut une `status` de « mise à jour » ou « ignorée ». Un résultat ignoré comprend également un tableau `reasons`. Le champ `seq` est un index qui met en corrélation chaque enregistrement envoyé avec l’ordre de réponse.
 
 Si l’appel aboutit, une activité « Modifier les données du membre du programme » est consignée dans le journal d’activité du prospect.
 
@@ -495,17 +514,21 @@ Content-Type: application/json
 
 ## Champs
 
-L’objet membre de programme contient des champs standard et des champs personnalisés facultatifs. Des champs standard sont présents dans chaque abonnement Marketo Engage, tandis que des champs personnalisés sont créés par l’utilisateur selon les besoins. Chaque définition de champ est composée d’un ensemble d’attributs qui décrivent le champ. Les exemples d’attributs sont le nom d’affichage, le nom de l’API et dataType. Ces attributs sont collectivement appelés métadonnées.
+L’objet membre de programme contient des champs standard et des champs personnalisés facultatifs. Des champs standard sont présents dans chaque abonnement Marketo Engage, tandis que les utilisateurs créent des champs personnalisés selon leurs besoins.
 
-Les points d’entrée suivants vous permettent d’interroger, de créer et de mettre à jour des champs sur l’objet membre de programme. Ces API nécessitent que l&#39;utilisateur propriétaire de l&#39;API dispose d&#39;un rôle avec l&#39;une ou l&#39;autre des autorisations **Champ standard de schéma en lecture-écriture** ou **Champ personnalisé de schéma en lecture-écriture**.
+Chaque champ est défini par des attributs tels que le nom d’affichage, le nom de l’API et le dataType. Ensemble, ces attributs sont appelés métadonnées.
+
+Les points d’entrée suivants interrogent, créent et mettent à jour des champs sur l’objet membre de programme. L’utilisateur de l’API doit disposer d’un rôle avec l’autorisation **Champ standard de schéma en lecture-écriture**, l’autorisation **Champ personnalisé de schéma en lecture-écriture** ou les deux.
 
 ### Champs de requête
 
-L’interrogation des champs de membre de programme est simple. Vous pouvez interroger un seul champ de membre de programme par nom d’API ou interroger l’ensemble de tous les champs de membre de programme. Les champs standard et personnalisés peuvent être récupérés, selon les autorisations de rôle utilisées. Les champs masqués sont également récupérés.
+Exécutez une requête sur un champ de membre de programme par nom d’API ou récupérez tous les champs de membre de programme. Les autorisations des rôles déterminent si la réponse peut inclure des champs standard, des champs personnalisés ou les deux. La réponse inclut également des champs masqués.
 
 #### Par nom
 
-Le point d’entrée [Obtenir le champ de membre de programme par nom](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/getProgramMemberFieldByNameUsingGET) récupère les métadonnées d’un seul champ sur l’objet de membre de programme. Le paramètre de chemin d’accès `fieldApiName` obligatoire spécifie le nom d’API du champ. La réponse est similaire au point d’entrée Describe Program Member , mais elle contient des métadonnées supplémentaires telles que l’attribut `isCustom` qui indique si le champ est un champ personnalisé.
+Le point d’entrée [Obtenir le champ de membre de programme par nom](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/getProgramMemberFieldByNameUsingGET) récupère les métadonnées d’un champ sur l’objet de membre de programme. Le paramètre de chemin d’accès `fieldApiName` obligatoire spécifie le nom de l’API du champ.
+
+La réponse ressemble à la réponse Describe Program Member , mais elle comprend des métadonnées supplémentaires. Par exemple, l’attribut `isCustom` indique si le champ est personnalisé.
 
 ```http
 GET /rest/v1/programs/members/schema/fields/{fieldApiName}.json
@@ -534,7 +557,9 @@ GET /rest/v1/programs/members/schema/fields/{fieldApiName}.json
 
 #### Parcourir
 
-Le point d’entrée [Obtenir les champs de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/getProgramMemberFieldsUsingGET) récupère les métadonnées de tous les champs de l’objet de membre de programme. Par défaut, un maximum de 300 enregistrements est renvoyé. Vous pouvez utiliser le paramètre de requête `batchSize` pour réduire ce nombre. Si l’attribut `moreResult` est défini sur « true », cela signifie que d’autres résultats sont disponibles. Continuez à appeler ce point d’entrée jusqu’à ce que l’attribut moreResult renvoie false, ce qui signifie qu’aucun résultat n’est disponible. Les `nextPageToken` renvoyés par cette API doivent toujours être réutilisés pour l’itération suivante de cet appel.
+Le point d’entrée [Obtenir les champs de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/getProgramMemberFieldsUsingGET) récupère les métadonnées de tous les champs de l’objet de membre de programme. Par défaut, elle renvoie un maximum de 300 enregistrements. Utilisez le paramètre de requête `batchSize` pour réduire ce nombre.
+
+Si l’attribut `moreResult` est défini sur « true », d’autres résultats sont disponibles. Continuez à appeler le point d’entrée avec la `nextPageToken` renvoyée jusqu’à ce que moreResult ait la valeur false.
 
 ```http
 GET /rest/v1/programs/members/schema/fields.json?batchSize=5
@@ -610,13 +635,21 @@ GET /rest/v1/programs/members/schema/fields.json?batchSize=5
 
 ### Créer des champs
 
-Le point d’entrée [Créer des champs de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/createProgramMemberFieldUsingPOST) crée un ou plusieurs champs personnalisés sur l’objet de membre de programme. Ce point d’entrée fournit une fonctionnalité comparable à ce qui est [disponible dans l’interface utilisateur de Marketo Engage](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields). Vous pouvez créer jusqu’à 20 champs personnalisés à l’aide de ce point d’entrée.
+Le point d’entrée [Créer des champs de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/createProgramMemberFieldUsingPOST) crée des champs personnalisés sur l’objet de membre de programme. Il offre des fonctionnalités comparables à l’interface utilisateur de [&#128279;](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields). Vous pouvez créer jusqu’à 20 champs personnalisés avec ce point d’entrée.
 
-Examinez attentivement chaque champ que vous créez dans votre instance de production de Marketo Engage à l’aide de l’API. Une fois un champ créé, vous ne pouvez pas le supprimer ([vous pouvez uniquement le masquer](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo)). La prolifération des champs inutilisés est une mauvaise pratique qui encombrera votre instance.
+Examinez attentivement chaque champ avant de le créer dans une instance Marketo Engage de production. Une fois un champ créé, vous ne pouvez pas le supprimer ; [vous pouvez uniquement le masquer](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo). Les champs non utilisés encombrent l’instance.
 
-Le paramètre `input` requis est un tableau d’objets de champ de membre de programme. Chaque objet contient un ou plusieurs attributs. Les attributs obligatoires sont les `displayName`, `name` et `dataType` qui correspondent respectivement au nom d’affichage de l’interface utilisateur du champ, au nom d’API du champ et au type de champ. Vous pouvez éventuellement spécifier `description`, `isHidden`, `isHtmlEncodingInEmail` et `isSensitive`.
+Le paramètre `input` requis est un tableau d’objets de champ de membre de programme. Chaque objet contient un ou plusieurs attributs.
 
-Quelques règles sont associées à la dénomination des `name` et des `displayName`. L’attribut `name` doit être unique, commencer par une lettre et ne contenir que des lettres, des chiffres ou des traits de soulignement. Le *`isplayName` doit être unique et ne peut pas contenir de caractères spéciaux. Une convention de nommage courante consiste à appliquer [casse mixte](https://en.wikipedia.org/wiki/Camel_case#) aux `displayName` pour produire des `name`. Par exemple, un `displayName` de « Mon champ personnalisé » génère un `name` de « myCustomField ».
+- Les attributs requis sont `displayName`, `name` et `dataType`. Ils correspondent respectivement au nom d’affichage de l’interface utilisateur, au nom de l’API et au type de champ.
+- Les attributs facultatifs sont `description`, `isHidden`, `isHtmlEncodingInEmail` et `isSensitive`.
+
+Les attributs `name` et `displayName` comportent les règles de dénomination suivantes :
+
+- L’attribut `name` doit être unique, commencer par une lettre et contenir uniquement des lettres, des chiffres ou des traits de soulignement.
+- Le *`isplayName` doit être unique et ne peut pas contenir de caractères spéciaux.
+
+Une convention commune est d&#39;appliquer [cas du chameau](https://en.wikipedia.org/wiki/Camel_case#) aux `displayName` pour produire des `name`. Par exemple, un `displayName` de « Mon champ personnalisé » génère un `name` de « myCustomField ».
 
 ```http
 POST /rest/v1/programs/members/schema/fields.json
@@ -650,7 +683,7 @@ POST /rest/v1/programs/members/schema/fields.json
 
 ### Mettre à jour le champ
 
-Le point d’entrée [Mettre à jour le champ de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/updateProgramMemberFieldUsingPOST) met à jour un seul champ personnalisé sur l’objet de membre de programme. En règle générale, les opérations de mise à jour des champs effectuées à l’aide de l’interface utilisateur Marketo Engage sont réalisables avec l’API . Quelques différences sont résumées dans le tableau ci-dessous.
+Le point d’entrée [Mettre à jour le champ de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/updateProgramMemberFieldUsingPOST) met à jour un champ personnalisé sur l’objet de membre de programme. La plupart des mises à jour des champs disponibles dans l’interface utilisateur de Marketo Engage le sont également via l’API. Le tableau suivant résume les différences.
 
 | Attribut | Mis à jour par l’API ? | Peut-on les mettre à jour par l’interface utilisateur ? | Mis à jour par l’API ? | Peut-on les mettre à jour par l’interface utilisateur ? |
 | --- | --- | --- | --- | --- |
@@ -664,7 +697,10 @@ Le point d’entrée [Mettre à jour le champ de membre de programme](https://de
 | length | non | non | non | non |
 | name | non | non | non | non |
 
-Le paramètre de chemin d’accès `fieldApiName` obligatoire spécifie le nom d’API du champ à mettre à jour. Le paramètre `input` requis est un tableau contenant un seul objet de champ de prospect. L’objet de champ contient un ou plusieurs attributs.
+La requête requiert les paramètres suivants :
+
+- `fieldApiName` : paramètre de chemin d’accès qui spécifie le nom d’API du champ à mettre à jour.
+- `input` : tableau contenant un objet de champ de prospect avec un ou plusieurs attributs.
 
 ```http
 POST /rest/v1/programs/members/schema/fields/pMCFCustomField03.json
@@ -697,9 +733,11 @@ POST /rest/v1/programs/members/schema/fields/pMCFCustomField03.json
 
 ## Supprimer
 
-Le point d’entrée [Supprimer les membres du programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/deleteProgramMemberUsingPOST) est utilisé pour supprimer les enregistrements de membre de programme. Le paramètre de chemin d’accès `programId` obligatoire spécifie le programme contenant les membres à supprimer. Le corps de la requête contient un tableau `input` d’ID de prospect. Un maximum de 300 ID de lead par appel est autorisé.
+Utilisez le point d’entrée [Supprimer les membres du programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/deleteProgramMemberUsingPOST) pour supprimer les enregistrements de membre du programme. Le paramètre de chemin d’accès `programId` obligatoire spécifie le programme contenant les membres à supprimer.
 
-Le point d’entrée répond avec une `status` de « supprimé » ou « ignoré ». Si cette opération est ignorée, un tableau `reasons` est également inclus. Le point d’entrée répond également avec un champ `seq` qui est un index qui peut être utilisé pour mettre en corrélation les enregistrements envoyés avec l’ordre de la réponse.
+Le corps de la requête contient un tableau `input` d’ID de prospect. Chaque appel autorise un maximum de 300 ID de prospect.
+
+La réponse inclut une `status` de « supprimé » ou « ignoré ». Un résultat ignoré comprend également un tableau `reasons`. Le champ `seq` est un index qui met en corrélation chaque enregistrement envoyé avec l’ordre de réponse.
 
 ```http
 POST /rest/v1/programs/{programId}/members/delete.json

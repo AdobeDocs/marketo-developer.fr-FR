@@ -10,16 +10,18 @@ feature_v2:
   - id: b0bb9048-d951-48d8-8232-45cf248a7e27
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1352
+source-wordcount: 1337
 ht-degree: 2%
 
 ---
 
 # Référence de l’API Forms
 
-Vous interagirez avec deux objets principaux à l’aide de l’API Forms 2.0. L’objet `MktoForms2` et l’objet `Form`. L’objet `MktoForms2` est l’espace de noms de niveau supérieur visible publiquement pour la fonctionnalité Forms2 et contient des fonctions pour créer, charger et récupérer des objets de formulaire.
+L’API Forms 2.0 fournit deux objets principaux : `MktoForms2` et `Form`.
+
+`MktoForms2` est l’espace de noms public de niveau supérieur pour la fonctionnalité Forms2. Il contient des fonctions qui créent, chargent et récupèrent des objets `Form`.
 
 ## Méthodes MktoForms2
 

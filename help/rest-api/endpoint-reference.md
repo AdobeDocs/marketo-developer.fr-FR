@@ -18,16 +18,16 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 4793
+source-wordcount: 4807
 ht-degree: 29%
 
 ---
 
 # Référence du point d’entrée
 
-Vous trouverez ci-dessous des liens vers les références de l’API REST Marketo.
+Utilisez les références suivantes pour rechercher des paramètres de requête, des schémas de réponse et des exemples pour chaque groupe d’API REST Marketo :
 
 - [Ressource](https://developer.adobe.com/marketo-apis/api/asset)
 - [Identité](https://developer.adobe.com/marketo-apis/api/identity/)
@@ -36,7 +36,7 @@ Vous trouverez ci-dessous des liens vers les références de l’API REST Market
 
 ## Liste des points d’entrée {#endpoint_list}
 
-Voici une liste complète des points d’entrée de l’API REST.
+Le tableau suivant répertorie les points d’entrée de l’API REST, les méthodes HTTP, les URI et les autorisations requises.
 
 | Nom | Groupe | Méthode | URI | Autorisation requise |
 | --- | --- | --- | --- | --- |
@@ -103,16 +103,16 @@ Voici une liste complète des points d’entrée de l’API REST.
 | Décrire les sociétés | Sociétés | GET | /rest/v1/companies/describe.json | Société en lecture seule |
 | Obtenir les entreprises | Sociétés | GET | /rest/v1/companies.json | Société en lecture seule |
 | Synchroniser les entreprises | Sociétés | POST | /rest/v1/companies.json | Société accessible en lecture/écriture |
-| Obtenir le champ d’entreprise par nom | Sociétés | GET | /rest/v1/companies/schema/fields/{fieldApiName}.json | Champ personnalisé de schéma lecture-écriture |
-| Obtenir les champs d’entreprise | Sociétés | GET | /rest/v1/companies/schema/fields.json | Champ personnalisé de schéma lecture-écriture |
+| Obtenir le champ d’entreprise par nom | Sociétés | GET | /rest/v1/companies/schema/fields/{fieldApiName}.json | Champ personnalisé de schéma en lecture-écriture |
+| Obtenir les champs d’entreprise | Sociétés | GET | /rest/v1/companies/schema/fields.json | Champ personnalisé de schéma en lecture-écriture |
 | Ajouter des champs de type d’objet personnalisés | Objets personnalisés | POST | /rest/v1/customobjects/schema/{apiName}/addField.json | Type d’objet personnalisé accessible en lecture/écriture |
 | Approuver le type d&#39;objet personnalisé | Objets personnalisés | POST | /rest/v1/customobjects/schema/{apiName}/approve.json | Type d’objet personnalisé accessible en lecture/écriture |
 | Supprimer objets personnalisés | Objets personnalisés | POST | /rest/v1/customobjects/{name}/delete.json | Objet personnalisé accessible en lecture/écriture |
-| Supprimer le type d&#39;objet personnalisé | Objets personnalisés | POST | /rest/v1/customobjects/schema/{apiName}/delete.json | Type d’objet personnalisé accessible en lecture/écriture |
-| Supprimer les champs de type d&#39;objet personnalisés | Objets personnalisés | POST | /rest/v1/customobjects/schema/{apiName}/deleteField.json | Type d’objet personnalisé accessible en lecture/écriture |
+| Supprimer le type d&#39;objet personnalisé | Objets personnalisés | POST | /rest/v1/customobjects/schema/{apiName}/delete.json | Type d’objet personnalisé en lecture/écriture |
+| Supprimer les champs de type d&#39;objet personnalisés | Objets personnalisés | POST | /rest/v1/customobjects/schema/{apiName}/deleteField.json | Type d’objet personnalisé en lecture/écriture |
 | Décrire les objets personnalisés | Objets personnalisés | GET | /rest/v1/customobjects/{name}/describe.json | Objet personnalisé en lecture seule |
 | Décrire le type d’objet personnalisé | Objets personnalisés | GET | /rest/v1/customobjects/schema/{apiName}/describe.json | Type d’objet personnalisé en lecture seule |
-| Ignorer le brouillon de type d&#39;objet personnalisé | Objets personnalisés | POST | /rest/v1/customobjects/schema/{apiName}/discardDraft.json | Type d’objet personnalisé accessible en lecture/écriture |
+| Ignorer le brouillon de type d&#39;objet personnalisé | Objets personnalisés | POST | /rest/v1/customobjects/schema/{apiName}/discardDraft.json | Type d’objet personnalisé en lecture/écriture |
 | Obtention d’objets personnalisés | Objets personnalisés | GET | /rest/v1/customobjects/{name}.json | Objet personnalisé en lecture seule |
 | Obtention d&#39;objets liés d&#39;objet personnalisés | Objets personnalisés | GET | /rest/v1/customobjects/schema/linkableObjects.json | Type d’objet personnalisé en lecture seule |
 | Obtenir l’Assets dépendante de l’objet personnalisé | Objets personnalisés | GET | /rest/v1/customobjects/schema/{apiName}/dependentAssets.json | Type d’objet personnalisé en lecture seule |
@@ -253,9 +253,9 @@ Voici une liste complète des points d’entrée de l’API REST.
 | Synchroniser les leads | Prospects | POST | /rest/v1/leads.json | Lead en lecture/écriture |
 | Mettre à jour la partition de lead | Prospects | POST | /rest/v1/leads/partitions.json | Lead en lecture/écriture |
 | Obtenir le champ de lead par nom | Prospects | GET | /rest/v1/leads/schema/fields/{fieldApiName}.json | Champ personnalisé de schéma lecture-écriture |
-| Obtenir les champs de lead | Prospects | GET | /rest/v1/leads/schema/fields.json | Champ personnalisé de schéma lecture-écriture |
-| Créer des champs de lead | Prospects | POST | /rest/v1/leads/schema/fields.json | Champ personnalisé de schéma lecture-écriture |
-| Mettre à jour le champ de lead | Prospects | POST | /rest/v1/leads/schema/fields/{fieldApiName}.json | Champ personnalisé de schéma lecture-écriture |
+| Obtenir les champs de lead | Prospects | GET | /rest/v1/leads/schema/fields.json | Champ personnalisé de schéma en lecture-écriture |
+| Créer des champs de lead | Prospects | POST | /rest/v1/leads/schema/fields.json | Champ personnalisé de schéma en lecture-écriture |
+| Mettre à jour le champ de lead | Prospects | POST | /rest/v1/leads/schema/fields/{fieldApiName}.json | Champ personnalisé de schéma en lecture-écriture |
 | Ajouter des membres de la liste des comptes nommés | Listes de comptes nommés | POST | /rest/v1/namedaccountlist/{id}/namedaccounts.json | Compte nommé en lecture / écriture |
 | Supprimer les listes de comptes nommés | Listes de comptes nommés | POST | /rest/v1/namedaccountlists/delete.json | Liste de comptes nommés en lecture/écriture |
 | Obtenir les membres de la liste des comptes nommés | Listes de comptes nommés | GET | /rest/v1/namedaccountlist/{id}/namedaccounts.json | Compte nommé en lecture seule |
@@ -266,8 +266,8 @@ Voici une liste complète des points d’entrée de l’API REST.
 | Décrire les comptes nommés | Comptes désignés | GET | /rest/v1/namedaccounts/describe.json | Compte nommé en lecture seule |
 | Obtenir les comptes nommés | Comptes désignés | GET | /rest/v1/namedaccounts.json | Compte nommé en lecture seule |
 | Synchroniser les comptes nommés | Comptes désignés | POST | /rest/v1/namedaccounts.json | Compte nommé en lecture / écriture |
-| Obtenir le champ de compte nommé par nom | Comptes désignés | GET | /rest/v1/namedaccounts/schema/fields/{fieldApiName}.json | Champ personnalisé de schéma lecture-écriture |
-| Obtenir les champs de compte nommés | Comptes désignés | GET | /rest/v1/namedaccounts/schema/fields.json | Champ personnalisé de schéma lecture-écriture |
+| Obtenir le champ de compte nommé par nom | Comptes désignés | GET | /rest/v1/namedaccounts/schema/fields/{fieldApiName}.json | Champ personnalisé de schéma en lecture-écriture |
+| Obtenir les champs de compte nommés | Comptes désignés | GET | /rest/v1/namedaccounts/schema/fields.json | Champ personnalisé de schéma en lecture-écriture |
 | Supprimer des opportunités | Opportunités | POST | /rest/v1/opportunities/delete.json | Opportunité accessible en lecture/écriture |
 | Supprimer rôles d’opportunité | Opportunités | POST | /rest/v1/opportunities/roles/delete.json | Opportunité accessible en lecture/écriture |
 | Décrire l’opportunité | Opportunités | GET | /rest/v1/opportunities/describe.json | Opportunité en lecture seule |
@@ -277,14 +277,14 @@ Voici une liste complète des points d’entrée de l’API REST.
 | Opportunités de synchronisation | Opportunités | POST | /rest/v1/opportunities.json | Opportunité accessible en lecture/écriture |
 | Rôles d’opportunité de synchronisation | Opportunités | POST | /rest/v1/opportunities/roles.json | Opportunité accessible en lecture/écriture |
 | Obtenir le champ de l’opportunité par nom | Opportunités | GET | /rest/v1/opportunités/schema/fields/{fieldApiName}.json | Champ personnalisé de schéma lecture-écriture |
-| Obtenir les champs d’opportunité | Opportunités | GET | /rest/v1/opportunities/schema/fields.json | Champ personnalisé de schéma lecture-écriture |
+| Obtenir les champs d’opportunité | Opportunités | GET | /rest/v1/opportunities/schema/fields.json | Champ personnalisé de schéma en lecture-écriture |
 | Supprimer les membres du programme | Membres du programme | POST | /rest/v1/programs/{programId}/members/delete.json | Lead en lecture/écriture |
 | Décrire le membre du programme | Membres du programme | GET | /rest/v1/programs/members/describe.json | Lead en lecture seule |
 | Obtenir les membres du programme | Membres du programme | GET | /rest/v1/programs/{programId}/members.json | Lead en lecture seule |
 | Synchroniser les données des membres du programme | Membres du programme | POST | /rest/v1/programs/{programId}/members.json | Lead en lecture/écriture |
 | Synchroniser le statut du membre de programme | Membres du programme | POST | /rest/v1/programs/{programId}/members/status.json | Lead en lecture/écriture |
-| Obtenir le champ de membre de programme par nom | Membres du programme | GET | /rest/v1/programs/members/schema/fields/{fieldApiName}.json | Champ personnalisé de schéma lecture-écriture |
-| Obtenir les champs de membre de programme | Membres du programme | GET | /rest/v1/programs/members/schema/fields.json | Champ personnalisé de schéma lecture-écriture |
+| Obtenir le champ de membre de programme par nom | Membres du programme | GET | /rest/v1/programs/members/schema/fields/{fieldApiName}.json | Champ personnalisé de schéma en lecture-écriture |
+| Obtenir les champs de membre de programme | Membres du programme | GET | /rest/v1/programs/members/schema/fields.json | Champ personnalisé de schéma en lecture-écriture |
 | Créer des champs de membre de programme | Membres du programme | POST | /rest/v1/programs/members/schema/fields.json | Champ personnalisé de schéma lecture-écriture |
 | Mettre à jour le champ de membre de programme | Membres du programme | POST | /rest/v1/programs/members/schema/fields/{fieldApiName}.json | Champ personnalisé de schéma lecture-écriture |
 | Approuver le programme | Programmes | POST | /rest/asset/v1/program/{id}/approve.json | Ressource en lecture-écriture |
@@ -351,15 +351,15 @@ Voici une liste complète des points d’entrée de l’API REST.
 | Créer un jeton | Jetons | POST | /rest/asset/v1/folder/{id}/tokens.json | Ressource en lecture-écriture |
 | Supprimer le jeton par nom | Jetons | POST | /rest/asset/v1/folder/{id}/tokens/delete.json | Ressource en lecture-écriture |
 | Obtention des jetons par ID de dossier | Jetons | GET | /rest/asset/v1/folder/{id}/tokens.json | Ressource en lecture seule |
-| Ajouter rôles | Gestion des utilisateurs | POST | /userservice/management/v1/users/{userid}/roles/create.json | Accéder à l’API de gestion utilisateur |
-| Supprimer utilisateur invité | Gestion des utilisateurs | POST | /userservice/management/v1/users/{userId}/invite/delete.json | Accéder à l’API de gestion utilisateur |
-| Supprimer rôles | Gestion des utilisateurs | POST | /userservice/management/v1/users/{userid}/roles/delete.json | Accéder à l’API de gestion utilisateur |
-| Supprimer l’utilisateur | Gestion des utilisateurs | POST | /userservice/management/v1/users/{userId}/delete.json | Accéder à l’API de gestion utilisateur |
-| Obtenir l’utilisateur invité par ID | Gestion des utilisateurs | GET | /userservice/management/v1/users/{userid}/invite.json | Accéder à l’API de gestion utilisateur |
-| Obtenir des rôles | Gestion des utilisateurs | GET | /userservice/management/v1/users/roles.json | Accéder à l’API de gestion utilisateur |
+| Ajouter rôles | Gestion des utilisateurs | POST | /userservice/management/v1/users/{userid}/roles/create.json | Accéder à l’API de gestion des utilisateurs |
+| Supprimer utilisateur invité | Gestion des utilisateurs | POST | /userservice/management/v1/users/{userId}/invite/delete.json | Accéder à l’API de gestion des utilisateurs |
+| Supprimer rôles | Gestion des utilisateurs | POST | /userservice/management/v1/users/{userid}/roles/delete.json | Accéder à l’API de gestion des utilisateurs |
+| Supprimer l’utilisateur | Gestion des utilisateurs | POST | /userservice/management/v1/users/{userId}/delete.json | Accéder à l’API de gestion des utilisateurs |
+| Obtenir l’utilisateur invité par ID | Gestion des utilisateurs | GET | /userservice/management/v1/users/{userid}/invite.json | Accéder à l’API de gestion des utilisateurs |
+| Obtenir des rôles | Gestion des utilisateurs | GET | /userservice/management/v1/users/roles.json | Accéder à l’API de gestion des utilisateurs |
 | Obtenir les rôles et les espaces de travail par ID | Gestion des utilisateurs | GET | /userservice/management/v1/users/{userid}/roles.json | Accéder à l’API de gestion utilisateur |
-| Obtenir des utilisateurs | Gestion des utilisateurs | GET | /userservice/management/v1/users/allusers.json | Accéder à l’API de gestion utilisateur |
-| Obtenir l’utilisateur par ID | Gestion des utilisateurs | GET | /userservice/management/v1/users/{userid}/user.json | Accéder à l’API de gestion utilisateur |
-| Obtenir les espaces de travail | Gestion des utilisateurs | GET | /userservice/management/v1/users/workspaces.json | Accéder à l’API de gestion utilisateur |
-| Inviter un utilisateur | Gestion des utilisateurs | POST | /userservice/management/v1/users/invite.json | Accéder à l’API de gestion utilisateur |
-| Mettre à jour les attributs utilisateur | Gestion des utilisateurs | POST | /userservice/management/v1/users/{userId}/update.json | Accéder à l’API de gestion utilisateur |
+| Obtenir des utilisateurs | Gestion des utilisateurs | GET | /userservice/management/v1/users/allusers.json | Accéder à l’API de gestion des utilisateurs |
+| Obtenir l’utilisateur par ID | Gestion des utilisateurs | GET | /userservice/management/v1/users/{userid}/user.json | Accéder à l’API de gestion des utilisateurs |
+| Obtenir les espaces de travail | Gestion des utilisateurs | GET | /userservice/management/v1/users/workspaces.json | Accéder à l’API de gestion des utilisateurs |
+| Inviter un utilisateur | Gestion des utilisateurs | POST | /userservice/management/v1/users/invite.json | Accéder à l’API de gestion des utilisateurs |
+| Mettre à jour les attributs utilisateur | Gestion des utilisateurs | POST | /userservice/management/v1/users/{userId}/update.json | Accéder à l’API de gestion des utilisateurs |

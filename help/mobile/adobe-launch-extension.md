@@ -12,22 +12,22 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: d095671a-1355-40aa-8b5f-06c33c68080b
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 305
+source-wordcount: 303
 ht-degree: 0%
 
 ---
 
 # Extension Marketo Mobile pour [!DNL Adobe Launch]
 
-Instructions d’installation pour l’extension Marketo Mobile SDK dans [!DNL Adobe Launch]. Les étapes ci-dessous sont nécessaires pour envoyer des notifications push et/ou des messages In-App.
+Installez l’extension Marketo Mobile SDK dans [!DNL Adobe Launch] pour envoyer des notifications push, des messages in-app ou les deux.
 
 ## Conditions préalables
 
-- [Ajout d’une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtention de la clé secrète de l’application et de l’ID Munchkin)
-- Suivez les instructions fournies dans le portail [!DNL Adobe Launch] pour l’installation
-- [Configurer des notifications push](push-notifications.md) (facultatif)
+- [Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) et obtenez la clé secrète de l’application et l’ID Munchkin.
+- Suivez les instructions d’installation fournies dans le portail [!DNL Adobe Launch].
+- Facultatif : [Configurer des notifications push](push-notifications.md).
 
 ## iOS
 
@@ -35,31 +35,32 @@ Instructions d’installation pour l’extension Marketo Mobile SDK dans [!DNL A
 
 1. Accédez à Fichier > Nouveau > Fichier et sélectionnez « Fichier d’en-tête ».
 1. Nommez le fichier « &lt;_ProjectName_>-Bridging-Header ».
-1. Accédez à Projet > Cible > Phases de création > Compilateur Swift > Génération de code. Ajoutez le chemin suivant à l’en-tête de pontage d’objectifs :
+1. Accédez à Projet > Cible > Phases de création > Compilateur Swift > Génération de code.
+1. Ajoutez le chemin suivant à l’en-tête de pontage d’objectifs :
 
    `$(PODS_ROOT)/<_ProjectName_>-Bridging-Header.h`
 
-Pour les utilisateurs de Swift : supprimez l&#39;instruction d&#39;importation suivante, car l&#39;en-tête de pontage est ajouté dans les étapes ci-dessus.
+Pour Swift, supprimez l&#39;instruction d&#39;importation suivante car les étapes précédentes ajoutent l&#39;en-tête de pontage.
 
 `import Marketo/ALMarketo`
 
 ### Appareils de test iOS
 
-Suivez les instructions de la section [&#x200B; Ajout d’appareils de test iOS &#x200B;](installation.md#ios_test_devices)
+Suivez les instructions de la section [&#x200B; Ajout d’appareils de test iOS &#x200B;](installation.md#ios_test_devices).
 
 ### Gérer le type d’URL personnalisé dans AppDelegate
 
-Suivez les instructions [ici](installation.md#ios_test_devices)
+Suivez les [instructions d’URL personnalisées](installation.md#ios_test_devices).
 
 ### Configuration des notifications push sur iOS
 
-Suivez les instructions [ici](push-notifications.md) et utilisez le nom de classe « ALMarketo » au lieu de « Marketo »
+Suivez les [instructions relatives aux notifications push](push-notifications.md). Utilisez le nom de classe « ALMarketo » au lieu de « Marketo ».
 
 ## Android
 
 ### Configurer les autorisations
 
-Ouvrez `AndroidManifest.xml` et ajoutez les autorisations suivantes. Votre application doit demander les autorisations « INTERNET » et « ACCESS_NETWORK_STATE ». Si votre application demande déjà ces autorisations, ignorez cette étape.
+Ouvrez `AndroidManifest.xml` et ajoutez les autorisations suivantes. Votre application doit demander les autorisations « INTERNET » et « ACCESS_NETWORK_STATE ». Ignorez cette étape si l’application le demande déjà.
 
 ```xml
 <uses‐permission android:name="android.permission.INTERNET"></uses‐permission>
@@ -68,7 +69,7 @@ Ouvrez `AndroidManifest.xml` et ajoutez les autorisations suivantes. Votre appli
 
 ### Configuration de ProGuard (en option)
 
-Si vous utilisez ProGuard pour votre application, ajoutez les lignes suivantes dans votre fichier `proguard.cfg`. Le fichier se trouve dans le dossier du projet. L’ajout de ce code exclut le SDK Marketo du processus d’obscurcissement.
+Si votre application utilise ProGuard, ajoutez les lignes suivantes au fichier `proguard.cfg` dans le dossier du projet. Cette configuration exclut le SDK Marketo de l’obscurcissement.
 
 ```text
 -dontwarn com.marketo.*
@@ -78,10 +79,10 @@ Si vous utilisez ProGuard pour votre application, ajoutez les lignes suivantes d
 
 ### Appareils de test Android
 
-Suivez les instructions [ici](installation.md#android_test_devices)
+Suivez les instructions de la section [Appareils de test &#x200B;](installation.md#android_test_devices).
 
 ## Configuration des notifications push sur Android
 
-Suivez les instructions [ici](installation.md#android_firebase_cloud_messaging_support) et utilisez le nom de classe « ALMarketo » au lieu de « Marketo »
+Suivez les [instructions relatives à Android Firebase Cloud Messaging](installation.md#android_firebase_cloud_messaging_support). Utilisez le nom de classe « ALMarketo » au lieu de « Marketo ».
 
-Pour configurer des profils utilisateur, suivez les instructions [ici](user-profiles.md) et pour les actions personnalisées, suivez les instructions [ici](custom-actions.md#android_custom_action). Dans les instructions suivantes, utilisez le nom de classe « ALMarketo » au lieu de « Marketo »
+Pour configurer des profils utilisateur, suivez les [&#x200B; instructions relatives aux profils utilisateur &#x200B;](user-profiles.md). Pour configurer des actions personnalisées, suivez les [instructions relatives aux actions personnalisées](custom-actions.md#android_custom_action). Dans les deux ensembles d’instructions, utilisez le nom de classe « ALMarketo » au lieu de « Marketo ».

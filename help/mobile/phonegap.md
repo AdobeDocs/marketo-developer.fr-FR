@@ -13,36 +13,36 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 862
+source-wordcount: 775
 ht-degree: 2%
 
 ---
 
 # PhoneGap
 
-Intégration du plug-in Marketo PhoneGap
+Intégrez le plug-in Marketo PhoneGap à une application Cordova.
 
 ## Conditions préalables
 
-1. [Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenez la clé secrète de l’application et l’ID Munchkin).
-1. Configurez les notifications push ([&#128279;](push-notifications.md) | [Android](push-notifications.md)).
+1. [Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) et obtenez la clé secrète de l’application et l’ID Munchkin.
+1. Configurez les notifications push pour [&#128279;](push-notifications.md) ou [Android](push-notifications.md).
 1. [Installez PhoneGap/Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
 ## Instructions d’installation
 
-1. Configuration du plug-in Marketo PhoneGap
+1. Configurez le plug-in Marketo PhoneGap.
 
-   En supposant que l’interface de ligne de commande Cordova soit installée, accédez à votre répertoire d’applications PhoneGap et exécutez la commande suivante pour ajouter le module externe Marketo à votre application :
+   Accédez au répertoire de l’application PhoneGap et exécutez la commande suivante pour ajouter le module externe Marketo :
 
    `$ cordova plugin add https://github.com/Marketo/PhoneGapPlugin.git --variable APPLICATION_SECRET_KEY="YOUR_APPLICATION_SECRET"`
 
-1. Installation du plug-in FCM
+1. Installez le plug-in FCM.
 
    `$ cordova plugin add cordova-plugin-fcm`
 
-   Pour confirmer que le module externe a été ajouté à l’application, exécutez la commande suivante et vérifiez
+   Exécutez la commande suivante pour vérifier que le module externe a été ajouté :
 
    `$ cordova plugin ls com.marketo.plugin 0.X.0 "MarketoPlugin" cordova-plugin-fcm 2.1.2 "FCMPlugin"`
 
@@ -58,7 +58,7 @@ Pour ajouter à nouveau le module externe, exécutez la commande suivante :
 
 **Cordova version 8.0.0 (Cordova@Android7.0.0) et ultérieures**
 
-Une fois la plateforme Cordova Android créée, ouvrez l’application avec Android Studio et mettez à jour la valeur `dirs` du fichier `Marketo.gradle` situé dans le dossier `com.marketo.plugin`.
+Après avoir créé la plateforme Cordova Android, ouvrez l’application dans Android Studio. Mettez à jour la valeur `dirs` dans le fichier `Marketo.gradle` du dossier `com.marketo.plugin` .
 
 ```groovy
 repositories{
@@ -69,23 +69,23 @@ repositories{
 }
 ```
 
-Ajouter les plateformes à cibler pour l&#39;application `$cordova platform add android` `$ cordova platform add ios`
+Ajoutez les plateformes cibles pour l’application : `$cordova platform add android` `$ cordova platform add ios`
 
-Vérifier la liste des plateformes ajoutées `$cordova platform ls`
+Vérifiez les plateformes ajoutées : `$cordova platform ls`
 
 1. Prise en charge de Firebase Cloud Messaging
 
-1. Configurez l’application Firebase sur la console Firebase.
-   1. Créez/ajoutez un projet sur la console [&#128279;](https://console.firebase.google.com/)Firebase).
+1. Configurez l’application Firebase dans la console Firebase.
+   1. Créez ou ajoutez un projet dans [&#128279;](https://console.firebase.google.com/)Firebase Console).
       1. Dans la [console Firebase](https://console.firebase.google.com/), sélectionnez **[!UICONTROL Ajouter un projet]**.
       1. Sélectionnez votre projet GCM dans la liste des projets Google Cloud existants, puis sélectionnez **[!UICONTROL Ajouter Firebase]**.
       1. Dans l’écran d’accueil de Firebase, sélectionnez Ajouter Firebase à l’application Android.
       1. Indiquez le nom de votre package et SHA-1, puis sélectionnez **[!UICONTROL Ajouter une application]**. Un nouveau fichier `google-services.json` pour votre application Firebase est téléchargé.
-   1. Accédez à **[!UICONTROL Paramètres du projet]** dans [!UICONTROL Présentation du projet]
-      1. Cliquez sur l’onglet **[!UICONTROL Général]**. Téléchargez le fichier « google-services.json ».
-      1. Cliquez sur l’onglet **[!UICONTROL Cloud Messaging]**. Copiez [!UICONTROL clé du serveur] et [!UICONTROL ID de l’expéditeur]. Fournissez ces [!UICONTROL clé de serveur] et [!UICONTROL ID d’expéditeur] à Marketo.
-   1. Configuration des modifications FCM dans l’application Phonegap
-      1. Déplacez le fichier « google-services.json » téléchargé vers le répertoire racine du module d’application Phonegap.
+   1. Accédez à **[!UICONTROL Paramètres du projet]** dans [!UICONTROL Présentation du projet].
+      1. Sélectionnez l’onglet **[!UICONTROL Général]** et téléchargez le fichier « google-services.json ».
+      1. Sélectionnez l’onglet **[!UICONTROL Cloud Messaging]**. Copiez les [!UICONTROL clé du serveur] et [!UICONTROL ID de l’expéditeur] et fournissez-les à Marketo.
+   1. Configurez FCM dans l’application PhoneGap.
+      1. Déplacez le fichier « google-services.json » téléchargé dans le répertoire racine du module d’application PhoneGap.
       1. Supprimez le fichier « MyFirebaseInstanceIDService » de l’emplacement `platforms/android/app/src/main/java/com/gae/scaffolder/plugin` (obsolète).
       1. Modifiez le fichier &#39;MyFirebaseMessagingService&#39; à l&#39;emplacement `platforms/android/app/src/main/java/com/gae/scaffolder/plugin` comme suit :
 
@@ -135,7 +135,7 @@ Collez le code suivant dans la fonction `application:didFinishLaunchingWithOptio
 
 >[!TAB Objectif C]
 
-Mettez à jour la méthode `applicationDidBecomeActive` comme ci-dessous
+Mettez à jour la méthode `applicationDidBecomeActive` comme suit.
 
 ```objectivec
 Marketo *sharedInstance = [Marketo sharedInstance];
@@ -145,7 +145,7 @@ Marketo *sharedInstance = [Marketo sharedInstance];
 
 >[!TAB Swift]
 
-Mettez à jour la méthode `applicationDidBecomeActive` comme ci-dessous
+Mettez à jour la méthode `applicationDidBecomeActive` comme suit.
 
 ```swift
 let sharedInstance: Marketo = Marketo.sharedInstance()
@@ -157,9 +157,9 @@ sharedInstance.trackPushNotification(launchOptions)
 
 ### &#x200B;5. Initialiser le framework Marketo
 
-Pour vous assurer que le framework Marketo est lancé au démarrage de l’application, ajoutez le code suivant sous la fonction `onDeviceReady` dans votre fichier JavaScript principal.
+Pour initialiser le framework Marketo au démarrage de l’application, ajoutez le code suivant sous la fonction `onDeviceReady` dans le fichier JavaScript principal.
 
-Notez que nous devons transmettre `phonegap` comme type de framework pour les applications PhoneGap.
+Transmettez `phonegap` comme type de framework pour les applications PhoneGap.
 
 ### Syntaxe
 
@@ -182,14 +182,14 @@ marketo.onStart(
 
 ### Paramètres
 
-- Rappel de succès : fonction à exécuter si le framework Marketo s’initialise correctement.
-- Rappel d’échec : fonction à exécuter si l’initialisation du framework Marketo échoue.
-- MUNCHKIN ID : Munchkin ID reçu de Marketo au moment de l’enregistrement.
-- CLÉ SECRÈTE : clé secrète reçue de Marketo au moment de l’enregistrement.
+- Rappel de réussite : fonction à exécuter si le framework Marketo s’initialise correctement.
+- Rappel d’échec : fonction à exécuter en cas d’échec d’initialisation du framework Marketo.
+- MUNCHKIN ID : Munchkin ID reçu de Marketo lors de l’enregistrement.
+- CLÉ SECRÈTE : clé secrète reçue de Marketo lors de l’enregistrement.
 
 ### &#x200B;6. Initialiser la notification push Marketo
 
-Pour vous assurer que la notification push Marketo est lancée, ajoutez le code suivant après la fonction initialize dans votre fichier JavaScript principal.
+Pour initialiser les notifications push Marketo, ajoutez le code suivant après la fonction initialize dans le fichier JavaScript principal.
 
 ### Syntaxe
 
@@ -204,11 +204,11 @@ marketo.initializeMarketoPush(
 
 ### Paramètres
 
-- Rappel de réussite : fonction à exécuter si la notification push Marketo s’initialise avec succès.
-- Rappel d’échec : fonction à exécuter si l’initialisation de la notification push Marketo échoue.
+- Rappel de réussite : fonction à exécuter si la notification push Marketo s’initialise correctement.
+- Échec du rappel : fonction à exécuter si la notification push Marketo ne parvient pas à s’initialiser.
 - GCM_PROJECT_ID : ID de projet GCM trouvé dans [Google Developers Console](https://console.developers.google.com/) après la création de l’application.
 
-Le jeton peut également être désenregistré lors de la déconnexion.
+Vous pouvez également annuler l’enregistrement du jeton lors de la déconnexion.
 
 ```javascript
 marketo. uninitializeMarketoPush(
@@ -219,7 +219,7 @@ marketo. uninitializeMarketoPush(
 
 ## Association au prospect
 
-Vous pouvez créer un lead Marketo en appelant la fonction AssociatedLead.
+Appelez la fonction AssociatedLead pour créer un prospect Marketo.
 
 ### Syntaxe
 
@@ -233,7 +233,7 @@ marketo.associateLead(
 
 ### Paramètres
 
-- Rappel de succès : fonction à exécuter si le framework Marketo associe le prospect avec succès.
+- Rappel de réussite : fonction à exécuter si le framework Marketo associe le prospect avec succès.
 - Rappel d’échec : fonction à exécuter si le framework Marketo ne parvient pas à associer le prospect.
 - Données de lead : données de lead au format de chaîne JSON.
 
@@ -264,7 +264,7 @@ marketo.associateLead(
 
 ## Action de rapport
 
-Vous pouvez signaler toute action effectuée par un utilisateur en appelant la fonction `reportaction`.
+Appelez la fonction `reportaction` pour signaler une action de l’utilisateur.
 
 ### Syntaxe
 
@@ -279,9 +279,9 @@ marketo.reportaction(
 
 ### Paramètres
 
-- Rappel de succès : fonction à exécuter si le framework Marketo signale une action avec succès.
-- Rappel d’échec : fonction à exécuter en cas d’échec de l’action de rapport du framework Marketo.
-- Nom de l’action : nom de l’action.
+- Rappel de réussite : fonction à exécuter si le framework Marketo signale l’action avec succès.
+- Rappel d’échec : fonction à exécuter si le framework Marketo ne signale pas l’action.
+- Action Name : nom de l’action.
 - Données d’action : données d’action au format de chaîne JSON.
 
 ### Exemple
@@ -305,7 +305,7 @@ marketo.reportaction(
 
 ## Rapports de session
 
-Liez les types d’événements « pause » et « reprise » comme illustré ci-dessous pour générer des rapports sur les événements Démarrer et Arrêter.  Permet d’effectuer le suivi de la durée de consultation de votre application mobile. Remarque : cela est obligatoire dans Android.
+Liez les types d’événements « pause » et « reprise » aux événements de début et d’arrêt du rapport. Ces événements effectuent le suivi du temps passé dans l’application mobile et sont requis sur Android.
 
 ```javascript
 //Add the following code in your www/js/index.js
@@ -336,6 +336,9 @@ Il existe trois façons de créer des prospects à partir d’une application hy
 1. API REST MARKETO
 1. Envoi du formulaire
 
-Selon la méthode utilisée, un prospect nouvellement créé sera reconnu par différents déclencheurs et filtres. Les prospects créés à l’aide de l’API REST ou de MME SDK apparaissent dans les déclencheurs et filtres « Lead créé ». Les leads créés par des envois de formulaire apparaissent dans les déclencheurs et filtres « Remplir le formulaire ».
+Les déclencheurs et filtres qui reconnaissent un nouveau prospect dépendent de la méthode de création :
 
-La bonne pratique consiste à rester cohérent avec la méthode utilisée par l’application web lors de la création de prospects. Si vous disposez déjà d’une application web qui utilise l’envoi de formulaire comme mécanisme de création de prospects, utilisez le même mécanisme lors de la création de prospects dans votre application hybride. Si vous disposez déjà d’une application web qui utilise notre API REST comme mécanisme de création de prospects, utilisez ce même mécanisme lors de la création de prospects dans votre application hybride. Dans les cas où vous n’utilisez ni l’envoi de formulaire ni l’API REST comme mécanisme de création de prospects dans votre application web, vous pouvez envisager d’utiliser MME SDK pour créer des prospects dans Marketo.
+- Les leads créés avec l’API SDK ou REST MME apparaissent dans les déclencheurs et filtres « Lead créé ».
+- Les prospects créés par envoi de formulaire apparaissent dans les déclencheurs et filtres « Remplir le formulaire ».
+
+Utilisez la même méthode de création de prospect dans l’application hybride et l’application web. Si l’application web utilise l’envoi de formulaire ou l’API REST, utilisez cette méthode dans l’application hybride. Si l’application web n’utilise aucune méthode, pensez à utiliser MME SDK pour créer des prospects dans Marketo.

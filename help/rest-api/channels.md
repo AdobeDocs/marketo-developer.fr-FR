@@ -8,10 +8,10 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 151
-ht-degree: 2%
+source-wordcount: 117
+ht-degree: 3%
 
 ---
 
@@ -19,11 +19,13 @@ ht-degree: 2%
 
 [Référence des points d’entrée des canaux](https://developer.adobe.com/marketo-apis/api/asset#tag/Channels)
 
-Les canaux sont un champ standard et obligatoire pour tous les types de programme. Chaque type de canal ne peut être utilisé qu’avec le `applicableProgramType` donné et fournit la liste des statuts de programme disponibles qui sont valides pour les membres du programme dans chaque programme. Si les statuts d’un programme d’un canal sont modifiés après la création d’un programme, la liste des statuts du programme auquel un prospect peut être modifié correspond à la liste fournie par le canal à ce moment-là, mais elle ne modifie pas rétroactivement le statut du programme pour les enregistrements d’appartenance à un programme existants.
+Les canaux sont un champ obligatoire pour chaque type de programme. Un canal ne peut être utilisé qu’avec son `applicableProgramType` spécifié. Le canal définit également les statuts de programme disponibles pour les membres du programme.
+
+Si vous modifiez les statuts d’un canal après la création d’un programme, le programme utilise la liste mise à jour pour les modifications de statut futures. Les enregistrements d’appartenance à un programme existants conservent leur statut actuel.
 
 ## Requête
 
-Les canaux peuvent être interrogés en tant que ressources standard, mais ils ne disposent pas d’un point d’entrée pour récupérer un canal par ID.
+Canaux de requête en tant que ressources standard. L’API ne fournit pas de point d’entrée pour la récupération d’un canal par ID.
 
 ### Parcourir
 

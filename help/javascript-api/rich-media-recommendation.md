@@ -1,6 +1,6 @@
 ---
 title: Recommandation de média intéractif
-description: Configurez la recommandation de média enrichi à l’aide de la balise RTP de contenu prédictif Marketo, template1 template2 template3 divs, GET à remplir, DÉFINISSEZ pour configurer les catégories.
+description: Configurez la recommandation de média enrichi à l’aide de la balise RTP de contenu prédictif Marketo, template1 template2 template3 divs, GET pour remplir, SET pour configurer les catégories.
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
 TQID: https://experienceleague.adobe.com/ygm5h1FJZZW4mC318-fRR3VAcO6j1sitcAeqIUjDTbI
@@ -10,58 +10,58 @@ feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 854
-ht-degree: 4%
+source-wordcount: 814
+ht-degree: 5%
 
 ---
 
 # Recommandation de média intéractif
 
-Les balises et appels d’API suivants doivent être configurés sur la page sur laquelle vous souhaitez afficher le modèle de recommandation de média enrichi.
+Pour afficher un modèle de recommandation de média enrichi, ajoutez les balises et les appels d’API requis à la page.
 
-1. Dans l’en-tête de page
-   1. Faire installer la balise RTP
-   1. Ajoutez l’appel GET à la page pour renseigner les recommandations
-   1. Ajoutez l’appel SET pour configurer le modèle
-1. Dans le corps de la page
-   1. Placez la balise du modèle (classe div) à l’emplacement où vous souhaitez que le modèle apparaisse
+1. Dans l’en-tête de la page :
+   1. Installez la balise RTP.
+   1. Ajoutez l’appel GET qui renseigne les recommandations.
+   1. Ajoutez l’appel SET qui configure le modèle.
+1. Dans le corps de la page :
+   1. Placez la balise de modèle (classe div) à l’endroit où vous souhaitez que le modèle apparaisse.
 
-Vous trouverez plus d’informations [ici](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Pour plus d’informations, voir [Activer le contenu prédictif pour les médias riches en contenu web](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Balise de modèle
 
 | Attribut | Facultatif/obligatoire | Description |
 | --- | --- | --- |
-| une classe | Obligatoire | Spécifiez que cet élément div HTML est un div de recommandation RTP. |
-| data-rtp-template-id | Obligatoire | Identifiant du modèle. Cela détermine l’alignement de votre recommandation. Utilisez « template1 » pour l’alignement horizontal, « template2 » pour l’alignement vertical ou « template3 » pour l’alignement vertical qui inclut uniquement le titre et la description. Le script injecte le modèle correspondant dans ces valeurs de `div.Permissible` : template1, template2, template3. |
+| une classe | Obligatoire | Identifie l’élément div HTML en tant que div de recommandation RTP. |
+| data-rtp-template-id | Obligatoire | Détermine l’alignement des recommandations. Utilisez « template1 » pour l’alignement horizontal, « template2 » pour l’alignement vertical ou « template3 » pour l’alignement vertical avec uniquement un titre et une description. Le script injecte le modèle correspondant dans ce `div`. Valeurs autorisées : template1, template2, template3. |
 
 ### Exemples
 
-Pour afficher vos recommandations en alignement horizontal, utilisez « template1 ».
+Utilisez « template1 » pour afficher les recommandations horizontalement.
 
 ```html
 <div class="RTP_RCMD2" data-rtp-template-id="template1"></div>
 ```
 
-Pour afficher vos recommandations alignées verticalement, utilisez « template2 ».
+Utilisez « template2 » pour afficher des recommandations verticalement.
 
 ```html
 <div class="RTP_RCMD2" data-rtp-template-id="template2"></div>
 ```
 
-Pour afficher vos recommandations alignées verticalement avec le titre et la description uniquement, utilisez « template3 ».
+Utilisez « template3 » pour afficher des recommandations verticalement avec uniquement un titre et une description.
 
 ```html
 <div class="RTP_RCMD2" data-rtp-template-id="template3"></div>
 ```
 
-Voir les captures d’écran des alignements de modèles [ici](#example_of_rich_media_recommendation_template_1).
+Voir les [exemples d’alignement des modèles](#example_of_rich_media_recommendation_template_1).
 
 ## Renseigner la recommandation
 
-Cette méthode renseigne tous les `<divs>` de médias riches de la page avec des recommandations.
+Cette méthode renseigne toutes les `<divs>` de médias riches de la page avec des recommandations.
 
 ### Utilisation
 
@@ -75,9 +75,9 @@ Cette méthode renseigne tous les `<divs>` de médias riches de la page avec des
 
 ## Modifier la configuration du modèle
 
-Cette méthode modifie la configuration par défaut du modèle.
+Cette méthode modifie la configuration de modèle par défaut.
 
-Remarque : lors de l&#39;utilisation de cette méthode, elle doit être appelée avant d&#39;appeler rtp(&#39;get&#39;,&#39;rcmd&#39;, &#39;richmedia&#39;);
+Appelez cette méthode avant d&#39;appeler rtp(&#39;get&#39;,&#39;rcmd&#39;, &#39;richmedia&#39;);
 
 ### Utilisation
 
@@ -93,7 +93,7 @@ Remarque : lors de l&#39;utilisation de cette méthode, elle doit être appelée
 
 ### Exemples
 
-Ce fragment de code modifie le texte de titre d’un modèle.
+Cet exemple montre comment modifier le texte de titre d’un modèle.
 
 ```javascript
 rtp("set", "rcmd", "richmedia","template1",
@@ -103,7 +103,7 @@ rtp("set", "rcmd", "richmedia","template1",
 );
 ```
 
-Ce fragment de code présente la définition de catégories avec plusieurs configurations pour un modèle.
+Cet exemple montre comment définir des catégories et plusieurs propriétés de configuration pour un modèle.
 
 ```javascript
 rtp("set", "rcmd", "richmedia",
@@ -124,9 +124,11 @@ rtp("set", "rcmd", "richmedia",
 );
 ```
 
-REMARQUE : utilisez « category » pour filtrer le contenu affiché dans le résultat des recommandations de contenu prédictif. Pour appliquer le contenu prédictif à tous les éléments de contenu activés, laissez le champ « catégorie » vide. Si vous souhaitez recommander uniquement du contenu spécifique pour la sortie dans le modèle de média enrichi, ajoutez une catégorie pour le contenu dans la page Définir le contenu et associez cette catégorie dans le code du modèle de recommandation. Catégorisation du contenu pertinent en fonction des sections de votre site web (produits ou solutions).
+Utilisez « category » pour filtrer le contenu affiché dans les recommandations de contenu prédictif. Pour utiliser le contenu prédictif pour tout le contenu activé, laissez le champ « catégorie » vide.
 
-Ce fragment de code présente la définition de plusieurs configurations de modèle pour un modèle.
+Pour ne recommander que du contenu spécifique dans le modèle de média enrichi, ajoutez une catégorie pour le contenu sur la page Définir le contenu . Associez ensuite cette catégorie au code du modèle de recommandation. Par exemple, catégorisez le contenu pertinent par sections de produit ou de solution de votre site web.
+
+Cet exemple montre comment définir plusieurs propriétés de configuration pour un modèle.
 
 ```javascript
 rtp("set", "rcmd", "richmedia",
@@ -156,11 +158,11 @@ rtp("set", "rcmd", "richmedia",
 | rcmd.cta.text | « rcmd.cta.text » : « Push » | Modifie le texte du bouton. Le texte est le même pour tous les boutons. |
 | Catégorie | « category » : [ « one category »] | Modifie la catégorie de recommandation prise en charge par ce modèle. Le modèle affiche uniquement des recommandations avec l’une des catégories définies par cette configuration. |
 
-Remarque : la prise en charge de la configuration peut changer pour chaque modèle.
+La prise en charge de la configuration peut varier en fonction du modèle.
 
 #### Exemple de base
 
-Cet exemple comporte un modèle avec trois recommandations. Copiez cet exemple dans une page HTML, puis remplacez la balise RTP par votre balise .
+Cet exemple montre comment afficher trois recommandations dans un modèle. Copiez l’exemple dans une page HTML, puis remplacez la balise RTP par votre balise .
 
 ```html
 <!DOCTYPE>
@@ -192,7 +194,7 @@ rtp('get','rcmd', 'richmedia');
 
 #### Exemple avancé
 
-Cet exemple comporte un modèle avec trois recommandations. Le titre du modèle est « CONTENU RECOMMANDÉ » et le texte du bouton est « En savoir plus ». Copiez cet exemple dans une page HTML, puis remplacez la balise RTP par votre balise .
+Cet exemple montre comment afficher trois recommandations dans un modèle. Le titre du modèle est « CONTENU RECOMMANDÉ » et le texte du bouton est « En savoir plus ». Copiez l’exemple dans une page HTML, puis remplacez la balise RTP par votre balise .
 
 ```html
 <!DOCTYPE>
@@ -236,16 +238,24 @@ rtp('get','rcmd', 'richmedia');
 
 #### Exemple de modèle de recommandation de média enrichi #1
 
-**Nom** : template1 **Description** : contenu horizontal comprenant une image, un titre et une description, ainsi qu’un bouton call to action.
+**Name** : template1
+
+**Description** : contenu horizontal qui comprend une image, un titre, une description et un bouton call-to-action.
 
 ![Modèle Rich Media](assets/rich-media-template1.png)
 
 #### Exemple de modèle de recommandation de média enrichi #2
 
-**Nom** : template2 **Description** : contenu vertical comprenant une image, un titre et une description, ainsi qu’un bouton call to action.
+**Nom** : template2
+
+**Description** : contenu vertical qui comprend une image, un titre, une description et un bouton call-to-action.
 
 ![Modèle Rich Media](assets/rich-media-template2.png)
 
 #### Exemple de modèle de recommandation de média enrichi #3
 
-**Nom** : template3 **Description** : contenu vertical incluant uniquement le titre et la description. Lorsque vous pointez dessus, l’en-tête change de couleur et contient un lien hypertexte vers l’URL du contenu. La description fournit également des liens vers le contenu sans changement de couleur. ![Modèle Rich Media](assets/rich-media-template3.png)
+**Nom** : template3
+
+**Description** : contenu vertical qui comprend uniquement un titre et une description. Lorsque vous pointez dessus, l’en-tête change de couleur et renvoie vers l’URL du contenu. La description renvoie également au contenu sans changer de couleur.
+
+![Modèle Rich Media](assets/rich-media-template3.png)

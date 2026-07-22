@@ -9,24 +9,26 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 206
+source-wordcount: 132
 ht-degree: 0%
 
 ---
 
 # Sandbox partenaire
 
-Un sandbox partenaire est une instance Marketo Engage utilisée par les partenaires tout au long du cycle de développement du logiciel. Les partenaires utilisent leur sandbox pour apprendre les tenants et aboutissants de l’interface utilisateur de Marketo Engage et accéder aux services de l’API Marketo Engage.
+Un sandbox partenaire est une instance Marketo Engage que les partenaires utilisent pendant le cycle de vie du développement logiciel. Les partenaires peuvent utiliser un sandbox pour explorer l’interface utilisateur de Marketo Engage et accéder aux services de l’API Marketo Engage.
 
-Un sandbox est configuré après l’acceptation d’un partenaire dans le [programme de partenariat Adobe Exchange, Expérience digitale](https://partners.adobe.com/technologyprogram/experiencecloud.html). À la plupart des égards, les sandbox partenaires sont fonctionnellement équivalents à une instance de production. Les sandbox partenaires ne disposent pas de modules complémentaires installés et ont des limites de capacité fixes en place. Vous trouverez ci-dessous une FAQ suivie d’un résumé des fonctionnalités des sandbox partenaires.
+Adobe fournit un sandbox une fois qu’un partenaire est accepté dans le [programme de partenariat Adobe Exchange, Expérience digitale](https://partners.adobe.com/technologyprogram/experiencecloud.html).
+
+À la plupart des égards, un sandbox partenaire est fonctionnellement équivalent à une instance de production. Toutefois, les sandbox partenaires n’incluent pas de modules complémentaires et ont des limites de capacité fixes.
 
 ## Résumé des fonctionnalités
 
-- La limite est d’un sandbox par partenaire.
-- Le nombre d’appels API est limité à un maximum de 50 000 par jour.
-- Le nombre d&#39;enregistrements dans la base de données principale est limité à un maximum de 10 000.
-- Le nombre d’envois d’e-mails est limité à 30 par exécution de campagne.
-- Le nombre d’objets personnalisés est limité à 2 au maximum.
-- Le nombre d’utilisateurs est limité à 25.
+- Sandbox : un par partenaire
+- Appels API : 50 000 par jour
+- Enregistrements de la base de données du lead : 10 000
+- Envois d’e-mails : 30 par exécution de campagne
+- Objets personnalisés : deux
+- Utilisateurs : 25
