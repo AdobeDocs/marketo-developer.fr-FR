@@ -4,13 +4,11 @@ feature: REST API
 description: Authentifiez les API REST Marketo avec 2 jetons OAuth 2.0, créez et utilisez des jetons d’accès, passez à l’en-tête d’autorisation, gérez l’expiration, gérez les erreurs 601 et 602.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
 TQID: https://experienceleague.adobe.com/cIeI0m61CyIWq4HEosZ-QAsxzZb0WcrQRpCud2qysfY
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 6d9408d07557d4b7426ad72d2a886220d622fb78
 workflow-type: tm+mt
-source-wordcount: 528
+source-wordcount: 526
 ht-degree: 0%
 
 ---
@@ -61,7 +59,7 @@ Chaque appel de l’API REST doit inclure un jeton d’accès dans un en-tête H
 
 >[!IMPORTANT]
 >
->La prise en charge de l’authentification à l’aide du paramètre de requête `access_token` sera supprimée le 31 août 2026. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête [Authorization](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête `Authorization` .
+>La prise en charge de l’authentification à l’aide du paramètre de requête `access_token` sera supprimée le 31 août 2026. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête [Authorization](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête `Authorization` .
 
 ### Passage à l’en-tête d’autorisation
 
@@ -83,7 +81,7 @@ curl ... -H 'Authorization: Bearer <Access Token>' <REST API Endpoint Base URL>/
 
 Stockez le jeton d’accès et la période d’expiration à partir de la réponse Identité . La gestion de l’expiration de jeton permet d’éviter les erreurs d’authentification inattendues pendant le fonctionnement normal.
 
-Avant d’effectuer un appel REST, vérifiez la durée de vie restante du jeton. Si le jeton a expiré, renouvelez-le en appelant le point d’entrée [Identity](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). Le renouvellement proactif empêche les échecs causés par des jetons expirés et rend la latence des appels REST plus prévisible, ce qui est important pour les applications destinées aux utilisateurs finaux.
+Avant d’effectuer un appel REST, vérifiez la durée de vie restante du jeton. Si le jeton a expiré, renouvelez-le en appelant le point d’entrée [Identity](https://developer.adobe.com/marketo-apis/api/identity#tag/Identity). Le renouvellement proactif empêche les échecs causés par des jetons expirés et rend la latence des appels REST plus prévisible, ce qui est important pour les applications destinées aux utilisateurs finaux.
 
 Les erreurs d’authentification renvoient les codes suivants :
 
