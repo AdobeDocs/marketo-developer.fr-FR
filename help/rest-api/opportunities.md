@@ -27,7 +27,7 @@ Marketo fournit des API pour lire, écrire, créer et mettre à jour des enregis
 
 L’API expose les deux types d’objets. Comme pour la plupart des types d’objets Base de données de leads, chacun possède un appel Describe correspondant qui renvoie des métadonnées d’objet.
 
-Les API d’opportunité fournissent un accès en lecture seule aux abonnements pour lesquels la [synchronisation de &#x200B;](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou la [synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) est activée.
+Les API d’opportunité fournissent un accès en lecture seule aux abonnements pour lesquels la [synchronisation de &#x200B;](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=fr) ou la [synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=fr) est activée.
 
 ## Décrire
 

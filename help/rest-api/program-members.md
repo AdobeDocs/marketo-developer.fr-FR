@@ -29,7 +29,7 @@ ht-degree: 2%
 
 Marketo fournit des API pour lire, créer, mettre à jour et supprimer des enregistrements de membre de programme. Le champ ID lead associe les enregistrements de membre de programme aux enregistrements de lead.
 
-Chaque enregistrement contient des champs standard et peut contenir jusqu’à 20 champs personnalisés. Ces champs stockent des données de membre spécifiques au programme à utiliser dans des formulaires, des filtres, des déclencheurs et des actions de flux. Vous pouvez afficher ces données dans l’onglet [Membres](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members) du programme dans l’interface utilisateur de Marketo Engage.
+Chaque enregistrement contient des champs standard et peut contenir jusqu’à 20 champs personnalisés. Ces champs stockent des données de membre spécifiques au programme à utiliser dans des formulaires, des filtres, des déclencheurs et des actions de flux. Vous pouvez afficher ces données dans l’onglet [Membres](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members) du programme dans l’interface utilisateur de Marketo Engage.
 
 ## Décrire
 
@@ -635,9 +635,9 @@ GET /rest/v1/programs/members/schema/fields.json?batchSize=5
 
 ### Créer des champs
 
-Le point d’entrée [Créer des champs de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#operation/createProgramMemberFieldUsingPOST) crée des champs personnalisés sur l’objet de membre de programme. Il offre des fonctionnalités comparables à l’interface utilisateur de [&#128279;](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields). Vous pouvez créer jusqu’à 20 champs personnalisés avec ce point d’entrée.
+Le point d’entrée [Créer des champs de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#operation/createProgramMemberFieldUsingPOST) crée des champs personnalisés sur l’objet de membre de programme. Il offre des fonctionnalités comparables à l’interface utilisateur de [&#128279;](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields). Vous pouvez créer jusqu’à 20 champs personnalisés avec ce point d’entrée.
 
-Examinez attentivement chaque champ avant de le créer dans une instance Marketo Engage de production. Une fois un champ créé, vous ne pouvez pas le supprimer ; [vous pouvez uniquement le masquer](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo). Les champs non utilisés encombrent l’instance.
+Examinez attentivement chaque champ avant de le créer dans une instance Marketo Engage de production. Une fois un champ créé, vous ne pouvez pas le supprimer ; [vous pouvez uniquement le masquer](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo). Les champs non utilisés encombrent l’instance.
 
 Le paramètre `input` requis est un tableau d’objets de champ de membre de programme. Chaque objet contient un ou plusieurs attributs.
 

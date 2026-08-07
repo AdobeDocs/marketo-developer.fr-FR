@@ -26,7 +26,7 @@ ht-degree: 1%
 
 Utilisez les API REST de listes dynamiques pour interroger, cloner et supprimer des listes dynamiques.
 
-Ces API prennent uniquement en charge les listes dynamiques créées par l’utilisateur. Ils ne prennent pas en charge les [listes intelligentes intégrées ou système](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
+Ces API prennent uniquement en charge les listes dynamiques créées par l’utilisateur. Ils ne prennent pas en charge les [listes intelligentes intégrées ou système](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
 
 ## Requête
 

@@ -27,7 +27,7 @@ Les API REST d’extraction d’objets personnalisés en bloc récupèrent de gr
 
 L’API exporte les enregistrements d’objets personnalisés Marketo de premier niveau liés directement aux prospects. Spécifiez le nom de l’objet personnalisé et une liste de prospects liés. Pour chaque prospect, l’API écrit les enregistrements d’objet personnalisés liés correspondants sous forme de lignes dans le fichier d’exportation.
 
-Vous pouvez afficher les données d’objet personnalisées dans l’onglet [&#x200B; Objet personnalisé » de la page des détails du prospect dans l’interface utilisateur de Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
+Vous pouvez afficher les données d’objet personnalisées dans l’onglet [&#x200B; Objet personnalisé » de la page des détails du prospect dans l’interface utilisateur de Marketo](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
 
 ## Autorisations
 

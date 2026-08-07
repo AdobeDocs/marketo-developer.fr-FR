@@ -27,7 +27,7 @@ Les sociétés représentent les organisations auxquelles appartiennent les enre
 
 Vous ne pouvez pas supprimer un prospect d&#39;une entreprise à moins de l&#39;ajouter à une autre entreprise. Les leads liés à un enregistrement d’entreprise héritent des valeurs de cet enregistrement comme si les valeurs existaient sur l’enregistrement de lead.
 
-Les API d’entreprise fournissent un accès en lecture seule aux abonnements pour lesquels [SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou [Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) est activé.
+Les API d’entreprise fournissent un accès en lecture seule aux abonnements pour lesquels [SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=fr) ou [Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=fr) est activé.
 
 ## Décrire
 

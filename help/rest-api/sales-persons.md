@@ -21,7 +21,7 @@ ht-degree: 0%
 
 [Référence du point d’entrée du commercial](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
 
-Les API Sales Person fournissent un accès en lecture seule aux abonnements pour lesquels [SFDC Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou [Microsoft Dynamics Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) est activé.
+Les API Sales Person fournissent un accès en lecture seule aux abonnements pour lesquels [SFDC Sync](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou [Microsoft Dynamics Sync](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) est activé.
 
 Les vendeurs sont des enregistrements de personne qui représentent les vendeurs des enregistrements de prospect. Le champ externalSalesPersonId de chaque enregistrement Lead associe un Lead à un Commercial. Lorsque ce champ est renseigné, Marketo renseigne les champs de recherche de Propriétaire de lead correspondants dans l’enregistrement de lead. Vous pouvez ensuite utiliser les filtres et jetons associés.
 

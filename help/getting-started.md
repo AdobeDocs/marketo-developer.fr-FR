@@ -58,7 +58,7 @@ Les prospects peuvent interagir avec votre entreprise de plusieurs manières, pa
 
 Les activités sont toujours liées aux prospects par ID de prospect.
 
-Vous pouvez également définir des activités personnalisées. Après avoir créé et publié une activité personnalisée, vous pouvez en ajouter des instances via l’API Marketo. Pour plus d’informations, voir [Présentation des activités personnalisées](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities).
+Vous pouvez également définir des activités personnalisées. Après avoir créé et publié une activité personnalisée, vous pouvez en ajouter des instances via l’API Marketo. Pour plus d’informations, voir [Présentation des activités personnalisées](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities).
 
 API associées : [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities), [JavaScript](javascript-api/lead-tracking.md#munchkin-behavior)
 
@@ -78,7 +78,7 @@ Les balises regroupent et catégorisent les données de programme pour la créat
 
 En tant qu’administrateur Marketo, vous pouvez créer des types de balises obligatoires et facultatifs que les utilisateurs sélectionnent lors de la création d’un programme. Vous définissez les valeurs possibles pour chaque type de balise en fonction des exigences de reporting de votre société.
 
-Par exemple, créez un type de balise « Region » personnalisé avec des valeurs telles que Nord-Est et Sud-Est pour analyser la région qui génère le plus de prospects. Créez un type de balise « Propriétaire » pour comparer les propriétaires de programme, tels que Maria, David ou John, qui ont le plus d’impact sur la création de prospects et d’opportunités. Pour plus d’informations, voir [Présentation des balises](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags).
+Par exemple, créez un type de balise « Region » personnalisé avec des valeurs telles que Nord-Est et Sud-Est pour analyser la région qui génère le plus de prospects. Créez un type de balise « Propriétaire » pour comparer les propriétaires de programme, tels que Maria, David ou John, qui ont le plus d’impact sur la création de prospects et d’opportunités. Pour plus d’informations, voir [Présentation des balises](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags).
 
 API associées : [REST](https://developer.adobe.com/marketo-apis/api/asset)
 
@@ -127,7 +127,7 @@ Les jetons définis au niveau du programme ou du dossier sont appelés « Mes je
 - Hérité : créé au niveau du dossier de campagne et disponible pour tous les programmes de ce dossier.
 - Remplacé : modifié avec une valeur personnalisée au niveau du programme sans modifier la valeur parent de Mon jeton au niveau du dossier de programme.
 
-Mes jetons utilisent la convention de nommage `{{my.My Token}}`, avec le mot « my » au début du nom du jeton. Par exemple, un type de date Mon jeton nommé EventDate porte le nom de jeton `{{my.EventDate}}`. Pour plus d’informations, voir [&#x200B; Présentation de mes jetons dans un programme &#x200B;](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program).
+Mes jetons utilisent la convention de nommage `{{my.My Token}}`, avec le mot « my » au début du nom du jeton. Par exemple, un type de date Mon jeton nommé EventDate porte le nom de jeton `{{my.EventDate}}`. Pour plus d’informations, voir [&#x200B; Présentation de mes jetons dans un programme &#x200B;](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program).
 
 API associées : [REST](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens)
 

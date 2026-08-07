@@ -246,7 +246,7 @@ Chaque traitement doit spécifier `programId` ou `programIds`. Tous les autres f
     <tr>
       <td>isExhausted</td>
       <td>Booléen</td>
-      <td>Accepte une valeur booléenne utilisée pour filtrer les enregistrements d’adhésion au programme pour <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">les personnes qui ont épuisé le contenu</a>.</td>
+      <td>Accepte une valeur booléenne utilisée pour filtrer les enregistrements d’adhésion au programme pour <a href="https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">les personnes qui ont épuisé le contenu</a>.</td>
     </tr>
     <tr>
       <td>nurtureCadence</td>

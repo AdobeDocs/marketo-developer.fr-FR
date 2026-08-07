@@ -31,9 +31,9 @@ Les webhooks Marketo communiquent avec des services web tiers. Un webhook utilis
 
 Pour obtenir des instructions sur la création d’un webhook et son ajout à une campagne dynamique, voir :
 
-- [Créer un webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
-- [Appeler le Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
-- [Utiliser un webhook dans une campagne intelligente](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
+- [Créer un webhook](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
+- [Appeler le Webhook](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
+- [Utiliser un webhook dans une campagne intelligente](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
 
 Configurez chaque webhook avec les propriétés suivantes :
 
@@ -52,9 +52,9 @@ Tous les champs webhook sortants, y compris l’URL, le modèle et les en-têtes
 
 Les jetons de lead et système sont toujours disponibles. Les jetons Trigger, Campaign et Program sont disponibles dans leurs portées respectives. Pour plus d’informations, consultez les éléments suivants :
 
-- [Vue d’ensemble des jetons](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
-- [Glossaire des jetons système](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
-- [Jetons pour les moments significatifs](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
+- [Vue d’ensemble des jetons](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
+- [Glossaire des jetons système](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
+- [Jetons pour les moments significatifs](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
 
 Par exemple, lorsqu’un programme ou une campagne est mappé à une ressource tierce, définissez un identifiant au niveau du programme sous la forme d’un `My Token`. Transmettez ensuite l’identifiant dans la requête webhook sous la forme d’un jeton.
 
