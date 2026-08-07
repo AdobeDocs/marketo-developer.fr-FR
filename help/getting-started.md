@@ -3,10 +3,19 @@ title: Prise en main
 description: Commencez avec les API et le modèle de données de Marketo Engage, y compris les prospects, les activités, les programmes, les balises, les listes, les conseils REST et l’avis d’obsolescence de SOAP.
 exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
 TQID: https://experienceleague.adobe.com/0lfzor5EQJ0VqIh4fqlK29OiPmRCy6fnEtncJ38r-OM
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: c954475c-8548-4e33-a0b8-6b550d956115id: d1d0a9cd-295d-4976-8c39-ddae266f240eid: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: ea90ebee-5c84-42d9-8b21-006bdabc95a3
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2: id: aa2f3246-cb95-4b30-8899-fdf7d73550ccid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+  - id: c954475c-8548-4e33-a0b8-6b550d956115
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+  - id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
 source-wordcount: 1201
@@ -31,7 +40,7 @@ Lorsque la connexion Native SFDC ou MS Dynamics CRM est activée sur une instanc
 - Rôle de l’opportunité
 - Vendeur
 
-![ Modèle de données ](assets/data_model.png)
+![&#x200B; Modèle de données &#x200B;](assets/data_model.png)
 
 ## Personne (Leads)
 
@@ -80,7 +89,7 @@ Les listes organisent des collections de prospects. Marketo propose deux types :
 - Une liste statique est une collection fixe à partir de laquelle un professionnel du marketing peut ajouter ou supprimer des prospects.
 - Une liste dynamique est une collection dynamique basée sur des caractéristiques définies.
 
-Par exemple, une liste dynamique nommée « Tous les prospects qui ont visité la page de tarification de notre site Web » continue de s’allonger à mesure que de nouveaux prospects visitent cette page. Pour plus d’informations, consultez la documentation de [](https://experienceleague.adobe.com/fr/docs/marketo/using/home).
+Par exemple, une liste dynamique nommée « Tous les prospects qui ont visité la page de tarification de notre site Web » continue de s’allonger à mesure que de nouveaux prospects visitent cette page. Pour plus d’informations, consultez la documentation de [&#128279;](https://experienceleague.adobe.com/fr/docs/marketo/using/home).
 
 API associées : [REST](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists)
 
@@ -118,7 +127,7 @@ Les jetons définis au niveau du programme ou du dossier sont appelés « Mes je
 - Hérité : créé au niveau du dossier de campagne et disponible pour tous les programmes de ce dossier.
 - Remplacé : modifié avec une valeur personnalisée au niveau du programme sans modifier la valeur parent de Mon jeton au niveau du dossier de programme.
 
-Mes jetons utilisent la convention de nommage `{{my.My Token}}`, avec le mot « my » au début du nom du jeton. Par exemple, un type de date Mon jeton nommé EventDate porte le nom de jeton `{{my.EventDate}}`. Pour plus d’informations, voir [ Présentation de mes jetons dans un programme ](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program).
+Mes jetons utilisent la convention de nommage `{{my.My Token}}`, avec le mot « my » au début du nom du jeton. Par exemple, un type de date Mon jeton nommé EventDate porte le nom de jeton `{{my.EventDate}}`. Pour plus d’informations, voir [&#x200B; Présentation de mes jetons dans un programme &#x200B;](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program).
 
 API associées : [REST](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens)
 
@@ -126,7 +135,7 @@ API associées : [REST](https://developer.adobe.com/marketo-apis/api/asset#tag/T
 
 Un objet personnalisé Marketo crée une relation un-à-plusieurs ou plusieurs-à-plusieurs (Edge-Bridge-Edge) entre les prospects Marketo et les enregistrements d’objet personnalisé.
 
-Après avoir créé et publié un objet personnalisé Marketo, vous pouvez y effectuer des opérations CRUD par le biais de l’API Marketo. Lorsque de nouveaux enregistrements sont ajoutés, vous pouvez utiliser un déclencheur de liste dynamique pour répondre. Vous pouvez également utiliser les données d’objet personnalisées comme filtre de liste dynamique pour la segmentation ou dans les e-mails via [Script de messagerie](email-scripting.md). Pour plus d&#39;informations sur la création d&#39;objets personnalisés, consultez la documentation de Marketo Engage [](https://experienceleague.adobe.com/fr/docs/marketo/using/home).
+Après avoir créé et publié un objet personnalisé Marketo, vous pouvez y effectuer des opérations CRUD par le biais de l’API Marketo. Lorsque de nouveaux enregistrements sont ajoutés, vous pouvez utiliser un déclencheur de liste dynamique pour répondre. Vous pouvez également utiliser les données d’objet personnalisées comme filtre de liste dynamique pour la segmentation ou dans les e-mails via [Script de messagerie](email-scripting.md). Pour plus d&#39;informations sur la création d&#39;objets personnalisés, consultez la documentation de Marketo Engage [&#128279;](https://experienceleague.adobe.com/fr/docs/marketo/using/home).
 
 API associées : [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects)
 

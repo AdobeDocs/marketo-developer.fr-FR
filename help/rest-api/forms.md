@@ -4,11 +4,19 @@ feature: REST API, Forms
 description: Guide de l’API REST Marketo Forms pour la création et la gestion des formulaires, la récupération par identifiant ou nom, la navigation avec des filtres de statut et la gestion des champs, des ensembles de champs et des règles.
 exl-id: 2e5dfa70-3163-4ab4-b269-3112417714c3
 TQID: https://experienceleague.adobe.com/56tc1a14d8okxweS7TK7SzfGB8G03WAI2KBlFKQbSdM
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: d65b4a73-87a3-4d56-b638-74e74d9939ceid: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-subfeature_v2: id: d0251300-e25f-466f-9856-7e11ce8fa7aa
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: a7170d27-32ab-462b-a333-269abc654483
+  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+  - id: d65b4a73-87a3-4d56-b638-74e74d9939ce
+  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+subfeature_v2:
+  - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
 source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
 source-wordcount: 1447
@@ -751,7 +759,7 @@ L’exemple précédent met à jour `LastName`, qui est un champ de chaîne simp
 
 Lors de l’ajout ou de la mise à jour d’un champ de sélection, définissez la valeur de `isDefault` d’un choix sur `true`. Dans le cas contraire, le premier choix n’a aucune valeur et est libellé `Select...`.
 
-![ Salutation ](assets/form-field-salutation.png)
+![&#x200B; Salutation &#x200B;](assets/form-field-salutation.png)
 
 Pour mettre à jour les éléments de la liste, mettez en forme le paramètre `values` comme illustré dans l&#39;exemple suivant :
 
@@ -827,7 +835,7 @@ Utilisez la réponse Ajouter un champ au formulaire pour déterminer comment for
 
 ### Réorganisation du champ
 
-Utilisez le point d’entrée [ Modifier la position des champs de formulaire ](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFieldPositionsUsingPOST) pour réorganiser tous les champs de formulaire en une seule unité. Le point d’entrée nécessite `positions`, un tableau JSON d’objets avec trois membres :
+Utilisez le point d’entrée [&#x200B; Modifier la position des champs de formulaire &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFieldPositionsUsingPOST) pour réorganiser tous les champs de formulaire en une seule unité. Le point d’entrée nécessite `positions`, un tableau JSON d’objets avec trois membres :
 
 - `columnNumber`
 - `rowNumber`
@@ -910,7 +918,7 @@ Un jeu de champs est un groupe facultatif de champs. La liste de champs de nivea
 
 Un champ doit être unique dans le formulaire. Le même champ ne peut pas apparaître à la fois dans la liste des champs parents du formulaire et dans un jeu de champs enfant.
 
-Ajoutez un jeu de champs avec le point d’entrée [ Ajouter un jeu de champs au formulaire ](https://developer.adobe.com/marketo-apis/api/asset#operation/addFieldSetUsingPOST). Le jeu de champs apparaît ensuite dans la réponse [Obtenir les champs du formulaire](https://developer.adobe.com/marketo-apis/api/asset#operation/getFormFieldByFormVidUsingGET). Pour ajouter des champs à l’ensemble de champs, utilisez [Mettre à jour la position des champs](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFieldPositionsUsingPOST) pour les déplacer dans son `fieldList`.
+Ajoutez un jeu de champs avec le point d’entrée [&#x200B; Ajouter un jeu de champs au formulaire &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#operation/addFieldSetUsingPOST). Le jeu de champs apparaît ensuite dans la réponse [Obtenir les champs du formulaire](https://developer.adobe.com/marketo-apis/api/asset#operation/getFormFieldByFormVidUsingGET). Pour ajouter des champs à l’ensemble de champs, utilisez [Mettre à jour la position des champs](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFieldPositionsUsingPOST) pour les déplacer dans son `fieldList`.
 
 Pour ces points d’entrée, envoyez les données sous la forme d’un POST avec `application/x-www-form-urlencoded`, et non d’un fichier JSON.
 
@@ -957,7 +965,7 @@ visibilityRule={"ruleType":"show", "rules":[{"subjectField": "LastName", "operat
 }
 ```
 
-Pour obtenir la liste complète des opérateurs, voir [ Ajouter des règles de visibilité des champs de formulaire ](https://developer.adobe.com/marketo-apis/api/asset#operation/addFormFieldVisibilityRuleUsingPOST).
+Pour obtenir la liste complète des opérateurs, voir [&#x200B; Ajouter des règles de visibilité des champs de formulaire &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#operation/addFormFieldVisibilityRuleUsingPOST).
 
 ## Suivi
 

@@ -4,8 +4,10 @@ feature: REST API
 description: Boostez les performances de l’API REST Marketo avec la compression HTTP. Activez gzip pour réduire la bande passante ; les API en bloc ne sont pas prises en charge et moins de 1 024 octets ne sont pas compressés.
 exl-id: 173a398a-9d36-4e8d-9dd3-7d0d375b085a
 TQID: https://experienceleague.adobe.com/foJCTd890HZtL-UzWx2cjRXwTxqgW56A79sB7FPEWis
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
 source-wordcount: 129
