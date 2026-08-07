@@ -1,25 +1,22 @@
 ---
 title: Response Mappings
 feature: Webhooks
-description: Mappages de réponse des Webhooks Marketo pour JSON et XML, mappage des attributs aux champs de prospect avec les noms d’API SOAP, la notation par points et par tableau, et compatibilité des types.
+description: Mappages de réponse Webhooks Marketo pour JSON et XML, mappage des attributs aux champs de prospect , notation par points et tableau et compatibilité de type.
 exl-id: 95c6e33e-487c-464b-b920-3c67e248d84e
 TQID: https://experienceleague.adobe.com/-OGDeKLPS1KmWGIKj6BGq5DGXoCSj5ip-dVr7-kKDro
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: bcf56d2102f2f60eac5ad3318d348fd020391e6b
 workflow-type: tm+mt
-source-wordcount: 374
+source-wordcount: 370
 ht-degree: 1%
 
 ---
 
 # Response Mappings
 
-Marketo peut traduire les données webhook au format JSON ou XML et écrire les valeurs dans les champs de prospect. Le paramètre Champ Marketo utilise toujours le [nom d’API SOAP du champ](../rest-api/fields.md).
+Marketo peut traduire les données webhook au format JSON ou XML et écrire les valeurs dans les champs de prospect. Le paramètre Champ Marketo utilise toujours le nom d’API SOAP du champ.
 
 Chaque webhook peut avoir un nombre illimité de mappages de réponse. Pour ajouter ou modifier des mappages, sélectionnez [!UICONTROL Modifier] dans le volet Mappages de réponse du webhook :
 

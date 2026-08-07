@@ -4,20 +4,13 @@ feature: REST API
 description: Bonnes pratiques relatives aux intégrations d’API Marketo concernant les quotas, les limites de débit et de simultanéité, les traitements par lots, l’importation et l’exportation en masse, la mise en cache et la planification de la latence.
 exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
 TQID: https://experienceleague.adobe.com/Ld-rmFCwKSx-0W2-ceYICu0FQHK8BKAC1QgqtiOWDn4
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: df401a2a-327d-468c-a5e4-b7b7ccd071a0
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: df401a2a-327d-468c-a5e4-b7b7ccd071a0
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 882
+source-wordcount: 866
 ht-degree: 0%
 
 ---
@@ -34,7 +27,6 @@ Concevez des intégrations autour des limites d’API partagées pour votre inst
 - **Taille du lot :** la base de données de lead prend en charge 300 enregistrements ; la requête de ressource prend en charge 200 enregistrements.
 - **Taille de la payload de l’API REST :** 1 Mo.
 - **Taille du fichier d’importation en bloc :** 10 Mo.
-- **Taille de lot maximale de SOAP :** 300 enregistrements.
 - **Tâches d’extraction en bloc :** deux en cours d’exécution et dix en file d’attente, inclus.
 
 ## Conseils rapides
@@ -66,15 +58,15 @@ Chaque instance Marketo compatible avec les API dispose d’une allocation quoti
 
 La capacité est partagée par tous les services d’API et les utilisateurs d’une instance. Éliminez les appels redondants et les enregistrements par lots en le réduisant au minimum.
 
-La méthode d’importation la plus efficace pour les appels est l’API d’importation en bloc Marketo, disponible pour les [prospects/personnes](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) et [objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Snippets/operation/createSnippetUsingPOST). Marketo fournit également l’extraction en bloc pour les [prospects](bulk-lead-extract.md) et [activités](bulk-activity-extract.md).
+La méthode d’importation la plus efficace pour les appels est l’API d’importation en bloc Marketo, disponible pour les [prospects/personnes](https://developer.adobe.com/marketo-apis/api/mapi#operation/importLeadUsingPOST) et [objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi#operation/importCustomObjectUsingPOST). Marketo fournit également l’extraction en bloc pour les [prospects](bulk-lead-extract.md) et [activités](bulk-activity-extract.md).
 
 ### Mise en cache
 
 Les résultats des opérations suivantes peuvent généralement être mis en cache côté client pendant un jour ou plus, car ils changent rarement :
 
 - Résultats des opérations de description
-- [Types d’activité](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)
-- [Partitions](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadPartitionsUsingGET)
+- [Types d’activité](https://developer.adobe.com/marketo-apis/api/mapi#operation/getAllActivityTypesUsingGET)
+- [Partitions](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadPartitionsUsingGET)
 
 Pour les cas d’utilisation tels que l’enrichissement des données de prospect ou d’activité, vous pouvez également mettre en cache des types de ressources tels que des programmes, des e-mails et des dossiers.
 

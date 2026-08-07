@@ -4,17 +4,13 @@ feature: REST API
 description: Créez et surveillez des importations de leads en bloc asynchrones dans Marketo avec CSV TSV ou SSV.
 exl-id: 615f158b-35f9-425a-b568-0a7041262504
 TQID: https://experienceleague.adobe.com/UamXYWis5J1ERqnp5lAnfUf3pFcgfSOLfKRXRB-Yg4I
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e2290edd-b061-4880-9d79-dee306cf5aa9
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 623
+source-wordcount: 619
 ht-degree: 1%
 
 ---
@@ -23,7 +19,7 @@ ht-degree: 1%
 
 [Référence de point d’entrée d’importation de leads en bloc](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads)
 
-Utilisez l’[API en bloc](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) pour importer de manière asynchrone un grand nombre d’enregistrements de prospect. Fournissez les enregistrements dans un fichier plat délimité par des virgules, des tabulations ou des points-virgules d’une taille inférieure à 10 Mo.
+Utilisez l’[API en bloc](https://developer.adobe.com/marketo-apis/api/mapi#operation/importLeadUsingPOST) pour importer de manière asynchrone un grand nombre d’enregistrements de prospect. Fournissez les enregistrements dans un fichier plat délimité par des virgules, des tabulations ou des points-virgules d’une taille inférieure à 10 Mo.
 
 L’importation de leads en bloc prend uniquement en charge l’opération d’enregistrement « insérer ou mettre à jour ».
 

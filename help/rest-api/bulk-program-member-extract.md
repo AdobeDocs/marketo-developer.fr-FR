@@ -4,17 +4,13 @@ feature: REST API
 description: Utilisez les API REST d’extraction de membre de programme en bloc Marketo pour exporter des enregistrements de membre volumineux pour ETL, l’entreposage de données et l’archivage, avec des autorisations et des métadonnées de champ.
 exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
 TQID: https://experienceleague.adobe.com/w4qaVTKSe0EORaSiURB6WbJXi29JUdEgfkb2dnfuVFw
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1026
+source-wordcount: 1081
 ht-degree: 5%
 
 ---
@@ -31,7 +27,7 @@ L’utilisateur de l’API doit disposer d’un rôle avec l’autorisation Lead
 
 ## Décrire
 
-Utilisez [Décrire le membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2) pour déterminer les champs disponibles et récupérer leurs métadonnées. L’attribut `name` contient le nom du champ API REST.
+Utilisez [Décrire le membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#operation/describeProgramMemberUsingGET2) pour déterminer les champs disponibles et récupérer leurs métadonnées. L’attribut `name` contient le nom du champ API REST.
 
 ```http
 GET /rest/v1/programs/members/describe.json
@@ -246,12 +242,12 @@ Chaque traitement doit spécifier `programId` ou `programIds`. Tous les autres f
     <tr>
       <td>isExhausted</td>
       <td>Booléen</td>
-      <td>Accepte une valeur booléenne utilisée pour filtrer les enregistrements d’adhésion au programme pour <a href="https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">les personnes qui ont épuisé le contenu</a>.</td>
+      <td>Accepte une valeur booléenne utilisée pour filtrer les enregistrements d’adhésion au programme pour <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">les personnes qui ont épuisé le contenu</a>.</td>
     </tr>
     <tr>
       <td>nurtureCadence</td>
       <td>Chaîne</td>
-      <td>Accepte une chaîne utilisée pour filtrer les enregistrements d’appartenance à un programme pour une cadence d’apprentissage donnée. Les valeurs autorisées sont les suivantes :
+      <td>Accepte une chaîne utilisée pour filtrer les enregistrements d’appartenance à un programme pour une cadence d’apprentissage donnée.Les valeurs autorisées sont les suivantes :
         <ul>
           <li>pause - le rythme est suspendu</li>
           <li>norme - cadence normale</li>
@@ -260,7 +256,7 @@ Chaque traitement doit spécifier `programId` ou `programIds`. Tous les autres f
     <tr>
       <td>statusNames</td>
       <td>Array[String]</td>
-      <td>Accepte un tableau de noms de statut des membres du programme. Plusieurs noms de statut sont OU combinés. Les tâches avec ce type de filtre renvoient tous les enregistrements accessibles dont le statut de membre du programme correspond à l’un des noms de statut spécifiés. Il est possible d’utiliser à la fois les noms de statut par défaut et les noms de statut définis par l’utilisateur. Si le filtre statusNames est utilisé avec le filtre « programIds », chaque programme est vérifié pour rechercher les enregistrements d’appartenance dont le statut correspond à l’un des noms de statut. Si aucun programme ne trouve un nom de statut, l’erreur « 1003, Données non valides » est renvoyée.
+      <td>Accepte un tableau de noms de statut des membres du programme. Plusieurs noms de statut sont regroupés en OR.Les traitements avec ce type de filtre renvoient tous les enregistrements accessibles dont le statut de membre du programme correspond à l’un des noms de statut spécifiés. Vous pouvez utiliser les noms de statut par défaut et définis par l’utilisateur.Si le filtre statusNames est utilisé avec le filtre « programIds », chaque programme est vérifié pour rechercher les enregistrements d’abonnement dont le statut correspond à l’un des noms de statut. Si aucun programme ne trouve un nom de statut, l’erreur « 1003, Données non valides » est renvoyée.
         <table>
           <tbody>
             <tr>
@@ -337,7 +333,7 @@ Le point d’entrée Créer une tâche de membre du programme d’exportation fo
 
 ## Création d’un traitement
 
-Utilisez le point d’entrée [Créer une tâche de membre du programme d’exportation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Program-Members/operation/createExportProgramMembersUsingPOST) pour définir la tâche d’exportation. Spécifiez un `filter` contenant l’ID du programme et le `fields` à exporter. Vous pouvez également spécifier des `format` et des `columnHeaderNames`.
+Utilisez le point d’entrée [Créer une tâche de membre du programme d’exportation](https://developer.adobe.com/marketo-apis/api/mapi#operation/createExportProgramMembersUsingPOST) pour définir la tâche d’exportation. Spécifiez un `filter` contenant l’ID du programme et le `fields` à exporter. Vous pouvez également spécifier des `format` et des `columnHeaderNames`.
 
 ```http
 POST /bulk/v1/program/members/export/create.json
@@ -381,7 +377,7 @@ POST /bulk/v1/program/members/export/create.json
 }
 ```
 
-La réponse confirme la création du traitement, mais le démarrage de l’exportation n’est pas automatique. Transmettez le `exportId` renvoyé au point d’entrée [Mettre en file d’attente la tâche du membre du programme d’exportation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Program-Members/operation/enqueueExportProgramMembersUsingPOST) pour démarrer la tâche :
+La réponse confirme la création du traitement, mais le démarrage de l’exportation n’est pas automatique. Transmettez le `exportId` renvoyé au point d’entrée [Mettre en file d’attente la tâche du membre du programme d’exportation](https://developer.adobe.com/marketo-apis/api/mapi#operation/enqueueExportProgramMembersUsingPOST) pour démarrer la tâche :
 
 ```http
 POST /bulk/v1/program/members/export/{exportId}/enqueue.json
@@ -409,7 +405,7 @@ La réponse mise en file d&#39;attente renvoie initialement un statut `Queued`. 
 
 Vous ne pouvez récupérer le statut que pour les tâches créées par le même utilisateur de l’API.
 
-Comme l’exportation s’exécute de manière asynchrone, utilisez le point d’entrée [Obtenir le statut de la tâche du membre du programme d’exportation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET) pour interroger sa progression. Le statut n’est mis à jour qu’une fois toutes les 60 secondes. N’effectuez donc pas d’interrogations plus fréquentes.
+Comme l’exportation s’exécute de manière asynchrone, utilisez le point d’entrée [Obtenir le statut de la tâche du membre du programme d’exportation](https://developer.adobe.com/marketo-apis/api/mapi#operation/getExportLeadsStatusUsingGET) pour interroger sa progression. Le statut n’est mis à jour qu’une fois toutes les 60 secondes. N’effectuez donc pas d’interrogations plus fréquentes.
 
 Le statut peut être `Created`, `Queued`, `Processing`, `Canceled`, `Completed` ou `Failed`.
 
@@ -459,7 +455,7 @@ Cette réponse indique que la tâche est toujours en cours de traitement et que 
 
 ## Récupération de vos données
 
-Pour récupérer une exportation de membre de programme terminée, transmettez le `exportId` au point d&#39;entrée [Obtenir le fichier de membre de programme d&#39;exportation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Program-Members/operation/getExportProgramMembersFileUsingGET).
+Pour récupérer une exportation de membre de programme terminée, transmettez le `exportId` au point d&#39;entrée [Obtenir le fichier de membre de programme d&#39;exportation](https://developer.adobe.com/marketo-apis/api/mapi#operation/getExportProgramMembersFileUsingGET).
 
 Le point d’entrée renvoie le fichier au format configuré pour la tâche. Si un champ de membre de programme demandé ne contient aucune donnée, le champ d’exportation correspondant contient `null`.
 
@@ -483,11 +479,11 @@ Jory,Cassel,jcas@housestark.com,2020-01-08T18:10:26Z,PMCF Program,On List,1799,f
 Septa,Mordane,smor@housestark.com,2020-01-08T18:10:26Z,PMCF Program,On List,1800,false,Lead01_Value,Lead02_Value,PM01_Value,PM02_Value
 ```
 
-Pour une récupération partielle ou pouvant être reprise, le point d’entrée du fichier prend en charge l’en-tête `Range` HTTP facultatif avec un type de plage de `bytes`. Si vous ne définissez pas l’en-tête , le point d’entrée renvoie l’intégralité du fichier. Pour plus d’informations, voir [&#x200B; Extraction en bloc &#x200B;](bulk-extract.md).
+Pour une récupération partielle ou pouvant être reprise, le point d’entrée du fichier prend en charge l’en-tête `Range` HTTP facultatif avec un type de plage de `bytes`. Si vous ne définissez pas l’en-tête , le point d’entrée renvoie l’intégralité du fichier. Pour plus d’informations, voir [ Extraction en bloc ](bulk-extract.md).
 
 ## Annulation d’un traitement
 
-Pour annuler une tâche mal configurée ou qui n’est plus nécessaire, appelez le point d’entrée [&#x200B; Annuler la tâche du membre du programme d’exportation &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Program-Members/operation/cancelExportProgramMembersUsingPOST) :
+Pour annuler une tâche mal configurée ou qui n’est plus nécessaire, appelez le point d’entrée [ Annuler la tâche du membre du programme d’exportation ](https://developer.adobe.com/marketo-apis/api/mapi#operation/cancelExportProgramMembersUsingPOST) :
 
 ```http
 POST /bulk/v1/program/members/export/{exportId}/cancel.json

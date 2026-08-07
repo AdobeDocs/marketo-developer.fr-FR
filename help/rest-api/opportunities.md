@@ -4,17 +4,13 @@ feature: REST API
 description: API REST Marketo pour décrire, interroger, créer et mettre à jour des opportunités, dédupliquer et rechercher des champs, des limites et un comportement en lecture seule avec la synchronisation SFDC ou Dynamics.
 exl-id: 46451285-4125-4857-890a-575069a68288
 TQID: https://experienceleague.adobe.com/rBDJcXWQrN5qyKRWHyzVC-sc9BH2mQFLm7fKUk-NUn8
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 708
+source-wordcount: 702
 ht-degree: 0%
 
 ---
@@ -27,7 +23,7 @@ Marketo fournit des API pour lire, écrire, créer et mettre à jour des enregis
 
 L’API expose les deux types d’objets. Comme pour la plupart des types d’objets Base de données de leads, chacun possède un appel Describe correspondant qui renvoie des métadonnées d’objet.
 
-Les API d’opportunité fournissent un accès en lecture seule aux abonnements pour lesquels la [synchronisation de &#x200B;](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=fr) ou la [synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=fr) est activée.
+Les API d’opportunité fournissent un accès en lecture seule aux abonnements pour lesquels la [synchronisation de ](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou la [synchronisation de Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) est activée.
 
 ## Décrire
 
@@ -100,7 +96,7 @@ Les champs de réponse clés sont les suivants :
 
 ## Requête
 
-Le modèle d’[opportunités d’interrogation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunitiesUsingGET) suit de près l’API Leads. Cependant, le paramètre `filterType` accepte uniquement les champs répertoriés dans le tableau `searchableFields` de la réponse Describe ou dedupeFields correspondante.
+Le modèle d’[opportunités d’interrogation](https://developer.adobe.com/marketo-apis/api/mapi#operation/getOpportunitiesUsingGET) suit de près l’API Leads. Cependant, le paramètre `filterType` accepte uniquement les champs répertoriés dans le tableau `searchableFields` de la réponse Describe ou dedupeFields correspondante.
 
 Pour les champs d’opportunité personnalisés, seuls les champs de type Chaîne ou Entier apparaissent dans le tableau searchableFields .
 
@@ -221,7 +217,7 @@ Exécutez une requête sur un champ société par nom d’API ou récupérez tou
 
 #### Par nom
 
-Le point d’entrée [Get Opportunity Field by Name](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityFieldByNameUsingGET) récupère les métadonnées d’un champ de l’objet d’entreprise. Le paramètre de chemin d’accès `fieldApiName` obligatoire spécifie le nom de l’API du champ.
+Le point d’entrée [Get Opportunity Field by Name](https://developer.adobe.com/marketo-apis/api/mapi#operation/getOpportunityFieldByNameUsingGET) récupère les métadonnées d’un champ de l’objet d’entreprise. Le paramètre de chemin d’accès `fieldApiName` obligatoire spécifie le nom de l’API du champ.
 
 La réponse ressemble à la réponse Description de l’opportunité mais inclut des métadonnées supplémentaires. Par exemple, l’attribut `isCustom` indique si le champ est personnalisé.
 
@@ -252,7 +248,7 @@ GET /rest/v1/opportunities/schema/fields/externalOpportunityId.json
 
 #### Parcourir
 
-Le point d’entrée [Obtenir les champs d’opportunité](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityFieldsUsingGET) récupère les métadonnées de tous les champs de l’objet d’entreprise. Par défaut, elle renvoie un maximum de 300 enregistrements. Utilisez le paramètre de requête `batchSize` pour réduire ce nombre.
+Le point d’entrée [Obtenir les champs d’opportunité](https://developer.adobe.com/marketo-apis/api/mapi#operation/getOpportunityFieldsUsingGET) récupère les métadonnées de tous les champs de l’objet d’entreprise. Par défaut, elle renvoie un maximum de 300 enregistrements. Utilisez le paramètre de requête `batchSize` pour réduire ce nombre.
 
 Si l’attribut `moreResult` est défini sur « true », d’autres résultats sont disponibles. Continuez à appeler le point d’entrée avec la `nextPageToken` renvoyée jusqu’à ce que moreResult ait la valeur false.
 

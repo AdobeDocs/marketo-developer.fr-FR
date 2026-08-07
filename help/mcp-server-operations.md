@@ -3,36 +3,30 @@ title: Opérations Marketo Engage MCP
 description: Découvrez les opérations Marketo Engage MCP disponibles à l’utilisation avec les assistants d’IA.
 autotag-review: '2026-06-02T13:31:42.084Z'
 TQID: 'https://experienceleague.adobe.com/qvrWbHOCsCCHctduNDxMhkE8JAKxZk8FCYfKvzxfcYA'
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: dca84292-69e9-4116-a575-667d31fa060d
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-topic_v2:
-  - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: dca84292-69e9-4116-a575-667d31fa060did: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+topic_v2: id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 260
-ht-degree: 5%
+source-wordcount: 280
+ht-degree: 4%
 
 ---
 
 
 # [!DNL Marketo Engage] des opérations MCP
 
-Les opérations suivantes sont disponibles via le serveur MCP [!DNL Marketo Engage]. Le serveur fournit généralement des points d’entrée en lecture seule ou non destructifs. Le système d’IA ne peut pas utiliser de `Delete` ni d’autres opérations destructives.
+Les opérations suivantes sont disponibles via le serveur MCP [!DNL Marketo Engage]. Le serveur fournit des points d’entrée en lecture seule ou non destructifs. Le système d’IA ne peut pas utiliser de `Delete` ni d’autres opérations destructives.
 
 >[!NOTE]
 >
->Cette liste va continuer à s’allonger à mesure que nous ajouterons d’autres outils.
+>L’équipe du serveur MCP s’efforce d’activer les API Smart List et Smart Campaign Asset pour qu’elles fonctionnent avec le serveur MCP. Ces travaux, y compris les éléments de liste autorisée, devraient être terminés au T3 2026.
 
-Pour plus d’informations sur la façon dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/marketo-ai/data-information).
+Pour plus d’informations sur la façon dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 ## Exportation en bloc
 
-[Référence de l’API d’exportation en bloc](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export){target="_blank"}
+[Référence de l’API d’exportation en bloc](https://developer.adobe.com/marketo-apis/api/mapi){target="_blank"}
 
 - `bulk_export_create`
 - `bulk_export_enqueue`
@@ -42,7 +36,7 @@ Pour plus d’informations sur la façon dont les données sont gérées avec l�
 
 ## Canaux et balises
 
-[Référence de l’API Channels &#x200B;](https://developer.adobe.com/marketo-apis/api/asset/#tag/Channels){target="_blank"} | [Référence de l’API Tags](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags){target="_blank"}
+[Référence de l’API Channels ](https://developer.adobe.com/marketo-apis/api/asset#tag/Channels){target="_blank"} | [Référence de l’API Tags](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags){target="_blank"}
 
 - `browse_channels`
 - `browse_tag_types`
@@ -51,7 +45,7 @@ Pour plus d’informations sur la façon dont les données sont gérées avec l�
 
 ## E-mails
 
-[Référence de l’API Emails](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails){target="_blank"}
+[Référence de l’API Emails](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails){target="_blank"}
 
 - `approve_email`
 - `browse_emails`
@@ -63,7 +57,7 @@ Pour plus d’informations sur la façon dont les données sont gérées avec l�
 
 ## Dossiers
 
-[Référence de l’API Folders](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders){target="_blank"}
+[Référence de l’API Folders](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders){target="_blank"}
 
 - `browse_folders`
 - `create_folder`
@@ -75,7 +69,7 @@ Pour plus d’informations sur la façon dont les données sont gérées avec l�
 
 ## Formulaires
 
-[Référence de l’API Forms](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms){target="_blank"}
+[Référence de l’API Forms](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms){target="_blank"}
 
 - `add_field_set`
 - `add_field_to_form`
@@ -103,7 +97,7 @@ Pour plus d’informations sur la façon dont les données sont gérées avec l�
 
 ## Prospects
 
-[Référence de l’API des leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads){target="_blank"}
+[Référence de l’API des leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads){target="_blank"}
 
 - `add_leads_to_list`
 - `describe_lead`
@@ -115,7 +109,7 @@ Pour plus d’informations sur la façon dont les données sont gérées avec l�
 
 ## Programmes
 
-[Référence de l’API de programmes](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs){target="_blank"}
+[Référence de l’API de programmes](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs){target="_blank"}
 
 - `approve_program`
 - `browse_email_batch_programs`
@@ -138,7 +132,7 @@ Pour plus d’informations sur la façon dont les données sont gérées avec l�
 
 ## Campagnes intelligentes
 
-[Référence de l’API de campagnes intelligentes](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns){target="_blank"}
+[Référence de l’API de campagnes intelligentes](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns){target="_blank"}
 
 - `activate_smart_campaign`
 - `add_flow_step`
@@ -164,7 +158,7 @@ Pour plus d’informations sur la façon dont les données sont gérées avec l�
 
 ## Listes intelligentes
 
-[Référence de l’API de listes dynamiques](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists){target="_blank"}
+[Référence de l’API de listes dynamiques](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists){target="_blank"}
 
 - `add_smart_list_rule`
 - `browse_smart_lists`
@@ -184,7 +178,7 @@ Pour plus d’informations sur la façon dont les données sont gérées avec l�
 
 ## Extraits
 
-[Référence de l’API des fragments de code](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets){target="_blank"}
+[Référence de l’API des fragments de code](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets){target="_blank"}
 
 - `approve_snippet`
 - `browse_snippets`
@@ -203,7 +197,7 @@ Pour plus d’informations sur la façon dont les données sont gérées avec l�
 
 ## Listes statiques
 
-[Référence de l’API des listes statiques](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists){target="_blank"}
+[Référence de l’API des listes statiques](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists){target="_blank"}
 
 - `browse_lists`
 - `create_list`
@@ -215,7 +209,7 @@ Pour plus d’informations sur la façon dont les données sont gérées avec l�
 
 ## Jetons
 
-[Référence de l’API de jetons](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens){target="_blank"}
+[Référence de l’API de jetons](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens){target="_blank"}
 
 - `create_calendar_token`
 - `create_token`

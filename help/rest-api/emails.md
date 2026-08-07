@@ -4,19 +4,13 @@ feature: REST API
 description: Découvrez comment utiliser l’API REST de ressources Marketo pour interroger et gérer des ressources d’e-mail par identifiant, nom ou navigation dans des dossiers, avec des notes sur le contenu prédictif et les limites de test A/B.
 exl-id: 6875730d-c74a-42cf-a3d2-dad7a3ac535d
 TQID: https://experienceleague.adobe.com/t2FyPbwS836MvOe5rL0rVS7ibtzzZMmXwmgHBDZEr8Q
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1813
+source-wordcount: 1763
 ht-degree: 2%
 
 ---
@@ -27,21 +21,21 @@ ht-degree: 2%
 
 Utilisez les points d’entrée REST d’e-mail pour interroger et gérer des ressources d’e-mail.
 
-Si un e-mail contient du [Contenu prédictif &#x200B;](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content), les points d’entrée suivants échouent avec le code d’erreur 709 et un message d’erreur correspondant :
+Si un e-mail contient du [Contenu prédictif ](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content), les points d’entrée suivants échouent avec le code d’erreur 709 et un message d’erreur correspondant :
 
-- [Obtenir le contenu de l’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET)
-- [Mettre à jour la section de contenu d&#39;e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST)
-- [Approuver le brouillon d’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/approveDraftUsingPOST)
+- [Obtenir le contenu de l’e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailContentByIdUsingGET)
+- [Mettre à jour la section de contenu d&#39;e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailComponentContentUsingPOST)
+- [Approuver le brouillon d’e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/approveDraftUsingPOST)
 
 ## Requête
 
-Les e-mails prennent en charge les mêmes modèles de requête que les modèles : [par identifiant](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET) et par [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailUsingGET). Les points d’entrée by-name et browse prennent également en charge le filtrage de dossiers.
+Les e-mails prennent en charge les mêmes modèles de requête que les modèles : [par identifiant](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailByNameUsingGET) et par [navigation](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailUsingGET). Les points d’entrée by-name et browse prennent également en charge le filtrage de dossiers.
 
-Si un e-mail appartient à un programme de messagerie qui utilise le test A/B [A/B Testing](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test), les points d’entrée suivants ne renvoient pas cet e-mail :
+Si un e-mail appartient à un programme de messagerie qui utilise le test A/B [A/B Testing](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test), les points d’entrée suivants ne renvoient pas cet e-mail :
 
-- [Obtenir l’e-mail par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET)
-- [Obtenir l’e-mail par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET)
-- [Get Emails](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailUsingGET)
+- [Obtenir l’e-mail par ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailByIdUsingGET)
+- [Obtenir l’e-mail par nom](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailByNameUsingGET)
+- [Get Emails](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailUsingGET)
 
 L’appel indique la réussite, mais inclut le `No assets found for the given search criteria.` d’avertissement
 
@@ -247,7 +241,7 @@ GET /rest/asset/v1/emails.json?maxReturn=3&folder={"id":341,"type":"Folder"}
 
 ## Contenu de la requête
 
-Pour [récupérer les sections modifiables d’un e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET), interrogez son contenu. Vous pouvez éventuellement filtrer par statut pour renvoyer les sections de la version approuvée ou brouillon.
+Pour [récupérer les sections modifiables d’un e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailContentByIdUsingGET), interrogez son contenu. Vous pouvez éventuellement filtrer par statut pour renvoyer les sections de la version approuvée ou brouillon.
 
 ```http
 GET /rest/asset/v1/email/1356/content.json
@@ -282,7 +276,7 @@ Une section peut avoir un type de `dynamicContent`. Pour plus d’informations, 
 
 ## Champs CC de requête
 
-Appelez le point d’entrée [Obtenir les champs CC d’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailCCFieldsUsingGET) pour récupérer les champs activés pour la fonctionnalité CC d’e-mail dans l’instance cible.
+Appelez le point d’entrée [Obtenir les champs CC d’e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailCCFieldsUsingGET) pour récupérer les champs activés pour la fonctionnalité CC d’e-mail dans l’instance cible.
 
 ```http
 GET /rest/asset/v1/email/ccFields.json
@@ -313,7 +307,7 @@ GET /rest/asset/v1/email/ccFields.json
 
 ## Créer et mettre à jour
 
-[Créez un e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/createEmailUsingPOST) à partir d’un modèle source. Les sections modifiables de l’e-mail proviennent des éléments HTML du modèle qui possèdent la classe `mktEditable` et une propriété `id` unique.
+[Créez un e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/createEmailUsingPOST) à partir d’un modèle source. Les sections modifiables de l’e-mail proviennent des éléments HTML du modèle qui possèdent la classe `mktEditable` et une propriété `id` unique.
 
 L’appel Créer un e-mail nécessite les paramètres suivants :
 
@@ -393,7 +387,7 @@ name=My New Email 02 - deverly&folder={"id":1017,"type":"Program"}&template=24&d
 }
 ```
 
-Pour [mettre à jour un e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailContentUsingPOST), transmettez son identifiant et mettez à jour la description ou le nom de l’e-mail.
+Pour [mettre à jour un e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailContentUsingPOST), transmettez son identifiant et mettez à jour la description ou le nom de l’e-mail.
 
 ```http
 POST /rest/asset/v1/email/{id}.json
@@ -461,7 +455,7 @@ description=This is an Email&name=Updated Email
 
 ### Section, type et mise à jour du contenu
 
-Mettez à jour chaque section de contenu d’e-mail individuellement. Utilisez le point d’entrée [Mettre à jour le contenu de l’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailContentUsingPOST) pour mettre à jour `subject`, `fromName`, `fromEmail` et `replyEmail`. Ce point d’entrée vous permet également de définir ces valeurs pour utiliser du contenu dynamique au lieu du contenu statique.
+Mettez à jour chaque section de contenu d’e-mail individuellement. Utilisez le point d’entrée [Mettre à jour le contenu de l’e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailContentUsingPOST) pour mettre à jour `subject`, `fromName`, `fromEmail` et `replyEmail`. Ce point d’entrée vous permet également de définir ces valeurs pour utiliser du contenu dynamique au lieu du contenu statique.
 
 Chaque paramètre est un objet JSON de type/valeur. Le type est `Text` ou `DynamicContent`. La valeur est le texte correspondant ou l’identifiant de la segmentation utilisée pour le contenu dynamique. Envoyez les données sous la forme d’un POST avec `application/x-www-form-urlencoded`, et non d’un JSON. Vous pouvez également définir des `isOpenTrackingDisabled` avec Mettre à jour le contenu de l’e-mail.
 
@@ -535,17 +529,17 @@ Si la copie automatique au format texte est désactivée pour un fragment de cod
 
 ## Modules
 
-Dans l’éditeur d’e-mail 1.0, un module est une section d’e-mail définie dans le modèle. Les modules peuvent contenir des éléments, des variables et d’autres contenus HTML comme décrit dans la section [Syntaxe du modèle d’e-mail](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules).
+Dans l’éditeur d’e-mail 1.0, un module est une section d’e-mail définie dans le modèle. Les modules peuvent contenir des éléments, des variables et d’autres contenus HTML comme décrit dans la section [Syntaxe du modèle d’e-mail](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules).
 
 Utilisez les API de module pour gérer les modules dans un e-mail. Pour les points d’entrée de module qui utilisent HTTP POST, formatez le corps de la requête en tant que `application/x-www-form-urlencoded`, et non en tant que JSON.
 
-La plupart des points d’entrée de module nécessitent `moduleId` comme paramètre de chemin d’accès. Le point d’entrée [Get Email Content](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET) renvoie les identifiants de module dans l’attribut `htmlId`. Voir [Requête](#modules_query).
+La plupart des points d’entrée de module nécessitent `moduleId` comme paramètre de chemin d’accès. Le point d’entrée [Get Email Content](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailContentByIdUsingGET) renvoie les identifiants de module dans l’attribut `htmlId`. Voir [Requête](#modules_query).
 
 ### Requête
 
 Pour utiliser des modules, spécifiez le `moduleId` qui identifie le module de manière unique. Vous aurez peut-être également besoin de l’index de module entier , qui décrit l’ordre du module dans l’e-mail.
 
-Pour [récupérer les ID de module et leurs index](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET), spécifiez l’ID d’e-mail comme paramètre de chemin d’accès.
+Pour [récupérer les ID de module et leurs index](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailContentByIdUsingGET), spécifiez l’ID d’e-mail comme paramètre de chemin d’accès.
 
 L’exemple suivant interroge un e-mail 1.0 en fonction du modèle `Skeleton` dans la section Modèles de démarrage de l’interface utilisateur du sélecteur de modèles .
 
@@ -775,7 +769,7 @@ Pour l’exemple `Skeleton`, le tableau suivant mappe chaque `moduleId` à son i
 
 #### Ajouter
 
-Pour [ajouter un module](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/addModuleUsingPOST), sélectionnez un module existant dans le modèle de l’e-mail. Indiquez l’ID d’e-mail et `moduleId` comme paramètres de chemin d’accès. Le paramètre de requête `index` requis détermine la position du module. Si `index` dépasse le plus grand index existant, l’API ajoute le module à l’e-mail.
+Pour [ajouter un module](https://developer.adobe.com/marketo-apis/api/asset#operation/addModuleUsingPOST), sélectionnez un module existant dans le modèle de l’e-mail. Indiquez l’ID d’e-mail et `moduleId` comme paramètres de chemin d’accès. Le paramètre de requête `index` requis détermine la position du module. Si `index` dépasse le plus grand index existant, l’API ajoute le module à l’e-mail.
 
 ```http
 POST /rest/asset/v1/email/{id}/content/{moduleId}/add.json
@@ -805,7 +799,7 @@ index=10
 
 #### Supprimer
 
-Pour [supprimer un module](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/deleteModuleUsingPOST), spécifiez l’ID d’e-mail et `moduleId` comme paramètres de chemin d’accès.
+Pour [supprimer un module](https://developer.adobe.com/marketo-apis/api/asset#operation/deleteModuleUsingPOST), spécifiez l’ID d’e-mail et `moduleId` comme paramètres de chemin d’accès.
 
 ```http
 POST /rest/asset/v1/email/{id}/content/{moduleId}/delete.json
@@ -827,7 +821,7 @@ POST /rest/asset/v1/email/{id}/content/{moduleId}/delete.json
 
 #### Dupliquer
 
-Pour [dupliquer un module](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/duplicateModuleUsingPOST), spécifiez l’ID d’e-mail et `moduleId` comme paramètres de chemin d’accès. L’API place le duplicata sous le module d’origine et déplace les modules restants vers le bas.
+Pour [dupliquer un module](https://developer.adobe.com/marketo-apis/api/asset#operation/duplicateModuleUsingPOST), spécifiez l’ID d’e-mail et `moduleId` comme paramètres de chemin d’accès. L’API place le duplicata sous le module d’origine et déplace les modules restants vers le bas.
 
 ```http
 POST /rest/asset/v1/email/{id}/content/{moduleId}/duplicate.json
@@ -849,7 +843,7 @@ POST /rest/asset/v1/email/{id}/content/{moduleId}/duplicate.json
 
 #### Réorganiser
 
-Pour [réorganiser les modules](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/rearrangeModulesUsingPOST), envoyez un tableau contenant chaque module et sa position souhaitée. Chaque élément de tableau est un objet JSON dans le `{ "index": <_index_>, "moduleId": "<_moduleId_>" }` de formulaire, où `<_index_>` correspond à la position du module en base zéro et `<_moduleId_>` à l’ID du module.
+Pour [réorganiser les modules](https://developer.adobe.com/marketo-apis/api/asset#operation/rearrangeModulesUsingPOST), envoyez un tableau contenant chaque module et sa position souhaitée. Chaque élément de tableau est un objet JSON dans le `{ "index": <_index_>, "moduleId": "<_moduleId_>" }` de formulaire, où `<_index_>` correspond à la position du module en base zéro et `<_moduleId_>` à l’ID du module.
 
 ```http
 POST /rest/asset/v1/email/{id}/content/rearrange.json
@@ -879,7 +873,7 @@ positions=[ {"index": 0, "moduleId": "free-image"}, {"index": 1, "moduleId": "ti
 
 #### Renommer
 
-Pour [renommer un module](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/renameUsingPOST), transmettez le nouveau nom dans le paramètre `name`. Spécifiez l’ID d’e-mail et les `moduleId` existants comme paramètres de chemin d’accès.
+Pour [renommer un module](https://developer.adobe.com/marketo-apis/api/asset#operation/renameUsingPOST), transmettez le nouveau nom dans le paramètre `name`. Spécifiez l’ID d’e-mail et les `moduleId` existants comme paramètres de chemin d’accès.
 
 ```http
 POST /rest/asset/v1/email/{id}/content/{moduleId}/rename.json
@@ -909,11 +903,11 @@ name=MarketoVideo
 
 ## Variables
 
-Dans Email Editor 1.0, les variables stockent des valeurs pour les éléments d’e-mail. Définissez chaque variable en ajoutant une syntaxe spécifique à Marketo à HTML, comme décrit dans la section [Syntaxe du modèle d’e-mail](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables). Utilisez les API de variable pour gérer les variables d’un e-mail.
+Dans Email Editor 1.0, les variables stockent des valeurs pour les éléments d’e-mail. Définissez chaque variable en ajoutant une syntaxe spécifique à Marketo à HTML, comme décrit dans la section [Syntaxe du modèle d’e-mail](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables). Utilisez les API de variable pour gérer les variables d’un e-mail.
 
 ### Requête
 
-Pour [récupérer des variables](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailVariablesUsingGET), spécifiez l’ID d’e-mail comme paramètre de chemin d’accès.
+Pour [récupérer des variables](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailVariablesUsingGET), spécifiez l’ID d’e-mail comme paramètre de chemin d’accès.
 
 L’exemple suivant interroge un e-mail 1.0 en fonction du modèle `Skeleton` dans la section Modèles de démarrage de l’interface utilisateur du sélecteur de modèles .
 
@@ -1133,7 +1127,7 @@ Les variables peuvent avoir une portée globale pour l’ensemble de l’e-mail 
 
 #### Mise à jour
 
-Pour [mettre à jour une variable](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateVariableUsingPOST), transmettez la nouvelle valeur dans le paramètre `value`. Spécifiez l’ID d’e-mail et le nom de variable comme paramètres de chemin d’accès. Lors de la mise à jour d’une variable de module, transmettez également `moduleId` pour identifier le module associé.
+Pour [mettre à jour une variable](https://developer.adobe.com/marketo-apis/api/asset#operation/updateVariableUsingPOST), transmettez la nouvelle valeur dans le paramètre `value`. Spécifiez l’ID d’e-mail et le nom de variable comme paramètres de chemin d’accès. Lors de la mise à jour d’une variable de module, transmettez également `moduleId` pour identifier le module associé.
 
 L’exemple suivant met à jour la variable globale `hrBorderSize`.
 
@@ -1391,7 +1385,7 @@ emailAddress=abe@testmail.com&textOnly=true
 
 ## Aperçu de l&#39;e-mail
 
-Utilisez le point d’entrée [Obtenir le contenu complet de l’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailFullContentUsingGET) pour récupérer un aperçu en direct d’un e-mail, car un destinataire le recevrait. Ce point d’entrée prend uniquement en charge les e-mails de la version 1.0.
+Utilisez le point d’entrée [Obtenir le contenu complet de l’e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailFullContentUsingGET) pour récupérer un aperçu en direct d’un e-mail, car un destinataire le recevrait. Ce point d’entrée prend uniquement en charge les e-mails de la version 1.0.
 
 Le paramètre de chemin d’accès `id` obligatoire identifie l’e-mail à prévisualiser. Le point d’entrée accepte également trois paramètres de requête facultatifs :
 
@@ -1421,7 +1415,7 @@ GET /rest/asset/v1/email/{id}/fullContent.json
 
 ## Remplacer HTML
 
-Utilisez le point d’entrée [Mettre à jour le contenu complet de l’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/createEmailFullContentUsingPOST) pour remplacer tout le contenu d’une ressource e-mail. Ce point d’entrée prend uniquement en charge les e-mails de la version 1.0 qui ont utilisé la fonction Modifier le code dans l’interface utilisateur et ne sont plus liés à leur modèle parent.
+Utilisez le point d’entrée [Mettre à jour le contenu complet de l’e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/createEmailFullContentUsingPOST) pour remplacer tout le contenu d’une ressource e-mail. Ce point d’entrée prend uniquement en charge les e-mails de la version 1.0 qui ont utilisé la fonction Modifier le code dans l’interface utilisateur et ne sont plus liés à leur modèle parent.
 
 Le point d’entrée est principalement destiné aux ressources clonées dans le cadre d’un programme qui ne peut pas être modifié avec les points d’entrée de contenu standard. Il ne prend pas en charge les e-mails avec du contenu dynamique. Si l’e-mail est toujours lié à son modèle, le point d’entrée renvoie une erreur.
 
