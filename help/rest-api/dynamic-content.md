@@ -10,9 +10,9 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 329
+source-wordcount: 325
 ht-degree: 3%
 
 ---
@@ -35,7 +35,7 @@ Lorsqu’un prospect consulte la ressource, Marketo affiche la variation du segm
 
 Cet exemple utilise une segmentation Région (États-Unis) pour afficher une promotion d’événement aux prospects du segment Sud-Ouest. Le segment comprend des prospects de Californie, du Nevada, de l’Utah, du Colorado, de l’Arizona et du Nouveau-Mexique.
 
-Utilisez le point d’entrée [Mettre à jour le contenu de l’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST) pour transformer la section modifiable avec l’ID `Q1-promotion-banner` en section `DynamicContent`. Le paramètre `value` spécifie l’identifiant de segmentation.
+Utilisez le point d’entrée [Mettre à jour le contenu de l’e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailComponentContentUsingPOST) pour transformer la section modifiable avec l’ID `Q1-promotion-banner` en section `DynamicContent`. Le paramètre `value` spécifie l’identifiant de segmentation.
 
 Les e-mails et les landing pages suivent ce modèle. Les fragments de code utilisent le modèle différent décrit dans la documentation de l’API Fragments de code .
 
@@ -63,7 +63,7 @@ type=DynamicContent&value=1001
 }
 ```
 
-Appelez le point d’entrée [Mettre à jour le contenu dynamique d’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailDynamicContentUsingPOST) pour ajouter du contenu pour un segment dans une section spécifique.
+Appelez le point d’entrée [Mettre à jour le contenu dynamique d’e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailDynamicContentUsingPOST) pour ajouter du contenu pour un segment dans une section spécifique.
 
 La requête suivante affiche une bannière spéciale au lieu du contenu par défaut pour les prospects du segment Sud-Ouest. Pour créer d’autres variations, appelez le point d’entrée pour chaque segment et section.
 

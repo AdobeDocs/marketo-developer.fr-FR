@@ -1,5 +1,5 @@
 ---
-title: Règles de redirection de page de destination
+title: Règles de redirection des pages de destination
 feature: REST API, Landing Pages
 description: Utilisez les API REST de ressources Marketo pour créer, interroger, mettre à jour et supprimer des règles de redirection de page de destination avec des filtres, une pagination, des options de nom d’hôte et des cibles autres que Marketo.
 exl-id: f63aa5ef-5872-4401-be75-6fb9b2977734
@@ -10,10 +10,10 @@ feature_v2:
   - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 626
-ht-degree: 4%
+source-wordcount: 596
+ht-degree: 5%
 
 ---
 
@@ -31,7 +31,7 @@ Requête sur les règles de redirection des landing pages [par identifiant](#by_
 
 ### Par Id
 
-Le point d’entrée [Obtenir les règles de redirection de la page de destination par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/getLandingPageRedirectRuleByIdUsingGET) prend un paramètre de chemin d’`id` de la règle de redirection et renvoie l’enregistrement correspondant.
+Le point d’entrée [Obtenir les règles de redirection de la page de destination par ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageRedirectRuleByIdUsingGET) prend un paramètre de chemin d’`id` de la règle de redirection et renvoie l’enregistrement correspondant.
 
 ```http
 GET /rest/asset/v1/redirectRule/{id}.json
@@ -66,7 +66,7 @@ GET /rest/asset/v1/redirectRule/{id}.json
 
 ### Parcourir
 
-Le point d’entrée [Get Landing Page Redirect Rules](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/getLandingPageRedirectRulesUsingGET) renvoie des enregistrements de règle de redirection de page de destination.
+Le point d’entrée [Get Landing Page Redirect Rules](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageRedirectRulesUsingGET) renvoie des enregistrements de règle de redirection de page de destination.
 
 Utilisez des paramètres de requête facultatifs pour filtrer les résultats.
 
@@ -143,7 +143,7 @@ GET /rest/asset/v1/redirectRules.json&maxReturn=3
 
 ## Créer
 
-Appelez le point d’entrée [Créer une règle de redirection de page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/createLandingPageRedirectRuleUsingPOST) avec une requête POST `application/x-www-form-urlencoded`. La requête présente trois paramètres obligatoires.
+Appelez le point d’entrée [Créer une règle de redirection de page de destination](https://developer.adobe.com/marketo-apis/api/asset#operation/createLandingPageRedirectRuleUsingPOST) avec une requête POST `application/x-www-form-urlencoded`. La requête présente trois paramètres obligatoires.
 
 Le paramètre `hostname` spécifie le nom d’hôte de la page de destination. Il doit appartenir à un domaine ou à un alias de marque et ne peut pas dépasser 255 caractères.
 
@@ -205,7 +205,7 @@ hostname=calqeauto.com&redirectFrom={"type":"landingPageId", "value":"5483"}&red
 
 ## Mise à jour
 
-Le point d’entrée [Mettre à jour les règles de redirection de page de destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/updateLandingPageRedirectRuleUsingPOST) accepte un paramètre de chemin d’accès de `id` de règle de redirection. Envoyez la mise à jour sous la forme d’une requête POST `application/x-www-form-urlencoded`.
+Le point d’entrée [Mettre à jour les règles de redirection de page de destination](https://developer.adobe.com/marketo-apis/api/asset#operation/updateLandingPageRedirectRuleUsingPOST) accepte un paramètre de chemin d’accès de `id` de règle de redirection. Envoyez la mise à jour sous la forme d’une requête POST `application/x-www-form-urlencoded`.
 
 Transmettez un ou plusieurs de ces paramètres pour sélectionner les attributs à mettre à jour : `hostname`, `redirectFrom` ou `redirectTo`.
 
@@ -252,7 +252,7 @@ redirectTo={"type":"landingPageId", "value":"5561"}
 
 ## Supprimer
 
-Le point d’entrée [Supprimer la règle de redirection de la page de destination par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/deleteLandingPageRedirectRuleUsingPOST) prend un paramètre de chemin d’`id` de la règle de redirection.
+Le point d’entrée [Supprimer la règle de redirection de la page de destination par ID](https://developer.adobe.com/marketo-apis/api/asset#operation/deleteLandingPageRedirectRuleUsingPOST) prend un paramètre de chemin d’`id` de la règle de redirection.
 
 ```http
 POST /rest/asset/v1/redirectRule/{id}/delete.json
@@ -274,7 +274,7 @@ POST /rest/asset/v1/redirectRule/{id}/delete.json
 
 ## Parcourir Les Domaines Des Pages De Destination
 
-Le point d’entrée [Get Landing Page Domains](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/getLandingPageDomainsUsingGET) renvoie des enregistrements de domaine de page de destination.
+Le point d’entrée [Get Landing Page Domains](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageDomainsUsingGET) renvoie des enregistrements de domaine de page de destination.
 
 Utilisez deux paramètres de requête facultatifs pour filtrer les résultats.
 

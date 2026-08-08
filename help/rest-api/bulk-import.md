@@ -10,9 +10,9 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 538
+source-wordcount: 526
 ht-degree: 3%
 
 ---
@@ -57,7 +57,7 @@ La réponse d’importation en bloc n’indique pas si un enregistrement individ
 
 ## Création d’un traitement
 
-Créez une tâche d’importation de prospect en appelant le point d’entrée [Importer des prospects](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). Ce point d’entrée utilise [multipart/form-data comme type de contenu](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html).
+Créez une tâche d’importation de prospect en appelant le point d’entrée [Importer des prospects](https://developer.adobe.com/marketo-apis/api/mapi#operation/importLeadUsingPOST). Ce point d’entrée utilise [multipart/form-data comme type de contenu](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html).
 
 Utilisez une bibliothèque de prise en charge HTTP pour la langue de votre choix afin de créer la requête multipartie. Vous pouvez également utiliser [curl](https://curl.se/) pour commencer.
 
@@ -112,7 +112,7 @@ Chaque point d’entrée de création de tâche partage les paramètres de confi
 
 ## Interroger le statut de la tâche
 
-Transmettez le `batchId` au point d’entrée [Obtenir le statut du lead d’importation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET) pour récupérer le statut de la tâche.
+Transmettez le `batchId` au point d’entrée [Obtenir le statut du lead d’importation](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportLeadStatusUsingGET) pour récupérer le statut de la tâche.
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}.json
@@ -144,7 +144,7 @@ Dans cet exemple, la tâche est terminée. L’interrogation peut donc s’arrê
 
 L’attribut `numOfRowsFailed` dans la réponse Get Import Lead Status indique le nombre de lignes ayant échoué. Une valeur supérieure à zéro signifie que des échecs se sont produits.
 
-Pour récupérer les enregistrements ayant échoué et leurs causes, utilisez le point d’entrée [Obtenir les échecs d’importation des leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET).
+Pour récupérer les enregistrements ayant échoué et leurs causes, utilisez le point d’entrée [Obtenir les échecs d’importation des leads](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportLeadFailuresUsingGET).
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}/failures.json

@@ -15,9 +15,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 2728
+source-wordcount: 2733
 ht-degree: 3%
 
 ---
@@ -72,7 +72,7 @@ GET /rest/v1/leads/describe.json
 
 Les réponses réelles incluent davantage de champs dans le tableau de résultats. Chaque élément représente un champ disponible dans l’enregistrement de prospect et contient au moins un id, un displayName et un type de données.
 
-Les objets enfants rest et soap n’apparaissent que lorsque le champ est valide pour l’API correspondante. La propriété `readOnly` indique si l’API correspondante peut mettre à jour le champ. Lorsqu’elle est présente, la propriété length indique la longueur maximale du champ, et la propriété dataType indique le type de données du champ.
+Les objets enfants REST n’apparaissent que lorsque le champ est valide pour l’API correspondante. La propriété `readOnly` indique si l’API correspondante peut mettre à jour le champ. Lorsqu’elle est présente, la propriété length indique la longueur maximale du champ, et la propriété dataType indique le type de données du champ.
 
 ## Requête
 
@@ -177,7 +177,7 @@ L’API Leads peut créer, mettre à jour et supprimer des enregistrements de le
 
 >[!NOTE]
 >
-> La mise à jour des champs Société à l’aide du point d’entrée [Leads de synchronisation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) n’est pas prise en charge. Utilisez plutôt le point d’entrée [Synchroniser les entreprises](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST).
+> La mise à jour des champs Société à l’aide du point d’entrée [Leads de synchronisation](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST) n’est pas prise en charge. Utilisez plutôt le point d’entrée [Synchroniser les entreprises](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCompaniesUsingPOST).
 
 >[!NOTE]
 >
@@ -864,7 +864,7 @@ POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marke
 ```
 
 Si le cookie est déjà associé à un prospect connu, l’utilisation de cette API pour un autre prospect enregistre une nouvelle activité web par rapport au nouvel enregistrement. L’activité web existante ne passe pas au nouvel enregistrement.
-Appartenance
+Adhésion
 
 Récupérez les enregistrements de prospect en fonction de l’appartenance à une liste ou un programme statique. Vous pouvez également récupérer toutes les listes statiques, les programmes ou les campagnes intelligentes qui incluent un prospect spécifique.
 

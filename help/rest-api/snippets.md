@@ -13,9 +13,9 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 386
+source-wordcount: 376
 ht-degree: 3%
 
 ---
@@ -28,7 +28,7 @@ Les fragments de code sont des composants HTML réutilisables pouvant être inco
 
 ## Requête
 
-Extraits de requête [par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetByIdUsingGET) ou par [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetUsingGET). L’API ne fournit pas de méthode de requête par nom. Les deux points d’entrée acceptent le champ `status` pour récupérer une version approuvée ou un brouillon.
+Extraits de requête [par ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getSnippetByIdUsingGET) ou par [navigation](https://developer.adobe.com/marketo-apis/api/asset#operation/getSnippetUsingGET). L’API ne fournit pas de méthode de requête par nom. Les deux points d’entrée acceptent le champ `status` pour récupérer une version approuvée ou un brouillon.
 
 ### Par Id
 
@@ -153,7 +153,7 @@ La réponse contient des sections de type `HTML` ou `DynamicContent`. Il peut é
 
 ## Créer et mettre à jour
 
-Créez la ressource de fragment de code et son contenu séparément. Tout d’abord, appelez le point d’entrée [créer un fragment de code](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/createSnippetUsingPOST). La description est facultative. Transmettez les données sous la forme `x-www-form-urlencoded`, et non sous la forme JSON.
+Créez la ressource de fragment de code et son contenu séparément. Tout d’abord, appelez le point d’entrée [créer un fragment de code](https://developer.adobe.com/marketo-apis/api/asset#operation/createSnippetUsingPOST). La description est facultative. Transmettez les données sous la forme `x-www-form-urlencoded`, et non sous la forme JSON.
 
 ```http
 POST /rest/asset/v1/snippets.json
@@ -225,7 +225,7 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 }
 ```
 
-Pour [mettre à jour les métadonnées](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/updateSnippetUsingPOST), spécifiez l’ID de fragment de code. Vous ne pouvez mettre à jour que le nom et la description.
+Pour [mettre à jour les métadonnées](https://developer.adobe.com/marketo-apis/api/asset#operation/updateSnippetUsingPOST), spécifiez l’ID de fragment de code. Vous ne pouvez mettre à jour que le nom et la description.
 
 ```http
 POST /rest/asset/v1/snippet/{id}.json
@@ -416,7 +416,7 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 ## Cloner
 
-Pour [cloner un fragment de code](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/cloneSnippetUsingPOST), indiquez un nom, l’identifiant du fragment de code source et un dossier. La description est facultative. Si la source n’a pas de version approuvée, le point d’entrée clone son brouillon.
+Pour [cloner un fragment de code](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneSnippetUsingPOST), indiquez un nom, l’identifiant du fragment de code source et un dossier. La description est facultative. Si la source n’a pas de version approuvée, le point d’entrée clone son brouillon.
 
 ```http
 POST /rest/asset/v1/snippet/{id}/clone.json

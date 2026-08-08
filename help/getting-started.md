@@ -16,9 +16,9 @@ role_v2:
 topic_v2:
   - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1228
+source-wordcount: 1201
 ht-degree: 2%
 
 ---
@@ -31,8 +31,7 @@ Cette page présente les principales entités Marketo Engage et leurs relations.
 
 >[!NOTE]
 >
->L’API SOAP sera abandonnée et ne sera plus disponible après le 31 juillet 2026. Utilisez l’API Marketo [REST](./rest-api/rest-api.md) pour tous les nouveaux développements. Migrez les services existants d’ici cette date pour éviter les interruptions de service. Si un service utilise l’API SOAP, reportez-vous au [&#x200B; Guide de migration de l’API SOAP &#x200B;](./soap-api/migration.md).
->
+>Depuis le 31 juillet 2026, l’API SOAP est obsolète et n’est plus disponible. Utilisez l’API Marketo [REST](./rest-api/rest-api.md) pour tous les nouveaux développements.
 
 Lorsque la connexion Native SFDC ou MS Dynamics CRM est activée sur une instance Marketo Engage, ces objets sont en lecture seule :
 
@@ -144,6 +143,6 @@ API associées : [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Cu
 
 Vous pouvez gérer les enregistrements de commercial et leurs relations de prospect dans Marketo lorsqu’aucune intégration CRM native n’est activée. Ces enregistrements contiennent des informations telles que le nom, l’adresse électronique et le titre de la tâche. Lorsqu&#39;un commercial possède un prospect, vous pouvez utiliser ces informations pour le filtrage et les jetons.
 
-Gérez la relation avec un commercial au niveau du prospect via le champ « externalSalesPersonId ». Mettez à jour ce champ via l’API [Leads de synchronisation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST).
+Gérez la relation avec un commercial au niveau du prospect via le champ « externalSalesPersonId ». Mettez à jour ce champ via l’API [Leads de synchronisation](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST).
 
 API associées : [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)

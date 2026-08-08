@@ -16,9 +16,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 720
+source-wordcount: 718
 ht-degree: 0%
 
 ---
@@ -93,7 +93,7 @@ Marketo enregistre l’activité web ultérieure de ce navigateur dans l’enreg
 
 - Le prospect doit se rendre sur une page suivie par Munchkin avec un paramètre `mkt_tok` dans la chaîne de requête à partir d’un lien e-mail Marketo suivi.
 - Le prospect doit remplir un formulaire Marketo.
-- Un appel REST [Associate Lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/associateLeadUsingPOST) doit être envoyé.
+- Un appel REST [Associate Lead](https://developer.adobe.com/marketo-apis/api/mapi#operation/associateLeadUsingPOST) doit être envoyé.
 
 Lorsque l’un de ces événements se produit, Marketo associe le cookie et toute activité web associée au prospect connu.
 

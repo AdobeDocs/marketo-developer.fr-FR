@@ -8,10 +8,10 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 360
-ht-degree: 1%
+source-wordcount: 333
+ht-degree: 2%
 
 ---
 
@@ -25,11 +25,11 @@ Pour les opérations de base de données de leads sur les membres de liste, voir
 
 ## Requête
 
-Effectuer des requêtes sur des listes statiques [par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByNameUsingGET) ou par [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListsUsingGET).
+Effectuer des requêtes sur des listes statiques [par ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByNameUsingGET) ou par [navigation](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListsUsingGET).
 
 ### Par Id
 
-[Requête par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByIdUsingGET) prend un paramètre de chemin d’accès `id` de liste statique et renvoie l’enregistrement correspondant.
+[Requête par ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByIdUsingGET) prend un paramètre de chemin d’accès `id` de liste statique et renvoie l’enregistrement correspondant.
 
 ```http
 GET /rest/asset/v1/staticList/{id}.json
@@ -58,7 +58,7 @@ GET /rest/asset/v1/staticList/{id}.json
 
 #### Par nom
 
-[Requête par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByNameUsingGET) prend un paramètre de `name` de liste statique. Le point d’entrée effectue une correspondance exacte par rapport aux noms de liste statique et renvoie l’enregistrement correspondant.
+[Requête par nom](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByNameUsingGET) prend un paramètre de `name` de liste statique. Le point d’entrée effectue une correspondance exacte par rapport aux noms de liste statique et renvoie l’enregistrement correspondant.
 
 ```http
 GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
@@ -87,7 +87,7 @@ GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
 
 #### Parcourir
 
-Utilisez le point d’entrée de navigation pour [récupérer des listes statiques par lots](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListsUsingGET). Le paramètre facultatif `folder` définit la portée de la requête sur un dossier parent. Transmettez le dossier en tant qu’objet JSON contenant `id` et `type`.
+Utilisez le point d’entrée de navigation pour [récupérer des listes statiques par lots](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListsUsingGET). Le paramètre facultatif `folder` définit la portée de la requête sur un dossier parent. Transmettez le dossier en tant qu’objet JSON contenant `id` et `type`.
 
 Utilisez `offset` et `maxReturn` pour la pagination. Utilisez `earliestUpdatedAt` et `latestUpdatedAt` comme limites de date et d’heure basses et élevées. Ces paramètres renvoient des listes créées ou mises à jour dans la plage. Utilisez les valeurs ISO-8601 sans millisecondes.
 
@@ -140,7 +140,7 @@ GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
 
 ## Créer et mettre à jour
 
-Envoyez une requête `application/x-www-form-urlencoded` POST pour [créer une liste statique](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/createStaticListUsingPOST). Les paramètres `folder` et `name` sont requis.
+Envoyez une requête `application/x-www-form-urlencoded` POST pour [créer une liste statique](https://developer.adobe.com/marketo-apis/api/asset#operation/createStaticListUsingPOST). Les paramètres `folder` et `name` sont requis.
 
 Transmettez `folder` en tant qu’objet JSON contenant des `id` et des `type`. Le `name` doit être unique. Le paramètre facultatif `description` décrit la liste.
 
@@ -177,7 +177,7 @@ folder={"id":1034,"type":"Program"}&name=My Static List
 }
 ```
 
-Utilisez le point d’entrée de mise à jour pour [modifier une liste statique](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/updateStaticListUsingPOST). Le paramètre de `description` facultatif modifie la description. Le paramètre `name` facultatif modifie le nom et doit être unique.
+Utilisez le point d’entrée de mise à jour pour [modifier une liste statique](https://developer.adobe.com/marketo-apis/api/asset#operation/updateStaticListUsingPOST). Le paramètre de `description` facultatif modifie la description. Le paramètre `name` facultatif modifie le nom et doit être unique.
 
 ```http
 POST /rest/asset/v1/staticList/{id}.json
@@ -215,7 +215,7 @@ description=This is a static list used for testing
 
 ## Supprimer
 
-Pour [supprimer une liste statique](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/deleteStaticListByIdUsingPOST), transmettez son `id` en tant que paramètre de chemin d’accès. Vous ne pouvez pas supprimer une liste utilisée par une importation, une exportation ou une autre ressource.
+Pour [supprimer une liste statique](https://developer.adobe.com/marketo-apis/api/asset#operation/deleteStaticListByIdUsingPOST), transmettez son `id` en tant que paramètre de chemin d’accès. Vous ne pouvez pas supprimer une liste utilisée par une importation, une exportation ou une autre ressource.
 
 ```http
 POST /rest/asset/v1/staticList/{id}/delete.json

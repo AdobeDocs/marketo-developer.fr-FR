@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 582
+source-wordcount: 572
 ht-degree: 1%
 
 ---
@@ -23,7 +23,7 @@ ht-degree: 1%
 
 [Référence des points d’entrée de sociétés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies)
 
-Les sociétés représentent les organisations auxquelles appartiennent les enregistrements de prospect. Pour ajouter un prospect à une entreprise, renseignez son champ de `externalCompanyId` à l’aide des points d’entrée [Prospects de synchronisation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) ou [Importation de prospects en bloc](bulk-lead-import.md).
+Les sociétés représentent les organisations auxquelles appartiennent les enregistrements de prospect. Pour ajouter un prospect à une entreprise, renseignez son champ de `externalCompanyId` à l’aide des points d’entrée [Prospects de synchronisation](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST) ou [Importation de prospects en bloc](bulk-lead-import.md).
 
 Vous ne pouvez pas supprimer un prospect d&#39;une entreprise à moins de l&#39;ajouter à une autre entreprise. Les leads liés à un enregistrement d’entreprise héritent des valeurs de cet enregistrement comme si les valeurs existaient sur l’enregistrement de lead.
 
@@ -109,7 +109,7 @@ GET /rest/v1/companies/describe.json
 
 ## Requête
 
-Le modèle de [sociétés d’interrogation](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompaniesUsingGET) suit de près l’API Leads. Cependant, le paramètre `filterType` accepte uniquement les champs répertoriés dans le tableau searchableFields de la réponse Describe Companies ou dedupeFields.
+Le modèle de [sociétés d’interrogation](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCompaniesUsingGET) suit de près l’API Leads. Cependant, le paramètre `filterType` accepte uniquement les champs répertoriés dans le tableau searchableFields de la réponse Describe Companies ou dedupeFields.
 
 Les paramètres de requête sont les suivants :
 
@@ -152,7 +152,7 @@ GET /rest/v1/companies.json?filterType=id&filterValues=3433,5345
 
 ## Créer et mettre à jour
 
-Le point d’entrée [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST) accepte un paramètre `input` obligatoire contenant un tableau d’objets d’entreprise.
+Le point d’entrée [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCompaniesUsingPOST) accepte un paramètre `input` obligatoire contenant un tableau d’objets d’entreprise.
 
 Comme pour les opportunités, le point d’entrée prend en charge trois modes de création et de mise à jour : createOnly, updateOnly et createOrUpdate. Spécifiez le mode dans le paramètre `action` de la requête.
 
@@ -214,7 +214,7 @@ Exécutez une requête sur un champ société par nom d’API ou récupérez tou
 
 #### Par nom
 
-Le point d’entrée [Obtenir le champ de l’entreprise par nom](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldByNameUsingGET) récupère les métadonnées d’un champ de l’objet d’entreprise. Le paramètre de chemin d’accès `fieldApiName` obligatoire spécifie le nom de l’API du champ.
+Le point d’entrée [Obtenir le champ de l’entreprise par nom](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCompanyFieldByNameUsingGET) récupère les métadonnées d’un champ de l’objet d’entreprise. Le paramètre de chemin d’accès `fieldApiName` obligatoire spécifie le nom de l’API du champ.
 
 La réponse ressemble à la réponse Décrire la société, mais elle comprend des métadonnées supplémentaires. Par exemple, l’attribut `isCustom` indique si le champ est personnalisé.
 
@@ -245,7 +245,7 @@ GET /rest/v1/companies/schema/fields/industry.json
 
 #### Parcourir
 
-Le point d’entrée [Obtenir les champs d’entreprise](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldsUsingGET) récupère les métadonnées de tous les champs de l’objet d’entreprise. Par défaut, elle renvoie un maximum de 300 enregistrements. Utilisez le paramètre de requête `batchSize` pour réduire ce nombre.
+Le point d’entrée [Obtenir les champs d’entreprise](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCompanyFieldsUsingGET) récupère les métadonnées de tous les champs de l’objet d’entreprise. Par défaut, elle renvoie un maximum de 300 enregistrements. Utilisez le paramètre de requête `batchSize` pour réduire ce nombre.
 
 Si l’attribut `moreResult` est défini sur « true », d’autres résultats sont disponibles. Continuez à appeler le point d’entrée avec la `nextPageToken` renvoyée jusqu’à ce que `moreResult` soit false.
 

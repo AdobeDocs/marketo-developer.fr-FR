@@ -18,9 +18,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: bcf56d2102f2f60eac5ad3318d348fd020391e6b
 workflow-type: tm+mt
-source-wordcount: 614
+source-wordcount: 613
 ht-degree: 4%
 
 ---
@@ -39,7 +39,7 @@ Configurez chaque webhook avec les propriétés suivantes :
 
 - **[!UICONTROL URL]** - URL vers laquelle vous envoyez la demande de service web.
 - **[!UICONTROL Type de requête]** - Méthode HTTP.
-- **[!UICONTROL Modèle de payload]** - Modèle pour les informations envoyées dans le corps POST. Utilisez n’importe quel format de données prenant en charge HTTP POST, y compris XML, JSON ou SOAP. Le format de sérialisation doit autoriser les guillemets doubles autour des chaînes. Pour insérer un jeton, sélectionnez **[!UICONTROL Insérer un jeton]**. Marketo met automatiquement les jetons de type chaîne entre guillemets doubles.
+- **[!UICONTROL Modèle de payload]** - Modèle pour les informations envoyées dans le corps POST. Utilisez n’importe quel format de données prenant en charge HTTP POST, y compris XML et JSON. Le format de sérialisation doit autoriser les guillemets doubles autour des chaînes. Pour insérer un jeton, sélectionnez **[!UICONTROL Insérer un jeton]**. Marketo met automatiquement les jetons de type chaîne entre guillemets doubles.
 - **[!UICONTROL Encodage du jeton de requête]** - Format de requête, JSON ou Formulaire/Url, utilisé pour coder les valeurs de jeton qui incluent des caractères spéciaux tels qu’une esperluette, «&amp; ». Sélectionnez l’encodage du corps correct afin que le webhook communique correctement avec le service web.
 - **[!UICONTROL Type de réponse]** - Format de réponse, JSON ou XML. Sélectionnez le type approprié pour mapper les propriétés de réponse aux champs de prospect dans Marketo.
 - **[!UICONTROL En-têtes personnalisés]** - Paires clé-valeur ajoutées en tant qu’en-têtes HTTP via **[!UICONTROL Actions Webhooks]** > **[!UICONTROL Définir l’en-tête personnalisé]**. Vous pouvez ajouter un nombre illimité d’en-têtes personnalisés.

@@ -14,9 +14,9 @@ subfeature_v2:
   - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1009
+source-wordcount: 978
 ht-degree: 1%
 
 ---
@@ -35,7 +35,7 @@ Exécutez des requêtes sur les campagnes intelligentes [par identifiant](#by_id
 
 ### Par Id
 
-Le point d’entrée [Get Smart Campaign by ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getSmartCampaignByIdUsingGET) prend un seul `id` de campagne intelligente comme paramètre de chemin d’accès et renvoie un seul enregistrement de campagne intelligente.
+Le point d’entrée [Get Smart Campaign by ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartCampaignByIdUsingGET) prend un seul `id` de campagne intelligente comme paramètre de chemin d’accès et renvoie un seul enregistrement de campagne intelligente.
 
 ```http
 GET /rest/asset/v1/smartCampaign/{id}.json
@@ -77,7 +77,7 @@ Le point d’entrée renvoie un enregistrement à la première position du table
 
 ### Par nom
 
-Le point d’entrée [Get Smart Campaign by Name](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getSmartCampaignByNameUsingGET) prend un seul `name` de campagne intelligente comme paramètre et renvoie un seul enregistrement de campagne intelligente.
+Le point d’entrée [Get Smart Campaign by Name](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartCampaignByNameUsingGET) prend un seul `name` de campagne intelligente comme paramètre et renvoie un seul enregistrement de campagne intelligente.
 
 ```http
 GET /rest/asset/v1/smartCampaign/byName.json?name=Test Trigger Campaign
@@ -123,7 +123,7 @@ Le point d’entrée renvoie un enregistrement à la première position du table
 
 ### Parcourir
 
-Le point d’entrée [Obtenir les campagnes intelligentes](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getAllSmartCampaignsGET) prend en charge les paramètres de requête facultatifs pour le filtrage et la pagination.
+Le point d’entrée [Obtenir les campagnes intelligentes](https://developer.adobe.com/marketo-apis/api/asset#operation/getAllSmartCampaignsGET) prend en charge les paramètres de requête facultatifs pour le filtrage et la pagination.
 
 Les paramètres `earliestUpdatedAt` et `latestUpdatedAt` acceptent les `datetimes` au format ISO-8601 (sans millisecondes). Si les deux sont définis, la valeur de firstUpdatedAt doit précéder la valeur de latestUpdatedAt.
 
@@ -196,7 +196,7 @@ Le point d’entrée renvoie un ou plusieurs enregistrements dans le tableau `re
 
 ## Créer
 
-Envoyez une requête `application/x-www-form-urlencoded` POST au point d’entrée [Créer une campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/createSmartCampaignUsingPOST). Les paramètres `name` et `folder` sont requis. Transmettez `folder` en tant qu’objet JSON contenant des `id` et des `type`.
+Envoyez une requête `application/x-www-form-urlencoded` POST au point d’entrée [Créer une campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#operation/createSmartCampaignUsingPOST). Les paramètres `name` et `folder` sont requis. Transmettez `folder` en tant qu’objet JSON contenant des `id` et des `type`.
 
 Vous pouvez éventuellement décrire la campagne intelligente à l’aide du paramètre `description` (2 000 caractères maximum).
 
@@ -302,7 +302,7 @@ name=Smart Campaign 02 Update&description=This is a smart campaign update test.
 
 ## Cloner
 
-Envoyez une requête `application/x-www-form-urlencoded` POST au point d’entrée [Cloner une campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5). Les paramètres `id`, `name` et `folder` sont requis. Ils spécifient la campagne source, le nouveau nom de campagne et le dossier parent. Transmettez `folder` en tant qu’objet JSON contenant des `id` et des `type`.
+Envoyez une requête `application/x-www-form-urlencoded` POST au point d’entrée [Cloner une campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneSmartCampaignUsingPOST). Les paramètres `id`, `name` et `folder` sont requis. Ils spécifient la campagne source, le nouveau nom de campagne et le dossier parent. Transmettez `folder` en tant qu’objet JSON contenant des `id` et des `type`.
 
 Vous pouvez éventuellement décrire la campagne intelligente à l’aide du paramètre `description` (2 000 caractères maximum).
 
@@ -356,7 +356,7 @@ name=Test Trigger Campaign Clone&folder={"type": "folder","id": 640}&description
 
 ## Supprimer
 
-Le point d’entrée [Supprimer la campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/deleteSmartCampaignUsingPOST) utilise une seule `id` de campagne intelligente comme paramètre de chemin d’accès.
+Le point d’entrée [Supprimer la campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#operation/deleteSmartCampaignUsingPOST) utilise une seule `id` de campagne intelligente comme paramètre de chemin d’accès.
 
 ```http
 POST /rest/asset/v1/smartCampaign/{id}/delete.json
@@ -380,9 +380,9 @@ POST /rest/asset/v1/smartCampaign/{id}/delete.json
 
 Les campagnes intelligentes par lots s’exécutent à une heure spécifiée et traitent ensemble un ensemble défini de prospects.
 
-## Programmation
+## Planning
 
-Utilisez [Planifier une campagne](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/scheduleCampaignUsingPOST) pour planifier une campagne par lots. Le paramètre de chemin de `id` de la campagne est obligatoire. Transmettez les paramètres facultatifs `tokens`, `runAt` et `cloneToProgram` dans le corps de la requête JSON.
+Utilisez [Planifier une campagne](https://developer.adobe.com/marketo-apis/api/mapi#operation/scheduleCampaignUsingPOST) pour planifier une campagne par lots. Le paramètre de chemin de `id` de la campagne est obligatoire. Transmettez les paramètres facultatifs `tokens`, `runAt` et `cloneToProgram` dans le corps de la requête JSON.
 
 Le tableau `tokens` remplace les jetons My Tokens du programme existant pour cette exécution. Marketo ignore les remplacements après l’exécution de la campagne. Chaque élément contient une paire nom/valeur et le nom du jeton doit utiliser le format `{{my.name}}`.
 
@@ -390,7 +390,7 @@ Le paramètre date-heure `runAt` indique quand exécuter la campagne. Si cet att
 
 Les campagnes planifiées via cette API attendent toujours un minimum de cinq minutes avant d’être exécutées.
 
-Le paramètre de chaîne `cloneToProgram` contient le nom d’un programme obtenu.  Lorsqu’elle est définie, la campagne, le programme parent et toutes ses ressources sont créés avec le nouveau nom qui en résulte. Le programme parent est cloné et la campagne qui vient d’être créée est planifiée. Le programme qui en résulte est créé sous le parent. Les programmes contenant des fragments de code, des notifications push, des messages in-app, des listes statiques, des rapports et des ressources sociales ne peuvent pas être clonés de cette manière. Lorsqu’il est utilisé, ce point d’entrée est limité à 20 appels par jour. Le point d’entrée [programme de clonage](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) est l’alternative recommandée.
+Le paramètre de chaîne `cloneToProgram` contient le nom d’un programme obtenu.  Lorsqu’elle est définie, la campagne, le programme parent et toutes ses ressources sont créés avec le nouveau nom qui en résulte. Le programme parent est cloné et la campagne qui vient d’être créée est planifiée. Le programme qui en résulte est créé sous le parent. Les programmes contenant des fragments de code, des notifications push, des messages in-app, des listes statiques, des rapports et des ressources sociales ne peuvent pas être clonés de cette manière. Lorsqu’il est utilisé, ce point d’entrée est limité à 20 appels par jour. Le point d’entrée [programme de clonage](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneProgramUsingPOST) est l’alternative recommandée.
 
 ```http
 POST /rest/v1/campaigns/{id}/schedule.json
@@ -433,7 +433,7 @@ Les campagnes intelligentes Trigger traitent une personne à la fois en réponse
 
 ### Requête
 
-Utilisez [Demande de campagne](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/triggerCampaignUsingPOST) pour transmettre des prospects par le biais du flux d’une campagne de déclenchement. La campagne doit utiliser un déclencheur Campaign est demandé avec l’API de service web comme source.
+Utilisez [Demande de campagne](https://developer.adobe.com/marketo-apis/api/mapi#operation/triggerCampaignUsingPOST) pour transmettre des prospects par le biais du flux d’une campagne de déclenchement. La campagne doit utiliser un déclencheur Campaign est demandé avec l’API de service web comme source.
 
 Le paramètre de chemin d’`id` de la campagne et un tableau entier `leads` d’identifiants de prospect sont requis. Chaque appel accepte un maximum de 100 prospects.
 
@@ -485,7 +485,7 @@ POST /rest/v1/campaigns/{id}/trigger.json
 
 ### Activer
 
-Le point d’entrée [Activer la campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/activateSmartCampaignUsingPOST) est simple. Un paramètre de chemin d’accès `id` est requis. Pour que l’activation réussisse, ce qui suit doit être vrai pour la campagne :
+Le point d’entrée [Activer la campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#operation/activateSmartCampaignUsingPOST) est simple. Un paramètre de chemin d’accès `id` est requis. Pour que l’activation réussisse, ce qui suit doit être vrai pour la campagne :
 
 - La campagne est désactivée.
 - La campagne comporte au moins un déclencheur et une étape de flux.
@@ -510,7 +510,7 @@ POST /rest/asset/v1/smartCampaign/{id}/activate.json
 
 ### Désactiver
 
-La [Désactiver la campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/deactivateSmartCampaignUsingPOST) est simple. Un paramètre de chemin d’accès `id` est requis. Pour que la désactivation réussisse, la campagne doit être activée.
+La [Désactiver la campagne intelligente](https://developer.adobe.com/marketo-apis/api/asset#operation/deactivateSmartCampaignUsingPOST) est simple. Un paramètre de chemin d’accès `id` est requis. Pour que la désactivation réussisse, la campagne doit être activée.
 
 ```http
 POST /rest/asset/v1/smartCampaign/{id}/deactivate.json

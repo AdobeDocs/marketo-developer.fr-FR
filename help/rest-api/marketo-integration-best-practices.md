@@ -15,9 +15,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: df401a2a-327d-468c-a5e4-b7b7ccd071a0
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 882
+source-wordcount: 866
 ht-degree: 0%
 
 ---
@@ -34,7 +34,6 @@ Concevez des intégrations autour des limites d’API partagées pour votre inst
 - **Taille du lot :** la base de données de lead prend en charge 300 enregistrements ; la requête de ressource prend en charge 200 enregistrements.
 - **Taille de la payload de l’API REST :** 1 Mo.
 - **Taille du fichier d’importation en bloc :** 10 Mo.
-- **Taille de lot maximale de SOAP :** 300 enregistrements.
 - **Tâches d’extraction en bloc :** deux en cours d’exécution et dix en file d’attente, inclus.
 
 ## Conseils rapides
@@ -66,15 +65,15 @@ Chaque instance Marketo compatible avec les API dispose d’une allocation quoti
 
 La capacité est partagée par tous les services d’API et les utilisateurs d’une instance. Éliminez les appels redondants et les enregistrements par lots en le réduisant au minimum.
 
-La méthode d’importation la plus efficace pour les appels est l’API d’importation en bloc Marketo, disponible pour les [prospects/personnes](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) et [objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Snippets/operation/createSnippetUsingPOST). Marketo fournit également l’extraction en bloc pour les [prospects](bulk-lead-extract.md) et [activités](bulk-activity-extract.md).
+La méthode d’importation la plus efficace pour les appels est l’API d’importation en bloc Marketo, disponible pour les [prospects/personnes](https://developer.adobe.com/marketo-apis/api/mapi#operation/importLeadUsingPOST) et [objets personnalisés](https://developer.adobe.com/marketo-apis/api/mapi#operation/importCustomObjectUsingPOST). Marketo fournit également l’extraction en bloc pour les [prospects](bulk-lead-extract.md) et [activités](bulk-activity-extract.md).
 
 ### Mise en cache
 
 Les résultats des opérations suivantes peuvent généralement être mis en cache côté client pendant un jour ou plus, car ils changent rarement :
 
 - Résultats des opérations de description
-- [Types d’activité](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)
-- [Partitions](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadPartitionsUsingGET)
+- [Types d’activité](https://developer.adobe.com/marketo-apis/api/mapi#operation/getAllActivityTypesUsingGET)
+- [Partitions](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadPartitionsUsingGET)
 
 Pour les cas d’utilisation tels que l’enrichissement des données de prospect ou d’activité, vous pouvez également mettre en cache des types de ressources tels que des programmes, des e-mails et des dossiers.
 

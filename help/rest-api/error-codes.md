@@ -17,9 +17,9 @@ topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: cc72dcf1-72e1-48cc-b434-e7c27d62d67c
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 2255
+source-wordcount: 2332
 ht-degree: 4%
 
 ---
@@ -384,8 +384,8 @@ Par exemple, si une requête Synchroniser les leads définit « action » sur «
 >    <tr>
 >      <td><a name="1012"></a>1012</td>
 >      <td>Valeur de cookie non valide « %s »</td>
->      <td>Peut se produire lors de l’appel de la <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/associateLeadUsingPOST">Associer le prospect</a> avec une valeur non valide pour le paramètre « cookie ».
->        Cela se produit également lors de l’appel de <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET">Get Leads by Filter Type</a> avec « filterType=cookies » et une valeur non valide pour le paramètre « filterValues ».</td>
+>      <td>Peut se produire lors de l’appel de la <a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/associateLeadUsingPOST">Associer le prospect</a> avec une valeur non valide pour le paramètre « cookie ».
+>        Cela se produit également lors de l’appel de <a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByFilterUsingGET">Get Leads by Filter Type</a> avec « filterType=cookies » et une valeur non valide pour le paramètre « filterValues ».</td>
 >    </tr>
 >    <tr>
 >      <td><a name="1013"></a>1013</td>
@@ -503,24 +503,24 @@ Par exemple, si une requête Synchroniser les leads définit « action » sur «
 >    </tr>
 >    <tr>
 >      <td><a name="1076"></a>1076</td>
->      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les prospects</a> avec l’indicateur mergeInCRM est le 4.</td>
+>      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/mergeLeadsUsingPOST">Fusionner les prospects</a> avec l’indicateur mergeInCRM est le 4.</td>
 >      <td>Vous êtes en train de créer un enregistrement en double. Il est recommandé d’utiliser plutôt un enregistrement existant.
 >        Il s’agit du message d’erreur que Marketo reçoit lors de la fusion dans Salesforce.</td>
 >    </tr>
 >    <tr>
 >      <td><a name="1077"></a>1077</td>
->      <td>Échec de l’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Merge Leads</a> en raison de la longueur du champ « SFDC »</td>
+>      <td>Échec de l’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/mergeLeadsUsingPOST">Merge Leads</a> en raison de la longueur du champ « SFDC »</td>
 >      <td>Un appel de fusion de leads avec mergeInCRM défini sur true a échoué, car « SFDC Field » a dépassé la limite de caractères autorisés. Pour corriger ce problème, réduisez la longueur du « champ SFDC » ou définissez mergeInCRM sur false.</td>
 >    </tr>
 >    <tr>
 >      <td><a name="1078"></a>1078</td>
->      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les leads</a> a échoué en raison d’une entité supprimée, d’un lead/contact ou d’un critère de filtre de champ ne correspond pas.</td>
+>      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/mergeLeadsUsingPOST">Fusionner les leads</a> a échoué en raison d’une entité supprimée, d’un lead/contact ou d’un critère de filtre de champ ne correspond pas.</td>
 >      <td>Échec de la fusion, impossible d’effectuer l’opération de fusion dans un CRM synchronisé en mode natif
 >        Il s’agit du message d’erreur que Marketo reçoit lors de la fusion dans Salesforce.</td>
 >    </tr>
 >    <tr>
 >      <td><a name="1079"></a>1079</td>
->      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Fusionner les leads</a> a échoué en raison d’un conflit d’URL personnalisée dans les enregistrements en double</td>
+>      <td>L’appel <a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/mergeLeadsUsingPOST">Fusionner les leads</a> a échoué en raison d’un conflit d’URL personnalisée dans les enregistrements en double</td>
 >      <td>Un appel de fusion de leads a spécifié de nombreux leads avec la même URL personnalisée. Pour résoudre ce problème, utilisez l’interface utilisateur de Marketo Engage pour fusionner ces enregistrements.</td>
 >    </tr>
 >  </tbody>

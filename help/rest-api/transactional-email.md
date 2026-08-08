@@ -11,16 +11,16 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 897
+source-wordcount: 891
 ht-degree: 1%
 
 ---
 
 # E-mail transactionnel
 
-Utilisez l’API [Request Campaign](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/triggerCampaignUsingPOST) pour envoyer des e-mails transactionnels à des enregistrements Marketo spécifiques. Configurez l’e-mail et déclenchez la campagne avant d’effectuer la requête.
+Utilisez l’API [Request Campaign](https://developer.adobe.com/marketo-apis/api/mapi#operation/triggerCampaignUsingPOST) pour envoyer des e-mails transactionnels à des enregistrements Marketo spécifiques. Configurez l’e-mail et déclenchez la campagne avant d’effectuer la requête.
 
 - Assurez-vous que le destinataire dispose d’un enregistrement Marketo.
 - Créez et approuvez un e-mail transactionnel dans l’instance Marketo.
@@ -56,7 +56,7 @@ Les exemples Java utilisent le package [minimal-json](https://github.com/ralfstx
 
 Avant d’envoyer l’e-mail, vérifiez qu’il existe un enregistrement Marketo pour l’adresse e-mail et récupérez son ID de prospect. Cet exemple suppose que l’adresse e-mail existe déjà.
 
-Utilisez [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET) pour récupérer l’identifiant. La méthode principale suivante demande ensuite la campagne :
+Utilisez [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByFilterUsingGET) pour récupérer l’identifiant. La méthode principale suivante demande ensuite la campagne :
 
 ```java
 package dev.marketo.blog_request_campaign;
@@ -274,4 +274,4 @@ Result:
 
 ## Conclusion
 
-Cette méthode peut être étendue de différentes manières, en modifiant le contenu des e-mails dans des sections de disposition individuelles ou en dehors des e-mails, ce qui permet de transmettre des valeurs personnalisées dans des tâches ou des moments intéressants. Chaque fois qu’un jeton peut être utilisé à partir d’un programme, il peut être personnalisé à l’aide de cette méthode. Une fonctionnalité similaire est également disponible avec l’appel [Planifier la campagne](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/scheduleCampaignUsingPOST) qui vous permet de traiter les jetons dans une campagne par lots entière. Elles ne peuvent pas être personnalisées par prospect, mais sont utiles pour personnaliser le contenu d’un large éventail de prospects.
+Cette méthode peut être étendue de différentes manières, en modifiant le contenu des e-mails dans des sections de disposition individuelles ou en dehors des e-mails, ce qui permet de transmettre des valeurs personnalisées dans des tâches ou des moments intéressants. Chaque fois qu’un jeton peut être utilisé à partir d’un programme, il peut être personnalisé à l’aide de cette méthode. Une fonctionnalité similaire est également disponible avec l’appel [Planifier la campagne](https://developer.adobe.com/marketo-apis/api/mapi#operation/scheduleCampaignUsingPOST) qui vous permet de traiter les jetons dans une campagne par lots entière. Elles ne peuvent pas être personnalisées par prospect, mais sont utiles pour personnaliser le contenu d’un large éventail de prospects.

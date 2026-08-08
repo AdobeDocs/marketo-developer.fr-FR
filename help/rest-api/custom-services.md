@@ -12,16 +12,16 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 894
+source-wordcount: 890
 ht-degree: 9%
 
 ---
 
 # Services personnalisés
 
-Un service personnalisé fournit les informations d’identification utilisées pour s’authentifier auprès de Marketo et obtenir un jeton d’accès à partir du Marketo [Service d’identités](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). Chaque service personnalisé est limité à un utilisateur API uniquement et tire ses autorisations de cet utilisateur.
+Un service personnalisé fournit les informations d’identification utilisées pour s’authentifier auprès de Marketo et obtenir un jeton d’accès à partir du Marketo [Service d’identités](https://developer.adobe.com/marketo-apis/api/identity#operation/identityUsingGET). Chaque service personnalisé est limité à un utilisateur API uniquement et tire ses autorisations de cet utilisateur.
 
 ## Rôles
 
@@ -79,7 +79,7 @@ Attribuez un nom explicite au service. Dans la liste « Service », sélectionne
 
 Le service apparaît dans la liste des services LaunchPoint avec l’option « Afficher les détails ». Sélectionnez « Afficher les détails » pour accéder à l’ID client, au secret client, à l’utilisateur propriétaire et à l’option Obtenir le jeton .
 
-Utilisez Get Token pour les tests à court terme. Le jeton a la même durée de vie que les jetons obtenus à partir du [Service d’identités](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET) et est valide pendant 3 600 secondes après sa création.
+Utilisez Get Token pour les tests à court terme. Le jeton a la même durée de vie que les jetons obtenus à partir du [Service d’identités](https://developer.adobe.com/marketo-apis/api/identity#operation/identityUsingGET) et est valide pendant 3 600 secondes après sa création.
 
 ![Obtenir un jeton](assets/get-token.png)
 

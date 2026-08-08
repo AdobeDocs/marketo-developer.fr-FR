@@ -13,9 +13,9 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 570
+source-wordcount: 543
 ht-degree: 2%
 
 ---
@@ -30,7 +30,7 @@ Les modèles sont des documents HTML avec des métadonnées telles qu’un nom e
 
 ## Requête
 
-Les modèles d’e-mail prennent en charge les modèles de requête de ressource standard : [par identifiant](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getTemplateByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getTemplateByNameUsingGET) et en [parcourant](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getEmailTemplatesUsingGET) un dossier.
+Les modèles d’e-mail prennent en charge les modèles de requête de ressource standard : [par identifiant](https://developer.adobe.com/marketo-apis/api/asset#operation/getTemplateByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#operation/getTemplateByNameUsingGET) et en [parcourant](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailTemplatesUsingGET) un dossier.
 
 ### Par Id
 
@@ -204,7 +204,7 @@ Les requêtes de modèle renvoient uniquement des métadonnées d’enregistreme
 
 ## Créer et mettre à jour
 
-Pour [créer](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/createEmailTemplateUsingPOST) ou [mettre à jour](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/updateEmailTemplateContentUsingPOST) un modèle, envoyez le document HTML dans une requête POST `multipart/form-data`. L’en-tête `Content-Type` doit inclure une limite comme décrit dans les RFC pour [multipart](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html) et [multipart/form-data](https://www.ietf.org/rfc/rfc2388.txt).
+Pour [créer](https://developer.adobe.com/marketo-apis/api/asset#operation/createEmailTemplateUsingPOST) ou [mettre à jour](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailTemplateContentUsingPOST) un modèle, envoyez le document HTML dans une requête POST `multipart/form-data`. L’en-tête `Content-Type` doit inclure une limite comme décrit dans les RFC pour [multipart](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html) et [multipart/form-data](https://www.ietf.org/rfc/rfc2388.txt).
 
 La création d&#39;un modèle requiert les paramètres suivants :
 
@@ -275,7 +275,7 @@ Create email template using API
 }
 ```
 
-Pour mettre à jour le contenu du modèle, appelez le point d’entrée [content](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/updateEmailTemplateContentUsingPOST) avec l’identifiant du modèle d’e-mail. Le corps de la requête accepte uniquement le paramètre `content`.
+Pour mettre à jour le contenu du modèle, appelez le point d’entrée [content](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailTemplateContentUsingPOST) avec l’identifiant du modèle d’e-mail. Le corps de la requête accepte uniquement le paramètre `content`.
 
 Le contenu envoyé remplace complètement le contenu du modèle existant. La mise à jour d’une version approuvée crée un nouveau brouillon. La mise à jour d’une ressource en mode brouillon uniquement remplace le brouillon actuel.
 
@@ -319,7 +319,7 @@ Content-Type: text/html
 
 ## Mettre à jour les métadonnées
 
-Pour [mettre à jour les métadonnées d’un modèle](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/updateEmailTemplateUsingPOST), envoyez une requête POST `application/x-www-form-urlencoded` avec les paramètres `name` et `description`.
+Pour [mettre à jour les métadonnées d’un modèle](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailTemplateUsingPOST), envoyez une requête POST `application/x-www-form-urlencoded` avec les paramètres `name` et `description`.
 
 ```http
 POST /rest/asset/v1/emailTemplate/{id}.json
@@ -479,7 +479,7 @@ POST /rest/asset/v1/emailTemplate/{id}/delete.json
 
 ## Cloner
 
-Pour [cloner un modèle d’e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/cloneTemplateUsingPOST), envoyez une requête POST `application/x-www-form-urlencoded` avec les paramètres suivants :
+Pour [cloner un modèle d’e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneTemplateUsingPOST), envoyez une requête POST `application/x-www-form-urlencoded` avec les paramètres suivants :
 
 - `name` : obligatoire. Nom du modèle cloné.
 - `folder` : obligatoire. Un objet JSON incorporé avec `id` et `type`.
@@ -525,7 +525,7 @@ name=Sample Template 01 - deverly&folder={"id":12,"type":"Folder"}&description=T
 
 ## Dépendances des e-mails de requête
 
-Utilisez le point d’entrée [Obtenir le modèle d’e-mail utilisé par](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getEmailTemplateUsedByUsingGET) pour récupérer les e-mails qui dépendent d’un modèle. Le paramètre de chemin d’accès `id` identifie le modèle d’e-mail parent.
+Utilisez le point d’entrée [Obtenir le modèle d’e-mail utilisé par](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailTemplateUsedByUsingGET) pour récupérer les e-mails qui dépendent d’un modèle. Le paramètre de chemin d’accès `id` identifie le modèle d’e-mail parent.
 
 Le point d’entrée prend en charge deux paramètres de pagination facultatifs :
 

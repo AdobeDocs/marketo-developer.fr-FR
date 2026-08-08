@@ -13,9 +13,9 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 806
+source-wordcount: 792
 ht-degree: 1%
 
 ---
@@ -30,7 +30,7 @@ Utilisez l’API Folders pour créer, interroger, mettre à jour et supprimer de
 
 ## Requête
 
-Les dossiers prennent en charge les modèles de requête de ressource standard : [par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) et par [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET).
+Les dossiers prennent en charge les modèles de requête de ressource standard : [par ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET) et par [navigation](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderUsingGET).
 
 ### Par Id
 
@@ -86,7 +86,7 @@ Les types de dossier sont les suivants :
 
 ### Par nom
 
-Le point d’entrée [requête par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) nécessite `name`, qui effectue une correspondance exacte avec les noms de dossier et renvoie chaque dossier correspondant.
+Le point d’entrée [requête par nom](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET) nécessite `name`, qui effectue une correspondance exacte avec les noms de dossier et renvoie chaque dossier correspondant.
 
 Le point d’entrée accepte également les paramètres facultatifs suivants :
 
@@ -135,12 +135,12 @@ Les activités marketing et Design Studio sont des dossiers racine. Récupérez 
 
 ### Parcourir
 
-Vous pouvez également [récupérer des dossiers en bloc](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET). Utilisez le paramètre `root` pour spécifier le dossier parent sous lequel effectuer la requête. Transmettez `root` en tant qu’objet JSON incorporé avec deux membres :
+Vous pouvez également [récupérer des dossiers en bloc](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderUsingGET). Utilisez le paramètre `root` pour spécifier le dossier parent sous lequel effectuer la requête. Transmettez `root` en tant qu’objet JSON incorporé avec deux membres :
 
 1. `id` : ID du dossier ou du programme.
 1. `type` : `Folder` ou `Program`, selon le type de dossier racine.
 
-Si vous ne connaissez pas le dossier racine ou si vous souhaitez récupérer tous les dossiers d’une zone, utilisez la racine Activités marketing, Design Studio ou Base de données de leads. Récupérez l’ID racine en transmettant le nom de la zone à l’API [Obtenir le dossier par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET).
+Si vous ne connaissez pas le dossier racine ou si vous souhaitez récupérer tous les dossiers d’une zone, utilisez la racine Activités marketing, Design Studio ou Base de données de leads. Récupérez l’ID racine en transmettant le nom de la zone à l’API [Obtenir le dossier par nom](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET).
 
 Comme avec d’autres points d’entrée de récupération de ressources en bloc, utilisez les paramètres facultatifs `offset` et `maxReturn` pour la pagination. Les autres paramètres facultatifs sont les suivants :
 
@@ -237,7 +237,7 @@ Le champ `url` contient l’URL de la ressource pour l’instance désignée. Il
 
 ## Créer et mettre à jour
 
-Pour [créer un dossier](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/createFolderUsingPOST), envoyez une requête POST `application/x-www-form-urlencoded` avec les paramètres suivants :
+Pour [créer un dossier](https://developer.adobe.com/marketo-apis/api/asset#operation/createFolderUsingPOST), envoyez une requête POST `application/x-www-form-urlencoded` avec les paramètres suivants :
 
 - `name` : chaîne obligatoire contenant le nom du dossier.
 - `parent` : objet JSON incorporé obligatoire contenant des `id` et des `type`. Le type est `Folder` ou `Program`, selon le parent.

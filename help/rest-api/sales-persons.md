@@ -10,9 +10,9 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 369
+source-wordcount: 363
 ht-degree: 0%
 
 ---
@@ -27,9 +27,9 @@ Les vendeurs sont des enregistrements de personne qui représentent les vendeurs
 
 Associez les commerciaux à d&#39;autres enregistrements en transmettant l&#39;attribut externalSalesPersonId au point d&#39;entrée correspondant :
 
-- Enregistrements de leads : [Synchroniser les leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST).
-- Enregistrements des opportunités : [Synchroniser les opportunités](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/syncOpportunitiesUsingPOST).
-- Enregistrements d’entreprise : [Synchroniser les entreprises](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST).
+- Enregistrements de leads : [Synchroniser les leads](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST).
+- Enregistrements des opportunités : [Synchroniser les opportunités](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncOpportunitiesUsingPOST).
+- Enregistrements d’entreprise : [Synchroniser les entreprises](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCompaniesUsingPOST).
 
 Les enregistrements de commercial ne peuvent être modifiés que par le biais de l’API.
 

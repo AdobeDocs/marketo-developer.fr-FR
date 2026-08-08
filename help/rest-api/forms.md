@@ -17,9 +17,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1494
+source-wordcount: 1447
 ht-degree: 3%
 
 ---
@@ -40,11 +40,11 @@ Utilisez les points d’entrée de formulaires pour gérer les formulaires des s
 
 ## Requête
 
-Forms prend en charge les méthodes standard de récupération des ressources : [par identifiant](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByNameUsingGET) et par [navigation](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/browseForms2UsingGET). Une réponse de formulaire contient chaque propriété de formulaire, à l’exception de la liste de champs.
+Forms prend en charge les méthodes standard de récupération des ressources : [par identifiant](https://developer.adobe.com/marketo-apis/api/asset#operation/getLpFormByIdUsingGET), [par nom](https://developer.adobe.com/marketo-apis/api/asset#operation/getLpFormByNameUsingGET) et par [navigation](https://developer.adobe.com/marketo-apis/api/asset#operation/browseForms2UsingGET). Une réponse de formulaire contient chaque propriété de formulaire, à l’exception de la liste de champs.
 
 ### Par ID
 
-Transmettez un `id` de formulaire en tant que paramètre de chemin d’accès à [Obtenir le formulaire par ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByIdUsingGET). Le point d’entrée renvoie l’enregistrement de formulaire correspondant.
+Transmettez un `id` de formulaire en tant que paramètre de chemin d’accès à [Obtenir le formulaire par ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getLpFormByIdUsingGET). Le point d’entrée renvoie l’enregistrement de formulaire correspondant.
 
 ```http
 GET /rest/asset/v1/form/{id}.json
@@ -98,7 +98,7 @@ GET /rest/asset/v1/form/{id}.json
 
 ### Par nom
 
-Transmettez un `name` de formulaire à [Obtenir le formulaire par nom](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByNameUsingGET). Le point d’entrée renvoie l’enregistrement de formulaire correspondant.
+Transmettez un `name` de formulaire à [Obtenir le formulaire par nom](https://developer.adobe.com/marketo-apis/api/asset#operation/getLpFormByNameUsingGET). Le point d’entrée renvoie l’enregistrement de formulaire correspondant.
 
 ```http
 GET /rest/asset/v1/form/byName.json?name=newForm
@@ -152,7 +152,7 @@ GET /rest/asset/v1/form/byName.json?name=newForm
 
 ### Parcourir
 
-[Get Forms](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/browseForms2UsingGET) suit le modèle de navigation standard de l’API Assets. Il prend en charge les filtres facultatifs suivants :
+[Get Forms](https://developer.adobe.com/marketo-apis/api/asset#operation/browseForms2UsingGET) suit le modèle de navigation standard de l’API Assets. Il prend en charge les filtres facultatifs suivants :
 
 - `status` : filtre par `approved`, `approved with draft` ou `draft`.
 - `maxReturn` : limite le nombre d&#39;enregistrements renvoyés.
@@ -332,7 +332,7 @@ Avant de mettre à jour ou de supprimer des champs ou de modifier leur comportem
 
 ### Dépendances
 
-Transmettez un `id` de formulaire comme paramètre de chemin d’accès à [Obtenir le formulaire utilisé par](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getFormUsedByUsingGET). Le point d’entrée renvoie les ressources qui dépendent du formulaire.
+Transmettez un `id` de formulaire comme paramètre de chemin d’accès à [Obtenir le formulaire utilisé par](https://developer.adobe.com/marketo-apis/api/asset#operation/getFormUsedByUsingGET). Le point d’entrée renvoie les ressources qui dépendent du formulaire.
 
 Les types de ressources suivants peuvent utiliser des formulaires :
 
@@ -366,7 +366,7 @@ GET /rest/asset/v1/form/{id}/usedBy.json
 
 ## Créer et mettre à jour
 
-Pour [créer un formulaire](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/createLpFormsUsingPOST), renseignez deux champs obligatoires :
+Pour [créer un formulaire](https://developer.adobe.com/marketo-apis/api/asset#operation/createLpFormsUsingPOST), renseignez deux champs obligatoires :
 
 - Dossier parent du formulaire.
 - Nom du formulaire.
@@ -431,7 +431,7 @@ name=newForm&description=test&folder={"type": "Folder","id": 293}&language=Frenc
 }
 ```
 
-Pour [mettre à jour un formulaire](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/updateFormsUsingPOST), transmettez son identifiant. Lors de la création ou de la mise à jour, vous pouvez définir les paramètres de style de base qui contrôlent l’aspect du formulaire pour l’utilisateur.
+Pour [mettre à jour un formulaire](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFormsUsingPOST), transmettez son identifiant. Lors de la création ou de la mise à jour, vous pouvez définir les paramètres de style de base qui contrôlent l’aspect du formulaire pour l’utilisateur.
 
 ```http
 POST /rest/asset/v1/form/736.json
@@ -496,7 +496,7 @@ Les points d’entrée de formulaire créer et mettre à jour ne modifient pas l
 
 Avant d’ajouter ou de modifier des champs de formulaire, récupérez les champs valides de l’instance cible. Les opérations de champ utilisent la propriété `id` renvoyée pour chaque champ.
 
-Pour les champs de prospect, utilisez le point d’entrée [Obtenir les champs de formulaire disponibles](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getAllFieldsUsingGET). La réponse inclut le type de données de chaque champ et les métadonnées par défaut appliquées lorsque le champ est ajouté à un formulaire.
+Pour les champs de prospect, utilisez le point d’entrée [Obtenir les champs de formulaire disponibles](https://developer.adobe.com/marketo-apis/api/asset#operation/getAllFieldsUsingGET). La réponse inclut le type de données de chaque champ et les métadonnées par défaut appliquées lorsque le champ est ajouté à un formulaire.
 
 ```http
 GET /rest/asset/v1/form/fields.json
@@ -628,7 +628,7 @@ GET /rest/asset/v1/form/fields.json
 }
 ```
 
-Pour les champs personnalisés de membre de programme, appelez le point d’entrée [Obtenir les champs de membre de programme de formulaire disponibles](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getAllProgramMemberFieldsUsingGET). La réponse inclut les types de données de champ personnalisé du membre de programme et les métadonnées par défaut.
+Pour les champs personnalisés de membre de programme, appelez le point d’entrée [Obtenir les champs de membre de programme de formulaire disponibles](https://developer.adobe.com/marketo-apis/api/asset#operation/getAllProgramMemberFieldsUsingGET). La réponse inclut les types de données de champ personnalisé du membre de programme et les métadonnées par défaut.
 
 Pour utiliser ces champs, le formulaire doit se trouver sous un programme, et non dans Design Studio. Une page de destination contenant un formulaire avec ces champs doit également se trouver sous un programme. Il ne peut pas être ni cloné dans Design Studio.
 
@@ -669,7 +669,7 @@ GET /rest/asset/v1/form/programMemberFields.json
 
 Chaque formulaire possède une liste modifiable de champs affichée pour l’utilisateur ou l’utilisatrice au chargement du formulaire. Utilisez le point d’entrée correspondant pour ajouter, mettre à jour ou supprimer un champ à la fois.
 
-Pour [ajouter un champ](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addFieldToAFormUsingPOST), fournissez l’ID du formulaire parent et le `fieldId` du champ. Toutes les autres propriétés sont vides ou utilisent des valeurs par défaut en fonction du type de données et des métadonnées du champ.
+Pour [ajouter un champ](https://developer.adobe.com/marketo-apis/api/asset#operation/addFieldToAFormUsingPOST), fournissez l’ID du formulaire parent et le `fieldId` du champ. Toutes les autres propriétés sont vides ou utilisent des valeurs par défaut en fonction du type de données et des métadonnées du champ.
 
 Envoyez les données sous la forme d’un POST avec `application/x-www-form-urlencoded`, et non d’un JSON.
 
@@ -835,7 +835,7 @@ Utilisez la réponse Ajouter un champ au formulaire pour déterminer comment for
 
 ### Réorganisation du champ
 
-Utilisez le point d’entrée [&#x200B; Modifier la position des champs de formulaire &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/updateFieldPositionsUsingPOST) pour réorganiser tous les champs de formulaire en une seule unité. Le point d’entrée nécessite `positions`, un tableau JSON d’objets avec trois membres :
+Utilisez le point d’entrée [&#x200B; Modifier la position des champs de formulaire &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFieldPositionsUsingPOST) pour réorganiser tous les champs de formulaire en une seule unité. Le point d’entrée nécessite `positions`, un tableau JSON d’objets avec trois membres :
 
 - `columnNumber`
 - `rowNumber`
@@ -875,7 +875,7 @@ positions=[{"columnNumber":0,"rowNumber":0,"fieldName":"FirstName"},{"columnNumb
 
 ### Texte complet
 
-Utilisez un [point d’entrée distinct](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addRichTextFieldUsingPOST) pour ajouter des champs de texte enrichi. Transmettez le contenu en tant qu’HTML dans une requête `multipart/form-data`. HTML ne doit pas contenir de scripts, de balises meta ou de balises de lien.
+Utilisez un [point d’entrée distinct](https://developer.adobe.com/marketo-apis/api/asset#operation/addRichTextFieldUsingPOST) pour ajouter des champs de texte enrichi. Transmettez le contenu en tant qu’HTML dans une requête `multipart/form-data`. HTML ne doit pas contenir de scripts, de balises meta ou de balises de lien.
 
 ```http
 POST /rest/asset/v1/form/{id}/richText.json
@@ -918,7 +918,7 @@ Un jeu de champs est un groupe facultatif de champs. La liste de champs de nivea
 
 Un champ doit être unique dans le formulaire. Le même champ ne peut pas apparaître à la fois dans la liste des champs parents du formulaire et dans un jeu de champs enfant.
 
-Ajoutez un jeu de champs avec le point d’entrée [&#x200B; Ajouter un jeu de champs au formulaire &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addFieldSetUsingPOST). Le jeu de champs apparaît ensuite dans la réponse [Obtenir les champs du formulaire](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getFormFieldByFormVidUsingGET). Pour ajouter des champs à l’ensemble de champs, utilisez [Mettre à jour la position des champs](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/updateFieldPositionsUsingPOST) pour les déplacer dans son `fieldList`.
+Ajoutez un jeu de champs avec le point d’entrée [&#x200B; Ajouter un jeu de champs au formulaire &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#operation/addFieldSetUsingPOST). Le jeu de champs apparaît ensuite dans la réponse [Obtenir les champs du formulaire](https://developer.adobe.com/marketo-apis/api/asset#operation/getFormFieldByFormVidUsingGET). Pour ajouter des champs à l’ensemble de champs, utilisez [Mettre à jour la position des champs](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFieldPositionsUsingPOST) pour les déplacer dans son `fieldList`.
 
 Pour ces points d’entrée, envoyez les données sous la forme d’un POST avec `application/x-www-form-urlencoded`, et non d’un fichier JSON.
 
@@ -965,7 +965,7 @@ visibilityRule={"ruleType":"show", "rules":[{"subjectField": "LastName", "operat
 }
 ```
 
-Pour obtenir la liste complète des opérateurs, voir [&#x200B; Ajouter des règles de visibilité des champs de formulaire &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addFormFieldVisibilityRuleUsingPOST).
+Pour obtenir la liste complète des opérateurs, voir [&#x200B; Ajouter des règles de visibilité des champs de formulaire &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#operation/addFormFieldVisibilityRuleUsingPOST).
 
 ## Suivi
 
@@ -977,7 +977,7 @@ La valeur `followupType` peut être `lp` ou `url`. La valeur `lp` indique que `f
 
 ## Bouton d&#39;envoi
 
-Utilisez le point d’entrée [Mettre à jour le bouton Envoyer](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/updateFormSubmitButtonUsingPOST) pour modifier le style du bouton d’envoi. Vous pouvez mettre à jour `buttonPosition`, `buttonStyle`, `label` et `waitingLabel`. La `waitingLabel` s’affiche alors que l’envoi est en attente.
+Utilisez le point d’entrée [Mettre à jour le bouton Envoyer](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFormSubmitButtonUsingPOST) pour modifier le style du bouton d’envoi. Vous pouvez mettre à jour `buttonPosition`, `buttonStyle`, `label` et `waitingLabel`. La `waitingLabel` s’affiche alors que l’envoi est en attente.
 
 Il s’agit d’une mise à jour destructrice.
 

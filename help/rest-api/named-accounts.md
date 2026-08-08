@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 590
+source-wordcount: 584
 ht-degree: 1%
 
 ---
@@ -243,7 +243,7 @@ Exécutez une requête dans un champ de compte nommé par nom d’API ou récup�
 
 #### Par nom
 
-Le point d’entrée [Obtenir le champ de compte nommé par nom](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) récupère les métadonnées d’un champ sur l’objet de compte nommé. Le paramètre de chemin d’accès fieldApiName obligatoire spécifie le nom de l’API du champ.
+Le point d’entrée [Obtenir le champ de compte nommé par nom](https://developer.adobe.com/marketo-apis/api/mapi#operation/getNamedAccountFieldByNameUsingGET) récupère les métadonnées d’un champ sur l’objet de compte nommé. Le paramètre de chemin d’accès fieldApiName obligatoire spécifie le nom de l’API du champ.
 
 La réponse ressemble à la réponse Décrire le compte nommé , mais elle comprend des métadonnées supplémentaires. Par exemple, l’attribut isCustom indique si le champ est personnalisé.
 
@@ -273,7 +273,7 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 #### Parcourir
 
-Le point d’entrée [Obtenir les champs de compte nommés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) récupère les métadonnées de tous les champs de l’objet de compte nommé. Par défaut, elle renvoie un maximum de 300 enregistrements. Utilisez le paramètre de requête batchSize pour réduire ce nombre.
+Le point d’entrée [Obtenir les champs de compte nommés](https://developer.adobe.com/marketo-apis/api/mapi#operation/getNamedAccountFieldByNameUsingGET) récupère les métadonnées de tous les champs de l’objet de compte nommé. Par défaut, elle renvoie un maximum de 300 enregistrements. Utilisez le paramètre de requête batchSize pour réduire ce nombre.
 
 Si l’attribut moreResult est défini sur true, d’autres résultats sont disponibles. Continuez à appeler le point d’entrée avec le nextPageToken renvoyé jusqu’à ce que moreResult ait la valeur false.
 
