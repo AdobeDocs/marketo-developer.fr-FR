@@ -1,7 +1,6 @@
 ---
 title: Serveur MCP Marketo Engage
 description: Découvrez comment connecter un assistant d’IA à Marketo à l’aide du serveur MCP Marketo Engage. Configurez le bureau Claude, le curseur, le code Claude ou le code VS avec vos informations d’identification Marketo.
-badgeBeta: label="Disponibilité limitée" type="informative" tooltip="Cette fonctionnalité est actuellement en version bêta limitée"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
 autotag-review: '2026-06-02T13:31:15.329Z'
 TQID: 'https://experienceleague.adobe.com/PJJm7yv8HmbwMB2fsnfDCXs8zprDJK5Q5z2uiiCJRZI'
@@ -21,22 +20,19 @@ role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 4d690179b0ff8da03b6eb7d11566f511d491f369
+source-git-commit: 8fc4e9a161decdc0b39a7e98bdb17de035538a6a
 workflow-type: tm+mt
-source-wordcount: 2214
-ht-degree: 1%
+source-wordcount: 2144
+ht-degree: 4%
 
 ---
 
-# [!DNL Marketo Engage] MCP Server
 
->[!AVAILABILITY]
->
-> Cette fonctionnalité est en disponibilité limitée. Pour demander l’accès, remplissez [ce formulaire](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Wht7-jR7h0OUrtLBeN7O4Y-uSf63sAxCmWyqMJg8eMFUMVZSVExSNDA3T0I4SEcwRDFSVTBGWU01Uy4u&origin=QRCode){target="_blank"}. Assurez-vous que l’identifiant Munchkin de votre abonnement est prêt.
+# [!DNL Marketo Engage] MCP Server
 
 >[!NOTE]
 >
->L’équipe du serveur MCP s’efforce d’activer les API Smart List et Smart Campaign Asset pour qu’elles fonctionnent avec le serveur MCP. La majeure partie de ce travail, y compris les activités, actions et règles de liste autorisée, devrait être achevée au T3 2026.
+>Les `create` et outils de `update` des listes intelligentes et des campagnes intelligentes sont prévus pour la version de septembre 2026.
 
 Le protocole MCP (Model Context Protocol) est une norme ouverte qui connecte les outils d’IA aux services externes. Le serveur MCP [!DNL Marketo] connecte votre assistant AI à [!DNL Marketo]. Il fournit plus de 100 opérations pour des formulaires, des programmes, des campagnes intelligentes, des prospects, des e-mails, des fragments de code, des listes et des dossiers.
 
@@ -46,8 +42,8 @@ Pour plus d’informations sur la manière dont les données sont gérées avec 
 
 >[!IMPORTANT]
 >
->Le protocole MCP (Model Context Protocol) est une norme open source émergente qui peut présenter des risques pour la sécurité ou la fiabilité. Les intégrations de serveurs Adobe MCP et la documentation associée sont fournies « en l’état », sans garantie d’aucune sorte.
->La connexion des clients ou serveurs MCP aux produits Adobe est une configuration choisie par le client. Ce dernier est chargé d’évaluer la sécurité et l’adéquation de toute intégration MCP. Adobe n’est pas responsable des problèmes résultant d’une mauvaise configuration, d’une utilisation abusive du MCP, de vulnérabilités dans les implémentations tierces ou d’actions involontaires effectuées par le biais de workflows prenant en charge MCP.
+>Le protocole MCP (Model Context Protocol) est une norme open source émergente qui peut présenter des risques en matière de sécurité ou de fiabilité. Les intégrations du serveur Adobe MCP et la documentation associée sont fournies « en l’état », sans garantie d’aucune sorte.
+>La connexion des clients ou serveurs MCP aux produits Adobe est une configuration choisie par le client. Ce dernier est chargé d’évaluer la sécurité et l’adéquation de toute intégration MCP. Adobe n’est pas responsable des problèmes résultant d’une mauvaise configuration, d’une utilisation abusive de MCP, de vulnérabilités dans les mises en œuvre tierces ou d’actions involontaires effectuées par le biais de workflows compatibles avec le serveur MCP.
 >Pour réduire les risques, Adobe encourage à tester les intégrations dans un environnement Sandbox avant une utilisation productive et à examiner et valider soigneusement toutes les actions et réponses initiées par MCP avant de les confirmer ou de s’y fier.
 
 ## Principes de base de MCP
