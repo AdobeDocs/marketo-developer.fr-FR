@@ -4,15 +4,12 @@ feature: REST API
 description: Découvrez comment utiliser l’API REST d’extraction en bloc Marketo pour exporter des prospects, des activités, des membres de programme et des objets personnalisés, avec OAuth, des files d’attente de tâches et des limites quotidiennes 500MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
 TQID: https://experienceleague.adobe.com/ECSchsjqp8fyxXbUGl5DgXHUkXuN0sIUc3yJfVaIe1E
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 1a442b6008fbb8f05ad346f1b7185a5b2e22f0e4
 workflow-type: tm+mt
-source-wordcount: 1549
+source-wordcount: 1525
 ht-degree: 1%
 
 ---
@@ -43,14 +40,14 @@ Les API d’extraction en masse utilisent la même méthode d’authentification
 
 >[!IMPORTANT]
 >
->La prise en charge de l’authentification à l’aide du paramètre de requête **access_token** sera supprimée le 31 août 2026. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête **Authorization** dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête **Authorization**.
+>La prise en charge de l’authentification à l’aide du paramètre de requête **access_token** a été supprimée le 31 août 2026. Le nouveau développement doit utiliser exclusivement l’en-tête **Authorization**.
 
 ## Limites
 
 - Nombre maximal de traitements d’exportation simultanés : 2
 - Nombre maximal de tâches d’exportation en file d’attente, y compris les tâches en cours d’exportation : 10
 - Durée de conservation des fichiers : sept jours
-- Affectation quotidienne par défaut des exportations : 500MB. L’affectation se réinitialise tous les jours à 00 h 00 (heure de Paris). Les augmentations peuvent être achetées.
+- L’attribution se réinitialise tous les jours à 00 h 00 CST/CDT, en fonction de l’heure d’été. Les augmentations peuvent être achetées.
 - Durée maximale du filtre de période (`createdAt` ou `updatedAt`) : 31 jours
 
 Les filtres d’extraction de leads en bloc pour UpdatedAt et la liste dynamique ne sont pas disponibles pour certains types d’abonnement. Si ces filtres ne sont pas disponibles, le point d’entrée Créer une tâche d’exportation de prospect renvoie l’erreur « 1035, Unsupported filter type for target subscription » (1035, type de filtre non pris en charge pour l’abonnement cible). Contactez l’assistance Marketo pour activer cette fonctionnalité dans le cadre de votre abonnement.
