@@ -8,9 +8,9 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 6d9408d07557d4b7426ad72d2a886220d622fb78
+source-git-commit: 1a442b6008fbb8f05ad346f1b7185a5b2e22f0e4
 workflow-type: tm+mt
-source-wordcount: 526
+source-wordcount: 487
 ht-degree: 0%
 
 ---
@@ -61,7 +61,7 @@ Chaque appel de l’API REST doit inclure un jeton d’accès dans un en-tête H
 
 >[!IMPORTANT]
 >
->La prise en charge de l’authentification à l’aide du paramètre de requête `access_token` sera supprimée le 31 août 2026. Si votre projet utilise un paramètre de requête pour transmettre le jeton d’accès, il doit être mis à jour afin d’utiliser l’en-tête [Authorization](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) dès que possible. Le nouveau développement doit utiliser exclusivement l’en-tête `Authorization` .
+>La prise en charge de l’authentification à l’aide du paramètre de requête `access_token` a été supprimée le 31 août 2026. Le nouveau développement doit utiliser exclusivement l’en-tête `Authorization` .
 
 ### Passage à l’en-tête d’autorisation
 
