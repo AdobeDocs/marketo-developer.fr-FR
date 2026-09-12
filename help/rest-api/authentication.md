@@ -8,9 +8,9 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 1a442b6008fbb8f05ad346f1b7185a5b2e22f0e4
+source-git-commit: eb4e99aff94f3106b96f999fc56a6db7c5598b1f
 workflow-type: tm+mt
-source-wordcount: 487
+source-wordcount: 563
 ht-degree: 0%
 
 ---
@@ -62,6 +62,8 @@ Chaque appel de l’API REST doit inclure un jeton d’accès dans un en-tête H
 >[!IMPORTANT]
 >
 >La prise en charge de l’authentification à l’aide du paramètre de requête `access_token` a été supprimée le 31 août 2026. Le nouveau développement doit utiliser exclusivement l’en-tête `Authorization` .
+>Cette modification est une mesure corrective de sécurité conforme aux bonnes pratiques de sécurité d’Industry et d’OAuth 2.0, qui recommandent de ne pas transmettre de jetons d’accès dans les URL.  Les workflows existants qui s’authentifient de cette manière peuvent déjà rencontrer des erreurs 603 (Accès refusé).
+>Mettez à jour votre intégration en priorité pour utiliser l’authentification par en-tête avant le 15 septembre 2026.  Si vous avez besoin de temps supplémentaire, contactez l’assistance Adobe pour discuter des options disponibles
 
 ### Passage à l’en-tête d’autorisation
 
