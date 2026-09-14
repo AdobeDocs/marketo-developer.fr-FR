@@ -6,9 +6,7 @@ source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
 source-wordcount: '65289'
 ht-degree: 0%
-
 ---
-
 # Archive de blog
 
 >[!INFO]
@@ -18,7 +16,7 @@ ht-degree: 0%
 >
 
 >[!IMPORTANT]
->Depuis le 31 juillet 2026, l’API SOAP est obsolète et n’est plus disponible. Tout nouveau développement doit être effectué avec l’API REST Marketo et les services existants doivent être migrés à cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [Guide de migration de l’API SOAP](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/soap/migration) pour plus d’informations sur la migration.
+>Depuis le 31 juillet 2026, l’API SOAP est obsolète et n’est plus disponible. Tout nouveau développement doit être effectué avec l’API REST Marketo et les services existants doivent être migrés à cette date pour éviter toute interruption de service. Si un service utilise l’API SOAP, consultez le [Guide de migration de l’API SOAP](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/migration) pour plus d’informations sur la migration.
 >
 
 >[!IMPORTANT]
@@ -326,7 +324,7 @@ Publié le _2014-04-22_ par _Murta_
 
 ### Mise à jour de sécurité de Marketo Forms
 
-Nous avons introduit une limite au nombre et à la fréquence des envois de publications de formulaires à partir d’une seule adresse IP. Cette limite est désormais appliquée à 30 publications par minute pour protéger nos clients contre l’utilisation malveillante des envois de formulaires programmatiques. L’API [syncLead](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/soap/leads/synclead) est le véhicule d’intégration recommandé pour l’envoi programmatique de nouveaux contacts dans Marketo.
+Nous avons introduit une limite au nombre et à la fréquence des envois de publications de formulaires à partir d’une seule adresse IP. Cette limite est désormais appliquée à 30 publications par minute pour protéger nos clients contre l’utilisation malveillante des envois de formulaires programmatiques. L’API [syncLead](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/leads/synclead) est le véhicule d’intégration recommandé pour l’envoi programmatique de nouveaux contacts dans Marketo.
 
 Publié le _2014-04-29_ par _Travis Kaufman_
 
@@ -1048,7 +1046,7 @@ Publié le _2015-02-20_ par _Murta_
 
 ## Création d’un champ personnalisé dans Marketo et mise à jour de ce champ via AP
 
-Supposons que vous disposiez de données supplémentaires sur vos prospects qui ne s’intègrent pas aux champs Marketo standard. Par exemple, ce champ personnalisé peut être un score tiers. Vous pouvez créer un champ personnalisé dans Marketo pour votre score tiers, puis mettre à jour la valeur de ce champ via les API Marketo [REST](https://developer.adobe.com/marketo-apis/) ou [SOAP](https://experienceleague.adobe.com/fr/docs/marketo-developer/marketo/soap/activity-type-filters). Nous vous montrons d’abord comment créer un champ personnalisé dans Marketo, puis comment mettre à jour ce champ à l’aide de l’API REST.
+Supposons que vous disposiez de données supplémentaires sur vos prospects qui ne s’intègrent pas aux champs Marketo standard. Par exemple, ce champ personnalisé peut être un score tiers. Vous pouvez créer un champ personnalisé dans Marketo pour votre score tiers, puis mettre à jour la valeur de ce champ via les API Marketo [REST](https://developer.adobe.com/marketo-apis/) ou [SOAP](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/activity-type-filters). Nous vous montrons d’abord comment créer un champ personnalisé dans Marketo, puis comment mettre à jour ce champ à l’aide de l’API REST.
 
 ### Création d’un champ personnalisé dans Marketo
 
