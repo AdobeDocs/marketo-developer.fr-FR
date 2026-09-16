@@ -6,27 +6,37 @@ autotag-review: '2026-06-02T13:31:15.329Z'
 TQID: 'https://experienceleague.adobe.com/PJJm7yv8HmbwMB2fsnfDCXs8zprDJK5Q5z2uiiCJRZI'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: a7170d27-32ab-462b-a333-269abc654483
+    internal-label: Smart Campaigns
   - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+    internal-label: Forms
   - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
+    internal-label: Integrations
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
   - id: c2dbad80-0f5c-4d96-a798-2a65f93b8721
+    internal-label: Assets
   - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
   - id: e2290edd-b061-4880-9d79-dee306cf5aa9
+    internal-label: Implementation
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
   - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+    internal-label: Templates
 role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+    internal-label: Developer
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 8fc4e9a161decdc0b39a7e98bdb17de035538a6a
+    internal-label: Artificial intelligence
+source-git-commit: b12faeb0cb1a3680f6e0e7a522c54931b3de2c5d
 workflow-type: tm+mt
-source-wordcount: 2144
+source-wordcount: '2099'
 ht-degree: 4%
-
 ---
-
 
 # [!DNL Marketo Engage] MCP Server
 
@@ -38,7 +48,7 @@ Le protocole MCP (Model Context Protocol) est une norme ouverte qui connecte les
 
 Lorsque votre outil d’IA appelle le serveur MCP, le serveur utilise les informations d’identification contenues dans cette requête pour exécuter l’appel API REST correspondant. Vous n’avez pas besoin d’installer, de déployer ou d’exécuter un logiciel côté serveur.
 
-Pour plus d’informations sur la manière dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/marketo-ai/data-information).
+Pour plus d’informations sur la manière dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 >[!IMPORTANT]
 >
@@ -106,7 +116,7 @@ Si vous les avez déjà, passez à [Configurer votre outil d’IA](#configure-yo
 ### ID de compte Munchkin
 
 1. Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Munchkin]**.
-1. Copiez l’ID de compte **&#x200B;**. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
+1. Copiez l’ID de compte ****. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
 
 ## Configuration de votre outil d’IA
 
@@ -163,27 +173,6 @@ Tu auras également besoin de :
 Si votre configuration MCP de curseur contient déjà d&#39;autres serveurs, ajoutez l&#39;entrée `marketo` sous `mcpServers`.
 L’exemple suivant montre le bloc de `mcpServers` complet dans **[!UICONTROL Paramètres]** > **[!UICONTROL MCP]** ou `.cursor/mcp.json` dans le répertoire du projet :
 
->[!BEGINTABS]
-
->[!TAB  Jeton IMS ]
-
-```json
-{
-  "mcpServers": {
-    "marketo": {
-      "type": "http",
-      "url": "https://marketo-mcp.adobe.io/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR-IMS-TOKEN",
-        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
-      }
-    }
-  }
-}
-```
-
->[!TAB Informations d’identification du client ]
-
 ```json
 {
   "mcpServers": {
@@ -200,26 +189,11 @@ L’exemple suivant montre le bloc de `mcpServers` complet dans **[!UICONTROL Pa
 }
 ```
 
->[!ENDTABS]
-
 Redémarrez le curseur.
 
 ### Claude Code (CLI) {#claude-code}
 
 Exécutez la commande suivante dans votre terminal en remplaçant vos informations d’identification :
-
->[!BEGINTABS]
-
->[!TAB  Jeton IMS ]
-
-```bash
-claude mcp add --transport http marketo \
-  https://marketo-mcp.adobe.io/mcp \
-  --header "Authorization: Bearer YOUR-IMS-TOKEN" \
-  --header "x-gw-ims-org-id: YOUR-IMS-ORG-ID"
-```
-
->[!TAB Informations d’identification du client ]
 
 ```bash
 claude mcp add --transport http marketo \
@@ -229,28 +203,15 @@ claude mcp add --transport http marketo \
   --header "X-Marketo-Munchkin-Id: YOUR-MUNCHKIN-ID"
 ```
 
->[!ENDTABS]
-
 ### Codex OpenAI {#codex}
 
 1. Accédez à Paramètres > Serveurs MCP > Ajouter un serveur .
 1. Ajoutez l&#39;URL du serveur : `https://marketo-mcp.adobe.io/mcp`.
 1. Ajoutez les en-têtes pour votre méthode d’authentification :
 
->[!BEGINTABS]
-
->[!TAB  Jeton IMS ]
-
-* Autorisation : « Porteur DE VOTRE JETON IMS »
-* x-gw-ims-org-id : « YOUR-IMS-ORG-ID »
-
->[!TAB Informations d’identification du client ]
-
 * X-Marketo-Client-Id : « YOUR-CLIENT-ID »
 * X-Marketo-Client-Secret : « YOUR-CLIENT-SECRET »
 * X-Marketo-Munchkin-Id : « YOUR-MUNCHKIN-ID »
-
->[!ENDTABS]
 
 1. Sélectionnez Enregistrer pour terminer le processus.
 
@@ -258,27 +219,6 @@ claude mcp add --transport http marketo \
 ### VS Code avec pilote GitHub {#vscode}
 
 Appuyez sur **[!UICONTROL Ctrl+Maj+P]** (ou **[!UICONTROL Cmd+Maj+P]** sur macOS), saisissez **[!UICONTROL MCP: Open User Configuration]**, puis appuyez sur Entrée. Cette action ouvre `mcp.json`. Ajoutez l’entrée `marketo` dans l’objet `servers` :
-
->[!BEGINTABS]
-
->[!TAB  Jeton IMS ]
-
-```json
-{
-  "servers": {
-    "marketo": {
-      "type": "http",
-      "url": "https://marketo-mcp.adobe.io/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR-IMS-TOKEN",
-        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
-      }
-    }
-  }
-}
-```
-
->[!TAB Informations d’identification du client ]
 
 ```json
 {
@@ -296,15 +236,13 @@ Appuyez sur **[!UICONTROL Ctrl+Maj+P]** (ou **[!UICONTROL Cmd+Maj+P]** sur macOS
 }
 ```
 
->[!ENDTABS]
-
 >[!NOTE]
 >
 >Pour des raisons de sécurité, utilisez l’interpolation des variables d’environnement dans les fichiers de configuration au lieu de coller directement les informations d’identification. Vous pouvez référencer des variables à l’aide d’une syntaxe telle que `${MARKETO_CLIENT_SECRET}` et les définir dans votre environnement. Cela empêche de stocker les informations d’identification en texte brut dans des fichiers dont la version est contrôlée.
 
 ### Glaner {#glean}
 
-Pour connecter Glean au serveur MCP Marketo Engage, l’équipe d’assistance [&#x200B; Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features) doit configurer les en-têtes personnalisés suivants.
+Pour connecter Glean au serveur MCP Marketo Engage, l’équipe d’assistance [ Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features) doit configurer les en-têtes personnalisés suivants.
 
 | Header | Valeur |
 | ------ | ----- |
@@ -328,24 +266,11 @@ Vous n’avez pas besoin d’un pont spécifique à un outil ni d’un logiciel 
 
 Envoyez les en-têtes pour l’une des méthodes d’authentification suivantes avec chaque requête. L’emplacement où vous saisissez l’URL du serveur et les en-têtes dépend de votre outil. Consultez donc sa documentation MCP.
 
->[!BEGINTABS]
-
->[!TAB  Jeton IMS ]
-
-| Header | Valeur |
-| ------ | ----- |
-| `Authorization` | `Bearer YOUR-IMS-TOKEN` |
-| `x-gw-ims-org-id` | Votre identifiant de l’organisation IMS |
-
->[!TAB Informations d’identification du client ]
-
 | Header | Valeur |
 | ------ | ----- |
 | `X-Marketo-Client-Id` | Votre identifiant client |
 | `X-Marketo-Client-Secret` | Votre Secret Client |
 | `X-Marketo-Munchkin-Id` | Identifiant de votre compte Munchkin |
-
->[!ENDTABS]
 
 Si votre outil accepte une configuration JSON, commencez par les exemples [Cursor](#cursor) ou [VS Code](#vscode), puis ajustez les touches (`mcpServers`, `servers`) pour qu’elles correspondent au schéma de votre outil.
 
