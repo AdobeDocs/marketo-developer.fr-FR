@@ -5,24 +5,31 @@ exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
 TQID: https://experienceleague.adobe.com/0lfzor5EQJ0VqIh4fqlK29OiPmRCy6fnEtncJ38r-OM
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+    internal-label: Forms
   - id: c954475c-8548-4e33-a0b8-6b550d956115
+    internal-label: Marketing automation
   - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+    internal-label: Administration
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
   - id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+    internal-label: Reporting
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
+    internal-label: Reporting
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Administration
+source-git-commit: 8e1497d0d018bacb210b202d488e285a798e9dcf
 workflow-type: tm+mt
-source-wordcount: 1201
+source-wordcount: '1193'
 ht-degree: 2%
-
 ---
-
 # Prise en main
 
 Marketo Engage est une plateforme d’automatisation marketing permettant la gestion de programmes et de campagnes multicanaux personnalisés pour les prospects et les clients. Vous pouvez étendre la plateforme à travers ses points d’intégration.
@@ -38,17 +45,17 @@ Lorsque la connexion Native SFDC ou MS Dynamics CRM est activée sur une instanc
 - Société
 - Opportunité
 - Rôle de l’opportunité
-- Vendeur
+- Représentant commercial
 
 ![&#x200B; Modèle de données &#x200B;](assets/data_model.png)
 
 ## Personne (Leads)
 
-Les personnes sont la base de l’automatisation du marketing. Marketo fait référence à tous les enregistrements autres que les commerciaux en tant que leads, que les ventes les considèrent comme des leads, des prospects, des suspects ou des contacts.
+Les personnes sont la base de l’automatisation du marketing. Marketo fait référence à tous les enregistrements ne concernant pas les représentants des ventes en tant que leads, que les ventes les considèrent comme des leads, des prospects, des suspects ou des contacts.
 
-L’objet de prospect comprend des champs standard tels que l’adresse électronique, le prénom et le nom. Vous pouvez ajouter des champs pour stocker d’autres informations et lire et écrire des attributs personnalisés de la même manière que pour les champs standard. Recherchez la liste complète des champs sous **[!UICONTROL Admin]** > **[!UICONTROL Gestion des champs]** dans Marketo.
+L’objet de prospect comprend des champs standard tels que l’adresse électronique, le prénom et le nom. Pour stocker d’autres informations, vous pouvez ajouter des champs et vous pouvez lire et écrire des attributs personnalisés de la même manière que pour les champs standard. Recherchez la liste complète des champs sous **[!UICONTROL Admin]** > **[!UICONTROL Gestion des champs]** dans Marketo.
 
-Marketo identifie les prospects de manière unique par le champ d’identifiant . Vous devez appliquer d’autres clés uniques en dehors du système.
+Marketo identifie les prospects de manière unique par le champ d’identifiant . Appliquez d’autres clés uniques en dehors du système.
 
 API associées : [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads), [JavaScript](javascript-api/lead-tracking.md#lead-tracking-api)
 
@@ -64,11 +71,11 @@ API associées : [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Ac
 
 ## Programmes et campagnes
 
-Un programme organise les efforts marketing d’un professionnel du marketing dans un emplacement. Par exemple, une explosion d’e-mail peut être un programme.
+Un programme organise les efforts marketing d’un professionnel du marketing dans un emplacement. Par exemple, une campagne par e-mail peut être un programme.
 
-Un prospect peut effectuer plusieurs actions ou activités associées à un programme. Ce processus est connu sous le nom de progression du plomb. Pour un programme d’explosion d’e-mail, la progression peut enregistrer le moment où Marketo envoie l’e-mail, le moment où la personne l’ouvre et si la personne clique sur un lien.
+Un prospect peut effectuer plusieurs actions ou activités associées à un programme. Ce processus est connu sous le nom de progression du plomb. Pour un programme de campagne par e-mail, la progression peut enregistrer le moment où Marketo envoie l’e-mail, le moment où la personne l’ouvre et si la personne clique sur un lien.
 
-Une campagne remplit un objectif spécifique au sein d’un programme. Par exemple, une campagne peut sélectionner un groupe de prospects et envoyer une explosion d’e-mail. Une autre campagne peut avertir un commercial lorsqu’un prospect clique sur un lien dans l’e-mail envoyé en masse.
+Une campagne remplit un objectif spécifique au sein d’un programme. Par exemple, une campagne peut sélectionner un groupe de prospects et envoyer une explosion d’e-mail. Une autre campagne peut informer un commercial lorsqu’un prospect clique sur un lien dans la campagne par e-mail.
 
 API associées : [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns)
 
@@ -78,7 +85,7 @@ Les balises regroupent et catégorisent les données de programme pour la créat
 
 En tant qu’administrateur Marketo, vous pouvez créer des types de balises obligatoires et facultatifs que les utilisateurs sélectionnent lors de la création d’un programme. Vous définissez les valeurs possibles pour chaque type de balise en fonction des exigences de reporting de votre société.
 
-Par exemple, créez un type de balise « Region » personnalisé avec des valeurs telles que Nord-Est et Sud-Est pour analyser la région qui génère le plus de prospects. Créez un type de balise « Propriétaire » pour comparer les propriétaires de programme, tels que Maria, David ou John, qui ont le plus d’impact sur la création de prospects et d’opportunités. Pour plus d’informations, voir [Présentation des balises](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags).
+Par exemple, pour analyser la région qui génère le plus de leads, créez un type de balise « Region » personnalisé avec des valeurs telles que Nord-Est et Sud-Est. Créez un type de balise « Propriétaire » pour comparer les propriétaires de programme qui ont le plus d’impact sur la création de prospects et d’opportunités. Pour plus d’informations, voir [Présentation des balises](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags).
 
 API associées : [REST](https://developer.adobe.com/marketo-apis/api/asset)
 
@@ -89,7 +96,7 @@ Les listes organisent des collections de prospects. Marketo propose deux types :
 - Une liste statique est une collection fixe à partir de laquelle un professionnel du marketing peut ajouter ou supprimer des prospects.
 - Une liste dynamique est une collection dynamique basée sur des caractéristiques définies.
 
-Par exemple, une liste dynamique nommée « Tous les prospects qui ont visité la page de tarification de notre site Web » continue de s’allonger à mesure que de nouveaux prospects visitent cette page. Pour plus d’informations, consultez la documentation de [&#128279;](https://experienceleague.adobe.com/fr/docs/marketo/using/home).
+Par exemple, une liste dynamique nommée « Tous les prospects qui ont visité la page de tarification sur le site web » continue à s’agrandir à mesure que davantage de prospects visitent cette page. Pour plus d’informations, consultez la documentation de [&#128279;](https://experienceleague.adobe.com/fr/docs/marketo/using/home).
 
 API associées : [REST](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists)
 
@@ -139,9 +146,9 @@ Après avoir créé et publié un objet personnalisé Marketo, vous pouvez y eff
 
 API associées : [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects)
 
-## Vendeurs
+## Représentants commerciaux
 
-Vous pouvez gérer les enregistrements de commercial et leurs relations de prospect dans Marketo lorsqu’aucune intégration CRM native n’est activée. Ces enregistrements contiennent des informations telles que le nom, l’adresse électronique et le titre de la tâche. Lorsqu&#39;un commercial possède un prospect, vous pouvez utiliser ces informations pour le filtrage et les jetons.
+Vous pouvez gérer les enregistrements du représentant commercial et leurs relations de prospect dans Marketo lorsqu’aucune intégration CRM native n’est activée. Ces enregistrements contiennent des informations telles que le nom, l’adresse électronique et le titre de la tâche. Lorsqu’un représentant commercial possède un prospect, vous pouvez utiliser ces informations pour filtrer et créer des jetons.
 
 Gérez la relation avec un commercial au niveau du prospect via le champ « externalSalesPersonId ». Mettez à jour ce champ via l’API [Leads de synchronisation](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST).
 
