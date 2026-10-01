@@ -28,7 +28,7 @@ ht-degree: 51%
 
 Les opérations suivantes sont disponibles via le serveur MCP [!DNL Marketo Engage]. Le serveur fournit des points d’entrée en lecture seule ou non destructifs. Le système d’IA ne peut pas utiliser de `Delete` ni d’autres opérations destructives.
 
-Pour plus d’informations sur la façon dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
+Pour plus d’informations sur la façon dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 ## Exportation en bloc
 
