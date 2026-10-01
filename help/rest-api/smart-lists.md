@@ -6,27 +6,33 @@ exl-id: 4ba37e57-ee56-48c3-bb2b-b4ec8e907911
 TQID: https://experienceleague.adobe.com/wQ2PQFabw8E5XYP4zJ2RMPcurRkoxA7UecpA-YuQuBc
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: a7170d27-32ab-462b-a333-269abc654483
+    internal-label: Smart Campaigns
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
 subfeature_v2:
   - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+    internal-label: Smart Lists
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Admin
+source-git-commit: 15a223e2511f405ebaebbba933acac1429514030
 workflow-type: tm+mt
-source-wordcount: 402
-ht-degree: 1%
-
+source-wordcount: '393'
+ht-degree: 2%
 ---
-
 # Listes intelligentes
 
 [Référence des points d’entrée des listes dynamiques](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists)
 
 Utilisez les API REST de listes dynamiques pour interroger, cloner et supprimer des listes dynamiques.
 
-Ces API prennent uniquement en charge les listes dynamiques créées par l’utilisateur. Ils ne prennent pas en charge les [listes intelligentes intégrées ou système](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
+>[!NOTE]
+>
+>Dans l’application, si vous sélectionnez l’opérateur « in » pour Membre de la liste ou Membre de la liste dynamique, il apparaît dans la réponse de l’API sous la forme « is ».
+> ![Dans le champ Opérateur ](assets/in-operator.png){width=600}
 
 ## Requête
 
