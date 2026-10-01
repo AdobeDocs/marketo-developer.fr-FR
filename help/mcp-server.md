@@ -32,23 +32,19 @@ role_v2:
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
     internal-label: Artificial intelligence
-source-git-commit: b12faeb0cb1a3680f6e0e7a522c54931b3de2c5d
+source-git-commit: 56fb36ccfa88bb90244f7756b0fba6ac787bfbfe
 workflow-type: tm+mt
-source-wordcount: '2099'
+source-wordcount: '2085'
 ht-degree: 4%
 ---
 
 # [!DNL Marketo Engage] MCP Server
 
->[!NOTE]
->
->Les `create` et outils de `update` des listes intelligentes et des campagnes intelligentes sont prévus pour la version de septembre 2026.
-
 Le protocole MCP (Model Context Protocol) est une norme ouverte qui connecte les outils d’IA aux services externes. Le serveur MCP [!DNL Marketo] connecte votre assistant AI à [!DNL Marketo]. Il fournit plus de 100 opérations pour des formulaires, des programmes, des campagnes intelligentes, des prospects, des e-mails, des fragments de code, des listes et des dossiers.
 
 Lorsque votre outil d’IA appelle le serveur MCP, le serveur utilise les informations d’identification contenues dans cette requête pour exécuter l’appel API REST correspondant. Vous n’avez pas besoin d’installer, de déployer ou d’exécuter un logiciel côté serveur.
 
-Pour plus d’informations sur la manière dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/marketo-ai/data-information).
+Pour plus d’informations sur la manière dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 >[!IMPORTANT]
 >
@@ -116,7 +112,7 @@ Si vous les avez déjà, passez à [Configurer votre outil d’IA](#configure-yo
 ### ID de compte Munchkin
 
 1. Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Munchkin]**.
-1. Copiez l’ID de compte **&#x200B;**. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
+1. Copiez l’ID de compte ****. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
 
 ## Configuration de votre outil d’IA
 
@@ -242,7 +238,7 @@ Appuyez sur **[!UICONTROL Ctrl+Maj+P]** (ou **[!UICONTROL Cmd+Maj+P]** sur macOS
 
 ### Glaner {#glean}
 
-Pour connecter Glean au serveur MCP Marketo Engage, l’équipe d’assistance [&#x200B; Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features) doit configurer les en-têtes personnalisés suivants.
+Pour connecter Glean au serveur MCP Marketo Engage, l’équipe d’assistance [ Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features) doit configurer les en-têtes personnalisés suivants.
 
 | Header | Valeur |
 | ------ | ----- |
