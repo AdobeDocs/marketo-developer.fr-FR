@@ -68,4 +68,4 @@ Utilisez l’API JavaScript Forms 2.0 pour étendre les fonctionnalités princip
 
 ## Contenu prédictif
 
-[Contenu prédictif &#x200B;](predictive-content.md) utilise le machine learning et l’analyse prédictive pour présenter du contenu pertinent aux visiteurs et visiteuses web. Ajoutez des descriptions textuelles et des images à votre contenu, puis incorporez plusieurs recommandations de contenu sur votre site web.
+[Contenu prédictif ](predictive-content.md) utilise le machine learning et l’analyse prédictive pour présenter du contenu pertinent aux visiteurs et visiteuses web. Ajoutez des descriptions textuelles et des images à votre contenu, puis incorporez plusieurs recommandations de contenu sur votre site web.

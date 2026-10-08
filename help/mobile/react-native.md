@@ -33,7 +33,7 @@ Installez et configurez le SDK natif de Marketo pour intégrer une application m
 
 ## Conditions préalables
 
-[Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) et obtenez la clé secrète de l’application et l’ID Munchkin.
+[Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) et obtenez la clé secrète de l’application et l’ID Munchkin.
 
 ## Intégration de SDK
 
@@ -473,7 +473,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 Activez les autorisations dans le projet Xcode pour envoyer des notifications push à l’appareil de l’utilisateur.
 
-Pour envoyer des notifications push, [&#x200B; ajoutez des notifications push &#x200B;](push-notifications.md).
+Pour envoyer des notifications push, [ ajoutez des notifications push ](push-notifications.md).
 
 Pour configurer les notifications push iOS, créez le fichier PushNotifications.tsx et ajoutez le code suivant.
 

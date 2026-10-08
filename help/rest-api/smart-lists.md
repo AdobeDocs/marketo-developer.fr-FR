@@ -36,7 +36,7 @@ Utilisez les API REST de listes dynamiques pour interroger, cloner et supprimer 
 >[!NOTE]
 >
 >Dans l’application, si vous sélectionnez l’opérateur « in » pour Membre de la liste ou Membre de la liste dynamique, il apparaît dans la réponse de l’API sous la forme « is ».
-> ![Dans le champ Opérateur &#x200B;](assets/in-operator.png){width=600}
+> ![Dans le champ Opérateur ](assets/in-operator.png){width=600}
 
 ## Requête
 

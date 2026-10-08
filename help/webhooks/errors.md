@@ -38,7 +38,7 @@ Marketo mappe les valeurs de réponse à un champ uniquement lorsque le service 
 
 Utilisez le déclencheur **[!UICONTROL Webhook est appelé]** pour capturer et gérer les erreurs webhook :
 
-![&#x200B; Webhook est appelé &#x200B;](assets/webhook-called.png)
+![ Webhook est appelé ](assets/webhook-called.png)
 
 * **Response** - Payload de réponse littérale reçue par la requête.
 * **Type d’erreur** - Expression de motif du message d’état HTTP.

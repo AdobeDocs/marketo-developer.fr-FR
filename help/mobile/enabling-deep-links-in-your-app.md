@@ -44,7 +44,7 @@ Pour les applications PhoneGap, utilisez un plug-in pour permettre à votre appl
 
 Lorsque vous avez activé la liaison profonde dans votre application, partagez vos URI personnalisés avec vos utilisateurs Marketo afin qu’ils puissent les insérer dans l’action d’appui pour les messages push.
 
-Marketo utilise une structure URI prédéfinie lors de la configuration des appareils de test. Pour plus d&#39;informations, consultez la section « Périphériques de test » du [&#x200B; Guide d&#39;installation](installation.md).
+Marketo utilise une structure URI prédéfinie lors de la configuration des appareils de test. Pour plus d&#39;informations, consultez la section « Périphériques de test » du [ Guide d&#39;installation](installation.md).
 
 ## Bonnes pratiques relatives à la définition d’une structure URI
 
