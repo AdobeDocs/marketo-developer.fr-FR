@@ -646,7 +646,7 @@ GET /rest/v1/programs/members/schema/fields.json?batchSize=5
 
 ### Créer des champs
 
-Le point d’entrée [Créer des champs de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#operation/createProgramMemberFieldUsingPOST) crée des champs personnalisés sur l’objet de membre de programme. Il offre des fonctionnalités comparables à l’interface utilisateur de [](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields). Vous pouvez créer jusqu’à 20 champs personnalisés avec ce point d’entrée.
+Le point d’entrée [Créer des champs de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#operation/createProgramMemberFieldUsingPOST) crée des champs personnalisés sur l’objet de membre de programme. Il offre des fonctionnalités comparables à l’interface utilisateur de [&#128279;](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields). Vous pouvez créer jusqu’à 20 champs personnalisés avec ce point d’entrée.
 
 Examinez attentivement chaque champ avant de le créer dans une instance Marketo Engage de production. Une fois un champ créé, vous ne pouvez pas le supprimer ; [vous pouvez uniquement le masquer](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo). Les champs non utilisés encombrent l’instance.
 

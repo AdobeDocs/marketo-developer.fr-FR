@@ -263,7 +263,7 @@ Pour une récupération partielle ou pouvant être reprise, le point d’entrée
 
 ## Annulation d’un traitement
 
-Pour arrêter un traitement incorrectement configuré ou inutile, appelez le point d’entrée [ Annuler le traitement de l’activité d’exportation ](https://developer.adobe.com/marketo-apis/api/mapi#operation/cancelExportActivitiesUsingPOST) :
+Pour arrêter un traitement incorrectement configuré ou inutile, appelez le point d’entrée [&#x200B; Annuler le traitement de l’activité d’exportation &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi#operation/cancelExportActivitiesUsingPOST) :
 
 ```http
 POST /bulk/v1/activities/export/{exportId}/cancel.json

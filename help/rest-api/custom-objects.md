@@ -980,7 +980,7 @@ Un objet personnalisé ne peut pas être lié à un autre objet personnalisé qu
 Pour une structure d’objet personnalisée un-à-plusieurs, utilisez un champ Lien pour connecter un objet personnalisé à un objet Lead ou Company standard. Le workflow suivant utilise l’exemple [propriétaire de la voiture](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure) pour créer un objet personnalisé qui stocke les informations de la voiture et se connecte aux prospects.
 
 1. Créez un objet **Car**.
-1. Ajoutez des champs à l’objet **Car** : dédupliquez sur **VIN** et liez-les à **Lead****/ID du lead**.
+1. Ajoutez des champs à l’objet **Car** : dédupliquez sur **VIN** et liez-les à **Lead**&#x200B;**/ID du lead**.
 1. Approuvez l’objet **Car**.
 
 Créez tout d’abord le type d’objet personnalisé qui contient des informations spécifiques à la voiture.
@@ -1090,7 +1090,7 @@ Le workflow suivant utilise l’exemple d’inscription à un cours [collégial]
 1. Ajoutez les champs à **Cours :** dédupliquer sur **ID du cours**.
 1. Approuver Le **Cours**.
 1. Créez un objet bridge **Enrollment**.
-1. Ajoutez des champs à **Inscription :** dédupliquer sur **ID d’inscription**, liez-les au champ **Cours****/ID de cours** et à **Lead****/ID de lead**.
+1. Ajoutez des champs à **Inscription :** dédupliquer sur **ID d’inscription**, liez-les au champ **Cours**&#x200B;**/ID de cours** et à **Lead**&#x200B;**/ID de lead**.
 1. Valider **Inscription**.
 
 Créez tout d’abord le type d’objet Edge contenant des informations spécifiques au cours :

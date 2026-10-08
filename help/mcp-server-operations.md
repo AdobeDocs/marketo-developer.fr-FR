@@ -45,7 +45,7 @@ Pour plus d’informations sur la façon dont les données sont gérées avec l�
 
 ## Canaux et balises
 
-[Référence de l’API Channels ](https://developer.adobe.com/marketo-apis/api/asset#tag/Channels){target="_blank"} | [Référence de l’API Tags](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags){target="_blank"}
+[Référence de l’API Channels &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#tag/Channels){target="_blank"} | [Référence de l’API Tags](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags){target="_blank"}
 
 - `browse_channels`
 - `browse_tag_types`

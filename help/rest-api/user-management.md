@@ -325,7 +325,7 @@ Sur les [abonnements intégrés à Adobe IMS](https://experienceleague.adobe.com
 
 Le point d’entrée [Inviter un utilisateur](https://developer.adobe.com/marketo-apis/api/user#operation/inviteUserUsingPOST) envoie une invitation par e-mail « Bienvenue dans Marketo » à un nouvel utilisateur. L’e-mail contient un lien « Connexion à Marketo ». Le destinataire sélectionne le lien, crée un mot de passe et accède à Marketo.
 
-Tant que le destinataire n’a pas accepté l’invitation, son statut est « en attente » et l’enregistrement de l’utilisateur ne peut pas être modifié. Une invitation en attente expire sept jours après son envoi. Pour plus d’informations, consultez la documentation sur la gestion des utilisateurs de Marketo [](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users).
+Tant que le destinataire n’a pas accepté l’invitation, son statut est « en attente » et l’enregistrement de l’utilisateur ne peut pas être modifié. Une invitation en attente expire sept jours après son envoi. Pour plus d’informations, consultez la documentation sur la gestion des utilisateurs de Marketo [&#128279;](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users).
 
 Transmettez les paramètres dans le corps de la requête au format `application/json`.
 

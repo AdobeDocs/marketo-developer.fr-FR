@@ -33,7 +33,7 @@ ht-degree: 5%
 
 Utilisez les API REST de règles de redirection de page de destination pour interroger, créer, mettre à jour et supprimer des URL de redirection de page de destination.
 
-Les règles de redirection envoient une URL de page de destination à une autre URL de page. La source et la destination peuvent être des pages Marketo ou autres que Marketo. Pour consulter la documentation du produit connexe, voir la documentation de [](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr).
+Les règles de redirection envoient une URL de page de destination à une autre URL de page. La source et la destination peuvent être des pages Marketo ou autres que Marketo. Pour consulter la documentation du produit connexe, voir la documentation de [&#128279;](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr).
 
 ## Requête
 
