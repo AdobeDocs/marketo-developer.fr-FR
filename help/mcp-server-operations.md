@@ -15,10 +15,13 @@ feature_v2:
     internal-label: APIs
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
     internal-label: Programs
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
     internal-label: Artificial intelligence
-source-git-commit: 56fb36ccfa88bb90244f7756b0fba6ac787bfbfe
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
 source-wordcount: '1214'
 ht-degree: 51%
@@ -28,7 +31,7 @@ ht-degree: 51%
 
 Les opérations suivantes sont disponibles via le serveur MCP [!DNL Marketo Engage]. Le serveur fournit des points d’entrée en lecture seule ou non destructifs. Le système d’IA ne peut pas utiliser de `Delete` ni d’autres opérations destructives.
 
-Pour plus d’informations sur la façon dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/marketo-ai/data-information).
+Pour plus d’informations sur la façon dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 ## Exportation en bloc
 
@@ -42,7 +45,7 @@ Pour plus d’informations sur la façon dont les données sont gérées avec l�
 
 ## Canaux et balises
 
-[Référence de l’API Channels &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#tag/Channels){target="_blank"} | [Référence de l’API Tags](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags){target="_blank"}
+[Référence de l’API Channels ](https://developer.adobe.com/marketo-apis/api/asset#tag/Channels){target="_blank"} | [Référence de l’API Tags](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags){target="_blank"}
 
 - `browse_channels`
 - `browse_tag_types`

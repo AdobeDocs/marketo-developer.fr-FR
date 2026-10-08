@@ -1,31 +1,35 @@
 ---
-title: Extension mobile Marketo pour  [!DNL Adobe Launch]
+title: Extension Marketo Mobile pour [!DNL Adobe Launch]
 feature: Mobile Marketing
 description: Installez et configurez l’extension Marketo Mobile SDK dans Adobe Launch pour iOS et Android, y compris la configuration pour les notifications push et les messages in-app.
 exl-id: 2f8691ff-0442-45a5-aeba-c91c3af5c711
-TQID: https://experienceleague.adobe.com/Bk5GTnQjm6NDosl5Iw6TS-NRjH8owNRUKoE0mZ-H3pY
+TQID: 'https://experienceleague.adobe.com/Bk5GTnQjm6NDosl5Iw6TS-NRjH8owNRUKoE0mZ-H3pY'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
+  - id: 44b89f75-c1af-5353-8094-79b278102d46
+    internal-label: Mobile Marketing
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: d095671a-1355-40aa-8b5f-06c33c68080b
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Security
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 303
+source-wordcount: '303'
 ht-degree: 0%
-
 ---
-
 # Extension Marketo Mobile pour [!DNL Adobe Launch]
 
 Installez l’extension Marketo Mobile SDK dans [!DNL Adobe Launch] pour envoyer des notifications push, des messages in-app ou les deux.
 
 ## Conditions préalables
 
-- [Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) et obtenez la clé secrète de l’application et l’ID Munchkin.
+- [Ajoutez une application dans Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) et obtenez la clé secrète de l’application et l’ID Munchkin.
 - Suivez les instructions d’installation fournies dans le portail [!DNL Adobe Launch].
 - Facultatif : [Configurer des notifications push](push-notifications.md).
 
@@ -46,7 +50,7 @@ Pour Swift, supprimez l&#39;instruction d&#39;importation suivante car les étap
 
 ### Appareils de test iOS
 
-Suivez les instructions de la section [&#x200B; Ajout d’appareils de test iOS &#x200B;](installation.md#ios_test_devices).
+Suivez les instructions de la section [ Ajout d’appareils de test iOS ](installation.md#ios_test_devices).
 
 ### Gérer le type d’URL personnalisé dans AppDelegate
 
@@ -79,10 +83,10 @@ Si votre application utilise ProGuard, ajoutez les lignes suivantes au fichier `
 
 ### Appareils de test Android
 
-Suivez les instructions de la section [Appareils de test &#x200B;](installation.md#android_test_devices).
+Suivez les instructions de la section [Appareils de test ](installation.md#android_test_devices).
 
 ## Configuration des notifications push sur Android
 
 Suivez les [instructions relatives à Android Firebase Cloud Messaging](installation.md#android_firebase_cloud_messaging_support). Utilisez le nom de classe « ALMarketo » au lieu de « Marketo ».
 
-Pour configurer des profils utilisateur, suivez les [&#x200B; instructions relatives aux profils utilisateur &#x200B;](user-profiles.md). Pour configurer des actions personnalisées, suivez les [instructions relatives aux actions personnalisées](custom-actions.md#android_custom_action). Dans les deux ensembles d’instructions, utilisez le nom de classe « ALMarketo » au lieu de « Marketo ».
+Pour configurer des profils utilisateur, suivez les [ instructions relatives aux profils utilisateur ](user-profiles.md). Pour configurer des actions personnalisées, suivez les [instructions relatives aux actions personnalisées](custom-actions.md#android_custom_action). Dans les deux ensembles d’instructions, utilisez le nom de classe « ALMarketo » au lieu de « Marketo ».

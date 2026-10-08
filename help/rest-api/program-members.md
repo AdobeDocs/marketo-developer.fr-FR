@@ -3,33 +3,44 @@ title: Membres du programme
 feature: REST API
 description: Utilisez l’API REST Marketo pour lire, créer, mettre à jour et supprimer des membres de programme, gérer des champs standard et personnalisés et effectuer des requêtes à l’aide de champs pouvant faire l’objet de recherches.
 exl-id: 22f29a42-2a30-4dce-a571-d7776374cf43
-TQID: https://experienceleague.adobe.com/scEHyXYq9C7cCS1kIX810wG7ahT9fsa448NwIfBmzQM
+TQID: 'https://experienceleague.adobe.com/scEHyXYq9C7cCS1kIX810wG7ahT9fsa448NwIfBmzQM'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+    internal-label: Forms
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+    internal-label: Database
   - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+    internal-label: Administration
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+    internal-label: Metadata
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Administration
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 1632
+source-wordcount: '1632'
 ht-degree: 2%
-
 ---
-
 # Membres du programme
 
 [Référence du point d’entrée des membres du programme](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members)
 
 Marketo fournit des API pour lire, créer, mettre à jour et supprimer des enregistrements de membre de programme. Le champ ID lead associe les enregistrements de membre de programme aux enregistrements de lead.
 
-Chaque enregistrement contient des champs standard et peut contenir jusqu’à 20 champs personnalisés. Ces champs stockent des données de membre spécifiques au programme à utiliser dans des formulaires, des filtres, des déclencheurs et des actions de flux. Vous pouvez afficher ces données dans l’onglet [Membres](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members) du programme dans l’interface utilisateur de Marketo Engage.
+Chaque enregistrement contient des champs standard et peut contenir jusqu’à 20 champs personnalisés. Ces champs stockent des données de membre spécifiques au programme à utiliser dans des formulaires, des filtres, des déclencheurs et des actions de flux. Vous pouvez afficher ces données dans l’onglet [Membres](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members) du programme dans l’interface utilisateur de Marketo Engage.
 
 ## Décrire
 
@@ -635,9 +646,9 @@ GET /rest/v1/programs/members/schema/fields.json?batchSize=5
 
 ### Créer des champs
 
-Le point d’entrée [Créer des champs de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#operation/createProgramMemberFieldUsingPOST) crée des champs personnalisés sur l’objet de membre de programme. Il offre des fonctionnalités comparables à l’interface utilisateur de [&#128279;](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields). Vous pouvez créer jusqu’à 20 champs personnalisés avec ce point d’entrée.
+Le point d’entrée [Créer des champs de membre de programme](https://developer.adobe.com/marketo-apis/api/mapi#operation/createProgramMemberFieldUsingPOST) crée des champs personnalisés sur l’objet de membre de programme. Il offre des fonctionnalités comparables à l’interface utilisateur de [](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields). Vous pouvez créer jusqu’à 20 champs personnalisés avec ce point d’entrée.
 
-Examinez attentivement chaque champ avant de le créer dans une instance Marketo Engage de production. Une fois un champ créé, vous ne pouvez pas le supprimer ; [vous pouvez uniquement le masquer](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo). Les champs non utilisés encombrent l’instance.
+Examinez attentivement chaque champ avant de le créer dans une instance Marketo Engage de production. Une fois un champ créé, vous ne pouvez pas le supprimer ; [vous pouvez uniquement le masquer](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo). Les champs non utilisés encombrent l’instance.
 
 Le paramètre `input` requis est un tableau d’objets de champ de membre de programme. Chaque objet contient un ou plusieurs attributs.
 

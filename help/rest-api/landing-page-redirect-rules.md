@@ -3,27 +3,37 @@ title: Règles de redirection des pages de destination
 feature: REST API, Landing Pages
 description: Utilisez les API REST de ressources Marketo pour créer, interroger, mettre à jour et supprimer des règles de redirection de page de destination avec des filtres, une pagination, des options de nom d’hôte et des cibles autres que Marketo.
 exl-id: f63aa5ef-5872-4401-be75-6fb9b2977734
-TQID: https://experienceleague.adobe.com/2gePbKA3xeoRdnL8mNnObN-GPTX00Ii4-zcM0lBjs-o
+TQID: 'https://experienceleague.adobe.com/2gePbKA3xeoRdnL8mNnObN-GPTX00Ii4-zcM0lBjs-o'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+    internal-label: Templates
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+  - id: c2dbad80-0f5c-4d96-a798-2a65f93b8721
+    internal-label: Assets
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
+  - id: edda586e-0147-48f2-b791-992622a00783
+    internal-label: Landing pages
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 596
+source-wordcount: '596'
 ht-degree: 5%
-
 ---
-
 # Règles de redirection de page de destination
 
 [Référence Du Point D’Entrée Des Règles De Redirection De Page De Destination](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules)
 
 Utilisez les API REST de règles de redirection de page de destination pour interroger, créer, mettre à jour et supprimer des URL de redirection de page de destination.
 
-Les règles de redirection envoient une URL de page de destination à une autre URL de page. La source et la destination peuvent être des pages Marketo ou autres que Marketo. Pour consulter la documentation du produit connexe, voir la documentation de [&#128279;](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr).
+Les règles de redirection envoient une URL de page de destination à une autre URL de page. La source et la destination peuvent être des pages Marketo ou autres que Marketo. Pour consulter la documentation du produit connexe, voir la documentation de [](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=fr).
 
 ## Requête
 
@@ -162,7 +172,7 @@ Le paramètre `redirectTo` spécifie la destination sous la forme d’un objet J
 | Marketo | landingPageId | {« type »:« landingPageId »,« value »:« 1774 »} |
 | Non Marketo | url | {« type »:« url »,« value »:« www.contactLogs.com« } |
 
-Pour plus d’informations, voir [Rediriger une page de destination Marketo vers une autre page](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html?lang=fr).
+Pour plus d’informations, voir [Rediriger une page de destination Marketo vers une autre page](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html).
 
 ```http
 POST /rest/asset/v1/redirectRules.json

@@ -3,18 +3,24 @@ title: Extrait de lead en masse
 feature: REST API
 description: Découvrez comment utiliser les API REST d’extraction de lead en bloc Marketo pour exporter en bloc des leads avec des filtres de date, de liste et de liste dynamique, des champs personnalisés et des formats CSV/TSV.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-TQID: https://experienceleague.adobe.com/4eMJR87fHDdccrVid3wHtspvBVQmrBGHYMlIwFCSdEI
+TQID: 'https://experienceleague.adobe.com/4eMJR87fHDdccrVid3wHtspvBVQmrBGHYMlIwFCSdEI'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+feature_v2:
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 1017
+source-wordcount: '1017'
 ht-degree: 3%
-
 ---
-
 # Extrait de lead en masse
 
 [Référence de point d’entrée d’extraction de leads en bloc](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads)
@@ -160,7 +166,7 @@ Cette réponse indique que la tâche est toujours en cours de traitement et que 
 
 Le champ `status` peut renvoyer l’une des valeurs suivantes :
 
-- Création
+- Créé
 - En fil d&#39;attente
 - En cours de traitement
 - Annulé

@@ -3,25 +3,31 @@ title: Listes de comptes nommés
 feature: REST API
 description: Découvrez comment gérer les listes de comptes nommés Marketo avec l’API REST, y compris les autorisations, les champs, le filtrage et les points d’entrée pour la requête, la création, la mise à jour et la suppression.
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-TQID: https://experienceleague.adobe.com/18lMhheW21Gz1-3TMHwleHhmLTOqJsZSQ5aqkbbchhM
+TQID: 'https://experienceleague.adobe.com/18lMhheW21Gz1-3TMHwleHhmLTOqJsZSQ5aqkbbchhM'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+    internal-label: Database
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 686
+source-wordcount: '686'
 ht-degree: 3%
-
 ---
-
 # Listes de comptes nommés
 
 [Référence des points d’entrée des listes de comptes nommés](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Account-Lists)
 
-Les [listes de comptes nommés](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/target-account-management/target/account-lists) sont des ensembles de comptes nommés dans Marketo. Utilisez-les pour la catégorisation, l’enrichissement des données et le filtrage intelligent des campagnes.
+Les [listes de comptes nommés](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) sont des ensembles de comptes nommés dans Marketo. Utilisez-les pour la catégorisation, l’enrichissement des données et le filtrage intelligent des campagnes.
 
 Les API Named Account List vous permettent de gérer à distance des ressources de liste et leur appartenance.
 `Content`

@@ -3,23 +3,35 @@ title: Ingestion de données
 feature: REST API, Dynamic Content, Static Lists
 description: Utilisez l’API Marketo Data Ingestion pour une ingestion de volume élevé et à faible latence de personnes, d’objets personnalisés, d’entreprises, de membres de programme et de listes.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-TQID: https://experienceleague.adobe.com/xby7hs-CSLrVzy-FXEBi1FeU1-ca7vI4kB85BYJ9snk
+TQID: 'https://experienceleague.adobe.com/xby7hs-CSLrVzy-FXEBi1FeU1-ca7vI4kB85BYJ9snk'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+feature_v2:
+  - id: c56e5f8f-221f-55c2-8170-b1a9e10687cb
+    internal-label: Static Lists
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+  - id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
+    internal-label: Personalization
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
+  - id: cdd4e0f6-e87e-453f-88ee-2ee54a7de272
+    internal-label: Dynamic content
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 2151
+source-wordcount: '2153'
 ht-degree: 17%
-
 ---
-
 # API Data Ingestion
 
 L’API Data Ingestion est un service à volume élevé, à faible latence et à haute disponibilité. Utilisez-le pour ingérer de grandes quantités de données relatives aux personnes et aux personnes dans un délai minimal.
 
-Les requêtes d’ingestion de données s’exécutent de manière asynchrone. Pour récupérer le statut de la requête, abonnez-vous aux événements du flux de données d’observabilité [&#128279;](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
+Les requêtes d’ingestion de données s’exécutent de manière asynchrone. Pour récupérer le statut de la requête, abonnez-vous aux événements du flux de données d’observabilité [](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
 
 L’API fournit des interfaces pour cinq types d’objets :
 

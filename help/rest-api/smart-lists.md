@@ -3,7 +3,7 @@ title: Listes intelligentes
 feature: REST API
 description: Découvrez comment utiliser les API REST Marketo pour interroger, cloner et supprimer des listes dynamiques créées par l’utilisateur, y compris des points d’entrée par identifiant, nom, campagne et programme avec des règles.
 exl-id: 4ba37e57-ee56-48c3-bb2b-b4ec8e907911
-TQID: https://experienceleague.adobe.com/wQ2PQFabw8E5XYP4zJ2RMPcurRkoxA7UecpA-YuQuBc
+TQID: 'https://experienceleague.adobe.com/wQ2PQFabw8E5XYP4zJ2RMPcurRkoxA7UecpA-YuQuBc'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
     internal-label: Marketo Engage
@@ -12,13 +12,17 @@ feature_v2:
     internal-label: Smart Campaigns
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
     internal-label: Programs
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
 subfeature_v2:
   - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
-    internal-label: Smart Lists
+    internal-label: Smart lists
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
     internal-label: Admin
-source-git-commit: 15a223e2511f405ebaebbba933acac1429514030
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
 source-wordcount: '393'
 ht-degree: 2%
@@ -32,7 +36,7 @@ Utilisez les API REST de listes dynamiques pour interroger, cloner et supprimer 
 >[!NOTE]
 >
 >Dans l’application, si vous sélectionnez l’opérateur « in » pour Membre de la liste ou Membre de la liste dynamique, il apparaît dans la réponse de l’API sous la forme « is ».
-> ![Dans le champ Opérateur &#x200B;](assets/in-operator.png){width=600}
+> ![Dans le champ Opérateur ](assets/in-operator.png){width=600}
 
 ## Requête
 

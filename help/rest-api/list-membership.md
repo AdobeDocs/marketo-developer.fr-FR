@@ -3,13 +3,25 @@ title: Appartenance À Une Liste (Listes Statiques)
 feature: REST API, Static Lists
 description: Utilisez les API REST de la base de données des prospects Marketo pour ajouter des prospects aux listes statiques, supprimer des prospects, récupérer les membres de la liste et vérifier l’appartenance à la liste.
 exl-id: b8f74bcf-834a-44db-81fd-621048afeba4
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+feature_v2:
+  - id: c56e5f8f-221f-55c2-8170-b1a9e10687cb
+    internal-label: Static Lists
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
 source-wordcount: '415'
 ht-degree: 6%
-
 ---
-
 # Appartenance À Une Liste (Listes Statiques)
 
 [Référence du point d’entrée de l’appartenance à une liste](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists)
@@ -63,7 +75,7 @@ POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
 }
 ```
 
-## Suppression de la liste
+## Supprimer de la liste
 
 Utilisez le point d’entrée [Supprimer de la liste](https://developer.adobe.com/marketo-apis/api/mapi#operation/removeLeadsFromListUsingDELETE) pour supprimer un ou plusieurs membres d’une liste. Transmettez le paramètre de chemin d’accès au `listId` requis et un ou plusieurs paramètres de requête `id` contenant des identifiants de prospect. Le nombre maximal d’ID de lead est de 300.
 

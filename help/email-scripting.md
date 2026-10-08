@@ -3,23 +3,31 @@ title: Script de l'e-mail
 feature: Email Programs
 description: Découvrez comment créer des scripts pour les e-mails Marketo dynamiques à l’aide des jetons Apache Velocity, des variables, des outils Velocity et tester avec l’exemple d’envoi et la Prévisualisation des e-mails.
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
-TQID: https://experienceleague.adobe.com/xFDjbGWGoWg4Ik6xqoU4L51FG5-1STZ5a0x0KpmwGd4
+TQID: 'https://experienceleague.adobe.com/xFDjbGWGoWg4Ik6xqoU4L51FG5-1STZ5a0x0KpmwGd4'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+    internal-label: Administration
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
+  - id: c2dbad80-0f5c-4d96-a798-2a65f93b8721
+    internal-label: Assets
+subfeature_v2:
+  - id: c0f0afc1-a5a8-4b01-8b43-cc38f9169499
+    internal-label: Email programs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Administration
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 932
+source-wordcount: '932'
 ht-degree: 1%
-
 ---
-
 # Script de l&#39;e-mail
 
 Lisez le [Guide d’utilisation de Velocity](https://velocity.apache.org/engine/devel/user-guide.html) pour une explication détaillée du comportement du langage de modèle Velocity.
@@ -129,9 +137,9 @@ La longueur combinée de tous les jetons de script d’e-mail dans un e-mail don
 - Vous pouvez référencer des objets personnalisés connectés à un prospect, un contact ou un compte, mais pas plus d’un.
 - Les objets personnalisés ne peuvent être référencés que par le biais d’une seule connexion, d’un seul lead, contact ou compte
 - Cochez la case dans l’éditeur de script pour les champs que vous utilisez ou ils ne sont pas traités
-- Pour chaque objet personnalisé, les dix derniers enregistrements mis à jour par personne/contact sont disponibles au moment de l’exécution. Les enregistrements sont classés du plus récemment mis à jour à l’index 0 au plus ancien à l’index 9. Vous pouvez augmenter le nombre d&#39;enregistrements disponibles en [suivant les instructions](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
+- Pour chaque objet personnalisé, les dix derniers enregistrements mis à jour par personne/contact sont disponibles au moment de l’exécution. Les enregistrements sont classés du plus récemment mis à jour à l’index 0 au plus ancien à l’index 9. Vous pouvez augmenter le nombre d&#39;enregistrements disponibles en [suivant les instructions](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
 - Si vous incluez plusieurs scripts d’e-mail dans un e-mail, ils s’exécutent de haut en bas. L’étendue des variables définies dans le premier script à exécuter est disponible dans les scripts suivants.
-- Référence des outils : [&#128279;](https://velocity.apache.org/tools/2.0/index.html)
+- Référence des outils : [](https://velocity.apache.org/tools/2.0/index.html)
 - Remarque concernant les jetons qui contiennent des caractères de nouvelle ligne « \n » ou « \r\n ». Lorsqu’un e-mail est envoyé via Envoyer un exemple ou via une campagne par lots, les caractères de nouvelle ligne dans les jetons sont remplacés par des espaces. Lorsque l’e-mail est envoyé via Trigger Campaign, les caractères de nouvelle ligne ne sont pas touchés.
 - Pour garantir une analyse d’URL correcte, définissez le chemin d’accès complet en tant que variable, puis imprimez-le. N’imprimez pas de variables dans les références d’URL. Incluez le protocole (`http://` ou `https://`) séparément du reste de l’URL. Génère une balise d’ancrage complète (`<a>`) afin que les liens puissent être suivis. Les liens sortants d’une boucle `for` ou `foreach` ne sont pas suivis.
 

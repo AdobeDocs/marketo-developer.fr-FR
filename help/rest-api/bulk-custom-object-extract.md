@@ -3,22 +3,33 @@ title: Extraction d’objet personnalisé en bloc
 feature: REST API, Custom Objects
 description: Guide des API REST d’extraction d’objets personnalisés en bloc Marketo pour l’exportation d’objets personnalisés liés à un prospect avec des filtres de liste et de date de mise à jour, des champs sélectionnés et...
 exl-id: 86cf02b0-90a3-4ec6-8abd-b4423cdd94eb
-TQID: https://experienceleague.adobe.com/KAT-vab2uZq8FrRbZLy30PCJNfq01znDDuSSWuIu7WE
+TQID: 'https://experienceleague.adobe.com/KAT-vab2uZq8FrRbZLy30PCJNfq01znDDuSSWuIu7WE'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+    internal-label: Administration
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
+  - id: ea4e3ff5-e7b9-4b4c-a5a0-dc27cc3f4275
+    internal-label: Custom objects
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Administration
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 1186
+source-wordcount: '1186'
 ht-degree: 2%
-
 ---
-
 # Extraction d’objet personnalisé en bloc
 
 [Référence de point d’entrée d’extraction d’objet personnalisé en bloc](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects)
@@ -27,7 +38,7 @@ Les API REST d’extraction d’objets personnalisés en bloc récupèrent de gr
 
 L’API exporte les enregistrements d’objets personnalisés Marketo de premier niveau liés directement aux prospects. Spécifiez le nom de l’objet personnalisé et une liste de prospects liés. Pour chaque prospect, l’API écrit les enregistrements d’objet personnalisés liés correspondants sous forme de lignes dans le fichier d’exportation.
 
-Vous pouvez afficher les données d’objet personnalisées dans l’onglet [&#x200B; Objet personnalisé » de la page des détails du prospect dans l’interface utilisateur de Marketo](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
+Vous pouvez afficher les données d’objet personnalisées dans l’onglet [ Objet personnalisé » de la page des détails du prospect dans l’interface utilisateur de Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
 
 ## Autorisations
 
@@ -422,11 +433,11 @@ leadId,color,make,model,vIN
 13,Fusion Red,Tesla,Roadster,SFGRC3C41FF154321
 ```
 
-Pour une récupération partielle ou pouvant être reprise, le point d’entrée du fichier prend en charge l’en-tête `Range` HTTP facultatif avec un type de plage de `bytes`. Si vous ne définissez pas l’en-tête , le point d’entrée renvoie l’intégralité du fichier. Pour plus d’informations, voir [&#x200B; Extraction en bloc &#x200B;](bulk-extract.md).
+Pour une récupération partielle ou pouvant être reprise, le point d’entrée du fichier prend en charge l’en-tête `Range` HTTP facultatif avec un type de plage de `bytes`. Si vous ne définissez pas l’en-tête , le point d’entrée renvoie l’intégralité du fichier. Pour plus d’informations, voir [ Extraction en bloc ](bulk-extract.md).
 
 ## Annulation d’un traitement
 
-Pour annuler une tâche mal configurée ou qui n’est plus nécessaire, appelez le point d’entrée [&#x200B; Annuler la tâche d’exportation d’objet personnalisé &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi#operation/cancelExportCustomObjectsUsingPOST). Le statut de la réponse indique que le traitement est annulé.
+Pour annuler une tâche mal configurée ou qui n’est plus nécessaire, appelez le point d’entrée [ Annuler la tâche d’exportation d’objet personnalisé ](https://developer.adobe.com/marketo-apis/api/mapi#operation/cancelExportCustomObjectsUsingPOST). Le statut de la réponse indique que le traitement est annulé.
 
 ```http
 POST /bulk/v1/customobjects/car_c/export/f2c03f1d-226f-47c1-a557-357af8c2b32a/cancel.json

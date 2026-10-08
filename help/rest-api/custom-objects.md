@@ -3,32 +3,42 @@ title: Objets personnalisés
 feature: REST API, Custom Objects
 description: Découvrez comment créer et gérer des objets personnalisés Marketo via l’API REST, y compris comment répertorier et décrire les points d’entrée, les métadonnées, les relations, les champs et les requêtes.
 exl-id: 88e8829b-f8f1-46d7-a753-5aa6e20e2c40
-TQID: https://experienceleague.adobe.com/NWm9CjFVqQdVDJRrnE4nA299-Lg53-JR7xvY-82dUqY
+TQID: 'https://experienceleague.adobe.com/NWm9CjFVqQdVDJRrnE4nA299-Lg53-JR7xvY-82dUqY'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+    internal-label: Database
   - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+    internal-label: Administration
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
 subfeature_v2:
   - id: ea4e3ff5-e7b9-4b4c-a5a0-dc27cc3f4275
+    internal-label: Custom objects
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+    internal-label: Metadata
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Administration
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 2844
+source-wordcount: '2844'
 ht-degree: 0%
-
 ---
-
 # Objets personnalisés
 
 [**Référence de point d’entrée d’objet personnalisé**](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects)
 
-Les objets personnalisés Marketo peuvent être associés à des objets standard Marketo, tels que des prospects et des sociétés, ou à d’autres objets personnalisés Marketo. Créez des objets personnalisés Marketo dans l’interface utilisateur de [Marketo](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects) ou à l’aide de l’API de métadonnées d’objet personnalisé décrite dans ce document.
+Les objets personnalisés Marketo peuvent être associés à des objets standard Marketo, tels que des prospects et des sociétés, ou à d’autres objets personnalisés Marketo. Créez des objets personnalisés Marketo dans l’interface utilisateur de [Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects) ou à l’aide de l’API de métadonnées d’objet personnalisé décrite dans ce document.
 
 L’accès à l’API Custom Object Metadata nécessite un type d’abonnement Marketo approprié. Contactez votre CSM pour plus de détails.
 
@@ -869,7 +879,7 @@ Approuvez les types d’objets personnalisés avant de les utiliser. Lorsque vou
 
 Lorsque vous modifiez un type existant avec un point d’entrée de champ de type d’objet personnalisé Synchroniser le type d’objet personnalisé ou Ajouter/Mettre à jour/Supprimer, Marketo crée un brouillon. Les modifications apportées au type ou à ses champs n’affectent que la version préliminaire. Après avoir apporté des modifications, approuvez le brouillon. L’approbation remplace la version approuvée par le brouillon et supprime le brouillon.
 
-Pour plus d’informations, voir la [documentation sur l’approbation d’objet personnalisé](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/approve-a-custom-object).
+Pour plus d’informations, voir la [documentation sur l’approbation d’objet personnalisé](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/approve-a-custom-object).
 
 Une fois qu’un type d’objet personnalisé est approuvé, vous ne pouvez pas :
 
@@ -883,7 +893,7 @@ Planifiez soigneusement le schéma et la convention de nommage avant d’approuv
 
 Utilisez le point d’entrée [Approuver le type d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#operation/approveCustomObjectTypeUsingPOST) pour publier un brouillon en tant que nouvelle version approuvée. Le seul paramètre obligatoire est le paramètre de chemin d’accès **apiName**.
 
-Vous ne pouvez approuver un type que lorsqu’il est à l’état de brouillon et qu’il satisfait aux [règles de validation](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/approve-a-custom-object) documentées.
+Vous ne pouvez approuver un type que lorsqu’il est à l’état de brouillon et qu’il satisfait aux [règles de validation](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/approve-a-custom-object) documentées.
 
 ```http
 POST /rest/v1/customobjects/schema/{apiName}/approve.json
@@ -946,7 +956,7 @@ Utilisez les points d’entrée suivants pour ajouter, modifier ou supprimer des
 - Au moins un champ de déduplication est obligatoire. Trois champs de déduplication au maximum sont autorisés.
 - Les noms d’API de champ et les noms d’affichage peuvent contenir des caractères alphanumériques et le caractère de soulignement « _ ».
 
-Pour plus d’informations, voir la [documentation sur les champs d’objet personnalisés](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields).
+Pour plus d’informations, voir la [documentation sur les champs d’objet personnalisés](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields).
 
 ### Ajouter des champs
 
@@ -961,16 +971,16 @@ Les attributs de champ sont les suivants :
 - `isDedupeField` : valeur booléenne facultative qui spécifie si le champ est utilisé pour la déduplication lors des opérations de mise à jour d’objet personnalisé. La valeur par défaut est false. Un champ de déduplication est requis pour les relations de type « un à plusieurs ».
 - `relatedTo` : objet facultatif spécifiant un champ de lien. Dans le cas d’une relation un-à-plusieurs, `name` identifie l’« objet de lien » ou l’objet parent, `field` identifie le « champ de lien » ou le champ clé dans l’objet parent.
 
-Les objets personnalisés peuvent contenir des champs avec le type de données « lien ». Les champs de lien établissent des relations entre les objets personnalisés et d’autres types d’objets, tels que le prospect et l’entreprise. Voir la [documentation sur les champs d’objet personnalisés](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields) pour plus d’informations sur les champs de lien. Utilisez le point d’entrée [Obtenir les objets liables d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCustomObjectTypeLinkableObjectsUsingGET) pour récupérer les objets de lien autorisés.
+Les objets personnalisés peuvent contenir des champs avec le type de données « lien ». Les champs de lien établissent des relations entre les objets personnalisés et d’autres types d’objets, tels que le prospect et l’entreprise. Voir la [documentation sur les champs d’objet personnalisés](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields) pour plus d’informations sur les champs de lien. Utilisez le point d’entrée [Obtenir les objets liables d’objet personnalisé](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCustomObjectTypeLinkableObjectsUsingGET) pour récupérer les objets de lien autorisés.
 
-Un objet personnalisé ne peut pas être lié à un autre objet personnalisé qui possède un champ de lien existant. Pour plus d’informations, voir la documentation [lier des champs](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields).
+Un objet personnalisé ne peut pas être lié à un autre objet personnalisé qui possède un champ de lien existant. Pour plus d’informations, voir la documentation [lier des champs](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields).
 
 ### Relation De Type « Un À Plusieurs »
 
-Pour une structure d’objet personnalisée un-à-plusieurs, utilisez un champ Lien pour connecter un objet personnalisé à un objet Lead ou Company standard. Le workflow suivant utilise l’exemple [propriétaire de la voiture](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure) pour créer un objet personnalisé qui stocke les informations de la voiture et se connecte aux prospects.
+Pour une structure d’objet personnalisée un-à-plusieurs, utilisez un champ Lien pour connecter un objet personnalisé à un objet Lead ou Company standard. Le workflow suivant utilise l’exemple [propriétaire de la voiture](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure) pour créer un objet personnalisé qui stocke les informations de la voiture et se connecte aux prospects.
 
 1. Créez un objet **Car**.
-1. Ajoutez des champs à l’objet **Car** : dédupliquez sur **VIN** et liez-les à **Lead**&#x200B;**/ID du lead**.
+1. Ajoutez des champs à l’objet **Car** : dédupliquez sur **VIN** et liez-les à **Lead****/ID du lead**.
 1. Approuvez l’objet **Car**.
 
 Créez tout d’abord le type d’objet personnalisé qui contient des informations spécifiques à la voiture.
@@ -1074,13 +1084,13 @@ Une relation multiple-à-multiple utilise un objet personnalisé « pont » entr
 
 L’objet bridge résout la relation avec deux champs de lien. Un champ pointe vers l’objet standard parent, comme dans une relation un-à-plusieurs. L’autre pointe vers l’objet Edge, qui est un objet personnalisé sans liens. L’objet bridge peut également contenir des champs descriptifs.
 
-Le workflow suivant utilise l’exemple d’inscription à un cours [collégial](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure). Il crée un objet Edge de cours et un objet Bridge d’inscription qui connecte les cours aux prospects.
+Le workflow suivant utilise l’exemple d’inscription à un cours [collégial](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure). Il crée un objet Edge de cours et un objet Bridge d’inscription qui connecte les cours aux prospects.
 
 1. Créez un objet Edge **Cours**.
 1. Ajoutez les champs à **Cours :** dédupliquer sur **ID du cours**.
 1. Approuver Le **Cours**.
 1. Créez un objet bridge **Enrollment**.
-1. Ajoutez des champs à **Inscription :** dédupliquer sur **ID d’inscription**, liez-les au champ **Cours**&#x200B;**/ID de cours** et à **Lead**&#x200B;**/ID de lead**.
+1. Ajoutez des champs à **Inscription :** dédupliquer sur **ID d’inscription**, liez-les au champ **Cours****/ID de cours** et à **Lead****/ID de lead**.
 1. Valider **Inscription**.
 
 Créez tout d’abord le type d’objet Edge contenant des informations spécifiques au cours :
@@ -1259,7 +1269,7 @@ POST /rest/v1/customobjects/schema/enrollment/approve.json
 }
 ```
 
-Renseignez les enregistrements d’objets personnalisés par programmation en utilisant [Synchroniser l’objet personnalisé](#create_and_update) ou [Importer un objet personnalisé en bloc](https://experienceleague.adobe.com/docs/marketo-developer/marketo/rest/bulk-import/bulk-custom-object-import.html?lang=fr). Vous pouvez également utiliser [Importer des données d’objet personnalisé](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/administration/marketo-custom-objects/import-custom-object-data) dans l’interface utilisateur de Marketo.
+Renseignez les enregistrements d’objets personnalisés par programmation en utilisant [Synchroniser l’objet personnalisé](#create_and_update) ou [Importer un objet personnalisé en bloc](https://experienceleague.adobe.com/docs/marketo-developer/marketo/rest/bulk-import/bulk-custom-object-import.html?lang=en). Vous pouvez également utiliser [Importer des données d’objet personnalisé](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/import-custom-object-data) dans l’interface utilisateur de Marketo.
 
 ## Mettre à jour le champ
 

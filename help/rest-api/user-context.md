@@ -3,33 +3,42 @@ title: Contexte utilisateur
 feature: REST API
 description: Découvrez comment activer et utiliser l’API de contexte utilisateur de RTP Marketo pour définir des variables personnalisées, lire les données utilisateur lors des visites et suivre les campagnes consultées et ayant fait l’objet d’un clic.
 exl-id: b8daace2-07a5-4621-aa3a-03fa9f66ea73
-TQID: https://experienceleague.adobe.com/Ph0Tw-C9jzWaR4bYyUIXyzzoa2yjHQk2gt6tNA8H2mA
+TQID: 'https://experienceleague.adobe.com/Ph0Tw-C9jzWaR4bYyUIXyzzoa2yjHQk2gt6tNA8H2mA'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: e2290edd-b061-4880-9d79-dee306cf5aa9
+    internal-label: Implementation
   - id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
+    internal-label: Personalization
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
 subfeature_v2:
   - id: a1d50dda-6d94-4e16-8c30-5eb7181c4650
+    internal-label: Segmentation
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
+    internal-label: Implementation
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Personalization
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 273
+source-wordcount: '273'
 ht-degree: 5%
-
 ---
-
 # Contexte utilisateur
 
 L’API User Context JavaScript expose les données au niveau de l’utilisateur et du visiteur sur plusieurs sessions. Utilisez le comportement historique et les données pour créer une personnalisation avancée.
 
 L’API fournit également des variables personnalisées pour envoyer des données et des événements au serveur principal RTP à des fins de segmentation et de personnalisation. Consultez les fonctionnalités [Triggers](../javascript-api/triggers.md) et [Correspondance des motifs](../javascript-api/pattern-match.md) associées.
 
-- Vous devez être client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site.
+- Vous devez être client de Web Personalization et la balise [RTP doit être déployée](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sur votre site.
 - Vous devez demander à l’assistance Marketo d’activer l’API User Context. Après l’activation, un objet userContext est exposé sous l’objet global RTP.
 
 ## Attributs de contexte utilisateur

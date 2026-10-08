@@ -3,20 +3,25 @@ title: Référence de l’API Munchkin
 description: Utilisez l’API JavaScript Munchkin pour effectuer le suivi des visites de page, des clics sur les liens et des événements personnalisés à l’aide des méthodes init, createTrackingCookie et munchkinFunction.
 feature: Munchkin Tracking Code, Javascript
 exl-id: e9727691-5501-4223-bc98-2b4bacc33513
-TQID: https://experienceleague.adobe.com/s97x6wVZijnnxZwS7HMIkQAKlxXkcfPXuSZG4KjXGoc
+TQID: 'https://experienceleague.adobe.com/s97x6wVZijnnxZwS7HMIkQAKlxXkcfPXuSZG4KjXGoc'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
+  - id: 1c1a93b2-f024-5627-9905-6faf6fcc22be
+    internal-label: Munchkin Tracking Code
+  - id: dda1332a-c3e0-583f-9d9b-15f1934e0ad3
+    internal-label: Javascript
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 414
+source-wordcount: '414'
 ht-degree: 9%
-
 ---
-
 # Référence de l’API Munchkin
 
 Munchkin fournit des fonctions JavaScript pour le suivi personnalisé des événements de navigateur. Vous pouvez, par exemple, effectuer le suivi des lectures vidéo ou des clics sur des éléments qui ne sont pas des liens.
@@ -38,7 +43,7 @@ L’API Munchkin offre les fonctions suivantes :
 | Nom du paramètre | Facultatif/obligatoire | Type | Description |
 | --- | --- | --- | --- |
 | ID Munchkin | Obligatoire | Chaîne | Identifiant de compte Munchkin sous le menu Admin > Intégration > Munchkin . Définit l’instance cible vers laquelle envoyer les activités. |
-| [&#x200B; Paramètres de configuration &#x200B;](configuration.md) | Facultatif | Objet | Active d’autres paramètres de comportement pour Munchkin. |
+| [ Paramètres de configuration ](configuration.md) | Facultatif | Objet | Active d’autres paramètres de comportement pour Munchkin. |
 
 ```javascript
 Munchkin.init('299-BYM-827');

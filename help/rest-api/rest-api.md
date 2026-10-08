@@ -3,22 +3,30 @@ title: API REST
 feature: REST API
 description: Découvrez comment utiliser l’API REST Marketo, configurer les utilisateurs d’API et LaunchPoint, afficher les quotas et les limites, vous authentifier avec l’en-tête d’autorisation et récupérer les prospects.
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
-TQID: https://experienceleague.adobe.com/GqhWI816wWX-2zf89wWj-GXpg9i615HRFVl2ljdYVj0
+TQID: 'https://experienceleague.adobe.com/GqhWI816wWX-2zf89wWj-GXpg9i615HRFVl2ljdYVj0'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
+    internal-label: Integrations
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+    internal-label: Database
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 764
+source-wordcount: '764'
 ht-degree: 3%
-
 ---
-
 # API REST
 
 L’API REST Marketo permet d’accéder à distance à de nombreuses fonctionnalités système. Vous pouvez l’utiliser pour créer des programmes, importer des prospects en bloc et contrôler une instance Marketo à un niveau détaillé.
@@ -58,7 +66,7 @@ Sélectionnez l’onglet **[!UICONTROL Rôles]**, puis sélectionnez Nouveau rô
 
 ![Nouveau rôle](assets/new-role.png)
 
-Revenez à l’onglet [!UICONTROL &#x200B; Utilisateurs &#x200B;] et sélectionnez **[!UICONTROL Inviter un nouvel utilisateur]**. Saisissez un nom explicite qui identifie l’utilisateur en tant qu’utilisateur de l’API, saisissez une adresse e-mail, puis sélectionnez **[!UICONTROL Suivant]**.
+Revenez à l’onglet [!UICONTROL  Utilisateurs ] et sélectionnez **[!UICONTROL Inviter un nouvel utilisateur]**. Saisissez un nom explicite qui identifie l’utilisateur en tant qu’utilisateur de l’API, saisissez une adresse e-mail, puis sélectionnez **[!UICONTROL Suivant]**.
 
 ![Nouvelles informations sur l’utilisateur](assets/new-user-info.png)
 
@@ -88,7 +96,7 @@ Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Services web]**.
 
 Recherchez le [!UICONTROL Point d’entrée] dans la zone API REST et enregistrez-le pour le premier appel API.
 
-![&#x200B; Point d’entrée REST &#x200B;](assets/admin-web-services-rest-endpoint-1.png)
+![ Point d’entrée REST ](assets/admin-web-services-rest-endpoint-1.png)
 
 Chaque appel de l’API REST doit inclure un jeton d’accès dans un en-tête HTTP.
 

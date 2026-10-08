@@ -3,23 +3,30 @@ title: Configuration
 description: Configurez Marketo Munchkin avec l’API JavaScript. Découvrez les paramètres Munchkin.init tels que altIds, anonymizeIP, asyncOnly, life des cookies, domainLevel, Beacon API.
 feature: Munchkin Tracking Code, Javascript
 exl-id: 4700ce7b-f624-4f27-871e-9a050f203973
-TQID: https://experienceleague.adobe.com/ip2cCGgoa83v8m9GYLYXe132veYxS1C6UWX1iLB6X5Q
+TQID: 'https://experienceleague.adobe.com/ip2cCGgoa83v8m9GYLYXe132veYxS1C6UWX1iLB6X5Q'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
   - id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+    internal-label: Reporting
+  - id: 1c1a93b2-f024-5627-9905-6faf6fcc22be
+    internal-label: Munchkin Tracking Code
+  - id: dda1332a-c3e0-583f-9d9b-15f1934e0ad3
+    internal-label: Javascript
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Reporting
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 541
+source-wordcount: '541'
 ht-degree: 5%
-
 ---
-
 # Configuration
 
 Munchkin accepte les paramètres de configuration qui personnalisent son comportement. Transmettez les paramètres en tant que propriétés d’un objet JavaScript dans le deuxième paramètre de [Munchkin.init()](api-reference.md#munchkin_init).
@@ -50,7 +57,7 @@ L’objet des paramètres de configuration peut contenir un nombre indéfini de 
 | domainSelectorV2 | Booléen | Si la valeur est définie sur « true », utilise une méthode améliorée pour déterminer comment définir l’attribut de domaine du cookie. |
 | httpsOnly | Booléen | La valeur par défaut est false. Lorsque la valeur est définie sur true, définit le cookie sur le paramètre Sécurisé lorsque la page suivie a été diffusée via https. |
 | useBeaconAPI | Booléen | La valeur par défaut est false. Lorsque la valeur est définie sur true, utilise l’[API de balise](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API) pour envoyer des requêtes non bloquantes au lieu de [XMLHttpRequest](https://developer.mozilla.org/fr-FR/docs/Web/API/XMLHttpRequest). Si le navigateur ne prend pas en charge l’API de balise, Munchkin utilise XMLHttpRequest. |
-| wsInfo | Chaîne | Cible un espace de travail. Obtenez l’identifiant de l’espace de travail en le sélectionnant dans le menu Admin > Intégration > Munchkin .<br><br>Ce paramètre s’applique uniquement lorsqu’un enregistrement de prospect anonyme est initialement créé. Une fois la valeur du cookie Munchkin établie pour cet enregistrement de prospect, le paramètre wsInfo ne peut plus modifier sa partition.<br><br>Ce paramètre affecte uniquement les prospects anonymes. Il n’est donc pertinent que pour les [visiteurs anonymes dans les rapports web](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports) spécifiques à une partition. |
+| wsInfo | Chaîne | Cible un espace de travail. Obtenez l’identifiant de l’espace de travail en le sélectionnant dans le menu Admin > Intégration > Munchkin .<br><br>Ce paramètre s’applique uniquement lorsqu’un enregistrement de prospect anonyme est initialement créé. Une fois la valeur du cookie Munchkin établie pour cet enregistrement de prospect, le paramètre wsInfo ne peut plus modifier sa partition.<br><br>Ce paramètre affecte uniquement les prospects anonymes. Il n’est donc pertinent que pour les [visiteurs anonymes dans les rapports web](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports) spécifiques à une partition. |
 
 ## Exemples
 
