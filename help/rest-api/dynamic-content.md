@@ -3,20 +3,30 @@ title: Contenu dynamique
 feature: REST API, Dynamic Content
 description: Configurez du contenu dynamique Marketo au niveau de la section via des API REST à l'aide de segmentations pour personnaliser les e-mails, les landing pages et les fragments de code avec des points d'entrée et des exemples
 exl-id: 8ab97624-5fb5-4a41-911f-ec8616dd43c9
-TQID: https://experienceleague.adobe.com/MwfPxu74qk0bPZMr6yuxQi--e3gMvP1tXQZ5iMil02o
+TQID: 'https://experienceleague.adobe.com/MwfPxu74qk0bPZMr6yuxQi--e3gMvP1tXQZ5iMil02o'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+    internal-label: Database
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+  - id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
+    internal-label: Personalization
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
+  - id: cdd4e0f6-e87e-453f-88ee-2ee54a7de272
+    internal-label: Dynamic content
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 325
+source-wordcount: '325'
 ht-degree: 3%
-
 ---
-
 # Contenu dynamique
 
 Utilisez les segmentations de leads pour fournir du contenu dynamique dans ces types de ressources :
@@ -25,7 +35,7 @@ Utilisez les segmentations de leads pour fournir du contenu dynamique dans ces t
 - Pages de destination
 - Extraits
 
-## Vue d’ensemble
+## Présentation
 
 Le contenu dynamique fonctionne au niveau de la section. Chaque section peut fournir des variations pour les segments dans une segmentation sélectionnée.
 

@@ -3,24 +3,30 @@ title: Événements de données personnalisés
 description: Envoyez des événements personnalisés avec l’API JavaScript RTP pour Web Personalization, avec des paramètres, des données de chaîne ou de tableau allant jusqu’à quatre éléments, et des déclencheurs basés sur les clics.
 feature: Javascript
 exl-id: ef7cab9c-3bd0-450e-9247-9324b1e6f9ab
-TQID: https://experienceleague.adobe.com/oWDmtMF94xG5HYXeTwkx5zF9PWo98bpwoVB6kAKLYDo
+TQID: 'https://experienceleague.adobe.com/oWDmtMF94xG5HYXeTwkx5zF9PWo98bpwoVB6kAKLYDo'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: e2290edd-b061-4880-9d79-dee306cf5aa9
+    internal-label: Implementation
   - id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
+    internal-label: Personalization
+  - id: dda1332a-c3e0-583f-9d9b-15f1934e0ad3
+    internal-label: Javascript
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
+    internal-label: Implementation
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Personalization
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 241
+source-wordcount: '241'
 ht-degree: 3%
-
 ---
-
 # Événements de données personnalisés
 
 Utilisez cette méthode pour envoyer des événements personnalisés pour le suivi et la personnalisation en temps réel. Vous pouvez envoyer des données tierces ou déclencher un événement personnalisé en fonction du comportement des visiteurs.

@@ -3,18 +3,26 @@ title: Profils utilisateur
 feature: Mobile Marketing, Users and Roles
 description: Découvrez comment créer et mettre à jour des profils utilisateur dans Marketo Mobile SDK sur iOS et Android avec Objective C Swift et Java, des champs standard et personnalisés, associerLead
 exl-id: 1b2cfb7f-d678-4022-8cd9-a56004a1ac46
-TQID: https://experienceleague.adobe.com/famIZ1O17Z7TTe2SBHqWSLLL-pp6Vx9M6xXhy2SbB-0
+TQID: 'https://experienceleague.adobe.com/famIZ1O17Z7TTe2SBHqWSLLL-pp6Vx9M6xXhy2SbB-0'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+feature_v2:
+  - id: 44b89f75-c1af-5353-8094-79b278102d46
+    internal-label: Mobile Marketing
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+    internal-label: Administration
+subfeature_v2:
+  - id: fc5c4f1e-5467-43ac-94e9-0acfa71c517d
+    internal-label: Users and roles
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 116
+source-wordcount: '116'
 ht-degree: 1%
-
 ---
-
 # Profils utilisateur
 
 Créez ou mettez à jour des profils utilisateur avec Marketo Mobile SDK pour iOS ou Android :

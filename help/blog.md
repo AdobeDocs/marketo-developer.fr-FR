@@ -2,7 +2,13 @@
 title: Archive de blog
 description: Archive du blog du développeur de Marketo 2014-2023 offrant des publications historiques sur Forms 2.0, Zapier, les mises à jour des API, l’obsolescence de SOAP et la migration vers REST.
 exl-id: d7ae88dd-9938-4957-9798-db43090dab4e
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
 source-wordcount: '65289'
 ht-degree: 0%
