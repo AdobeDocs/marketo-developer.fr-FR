@@ -473,7 +473,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 Activez les autorisations dans le projet Xcode pour envoyer des notifications push à l’appareil de l’utilisateur.
 
-Pour envoyer des notifications push, [ ajoutez des notifications push ](push-notifications.md).
+Pour envoyer des notifications push, [&#x200B; ajoutez des notifications push &#x200B;](push-notifications.md).
 
 Pour configurer les notifications push iOS, créez le fichier PushNotifications.tsx et ajoutez le code suivant.
 

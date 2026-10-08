@@ -23,7 +23,7 @@ ht-degree: 3%
 ---
 # URL de base
 
-Chaque appel API dans la [ Référence du point d’entrée ](endpoint-reference.md) spécifie la méthode REST, le chemin d’accès, la ressource et les paramètres. Ajoutez ces composants à l’URL de base pour former une requête.
+Chaque appel API dans la [&#x200B; Référence du point d’entrée &#x200B;](endpoint-reference.md) spécifie la méthode REST, le chemin d’accès, la ressource et les paramètres. Ajoutez ces composants à l’URL de base pour former une requête.
 
 Voici un exemple d’URL REST bien formée :
 

@@ -66,7 +66,7 @@ Sélectionnez l’onglet **[!UICONTROL Rôles]**, puis sélectionnez Nouveau rô
 
 ![Nouveau rôle](assets/new-role.png)
 
-Revenez à l’onglet [!UICONTROL  Utilisateurs ] et sélectionnez **[!UICONTROL Inviter un nouvel utilisateur]**. Saisissez un nom explicite qui identifie l’utilisateur en tant qu’utilisateur de l’API, saisissez une adresse e-mail, puis sélectionnez **[!UICONTROL Suivant]**.
+Revenez à l’onglet [!UICONTROL &#x200B; Utilisateurs &#x200B;] et sélectionnez **[!UICONTROL Inviter un nouvel utilisateur]**. Saisissez un nom explicite qui identifie l’utilisateur en tant qu’utilisateur de l’API, saisissez une adresse e-mail, puis sélectionnez **[!UICONTROL Suivant]**.
 
 ![Nouvelles informations sur l’utilisateur](assets/new-user-info.png)
 
@@ -96,7 +96,7 @@ Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Services web]**.
 
 Recherchez le [!UICONTROL Point d’entrée] dans la zone API REST et enregistrez-le pour le premier appel API.
 
-![ Point d’entrée REST ](assets/admin-web-services-rest-endpoint-1.png)
+![&#x200B; Point d’entrée REST &#x200B;](assets/admin-web-services-rest-endpoint-1.png)
 
 Chaque appel de l’API REST doit inclure un jeton d’accès dans un en-tête HTTP.
 

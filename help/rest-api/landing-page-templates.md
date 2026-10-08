@@ -90,7 +90,7 @@ name=New LPT - PHP&folder={"id":12,"type":"Folder"}
 }
 ```
 
-Ajoutez du contenu de modèle séparément avec le point d’entrée [ Mettre à jour le contenu du modèle de page de destination ](https://developer.adobe.com/marketo-apis/api/asset#operation/updateLandingPageTemplateContentUsingPOST).
+Ajoutez du contenu de modèle séparément avec le point d’entrée [&#x200B; Mettre à jour le contenu du modèle de page de destination &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#operation/updateLandingPageTemplateContentUsingPOST).
 
 ### Mettre à jour les métadonnées
 

@@ -50,7 +50,7 @@ Pour Swift, supprimez l&#39;instruction d&#39;importation suivante car les étap
 
 ### Appareils de test iOS
 
-Suivez les instructions de la section [ Ajout d’appareils de test iOS ](installation.md#ios_test_devices).
+Suivez les instructions de la section [&#x200B; Ajout d’appareils de test iOS &#x200B;](installation.md#ios_test_devices).
 
 ### Gérer le type d’URL personnalisé dans AppDelegate
 
@@ -83,10 +83,10 @@ Si votre application utilise ProGuard, ajoutez les lignes suivantes au fichier `
 
 ### Appareils de test Android
 
-Suivez les instructions de la section [Appareils de test ](installation.md#android_test_devices).
+Suivez les instructions de la section [Appareils de test &#x200B;](installation.md#android_test_devices).
 
 ## Configuration des notifications push sur Android
 
 Suivez les [instructions relatives à Android Firebase Cloud Messaging](installation.md#android_firebase_cloud_messaging_support). Utilisez le nom de classe « ALMarketo » au lieu de « Marketo ».
 
-Pour configurer des profils utilisateur, suivez les [ instructions relatives aux profils utilisateur ](user-profiles.md). Pour configurer des actions personnalisées, suivez les [instructions relatives aux actions personnalisées](custom-actions.md#android_custom_action). Dans les deux ensembles d’instructions, utilisez le nom de classe « ALMarketo » au lieu de « Marketo ».
+Pour configurer des profils utilisateur, suivez les [&#x200B; instructions relatives aux profils utilisateur &#x200B;](user-profiles.md). Pour configurer des actions personnalisées, suivez les [instructions relatives aux actions personnalisées](custom-actions.md#android_custom_action). Dans les deux ensembles d’instructions, utilisez le nom de classe « ALMarketo » au lieu de « Marketo ».

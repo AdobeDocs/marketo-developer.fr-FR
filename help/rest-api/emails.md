@@ -36,7 +36,7 @@ ht-degree: 2%
 
 Utilisez les points d’entrée REST d’e-mail pour interroger et gérer des ressources d’e-mail.
 
-Si un e-mail contient du [Contenu prédictif ](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content), les points d’entrée suivants échouent avec le code d’erreur 709 et un message d’erreur correspondant :
+Si un e-mail contient du [Contenu prédictif &#x200B;](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content), les points d’entrée suivants échouent avec le code d’erreur 709 et un message d’erreur correspondant :
 
 - [Obtenir le contenu de l’e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailContentByIdUsingGET)
 - [Mettre à jour la section de contenu d&#39;e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailComponentContentUsingPOST)
