@@ -113,7 +113,7 @@ Si vous les avez déjà, passez à [Configurer votre outil d’IA](#configure-yo
 ### ID de compte Munchkin
 
 1. Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Munchkin]**.
-1. Copiez l’ID de compte ****. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
+1. Copiez l’ID de compte **&#x200B;**. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
 
 ## Configuration de votre outil d’IA
 
@@ -323,7 +323,7 @@ Vous pouvez maintenant suivre le flux de connexion et renseigner les valeurs d�
 
 ### Glaner {#glean}
 
-Pour connecter Glean au serveur MCP Marketo Engage, l’équipe d’assistance [ Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features) doit configurer les en-têtes personnalisés suivants.
+Pour connecter Glean au serveur MCP Marketo Engage, l’équipe d’assistance [&#x200B; Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features) doit configurer les en-têtes personnalisés suivants.
 
 | Header | Valeur |
 | ------ | ----- |
