@@ -113,7 +113,7 @@ Si vous les avez déjà, passez à [Configurer votre outil d’IA](#configure-yo
 ### ID de compte Munchkin
 
 1. Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Munchkin]**.
-1. Copiez l’ID de compte ****. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
+1. Copiez l’ID de compte **&#x200B;**. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
 
 ## Configuration de votre outil d’IA
 
@@ -332,7 +332,7 @@ Enregistrez ou mettez à jour le connecteur, revenez à Copilot Studio et ajoute
 
 Pour connecter Glean au serveur MCP [!DNL Marketo Engage], suivez [les instructions de configuration à distance de Glean pour MCP](https://docs.glean.com/administration/tools/connect-remote-mcp-servers-to-glean){target="_blank"} afin d’ajouter des `https://marketo-mcp.adobe.io/mcp`. Consultez d’abord le catalogue **[!UICONTROL Connecteurs]**. Pour un serveur personnalisé ou non répertorié, utilisez **[!UICONTROL Admin Console]** > **[!UICONTROL Platform]** > **[!UICONTROL Tools]** > **[!UICONTROL Import tools from MCP server]**.
 
-L’équipe d’assistance [ Glean doit configurer les en-têtes personnalisés ](https://docs.glean.com/administration/tools/mcp-custom-headers){target="_blank"} ci-dessous. Incluez le nom du serveur, l’URL et les noms d’en-tête requis dans votre demande d’assistance et coordonnez la gestion sécurisée des valeurs d’identification. Une connexion par clé API standard seule ne fournit pas les trois en-têtes.
+L’équipe d’assistance [&#x200B; Glean doit configurer les en-têtes personnalisés &#x200B;](https://docs.glean.com/administration/tools/mcp-custom-headers){target="_blank"} ci-dessous. Incluez le nom du serveur, l’URL et les noms d’en-tête requis dans votre demande d’assistance et coordonnez la gestion sécurisée des valeurs d’identification. Une connexion par clé API standard seule ne fournit pas les trois en-têtes.
 
 | Header | Valeur |
 | ------ | ----- |
