@@ -34,19 +34,19 @@ role_v2:
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
     internal-label: Artificial intelligence
-source-git-commit: 5c356507ac2551edfbb1c60dba7b167d7ef0b4c0
+source-git-commit: 1cdb28422994b772a0fa430e213facaf26817952
 workflow-type: tm+mt
-source-wordcount: '2137'
+source-wordcount: '2620'
 ht-degree: 3%
 ---
 
 # [!DNL Marketo Engage] MCP Server
 
-Le protocole MCP (Model Context Protocol) est une norme ouverte qui connecte les outils d’IA aux services externes. Le serveur MCP [!DNL Marketo] connecte votre assistant AI à [!DNL Marketo]. Il fournit plus de 100 opérations pour des formulaires, des programmes, des campagnes intelligentes, des prospects, des e-mails, des fragments de code, des listes et des dossiers.
+Le protocole MCP (Model Context Protocol) est une norme ouverte qui connecte les outils d’IA aux services externes. Le serveur MCP [!DNL Marketo] connecte votre assistant AI à [!DNL Marketo]. Il prend en charge les opérations de gestion des ressources, les données de prospect et l’automatisation des campagnes. Consultez [Opérations MCP prises en charge](mcp-server-operations.md) pour connaître les exceptions et les exigences de disponibilité.
 
 Lorsque votre outil d’IA appelle le serveur MCP, le serveur utilise les informations d’identification contenues dans cette requête pour exécuter l’appel API REST correspondant. Vous n’avez pas besoin d’installer, de déployer ou d’exécuter un logiciel côté serveur.
 
-Pour plus d’informations sur la manière dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/fr/docs/marketo/using/product-docs/marketo-ai/data-information).
+Pour plus d’informations sur la manière dont les données sont gérées avec l’IA dédiée au Marketo et le serveur MCP de Marketo Engage, consultez la page [Informations sur les données](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 >[!IMPORTANT]
 >
@@ -113,11 +113,11 @@ Si vous les avez déjà, passez à [Configurer votre outil d’IA](#configure-yo
 ### ID de compte Munchkin
 
 1. Accédez à **[!UICONTROL Admin]** > **[!UICONTROL Munchkin]**.
-1. Copiez l’ID de compte **&#x200B;**. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
+1. Copiez l’ID de compte ****. Le format est `XXX-XXX-XXX` et correspond au préfixe de l’URL de votre instance.
 
 ## Configuration de votre outil d’IA
 
-La configuration diffère légèrement en fonction de l’outil. Vous trouverez ci-dessous des exemples de connexion pour les outils courants.
+Les configurations varient légèrement en fonction de l’outil. Cette section fournit des exemples de connexion pour les outils courants.
 
 >[!TIP]
 >
@@ -129,26 +129,20 @@ La configuration diffère légèrement en fonction de l’outil. Vous trouverez 
 
 ### Claude Desktop {#claude-desktop}
 
-Pour vous connecter à Claude Desktop, téléchargez [marketo-mcp-bridge.zip](assets/marketo-mcp-bridge.zip) et décompressez-le. Placez le `marketo-mcp-bridge.mjs` à un emplacement connu pour vous y référer à l’étape suivante.
+Pour vous connecter à Claude Desktop, téléchargez [marketo-mcp-bridge.zip](assets/marketo-mcp-bridge.zip) et décompressez-le. Placez `marketo-mcp-bridge.mjs` dans un emplacement connu et utilisez son chemin d’accès absolu dans la configuration ci-dessous.
 
-Tu auras également besoin de :
-
-* Node.js v18 et ultérieure
-* npm
+Vous avez également besoin d’une version LTS prise en charge de Node.js installée sur votre ordinateur. Le pont ne nécessite pas de packages npm supplémentaires.
 
 1. Ouvrez Claude Desktop.
-1. Accédez à **Paramètres > Développeur > Modifier la configuration**.
-1. Ajoutez le code suivant à `claude_desktop_config.json` :
+1. Ouvrez `claude_desktop_config.json`. Sous macOS, le fichier est en `~/Library/Application Support/Claude/`. Sous Windows, il est en `%APPDATA%\Claude\`. Dans les versions avec le menu Paramètres du développeur, sélectionnez **[!UICONTROL Paramètres]** > **[!UICONTROL Développeur]** > **[!UICONTROL Modifier la configuration]** pour l’ouvrir.
+1. Ajoutez l’entrée suivante sous `mcpServers`, en conservant les paramètres existants. Remplacez le chemin d’accès et les espaces réservés d’informations d’identification par vos valeurs :
 
 ```json
 {
-  "preferences": {
-    ...
-  },
   "mcpServers": {
     "marketo-mcp": {
       "command": "node",
-      "args": ["/path/to/marketo-bridge/bridge.mjs"],
+      "args": ["/path/to/marketo-bridge/marketo-mcp-bridge.mjs"],
       "env": {
         "MARKETO_MCP_PROD_CLIENT_ID": "<your-client-id>",
         "MARKETO_MCP_PROD_CLIENT_SECRET": "<your-client-secret>",
@@ -161,18 +155,18 @@ Tu auras également besoin de :
 
 1. Redémarrez Claude Desktop.
 
+Si Claude Desktop ne trouve pas Node.js, remplacez `node` dans `command` par le chemin d’accès absolu à votre fichier exécutable Node.js. Pour plus d’informations, voir [Connexion aux serveurs MCP locaux](https://modelcontextprotocol.io/docs/develop/connect-local-servers){target="_blank"}.
+
 >[!TAB Curseur]
 
 ### Curseur {#cursor}
 
-Si votre configuration MCP de curseur contient déjà d&#39;autres serveurs, ajoutez l&#39;entrée `marketo` sous `mcpServers`.
-L’exemple suivant montre le bloc de `mcpServers` complet dans **[!UICONTROL Paramètres]** > **[!UICONTROL MCP]** ou `.cursor/mcp.json` dans le répertoire du projet :
+Ajoutez l’entrée `marketo` sous `mcpServers` dans `~/.cursor/mcp.json` pour le compte d’utilisateur ou le `.cursor/mcp.json` dans le répertoire du projet. Conservez les serveurs existants et remplacez les espaces réservés d’informations d’identification par vos valeurs :
 
 ```json
 {
   "mcpServers": {
     "marketo": {
-      "type": "http",
       "url": "https://marketo-mcp.adobe.io/mcp",
       "headers": {
         "X-Marketo-Client-Id": "YOUR-CLIENT-ID",
@@ -184,7 +178,7 @@ L’exemple suivant montre le bloc de `mcpServers` complet dans **[!UICONTROL Pa
 }
 ```
 
-Redémarrez le curseur.
+Ouvrez **[!UICONTROL Personnaliser]** dans le curseur et vérifiez que le serveur est sous tension. Pour plus d’informations, voir [Configuration du curseur MCP](https://cursor.com/docs/context/mcp){target="_blank"}.
 
 >[!TAB Claude Code CLI]
 
@@ -200,64 +194,39 @@ claude mcp add --transport http marketo \
   --header "X-Marketo-Munchkin-Id: YOUR-MUNCHKIN-ID"
 ```
 
+La commande ajoute le serveur pour le projet en cours et votre compte utilisateur. Pour le rendre disponible dans plusieurs projets, ajoutez des `--scope user`. Dans Claude Code, exécutez `/mcp` pour vérifier la connexion. Pour plus d’informations, voir [Configuration du MCP du code Claude](https://code.claude.com/docs/en/mcp){target="_blank"}.
+
 >[!TAB  Codex OpenAI ]
 
 ### Codex OpenAI {#codex}
 
-1. Accédez à Paramètres > Serveurs MCP > Ajouter un serveur .
-1. Ajoutez l&#39;URL du serveur : `https://marketo-mcp.adobe.io/mcp`.
-1. Ajoutez les en-têtes pour votre méthode d’authentification :
+Ajoutez les éléments suivants à `~/.codex/config.toml`, en préservant toute configuration existante :
 
-* X-Marketo-Client-Id : « YOUR-CLIENT-ID »
-* X-Marketo-Client-Secret : « YOUR-CLIENT-SECRET »
-* X-Marketo-Munchkin-Id : « YOUR-MUNCHKIN-ID »
+```toml
+[mcp_servers.marketo]
+url = "https://marketo-mcp.adobe.io/mcp"
 
-1. Sélectionnez Enregistrer pour terminer le processus.
+[mcp_servers.marketo.env_http_headers]
+X-Marketo-Client-Id = "MARKETO_CLIENT_ID"
+X-Marketo-Client-Secret = "MARKETO_CLIENT_SECRET"
+X-Marketo-Munchkin-Id = "MARKETO_MUNCHKIN_ID"
+```
+
+Définissez `MARKETO_CLIENT_ID`, `MARKETO_CLIENT_SECRET` et `MARKETO_MUNCHKIN_ID` dans l’environnement du processus qui exécute le Codex. Les valeurs dans `env_http_headers` sont des noms de variables d’environnement, et non des informations d’identification.
+
+Démarrez une nouvelle session Codex et exécutez `/mcp` pour vérifier la connexion. Pour plus d’informations, voir [Configuration du MCP Codex](https://developers.openai.com/codex/mcp){target="_blank"}.
 
 >[!TAB Gemini CLI]
 
 ### Interface de ligne de commande Gemini
 
-Pour ajouter le serveur MCP Marketo Engage à l’interface de ligne de commande Gemini, ajoutez les éléments suivants au `.gemini/mcp.json` dans le répertoire du projet.
+Pour ajouter le serveur MCP [!DNL Marketo Engage] à l’interface de ligne de commande Gemini, ajoutez l’entrée de `mcpServers` suivante à `.gemini/settings.json` dans le répertoire du projet ou `~/.gemini/settings.json` de votre compte utilisateur. Conservez les paramètres existants et remplacez les espaces réservés d’informations d’identification par vos valeurs.
 
 ```json
 {
   "mcpServers": {
     "marketo": {
       "httpUrl": "https://marketo-mcp.adobe.io/mcp",
-      "headers": {
-        "X-Marketo-Client-Id": "$MARKETO_CLIENT_ID",
-        "X-Marketo-Client-Secret": "$MARKETO_CLIENT_SECRET",
-        "X-Marketo-Munchkin-Id": "$MARKETO_MUNCHKIN_ID"
-      }
-    }
-  }
-}
-```
-
-Ou par ligne de commande :
-
-```bash
-gemini mcp add --transport http -s user marketo https://marketo-mcp.adobe.io/mcp \
-  -H "X-Marketo-Client-Id: $MARKETO_CLIENT_ID" \
-  -H "X-Marketo-Client-Secret: $MARKETO_CLIENT_SECRET" \
-  -H "X-Marketo-Munchkin-Id: $MARKETO_MUNCHKIN_ID"
-```
-
-Redémarrez la session pour sélectionner la nouvelle configuration de serveur MCP.
-
->[!TAB VS Code avec Copilote GitHub]
-
-### VS Code avec pilote GitHub {#vscode}
-
-Appuyez sur **[!UICONTROL Ctrl+Maj+P]** (ou **[!UICONTROL Cmd+Maj+P]** sur macOS), saisissez **[!UICONTROL MCP: Open User Configuration]**, puis appuyez sur Entrée. Cette action ouvre `mcp.json`. Ajoutez l’entrée `marketo` dans l’objet `servers` :
-
-```json
-{
-  "servers": {
-    "marketo": {
-      "type": "http",
-      "url": "https://marketo-mcp.adobe.io/mcp",
       "headers": {
         "X-Marketo-Client-Id": "YOUR-CLIENT-ID",
         "X-Marketo-Client-Secret": "YOUR-CLIENT-SECRET",
@@ -268,13 +237,52 @@ Appuyez sur **[!UICONTROL Ctrl+Maj+P]** (ou **[!UICONTROL Cmd+Maj+P]** sur macOS
 }
 ```
 
+Vous pouvez également définir `MARKETO_CLIENT_ID`, `MARKETO_CLIENT_SECRET` et `MARKETO_MUNCHKIN_ID` dans votre environnement shell et exécuter la commande suivante. Le shell développe les variables avant que l’interface de ligne de commande ne stocke les valeurs d’en-tête dans votre configuration utilisateur :
+
+```bash
+gemini mcp add --transport http -s user marketo https://marketo-mcp.adobe.io/mcp \
+  -H "X-Marketo-Client-Id: $MARKETO_CLIENT_ID" \
+  -H "X-Marketo-Client-Secret: $MARKETO_CLIENT_SECRET" \
+  -H "X-Marketo-Munchkin-Id: $MARKETO_MUNCHKIN_ID"
+```
+
+Redémarrez la session et exécutez `/mcp` pour vérifier la connexion. Pour plus d’informations, voir [Configuration MCP de l’interface de ligne de commande Gemini](https://geminicli.com/docs/tools/mcp-server/){target="_blank"}.
+
+>[!TAB VS Code avec Copilote GitHub]
+
+### VS Code avec pilote GitHub {#vscode}
+
+Utilisez la configuration Copilot portable pour les dernières versions de VS Code. Ajoutez l’entrée suivante sous `mcpServers` dans `~/.copilot/mcp-config.json` ou `$COPILOT_HOME/mcp-config.json` si vous définissez `COPILOT_HOME`. Conserver les serveurs existants :
+
+```json
+{
+  "mcpServers": {
+    "marketo": {
+      "type": "http",
+      "url": "https://marketo-mcp.adobe.io/mcp",
+      "headers": {
+        "X-Marketo-Client-Id": "${MARKETO_CLIENT_ID}",
+        "X-Marketo-Client-Secret": "${MARKETO_CLIENT_SECRET}",
+        "X-Marketo-Munchkin-Id": "${MARKETO_MUNCHKIN_ID}"
+      }
+    }
+  }
+}
+```
+
+Définissez les trois variables d’environnement dans l’environnement qui exécute VS Code ou l’hôte distant qui se connecte au serveur. Démarrez une nouvelle session Copilot et examinez les invites d&#39;approbation de serveur.
+
+Pour utiliser plutôt la configuration guidée, exécutez **[!UICONTROL MCP : Ajouter un serveur]**, sélectionnez **[!UICONTROL HTTP (HTTP ou Server-Sent Events)]**, saisissez l’URL du serveur, puis choisissez **[!UICONTROL Global]** > **[!UICONTROL Copilote global]**. Ajoutez ensuite les en-têtes à la configuration enregistrée.
+
+Les versions plus anciennes prennent également en charge **[!UICONTROL MCP : Ouvrir la configuration utilisateur]** ou `.vscode/mcp.json`. Ces fichiers utilisent `servers` au lieu de la syntaxe `mcpServers` et `${env:MARKETO_CLIENT_ID}` pour les variables d’environnement. Ne mélangez pas les deux formats. Pour plus d’informations, voir [Configuration du MCP du code VS](https://code.visualstudio.com/docs/agents/reference/mcp-configuration){target="_blank"}.
+
 >[!TAB  Copilot Studio ]
 
 ### Copilot Studio
 
-Copilot Studio fonctionne un peu différemment. Vous créez un fichier de définition YAML, puis Copilot Studio crée l’interface utilisateur du connecteur à partir de celui-ci. C’est là que vous définissez les en-têtes personnalisés.
+Activez l’orchestration générative pour votre agent avant d’ajouter des outils MCP. Utilisez un connecteur personnalisé pour définir les trois en-têtes de [!DNL Marketo] requis.
 
-Lors de la création de votre nouveau connecteur, ouvrez l’« éditeur Swagger » et collez le code suivant :
+Sur la page **[!UICONTROL Outils]** de votre agent, sélectionnez **[!UICONTROL Ajouter un outil]** > **[!UICONTROL Nouvel outil]** > **[!UICONTROL Connecteur personnalisé]**. Dans Power Apps, créez un connecteur personnalisé et utilisez l’**[!UICONTROL éditeur Swagger]** pour saisir la définition suivante :
 
 ```yaml
 swagger: '2.0'
@@ -294,17 +302,17 @@ paths:
       operationId: InvokeServer
       x-ms-agentic-protocol: mcp-streamable-1.0
       parameters:
-        - name: MARKETO_MCP_PROD_CLIENT_ID
+        - name: X-Marketo-Client-Id
           in: header
           description: Client ID.
           type: string
           required: true
-        - name: MARKETO_MCP_PROD_CLIENT_SECRET
+        - name: X-Marketo-Client-Secret
           in: header
           description: Client secret.
           type: string
           required: true
-        - name: MARKETO_MCP_PROD_MUNCHKIN_ID
+        - name: X-Marketo-Munchkin-Id
           in: header
           description: Munchkin ID.
           type: string
@@ -316,14 +324,15 @@ securityDefinitions: {}
 security: []
 ```
 
-Mettez à jour le connecteur, puis fermez-le et rouvrez-le.
-Vous pouvez maintenant suivre le flux de connexion et renseigner les valeurs d’en-tête.
+Enregistrez ou mettez à jour le connecteur, revenez à Copilot Studio et ajoutez-le à votre agent. Créez une connexion et indiquez les trois valeurs d’en-tête lorsque vous y êtes invité. Conservez les informations d’identification en dehors de la définition OpenAPI et des instructions de l’agent. Pour plus d’informations, voir [Connexion d’un agent à un serveur MCP existant](https://learn.microsoft.com/en-us/microsoft-copilot-studio/mcp-add-existing-server-to-agent){target="_blank"}.
 
 >[!TAB Glean]
 
 ### Glaner {#glean}
 
-Pour connecter Glean au serveur MCP Marketo Engage, l’équipe d’assistance [&#x200B; Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features) doit configurer les en-têtes personnalisés suivants.
+Pour connecter Glean au serveur MCP [!DNL Marketo Engage], suivez [les instructions de configuration à distance de Glean pour MCP](https://docs.glean.com/administration/tools/connect-remote-mcp-servers-to-glean){target="_blank"} afin d’ajouter des `https://marketo-mcp.adobe.io/mcp`. Consultez d’abord le catalogue **[!UICONTROL Connecteurs]**. Pour un serveur personnalisé ou non répertorié, utilisez **[!UICONTROL Admin Console]** > **[!UICONTROL Platform]** > **[!UICONTROL Tools]** > **[!UICONTROL Import tools from MCP server]**.
+
+L’équipe d’assistance [ Glean doit configurer les en-têtes personnalisés ](https://docs.glean.com/administration/tools/mcp-custom-headers){target="_blank"} ci-dessous. Incluez le nom du serveur, l’URL et les noms d’en-tête requis dans votre demande d’assistance et coordonnez la gestion sécurisée des valeurs d’identification. Une connexion par clé API standard seule ne fournit pas les trois en-têtes.
 
 | Header | Valeur |
 | ------ | ----- |
@@ -331,12 +340,14 @@ Pour connecter Glean au serveur MCP Marketo Engage, l’équipe d’assistance [
 | `X-Marketo-Client-Secret` | Votre Secret Client |
 | `X-Marketo-Munchkin-Id` | Identifiant de votre compte Munchkin |
 
+Une fois que Glean a confirmé que les en-têtes sont actifs, testez la connexion avec une requête en lecture seule avant de rendre les outils disponibles pour d’autres utilisateurs.
+
 >[!TAB Autres outils]
 
 ### Autres outils {#other-tools}
 
 Adobe héberge le serveur MCP [!DNL Marketo] et l’expose à une URL publique. Tout client MCP prenant en charge des serveurs distants via un transport HTTP en flux continu peut s’y connecter.
-Vous n’avez pas besoin d’un pont spécifique à un outil ni d’un logiciel installé localement. Si votre outil n’est pas répertorié ci-dessus, utilisez les détails de connexion ci-dessous pour le configurer manuellement.
+Les clients qui prennent en charge les connexions HTTP distantes directes n&#39;ont pas besoin d&#39;un pont ou d&#39;un logiciel serveur installé localement. Si votre outil n’est pas répertorié ci-dessus, utilisez les détails de connexion ci-dessous pour le configurer manuellement.
 
 **Détails de la connexion :**
 
@@ -347,7 +358,7 @@ Vous n’avez pas besoin d’un pont spécifique à un outil ni d’un logiciel 
 
 **En-têtes d’authentification :**
 
-Envoyez les en-têtes pour l’une des méthodes d’authentification suivantes avec chaque requête. L’emplacement où vous saisissez l’URL du serveur et les en-têtes dépend de votre outil. Consultez donc sa documentation MCP.
+Envoyez les trois en-têtes avec chaque requête. L’emplacement où vous saisissez l’URL du serveur et les en-têtes dépend de votre outil. Consultez donc sa documentation MCP.
 
 | Header | Valeur |
 | ------ | ----- |
@@ -355,13 +366,15 @@ Envoyez les en-têtes pour l’une des méthodes d’authentification suivantes 
 | `X-Marketo-Client-Secret` | Votre Secret Client |
 | `X-Marketo-Munchkin-Id` | Identifiant de votre compte Munchkin |
 
-Si votre outil accepte une configuration JSON, commencez par les exemples [Cursor](#cursor) ou [VS Code](#vscode), puis ajustez les touches (`mcpServers`, `servers`) pour qu’elles correspondent au schéma de votre outil.
+Si votre outil accepte une configuration JSON, commencez par les exemples [Cursor](#cursor) ou [VS Code](#vscode), puis ajustez les clés et la syntaxe de la variable d’environnement pour qu’elles correspondent au schéma de votre outil.
 
 >[!ENDTABS]
 
+Une fois la connexion établie, demandez à votre assistant AI d’utiliser le serveur MCP [!DNL Marketo] pour répertorier les canaux disponibles sans modifier les données. Inspectez l’appel d’outil et sa réponse pour confirmer que la requête utilise le serveur prévu et renvoie des données sans erreur de connexion ou d’authentification.
+
 ## Opérations disponibles
 
-Une fois connecté, vous pouvez demander à votre assistant d’IA d’effectuer des opérations dans les catégories suivantes. Pour obtenir la liste complète des opérations prises en charge avec les références d’API, voir [Opérations MCP prises en charge](mcp-server-operations.md).
+Une fois connecté, vous pouvez demander à votre assistant d’IA d’effectuer des opérations dans les catégories suivantes. Pour connaître les exceptions et les exigences de disponibilité, voir [Opérations MCP prises en charge](mcp-server-operations.md).
 
 ### Formulaires
 

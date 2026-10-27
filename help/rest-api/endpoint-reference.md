@@ -31,7 +31,7 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
     internal-label: Metadata
-source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
+source-git-commit: 1cdb28422994b772a0fa430e213facaf26817952
 workflow-type: tm+mt
 source-wordcount: '4807'
 ht-degree: 29%
@@ -41,9 +41,9 @@ ht-degree: 29%
 Utilisez les références suivantes pour rechercher des paramètres de requête, des schémas de réponse et des exemples pour chaque groupe d’API REST Marketo :
 
 - [Ressource](https://developer.adobe.com/marketo-apis/api/asset)
-- [Identité](https://developer.adobe.com/marketo-apis/api/identity/)
+- [Identité](https://developer.adobe.com/marketo-apis/api/identity)
 - [Base de données des leads](https://developer.adobe.com/marketo-apis/api/mapi)
-- [Gestion des utilisateurs](https://developer.adobe.com/marketo-apis/api/user/)
+- [Gestion des utilisateurs](https://developer.adobe.com/marketo-apis/api/user)
 
 ## Liste des points d’entrée {#endpoint_list}
 
@@ -273,7 +273,7 @@ Le tableau suivant répertorie les points d’entrée de l’API REST, les méth
 | Obtenir les listes de comptes nommés | Listes de comptes nommés | GET | /rest/v1/namedaccountlists.json | Liste de comptes nommés en lecture seule |
 | Supprimer les membres de la liste des comptes nommés | Listes de comptes nommés | POST | /rest/v1/namedaccountlist/{id}/namedaccounts/remove.json | Compte nommé en lecture / écriture |
 | Synchroniser les listes de comptes nommés | Listes de comptes nommés | POST | /rest/v1/namedaccountlists.json | Liste de comptes nommés en lecture/écriture |
-| Supprimer les comptes nommés | Comptes désignés | POST | /rest/v1/namedaccounts/delete.json | Compte nommé en lecture / écriture |
+| Supprimer les comptes nommés | Comptes | POST | /rest/v1/namedaccounts/delete.json | Compte nommé en lecture / écriture |
 | Décrire les comptes nommés | Comptes désignés | GET | /rest/v1/namedaccounts/describe.json | Compte nommé en lecture seule |
 | Obtenir les comptes nommés | Comptes désignés | GET | /rest/v1/namedaccounts.json | Compte nommé en lecture seule |
 | Synchroniser les comptes nommés | Comptes désignés | POST | /rest/v1/namedaccounts.json | Compte nommé en lecture / écriture |
