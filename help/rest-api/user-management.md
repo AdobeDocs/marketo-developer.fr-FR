@@ -25,14 +25,14 @@ role_v2:
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
     internal-label: Administration
-source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
+source-git-commit: 1cdb28422994b772a0fa430e213facaf26817952
 workflow-type: tm+mt
 source-wordcount: '1404'
 ht-degree: 7%
 ---
 # Gestion des utilisateurs
 
-[Référence des points d’entrée User Management](https://developer.adobe.com/marketo-apis/api/user/)
+[Référence des points d’entrée User Management](https://developer.adobe.com/marketo-apis/api/user)
 
 Les points d’entrée User Management de Marketo effectuent des opérations CRUD sur les enregistrements d’utilisateurs. Pour créer un utilisateur, envoyez une invitation. L’utilisateur définit ensuite un mot de passe et accède pour la première fois à Marketo.
 
